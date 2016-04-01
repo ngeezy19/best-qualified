@@ -1,0 +1,102 @@
+package com.bestqualified.servlets;
+
+import java.io.IOException;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.bestqualified.bean.SignUpBean;
+import com.bestqualified.controllers.GeneralController;
+import com.bestqualified.entities.CandidateProfile;
+import com.bestqualified.entities.Recruiter;
+import com.bestqualified.entities.User;
+import com.bestqualified.util.EntityConverter;
+import com.bestqualified.util.Util;
+import com.google.appengine.api.datastore.Entity;
+
+public class SignInServlet extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7948408060782550137L;
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		String email = req.getParameter("email");
+		String password = req.getParameter("password");
+		
+		HttpSession session = req.getSession();
+		if(!Util.notNull(email)) {
+			synchronized (session) {
+				session.setAttribute("signinError", "You have to enter your email.");
+			}
+			resp.sendRedirect(resp.encodeRedirectURL("/sign-in"));
+			return;
+		}
+		
+		if(!Util.notNull(password)) {
+			synchronized (session) {
+				session.setAttribute("signinError", "You have to enter your password.");
+			}
+			resp.sendRedirect(resp.encodeRedirectURL("/sign-in"));
+			return;
+		}
+		User u = GeneralController.getUserByCredentials(email,password);
+		if(u == null) {
+			synchronized (session) {
+				session.setAttribute("signinError", "Username/Password do not match");
+			}
+			resp.sendRedirect(resp.encodeRedirectURL("/sign-in"));
+			return;
+		} else {
+			synchronized (session) {
+				session.setAttribute("user", u);
+			}
+			if(u.isVerified()) {
+				if(Util.notNull(u.getUserType())) {
+					resp.sendRedirect(
+							resp.encodeRedirectURL("/major-interest"));
+					return;
+				} else {
+					u.setAuthenticated(true);
+					Entity e = GeneralController.findByKey(u.getUserInfo());
+					if(u.getUserType().equalsIgnoreCase(User.UserType.PROFESSIONAL.name())) {
+						CandidateProfile cp = EntityConverter.entityToCandidateProfile(e, u.getUserKey());
+					}else if(u.getUserType().equalsIgnoreCase(User.UserType.RECRUITER.name())) {
+						Recruiter r = EntityConverter.entityToRecruiter(e);
+					}
+				}
+				
+			} else {
+				SignUpBean sub = Util.userToSignUpBean(u);
+				synchronized (session) {
+					session.setAttribute("sub", sub);
+					session.removeAttribute("signupError");
+					session.setMaxInactiveInterval(86400);
+				}
+				String body = Util.getConfirmationCodeEmailBody(sub.getVerificationCode(), sub.getFirstName());
+				try {
+					Util.sendConfirmationCodeEmail(sub.getEmail(), body);
+				} catch (AddressException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (MessagingException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				System.out.println(sub.getVerificationCode());
+				resp.sendRedirect(resp.encodeRedirectURL("/email-verification"));
+				return;
+			}
+		}
+	}
+
+}

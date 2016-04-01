@@ -1,0 +1,28 @@
+body {
+	font-family: arial;
+	background-color: #ddd;
+	
+}
+.main-header {
+	text-align: center;
+	background-color: #337ab7;
+	color: #eee;
+	border-bottom-color: #2e6da4;
+}
+
+.module {
+	background-color: white;
+	padding: 2%;
+	padding-left: 5%;
+	padding-right: 5%;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 4%;
+	box-shadow: 10px 10px 5px #888888;
+	
+}
+
+.module h4 {
+	color: #337ab7;
+}
+
