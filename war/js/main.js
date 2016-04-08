@@ -10,9 +10,26 @@ function addSuccess(msgD, msg) {
 	msgD.html(msg);
 }
 
+function addPopOver() {
+
+	$('#imginfo').webuiPopover({
+		placement : 'auto',
+		width : '13em',
+		height : '8em',
+		trigger : 'click',
+		arrow : true,
+		content : $('#popover-content').html(),
+		closeable : false,
+		padding : false,
+		type : 'html'
+	});
+}
+
 $(document).ready(function() {
 	
-	
+	$("#imginfo").mouseenter(function() {
+		addPopOver();
+	});
 	
 	$("#add-mailing-list").click(function() {
 		$("#mailing-list-div").waitMe({

@@ -1,9 +1,11 @@
 package com.bestqualified.util;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
@@ -14,9 +16,31 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.bestqualified.bean.FacebookAccessTokenResponse;
+import com.bestqualified.bean.InterestedJob;
+import com.bestqualified.bean.ProfessionalDashboard;
 import com.bestqualified.bean.SignUpBean;
+import com.bestqualified.bean.SocialUser;
+import com.bestqualified.bean.SocialUser.SocialNetwork;
+import com.bestqualified.controllers.GeneralController;
+import com.bestqualified.entities.CandidateProfile;
+import com.bestqualified.entities.Recruiter;
 import com.bestqualified.entities.User;
+import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.ImagesServiceFactory;
+import com.google.appengine.api.images.ServingUrlOptions;
+import com.google.appengine.labs.repackaged.org.json.JSONException;
+import com.google.appengine.labs.repackaged.org.json.JSONObject;
+import com.google.appengine.labs.repackaged.org.json.JSONTokener;
 
 public class Util {
 
@@ -151,7 +175,7 @@ public class Util {
 		u.setVerified(u1.isVerified());
 		return u;
 	}
-	
+
 	public static SignUpBean userToSignUpBean(User u) {
 		SignUpBean sub = new SignUpBean();
 		sub.setEmail(u.getEmail());
@@ -159,5 +183,155 @@ public class Util {
 		sub.setLastName(u.getLastName());
 		sub.setPassword(u.getPassword());
 		return sub;
+	}
+
+	public static List<InterestedJob> getJobs(Key careerLevel,
+			List<Key> education) {
+
+		return null;
+	}
+
+	public static String getPictureUrl(BlobKey key) {
+		if (key == null) {
+			return "/images/unknown-user.jpg";
+		} else {
+			ServingUrlOptions suo = ServingUrlOptions.Builder.withBlobKey(key);
+			ImagesService is = ImagesServiceFactory.getImagesService();
+			return is.getServingUrl(suo);
+		}
+	}
+
+	public static long calculateProfileStrength(User u, CandidateProfile cp) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public static ProfessionalDashboard initProfessionalDashboardBean(User u,
+			CandidateProfile cp) {
+		ProfessionalDashboard pd = new ProfessionalDashboard();
+		// pd.setArticles(Util.getDashboardArticles());
+		pd.setCurrentEmployer(cp.getCurrentEmployer());
+		pd.setiJobs(Util.getJobs(cp.getCareerLevel(), cp.getEducation()));
+		pd.setName(u.getFirstName() + " " + u.getLastName());
+		pd.setNoOfConnections(String.valueOf((cp.getConnections() == null) ? 0
+				: cp.getConnections().size()));
+		pd.setNoOfProfileViewers(String
+				.valueOf((cp.getProfileViewers() == null) ? 0 : cp
+						.getProfileViewers().size()));
+		if(u.getPictureUrl() == null) {
+			pd.setPictureUrl((u.getProfilePicture() == null) ? StringConstants.UNKNOWN_USER:Util.getPictureUrl(u.getProfilePicture()));
+		}else {
+			pd.setPictureUrl(u.getPictureUrl());
+		}
+		pd.setProfileStrength(Util.calculateProfileStrength(u, cp));
+		pd.setTagline(u.getTagline());
+		return pd;
+	}
+
+	public static FacebookAccessTokenResponse toFacebookAccessTokenResponse(
+			String respString) {
+		respString = respString.replace("{", "").replace("}", "")
+				.replace("\"", "");
+		String[] str = respString.split(",");
+		FacebookAccessTokenResponse fatr = new FacebookAccessTokenResponse();
+		for (String s : str) {
+			String[] ss = s.split(":");
+			if (ss[0].equalsIgnoreCase("access_token")) {
+				if (ss.length > 1) {
+					fatr.setAccessToken(ss[1]);
+				}
+
+			} else if (ss[0].equalsIgnoreCase("expires_in")) {
+				if (ss.length > 1) {
+					fatr.setExpires(ss[1]);
+				}
+
+			} else if (ss[0].equalsIgnoreCase("token_type")) {
+				if (ss.length > 1) {
+					fatr.setTokenType(ss[1]);
+				}
+
+			}
+
+		}
+		return fatr;
+	}
+
+	public static SocialUser toFaceBookSocialUser(String respString) {
+		SocialUser su = new SocialUser();
+		su.setNetwork(SocialNetwork.FACEBOOK);
+		JSONTokener jt = new JSONTokener(respString);
+		JSONObject jo;
+		try {
+			jo = new JSONObject(jt);
+			if (respString.contains("email")) {
+				su.setEmail(jo.getString("email"));
+			}
+			if (respString.contains("first_name")) {
+				su.setFirstName(jo.getString("first_name"));
+			}
+			if (respString.contains("gender")) {
+				su.setGender(jo.getString("gender"));
+			}
+			if (respString.contains("id")) {
+				su.setId(jo.getString("id"));
+			}
+			if (respString.contains("last_name")) {
+				su.setLastName(jo.getString("last_name"));
+			}
+			su.setPictureUrl(jo.getJSONObject("picture").getJSONObject("data")
+					.getString("url"));
+			su.setVerified(jo.getBoolean("verified"));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return su;
+	}
+
+	public static void logUserIn(User u, HttpServletRequest req,
+			HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		u.setAuthenticated(true);
+		Entity e = GeneralController.findByKey(u.getUserInfo());
+		CandidateProfile cp = null;
+		if(u.getUserType().equalsIgnoreCase(User.UserType.PROFESSIONAL.name())) {
+			cp = EntityConverter.entityToCandidateProfile(e, u.getUserKey());
+			synchronized (session) {
+				session.setAttribute("professionalProfile", cp);
+			}
+		}else if(u.getUserType().equalsIgnoreCase(User.UserType.RECRUITER.name())) {
+			Recruiter r = EntityConverter.entityToRecruiter(e);
+		}
+		
+		RequestDispatcher rd = req.getRequestDispatcher("/bq/closed/init-dashboard");
+		rd.forward(req, resp);
+		
+	}
+
+	public static User socialUserToUser(SocialUser su) {
+		User u = new User(su.getFirstName(), su.getLastName());
+		u.setGender(su.getGender());
+		u.setTagline(su.getHeadline());
+		u.setPictureUrl(su.getPictureUrl());
+		u.setJoinedDate(new Date());
+		if(!u.getEmails().contains(su.getEmail())) {
+			u.getEmails().add(su.getEmail());
+		}
+		switch (su.getNetwork()) {
+		case FACEBOOK:
+			u.setFacebookID(su.getId());
+			break;
+		case LINKEDIN:
+			u.setLinkedInID(su.getId());
+			break;
+		case TWITTER:
+			u.setTwitterID(su.getId());
+			break;
+		case GOOGLE:
+			u.setGoogleID(su.getId());
+		}
+		return u;
 	}
 }

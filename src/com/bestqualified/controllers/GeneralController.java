@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import com.bestqualified.bean.SocialUser;
 import com.bestqualified.entities.User;
 import com.bestqualified.util.EntityConverter;
 import com.bestqualified.util.StringConstants;
@@ -25,7 +26,6 @@ import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Transaction;
 import com.google.appengine.api.datastore.TransactionOptions;
-
 
 public class GeneralController {
 
@@ -105,12 +105,15 @@ public class GeneralController {
 	public static User findSocialUser(String email) {
 		User u = null;
 		Query q = new Query("User");
-		q.setFilter(new Query.FilterPredicate(StringConstants.EMAILS,
-				FilterOperator.EQUAL, email));
+		Filter f1 = new Query.FilterPredicate("emails", FilterOperator.EQUAL, email);
+		Filter f2 = new Query.FilterPredicate("email", FilterOperator.EQUAL, email);
+		Filter f = new CompositeFilter(CompositeFilterOperator.OR,
+				Arrays.asList(f1,f2));
+		q.setFilter(f);
 		PreparedQuery pq = ds.prepare(q);
 		if (pq.countEntities(FetchOptions.Builder.withDefaults()) == 1) {
 			Entity e = pq.asSingleEntity();
-			u = EntityConverter.entityConverterToUser(e);
+			u = EntityConverter.entityToUser(e);
 			return u;
 		} else {
 			return null;
@@ -119,18 +122,60 @@ public class GeneralController {
 
 	public static User getUserByCredentials(String email, String password) {
 		Query q = new Query(User.class.getSimpleName());
-		Filter f = new CompositeFilter(CompositeFilterOperator.OR, Arrays.asList(
-			     new FilterPredicate("emails", FilterOperator.EQUAL, email),
-			     new CompositeFilter(CompositeFilterOperator.AND, Arrays.<Filter>asList(
-			         new FilterPredicate("email", FilterOperator.EQUAL, email),
-			         new FilterPredicate("password", FilterOperator.EQUAL, Util.toSHA512(password))))));
+		Filter f = new CompositeFilter(CompositeFilterOperator.OR,
+				Arrays.asList(
+						new FilterPredicate("emails", FilterOperator.EQUAL,
+								email),
+						new CompositeFilter(CompositeFilterOperator.AND, Arrays
+								.<Filter> asList(
+										new FilterPredicate("email",
+												FilterOperator.EQUAL, email),
+										new FilterPredicate("password",
+												FilterOperator.EQUAL, Util
+														.toSHA512(password))))));
 		q.setFilter(f);
 		PreparedQuery pq = ds.prepare(q);
-		if(pq.countEntities(FetchOptions.Builder.withDefaults()) == 1) {
-			User u = EntityConverter.entityConverterToUser(pq.asSingleEntity());
+		if (pq.countEntities(FetchOptions.Builder.withDefaults()) == 1) {
+			User u = EntityConverter.entityToUser(pq.asSingleEntity());
 			return u;
 		} else {
 			return null;
 		}
+	}
+
+	public static boolean userSocialIdExists(String email) {
+		Query q = new Query(User.class.getSimpleName());
+		Filter f = new Query.FilterPredicate("emails", FilterOperator.EQUAL,
+				email);
+		q.setFilter(f);
+		return false;
+	}
+
+	public static User findUserBySocialId(SocialUser su) {
+		User u = null;
+		Query q = new Query(User.class.getSimpleName());
+		switch (su.getNetwork()) {
+		case FACEBOOK:
+			q.setFilter(new Query.FilterPredicate("facebookID",
+					FilterOperator.EQUAL, su.getId()));
+			break;
+		case LINKEDIN:
+			q.setFilter(new Query.FilterPredicate("googleID",
+					FilterOperator.EQUAL, su.getId()));
+			break;
+		case TWITTER:
+			q.setFilter(new Query.FilterPredicate("linkedInID",
+					FilterOperator.EQUAL, su.getId()));
+			break;
+		case GOOGLE:
+			q.setFilter(new Query.FilterPredicate("twitterID",
+					FilterOperator.EQUAL, su.getId()));
+
+		}
+		PreparedQuery pq = ds.prepare(q);
+		if(pq.countEntities(FetchOptions.Builder.withDefaults()) == 1) {
+			u = EntityConverter.entityToUser(pq.asSingleEntity());
+		}
+		return u;
 	}
 }

@@ -1,0 +1,74 @@
+<nav class="navbar navbar-inverse navbar-fixed-top"
+	style="background: #CCCC99">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Best Qualified</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#"><span
+						class="glyphicon glyphicon-home" style="color: white;"></span></a></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">Get Hired<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Jobs Search</a></li>
+						<li><a href="#">Browse Jobs</a></li>
+						<li><a href="#">Advanced Search</a></li>
+						<li><a href="#">Saved Jobs</a></li>
+						<li><a href="#">Apply History</a></li>
+					</ul></li>
+				<li class="dropdown"><a class="dropdown-toggle" href="#"
+					data-toggle="dropdown">Training<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Free Courses</a></li>
+						<li><a href="#">Coporate Training</a></li>
+						<li><a href="#">Workshops</a></li>
+						<li><a href="#">Professional Associations</a></li>
+						<li><a href="#">Sales & Marketing Certifications</a></li>
+					</ul></li>
+				<li class="dropdown"><a class="dropdown-toggle" href="#"
+					data-toggle="dropdown">Career Advice<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Career Blog</a></li>
+						<li><a href="#">Career Guide</a></li>
+						<li><a href="#">Find a Coach/Mentor</a></li>
+						<li><a href="#">Assessments</a></li>
+					</ul></li>
+				<li><a href="#">Community</a></li>
+			</ul>
+			<c:choose>
+				<c:when test="${user.authenticated}">
+					<ul class="nav navbar-nav navbar-right"
+						style="margin-top: 4px; margin-right: 4px;">
+						<li style="margin: 0px auto; width: 3em; height: auto;"><img
+							id="imginfo" src="/images/unknown-user.jpg"
+							class="img img-responsive img-circle" alt=""
+							style="cursor: pointer" /></li>
+					</ul>
+				</c:when>
+				<c:otherwise>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/sign-up"><span
+								class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+						<li><a href="/sign-in"><span
+								class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</ul>
+				</c:otherwise>
+			</c:choose>
+		</div>
+	</div>
+</nav>
+
+<div class="content hide popover-content" id="popover-content">
+	<ul style="padding: none!important">
+		<li style="list-style: none;"><a href="<c:url value='#' />" >Dashboard</a></li>
+		<li style="list-style: none;"><a href="<c:url value='#' />">Improve Your Profile</a></li>
+		<li style="list-style: none;"><a href="<c:url value='/bq/closed/init-jobs' />">Find a Job</a></li>
+		<li style="list-style: none;"><a href="<c:url value='/logout' />">Logout</a></li>
+	</ul>
+</div>

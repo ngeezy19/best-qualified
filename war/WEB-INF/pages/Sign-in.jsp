@@ -10,8 +10,6 @@
 <title>Best Qualified Sign In</title>
 <link rel="stylesheet" type="text/css" href="/styles/main.css">
 <style type="text/css">
-
-
 .fb-button:hover {
 	background: #385693;
 }
@@ -64,7 +62,7 @@
 }
 </style>
 </head>
-<body>
+<body style="background-color: #043143;">
 	<div class="sign-up-panel-one">
 		<div class="bq-logo-div">
 			<img alt="Best Qualified" src="/images/bq-logo.png">
@@ -86,10 +84,9 @@
 				</c:if>
 
 				<form method="post" action="<c:url value='/end-point/sign-in' />">
-					<label>Email</label> <input name="email"
-						value="${sin.email }" /> <label>Password</label> <input
-						name="password" type="password" /> 
-					
+					<label>Email</label> <input name="email" value="${sin.email }" />
+					<label>Password</label> <input name="password" type="password" />
+
 					<div style="margin-top: 4%">
 						<input type="submit" value="Sign In" class="bq-btn-primary"
 							id="sign-in">
@@ -97,13 +94,16 @@
 				</form>
 				<div>
 					<hr style="margin-top: 2em; margin-bottom: 2%;" />
-					<p>Don't have a BQ account? <a href="/sign-up">Sign Up</a></p>
-					<!-- <div>
+					<p style="font-family: arial; font-size: 10pt">
+						Don't have a BQ account? <a href="/sign-up">Sign Up</a>
+					</p>
+					<div>
 						<p style="text-align: center">You can choose to</p>
-						<input type="button" value="Continue with Facebook"
-							class="fb-button" /> <input type="button"
-							value="Continue with LinkedIn" class="bq-btn-primary" />
-					</div> -->
+						<a href="/bq/open/facebook-sign-in" class="fb-button">Continue
+							With Facebook</a>
+						<p style="margin-bottom: 2px; margin-top: 2px; text-align: center">or</p>
+						<input href="/bq/open/linkedin-sign-in" class="bq-btn-primary" value='Continue with LinkedIn'>
+					</div>
 				</div>
 			</div>
 			<div>

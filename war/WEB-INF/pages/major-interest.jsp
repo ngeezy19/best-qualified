@@ -19,7 +19,7 @@
 }
 </style>
 </head>
-<body style="background-color: #003366">
+<body style="background-color: #043143">
 	<div class="sign-up-panel-one">
 		<div class="bq-logo-div">
 			<img alt="Best Qualified" src="/images/bq-logo.png">
@@ -28,21 +28,29 @@
 	<div class="sign-up-panel-two">
 		<div class="sign-up-panel-two-a">
 			<h3>
-				Welcome
-				<c:out value='${user.firstName }' />
-				! You are in.
+				Welcome <span style="text-transform: capitalize;"><c:out
+						value='${user.firstName }' /></span> !<small style="font-size: 80%">
+					You are in. </small>
 			</h3>
 		</div>
 		<div>
 			<div class="sign-up-form-div">
 
-				<h3 style="color: #003366; text-align: left;">How do you want
-					to use BQ?</h3>
-				<p>You can use BQ as</p>
+				<h3 style="color: #003366; text-align: left; margin-bottom: 2%;">How
+					do you want to use Best Qualified?</h3>
+				<c:if test='${not empty majorInterestError}'>
+					<div class="bq-alert bq-alert-danger">
+						<p>
+							<c:out value='${majorInterestError}' />
+						</p>
+					</div>
+				</c:if>
 				<form method="post"
 					action="<c:url value='/end-point/add-major-interest' />">
 					<div>
-						<input type="radio" name="user-type" value="professional" class="user-type"> <strong>A Sales & Marketing Professional</strong>
+						<input type="radio" name="user-type" value="professional"
+							class="user-type"> <strong>A Sales & Marketing
+							Professional</strong>
 						<ul style="list-style-type: circle;">
 							<li>Find a Sales and marketing Job</li>
 							<li>Speak to a mentor or a coach</li>
@@ -51,16 +59,18 @@
 						</ul>
 					</div>
 					<div>
-						<input type="radio" name="user-type" value="recruiter" class="user-type"><strong>An Employer </strong>
+						<input type="radio" name="user-type" value="recruiter"
+							class="user-type"><strong>An Employer </strong>
 						<ul style="list-style-type: circle;">
-							<li >Find a Sales and marketing Professional</li>
+							<li>Find a Sales and marketing Professional</li>
 							<li>other very nice features</li>
 							<li>And lots more</li>
 						</ul>
 					</div>
-					
+
 					<div>
-						<input type="submit" value="Continue" class="bq-btn-primary"  id="user-type-btn">
+						<input type="submit" value="Continue" class="bq-btn-primary"
+							id="user-type-btn">
 					</div>
 				</form>
 

@@ -2,6 +2,7 @@ package com.bestqualified.servlets;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +46,7 @@ public class AddMajorInterestServlet extends HttpServlet {
 					u.setUserType(userType.toUpperCase());
 					u.setAuthenticated(true);
 					User u1 = GeneralController.findSocialUser(u.getEmail());
-					Entity e1 = EntityConverter.userToEntity(u);
+					
 					if (u1 != null) {
 						u = Util.mergeUsers(u, u1);
 						
@@ -65,6 +66,7 @@ public class AddMajorInterestServlet extends HttpServlet {
 								session.setAttribute("employerProfile", r);
 							}
 						}
+						Entity e1 = EntityConverter.userToEntity(u);
 						GeneralController.create(e1);
 					} else {
 						if (userType
@@ -75,6 +77,7 @@ public class AddMajorInterestServlet extends HttpServlet {
 							u.setUserInfo(cp.getId());
 							Entity e = EntityConverter
 									.candidateProfileToEntity(cp);
+							Entity e1 = EntityConverter.userToEntity(u);
 							GeneralController.createWithCrossGroup(e1, e);
 							synchronized (session) {
 								session.setAttribute("professionalProfile", cp);
@@ -85,19 +88,21 @@ public class AddMajorInterestServlet extends HttpServlet {
 							Recruiter r = new Recruiter(u.getUserKey());
 							u.setUserInfo(r.getId());
 							Entity e = EntityConverter.recruiterToEntity(r);
+							Entity e1 = EntityConverter.userToEntity(u);
 							GeneralController.createWithCrossGroup(e1, e);
 							synchronized (session) {
 								session.setAttribute("employerProfile", r);
 							}
-							resp.sendRedirect(resp
-									.encodeRedirectURL("/bq/close/profile"));
-							return;
+							
 						}
 					}
 					synchronized (session) {
 						session.setAttribute("user", u);
 						session.removeAttribute("majorInterestError");
 					}
+					RequestDispatcher rd = req.getRequestDispatcher("/bq/closed/init-dashboard");
+					rd.forward(req, resp);
+					return;
 
 				} else {
 					synchronized (session) {

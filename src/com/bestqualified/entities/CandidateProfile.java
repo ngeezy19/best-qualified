@@ -36,6 +36,9 @@ public class CandidateProfile implements Serializable {
 	private String lga;
 	private String stateOfOrigin;
 	private List<BlobKey> pictures;
+	private List<Key> connections;
+	
+	
 	
 	public CandidateProfile(Key candidateId) {
 		this.candidateId = candidateId;
@@ -49,6 +52,7 @@ public class CandidateProfile implements Serializable {
 		this.awards = new ArrayList<>();
 		this.certifications = new ArrayList<>();
 		this.pictures = new ArrayList<>();
+		this.connections = new ArrayList<>();
 	}
 
 	@Override
@@ -65,6 +69,16 @@ public class CandidateProfile implements Serializable {
 				+ ", nationality=" + nationality + ", lga=" + lga
 				+ ", stateOfOrigin=" + stateOfOrigin + ", pictures=" + pictures
 				+ "]";
+	}
+	
+	
+
+	public List<Key> getConnections() {
+		return connections;
+	}
+
+	public void setConnections(List<Key> connections) {
+		this.connections = connections;
 	}
 
 	public String getNationality() {

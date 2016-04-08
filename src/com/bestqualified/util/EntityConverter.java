@@ -314,8 +314,6 @@ public class EntityConverter {
 		return r;
 	}
 
-	
-
 	public static Entity candidateProfileToEntity(CandidateProfile cp) {
 		Entity e = new Entity(cp.getId());
 		e.setIndexedProperty("candidateID", cp.getCandidateId());
@@ -335,10 +333,12 @@ public class EntityConverter {
 		e.setUnindexedProperty("lga", cp.getLga());
 		e.setUnindexedProperty("stateOfOrigin", cp.getStateOfOrigin());
 		e.setUnindexedProperty("pictures", cp.getPictures());
+		e.setUnindexedProperty("connections", cp.getConnections());
 		return e;
 	}
-	
-	public static CandidateProfile entityToCandidateProfile(Entity e , Key userKey) {
+
+	public static CandidateProfile entityToCandidateProfile(Entity e,
+			Key userKey) {
 		CandidateProfile cp = new CandidateProfile(userKey);
 		cp.setAwards((List<Key>) e.getProperty("awards"));
 		cp.setCareerLevel((Key) e.getProperty("careerLevel"));
@@ -349,9 +349,11 @@ public class EntityConverter {
 		cp.setCvDownloaders((Set<Key>) e.getProperty("cvDownloaders"));
 		cp.setEducation((List<Key>) e.getProperty("education"));
 		cp.setId(e.getKey());
-		List<Key> l = (List<Key>)e.getProperty("jobsApplied");
+		List<Key> l = (List<Key>) e.getProperty("jobsApplied");
 		Set<Key> s1 = new HashSet<Key>();
-		s1.addAll(l);
+		if (l != null) {
+			s1.addAll(l);
+		}
 		cp.setJobsApplied(s1);
 		cp.setLga((String) e.getProperty("lga"));
 		cp.setNationality((String) e.getProperty("nationality"));
@@ -359,10 +361,10 @@ public class EntityConverter {
 		cp.setProfileDescription((Text) e.getProperty("profileDescription"));
 		cp.setStateOfOrigin((String) e.getProperty("stateOfOrigin"));
 		cp.setWorkExperience((List<Key>) e.getProperty("workExperience"));
-		
+		cp.setConnections((List<Key>) e.getProperty("connections"));
 		return cp;
 	}
-	
+
 	public static Entity userToEntity(User user) {
 		Entity e = new Entity(user.getUserKey());
 		e.setIndexedProperty("email", user.getEmail());
@@ -382,10 +384,11 @@ public class EntityConverter {
 		e.setIndexedProperty("twitterID", user.getTwitterID());
 		e.setUnindexedProperty("gender", user.getGender());
 		e.setUnindexedProperty("profilePicture", user.getProfilePicture());
+		e.setUnindexedProperty("tagline", user.getTagline());
 		return e;
 	}
 
-	public static User entityConverterToUser(Entity e) {
+	public static User entityToUser(Entity e) {
 		User u = new User((String) (e.getProperty(StringConstants.FIRST_NAME)),
 				(String) e.getProperty(StringConstants.LAST_NAME));
 		u.setBirthDate((Date) e.getProperty("birthDate"));
@@ -400,12 +403,14 @@ public class EntityConverter {
 		u.setLinkedInID((String) e.getProperty(StringConstants.LINKEDIN_ID));
 		u.setPassword((String) e.getProperty(StringConstants.PASSWORD));
 		u.setPhone((String) e.getProperty(StringConstants.PHONE));
-		u.setProfilePicture((BlobKey) e.getProperty(StringConstants.PROFILE_PICTURE));
+		u.setProfilePicture((BlobKey) e
+				.getProperty(StringConstants.PROFILE_PICTURE));
 		u.setTwitterID((String) e.getProperty(StringConstants.TWITTER_ID));
 		u.setUserInfo((Key) e.getProperty("userInfo"));
 		u.setUserKey(e.getKey());
 		u.setUserType((String) e.getProperty("userType"));
 		u.setVerified((boolean) e.getProperty("verified"));
+		u.setTagline((String) e.getProperty("tagline"));
 		return u;
 	}
 

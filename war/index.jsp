@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +13,10 @@
 <link rel="stylesheet" href="/styles/waitMe.css">
 </head>
 <style>
-
 .features-div li {
 	list-style: none;
 }
+
 .features-div {
 	font-family: ProximaNova-Regular, Helvetica, Arial, sans-serif;
 	color: #333;
@@ -112,16 +114,16 @@ div.transbox form input {
 }
 
 .index-first-header h1 strong {
-	font-family: ProximaNova-Regular, Helvetica, Arial, sans-serif !important;
+	font-family: ProximaNova-Regular, Helvetica, Arial,
+		sans-serif !important;
 	margin-bottom: 0;
 }
 
 .index-first-header h2 {
-	font-family: ProximaNova-Regular, Helvetica, Arial, sans-serif !important;
+	font-family: ProximaNova-Regular, Helvetica, Arial,
+		sans-serif !important;
 	margin-top: 0;
 }
-
-
 
 .footer-connect-with-us {
 	box-sizing: border-box;
@@ -187,58 +189,7 @@ div.transbox form input {
 </style>
 <body>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Best Qualified</a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#"><span
-							class="glyphicon glyphicon-home" style="color: white;"></span></a></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Get Hired<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Jobs Search</a></li>
-							<li><a href="#">Browse Jobs</a></li>
-							<li><a href="#">Advanced Search</a></li>
-							<li><a href="#">Saved Jobs</a></li>
-							<li><a href="#">Apply History</a></li>
-						</ul></li>
-					<li class="dropdown"><a class="dropdown-toggle" href="#"
-						data-toggle="dropdown">Training<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Free Courses</a></li>
-							<li><a href="#">Coporate Training</a></li>
-							<li><a href="#">Workshops</a></li>
-							<li><a href="#">Professional Associations</a></li>
-							<li><a href="#">Sales & Marketing Certifications</a></li>
-						</ul></li>
-					<li class="dropdown"><a class="dropdown-toggle" href="#"
-						data-toggle="dropdown">Career Advice<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Career Blog</a></li>
-							<li><a href="#">Career Guide</a></li>
-							<li><a href="#">Find a Coach/Mentor</a></li>
-							<li><a href="#">Assessments</a></li>
-						</ul></li>
-					<li><a href="#">Community</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/sign-up"><span class="glyphicon glyphicon-user"></span>
-							Sign Up</a></li>
-					<li><a href="/bq/open/pages/login"><span class="glyphicon glyphicon-log-in"></span>
-							Login</a></li>
-					<li><a href="#"></span> Employers</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<%@ include file="/main-nav.html"%>
 
 	<div class="container-fluid background"
 		style="height: auto; background-image: url('/images/bq-slide.jpg'); background-repeat: no-repeat; background-size: 100% 100%; margin-top: 3em">
@@ -300,10 +251,8 @@ div.transbox form input {
 				<h1 style="">
 					<strong>The No.1 Marketing & Sales Career Site</strong>
 				</h1>
-				<h2 class="text-muted">
-					Your roadmap to a successful career. 
-				</h2>
-				
+				<h2 class="text-muted">Your roadmap to a successful career.</h2>
+
 			</div>
 		</div>
 	</div>
@@ -343,7 +292,8 @@ div.transbox form input {
 					<ul>
 						<li>Free or affordable trainings to improve your career.</li>
 						<li>Join professional Sales & Marketing associations</li>
-						<li>Gain the differentiator against the competition in the industry.</li>
+						<li>Gain the differentiator against the competition in the
+							industry.</li>
 						<li>Get the latest and updated trainings in your field.</li>
 					</ul>
 					<a href="#" class="btn btn-warning">Learn More</a>
@@ -360,7 +310,8 @@ div.transbox form input {
 
 				<div class="col-sm-6" style="text-align: right">
 					<h4>COACHING/MENTORING</h4>
-					<h2 style="text-align: right;">Everyone can do with a helping hand.</h2>
+					<h2 style="text-align: right;">Everyone can do with a helping
+						hand.</h2>
 					<ul>
 						<li>Latest career advice will be sent to your inbox.</li>
 						<li>Help is always available for your job interviews.</li>

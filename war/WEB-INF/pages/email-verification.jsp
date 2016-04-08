@@ -10,7 +10,7 @@
 <title>Email Verification</title>
 <link rel="stylesheet" type="text/css" href="/styles/main.css">
 </head>
-<body style="background-color: #003366">
+<body style="background-color: #043143">
 	<div class="sign-up-panel-one">
 		<div class="bq-logo-div">
 			<img alt="Best Qualified" src="/images/bq-logo.png">

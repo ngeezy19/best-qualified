@@ -14,22 +14,23 @@ import com.google.appengine.api.datastore.KeyFactory;
 public class User implements Serializable {
 
 	public enum UserType {
-		PROFESSIONAL,RECRUITER;
+		PROFESSIONAL, RECRUITER;
 	}
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 9151470313661979608L;
-	private String firstName,lastName,email,phone,password,userType,facebookID,linkedInID,googleID,twitterID,gender;
-	private Date joinedDate,birthDate;
+	private String firstName, lastName, email, phone, password, userType,
+			facebookID, linkedInID, googleID, twitterID, gender, tagline,
+			pictureUrl;
+	private Date joinedDate, birthDate;
 	private boolean verified, authenticated;
 	private Key userInfo;
 	private Key userKey;
 	private BlobKey profilePicture;
 	private List<String> emails;
 
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -37,7 +38,6 @@ public class User implements Serializable {
 		result = prime * result + ((userKey == null) ? 0 : userKey.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -56,7 +56,6 @@ public class User implements Serializable {
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
 		return "User [firstName=" + firstName + ", lastName=" + lastName
@@ -69,184 +68,193 @@ public class User implements Serializable {
 				+ ", userKey=" + userKey + ", emails=" + emails + "]";
 	}
 
+	public String getPictureUrl() {
+		return pictureUrl;
+	}
+
+	public void setPictureUrl(String pictureUrl) {
+		this.pictureUrl = pictureUrl;
+	}
+
+	public String getTagline() {
+		return tagline;
+	}
+
+	public void setTagline(String tagline) {
+		this.tagline = tagline;
+	}
 
 	public String getFacebookID() {
 		return facebookID;
 	}
 
-	
 	public boolean isAuthenticated() {
 		return authenticated;
 	}
-
 
 	public void setAuthenticated(boolean authenticated) {
 		this.authenticated = authenticated;
 	}
 
-
 	public void setFacebookID(String facebookID) {
 		this.facebookID = facebookID;
 	}
-
 
 	public String getLinkedInID() {
 		return linkedInID;
 	}
 
-
 	public void setLinkedInID(String linkedInID) {
 		this.linkedInID = linkedInID;
 	}
-
 
 	public String getGoogleID() {
 		return googleID;
 	}
 
-
 	public void setGoogleID(String googleID) {
 		this.googleID = googleID;
 	}
-
 
 	public String getTwitterID() {
 		return twitterID;
 	}
 
-
 	public void setTwitterID(String twitterID) {
 		this.twitterID = twitterID;
 	}
-
 
 	public String getGender() {
 		return gender;
 	}
 
-
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
 
 	public Date getBirthDate() {
 		return birthDate;
 	}
 
-
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
-
 
 	public List<String> getEmails() {
 		return emails;
 	}
 
-
 	public void setEmails(List<String> emails) {
 		this.emails = emails;
 	}
-
 
 	public boolean isVerified() {
 		return verified;
 	}
 
-
 	public void setVerified(boolean verified) {
 		this.verified = verified;
 	}
-
 
 	public Key getUserInfo() {
 		return userInfo;
 	}
 
-
 	public void setUserInfo(Key userInfo) {
 		this.userInfo = userInfo;
 	}
 
-
 	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getPhone() {
 		return phone;
 	}
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getUserType() {
 		return userType;
 	}
+
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
+
 	public Date getJoinedDate() {
 		return joinedDate;
 	}
+
 	public void setJoinedDate(Date joinedDate) {
 		this.joinedDate = joinedDate;
 	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
 	public Key getUserKey() {
 		return userKey;
 	}
+
 	public void setUserKey(Key userKey) {
 		this.userKey = userKey;
 	}
+
 	public User(String firstName, String lastName) {
 		String sid = getID(firstName, lastName);
-		while(GeneralController.userIdExist(sid)) {
-			sid = getID(firstName, lastName);
+		while (GeneralController.userIdExist(sid)) {
+			sid = getID(firstName, lastName).toUpperCase();
 		}
-		userKey  = KeyFactory.createKey(User.class.getSimpleName(), sid);
+		userKey = KeyFactory.createKey(User.class.getSimpleName(), sid);
 		this.emails = new ArrayList<>();
-	}
-	
-	private String getID(String firstName, String lastName) {
-		return firstName.substring(0,2)+lastName.substring(0, 2)+Util.generateRandomCode(111111111, 999999999).toUpperCase();
+		this.setFirstName(firstName);
+		this.setLastName(lastName);
 	}
 
+	private String getID(String firstName, String lastName) {
+		return firstName.substring(0, 2) + lastName.substring(0, 2)
+				+ Util.generateRandomCode(111111111, 999999999).toUpperCase();
+	}
 
 	public BlobKey getProfilePicture() {
 		return profilePicture;
 	}
 
-
 	public void setProfilePicture(BlobKey profilePicture) {
 		this.profilePicture = profilePicture;
-		
+
 	}
-	
-	
 
 }

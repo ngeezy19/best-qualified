@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -60,18 +61,25 @@ public class SignInServlet extends HttpServlet {
 				session.setAttribute("user", u);
 			}
 			if(u.isVerified()) {
-				if(Util.notNull(u.getUserType())) {
+				if(!Util.notNull(u.getUserType())) {
 					resp.sendRedirect(
 							resp.encodeRedirectURL("/major-interest"));
 					return;
 				} else {
 					u.setAuthenticated(true);
 					Entity e = GeneralController.findByKey(u.getUserInfo());
+					CandidateProfile cp = null;
 					if(u.getUserType().equalsIgnoreCase(User.UserType.PROFESSIONAL.name())) {
-						CandidateProfile cp = EntityConverter.entityToCandidateProfile(e, u.getUserKey());
+						cp = EntityConverter.entityToCandidateProfile(e, u.getUserKey());
+						synchronized (session) {
+							session.setAttribute("professionalProfile", cp);
+						}
 					}else if(u.getUserType().equalsIgnoreCase(User.UserType.RECRUITER.name())) {
 						Recruiter r = EntityConverter.entityToRecruiter(e);
 					}
+					RequestDispatcher rd = req.getRequestDispatcher("/bq/closed/init-dashboard");
+					rd.forward(req, resp);
+					return;
 				}
 				
 			} else {
