@@ -181,6 +181,8 @@ div.transbox form input {
 .quick-search-list li {
 	display: inline;
 	padding: 2%;
+	
+	
 }
 
 .quick-search-list li a {
@@ -227,7 +229,7 @@ div.transbox form input {
 					<div class="col-sm-12" style="margin-top: 0">
 						<hr />
 					</div>
-					<div class="col-sm-12" style="color: white;">
+					<div class="col-sm-12 no-padding-div" style="color: white;">
 
 						<ul class="quick-search-list">
 							<li><strong>Quick Search: </strong></li>
@@ -245,7 +247,7 @@ div.transbox form input {
 
 		</div>
 	</div>
-	<div class="container-fluid index-first-header">
+	<div class="container-fluid index-first-header" style="margin-bottom: 2%;">
 		<div class="row">
 			<div class="col-sm-12 ">
 				<h1 style="">
@@ -256,100 +258,109 @@ div.transbox form input {
 			</div>
 		</div>
 	</div>
-	<div class="container-fluid alt-div-odd features-div">
-		<div class="row">
-			<div class="col-sm-8 col-centered" style="text-align: right">
-				<div class="col-sm-6">
-					<h4>JOBS</h4>
-					<h2 style="text-align: right;">Get hired in industries of your
-						choice</h2>
-					<ul>
-						<li>Start your exciting career journey here.</li>
-						<li>There's nothing wrong with trying something new.</li>
-						<li>A variety of career choices are available.</li>
-						<li>Choose your route for advancing your career path.</li>
-					</ul>
-					<a href="#" class="btn btn-warning">Start Here</a>
-				</div>
-				<div class="col-sm-6 feature-img-div">
-					<img alt="" src="/images/get-hired.jpg" class="img img-responsive">
 
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="media headlines">
+					<a class="pull-left" href="#"><img
+						class="media-object img-rounded" src="images/job.png"></a>
+					<div class="media-body">
+						<h4 class="media-heading"><strong>JOBS</strong></h4>
+						<h5 class="job">Get hired in industries of your choice</h5>
+						<p class="plat">Start your exciting career journey here</p>
+						<p class="plat">There's nothing wrong with trying something
+							new.</p>
+						<p class="plat">A variety of career choices are available.</p>
+						<p class="plat"></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="media headlines">
+					<a class="pull-right" href="#"><img
+						class="media-object img-rounded" src="images/train.png"></a>
+					<div class="media-body">
+						<h4 class="media-heading"><strong>CERTIFICATIONS</strong></h4>
+						<h5 class="jobs">Get hired in industries of your choice</h5>
+						<p class="plat">Free or affordable trainings to improve your
+							career.</p>
+						<p class="plat">Join professional Sales & Marketing
+							associations</p>
+						<p class="plat">Gain the differentiator against the
+							competition in the industry.</p>
+						<p class="plat">Get the latest and updated trainings in your
+							field.</p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="container-fluid features-div">
+		<hr />
+		<div class="row">
+			<div class="col-md-6">
+				<div class="media headlines">
+					<a class="pull-left" href="#"><img
+						class="media-object img-rounded" src="images/coaching.png"></a>
+					<div class="media-body">
+						<h4 class="media-heading"><strong>COACHING/MENTORING</strong></h4>
+						<h5 class="jobss">Get hired in industries of your choice</h5>
+						<p class="plat">Latest career advice will be sent to your
+							inbox.</p>
+						<p class="plat">Help is always available for your job
+							interviews.</p>
+						<p class="plat">Resolve your mid-career crisis using our
+							mentor.</p>
+						<p class="plat">Get a coach to equip you with winning tips.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="media headlines">
+					<a class="pull-right" href="#"><img
+						class="media-object img-rounded" src="images/community.png"></a>
+					<div class="media-body">
+						<h4 class="media-heading"><strong>OUR NETWORK</strong></h4>
+						<h5 class="jobsss">Get hired in industries of your choice</h5>
+						<p class="plat">Plug into new communities that can improve
+							your network.</p>
+						<p class="plat">Meet and share opinions with other
+							professionals.</p>
+						<p class="plat">Knowing me...knowing you helps your career.</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	<hr />
+
+	<br>
+	<br>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12  headline">
+				<h4>Top Companies</h4>
+			</div>
+		</div>
 
 		<div class="row">
-			<div class="col-sm-8 col-centered">
-				<div class="col-sm-6 feature-img-div">
-					<img alt="" src="/images/training.jpg" class="img img-responsive">
-				</div>
-				<div class="col-sm-6">
-					<h4>CERTIFICATIONS</h4>
-					<h2 style="text-align: left;">Earn valuable certifications</h2>
-					<ul>
-						<li>Free or affordable trainings to improve your career.</li>
-						<li>Join professional Sales & Marketing associations</li>
-						<li>Gain the differentiator against the competition in the
-							industry.</li>
-						<li>Get the latest and updated trainings in your field.</li>
-					</ul>
-					<a href="#" class="btn btn-warning">Learn More</a>
-				</div>
+			<div class="col-md-12 imgo" style="text-align: center;">
+				<a href=""><img src="images/1.png" alt=""></a> <a href=""><img
+					src="images/2.png" alt=""></a> <a href=""><img
+					src="images/3.png" alt=""></a> <a href=""><img
+					src="images/4.png" alt=""></a> <a href=""><img
+					src="images/5.png" alt=""></a> <a href=""><img
+					src="images/6.png" alt=""></a>
 
 			</div>
 		</div>
 	</div>
-
-	<div class="container-fluid alt-div-odd features-div">
-
-		<div class="row">
-			<div class="col-sm-8 col-centered">
-
-				<div class="col-sm-6" style="text-align: right">
-					<h4>COACHING/MENTORING</h4>
-					<h2 style="text-align: right;">Everyone can do with a helping
-						hand.</h2>
-					<ul>
-						<li>Latest career advice will be sent to your inbox.</li>
-						<li>Help is always available for your job interviews.</li>
-						<li>Resolve your mid-career crisis using our mentor.</li>
-						<li>Get a coach to equip you with winning tips.</li>
-					</ul>
-					<a href="#" class="btn btn-warning">Click Now</a>
-				</div>
-				<div class="col-sm-6 feature-img-div">
-					<img alt="" src="/images/coaching.jpg" class="img img-responsive">
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="container-fluid features-div">
-
-		<div class="row">
-			<div class="col-sm-8 col-centered">
-				<div class="col-sm-6 feature-img-div">
-					<img alt="" src="/images/community.jpg" class="img img-responsive">
-				</div>
-				<div class="col-sm-6">
-					<h4>OUR NETWORK</h4>
-					<h2 style="text-align: left;">Join our community of BQ
-						professionals</h2>
-					<ul>
-						<li>Plug into new communities that can improve your network.</li>
-						<li>Meet and share opinions with other professionals.</li>
-						<li>Knowing me...knowing you helps your career.</li>
-					</ul>
-					<a href="#" class="btn btn-warning">Join Now</a>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>

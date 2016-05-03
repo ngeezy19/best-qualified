@@ -13,6 +13,11 @@
 <link rel="stylesheet" type="text/css"
 	href="/styles/jquery.webui-popover.min.css">
 <link rel="stylesheet" href="/styles/main.css">
+<link rel="canonical"
+	href="http://localhost:8888/bq/open/job?job-key=${jobInformation.webKey}">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id"
+	content="1082599418027-i7l89ubpe432n7lfiu9jus3cc0a99vqs.apps.googleusercontent.com">
 <style type="text/css">
 .profile-sub-header {
 	font-family: arial;
@@ -40,7 +45,38 @@
 }
 </style>
 </head>
-<body style="background-color: #f1f1f1">
+<body
+	style="background-image: url(/images/background.jpg); background-repeat: repeat;">
+	<div id="fb-root"></div>
+	<script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<script>
+		window.twttr = (function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {};
+			if (d.getElementById(id))
+				return t;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "https://platform.twitter.com/widgets.js";
+			fjs.parentNode.insertBefore(js, fjs);
+
+			t._e = [];
+			t.ready = function(f) {
+				t._e.push(f);
+			};
+
+			return t;
+		}(document, "script", "twitter-wjs"));
+	</script>
 	<%@ include file="/main-nav.html"%>
 	<div class="container dashboard-body"
 		style="margin-top: 8%; margin-bottom: 2%;">
@@ -49,7 +85,7 @@
 				style="padding-bottom: 0px; padding-top: 0px">
 				<div class="col-sm-3"
 					style="background-color: gray; color: white; font-family: arial; font-weight: bold; text-align: center; height: 4.4em">
-					<h4 style="padding-top: 3%;">Find a Job</h4>
+					<img alt="Find a job" src="/images/find_a_job.png">
 				</div>
 				<form action="<c:url value='/bq/open/job-search' />">
 					<div class="col-sm-7" style="margin-top: 1%;">
@@ -70,167 +106,153 @@
 			</div>
 		</div>
 		<div class="col-sm-8">
+			<c:if test="${noCV}">
+				<div class="bq-alert bq-alert-warning">
+					<p>You have to update your profile and upload your CV.</p>
+					<p>Go to your<a href="<c:url value='/bq/closed/init-professional-profile'/>"> profile</a></p>
+				</div>
+			</c:if>
+			<c:if test="${cvSent}">
+				<div class="bq-alert bq-alert-success">
+					<p>Your Application has been sent successfully, Good Luck.</p>
+				</div>
+			</c:if>
 			<div class="col-sm-12 dashboard-section" style="margin-bottom: 2%">
 				<div class="col-sm-12">
 					<div class="col-sm-3">
-						<img alt="" src="/images/company.png" class="img img-responsive">
+						<img alt="" src="${jobInformation.pictureUrl}"
+							class="img img-responsive">
 					</div>
 					<div class="col-sm-9">
-						<div class="col-sm-12">
-							<h3>Sales & Marketing Representative</h3>
-						</div>
-						<div class="col-sm-12">
-							<h5 style="margin-bottom: 3px">Netflex Sales Company</h5>
-						</div>
-						<div class="col-sm-12">
-							<p>Lagos, Nigeria</p>
-						</div>
-						<div class="col-sm-12">
-							<p>
-								<span>Posted 15 days ago</span><span class="pull-right"><a>Apply
-										on company website</a></span>
-							</p>
-						</div>
+						<h4>
+							<a href="#"><c:out value="${jobInformation.jobTitle}" /></a>
+						</h4>
+						<h5 style="font-family: calibri">
+							<c:out value="${jobInformation.companyName}" />
+						</h5>
+						<h5>
+							<i class="text-danger" style="font-family: calibri">Posted <c:out
+									value="${jobInformation.datePosted}" /></i>
+						</h5>
+						<p>
+							<a
+								href="<c:url value='/bq/closed/job/application?job-key=${jobInformation.webKey}' />"
+								class="btn btn-primary">Apply</a>
+							<a class="btn btn-success">Save</a>
+						</p>
 					</div>
 					<div class="col-sm-12">
 						<hr />
 					</div>
 					<div class="col-sm-12">
-						<h4>Job Description</h4>
-						<p>Lorem Ipsum is simply dummy text of the printing and
-							typesetting industry. Lorem Ipsum has been the industry's
-							standard dummy text ever since the 1500s, when an unknown printer
-							took a galley of type and scrambled it to make a type specimen
-							book. It has survived not only five centuries, but also the leap
-							into electronic typesetting</p>
-						<h4>Responsiblities</h4>
+						
+						<p>${jobInformation.jobDesc}</p>
+						<p>${jobInformation.extraInfo}</p>
+						<p>
+							<a
+								href="<c:url value='/bq/closed/job/application?app-url=${jobInformation.applicationUrl}' />"
+								class="btn  btn-primary">Apply</a> <a class="btn  btn-success">Save</a>
+						</p>
+					</div>
+					<div class="row">
+						<div class="col-md-12" style="text-align: center; padding: 2%;">
+							<div class="fb-share-button"
+								style="line-height: 0.7; vertical-align: baseline; display: inline-block;"
+								data-href="/bq/open/job?job-key=${jobInformation.webKey}"
+								data-layout="button"></div>
 
-						<ul>
-							<li>text ever since the 1500s, when a</li>
-							<li>specimen book. It has survived</li>
-							<li>Lorem Ipsum has been the industry's</li>
-							<li>simply dummy text of the printing and</li>
-							<li>the leap into electronic typesetting</li>
-							<li>Lorem Ipsum is simply dummy text of the printing</li>
-							<li>standard dummy text ever since</li>
-						</ul>
-
-						<h4>Requirements</h4>
-
-						<ul>
-							<li>text ever since the 1500s, when a</li>
-							<li>specimen book. It has survived</li>
-							<li>Lorem Ipsum has been the industry's</li>
-							<li>Lorem Ipsum is simply dummy text of the printing</li>
-							<li>standard dummy text ever since</li>
-							<li>simply dummy text of the printing and</li>
-							<li>simply dummy text of the printing and</li>
-							<li>the leap into electronic typesetting</li>
-							<li>Lorem Ipsum is simply dummy text of the printing</li>
-							<li>standard dummy text ever since</li>
-							<li>simply dummy text of the printing and</li>
-							<li>the leap into electronic typesetting</li>
-							<li>Lorem Ipsum is simply dummy text of the printing</li>
-							<li>standard dummy text ever since</li>
-						</ul>
+							<script src="//platform.linkedin.com/in.js"
+								type="text/javascript">
+								lang: en_US
+							</script>
+							<script type="IN/Share"
+								data-url="http://localhost:8888/bq/open/job?job-key=${jobInformation.webKey}"></script>
+							<div class="g-plus" data-action="share" data-annotation="none"
+								data-href="http://localhost:8888/bq/open/job?job-key=${jobInformation.webKey}"></div>
+							<a class="twitter-share-button"
+								href="https://twitter.com/intent/tweet"></a>
+							<div style="display: inline-block;">
+								<a
+									href="mailto:?Subject=Job recommendation from Best Qualified&amp;Body=Hello, Here%20is%20a%20job%20you%20may%20like%20${jobInformation.pageUrl}">
+									<img src="/images/email-big.png"
+									style="vertical-align: baseline;" alt="Email" />
+								</a>
+							</div>
+						</div>
 					</div>
 
+
 				</div>
 			</div>
-			<div class="col-sm-12 dashboard-section">
-				<h4>About Netflex Sales Company</h4>
-				<div class="col-sm-3">
-					<img alt="" src="/images/company.png" class="img img-responsive">
+			<c:if test="${not empty jobInformation.companyDesc}">
+				<div class="col-sm-12 dashboard-section">
+					<h4 class="text-danger">
+						About
+						<c:out value='${jobInformation.companyName}' />
+					</h4>
+					<div class="col-sm-3">
+						<img alt="" src="${jobInformation.pictureUrl}"
+							class="img img-responsive">
+					</div>
+					<div class="col-sm-9">
+						<p ${jobInformation.companyDesc}</p>
+					</div>
 				</div>
-				<div class="col-sm-9">
-					<p>Lorem Ipsum is simply dummy text of the printing and
-						typesetting industry. Lorem Ipsum has been the industry's standard
-						dummy text ever since the 1500s, when an unknown printer took a
-						galley of type and scrambled it to make a type specimen book. It
-						has survived not only five centuries, but also the leap into
-						electronic typesetting</p>
-				</div>
-			</div>
+			</c:if>
 		</div>
 		<div class="col-sm-4">
 			<div class="col-sm-12 discussion-sidebar">
 				<h4 style="border-bottom: 1px gray solid">Job Summary</h4>
 				<strong style="display: block;">Company</strong>
-				<p>Netflex Sales Company</p>
+				<p>
+					<c:out value='${jobInformation.companyName}' />
+				</p>
 				<strong style="display: block;">Job Level</strong>
-				<p>Undergraduate Internship/Vacation Job</p>
+				<p>
+					<c:out value='${jobInformation.careerLevel}' />
+				</p>
 				<strong style="display: block;">Location</strong>
-				<p>Lagos, Nigeria</p>
-				<strong style="display: block;">Specialization</strong>
-				<p>Oil & Gas</p>
+				<p>
+					<c:out value='${jobInformation.location}' />
+				</p>
+				<!-- <strong style="display: block;">Industry</strong>
+				<p><c:out value='${jobInformation.location}' /></p> -->
 				<strong style="display: block;">Job Type</strong>
-				<p>Full Time</p>
+				<p>
+					<c:out value='${jobInformation.jobType}' />
+				</p>
 				<strong style="display: block;">Mininum Qualification</strong>
-				<p>BSc</p>
+				<p>
+					<c:out value='${jobInformation.qualification}' />
+				</p>
 				<strong style="display: block;">Prefered Years of
 					Experience</strong>
-				<p>1-3 years</p>
+				<p>
+					<c:out value='${jobInformation.experience}' />
+				</p>
 				<strong style="display: block;">Application Deadline</strong>
-				<p>3 weeks from now</p>
+				<p>
+					<c:out value='${jobInformation.deadline}' />
+				</p>
 			</div>
-			<div class="col-sm-12 dashboard-section">
-				<div class="col-sm-12" style="border-bottom: 1px gray solid">
-					<div class="col-sm-3">
-						<img alt="" src="/images/company.png" class="img img-responsive">
-					</div>
-					<div class="col-sm-9">
-						<h4>Sales Manager</h4>
-						<h5>Flex Sales Company</h5>
-						<h5>
-							Posted 3 mins ago <a class="btn btn-primary pull-right">View</a>
-						</h5>
-					</div>
+			<c:if test="${not empty jobInformation.relatedJobs}">
+				<div class="col-sm-12 dashboard-section">
+					<div class="col-sm-12" style="border-bottom: 1px gray solid">
+						<div class="col-sm-3">
+							<img alt="" src="/images/company.png" class="img img-responsive">
+						</div>
+						<div class="col-sm-9">
+							<h4>Sales Manager</h4>
+							<h5>Flex Sales Company</h5>
+							<h5>
+								Posted 3 mins ago <a class="btn btn-primary pull-right">View</a>
+							</h5>
+						</div>
 
+					</div>
 				</div>
-				<div class="col-sm-12" style="border-bottom: 1px gray solid">
-					<div class="col-sm-3">
-						<img alt="" src="/images/company.png" class="img img-responsive">
-					</div>
-					<div class="col-sm-9">
-						<h4>Sales Representative</h4>
-						<h5>Sales Professionals Company</h5>
-						<h5>
-							Posted yesterday <a href="<c:url value='/bq/open/job' />"
-								class="btn btn-primary pull-right">View</a>
-						</h5>
-					</div>
+			</c:if>
 
-				</div>
-				<div class="col-sm-12" style="border-bottom: 1px gray solid"">
-					<div class="col-sm-3">
-						<img alt="" src="/images/company.png" class="img img-responsive">
-					</div>
-					<div class="col-sm-9">
-						<h4>Senoir Sales Executive</h4>
-						<h5>Promasidor Ltd</h5>
-						<h5>
-							Posted 2 days ago <a href="<c:url value='/bq/open/job' />"
-								class="btn btn-primary pull-right">View</a>
-						</h5>
-					</div>
-
-				</div>
-				<div class="col-sm-12" style="">
-					<div class="col-sm-3">
-						<img alt="" src="/images/company.png" class="img img-responsive">
-					</div>
-					<div class="col-sm-9">
-						<h4>Sales Manager</h4>
-						<h5>Flex Sales Company</h5>
-						<h5>
-							Posted 3 mins ago <a href="<c:url value='/bq/open/job' />"
-								class="btn btn-primary pull-right">View</a>
-						</h5>
-					</div>
-
-				</div>
-
-			</div>
 		</div>
 
 

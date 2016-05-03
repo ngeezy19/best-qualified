@@ -42,13 +42,14 @@
 						<div class="col-sm-9 no-padding-div">
 							<ul>
 								<li style="list-style: none;"><h4>
-										<c:out value='${professionalDashboard.name}' />
+										<c:out value='${recruiterDashboard.firstName}' />
+										<c:out value='${recruiterDashboard.lastName}' />
 									</h4></li>
 								<li style="list-style: none;"><c:out
-										value='${professionalDashboard.tagline}' /></li>
+										value='${recruiterDashboard.tagline}' /></li>
 								<li style="list-style: none;"><c:out
-										value='${professionalDashboard.currentEmployer}' /></li>
-								<c:if test='${empty professionalDashboard.tagline }'>
+										value='${recruiterDashboard.company}' /></li>
+								<c:if test='${empty recruiterDashboard.tagline }'>
 									<li style="list-style: none;"><a
 										href="<c:url value='/bq/closed/init-professional-profile"' />">Edit
 											Profile</a></li>
@@ -59,8 +60,7 @@
 					<div class="col-sm-4">
 						<div style="text-align: center;">
 							<span style="font-size: 22pt"><c:out
-									value='${professionalDashboard.noOfConnections}' /> </span>
-							connections
+									value='${recruiterDashboard.noConnections}' /> </span> connections
 						</div>
 						<div style="text-align: center;">
 							<a href="#">Meet professionals</a>
@@ -69,33 +69,38 @@
 				</div>
 				<div class="col-sm-2"></div>
 				<div class="col-sm-10 dashboard-section" style="border-top: none">
-					<div class="col-sm-8" style="border-right: 1px solid #dddddd;">
-						<div class="col-sm-12 no-padding-div">
-							<p style="margin-bottom: 5px">
-								<strong>Your profile strength is at <c:out
-										value='${professionalDashboard.profileLevel}' /> level
-								</strong>
-							</p>
-							<div
-								style="height: 1em; width: 100%; border: 2px gray solid; border-radius: 6px; -moz-border-radius: 6px; -webkit-border-radius: 6px">
-								<div
-									style="height: 100%; background-color: ${professionalDashboard.profileColor};width: ${professionalDashboard.profileStrength}%;"></div>
-							</div>
-							<div style="font-family: calibri">Employers give priority
-								to professionals with completed profiles.</div>
-							<div>
-								<a class="btn btn-xs btn-primary"
-									href="<c:url value="/bq/closed/init-professional-profile" />">Improve
-									your Profile</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<h4 class="text-primary" style="text-align: center">Profile
-							Views</h4>
-						<span><c:out
-								value='${professionalDashboard.noOfProfileViewers}' /></span>
-						companies viewed your profile in the last 30 days
+					<div class="col-sm-12">
+						<c:choose>
+							<c:when test="${recruiterDashboard.numberOfProjects eq 0}">
+								<p class="text-danger">
+									<strong>You do not have an active project</strong>
+								</p>
+								<p>A project lets you manage your job post, save applicant's
+									profile and search results.</p>
+								<p>
+									<a href="<c:url value='/bq/close/new-project' />"
+										class="btn btn-primary btn-xs">Create new project</a>
+								</p>
+							</c:when>
+							<c:otherwise>
+								<p>
+									<strong class="text-success">You have <c:out
+											value="${recruiterDashboard.numberOfProjects}" /> active <c:choose>
+											<c:when test="${recruiterDashboard.numberOfProjects eq 1}">project.</c:when>
+											<c:otherwise>projects.</c:otherwise>
+										</c:choose>
+									</strong>
+								</p>
+								<p>
+									<a class="btn btn-xs btn-primary"
+										href="<c:url value='/bq/close/new-project' />">Create new
+										project</a>
+									<a class="btn btn-xs btn-primary" href="<c:url value='/bq/close/manage-project' />">Manage projects</a>
+									<a class="btn btn-xs btn-primary"
+										href="<c:url value='/bq/close/init-browse-profiles' />">Browse Profiles</a>
+								</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 			</div>
@@ -108,10 +113,41 @@
 				</div>
 				<div class="col-sm-10 dashboard-section">
 					<div class="col-sm-12">
-						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666">Jobs
-							that may interest you</h4>
+						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666">Your
+							Applicants</h4>
 					</div>
+					<div class="col-sm-12">
+						<c:choose>
+							<c:when test='${fn:length(recruiterDashboard.applicants) > 0}'>
+								<p>You have ${fn:length(recruiterDashboard.applicants)} new
+									applicants</p>
+							</c:when>
+							<c:otherwise>
+								<c:choose>
+									<c:when test="${recruiterDashboard.numberOfProjects eq 0}">
+										<p class="text-danger">
+											<strong>You do not have an active project</strong>
+										</p>
+										<p>
+											<a href="<c:url value='/bq/close/new-project' />">Create
+												a project</a> then post a job in your project, Applicants for
+											your job post will show up here.
+										</p>
+									</c:when>
 
+									<c:otherwise>
+										<p class="text-danger">
+											<strong>You do not any new applicants</strong>
+										</p>
+										<p>
+											<a class="btn btn-primary btn-xs" href="#">Browse
+												profiles</a>
+										</p>
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
+					</div>
 					<c:forEach var="item" items="${professionalDashboard.iJobs}">
 
 						<div class="col-sm-12"
@@ -122,23 +158,23 @@
 							</div>
 							<div class="col-sm-9">
 								<h4>
-									<a href="/bq/open/job?job-key=${item.jobKey}"><c:out value="${item.jobTitle}" /></a>
+									<a href="/bq/open/job?job-key=${item.jobKey}"><c:out
+											value="${item.jobTitle}" /></a>
 								</h4>
 								<h5 style="font-family: calibri">
 									<c:out value="${item.companyName}" />
 								</h5>
 								<h5>
-									<i class="text-danger" style="font-family: calibri">Posted <c:out
-											value="${item.postedTime}" /></i> <a href="<c:url value='/bq/open/job?job-key=${item.jobKey}' />" class="pull-right">View</a>
+									<i style="font-family: calibri">Posted <c:out
+											value="${item.postedTime}" /></i> <a
+										href="<c:url value='/bq/open/job?job-key=${item.jobKey}' />"
+										class="pull-right">View</a>
 								</h5>
 							</div>
 
 						</div>
 					</c:forEach>
-					<div class="col-sm-12" style="margin-top: 2%;">
-						<a href="<c:url value='/bq/closed/init-jobs' />"
-							class="pull-right">View More</a>
-					</div>
+
 				</div>
 			</div>
 			<div class="col-sm-12" style="margin-bottom: 2%;">
@@ -200,15 +236,15 @@
 
 		</div>
 		<div class="col-sm-4">
-			<div class="col-sm-12 dashboard-row no-padding-div">
+			<div class="col-sm-12  no-padding-div" style="margin-bottom: 2%;">
 				<iframe src="http://localhost:8888/images/ad1/negotiatn_ext.html"
 					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
 			</div>
-			<div class="col-sm-12 dashboard-row no-padding-div">
+			<div class="col-sm-12 no-padding-div" style="margin-bottom: 2%;">
 				<iframe src="http://localhost:8888/images/ad2/bootcamp_ext.html"
 					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
 			</div>
-			<div class="col-sm-12 dashboard-row no-padding-div">
+			<div class="col-sm-12  no-padding-div" style="margin-bottom: 2%;">
 				<iframe src="http://localhost:8888/images/ad3/tools_or_luck.html"
 					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
 			</div>

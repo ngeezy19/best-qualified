@@ -5,124 +5,168 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Best Qualified Sign Up</title>
-<link rel="stylesheet" type="text/css" href="/styles/main.css">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Bootstrap Core CSS -->
+<link href="/styles/bootstrap.min.css" rel="stylesheet">
+<link href="/styles/bootflat.min.css" rel="stylesheet">
+<link href="/styles/font-awesome.min.css" rel="stylesheet">
+<link href="/styles/main.css" rel="stylesheet">
 <style type="text/css">
-
-
-.fb-button:hover {
-	background: #385693;
-}
-
-.fb-button {
-	font-weight: bold;
-	border-width: 1px;
-	border-style: solid;
-	cursor: pointer;
-	margin: 0;
-	overflow: visible;
-	text-decoration: none !important;
-	text-align: center;
-	width: auto;
-	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	-ms-border-radius: 3px;
-	-o-border-radius: 3px;
-	border-radius: 3px;
-	padding: 0 15px;
-	height: 34px;
-	line-height: 32px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	font-size: 16px;
-	color: #fff;
-	background-color: #287bbc;
-	border-color: #1b5480;
-	filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0,
-		startColorstr='#FF287BBC', endColorstr='#FF23639A');
-	background-image: -webkit-linear-gradient(top, #287bbc 0%, #23639a 100%);
-	background-image: -moz-linear-gradient(top, #287bbc 0%, #23639a 100%);
-	background-image: -o-linear-gradient(top, #287bbc 0%, #23639a 100%);
-	background-image: linear-gradient(top, #287bbc 0%, #23639a 100%);
-	white-space: nowrap;
-	display: -moz-inline-stack;
-	display: inline-block;
-	vertical-align: middle;
-	zoom: 1;
-	vertical-align: middle;
-	overflow: hidden;
-	width: 100%;
-	font-weight: normal;
-	filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0,
-		startColorstr='#FF3B5A9A', endColorstr='#FF3B5A9A');
-	background: #3b5a9a;
-	border-color: #002d70;
+body {
+	font-family: cabin;
+	background: url(../images/signup-bg.png) no-repeat;
 }
 </style>
+
 </head>
+
 <body>
-	<div class="sign-up-panel-one">
-		<div class="bq-logo-div">
-			<img alt="Best Qualified" src="/images/bq-logo.png">
+
+	
+
+	
+	<br>
+	<br>
+
+	<!-- Page Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12"></div>
 		</div>
-	</div>
-
-	<div class="sign-up-panel-two">
-		<div class="sign-up-panel-two-a">
-			<h3>Join The Best Qualified Sales & Marketing Professionals</h3>
+		<div class="row">
+			<div class="col-md-12"></div>
 		</div>
-		<div>
-			<div class="sign-up-form-div">
-				<c:if test='${not empty signupError}'>
-					<div class="bq-alert bq-alert-danger">
-						<p>
-							<c:out value='${signupError}' />
-						</p>
-					</div>
-				</c:if>
 
-				<form method="post" action="<c:url value='/end-point/sign-up' />">
-					<label>First name</label> <input name="first-name"
-						value="${sub.firstName }" /> <label>Last name</label> <input
-						name="last-name" value="${sub.lastName }" /> <label>Email</label>
-					<input name="email" value="${sub.email}" /> <label>Password
-						(At least 6 characters)</label> <input name="password" type="password" />
 
-					<div>
-						<p>
-							By clicking Join Now, You agree with the Best Qualified <a
-								href="#">Terms of Use</a> and <a href="#">Cookie Policy</a>
-						</p>
-					</div>
-					<div>
-						<input type="submit" value="Join Now" class="bq-btn-primary"
-							id="join-now">
-					</div>
-				</form>
-				<div>
-					<hr style="margin-top: 2em; margin-bottom: 2%;" />
-					<p>Already on BQ? <a href="/sign-in">Sign In</a></p>
-					<!-- <div>
-						<p style="text-align: center">You can choose to</p>
-						<input type="button" value="Continue with Facebook"
-							class="fb-button" /> <input type="button"
-							value="Continue with LinkedIn" class="bq-btn-primary" />
-					</div> -->
+		<br> <br> <br>
+
+
+		<hr />
+		<div class="row">
+			<div class="col-md-6" style="text-align: right;">
+				<div class="righto">
+					<h3 class="format">
+						Join the <span>BEST-QUALIFIED</span> Sales & Marketing
+						Professionals <br> <span><i class="fa fa-thumbs-o-up"
+							aria-hidden="true"></i></span>
+					</h3>
 				</div>
 			</div>
-			<div>
-				<p
-					style="text-align: center; margin-bottom: 0px; color: white; padding-bottom: 2%;">Best
-					Qualified 2016</p>
+
+			<div class="col-md-6">
+
+				<div class="auth">
+					<div id="big-form" class="well auth-box">
+						<form method="post" action="<c:url value='/end-point/sign-up' />">
+							<fieldset>
+
+								<!-- Text input-->
+								<div class="form-group col-md-6">
+									<label class=" control-label" for="textinput">First
+										name</label>
+									<div class="">
+										<input name="first-name" value="${sub.firstName }"
+											class="form-control input-md" type="text">
+
+									</div>
+								</div>
+
+								<!-- Text input-->
+								<div class="form-group col-md-6">
+									<label class=" control-label" for="textinput">Last name</label>
+									<div class="">
+										<input name="last-name" value="${sub.lastName }"
+											class="form-control input-md" type="text">
+
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12">
+										<br> <br>
+									</div>
+								</div>
+
+								<!-- Text input-->
+								<div class="form-group col-md-6">
+									<label class=" control-label" for="textinput">Email</label>
+									<div class="">
+										<input name="email" value="${sub.email}"
+											class="form-control input-md" type="text">
+
+									</div>
+								</div>
+
+								<!-- Password input-->
+								<div class="form-group col-md-6">
+									<label class=" control-label" for="passwordinput">Password</label>
+									<div class="">
+										<input name="password" type="password"
+											class="form-control input-md" type="password">
+									</div>
+								</div>
+
+
+								<div class="form-group col-md-12">
+									<div class="">
+										<label class="radio-inline" for="radios-0">
+
+											<p class="terms">
+												By clicking Join Now, you agree with the Best Qualified <span>Terms
+													of Use</span> and <span>Cookie Policy</span>
+											</p>
+										</label>
+									</div>
+								</div>
+
+								<!-- Password input-->
+								<div class="form-group col-md-6">
+									<div class="">
+										<button class="btn btn-primary">Join Now</button>
+									</div>
+								</div>
+
+							</fieldset>
+						</form>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<hr />
 			</div>
 		</div>
+		<footer>
+			<div class="row">
+				<div class="col-lg-12">
+					<p></p>
+				</div>
+			</div>
+		</footer>
+
 	</div>
+	<!-- /.container -->
+
+	<!-- jQuery -->
+	<script src="js/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<script src="js/script.js"></script>
+
 </body>
-<script src="/js/jquery-1.11.2.min.js"></script>
-<script src="/js/main.js"></script>
 
 </html>

@@ -95,12 +95,12 @@
 						<div class="form-group">
 							<label>Education Level:</label> <select class="form-control"
 								name="educational-level">
-								<option value="hnd">Higher National Diploma</option>
-								<option value="bsc">Bachelor's Degree</option>
-								<option value="mba">Master's Degree</option>
-								<option value="pgd">Post Graduate Diploma</option>
-								<option value="phd">Doctorate</option>
-								<option value="pro">professional</option>
+								<option>Higher National Diploma</option>
+								<option>Bachelor's Degree</option>
+								<option>Master's Degree</option>
+								<option>Post Graduate Diploma</option>
+								<option>Doctorate</option>
+								<option>professional</option>
 							</select>
 						</div>
 					</div>
@@ -115,10 +115,11 @@
 					<div class="col-sm-6">
 						<div class="form-group">
 							<label>Salary:</label> <select class="form-control" name="salary">
-								<option value="sal1">10,000 - 50,000</option>
-								<option value="sal2">50,000 - 100,000</option>
-								<option value="sal3">100,000 - 300,000</option>
-								<option value="val4">300,000 - 500,000</option>
+								<option>10,000 - 50,000</option>
+								<option>50,000 - 100,000</option>
+								<option>100,000 - 300,000</option>
+								<option>300,000 - 500,000</option>
+								<option>Unspecified</option>
 							</select>
 						</div>
 					</div>
@@ -146,15 +147,15 @@
 						<div class="form-group">
 							<label>Career Level:</label> <select class="form-control"
 								name="career-level">
-								<option value="career1">Student
+								<option>Student
 									(Undergraduate/Graduate)</option>
-								<option value="career2">Entry Level</option>
-								<option value="career3">Experienced (Non-Managerial)</option>
-								<option value="career4">Manager (Manager/Supervisor of
+								<option>Entry Level</option>
+								<option>Experienced (Non-Managerial)</option>
+								<option>Manager (Manager/Supervisor of
 									Staff)</option>
-								<option value="career5">Executive (SVP,VP,Department
+								<option>Executive (SVP,VP,Department
 									Head etc)</option>
-								<option value="career6">Senoir Executive (President,
+								<option>Senoir Executive (President,
 									CFO. etc)</option>
 							</select>
 						</div>
@@ -214,12 +215,13 @@
 						<div class="form-group">
 							<label>Years of Experience:</label> <select class="form-control"
 								name="job-experience">
-								<option value="exp1">1 year</option>
-								<option value="exp2">2 years</option>
-								<option value="exp3">3 years</option>
-								<option value="exp4">4 years</option>
-								<option value="exp5">5-10 years</option>
-								<option value="exp6">more than 10 years</option>
+								<option>0 - 1 year</option>
+								<option>0 - 2 years</option>
+								<option>1 - 3 years</option>
+								<option>2 - 5 years</option>
+								<option>3 - 5 years</option>
+								<option>5 - 10 years</option>
+								<option>more than 10 years</option>
 							</select>
 						</div>
 					</div>
@@ -235,12 +237,12 @@
 						<div class="form-group">
 							<label>Job Type:</label> <select class="form-control"
 								name="job-type">
-								<option value="jobType1">Freelance</option>
-								<option value="jobType2">Full Time</option>
-								<option value="jobType3">Internship</option>
-								<option value="jobType4">Part Time</option>
-								<option value="jobType5">Permanent</option>
-								<option value="jobType6">Temporary</option>
+								<option>Freelance</option>
+								<option>Full Time</option>
+								<option>Internship</option>
+								<option>Part Time</option>
+								<option>Permanent</option>
+								<option>Temporary</option>
 							</select>
 						</div>
 					</div>
@@ -251,50 +253,50 @@
 								multiple="multiple"
 								style="display: block; width: 100%; box-sizing: border-box"
 								name="job-category" id="job-category">
-								<option value="125">Administration/ Office/ Operations</option>
-								<option value="907">Advertising/ PR / Marketing</option>
-								<option value="6563">Agriculture / Agro Allied</option>
-								<option value="2658">Analyst/ Quality Control</option>
-								<option value="228">Automotive/ Car Services</option>
-								<option value="89">Aviation/ Airline</option>
-								<option value="3">Banking</option>
-								<option value="336">Construction / Mining</option>
-								<option value="11">Consulting</option>
-								<option value="53">Customer Service</option>
-								<option value="28">Driving / Haulage</option>
-								<option value="50">Engineering</option>
-								<option value="40">Executive / Management</option>
-								<option value="9">Finance / Accounting</option>
-								<option value="1879">Freelance / Data Entry</option>
-								<option value="353">Government Agencies</option>
-								<option value="12">Graduate /Freshers</option>
-								<option value="1184">Hospitality / Food Services</option>
-								<option value="2022">HSE/ Safety/ Risk Management</option>
-								<option value="118">Human Resources / Recruitment</option>
-								<option value="4">ICT/ Software</option>
-								<option value="240">Internship/ Industrial Training</option>
-								<option value="92">Law/ Legal</option>
-								<option value="1532">Manufacturing/ Production</option>
-								<option value="308">Maritime Services / Shipping</option>
-								<option value="345">Media / Art</option>
-								<option value="269">Medical/ Health</option>
-								<option value="1490">Military / Para-Military</option>
-								<option value="351">NGO / Community Services</option>
-								<option value="7">Oil and Gas</option>
-								<option value="15">Other</option>
-								<option value="2759">Procurement/ Purchasing</option>
-								<option value="1642">Programming / Web development</option>
-								<option value="2334">Project Management</option>
-								<option value="946">Research/ Survey</option>
-								<option value="13">Sales / Business Development</option>
-								<option value="192">Secretarial / PA</option>
-								<option value="124">Security / Intelligence</option>
-								<option value="333">Surveying / Real Estate / Property</option>
-								<option value="146">Teaching / Education Services</option>
-								<option value="82">Technical/ Artisan</option>
-								<option value="10">Telecom</option>
-								<option value="34950">Tourism / Travels</option>
-								<option value="1033">Transport / Logistics / Supply</option>
+								<option>Administration/ Office/ Operations</option>
+								<option>Advertising/ PR / Marketing</option>
+								<option>Agriculture / Agro Allied</option>
+								<option>Analyst/ Quality Control</option>
+								<option>Automotive/ Car Services</option>
+								<option>Aviation/ Airline</option>
+								<option>Banking</option>
+								<option>Construction / Mining</option>
+								<option>Consulting</option>
+								<option>Customer Service</option>
+								<option>Driving / Haulage</option>
+								<option>Engineering</option>
+								<option>Executive / Management</option>
+								<option>Finance / Accounting</option>
+								<option>Freelance / Data Entry</option>
+								<option>Government Agencies</option>
+								<option>Graduate /Freshers</option>
+								<option>Hospitality / Food Services</option>
+								<option>HSE/ Safety/ Risk Management</option>
+								<option>Human Resources / Recruitment</option>
+								<option>ICT/ Software</option>
+								<option>Internship/ Industrial Training</option>
+								<option>Law/ Legal</option>
+								<option>Manufacturing/ Production</option>
+								<option>Maritime Services / Shipping</option>
+								<option>Media / Art</option>
+								<option>Medical/ Health</option>
+								<option>Military / Para-Military</option>
+								<option>NGO / Community Services</option>
+								<option>Oil and Gas</option>
+								<option>Other</option>
+								<option>Procurement/ Purchasing</option>
+								<option>Programming / Web development</option>
+								<option>Project Management</option>
+								<option>Research/ Survey</option>
+								<option>Sales / Business Development</option>
+								<option>Secretarial / PA</option>
+								<option>Security / Intelligence</option>
+								<option>Surveying / Real Estate / Property</option>
+								<option>Teaching / Education Services</option>
+								<option>Technical/ Artisan</option>
+								<option>Telecom</option>
+								<option>Tourism / Travels</option>
+								<option>Transport / Logistics / Supply</option>
 
 							</select>
 						</div>
@@ -310,13 +312,13 @@
 					<div class="col-sm-12">
 						<div class="form-group">
 							<label>Job Description:</label>
-							<textarea rows="3" class="form-control" name="job-description"></textarea>
+							<textarea class="tiny" rows="3" class="form-control" name="job-description"></textarea>
 						</div>
 					</div>
 					<div class="col-sm-12">
 						<div class="form-group">
 							<label>Extra Information</label>
-							<textarea id="additional-properties" name="extra-info"></textarea>
+							<textarea class="tiny" id="additional-properties" name="extra-info"></textarea>
 						</div>
 					</div>
 					<div class="col-sm-12">
@@ -338,7 +340,7 @@
 	<script src="/js/multiple-select.js"></script>
 	<script type="text/javascript">
 		tinymce.init({
-			selector : '#additional-properties'
+			selector : '.tiny'
 		});
 		$(document).ready(function() {
 			$( ".normal-select" ).selectmenu();

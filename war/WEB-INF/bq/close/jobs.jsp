@@ -29,7 +29,8 @@
 }
 </style>
 </head>
-<body style="background-color: #f1f1f1">
+<body
+	style="background-image: url(/images/background.jpg); background-repeat: repeat;">
 	<%@ include file="/main-nav.html"%>
 	<div class="container dashboard-body" style="margin-top: 8%;">
 		<div class="col-sm-12" style="margin-bottom: 2%;">
@@ -37,21 +38,24 @@
 				style="padding-bottom: 0px; padding-top: 0px">
 				<div class="col-sm-3"
 					style="background-color: gray; color: white; font-family: arial; font-weight: bold; text-align: center; height: 4.4em">
-					<h4 style="padding-top: 3%;">Find a Job</h4>
+					<img alt="Find a job" src="/images/find_a_job.png">
 				</div>
 				<form action="<c:url value='/bq/open/job-search' />">
 					<div class="col-sm-7" style="margin-top: 1%;">
 						<div class="form-group">
-							<input class="form-control" placeholder="jobs"/ >
+							<input name="searchString" class="form-control"
+								placeholder="Jobs and Companies"/ >
 						</div>
 					</div>
 					<div class="col-sm-2" style="margin-top: 1%;">
 						<div class="form-group">
-							<input type="submit" value="Search" class="btn btn-primary"/ >
+							<input type="submit" value="Search"
+								class="btn btn-primary form-control"/ >
 						</div>
 					</div>
 					<div class="col-sm-12" style="background-color: gray; color: white">
-						<div class="col-sm-12" style="text-align: right">Advanced
+						<div class="col-sm-12"
+							style="text-align: right; margin-bottom: 4px">Advanced
 							Search</div>
 					</div>
 				</form>
@@ -60,101 +64,79 @@
 		<div class="col-sm-8">
 			<div class="col-sm-12" style="margin-bottom: 2%;">
 				<div class="col-sm-2">
-					<div class="dashboard-section-icon">
-						<img alt="" src="/images/icon_jobs.gif" class="img img-responsive">
+					<div class="dashboard-section">
+						<img alt="" src="/images/jobs.png"
+							style="width: 80%; margin: 0 auto" class="img img-responsive">
 					</div>
 				</div>
 				<div class="col-sm-10 dashboard-section">
 					<div class="col-sm-12">
-						<span class="profile-sub-header">Jobs You May Like</span>
+						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666">Jobs
+							that may interest you</h4>
 					</div>
-					<div class="col-sm-12" style="border-bottom: 1px gray solid">
-						<div class="col-sm-3">
-							<img alt="" src="/images/company.png" class="img img-responsive">
-						</div>
-						<div class="col-sm-9">
-							<h4>Sales Manager</h4>
-							<h5>Flex Sales Company</h5>
-							<h5>
-								Posted 3 mins ago <a class="btn btn-primary pull-right">View</a>
-							</h5>
-						</div>
+					<c:forEach var="item" items="${myJobs.iJobs}">
+						<div class="col-sm-12"
+							style="border-bottom: 1px #e1e1e1 solid; margin-bottom: 2%; margin-top: 2%;">
+							<div class="col-sm-3">
+								<a href="<c:url value='/bq/open/job?job-key=${item.jobKey}' />"><img
+									alt="" src="${item.pictureUrl}" class="img img-responsive"></a>
+							</div>
+							<div class="col-sm-9">
+								<h4>
+									<a href="/bq/open/job?job-key=${item.jobKey}"><c:out value="${item.jobTitle}" /></a>
+								</h4>
+								<h5 style="font-family: calibri">
+									<c:out value="${item.companyName}" />
+								</h5>
+								<h5>
+									<i style="font-family: calibri">Posted <c:out
+											value="${item.postedTime}" /></i> <a href="#" class="pull-right">View</a>
+								</h5>
+							</div>
 
-					</div>
-					<div class="col-sm-12" style="border-bottom: 1px gray solid">
-						<div class="col-sm-3">
-							<img alt="" src="/images/company.png" class="img img-responsive">
 						</div>
-						<div class="col-sm-9">
-							<h4>Sales Representative</h4>
-							<h5>Sales Professionals Company</h5>
-							<h5>
-								Posted yesterday <a class="btn btn-primary pull-right">View</a>
-							</h5>
-						</div>
-
-					</div>
-					<div class="col-sm-12" style="border-bottom: 1px gray solid"">
-						<div class="col-sm-3">
-							<img alt="" src="/images/company.png" class="img img-responsive">
-						</div>
-						<div class="col-sm-9">
-							<h4>Senoir Sales Executive</h4>
-							<h5>Promasidor Ltd</h5>
-							<h5>
-								Posted 2 days ago <a class="btn btn-primary pull-right">View</a>
-							</h5>
-						</div>
-
-					</div>
-					<div class="col-sm-12" style="border-bottom: 1px gray solid">
-						<div class="col-sm-3">
-							<img alt="" src="/images/company.png" class="img img-responsive">
-						</div>
-						<div class="col-sm-9">
-							<h4>Sales Manager</h4>
-							<h5>Flex Sales Company</h5>
-							<h5>
-								Posted 3 mins ago <a class="btn btn-primary pull-right">View</a>
-							</h5>
-						</div>
-
-					</div>
-					<div class="col-sm-12" style="border-bottom: 1px gray solid">
-						<div class="col-sm-3">
-							<img alt="" src="/images/company.png" class="img img-responsive">
-						</div>
-						<div class="col-sm-9">
-							<h4>Sales Representative</h4>
-							<h5>Sales Professionals Company</h5>
-							<h5>
-								Posted yesterday <a class="btn btn-primary pull-right">View</a>
-							</h5>
-						</div>
-
-					</div>
+					</c:forEach>
 					<div class="col-sm-12" style="padding-top: 2%; padding-bottom: 2%;">
-						View More</div>
+						<a href="#">View More</a>
+					</div>
 				</div>
 			</div>
 
 		</div>
 		<div class="col-sm-4">
 			<div class="col-sm-12 dashboard-row dashboard-section">
-				<h4>Saved Jobs (6)</h4>
+				<h4>
+					Saved Jobs (
+					<c:out value='${myJobs.savedJobs}' />
+					)
+				</h4>
 				<p>Save jobs so that you can review Later</p>
-				<p style="text-align: right">See all your Saved Jobs</p>
+				<p style="text-align: right">
+					<a href="#">See all your Saved Jobs</a>
+				</p>
 			</div>
 			<div class="col-sm-12 dashboard-row dashboard-section">
-				<h4>Job Alerts (0)</h4>
+				<h4>
+					Job Alerts (
+					<c:out value='${myJobs.jobAlerts}' />
+					)
+				</h4>
 				<p>Get alerts when jobs that meet your specifications are
 					available.</p>
-				<p style="text-align: right;">View your Job alerts</p>
+				<p style="text-align: right;">
+					<a href="#">View your Job alerts</a>
+				</p>
 			</div>
 			<div class="col-sm-12 dashboard-row dashboard-section">
-				<h4>Applied Jobs</h4>
-				<p>review your past job applications.</p>
-				<p style="text-align: right">View Applications</p>
+				<h4>
+					Job Applications (
+					<c:out value='${myJobs.applications}' />
+					)
+				</h4>
+				<p>Review your past job applications.</p>
+				<p style="text-align: right">
+					<a href="#">View Applications</a>
+				</p>
 			</div>
 		</div>
 
