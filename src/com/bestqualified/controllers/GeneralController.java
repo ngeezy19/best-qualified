@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.bestqualified.bean.SocialUser;
+import com.bestqualified.entities.AssessmentQuestion;
 import com.bestqualified.entities.Job;
 import com.bestqualified.entities.User;
 import com.bestqualified.util.EntityConverter;
@@ -224,6 +225,18 @@ public class GeneralController {
 		map.put("entities", ents);
 		map.put("cursor", cursorString);
 		return map;
+	}
+
+	public static List<Entity> getAssessmentQuestionsBylevel(String level) {
+		Query q = new Query(AssessmentQuestion.class.getSimpleName());
+		q.setFilter(new Query.FilterPredicate("category",FilterOperator.EQUAL, level));
+		PreparedQuery pq = ds.prepare(q);
+		Iterator<Entity> its = pq.asIterator();
+		List<Entity> ents = new ArrayList<>();
+		while(its.hasNext()) {
+			ents.add(its.next());
+		}
+		return ents;
 	}
 
 }

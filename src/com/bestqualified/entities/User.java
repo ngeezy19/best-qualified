@@ -23,13 +23,14 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 9151470313661979608L;
 	private String firstName, lastName, email, phone, password, userType,
 			facebookID, linkedInID, googleID, twitterID, gender, tagline,
-			pictureUrl;
+			pictureUrl, professionalLevel;
 	private Date joinedDate, birthDate;
 	private boolean verified, authenticated;
 	private Key userInfo;
 	private Key userKey;
 	private BlobKey profilePicture;
 	private List<String> emails;
+	private double rating;
 
 	@Override
 	public int hashCode() {
@@ -66,6 +67,25 @@ public class User implements Serializable {
 				+ ", joinedDate=" + joinedDate + ", birthDate=" + birthDate
 				+ ", verified=" + verified + ", userInfo=" + userInfo
 				+ ", userKey=" + userKey + ", emails=" + emails + "]";
+	}
+	
+	
+	
+
+	public String getProfessionalLevel() {
+		return professionalLevel;
+	}
+
+	public void setProfessionalLevel(String professionalLevel) {
+		this.professionalLevel = professionalLevel;
+	}
+
+	public double getRating() {
+		return rating;
+	}
+
+	public void setRating(double rating) {
+		this.rating = rating;
 	}
 
 	public String getPictureUrl() {

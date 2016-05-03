@@ -51,6 +51,7 @@ import com.bestqualified.bean.SignUpBean;
 import com.bestqualified.bean.SocialUser;
 import com.bestqualified.bean.SocialUser.SocialNetwork;
 import com.bestqualified.controllers.GeneralController;
+import com.bestqualified.entities.AssessmentQuestion;
 import com.bestqualified.entities.Award;
 import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.Certification;
@@ -1088,5 +1089,15 @@ public class Util {
 		}
 		mpb.setPb1(l2);
 		return mpb;
+	}
+
+	public static List<AssessmentQuestion> getAssessmentQuestions(
+			String level) {
+		List<Entity> ents = GeneralController.getAssessmentQuestionsBylevel(level);
+		List<AssessmentQuestion> qs = new ArrayList<>();
+		for(Entity e : ents) {
+			qs.add(EntityConverter.entityToAssessmentQuestion(e));
+		}
+		return qs;
 	}
 }

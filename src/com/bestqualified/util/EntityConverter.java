@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.bestqualified.entities.AssessmentQuestion;
 import com.bestqualified.entities.Award;
 import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.CareerLevel;
@@ -22,6 +23,7 @@ import com.bestqualified.entities.Recruiter;
 import com.bestqualified.entities.User;
 import com.bestqualified.entities.WorkExperience;
 import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.datastore.EmbeddedEntity;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
@@ -399,6 +401,8 @@ public class EntityConverter {
 		e.setUnindexedProperty("gender", user.getGender());
 		e.setUnindexedProperty("profilePicture", user.getProfilePicture());
 		e.setUnindexedProperty("tagline", user.getTagline());
+		e.setIndexedProperty("professionalLevel", user.getProfessionalLevel());
+		e.setIndexedProperty("rating", user.getRating());
 		return e;
 	}
 
@@ -425,6 +429,8 @@ public class EntityConverter {
 		u.setUserType((String) e.getProperty("userType"));
 		u.setVerified((boolean) e.getProperty("verified"));
 		u.setTagline((String) e.getProperty("tagline"));
+		u.setProfessionalLevel((String) e.getProperty("professionalLevel"));
+		u.setRating((Double) e.getProperty("rating"));
 		return u;
 	}
 
@@ -478,6 +484,25 @@ public class EntityConverter {
 		e.setUnindexedProperty("savedSearch", p.getSavedSearch());
 		e.setUnindexedProperty("description", p.getDescription());
 		e.setIndexedProperty("dateCreated", p.getDateCreated());
+		return e;
+	}
+
+	public static AssessmentQuestion entityToAssessmentQuestion(Entity e) {
+		AssessmentQuestion aq = new AssessmentQuestion();
+		aq.setId(e.getKey());
+		aq.setAlternatives((List<EmbeddedEntity>) e.getProperty("alternatives"));
+		aq.setBody((Text) e.getProperty("body"));
+		aq.setCategory((String) e.getProperty("category"));
+		aq.setExplanation((Text) e.getProperty("explanation"));
+		return aq;
+	}
+	
+	public static Entity AssessmentQuestionToEntity(AssessmentQuestion aq) {
+		Entity e = new Entity(aq.getId());
+		e.setIndexedProperty("category", aq.getCategory());
+		e.setUnindexedProperty("alternatives", aq.getAlternatives());
+		e.setUnindexedProperty("explanation", aq.getExplanation());
+		e.setUnindexedProperty("body", aq.getBody());
 		return e;
 	}
 
