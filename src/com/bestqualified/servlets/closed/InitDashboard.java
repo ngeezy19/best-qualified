@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bestqualified.bean.ProfessionalDashboard;
+import com.bestqualified.bean.RecruiterDashboardBean;
 import com.bestqualified.entities.CandidateProfile;
+import com.bestqualified.entities.Recruiter;
 import com.bestqualified.entities.User;
 import com.bestqualified.util.Util;
 
@@ -42,10 +44,11 @@ public class InitDashboard extends HttpServlet {
 			User u = (User) o;
 			if (u.getUserType().equalsIgnoreCase(
 					User.UserType.PROFESSIONAL.name())) {
+				ProfessionalDashboard pd = null;
 				synchronized (session) {
 					o1 = session.getAttribute("professionalProfile");
 					CandidateProfile cp = (CandidateProfile) o1;
-					ProfessionalDashboard pd = Util.initProfessionalDashboardBean(u,cp);
+					pd = Util.initProfessionalDashboardBean(u,cp);
 					session.setAttribute("professionalDashboard", pd);
 				}
 				
@@ -54,7 +57,16 @@ public class InitDashboard extends HttpServlet {
 				
 			} else if (u.getUserType().equalsIgnoreCase(
 					User.UserType.RECRUITER.name())) {
-
+				RecruiterDashboardBean rdb = null;
+				synchronized (session) {
+					o1 = session.getAttribute("employerProfile");
+					Recruiter r =  (Recruiter) o1;
+					rdb= Util.initRecruiterDashboardBean(u,r);
+					session.setAttribute("recruiterDashboard", rdb);
+				}
+				
+				resp.sendRedirect(resp.encodeRedirectURL("/bq/closed/recruiter/dashboard"));
+				return;
 			}
 		} else {
 

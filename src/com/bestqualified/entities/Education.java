@@ -3,7 +3,9 @@ package com.bestqualified.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.bestqualified.controllers.GeneralController;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 public class Education implements Serializable {
 
@@ -15,23 +17,29 @@ public class Education implements Serializable {
 	private Key id;
 	private String institution;
 	private String course;
-	private Date from;
-	private Date to;
+	private String startMonth;
+	private String startYear;
+	private String endMonth;
+	private String endYear;
 	private String country;
-	private Key qualification;
+	private String qualification;
 	private String classification;
-	@Override
-	public String toString() {
-		return "Education [id=" + id + ", institution=" + institution
-				+ ", course=" + course + ", from=" + from + ", to=" + to
-				+ ", country=" + country + ", qualification=" + qualification
-				+ ", classification=" + classification + "]";
+	private String safeKey;
+	
+	
+	
+	public String getSafeKey() {
+		return safeKey;
+	}
+	public void setSafeKey(String safeKey) {
+		this.safeKey = safeKey;
 	}
 	public Key getId() {
 		return id;
 	}
 	public void setId(Key id) {
 		this.id = id;
+		this.safeKey = KeyFactory.keyToString(id);
 	}
 	public String getInstitution() {
 		return institution;
@@ -45,17 +53,39 @@ public class Education implements Serializable {
 	public void setCourse(String course) {
 		this.course = course;
 	}
-	public Date getFrom() {
-		return from;
+	
+	@Override
+	public String toString() {
+		return "Education [id=" + id + ", institution=" + institution
+				+ ", course=" + course + ", startMonth=" + startMonth
+				+ ", startYear=" + startYear + ", endMonth=" + endMonth
+				+ ", endYear=" + endYear + ", country=" + country
+				+ ", qualification=" + qualification + ", classification="
+				+ classification + "]";
 	}
-	public void setFrom(Date from) {
-		this.from = from;
+	public String getStartMonth() {
+		return startMonth;
 	}
-	public Date getTo() {
-		return to;
+	public void setStartMonth(String startMonth) {
+		this.startMonth = startMonth;
 	}
-	public void setTo(Date to) {
-		this.to = to;
+	public String getStartYear() {
+		return startYear;
+	}
+	public void setStartYear(String startYear) {
+		this.startYear = startYear;
+	}
+	public String getEndMonth() {
+		return endMonth;
+	}
+	public void setEndMonth(String endMonth) {
+		this.endMonth = endMonth;
+	}
+	public String getEndYear() {
+		return endYear;
+	}
+	public void setEndYear(String endYear) {
+		this.endYear = endYear;
 	}
 	public String getCountry() {
 		return country;
@@ -63,10 +93,10 @@ public class Education implements Serializable {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public Key getQualification() {
+	public String getQualification() {
 		return qualification;
 	}
-	public void setQualification(Key qualification) {
+	public void setQualification(String qualification) {
 		this.qualification = qualification;
 	}
 	public String getClassification() {
@@ -74,6 +104,12 @@ public class Education implements Serializable {
 	}
 	public void setClassification(String classification) {
 		this.classification = classification;
+	}
+	
+	
+	public Education() {
+		this.id = GeneralController.ds.allocateIds(Education.class.getSimpleName(),1).getStart();
+		this.safeKey = KeyFactory.keyToString(id);
 	}
 	@Override
 	public int hashCode() {

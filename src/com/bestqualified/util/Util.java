@@ -1,21 +1,36 @@
 package com.bestqualified.util;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
+import javax.activation.MimeType;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,29 +39,55 @@ import javax.servlet.http.HttpSession;
 
 import com.bestqualified.bean.FacebookAccessTokenResponse;
 import com.bestqualified.bean.InterestedJob;
+import com.bestqualified.bean.ManageProjectBean;
+import com.bestqualified.bean.MyJobs;
+import com.bestqualified.bean.ProView;
 import com.bestqualified.bean.ProfessionalDashboard;
+import com.bestqualified.bean.ProfessionalProfileBean;
+import com.bestqualified.bean.ProjectBean1;
+import com.bestqualified.bean.ProjectView;
+import com.bestqualified.bean.RecruiterDashboardBean;
 import com.bestqualified.bean.SignUpBean;
 import com.bestqualified.bean.SocialUser;
 import com.bestqualified.bean.SocialUser.SocialNetwork;
 import com.bestqualified.controllers.GeneralController;
+import com.bestqualified.entities.Award;
 import com.bestqualified.entities.CandidateProfile;
+import com.bestqualified.entities.Certification;
+import com.bestqualified.entities.Company;
+import com.bestqualified.entities.Education;
+import com.bestqualified.entities.Job;
+import com.bestqualified.entities.Project;
 import com.bestqualified.entities.Recruiter;
 import com.bestqualified.entities.User;
+import com.bestqualified.entities.WorkExperience;
+import com.google.appengine.api.blobstore.BlobInfo;
+import com.google.appengine.api.blobstore.BlobInfoFactory;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.QueryResultList;
 import com.google.appengine.api.images.ImagesService;
 import com.google.appengine.api.images.ImagesServiceFactory;
 import com.google.appengine.api.images.ServingUrlOptions;
+import com.google.appengine.api.search.Document;
+import com.google.appengine.api.search.Facet;
+import com.google.appengine.api.search.Field;
+import com.google.appengine.api.urlfetch.HTTPResponse;
+import com.google.appengine.api.urlfetch.URLFetchServiceFactory;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 import com.google.appengine.labs.repackaged.org.json.JSONTokener;
 
 public class Util {
 
-	public static final String SERVICE_ACCOUNT = "best-qualified@gmail.com";
+	public static final String SERVICE_ACCOUNT = "bestqualified.profiliant@gmail.com";
 
 	public static boolean notNull(String... args) {
+		if (args == null) {
+			return false;
+		}
 		for (String s : args) {
 			if (s == null || s.isEmpty()) {
 				return false;
@@ -61,6 +102,7 @@ public class Util {
 	}
 
 	public static String toSHA512(String str) {
+
 		StringBuffer sb = new StringBuffer();
 		try {
 			MessageDigest md = MessageDigest.getInstance("SHA-512");
@@ -187,8 +229,95 @@ public class Util {
 
 	public static List<InterestedJob> getJobs(Key careerLevel,
 			List<Key> education) {
+		List<InterestedJob> l = null;
+		if (careerLevel != null & education != null) {
 
-		return null;
+		} else {
+			Iterator<Entity> it = GeneralController.findAll(
+					Job.class.getSimpleName(), 3);
+			List<Job> jobs = new ArrayList<>();
+			while (it.hasNext()) {
+				jobs.add(EntityConverter.entityToJob(it.next()));
+			}
+			l = Util.toInterestedJobs(jobs);
+
+		}
+		return l;
+	}
+
+	private static List<InterestedJob> toInterestedJobs(List<Job> jobs) {
+		List<InterestedJob> l = new ArrayList<>();
+		List<Key> cKeys = new ArrayList<>();
+		for (Job jb : jobs) {
+			if (jb.getCompany() != null) {
+				cKeys.add(jb.getCompany());
+			}
+
+		}
+		Map<Key, Entity> cEnts = GeneralController.findByKeys(cKeys);
+		for (Job j : jobs) {
+			InterestedJob ij = new InterestedJob();
+			if (j.getCompany() == null) {
+				ij.setCompanyName("Confidential");
+				ij.setPictureUrl(StringConstants.DEFAULT_COMPANY_LOGO);
+			} else {
+				Company c = EntityConverter.entityToCompany(cEnts.get(j
+						.getCompany()));
+				ij.setCompanyName(c.getCompanyName());
+				ij.setCompanyKey(KeyFactory.keyToString(c.getId()));
+				if (c.getLogo() == null) {
+					ij.setPictureUrl(StringConstants.DEFAULT_COMPANY_LOGO);
+				} else {
+					ij.setPictureUrl(Util.getPictureUrl(c.getLogo()));
+				}
+			}
+			ij.setJobKey(KeyFactory.keyToString(j.getId()));
+			ij.setJobTitle(j.getJobTitle());
+
+			ij.setPostedTime(getPostedTime(j.getDatePosted()));
+			l.add(ij);
+		}
+		return l;
+	}
+
+	public static String getPostedTime(Date datePosted) {
+		Date today = new Date();
+		long difference = today.getTime() - datePosted.getTime();
+		difference = TimeUnit.MILLISECONDS.toSeconds(difference);
+		if (difference < 60) {
+			return difference + " seconds ago";
+		} else {
+			difference = TimeUnit.SECONDS.toMinutes(difference);
+			if (difference < 60) {
+				return difference + " minutes ago";
+			} else {
+				difference = TimeUnit.MINUTES.toHours(difference);
+				if (difference < 24) {
+					return difference + " hours ago";
+				} else if (difference < 48) {
+					return "yesterday";
+				} else {
+					difference = TimeUnit.HOURS.toDays(difference);
+					if (difference < 7) {
+						return difference + " days ago";
+					} else {
+						difference = Math.round(difference / 7);
+						if (difference < 5) {
+							return difference + " weeks ago";
+						} else {
+							difference = Math.round(difference / 30);
+							if (difference < 13) {
+								return difference + " years ago";
+							} else {
+								return Math.round(difference / 355)
+										+ " years ago";
+							}
+
+						}
+					}
+				}
+			}
+		}
 	}
 
 	public static String getPictureUrl(BlobKey key) {
@@ -202,8 +331,64 @@ public class Util {
 	}
 
 	public static long calculateProfileStrength(User u, CandidateProfile cp) {
-		// TODO Auto-generated method stub
-		return 0;
+		long strength = 0;
+		if (u.getFirstName() != null) {
+			strength += 8;
+		}
+		if (u.getLastName() != null) {
+			strength += 8;
+		}
+		if (u.getEmail() != null) {
+			strength += 8;
+		}
+		if (u.getPhone() != null) {
+			strength += 8;
+		}
+		if (cp.getCurrentState() != null) {
+			strength += 8;
+		}
+		if (cp.getCv() != null) {
+			strength += 8;
+		}
+		if (cp.getCurrentEmployer() != null) {
+			strength += 6;
+		}
+		if (cp.getWorkExperience() != null && cp.getWorkExperience().size() > 1) {
+			strength += 6;
+		}
+		if (cp.getProfileDescription() != null) {
+			strength += 6;
+		}
+		if (cp.getEducation() != null && cp.getEducation().size() > 1) {
+			strength += 6;
+		}
+
+		if (cp.getAwards() != null && cp.getAwards().size() > 1) {
+			strength += 6;
+		}
+
+		if (cp.getCertifications() != null && cp.getCertifications().size() > 1) {
+			strength += 6;
+		}
+		if (u.getTagline() != null) {
+			strength += 2;
+		}
+		if (u.getProfilePicture() != null) {
+			strength += 2;
+		}
+		if (u.getBirthDate() != null) {
+			strength += 2;
+		}
+		if (cp.getNationality() != null) {
+			strength += 2;
+		}
+		if (cp.getStateOfOrigin() != null) {
+			strength += 2;
+		}
+		if (cp.getLga() != null) {
+			strength += 2;
+		}
+		return strength;
 	}
 
 	public static ProfessionalDashboard initProfessionalDashboardBean(User u,
@@ -218,14 +403,45 @@ public class Util {
 		pd.setNoOfProfileViewers(String
 				.valueOf((cp.getProfileViewers() == null) ? 0 : cp
 						.getProfileViewers().size()));
-		if(u.getPictureUrl() == null) {
-			pd.setPictureUrl((u.getProfilePicture() == null) ? StringConstants.UNKNOWN_USER:Util.getPictureUrl(u.getProfilePicture()));
-		}else {
+		if (u.getPictureUrl() == null) {
+			pd.setPictureUrl((u.getProfilePicture() == null) ? StringConstants.UNKNOWN_USER
+					: Util.getPictureUrl(u.getProfilePicture()));
+		} else {
 			pd.setPictureUrl(u.getPictureUrl());
 		}
 		pd.setProfileStrength(Util.calculateProfileStrength(u, cp));
+		pd.setProfileLevel(Util.getprofileLevel(pd.getProfileStrength()));
+		pd.setProfileColor(Util.getProfileColor(pd.getProfileStrength()));
 		pd.setTagline(u.getTagline());
 		return pd;
+	}
+
+	private static String getProfileColor(long profileStrength) {
+		if (profileStrength < 50) {
+			return "red";
+		} else if (profileStrength < 70) {
+			return "orange";
+		} else if (profileStrength < 85) {
+			return "olive";
+		} else if (profileStrength < 96) {
+			return "green";
+		} else {
+			return "blue";
+		}
+	}
+
+	private static String getprofileLevel(long profileStrength) {
+		if (profileStrength < 50) {
+			return "Beginner";
+		} else if (profileStrength < 70) {
+			return "Intermediate";
+		} else if (profileStrength < 85) {
+			return "Intermediate";
+		} else if (profileStrength < 96) {
+			return "Intermediate";
+		} else {
+			return "Best Qualified Star";
+		}
 	}
 
 	public static FacebookAccessTokenResponse toFacebookAccessTokenResponse(
@@ -296,18 +512,20 @@ public class Util {
 		u.setAuthenticated(true);
 		Entity e = GeneralController.findByKey(u.getUserInfo());
 		CandidateProfile cp = null;
-		if(u.getUserType().equalsIgnoreCase(User.UserType.PROFESSIONAL.name())) {
+		if (u.getUserType().equalsIgnoreCase(User.UserType.PROFESSIONAL.name())) {
 			cp = EntityConverter.entityToCandidateProfile(e, u.getUserKey());
 			synchronized (session) {
 				session.setAttribute("professionalProfile", cp);
 			}
-		}else if(u.getUserType().equalsIgnoreCase(User.UserType.RECRUITER.name())) {
+		} else if (u.getUserType().equalsIgnoreCase(
+				User.UserType.RECRUITER.name())) {
 			Recruiter r = EntityConverter.entityToRecruiter(e);
 		}
-		
-		RequestDispatcher rd = req.getRequestDispatcher("/bq/closed/init-dashboard");
+
+		RequestDispatcher rd = req
+				.getRequestDispatcher("/bq/closed/init-dashboard");
 		rd.forward(req, resp);
-		
+
 	}
 
 	public static User socialUserToUser(SocialUser su) {
@@ -316,7 +534,7 @@ public class Util {
 		u.setTagline(su.getHeadline());
 		u.setPictureUrl(su.getPictureUrl());
 		u.setJoinedDate(new Date());
-		if(!u.getEmails().contains(su.getEmail())) {
+		if (!u.getEmails().contains(su.getEmail())) {
 			u.getEmails().add(su.getEmail());
 		}
 		switch (su.getNetwork()) {
@@ -333,5 +551,542 @@ public class Util {
 			u.setGoogleID(su.getId());
 		}
 		return u;
+	}
+
+	public static MyJobs getMyJobs(Map<String, Object> map, CandidateProfile cp) {
+		MyJobs mjs = new MyJobs();
+		if (cp.getJobsApplied() == null) {
+			mjs.setApplications(0);
+		} else {
+			mjs.setApplications(cp.getJobsApplied().size());
+		}
+
+		if (cp.getJobAlerts() == null) {
+			mjs.setJobAlerts(0);
+		} else {
+			mjs.setJobAlerts(cp.getJobAlerts().size());
+		}
+
+		mjs.setJobsCursor((String) map.get("cursor"));
+		if (cp.getSavedJobs() == null) {
+			mjs.setSavedJobs(0);
+		} else {
+			mjs.setSavedJobs(cp.getSavedJobs().size());
+		}
+
+		List<Job> jobs = new ArrayList<>();
+		QueryResultList<Entity> qrl = (QueryResultList<Entity>) map
+				.get("entities");
+		for (Entity e : qrl) {
+			jobs.add(EntityConverter.entityToJob(e));
+		}
+		mjs.setiJobs(Util.toInterestedJobs(jobs));
+		return mjs;
+	}
+
+	public static MyJobs updateMyJobs(MyJobs mjs, Map<String, Object> map,
+			CandidateProfile cp) {
+		if (cp.getJobsApplied() == null) {
+			mjs.setApplications(0);
+		} else {
+			mjs.setApplications(cp.getJobsApplied().size());
+		}
+
+		if (cp.getJobAlerts() == null) {
+			mjs.setJobAlerts(0);
+		} else {
+			mjs.setJobAlerts(cp.getJobAlerts().size());
+		}
+
+		mjs.setJobsCursor((String) map.get("cursor"));
+		if (cp.getSavedJobs() == null) {
+			mjs.setSavedJobs(0);
+		} else {
+			mjs.setSavedJobs(cp.getSavedJobs().size());
+		}
+		List<Job> jobs = new ArrayList<>();
+		QueryResultList<Entity> qrl = (QueryResultList<Entity>) map
+				.get("entities");
+		for (Entity e : qrl) {
+			jobs.add(EntityConverter.entityToJob(e));
+		}
+		mjs.setiJobs(Util.toInterestedJobs(jobs));
+		return mjs;
+
+	}
+
+	public static void addToSearchIndex(Job job, Company c) {
+		Document.Builder db = Document.newBuilder();
+		db = db.setId(KeyFactory.keyToString(job.getId()));
+		db = db.addFacet(Facet.withAtom("location", job.getLocation()));
+		db = db.addFacet(Facet.withAtom("educationLevel",
+				job.getEducationLevel()));
+		db = db.addFacet(Facet.withAtom("salaryRange", job.getSalaryRange()));
+		db = db.addFacet(Facet.withAtom("careerLevel", job.getCareerLevel()));
+		db = db.addFacet(Facet.withAtom("jobType", job.getJobType()));
+		db = db.addFacet(Facet.withAtom("experience", job.getExperience()));
+		db = db.addFacet(Facet.withAtom("companyName", c.getCompanyName()));
+		db = db.addFacet(Facet.withAtom("jobTitle", job.getJobTitle()));
+		db = db.addFacet(Facet.withAtom("jobCategory", job.getJobCategory()));
+		db = db.addField(Field.newBuilder().setName("location")
+				.setText(job.getLocation()));
+		db = db.addField(Field.newBuilder().setName("description")
+				.setHTML(job.getDescription().getValue()));
+		db = db.addField(Field.newBuilder().setName("companyName")
+				.setText(c.getCompanyName()));
+		db = db.addField(Field.newBuilder().setName("jobTitle")
+				.setText(job.getJobTitle()));
+		db = db.addField(Field.newBuilder().setName("companyKey")
+				.setText(KeyFactory.keyToString(c.getId())));
+		db = db.addField(Field.newBuilder().setName("datePosted")
+				.setDate(job.getDatePosted()));
+
+		SearchDocumentIndexService.indexDocument("JobSearchDocuments",
+				db.build());
+
+	}
+
+	public static ProfessionalProfileBean createProfessionalProfileBean(User u,
+			CandidateProfile cp) {
+		ProfessionalProfileBean ppb = new ProfessionalProfileBean();
+		// award
+		List<Award> awards = new ArrayList<>();
+		if (cp.getAwards() != null) {
+			for (Key k : cp.getAwards()) {
+				awards.add(EntityConverter.entityToAward(GeneralController
+						.findByKey(k)));
+			}
+		} else {
+			cp.setAwards(new ArrayList<Key>());
+		}
+		ppb.setAwards(awards);
+		// certifications
+		List<Certification> certifications = new ArrayList<>();
+		if (cp.getCertifications() != null) {
+
+			for (Key k : cp.getCertifications()) {
+				certifications.add(EntityConverter
+						.entityToCertification(GeneralController.findByKey(k)));
+			}
+		} else {
+			cp.setCertifications(new ArrayList<Key>());
+		}
+		ppb.setCertifications(certifications);
+
+		// education
+		List<Education> education = new ArrayList<>();
+		if (cp.getEducation() != null) {
+			for (Key k : cp.getEducation()) {
+				education.add(EntityConverter
+						.entityToEducation(GeneralController.findByKey(k)));
+			}
+		} else {
+			cp.setEducation(new ArrayList<Key>());
+		}
+
+		// work experience
+		List<WorkExperience> workExperience = new ArrayList<>();
+		if (cp.getWorkExperience() != null) {
+			for (Key k : cp.getWorkExperience()) {
+				workExperience
+						.add(EntityConverter
+								.entityToWorkExperience(GeneralController
+										.findByKey(k)));
+			}
+		} else {
+			cp.setWorkExperience(new ArrayList<Key>());
+		}
+
+		if (cp.getCv() != null) {
+			ppb.setCvSafeString(cp.getCv().getKeyString());
+		}
+		ppb.setCv(Util.getBlobFileName(cp.getCv()));
+
+		ppb.setWorkExperience(workExperience);
+		ppb.setEducation(education);
+		ppb.setCurrentEmployer(cp.getCurrentEmployer());
+		ppb.setEmail(u.getEmail());
+		ppb.setFirstName(u.getFirstName());
+		ppb.setLastName(u.getLastName());
+		ppb.setPhone(u.getPhone());
+		if (cp.getProfileDescription() != null) {
+			ppb.setProfileSummary(cp.getProfileDescription().getValue());
+		}
+		ppb.setTagline(u.getTagline());
+		return ppb;
+	}
+
+	private static String getBlobFileName(BlobKey blobKey) {
+		if (blobKey == null) {
+			return "";
+		}
+		BlobInfoFactory bif = new BlobInfoFactory();
+		BlobInfo bi = bif.loadBlobInfo(blobKey);
+		return bi.getFilename();
+	}
+
+	public static RecruiterDashboardBean initRecruiterDashboardBean(User u,
+			Recruiter r) {
+		RecruiterDashboardBean rdb = new RecruiterDashboardBean();
+		rdb.setFirstName(u.getFirstName());
+		rdb.setLastName(u.getLastName());
+		rdb.setTagline(u.getTagline());
+		if (r.getCompany() != null) {
+			Company c = EntityConverter.entityToCompany(GeneralController
+					.findByKey(r.getCompany()));
+			rdb.setCompany(c.getCompanyName());
+		}
+		if (r.getConnections() != null) {
+			rdb.setNoConnections(String.valueOf(r.getConnections().size()));
+		} else {
+			rdb.setNoConnections(String.valueOf(0));
+		}
+		if (r.getProjects() == null) {
+			rdb.setNumberOfProjects(0);
+		} else {
+			rdb.setNumberOfProjects(r.getProjects().size());
+		}
+
+		// rdb.setProjectView(Util.getProjectViews(r.getProjects()));
+		Map<String, Set<Key>> map = Util.getApplicants(r.getProjects());
+		List<Key> applicants = Util.getApplicantsList(map);
+		List<ProView> users = new ArrayList<>();
+		for (Key k : applicants) {
+			ProView pv = Util.getProview(map, k);
+			if (pv != null) {
+				users.add(pv);
+			}
+		}
+		rdb.setApplicants(users);
+		return rdb;
+	}
+
+	private static ProView getProview(Map<String, Set<Key>> map, Key userKey) {
+		User u = EntityConverter.entityToUser(GeneralController
+				.findByKey(userKey));
+		ProView p = new ProView();
+		if (u.getUserType().equalsIgnoreCase(User.UserType.PROFESSIONAL.name())) {
+			CandidateProfile cp = EntityConverter.entityToCandidateProfile(
+					GeneralController.findByKey(u.getUserInfo()), userKey);
+			for (String s : map.keySet()) {
+				Set<Key> kys = map.get(s);
+				for (Key k : kys) {
+					if (k == userKey) {
+						p.setProjectName(s);
+						break;
+					}
+				}
+				break;
+			}
+			p.setCountry(cp.getCurrentCountry());
+			p.setFirstName(u.getFirstName());
+			p.setLastName(u.getLastName());
+			if (cp.getConnections() != null) {
+				p.setNumberOfConnections(String.valueOf(cp.getConnections()
+						.size()));
+			}
+			p.setState(cp.getCurrentState());
+
+			// education
+			if (cp.getEducation() != null) {
+				Education edu = null;
+				Map<Key, Entity> mp = GeneralController.findByKeys(cp
+						.getEducation());
+				for (Key k : cp.getEducation()) {
+					Education e = EntityConverter.entityToEducation(mp.get(k));
+					if (edu == null) {
+						edu = e;
+					} else if (e.getEndYear().equalsIgnoreCase("current")
+							|| e.getEndYear().equalsIgnoreCase("to date")) {
+						edu = e;
+						break;
+					} else if (Integer.parseInt(e.getEndYear()) > Integer
+							.parseInt(edu.getEndYear())) {
+						edu = e;
+					} else if (Integer.parseInt(e.getEndYear()) == Integer
+							.parseInt(edu.getEndYear())) {
+						if (Integer.parseInt(e.getEndMonth()) > Integer
+								.parseInt(edu.getEndMonth())) {
+							edu = e;
+						}
+					}
+
+				}
+				p.setEducation(edu);
+			}
+
+			// work experience
+			if (cp.getWorkExperience() != null) {
+				WorkExperience we = null;
+				Map<Key, Entity> mp = GeneralController.findByKeys(cp
+						.getWorkExperience());
+				for (Key k : cp.getWorkExperience()) {
+					WorkExperience wex = EntityConverter
+							.entityToWorkExperience(mp.get(k));
+					if (we == null) {
+						we = wex;
+					} else if (wex.getEndYear().equalsIgnoreCase("current")
+							|| wex.getEndYear().equalsIgnoreCase("to date")) {
+						we = wex;
+						break;
+					} else if (Integer.parseInt(wex.getEndYear()) > Integer
+							.parseInt(we.getEndYear())) {
+						we = wex;
+					} else if (Integer.parseInt(wex.getEndYear()) == Integer
+							.parseInt(we.getEndYear())) {
+						if (Integer.parseInt(wex.getEndMonth()) > Integer
+								.parseInt(we.getEndMonth())) {
+							we = wex;
+						}
+					}
+
+				}
+				p.setWorkExperience(we);
+			}
+
+		}
+		return p;
+	}
+
+	private static List<Key> getApplicantsList(Map<String, Set<Key>> map) {
+		List<Key> applicants = new ArrayList<>();
+		Set<String> s = map.keySet();
+		for (String st : s) {
+			applicants.addAll(map.get(st));
+		}
+		return applicants;
+	}
+
+	private static Map<String, Set<Key>> getApplicants(List<Key> projects) {
+		Map<String, Set<Key>> mp = new HashMap<String, Set<Key>>();
+		if (projects == null) {
+			return mp;
+		} else {
+			Map<Key, Entity> ents = GeneralController.findByKeys(projects);
+			for (Key k : projects) {
+				Set<Key> set = new HashSet<>();
+				Project p = EntityConverter.entityToProject(ents.get(k));
+				if (p.getJobs() != null) {
+					Job j = EntityConverter.entityToJob(GeneralController
+							.findByKey(p.getJobs()));
+					List<Key> applicants = j.getNewApplicants();
+					if (applicants != null) {
+						set.addAll(applicants);
+					}
+
+					mp.put(p.getName(), set);
+				}
+			}
+			return mp;
+		}
+
+	}
+
+	private static List<ProjectView> getProjectViews(List<Key> projects) {
+		if (projects != null) {
+			List<ProjectView> ps = new ArrayList<>();
+			Map<Key, Entity> ents = GeneralController.findByKeys(projects);
+			for (Key k : projects) {
+				ps.add(Util.projectToView(EntityConverter.entityToProject(ents
+						.get(k))));
+			}
+			return ps;
+
+		} else {
+			return new ArrayList<ProjectView>();
+		}
+	}
+
+	private static ProjectView projectToView(Project project) {
+		ProjectView pv = new ProjectView();
+		pv.setName(project.getName());
+		Job j = EntityConverter.entityToJob(GeneralController.findByKey(project
+				.getId()));
+		pv.setView(j.getViewers().size());
+		pv.setWebKey(project.getSafeKey());
+		return pv;
+	}
+
+	public static void sendApplicationEmails(User u, CandidateProfile cp,
+			Job job, String applicationEmail, HttpServletRequest req)
+			throws IOException {
+		String partUrl = req.getScheme() + "://" + req.getServerName() + ":"
+				+ req.getServerPort();
+		try {
+			sendRecruiterEmail(u, cp, job, applicationEmail, partUrl);
+			sendApplicantsEmail(u, job);
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	private static void sendRecruiterEmail(User u, CandidateProfile cp,
+			Job job, String applicationEmail, String partUrl)
+			throws IOException {
+		String cvPath = partUrl + "/bq/open/get-cv?safe-key="
+				+ cp.getCv().getKeyString();
+		String body = "<body><div style='width: 40%; margin: 0 auto'>"
+				+ "<img alt='Best Qualified' src='http://best-qualified.appspot.com/images/bq-logo.png'/>"
+				+ "</div><div><h4 style='padding-bottom: 3%;'>Hello,</h4>"
+				+ "<p>" + u.getFirstName() + " " + u.getLastName()
+				+ "has shown interest in your job post titled "
+				+ job.getJobTitle() + "has been sent.</p>"
+				+ "<p>Download the attached CV <a target='_blank' href='"
+				+ cvPath + "'>here</a>.</p>"
+				+ "<p>Regards,</p><p>Best Qualified Admin</p></div></body>";
+		try {
+			sendEmail(Util.SERVICE_ACCOUNT, u.getEmail(), "Application for "
+					+ job.getJobTitle(), body);
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private static void sendRecruiterEmail1(User u, CandidateProfile cp,
+			Job job, String applicationEmail, String partUrl)
+			throws IOException {
+		String body = "<body><div style='width: 40%; margin: 0 auto'>"
+				+ "<img alt='Best Qualified' src='http://best-qualified.appspot.com/images/bq-logo.png'/>"
+				+ "</div><div><h4 style='padding-bottom: 3%;'>Hello,</h4>"
+				+ "<p>" + u.getFirstName() + " " + u.getLastName()
+				+ "has shown interest in your job post titled "
+				+ job.getJobTitle() + "has been sent.</p>"
+				+ "<p>Kindly find attached the submited CV.</p>"
+				+ "<p>Regards,</p><p>Best Qualified Admin</p></div></body>";
+		URL url = new URL(partUrl + "/bq/close/serve-blob");
+		HTTPResponse resp = URLFetchServiceFactory.getURLFetchService().fetch(
+				url);
+		byte[] content = resp.getContent();
+		String fileName = u.getFirstName() + " " + u.getLastName();
+		sendMailWithAttachment(Util.SERVICE_ACCOUNT, applicationEmail,
+				"Application for " + job.getJobTitle(), body, content, fileName);
+	}
+
+	private static void sendMailWithAttachment(String from, String to,
+			String title, String body, byte[] attachmentData, String fileName) {
+
+		Multipart mp = new MimeMultipart();
+		MimeBodyPart htmlPart = new MimeBodyPart();
+		Properties props = new Properties();
+		Session session = Session.getDefaultInstance(props, null);
+		try {
+			htmlPart.setContent(body, "text/html");
+			mp.addBodyPart(htmlPart);
+			MimeBodyPart attachment = new MimeBodyPart();
+			InputStream attachmentDataStream = new ByteArrayInputStream(
+					attachmentData);
+			attachment.setFileName(fileName);
+			attachment.setContent(attachmentDataStream, "application/msword");
+			mp.addBodyPart(attachment);
+
+			Message msg = new MimeMessage(session);
+			msg.setFrom(new InternetAddress(Util.SERVICE_ACCOUNT,
+					"Best Qualified Admin", "UTF-8"));
+			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			msg.setSubject(title);
+			msg.setContent(mp);
+			Transport.send(msg);
+		} catch (MessagingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+
+		}
+
+	}
+
+	private static void sendApplicantsEmail(User u, Job job)
+			throws AddressException, MessagingException {
+		String body = "<body><div style='width: 40%; margin: 0 auto'>"
+				+ "<img alt='Best Qualified' src='http://best-qualified.appspot.com/images/bq-logo.png'/>"
+				+ "</div><div><h4 style='padding-bottom: 3%;'>Hello "
+				+ u.getFirstName() + ",</h4>"
+				+ "<p>Your application for the job titled " + job.getJobTitle()
+				+ "has been sent.</p>"
+				+ "<p>You will be contacted by the recruiter shortly.</p>"
+				+ "<p>Regards,</p><p>Best Qualified Admin</p></div></body>";
+		sendEmail(Util.SERVICE_ACCOUNT, u.getEmail(),
+				"Your Applicatio has been sent", body);
+
+	}
+
+	public static List<ProjectBean1> toProjectBean1(List<Project> l1) {
+		List<ProjectBean1> pb1 = new ArrayList<>();
+		for (Project p : l1) {
+			ProjectBean1 pb = new ProjectBean1();
+			pb.setDateCreated(new SimpleDateFormat("dd-MMM-yyyy").format(p
+					.getDateCreated()));
+			pb.setDescription(p.getDescription().getValue());
+			pb.setName(p.getName());
+			if (p.getProfiles() == null) {
+				pb.setSavedProfile(0);
+			} else {
+				pb.setSavedProfile(p.getProfiles().size());
+			}
+			if (p.getSavedSearch() == null) {
+				pb.setSavedSearch(0);
+				;
+			} else {
+				pb.setSavedSearch(p.getSavedSearch().size());
+			}
+
+			pb.setWebKey(p.getSafeKey());
+			if (p.getJobs() != null) {
+				Job j = Util.getJobFromCache(p.getJobs());
+				if (j.getInvitesSent() == null) {
+					pb.setInviteSent(0);
+				} else {
+					pb.setInviteSent(j.getInvitesSent().size());
+				}
+				if (j.getNewApplicants() == null) {
+					pb.setNewApplicants(0);
+					pb.setTotalApplicants(0);
+				} else {
+					pb.setNewApplicants(j.getNewApplicants().size());
+					if(j.getApplicants() == null) {
+						pb.setTotalApplicants(j.getNewApplicants().size()+0);
+					}else {
+						pb.setTotalApplicants(j.getNewApplicants().size()
+								+ j.getApplicants().size());
+					}
+				}	
+			}
+			pb1.add(pb);
+		}
+		return pb1;
+	}
+
+	public static Job getJobFromCache(Key key) {
+		Object o = MemcacheProvider.JOBS.get(key);
+		Job job = null;
+		if (o == null) {
+			job = EntityConverter.entityToJob(GeneralController.findByKey(key));
+			MemcacheProvider.JOBS.put(key, job);
+		} else {
+			job = (Job) o;
+		}
+		return job;
+	}
+
+	public static ManageProjectBean getManageProjectBean(List<ProjectBean1> l2) {
+		ManageProjectBean mpb = new ManageProjectBean();
+		for(ProjectBean1 pb1 : l2) {
+			mpb.setNewApplicants(mpb.getNewApplicants()+pb1.getNewApplicants());
+			mpb.setSavedProfiles(mpb.getSavedProfiles()+pb1.getSavedProfile());
+			mpb.setTotalApplicants(mpb.getTotalApplicants()+pb1.getTotalApplicants());
+			mpb.setSavedSearch(mpb.getSavedSearch()+pb1.getSavedSearch());
+		}
+		mpb.setPb1(l2);
+		return mpb;
 	}
 }

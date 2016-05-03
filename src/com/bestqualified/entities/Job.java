@@ -27,19 +27,20 @@ public class Job implements Serializable {
 	private String educationLevel;
 	private boolean positionFilled;
 	private String jobType;
-	private List<String> jobCategory;
+	private String jobCategory;
 	private Key Employer;
 	private List<Key> applicants;
 	private String jobTitle;
 	private Date datePosted;
-	private String description;
+	private Text description;
 	private List<Key> invitesSent;
 	private Text customAttributes;
 	private String experience;
 	private String applicationUrl;
-	
-	
-	
+	private Key company;
+	private List<Key> viewers;
+	private List<Key> newApplicants;
+
 	public Job() {
 		id = GeneralController.ds.allocateIds(Job.class.getSimpleName(), 1).getStart();
 	}
@@ -61,6 +62,24 @@ public class Job implements Serializable {
 				+ ", experience=" + experience + ", applicationUrl="
 				+ applicationUrl + "]";
 	}
+	
+	
+	
+	public List<Key> getNewApplicants() {
+		return newApplicants;
+	}
+
+	public void setNewApplicants(List<Key> newApplicants) {
+		this.newApplicants = newApplicants;
+	}
+
+	public List<Key> getViewers() {
+		return viewers;
+	}
+
+	public void setViewers(List<Key> viewers) {
+		this.viewers = viewers;
+	}
 
 	public String getApplicationUrl() {
 		return applicationUrl;
@@ -73,23 +92,15 @@ public class Job implements Serializable {
 	public String getExperience() {
 		return experience;
 	}
-
-
 	public void setExperience(String experience) {
 		this.experience = experience;
 	}
-
-
 	public String getSalaryRange() {
 		return salaryRange;
 	}
-
-
 	public void setSalaryRange(String salaryRange) {
 		this.salaryRange = salaryRange;
 	}
-
-
 	public Key getId() {
 		return id;
 	}
@@ -151,10 +162,10 @@ public class Job implements Serializable {
 	public void setJobType(String jobType) {
 		this.jobType = jobType;
 	}
-	public List<String> getJobCategory() {
+	public String getJobCategory() {
 		return jobCategory;
 	}
-	public void setJobCategory(List<String> jobCategory) {
+	public void setJobCategory(String jobCategory) {
 		this.jobCategory = jobCategory;
 	}
 	public Key getEmployer() {
@@ -181,10 +192,10 @@ public class Job implements Serializable {
 	public void setDatePosted(Date datePosted) {
 		this.datePosted = datePosted;
 	}
-	public String getDescription() {
+	public Text getDescription() {
 		return description;
 	}
-	public void setDescription(String description) {
+	public void setDescription(Text description) {
 		this.description = description;
 	}
 	public List<Key> getInvitesSent() {
@@ -199,9 +210,13 @@ public class Job implements Serializable {
 	public void setCustomAttributes(Text customAttributes) {
 		this.customAttributes = customAttributes;
 	}
-	
-	
-		
-	
+
+	public Key getCompany() {
+		return company;
+	}
+
+	public void setCompany(Key company) {
+		this.company = company;
+	}
 
 }

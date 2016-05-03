@@ -76,9 +76,31 @@ public class SignInServlet extends HttpServlet {
 						}
 					}else if(u.getUserType().equalsIgnoreCase(User.UserType.RECRUITER.name())) {
 						Recruiter r = EntityConverter.entityToRecruiter(e);
+						synchronized (session) {
+							session.setAttribute("employerProfile", r);
+						}
 					}
-					RequestDispatcher rd = req.getRequestDispatcher("/bq/closed/init-dashboard");
-					rd.forward(req, resp);
+					
+					Object o1 = null;
+					Object o2 = null;
+					synchronized (session) {
+						o1 = session.getAttribute("requestUri");
+						o2 = session.getAttribute("queryString");
+					}
+					if(o1 == null) {
+						RequestDispatcher rd = req.getRequestDispatcher("/bq/closed/init-dashboard");
+						rd.forward(req, resp);
+					} else {
+						String requestUri = (String) o1;
+						String qStr = null;
+						if(o2 != null) {
+							qStr = (String) o2;
+							requestUri+="?"+qStr;
+						}
+						
+						resp.sendRedirect(resp.encodeRedirectURL(requestUri));
+					}
+					
 					return;
 				}
 				

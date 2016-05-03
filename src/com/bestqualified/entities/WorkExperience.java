@@ -3,7 +3,10 @@ package com.bestqualified.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import com.bestqualified.controllers.GeneralController;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Text;
 
 public class WorkExperience implements Serializable {
 
@@ -17,13 +20,14 @@ public class WorkExperience implements Serializable {
 	private String company;
 	private boolean currentJob;
 	private Key jobRegion;
-	private List<String> jobDuties;
+	private Text jobDuties;
 	private double salary;
 	private String salaryCurrency;
 	private String startMonth;
 	private String startYear;
 	private String endMonth;
 	private String endYear;
+	private String safeKey;
 	
 	
 	
@@ -59,11 +63,20 @@ public class WorkExperience implements Serializable {
 			return false;
 		return true;
 	}
+	
+	
+	public String getSafeKey() {
+		return safeKey;
+	}
+	public void setSafeKey(String safeKey) {
+		this.safeKey = safeKey;
+	}
 	public Key getId() {
 		return id;
 	}
 	public void setId(Key id) {
 		this.id = id;
+		safeKey = KeyFactory.keyToString(id);
 	}
 	public String getPosition() {
 		return position;
@@ -89,10 +102,10 @@ public class WorkExperience implements Serializable {
 	public void setJobRegion(Key jobRegion) {
 		this.jobRegion = jobRegion;
 	}
-	public List<String> getJobDuties() {
+	public Text getJobDuties() {
 		return jobDuties;
 	}
-	public void setJobDuties(List<String> jobDuties) {
+	public void setJobDuties(Text jobDuties) {
 		this.jobDuties = jobDuties;
 	}
 	public double getSalary() {
@@ -131,6 +144,10 @@ public class WorkExperience implements Serializable {
 	public void setEndYear(String endYear) {
 		this.endYear = endYear;
 	}
+	public WorkExperience() {
+		this.id = GeneralController.ds.allocateIds(WorkExperience.class.getSimpleName(), 1).getStart();
+		safeKey = KeyFactory.keyToString(id);
+	}
 	
-
+	
 }

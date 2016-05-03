@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top"
-	style="background: #CCCC99">
+	style="background: #3BAFDA; border-bottom-color: #4FC1E9">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -7,7 +7,7 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Best Qualified</a>
+			<a class="navbar-brand" style="color: white" href="#">Best Qualified</a>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
@@ -63,12 +63,36 @@
 		</div>
 	</div>
 </nav>
-
-<div class="content hide popover-content" id="popover-content">
-	<ul style="padding: none!important">
-		<li style="list-style: none;"><a href="<c:url value='#' />" >Dashboard</a></li>
-		<li style="list-style: none;"><a href="<c:url value='#' />">Improve Your Profile</a></li>
-		<li style="list-style: none;"><a href="<c:url value='/bq/closed/init-jobs' />">Find a Job</a></li>
-		<li style="list-style: none;"><a href="<c:url value='/logout' />">Logout</a></li>
-	</ul>
-</div>
+<c:set var="userType"  value="PROFESSIONAL"/>
+<c:choose>
+	
+	<c:when test="${user.userType eq userType}">
+		<div class="content hide popover-content" id="popover-content">
+			<ul style="padding: none !important">
+				<li style="list-style: none;"><a
+					href="<c:url value='/bq/closed/init-dashboard' />">Dashboard</a></li>
+				<li style="list-style: none;"><a
+					href="<c:url value='/bq/closed/init-professional-profile' />">Improve
+						Your Profile</a></li>
+				<li style="list-style: none;"><a
+					href="<c:url value='/bq/closed/init-jobs' />">Find a Job</a></li>
+				<li style="list-style: none;"><a
+					href="<c:url value='/logout' />">Logout</a></li>
+			</ul>
+		</div>
+	</c:when>
+	<c:otherwise>
+		<div class="content hide popover-content" id="popover-content">
+			<ul style="padding: none !important">
+				<li style="list-style: none;"><a
+					href="<c:url value='/bq/closed/init-dashboard' />">Dashboard</a></li>
+				<li style="list-style: none;"><a
+					href="<c:url value='/bq/closed/init-professional-profile'/>">Profile</a></li>
+				<li style="list-style: none;"><a
+					href="<c:url value='/bq/close/new-project'/>">New Project</a></li>
+				<li style="list-style: none;"><a
+					href="<c:url value='/logout' />">Logout</a></li>
+			</ul>
+		</div>
+	</c:otherwise>
+</c:choose>

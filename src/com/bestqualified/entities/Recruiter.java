@@ -9,6 +9,7 @@ import java.util.Set;
 import com.bestqualified.controllers.GeneralController;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 public class Recruiter implements Serializable {
 
@@ -18,19 +19,19 @@ public class Recruiter implements Serializable {
 	private static final long serialVersionUID = 1722882341592791037L;
 	
 	private Key id, userKey;
-	private List<Key> company;
+	private Key company;
 	private List<Key> jobs;
-	private Set<BlobKey> cvs;
-	private Set<Key> profile;
-	private Set<Key> searchResult;
+	private List<Key> projects;
+	private String webKey;
+	private List<Key> connections;
 	
 	public Recruiter() {
 		id = GeneralController.ds.allocateIds(Recruiter.class.getSimpleName(), 1).getStart();
-		this.company = new ArrayList<>();
 		this.jobs = new ArrayList<>();
-		this.cvs = new HashSet<>();
-		this.searchResult =  new HashSet<>();
-		this.profile = new HashSet<>();
+		this.projects = new ArrayList<>();
+		this.connections = new ArrayList<>();
+		this.webKey = KeyFactory.keyToString(id);
+		
 	}
 	
 	public Recruiter(Key key) {
@@ -38,12 +39,21 @@ public class Recruiter implements Serializable {
 		this.userKey = key;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "Recruiter [id=" + id + ", userKey=" + userKey + ", company="
-				+ company + ", jobs=" + jobs + ", cvs=" + cvs + ", profile="
-				+ profile + ", searchResult=" + searchResult + "]";
+				+ company + ", jobs=" + jobs + ", projects=" + projects
+				+ ", webKey=" + webKey + "]";
+	}
+	
+	
+
+	public List<Key> getConnections() {
+		return connections;
+	}
+
+	public void setConnections(List<Key> connections) {
+		this.connections = connections;
 	}
 
 	public Key getUserKey() {
@@ -61,10 +71,10 @@ public class Recruiter implements Serializable {
 		this.id = id;
 	}
 
-	public List<Key> getCompany() {
+	public Key getCompany() {
 		return company;
 	}
-	public void setCompany(List<Key> company) {
+	public void setCompany(Key company) {
 		this.company = company;
 	}
 	public List<Key> getJobs() {
@@ -73,24 +83,23 @@ public class Recruiter implements Serializable {
 	public void setJobs(List<Key> jobs) {
 		this.jobs = jobs;
 	}
-	public Set<BlobKey> getCvs() {
-		return cvs;
+	
+	public List<Key> getProjects() {
+		return projects;
 	}
-	public void setCvs(Set<BlobKey> cvs) {
-		this.cvs = cvs;
+
+	public void setProjects(List<Key> projects) {
+		this.projects = projects;
 	}
-	public Set<Key> getProfile() {
-		return profile;
+
+	public String getWebKey() {
+		return webKey;
 	}
-	public void setProfile(Set<Key> profile) {
-		this.profile = profile;
+
+	public void setWebKey(String webKey) {
+		this.webKey = webKey;
 	}
-	public Set<Key> getSearchResult() {
-		return searchResult;
-	}
-	public void setSearchResult(Set<Key> searchResult) {
-		this.searchResult = searchResult;
-	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

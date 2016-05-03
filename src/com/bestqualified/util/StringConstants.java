@@ -74,6 +74,7 @@ public class StringConstants {
 	public static final String JOBS = "jobs";
 	public static final String SEARCH_RESULT = "searchResult";
 	public static final String UNKNOWN_USER = "/images/unknown-user.jpg";
+	public static final String DEFAULT_COMPANY_LOGO = "/images/company.png";
 	
 	
 	

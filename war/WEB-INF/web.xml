@@ -4,7 +4,26 @@ xmlns="http://java.sun.com/xml/ns/javaee"
 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-	
+	<listener>
+		<listener-class>com.bestqualified.listeners.BestQualifiedSessionListener</listener-class>
+	</listener>
+	<filter>
+		<filter-name>AuthFilter</filter-name>
+		<filter-class>com.bestqualified.filters.AuthFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>AuthFilter</filter-name>
+		<url-pattern>/bq/closed/*</url-pattern>
+		<url-pattern>/bq/close/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>JobApplicationFilter</filter-name>
+		<filter-class>com.bestqualified.filters.JobApplicationFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>JobApplicationFilter</filter-name>
+		<url-pattern>/bq/closed/job/application</url-pattern>
+	</filter-mapping>
 	<servlet>
 		<servlet-name>AdminDashBoard</servlet-name>
 		<jsp-file>/WEB-INF/bq/admin/dashboard.jsp</jsp-file>
@@ -28,6 +47,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>SignUpServlet</servlet-name>
 		<url-pattern>/end-point/sign-up</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ResendCodeServlet</servlet-name>
+		<servlet-class>com.bestqualified.servlets.ResendConfirmationCode</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ResendCodeServlet</servlet-name>
+		<url-pattern>/end-point/resend-code</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>SocialLogin</servlet-name>
@@ -54,12 +81,93 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>UpdateWorkExperience</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.UpdateWorkExperience</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateWorkExperience</servlet-name>
+		<url-pattern>/bq/close/save-work-experience</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>SaveProject</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.SaveProject</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SaveProject</servlet-name>
+		<url-pattern>/bq/close/save-project</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>GetCV</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.GetCV</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetCV</servlet-name>
+		<url-pattern>/bq/close/get-cv</url-pattern>
+		<url-pattern>/bq/open/get-cv</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>GeneralDelete</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.GeneralDelete</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GeneralDelete</servlet-name>
+		<url-pattern>/bq/close/general-delete</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AddEducation</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.AddEducation</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddEducation</servlet-name>
+		<url-pattern>/bq/close/add-education</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AddAward</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.AddAward</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddAward</servlet-name>
+		<url-pattern>/bq/close/add-award</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>FileUploadUrl</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.FileUploadUrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FileUploadUrl</servlet-name>
+		<url-pattern>/bq/close/get-file-upload-url</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>UploadServlet</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.UploadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UploadServlet</servlet-name>
+		<url-pattern>/upload</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>UpdateProfile</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.UpdateProfile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateProfile</servlet-name>
+		<url-pattern>/bq/close/update-profile</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>InitDashboard</servlet-name>
 		<servlet-class>com.bestqualified.servlets.closed.InitDashboard</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>InitDashboard</servlet-name>
 		<url-pattern>/bq/closed/init-dashboard</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>JobApplication</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.JobApplicationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JobApplication</servlet-name>
+		<url-pattern>/bq/closed/job/application</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>InitJobs</servlet-name>
@@ -147,6 +255,33 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Job</servlet-name>
 		<url-pattern>/bq/open/job</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ServeBlob</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.ServeBlob</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServeBlob</servlet-name>
+		<url-pattern>/bq/close/serve-blob</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ManageProjectServlet</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.ManageProjectServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ManageProjectServlet</servlet-name>
+		<url-pattern>/bq/close/manage-project</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>InitBrowseProfiles</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.InitBrowseProfiles</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitBrowseProfiles</servlet-name>
+		<url-pattern>/bq/close/init-browse-profiles</url-pattern>
+	</servlet-mapping>
 	<!-- ***************************************************SERVLET*********************************************************** -->
 	<servlet>
 		<servlet-name>NewsLetterSubscription</servlet-name>
@@ -159,12 +294,48 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<!-- ************************************************JSP*************************************************************** -->
 	
 	<servlet>
+		<servlet-name>ManageProjectPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/close/manage-project.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ManageProjectPage</servlet-name>
+		<url-pattern>/bq/close/manage-project-page</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>BrowseProjectPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/close/browse-profiles.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BrowseProjectPage</servlet-name>
+		<url-pattern>/bq/close/recruiter/browse-profiles</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Project</servlet-name>
+		<jsp-file>/WEB-INF/bq/close/project.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Project</servlet-name>
+		<url-pattern>/bq/close/project</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>JobsPage</servlet-name>
 		<jsp-file>/WEB-INF/bq/close/jobs.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>JobsPage</servlet-name>
 		<url-pattern>/bq/close/jobs</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>NewProject</servlet-name>
+		<jsp-file>/WEB-INF/bq/close/new-project.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NewProject</servlet-name>
+		<url-pattern>/bq/close/new-project</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -273,6 +444,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>ProfessionalDashboard</servlet-name>
 		<url-pattern>/bq/closed/professional/dashboard</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>RecruiterDashboard</servlet-name>
+		<jsp-file>/WEB-INF/bq/close/recruiter-dashboard.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RecruiterDashboard</servlet-name>
+		<url-pattern>/bq/closed/recruiter/dashboard</url-pattern>
 	</servlet-mapping>
 	<session-config>
 		<session-timeout>1800</session-timeout>

@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.bestqualified.controllers.GeneralController;
+import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.Text;
 
 public class Company implements Serializable {
 
@@ -17,15 +19,16 @@ public class Company implements Serializable {
 	private String companyName;
 	private List<Key> industries;
 	private String companyWebsite;
-	private Key location;
+	private String location;
 	private String address;
 	private String linkedIn;
 	private String facebook;
 	private String twitter;
 	private String googlePlus;
-	private String description;
+	private Text description;
 	private String tagline;
 	private List<Key> recruiter;
+	private BlobKey logo;
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -60,6 +63,14 @@ public class Company implements Serializable {
 	public void setId(Key id) {
 		this.id = id;
 	}
+	
+	
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
 	public String getCompanyName() {
 		return companyName;
 	}
@@ -78,12 +89,7 @@ public class Company implements Serializable {
 	public void setCompanyWebsite(String companyWebsite) {
 		this.companyWebsite = companyWebsite;
 	}
-	public Key getLocation() {
-		return location;
-	}
-	public void setLocation(Key location) {
-		this.location = location;
-	}
+	
 	public String getAddress() {
 		return address;
 	}
@@ -114,10 +120,10 @@ public class Company implements Serializable {
 	public void setGooglePlus(String googlePlus) {
 		this.googlePlus = googlePlus;
 	}
-	public String getDescription() {
+	public Text getDescription() {
 		return description;
 	}
-	public void setDescription(String description) {
+	public void setDescription(Text description) {
 		this.description = description;
 	}
 	public String getTagline() {
@@ -132,15 +138,12 @@ public class Company implements Serializable {
 	public void setRecruiter(List<Key> recruiter) {
 		this.recruiter = recruiter;
 	}
-	@Override
-	public String toString() {
-		return "Company [id=" + id + ", companyName=" + companyName
-				+ ", industries=" + industries + ", companyWebsite="
-				+ companyWebsite + ", location=" + location + ", address="
-				+ address + ", linkedIn=" + linkedIn + ", facebook=" + facebook
-				+ ", twitter=" + twitter + ", googlePlus=" + googlePlus
-				+ ", description=" + description + ", tagline=" + tagline
-				+ ", recruiter=" + recruiter + "]";
+	
+	public BlobKey getLogo() {
+		return logo;
+	}
+	public void setLogo(BlobKey logo) {
+		this.logo = logo;
 	}
 	
 	

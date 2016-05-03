@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +21,6 @@ import com.bestqualified.entities.Job;
 import com.bestqualified.entities.Recruiter;
 import com.bestqualified.util.EntityConverter;
 import com.bestqualified.util.Util;
-import com.google.appengine.api.blobstore.BlobKey;
-import com.google.appengine.api.datastore.Email;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
@@ -31,6 +28,11 @@ import com.google.appengine.api.datastore.Transaction;
 import com.google.appengine.api.datastore.TransactionOptions;
 
 public class NewJob extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6091552457884876760L;
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -58,7 +60,7 @@ public class NewJob extends HttpServlet {
 		String jobRegion = req.getParameter("job-region");
 		String jobDescription = req.getParameter("job-description");
 		String jobTitle = req.getParameter("job-title");
-		String[] jobCategory = req.getParameterValues("job-category");
+		String jobCategory = req.getParameter("job-category");
 
 		HttpSession session = req.getSession();
 		if (companyName == null || companyName.isEmpty()) {
@@ -78,22 +80,17 @@ public class NewJob extends HttpServlet {
 					Company c = new Company();
 					c.setCompanyName(companyName);
 					c.setCompanyWebsite(websiteName);
-					c.setDescription(companyDescription);
 					c.setFacebook(companyFacebook);
 					c.setGooglePlus(companyGooglePlus);
 					c.setLinkedIn(companyLinkedIN);
 					c.setTagline(companyTagline);
 					c.setTwitter(companyTwitter);
-					c.setDescription(companyDescription);
+					c.setDescription(new Text(companyDescription));
 
 					Recruiter r = new Recruiter();
 					
-					r.setCvs(new HashSet<BlobKey>());
 					List<Key> cKeys = new ArrayList<>();
-					cKeys.add(c.getId());
-					r.setCompany(cKeys);
-					r.setProfile(new HashSet<Key>());
-					r.setSearchResult(new HashSet<Key>());
+					r.setCompany(c.getId());
 					List<Key> keys = new ArrayList<>();
 					keys.add(r.getId());
 					c.setRecruiter(keys);
@@ -106,9 +103,9 @@ public class NewJob extends HttpServlet {
 					job.setCareerLevel(careerLevel);
 					job.setCustomAttributes(new Text(extraInformation));
 					job.setDatePosted(new Date());
-					job.setDescription(jobDescription);
+					job.setDescription(new Text(jobDescription));
 					job.setEducationLevel(educationLevel);
-					job.setJobCategory(Arrays.asList(jobCategory));
+					job.setJobCategory(jobCategory);
 					job.setJobTitle(jobTitle);
 					job.setJobType(jobType);
 					job.setLocation(jobRegion);
@@ -138,8 +135,8 @@ public class NewJob extends HttpServlet {
 					List<Key> jKeys = new ArrayList<>();
 					jKeys.add(job.getId());
 					r.setJobs(jKeys);
-					
-				
+					job.setCompany(c.getId());
+					Util.addToSearchIndex(job,c);
 					Entity e = EntityConverter.companyToEntity(c);
 					Entity e1 = EntityConverter.jobToEntity(job);
 					Entity e2 = EntityConverter.recruiterToEntity(r);

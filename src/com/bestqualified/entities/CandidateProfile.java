@@ -21,7 +21,7 @@ public class CandidateProfile implements Serializable {
 	private Key id;
 	private Key candidateId;
 	private Key careerLevel;
-	private Key currentLocation;
+	private String currentState, currentCountry;
 	private Set<Key> profileViewers;
 	private Set<Key> jobsApplied;
 	private String currentEmployer;
@@ -36,7 +36,8 @@ public class CandidateProfile implements Serializable {
 	private String lga;
 	private String stateOfOrigin;
 	private List<BlobKey> pictures;
-	private List<Key> connections;
+	private List<Key> connections, savedJobs, jobAlerts;
+	private BlobKey cv;
 	
 	
 	
@@ -53,25 +54,59 @@ public class CandidateProfile implements Serializable {
 		this.certifications = new ArrayList<>();
 		this.pictures = new ArrayList<>();
 		this.connections = new ArrayList<>();
+		this.savedJobs = new ArrayList<>();
+		this.jobAlerts = new ArrayList<>();
 	}
+
+	
+	public BlobKey getCv() {
+		return cv;
+	}
+	
+	
 
 	@Override
 	public String toString() {
 		return "CandidateProfile [id=" + id + ", candidateId=" + candidateId
-				+ ", careerLevel=" + careerLevel + ", currentLocation="
-				+ currentLocation + ", profileViewers=" + profileViewers
-				+ ", jobsApplied=" + jobsApplied + ", currentEmployer="
-				+ currentEmployer + ", cvDownloaders=" + cvDownloaders
-				+ ", workExperience=" + workExperience + ", education="
-				+ education + ", awards=" + awards + ", certifications="
-				+ certifications + ", careerSummary=" + careerSummary
-				+ ", profileDescription=" + profileDescription
-				+ ", nationality=" + nationality + ", lga=" + lga
-				+ ", stateOfOrigin=" + stateOfOrigin + ", pictures=" + pictures
-				+ "]";
+				+ ", careerLevel=" + careerLevel + ", currentState="
+				+ currentState + ", currentCountry=" + currentCountry
+				+ ", profileViewers=" + profileViewers + ", jobsApplied="
+				+ jobsApplied + ", currentEmployer=" + currentEmployer
+				+ ", cvDownloaders=" + cvDownloaders + ", workExperience="
+				+ workExperience + ", education=" + education + ", awards="
+				+ awards + ", certifications=" + certifications
+				+ ", careerSummary=" + careerSummary + ", profileDescription="
+				+ profileDescription + ", nationality=" + nationality
+				+ ", lga=" + lga + ", stateOfOrigin=" + stateOfOrigin
+				+ ", pictures=" + pictures + ", connections=" + connections
+				+ ", savedJobs=" + savedJobs + ", jobAlerts=" + jobAlerts
+				+ ", cv=" + cv + "]";
 	}
-	
-	
+
+
+	public String getCurrentState() {
+		return currentState;
+	}
+
+
+	public void setCurrentState(String currentState) {
+		this.currentState = currentState;
+	}
+
+
+	public String getCurrentCountry() {
+		return currentCountry;
+	}
+
+
+	public void setCurrentCountry(String currentCountry) {
+		this.currentCountry = currentCountry;
+	}
+
+
+	public void setCv(BlobKey cv) {
+		this.cv = cv;
+	}
 
 	public List<Key> getConnections() {
 		return connections;
@@ -137,13 +172,7 @@ public class CandidateProfile implements Serializable {
 		this.careerLevel = careerLevel;
 	}
 
-	public Key getCurrentLocation() {
-		return currentLocation;
-	}
-
-	public void setCurrentLocation(Key currentLocation) {
-		this.currentLocation = currentLocation;
-	}
+	
 
 	public Set<Key> getProfileViewers() {
 		return profileViewers;
@@ -249,6 +278,22 @@ public class CandidateProfile implements Serializable {
 		} else if (!candidateId.equals(other.candidateId))
 			return false;
 		return true;
+	}
+
+	public List<Key> getJobAlerts() {
+		return jobAlerts;
+	}
+
+	public void setJobAlerts(List<Key> jobAlerts) {
+		this.jobAlerts = jobAlerts;
+	}
+
+	public List<Key> getSavedJobs() {
+		return savedJobs;
+	}
+
+	public void setSavedJobs(List<Key> savedJobs) {
+		this.savedJobs = savedJobs;
 	}
 
 	
