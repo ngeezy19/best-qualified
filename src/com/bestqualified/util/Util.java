@@ -20,7 +20,6 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import javax.activation.MimeType;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -37,6 +36,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bestqualified.bean.AssessmentQuestionBean;
+import com.bestqualified.bean.CorrectionBean;
 import com.bestqualified.bean.FacebookAccessTokenResponse;
 import com.bestqualified.bean.InterestedJob;
 import com.bestqualified.bean.ManageProjectBean;
@@ -65,10 +66,12 @@ import com.bestqualified.entities.WorkExperience;
 import com.google.appengine.api.blobstore.BlobInfo;
 import com.google.appengine.api.blobstore.BlobInfoFactory;
 import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.datastore.EmbeddedEntity;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.QueryResultList;
+import com.google.appengine.api.datastore.Text;
 import com.google.appengine.api.images.ImagesService;
 import com.google.appengine.api.images.ImagesServiceFactory;
 import com.google.appengine.api.images.ServingUrlOptions;
@@ -396,6 +399,8 @@ public class Util {
 			CandidateProfile cp) {
 		ProfessionalDashboard pd = new ProfessionalDashboard();
 		// pd.setArticles(Util.getDashboardArticles());
+		pd.setProfessionalLevel(u.getProfessionalLevel());
+		pd.setRating(u.getRating());
 		pd.setCurrentEmployer(cp.getCurrentEmployer());
 		pd.setiJobs(Util.getJobs(cp.getCareerLevel(), cp.getEducation()));
 		pd.setName(u.getFirstName() + " " + u.getLastName());
@@ -1054,13 +1059,13 @@ public class Util {
 					pb.setTotalApplicants(0);
 				} else {
 					pb.setNewApplicants(j.getNewApplicants().size());
-					if(j.getApplicants() == null) {
-						pb.setTotalApplicants(j.getNewApplicants().size()+0);
-					}else {
+					if (j.getApplicants() == null) {
+						pb.setTotalApplicants(j.getNewApplicants().size() + 0);
+					} else {
 						pb.setTotalApplicants(j.getNewApplicants().size()
 								+ j.getApplicants().size());
 					}
-				}	
+				}
 			}
 			pb1.add(pb);
 		}
@@ -1081,23 +1086,151 @@ public class Util {
 
 	public static ManageProjectBean getManageProjectBean(List<ProjectBean1> l2) {
 		ManageProjectBean mpb = new ManageProjectBean();
-		for(ProjectBean1 pb1 : l2) {
-			mpb.setNewApplicants(mpb.getNewApplicants()+pb1.getNewApplicants());
-			mpb.setSavedProfiles(mpb.getSavedProfiles()+pb1.getSavedProfile());
-			mpb.setTotalApplicants(mpb.getTotalApplicants()+pb1.getTotalApplicants());
-			mpb.setSavedSearch(mpb.getSavedSearch()+pb1.getSavedSearch());
+		for (ProjectBean1 pb1 : l2) {
+			mpb.setNewApplicants(mpb.getNewApplicants()
+					+ pb1.getNewApplicants());
+			mpb.setSavedProfiles(mpb.getSavedProfiles() + pb1.getSavedProfile());
+			mpb.setTotalApplicants(mpb.getTotalApplicants()
+					+ pb1.getTotalApplicants());
+			mpb.setSavedSearch(mpb.getSavedSearch() + pb1.getSavedSearch());
 		}
 		mpb.setPb1(l2);
 		return mpb;
 	}
 
-	public static List<AssessmentQuestion> getAssessmentQuestions(
-			String level) {
-		List<Entity> ents = GeneralController.getAssessmentQuestionsBylevel(level);
+	public static List<AssessmentQuestion> getAssessmentQuestions(String level) {
 		List<AssessmentQuestion> qs = new ArrayList<>();
-		for(Entity e : ents) {
-			qs.add(EntityConverter.entityToAssessmentQuestion(e));
-		}
+
+		AssessmentQuestion a1 = new AssessmentQuestion();
+		List<EmbeddedEntity> alts = new ArrayList<>();
+		EmbeddedEntity ee1 = new EmbeddedEntity();
+		ee1.setUnindexedProperty("correct", true);
+		ee1.setUnindexedProperty("text", "dapibus in, viverra quis, fe");
+		EmbeddedEntity ee2 = new EmbeddedEntity();
+		ee2.setUnindexedProperty("correct", false);
+		ee2.setUnindexedProperty("text", "Lorem ipsum dolor sit ame");
+		EmbeddedEntity ee3 = new EmbeddedEntity();
+		ee3.setUnindexedProperty("correct", false);
+		ee3.setUnindexedProperty("text", "consectetuer adipiscing elit");
+		EmbeddedEntity ee4 = new EmbeddedEntity();
+		ee4.setUnindexedProperty("correct", false);
+		ee4.setUnindexedProperty("text", "Donec sodales sagittis magna");
+		EmbeddedEntity ee5 = new EmbeddedEntity();
+		ee5.setUnindexedProperty("correct", false);
+		ee5.setUnindexedProperty("text", "In enim justo, rhoncus ut");
+		alts.add(ee5);
+		alts.add(ee4);
+		alts.add(ee3);
+		alts.add(ee2);
+		alts.add(ee1);
+		a1.setAlternatives(alts);
+		a1.setBody(new Text(
+				"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."));
+		a1.setCategory(level);
+		qs.add(a1);
+
+		AssessmentQuestion a2 = new AssessmentQuestion();
+		List<EmbeddedEntity> alts2 = new ArrayList<>();
+		EmbeddedEntity ee11 = new EmbeddedEntity();
+		ee11.setUnindexedProperty("correct", true);
+		ee11.setUnindexedProperty("text", "Aenean commodo ligula eget dolor");
+		EmbeddedEntity ee21 = new EmbeddedEntity();
+		ee21.setUnindexedProperty("correct", false);
+		ee21.setUnindexedProperty("text",
+				"consectetuer adipiscing elit. Aenean commodo");
+		EmbeddedEntity ee31 = new EmbeddedEntity();
+		ee31.setUnindexedProperty("correct", false);
+		ee31.setUnindexedProperty("text", "adipiscing elit. Aenean commodo ");
+		EmbeddedEntity ee41 = new EmbeddedEntity();
+		ee41.setUnindexedProperty("correct", false);
+		ee41.setUnindexedProperty("text", "consectetuer adipiscing elitjjj");
+		EmbeddedEntity ee51 = new EmbeddedEntity();
+		ee51.setUnindexedProperty("correct", false);
+		ee51.setUnindexedProperty("text", "Lorem ipsum dolor sit amet");
+		alts2.add(ee51);
+		alts2.add(ee41);
+		alts2.add(ee31);
+		alts2.add(ee21);
+		alts2.add(ee11);
+		a2.setAlternatives(alts2);
+		a2.setBody(new Text(
+				"eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam"));
+		a2.setCategory(level);
+		qs.add(a2);
+
+		AssessmentQuestion a3 = new AssessmentQuestion();
+		List<EmbeddedEntity> alts3 = new ArrayList<>();
+		EmbeddedEntity ee12 = new EmbeddedEntity();
+		ee12.setUnindexedProperty("correct", true);
+		ee12.setUnindexedProperty("text",
+				"commodo ligula eget dolor. Aenean massa");
+		EmbeddedEntity ee22 = new EmbeddedEntity();
+		ee22.setUnindexedProperty("correct", false);
+		ee22.setUnindexedProperty("text",
+				"porttitor eu, consequat vitae, eleifend ac, enim");
+		EmbeddedEntity ee32 = new EmbeddedEntity();
+		ee32.setUnindexedProperty("correct", false);
+		ee32.setUnindexedProperty("text", "Nam quam nunc, blandit vel");
+		EmbeddedEntity ee42 = new EmbeddedEntity();
+		ee42.setUnindexedProperty("correct", false);
+		ee42.setUnindexedProperty("text", "Aenean vulputate eleifend tellus");
+		EmbeddedEntity ee52 = new EmbeddedEntity();
+		ee52.setUnindexedProperty("correct", false);
+		ee52.setUnindexedProperty("text", "Lorem ipsum dolor sit amet");
+		alts3.add(ee52);
+		alts3.add(ee42);
+		alts3.add(ee32);
+		alts3.add(ee22);
+		alts3.add(ee12);
+		a3.setAlternatives(alts2);
+		a3.setBody(new Text(
+				"nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam"));
+		a3.setCategory(level);
+		qs.add(a3);
+
 		return qs;
+		/*
+		 * List<Entity> ents =
+		 * GeneralController.getAssessmentQuestionsBylevel(level);
+		 * List<AssessmentQuestion> qs = new ArrayList<>(); for(Entity e : ents)
+		 * { qs.add(EntityConverter.entityToAssessmentQuestion(e)); } return qs;
+		 */
+	}
+
+	public static Map<String,Object> toAssessmentQuestionBean(
+			List<AssessmentQuestion> qs) {
+		Map<String,Object> m = new HashMap<>();
+		List<AssessmentQuestionBean> l = new ArrayList<>();
+		List<CorrectionBean> l1 = new ArrayList<>();
+		for(AssessmentQuestion aq : qs) {
+			CorrectionBean cb = new CorrectionBean();
+			AssessmentQuestionBean aqb = new AssessmentQuestionBean();
+			aqb.setBody(aq.getBody().getValue());
+			aqb.setWebkey(aq.getWebKey());
+			cb.setWebkey(aq.getWebKey());
+			//cb.setExplanation(aq.getExplanation().getValue());
+			List<EmbeddedEntity> ees = aq.getAlternatives();
+			Map<String, String> map = new HashMap<>();
+			int i = 0;
+			for(EmbeddedEntity ee: ees) {
+				map.put(String.valueOf(i), (String)ee.getProperty("text"));
+				
+				Boolean b = (Boolean) ee.getProperty("correct");
+				if( b ) {
+					cb.setAnswer(String.valueOf(i));		
+				}
+				
+				i++;
+						
+			}
+			aqb.setAnswer("");
+			aqb.setAlternatives(map);
+			l.add(aqb);
+			l1.add(cb);
+			
+		}
+		m.put("q", l);
+		m.put("c", l1);
+		return m;
 	}
 }

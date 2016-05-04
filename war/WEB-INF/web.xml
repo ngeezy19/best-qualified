@@ -282,6 +282,22 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>InitBrowseProfiles</servlet-name>
 		<url-pattern>/bq/close/init-browse-profiles</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>GetAssessmentQuestion</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.GetAssessmentQuestion</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAssessmentQuestion</servlet-name>
+		<url-pattern>/bq/close/get-assessment-questions</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>LoadAssessmentQuestion</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.LoadAssessmentQuestion</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoadAssessmentQuestion</servlet-name>
+		<url-pattern>/bq/close/load-assessment-question</url-pattern>
+	</servlet-mapping>
 	<!-- ***************************************************SERVLET*********************************************************** -->
 	<servlet>
 		<servlet-name>NewsLetterSubscription</servlet-name>

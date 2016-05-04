@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css"
 	href="/styles/jquery.webui-popover.min.css">
 <link rel="stylesheet" href="/styles/main.css">
+
 <style type="text/css">
 .subnav li {
 	list-style: none;
@@ -122,14 +123,18 @@
 							</div>
 							<div class="col-sm-9">
 								<h4>
-									<a href="/bq/open/job?job-key=${item.jobKey}"><c:out value="${item.jobTitle}" /></a>
+									<a href="/bq/open/job?job-key=${item.jobKey}"><c:out
+											value="${item.jobTitle}" /></a>
 								</h4>
 								<h5 style="font-family: calibri">
 									<c:out value="${item.companyName}" />
 								</h5>
 								<h5>
-									<i class="text-danger" style="font-family: calibri">Posted <c:out
-											value="${item.postedTime}" /></i> <a href="<c:url value='/bq/open/job?job-key=${item.jobKey}' />" class="pull-right">View</a>
+									<i class="text-danger" style="font-family: calibri">Posted
+										<c:out value="${item.postedTime}" />
+									</i> <a
+										href="<c:url value='/bq/open/job?job-key=${item.jobKey}' />"
+										class="pull-right">View</a>
 								</h5>
 							</div>
 
@@ -200,6 +205,14 @@
 
 		</div>
 		<div class="col-sm-4">
+			<c:if test="${empty professionalDashboard.professionalLevel}">
+				<div class="dashboard-section" style="text-align: center">
+					<p style="font-size: 10pt">Get found! Apply for Great Jobs!
+						Take an assessment test</p>
+					<button type="button" class="btn btn-info"
+						data-toggle="modal" data-target="#myModal">Start Assessment Test</button>
+				</div>
+			</c:if>
 			<div class="col-sm-12 dashboard-row no-padding-div">
 				<iframe src="http://localhost:8888/images/ad1/negotiatn_ext.html"
 					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
@@ -212,8 +225,38 @@
 				<iframe src="http://localhost:8888/images/ad3/tools_or_luck.html"
 					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
 			</div>
+
 		</div>
 
+
+
+	</div>
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Select your level of experience</h4>
+				</div>
+				<div class="modal-body">
+					<form id="exp-level-form" action="<c:url value='/bq/close/get-assessment-questions'/>">
+						<select name="exp-level">
+							<option>Beginner</option>
+							<option>Intermediate</option>
+							<option>Advanced</option>
+						</select>
+						<input class="btn btn-info" type="submit" value="Go for test">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
 	</div>
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
@@ -221,4 +264,5 @@
 	<script src="/js/jquery.webui-popover.min.js"></script>
 	<script src="/js/waitMe.js"></script>
 	<script src="/js/main.js"></script>
+	
 </body>

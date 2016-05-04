@@ -1,6 +1,7 @@
 package com.bestqualified.entities;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
 import com.bestqualified.controllers.GeneralController;
@@ -76,6 +77,7 @@ public class AssessmentQuestion implements Serializable {
 	}
 	public void setAlternatives(List<EmbeddedEntity> alternatives) {
 		this.alternatives = alternatives;
+		Collections.shuffle(this.alternatives);
 		this.correctAnswer = retrieveCorrectAnswer(alternatives);
 	}
 	

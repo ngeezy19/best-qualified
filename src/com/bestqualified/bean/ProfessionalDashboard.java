@@ -10,10 +10,29 @@ public class ProfessionalDashboard implements Serializable {
 	 */
 	private static final long serialVersionUID = 516639664385901621L;
 	private String name, pictureUrl, tagline, currentEmployer, noOfConnections,
-			noOfProfileViewers, profileLevel, profileColor;
+			noOfProfileViewers, profileLevel, profileColor, professionalLevel;
 	private long profileStrength;
+	private double rating;
 	private List<InterestedJob> iJobs;
 	private List<Article> articles;
+	
+	
+
+	public String getProfessionalLevel() {
+		return professionalLevel;
+	}
+
+	public void setProfessionalLevel(String professionalLevel) {
+		this.professionalLevel = professionalLevel;
+	}
+
+	public double getRating() {
+		return rating;
+	}
+
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
 
 	public String getProfileColor() {
 		return profileColor;
@@ -109,8 +128,10 @@ public class ProfessionalDashboard implements Serializable {
 				+ pictureUrl + ", tagline=" + tagline + ", currentEmployer="
 				+ currentEmployer + ", noOfConnections=" + noOfConnections
 				+ ", noOfProfileViewers=" + noOfProfileViewers
-				+ ", profileStrength=" + profileStrength + ", iJobs=" + iJobs
-				+ ", articles=" + articles + "]";
+				+ ", profileLevel=" + profileLevel + ", profileColor="
+				+ profileColor + ", professionalLevel=" + professionalLevel
+				+ ", profileStrength=" + profileStrength + ", rating=" + rating
+				+ ", iJobs=" + iJobs + ", articles=" + articles + "]";
 	}
 
 }
