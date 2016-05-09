@@ -58,14 +58,33 @@
 						</div>
 					</div>
 					<div class="col-sm-4">
-						<div style="text-align: center;">
-							<span style="font-size: 22pt"><c:out
-									value='${professionalDashboard.noOfConnections}' /> </span>
-							connections
-						</div>
-						<div style="text-align: center;">
-							<a href="#">Meet professionals</a>
-						</div>
+						<c:set var="beginner" value="BEGINNER" />
+						<c:set var="intemediate" value="INTERMEDIATE" />
+						<c:set var="advanced" value="ADVANCED" />
+						<c:choose>
+							<c:when
+								test="${not empty professionalDashboard.professionalLevel}">
+								<div style="text-align: center;">
+									<span style="font-size: 22pt"><c:out
+											value='${professionalDashboard.rating}' /> </span> star
+								</div>
+								<div style="text-align: center;">
+									<c:choose>
+										<c:when
+											test="${professionalDashboard.professionalLevel == beginner }">
+									Associate Level
+								</c:when>
+										<c:otherwise>
+
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<h4>No Rating</h4>
+							</c:otherwise>
+						</c:choose>
+
 					</div>
 				</div>
 				<div class="col-sm-2"></div>
@@ -206,11 +225,11 @@
 		</div>
 		<div class="col-sm-4">
 			<c:if test="${empty professionalDashboard.professionalLevel}">
-				<div class="dashboard-section" style="text-align: center">
+				<div class="dashboard-section" style="text-align: center; z-index: 100; position: fixed;">
 					<p style="font-size: 10pt">Get found! Apply for Great Jobs!
 						Take an assessment test</p>
-					<button type="button" class="btn btn-info"
-						data-toggle="modal" data-target="#myModal">Start Assessment Test</button>
+					<button type="button" class="btn btn-info" data-toggle="modal"
+						data-target="#myModal">Start Assessment Test</button>
 				</div>
 			</c:if>
 			<div class="col-sm-12 dashboard-row no-padding-div">
@@ -242,13 +261,13 @@
 					<h4 class="modal-title">Select your level of experience</h4>
 				</div>
 				<div class="modal-body">
-					<form id="exp-level-form" action="<c:url value='/bq/close/get-assessment-questions'/>">
+					<form id="exp-level-form"
+						action="<c:url value='/bq/close/get-assessment-questions'/>">
 						<select name="exp-level">
 							<option>Beginner</option>
 							<option>Intermediate</option>
 							<option>Advanced</option>
-						</select>
-						<input class="btn btn-info" type="submit" value="Go for test">
+						</select> <input class="btn btn-info" type="submit" value="Go for test">
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -264,5 +283,5 @@
 	<script src="/js/jquery.webui-popover.min.js"></script>
 	<script src="/js/waitMe.js"></script>
 	<script src="/js/main.js"></script>
-	
+
 </body>

@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -83,6 +84,10 @@ import com.google.appengine.api.urlfetch.URLFetchServiceFactory;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 import com.google.appengine.labs.repackaged.org.json.JSONTokener;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
 public class Util {
 
@@ -1105,86 +1110,81 @@ public class Util {
 		List<EmbeddedEntity> alts = new ArrayList<>();
 		EmbeddedEntity ee1 = new EmbeddedEntity();
 		ee1.setUnindexedProperty("correct", true);
-		ee1.setUnindexedProperty("text", "dapibus in, viverra quis, fe");
+		ee1.setUnindexedProperty("text", "Alhaji, Muhammed Buhari");
 		EmbeddedEntity ee2 = new EmbeddedEntity();
 		ee2.setUnindexedProperty("correct", false);
-		ee2.setUnindexedProperty("text", "Lorem ipsum dolor sit ame");
+		ee2.setUnindexedProperty("text", "Gen. Sani Abacha");
 		EmbeddedEntity ee3 = new EmbeddedEntity();
 		ee3.setUnindexedProperty("correct", false);
-		ee3.setUnindexedProperty("text", "consectetuer adipiscing elit");
+		ee3.setUnindexedProperty("text", "Gen. Olusegun Obasanjo");
 		EmbeddedEntity ee4 = new EmbeddedEntity();
 		ee4.setUnindexedProperty("correct", false);
-		ee4.setUnindexedProperty("text", "Donec sodales sagittis magna");
+		ee4.setUnindexedProperty("text", "Alhaji Sheu Yarádua");
 		EmbeddedEntity ee5 = new EmbeddedEntity();
 		ee5.setUnindexedProperty("correct", false);
-		ee5.setUnindexedProperty("text", "In enim justo, rhoncus ut");
+		ee5.setUnindexedProperty("text", "Bola Ahmed Tinibu (Jagaban)");
 		alts.add(ee5);
 		alts.add(ee4);
 		alts.add(ee3);
 		alts.add(ee2);
 		alts.add(ee1);
 		a1.setAlternatives(alts);
-		a1.setBody(new Text(
-				"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."));
+		a1.setBody(new Text("Who is the Current President of Nigeria?"));
 		a1.setCategory(level);
 		qs.add(a1);
 
 		AssessmentQuestion a2 = new AssessmentQuestion();
 		List<EmbeddedEntity> alts2 = new ArrayList<>();
 		EmbeddedEntity ee11 = new EmbeddedEntity();
-		ee11.setUnindexedProperty("correct", true);
-		ee11.setUnindexedProperty("text", "Aenean commodo ligula eget dolor");
+		ee11.setUnindexedProperty("correct", false);
+		ee11.setUnindexedProperty("text", "Alhaji Tafawa Balewa");
 		EmbeddedEntity ee21 = new EmbeddedEntity();
 		ee21.setUnindexedProperty("correct", false);
-		ee21.setUnindexedProperty("text",
-				"consectetuer adipiscing elit. Aenean commodo");
+		ee21.setUnindexedProperty("text", "Goodluck Johnathan");
 		EmbeddedEntity ee31 = new EmbeddedEntity();
 		ee31.setUnindexedProperty("correct", false);
-		ee31.setUnindexedProperty("text", "adipiscing elit. Aenean commodo ");
+		ee31.setUnindexedProperty("text", "Gen. Ibrahim Babangida");
 		EmbeddedEntity ee41 = new EmbeddedEntity();
-		ee41.setUnindexedProperty("correct", false);
-		ee41.setUnindexedProperty("text", "consectetuer adipiscing elitjjj");
+		ee41.setUnindexedProperty("correct", true);
+		ee41.setUnindexedProperty("text", "Dr. Nnamdi Azikwe");
 		EmbeddedEntity ee51 = new EmbeddedEntity();
 		ee51.setUnindexedProperty("correct", false);
-		ee51.setUnindexedProperty("text", "Lorem ipsum dolor sit amet");
+		ee51.setUnindexedProperty("text", "Bola Ahmed Tinubu (Jagaban)");
 		alts2.add(ee51);
 		alts2.add(ee41);
 		alts2.add(ee31);
 		alts2.add(ee21);
 		alts2.add(ee11);
 		a2.setAlternatives(alts2);
-		a2.setBody(new Text(
-				"eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam"));
+		a2.setBody(new Text("Who was the first president of Nigeria?"));
 		a2.setCategory(level);
 		qs.add(a2);
 
 		AssessmentQuestion a3 = new AssessmentQuestion();
 		List<EmbeddedEntity> alts3 = new ArrayList<>();
 		EmbeddedEntity ee12 = new EmbeddedEntity();
-		ee12.setUnindexedProperty("correct", true);
-		ee12.setUnindexedProperty("text",
-				"commodo ligula eget dolor. Aenean massa");
+		ee12.setUnindexedProperty("correct", false);
+		ee12.setUnindexedProperty("text", "Moshood Abiola");
 		EmbeddedEntity ee22 = new EmbeddedEntity();
-		ee22.setUnindexedProperty("correct", false);
-		ee22.setUnindexedProperty("text",
-				"porttitor eu, consequat vitae, eleifend ac, enim");
+		ee22.setUnindexedProperty("correct", true);
+		ee22.setUnindexedProperty("text", "Gen. Ibrahim Gbadamosi Babangida");
 		EmbeddedEntity ee32 = new EmbeddedEntity();
 		ee32.setUnindexedProperty("correct", false);
-		ee32.setUnindexedProperty("text", "Nam quam nunc, blandit vel");
+		ee32.setUnindexedProperty("text", "Mr. Fela Anikulapo Kuti");
 		EmbeddedEntity ee42 = new EmbeddedEntity();
 		ee42.setUnindexedProperty("correct", false);
-		ee42.setUnindexedProperty("text", "Aenean vulputate eleifend tellus");
+		ee42.setUnindexedProperty("text", "Gen. Olusegun Obasanjo");
 		EmbeddedEntity ee52 = new EmbeddedEntity();
 		ee52.setUnindexedProperty("correct", false);
-		ee52.setUnindexedProperty("text", "Lorem ipsum dolor sit amet");
+		ee52.setUnindexedProperty("text", "Bola Ahmed Tinubu (Jagaban)");
 		alts3.add(ee52);
 		alts3.add(ee42);
 		alts3.add(ee32);
 		alts3.add(ee22);
 		alts3.add(ee12);
-		a3.setAlternatives(alts2);
+		a3.setAlternatives(alts3);
 		a3.setBody(new Text(
-				"nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam"));
+				"Who moved the Federal Capital of Nigeria from Lagos to Abuja?"));
 		a3.setCategory(level);
 		qs.add(a3);
 
@@ -1197,41 +1197,83 @@ public class Util {
 		 */
 	}
 
-	public static Map<String,Object> toAssessmentQuestionBean(
-			//ninth commit
+	public static Map<String, Object> toAssessmentQuestionBean(
+	// ninth commit
 			List<AssessmentQuestion> qs) {
-		Map<String,Object> m = new HashMap<>();
+		Map<String, Object> m = new HashMap<>();
 		List<AssessmentQuestionBean> l = new ArrayList<>();
 		List<CorrectionBean> l1 = new ArrayList<>();
-		for(AssessmentQuestion aq : qs) {
+		for (AssessmentQuestion aq : qs) {
 			CorrectionBean cb = new CorrectionBean();
 			AssessmentQuestionBean aqb = new AssessmentQuestionBean();
-			aqb.setBody(aq.getBody().getValue());
+			aqb.setQuestion(aq.getBody().getValue());
 			aqb.setWebkey(aq.getWebKey());
 			cb.setWebkey(aq.getWebKey());
-			//cb.setExplanation(aq.getExplanation().getValue());
+			// cb.setExplanation(aq.getExplanation().getValue());
 			List<EmbeddedEntity> ees = aq.getAlternatives();
 			Map<String, String> map = new HashMap<>();
 			int i = 0;
-			for(EmbeddedEntity ee: ees) {
-				map.put(String.valueOf(i), (String)ee.getProperty("text"));
-				
+			for (EmbeddedEntity ee : ees) {
+				map.put(String.valueOf(i), (String) ee.getProperty("text"));
+
 				Boolean b = (Boolean) ee.getProperty("correct");
-				if( b ) {
-					cb.setAnswer(String.valueOf(i));		
+				if (b) {
+					cb.setAnswer(String.valueOf(i));
 				}
-				
+
 				i++;
-						
+
 			}
-			aqb.setAnswer("");
-			aqb.setAlternatives(map);
+			aqb.setCorrectAnswer("");
+			aqb.setChoices(map);
 			l.add(aqb);
 			l1.add(cb);
-			
+
 		}
 		m.put("q", l);
 		m.put("c", l1);
 		return m;
+	}
+
+	public static List<CorrectionBean> toCorrectionBean(String answers) {
+		JsonParser jsonParser = new JsonParser();
+      
+        JsonArray jsonArr = (JsonArray)jsonParser.parse(answers);;
+        Gson googleJson = new Gson();
+        Type listType = new TypeToken<List<AssessmentQuestionBean>>() {}.getType();
+        ArrayList<AssessmentQuestionBean> jsonObjList = googleJson.fromJson(jsonArr, listType);
+        return assessmentQuestionToCorrectionBean(jsonObjList);
+	}
+
+	private static List<CorrectionBean> assessmentQuestionToCorrectionBean(
+			ArrayList<AssessmentQuestionBean> jsonObjList) {
+		List<CorrectionBean> cbs = new ArrayList<>();
+		for(AssessmentQuestionBean aqb : jsonObjList) {
+			CorrectionBean cb = new CorrectionBean();
+			cb.setWebkey(aqb.getWebkey());
+			cb.setAnswer(aqb.getCorrectAnswer());
+			cbs.add(cb);
+		}
+		return cbs;
+	}
+
+	public static int markAssessment(List<CorrectionBean> cb,
+			List<CorrectionBean> userAns) {
+		int score = 0;
+		for (CorrectionBean ctb : cb) {
+			String key = ctb.getWebkey();
+			for (CorrectionBean ctb2 : userAns) {
+				if (ctb2.getWebkey().equalsIgnoreCase(key)
+						&& ctb2.getAnswer().equalsIgnoreCase(ctb.getAnswer())) {
+					score++;
+					break;
+				}
+			}
+		}
+		return score;
+	}
+
+	public static double getRating(int score, int total) {
+		return Math.round(score*5/total);
 	}
 }

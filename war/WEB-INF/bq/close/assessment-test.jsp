@@ -20,15 +20,30 @@
 	<script src="/js/main.js"></script>
 	<script type="text/javascript">
 		function loadData () {
-			alert("called");
+			
 			$.ajax({
 				url:"/bq/close/load-assessment-question",
 				dataType: "json",
+				
 				success: function(data) {
 					console.log(data);
 				},
 				error : function () {
 					alert("error 2");
+				}, 
+				complete : function() {
+					$.ajax({
+						url:"/bq/close/mark-test",
+						dataType: "json",
+						method: "POST",
+						data : "",
+						success : function(data) {
+							
+						},
+						error :function() {
+							alert("error 3");
+						}
+					});
 				}
 			});
 		}

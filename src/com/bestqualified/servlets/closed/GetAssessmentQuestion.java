@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.bestqualified.bean.AssessmentQuestionBean;
 import com.bestqualified.bean.AssessmentTest;
+import com.bestqualified.bean.CorrectionBean;
 import com.bestqualified.entities.AssessmentQuestion;
 import com.bestqualified.entities.User;
 import com.bestqualified.util.Util;
@@ -46,12 +47,14 @@ public class GetAssessmentQuestion extends HttpServlet {
 			at.setCategory(level);
 			u=(User) o;
 			at.setCandidateName(u.getFirstName()+" "+u.getLastName());
-			
+			List<CorrectionBean> cb = (List<CorrectionBean>) map.get("c");
 			synchronized (session) {
 				session.setAttribute("assessmentTest", at);
+				session.setAttribute("correctionBean", cb);
+				session.setAttribute("ass-level", level.toUpperCase());
 			}
 			
-			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/bq/close/assessment-test.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/bq/close/test.html");
 			rd.include(req, resp);
 			
 		}

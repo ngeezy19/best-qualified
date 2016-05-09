@@ -27,6 +27,11 @@ public class CorrectionBean implements Serializable {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
+	@Override
+	public String toString() {
+		return "CorrectionBean [explanation=" + explanation + ", webkey="
+				+ webkey + ", answer=" + answer + "]";
+	}
 	
 	
 }

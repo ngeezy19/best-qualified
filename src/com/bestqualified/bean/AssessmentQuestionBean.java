@@ -10,38 +10,41 @@ public class AssessmentQuestionBean implements Serializable {
 	 */
 	private static final long serialVersionUID = -4689996412452241654L;
 	
-	private String webkey,body,answer;
-	private Map<String,String> alternatives;
+	private String webkey,question,correctAnswer;
+	private Map<String,String> choices;
+	@Override
+	public String toString() {
+		return "AssessmentQuestionBean [webkey=" + webkey + ", question="
+				+ question + ", correctAnswer=" + correctAnswer + ", choices="
+				+ choices + "]";
+	}
 	public String getWebkey() {
 		return webkey;
 	}
 	public void setWebkey(String webkey) {
 		this.webkey = webkey;
 	}
-	public String getBody() {
-		return body;
+	public String getQuestion() {
+		return question;
 	}
-	public void setBody(String body) {
-		this.body = body;
+	public void setQuestion(String question) {
+		this.question = question;
 	}
-	public String getAnswer() {
-		return answer;
+	public String getCorrectAnswer() {
+		return correctAnswer;
 	}
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public void setCorrectAnswer(String correctAnswer) {
+		this.correctAnswer = correctAnswer;
 	}
-	public Map<String, String> getAlternatives() {
-		return alternatives;
+	public Map<String, String> getChoices() {
+		return choices;
 	}
-	public void setAlternatives(Map<String, String> alternatives) {
-		this.alternatives = alternatives;
+	public void setChoices(Map<String, String> choices) {
+		this.choices = choices;
 	}
 	
-	@Override
-	public String toString() {
-		return "AssessmentQuestionBean [webkey=" + webkey + ", body=" + body
-				+ ", answer=" + answer + ", alternatives=" + alternatives + "]";
-	}
+	
+	
 	
 	
 

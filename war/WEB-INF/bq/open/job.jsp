@@ -109,7 +109,11 @@
 			<c:if test="${noCV}">
 				<div class="bq-alert bq-alert-warning">
 					<p>You have to update your profile and upload your CV.</p>
-					<p>Go to your<a href="<c:url value='/bq/closed/init-professional-profile'/>"> profile</a></p>
+					<p>
+						Go to your<a
+							href="<c:url value='/bq/closed/init-professional-profile'/>">
+							profile</a>
+					</p>
 				</div>
 			</c:if>
 			<c:if test="${cvSent}">
@@ -135,9 +139,20 @@
 									value="${jobInformation.datePosted}" /></i>
 						</h5>
 						<p>
-							<a
-								href="<c:url value='/bq/closed/job/application?job-key=${jobInformation.webKey}' />"
-								class="btn btn-primary">Apply</a>
+
+							<c:choose>
+								<c:when test="${not empty professionalDashboard.professionalLevel}">
+									<a
+										href="<c:url value='/bq/closed/job/application?job-key=${jobInformation.webKey}' />"
+										class="btn btn-primary">Apply</a>
+								</c:when>
+								<c:otherwise>
+									<button type="button" class="btn btn-info" data-toggle="modal"
+										data-target="#myModal">Start Assessment Test</button>
+								</c:otherwise>
+							</c:choose>
+
+
 							<a class="btn btn-success">Save</a>
 						</p>
 					</div>
@@ -145,7 +160,7 @@
 						<hr />
 					</div>
 					<div class="col-sm-12">
-						
+
 						<p>${jobInformation.jobDesc}</p>
 						<p>${jobInformation.extraInfo}</p>
 						<p>
@@ -257,6 +272,34 @@
 
 
 
+	</div>
+
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Select your level of experience</h4>
+				</div>
+				<div class="modal-body">
+					<form id="exp-level-form"
+						action="<c:url value='/bq/close/get-assessment-questions'/>">
+						<select name="exp-level">
+							<option>Beginner</option>
+							<option>Intermediate</option>
+							<option>Advanced</option>
+						</select> <input class="btn btn-info" type="submit" value="Go for test">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
 	</div>
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>

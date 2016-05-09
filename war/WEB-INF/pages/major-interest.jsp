@@ -72,11 +72,7 @@ body {
 		</div>
 
 
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
+		<br> <br> <br> <br> <br>
 
 		<div class="row">
 			<div class="col-md-6">
@@ -100,21 +96,22 @@ body {
 				</div>
 				<form method="post"
 					action="<c:url value='/end-point/add-major-interest' />">
-					<input name="user-type" type="hidden"
-						value="professional" />
-					<input type="submit" class="btn btn-success" value="Enter">
+					<input name="user-type" type="hidden" value="professional" /> <input
+						type="submit" class="btn btn-success" value="Enter">
 				</form>
 			</div>
-
+			<br>
+			<br>
+			
 			<div class="col-md-6">
+
 				<div class="lefto">
 					<h3 class="format">A Recruiter?</h3>
 				</div>
 				<form method="post"
 					action="<c:url value='/end-point/add-major-interest' />">
-					<input name="user-type" type="hidden"
-						value="recruiter" />
-					<input type="submit" class="btn btn-success" value="Enter">
+					<input name="user-type" type="hidden" value="recruiter" /> <input
+						type="submit" class="btn btn-success" value="Enter">
 				</form>
 			</div>
 
