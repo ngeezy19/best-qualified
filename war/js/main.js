@@ -27,6 +27,8 @@ function addPopOver() {
 
 $(document).ready(function() {
 	
+	
+	
 	$("#imginfo").mouseenter(function() {
 		addPopOver();
 	});

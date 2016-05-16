@@ -267,7 +267,7 @@ div.transbox form input {
 						class="media-object img-rounded" src="images/job.png"></a>
 					<div class="media-body">
 						<h4 class="media-heading"><strong>JOBS</strong></h4>
-						<h5 class="job">Get hired in industries of your choice</h5>
+						<h5 class="job">Get hired in industries of your choice.</h5>
 						<p class="plat">Start your exciting career journey here</p>
 						<p class="plat">There's nothing wrong with trying something
 							new.</p>
@@ -283,7 +283,7 @@ div.transbox form input {
 						class="media-object img-rounded" src="images/train.png"></a>
 					<div class="media-body">
 						<h4 class="media-heading"><strong>CERTIFICATIONS</strong></h4>
-						<h5 class="jobs">Get hired in industries of your choice</h5>
+						<h5 class="jobs">Earn valuable certifications.</h5>
 						<p class="plat">Free or affordable trainings to improve your
 							career.</p>
 						<p class="plat">Join professional Sales & Marketing
@@ -305,7 +305,7 @@ div.transbox form input {
 						class="media-object img-rounded" src="images/coaching.png"></a>
 					<div class="media-body">
 						<h4 class="media-heading"><strong>COACHING/MENTORING</strong></h4>
-						<h5 class="jobss">Get hired in industries of your choice</h5>
+						<h5 class="jobss">Everyone can do with a helping hand.</h5>
 						<p class="plat">Latest career advice will be sent to your
 							inbox.</p>
 						<p class="plat">Help is always available for your job
@@ -323,7 +323,7 @@ div.transbox form input {
 						class="media-object img-rounded" src="images/community.png"></a>
 					<div class="media-body">
 						<h4 class="media-heading"><strong>OUR NETWORK</strong></h4>
-						<h5 class="jobsss">Get hired in industries of your choice</h5>
+						<h5 class="jobsss">Join our community of BQ professionals</h5>
 						<p class="plat">Plug into new communities that can improve
 							your network.</p>
 						<p class="plat">Meet and share opinions with other

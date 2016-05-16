@@ -127,6 +127,9 @@ public class EntityConverter {
 
 	public static Company entityToCompany(Entity e) {
 		
+		if(e == null) {
+			return null;
+		}
 		Company c = new Company();
 		c.setId(e.getKey());
 		c.setAddress((String) e.getProperty(StringConstants.ADDRESS));

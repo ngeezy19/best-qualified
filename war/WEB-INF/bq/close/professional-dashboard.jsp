@@ -12,7 +12,10 @@
 <link rel="stylesheet" href="/styles/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
 	href="/styles/jquery.webui-popover.min.css">
+bootstrap-rating.css
+<link rel="stylesheet" href="/styles/bootstrap-rating.css">
 <link rel="stylesheet" href="/styles/main.css">
+<link rel="stylesheet" href="/styles/animate.css">
 
 <style type="text/css">
 .subnav li {
@@ -20,12 +23,32 @@
 	display: inline;
 	margin-right: 2%;
 }
+
+#get-rated {
+	-webkit-animation-duration: 2s;
+	-webkit-animation-delay: 2s;
+	-webkit-animation-iteration-count: infinite;
+}
 </style>
 </head>
 <body
 	style="background-image: url(/images/background.jpg); background-repeat: repeat;">
 	<%@ include file="/main-nav.html"%>
 	<div class="container dashboard-body" style="margin-top: 8%;">
+		<c:if test="${empty professionalDashboard.professionalLevel}">
+
+			<div class="alert alert-info">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<h5 style="font-weight: bold;">You have not taken our
+					assessment test.</h5>
+				<p>
+					Professionals who have taken our assessment test can apply for jobs
+					and get found by recruiters.
+					<button class="btn btn-primary take-assessment" data-toggle="modal"
+						data-target="#myModal">Take assessment test now</button>
+				</p>
+			</div>
+		</c:if>
 		<div class="col-sm-8">
 			<div class="col-sm-12" style="margin-bottom: 2%;">
 				<div class="col-sm-2">
@@ -61,29 +84,34 @@
 						<c:set var="beginner" value="BEGINNER" />
 						<c:set var="intemediate" value="INTERMEDIATE" />
 						<c:set var="advanced" value="ADVANCED" />
-						<c:choose>
-							<c:when
-								test="${not empty professionalDashboard.professionalLevel}">
-								<div style="text-align: center;">
-									<span style="font-size: 22pt"><c:out
-											value='${professionalDashboard.rating}' /> </span> star
-								</div>
-								<div style="text-align: center;">
-									<c:choose>
-										<c:when
-											test="${professionalDashboard.professionalLevel == beginner }">
-									Associate Level
-								</c:when>
-										<c:otherwise>
 
-										</c:otherwise>
-									</c:choose>
-								</div>
-							</c:when>
-							<c:otherwise>
-								<h4>No Rating</h4>
-							</c:otherwise>
-						</c:choose>
+						<h4
+							style="text-align: center; padding-top: 2%; font-weight: bolder; font-size: 14pt; color: #DAA520">
+							<input type="hidden" class="rating" data-readonly
+								data-fractions="2" value="${professionalDashboard.rating}">
+						</h4>
+						<div style="text-align: center;">
+							<c:choose>
+								<c:when
+									test="${professionalDashboard.professionalLevel == beginner }">
+									Beginner
+								</c:when>
+								<c:when
+									test="${professionalDashboard.professionalLevel == intemediate }">
+									Intemediate
+								</c:when>
+								<c:when
+									test="${professionalDashboard.professionalLevel == advanced }">
+									Experienced
+								</c:when>
+								<c:otherwise>
+									<h4 id="get-rated" class="animated tada"
+										style="font-weight: bolder; color: red">Get Rated!</h4>
+									<input type="button" data-toggle="modal" data-target="#myModal"
+										class="btn btn-success btn-xs" value="Take Assessment Test" />
+								</c:otherwise>
+							</c:choose>
+						</div>
 
 					</div>
 				</div>
@@ -137,12 +165,17 @@
 						<div class="col-sm-12"
 							style="border-bottom: 1px #e1e1e1 solid; margin-bottom: 2%; margin-top: 2%;">
 							<div class="col-sm-3">
-								<a href="<c:url value='/bq/open/job?job-key=${item.jobKey}' />"><img
+								<a<c:choose><c:when test="${empty professionalDashboard.professionalLevel}">class="call-no-assessment" href="#"</c:when>
+										<c:otherwise>href="/bq/open/job?job-key=${item.jobKey}"</c:otherwise>
+										</c:choose>"><img
 									alt="" src="${item.pictureUrl}" class="img img-responsive"></a>
 							</div>
 							<div class="col-sm-9">
 								<h4>
-									<a href="/bq/open/job?job-key=${item.jobKey}"><c:out
+									<a
+										<c:choose><c:when test="${empty professionalDashboard.professionalLevel}">class="call-no-assessment" href="#"</c:when>
+										<c:otherwise>href="/bq/open/job?job-key=${item.jobKey}"</c:otherwise>
+										</c:choose>><c:out
 											value="${item.jobTitle}" /></a>
 								</h4>
 								<h5 style="font-family: calibri">
@@ -152,7 +185,9 @@
 									<i class="text-danger" style="font-family: calibri">Posted
 										<c:out value="${item.postedTime}" />
 									</i> <a
-										href="<c:url value='/bq/open/job?job-key=${item.jobKey}' />"
+										<c:choose><c:when test="${empty professionalDashboard.professionalLevel}">class="call-no-assessment pull-right" href="#"</c:when>
+										<c:otherwise>href="/bq/open/job?job-key=${item.jobKey}"</c:otherwise>
+										</c:choose>
 										class="pull-right">View</a>
 								</h5>
 							</div>
@@ -224,14 +259,7 @@
 
 		</div>
 		<div class="col-sm-4">
-			<c:if test="${empty professionalDashboard.professionalLevel}">
-				<div class="dashboard-section" style="text-align: center; z-index: 100; position: fixed;">
-					<p style="font-size: 10pt">Get found! Apply for Great Jobs!
-						Take an assessment test</p>
-					<button type="button" class="btn btn-info" data-toggle="modal"
-						data-target="#myModal">Start Assessment Test</button>
-				</div>
-			</c:if>
+
 			<div class="col-sm-12 dashboard-row no-padding-div">
 				<iframe src="http://localhost:8888/images/ad1/negotiatn_ext.html"
 					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
@@ -255,19 +283,60 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
+			<div class="modal-content"
+				style="background-image: url('/images/experience-level.jpg');">
+				<div class="modal-header" style="border: none">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Select your level of experience</h4>
+
 				</div>
+
 				<div class="modal-body">
+					<h4 class="modal-title text-warning" style="font-weight: bolder;">Select
+						your level of experience</h4>
 					<form id="exp-level-form"
 						action="<c:url value='/bq/close/get-assessment-questions'/>">
 						<select name="exp-level">
-							<option>Beginner</option>
-							<option>Intermediate</option>
-							<option>Advanced</option>
-						</select> <input class="btn btn-info" type="submit" value="Go for test">
+							<option value="Beginner">Beginner (0-3 yrs)</option>
+							<option value="Intermediate">Intermediate (4-7 yrs)</option>
+							<option value="Experienced">Experienced 8+ yrs</option>
+						</select> <input class="btn btn-info" type="submit" value="Start test">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div id="myModal1" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content"
+				style="background-image: url('/images/experience-level.jpg');">
+				<div class="modal-header" style="border: none">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+				</div>
+				<div class="modal-body">
+					<h4 style="font-weight: bolder;" class="text-warning">
+						Hello
+						<c:out value='${professionalDashboard.name}' />
+
+					</h4>
+					<p>You have to take our assessment test before you can apply
+						for a job and get found by recruiters.</p>
+					<p>
+						<strong class="text-danger">Select your experience level</strong>
+					</p>
+					<form id="exp-level-form"
+						action="<c:url value='/bq/close/get-assessment-questions'/>">
+						<select name="exp-level">
+							<option value="Beginner">Beginner (0-3 yrs)</option>
+							<option value="Intermediate">Intermediate (4-7 yrs)</option>
+							<option value="Experienced">Experienced 8+ yrs</option>
+						</select> <input class="btn btn-info" type="submit" value="Start test">
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -283,5 +352,14 @@
 	<script src="/js/jquery.webui-popover.min.js"></script>
 	<script src="/js/waitMe.js"></script>
 	<script src="/js/main.js"></script>
+	<script src="/js/bootstrap-rating.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".call-no-assessment").click(function(e) {
+				e.preventDefault();
+				$("#myModal1").modal();
+			});
+		});
+	</script>
 
 </body>

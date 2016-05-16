@@ -78,19 +78,25 @@
 						<div class="col-sm-12"
 							style="border-bottom: 1px #e1e1e1 solid; margin-bottom: 2%; margin-top: 2%;">
 							<div class="col-sm-3">
-								<a href="<c:url value='/bq/open/job?job-key=${item.jobKey}' />"><img
+								<a <c:choose><c:when test="${empty professionalDashboard.professionalLevel}">class="call-no-assessment" href="#"</c:when>
+										<c:otherwise>href="/bq/open/job?job-key=${item.jobKey}"</c:otherwise>
+										</c:choose>><img
 									alt="" src="${item.pictureUrl}" class="img img-responsive"></a>
 							</div>
 							<div class="col-sm-9">
 								<h4>
-									<a href="/bq/open/job?job-key=${item.jobKey}"><c:out value="${item.jobTitle}" /></a>
+									<a <c:choose><c:when test="${empty professionalDashboard.professionalLevel}">class="call-no-assessment" href="#"</c:when>
+										<c:otherwise>href="/bq/open/job?job-key=${item.jobKey}"</c:otherwise>
+										</c:choose>><c:out value="${item.jobTitle}" /></a>
 								</h4>
 								<h5 style="font-family: calibri">
 									<c:out value="${item.companyName}" />
 								</h5>
 								<h5>
-									<i style="font-family: calibri">Posted <c:out
-											value="${item.postedTime}" /></i> <a href="#" class="pull-right">View</a>
+									<i style="font-family: calibri" class="text-danger">Posted <c:out
+											value="${item.postedTime}" /></i> <a <c:choose><c:when test="${empty professionalDashboard.professionalLevel}">class="call-no-assessment pull-right" href="#"</c:when>
+										<c:otherwise>href="/bq/open/job?job-key=${item.jobKey}"</c:otherwise>
+										</c:choose> class="pull-right">View</a>
 								</h5>
 							</div>
 
@@ -141,11 +147,56 @@
 		</div>
 
 	</div>
+	<div id="myModal1" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content"
+				style="background-image: url('/images/experience-level.jpg');">
+				<div class="modal-header" style="border: none">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+				</div>
+				<div class="modal-body">
+					<h4 style="font-weight: bolder;" class="text-warning">
+						Hello
+						<c:out value='${professionalDashboard.name}' />
+
+					</h4>
+					<p>You have to take our assessment test before you can apply
+						for a job and get found by recruiters.</p>
+					<p>
+						<strong class="text-danger">Select your experience level</strong>
+					</p>
+					<form id="exp-level-form"
+						action="<c:url value='/bq/close/get-assessment-questions'/>">
+						<select name="exp-level">
+							<option value="Beginner">Beginner (0-3 yrs)</option>
+							<option value="Intermediate">Intermediate (4-7 yrs)</option>
+							<option value="Experienced">Experienced 8+ yrs</option>
+						</select> <input class="btn btn-info" type="submit" value="Start test">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.webui-popover.min.js"></script>
 	<script src="/js/waitMe.js"></script>
 	<script src="/js/main.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$(".call-no-assessment").click(function(e) {
+				e.preventDefault();
+				$("#myModal1").modal();
+			});
+		});
+	</script>
 </body>
 </html>
