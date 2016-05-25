@@ -21,7 +21,8 @@
 <style type="text/css">
 body {
 	font-family: cabin;
-	background: url(../images/signup-bg.png) no-repeat;
+	background: url(../images/concrete-wall-2.png) ;
+	background-color: #89d0dc;
 }
 </style>
 
@@ -29,39 +30,6 @@ body {
 
 <body>
 <body>
-
-	<!-- Navigation -->
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#"></a>
-			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="#"></a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#"></a></li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container -->
-	</nav>
-
-	<br>
-	<br>
-	<br>
-	<br>
-
 	<!-- Page Content -->
 	<div class="container">
 		<div class="row">
@@ -75,43 +43,47 @@ body {
 		<br> <br> <br> <br> <br>
 
 		<div class="row">
-			<div class="col-md-6">
-				<p class="alerto">
+			<h2 class="text-danger" style=" text-align: center;">Let's Get Started. ARE YOU.....</h2>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="col-md-6" style="">
+				<div style="padding-right: 2%; margin-right: 0px; text-align: right">
+					<h3 class="format text-primary" style=""> <a style="" href="<c:url value='/end-point/add-major-interest?user-type=professional' />">A Sales & Marketing Professional?</a></h3>
+					<p class="alerto" style="color: white;">
 					<span><i class="fa fa-star-o" aria-hidden="true"></i></span>Search
-					from Sales & Marketing jobs. <span><i class="fa fa-star-o"
+					Sales & Marketing jobs. <span><i class="fa fa-star-o"
 						aria-hidden="true"></i></span> Network with the Sales and Marketing
 					community. <span><i class="fa fa-star-o" aria-hidden="true"></i></span>
 					Improve your career through trainings & certifications. <span><i
 						class="fa fa-star-o" aria-hidden="true"></i></span> Speak to a career
 					coach.
 				</p>
-			</div>
-			<div class="col-md-6"></div>
-		</div>
-		<hr />
-		<div class="row">
-			<div class="col-md-6" style="text-align: right;">
-				<div class="righto">
-					<h3 class="format">A Sales & Marketing Professional?</h3>
 				</div>
+				
 				<form method="post"
 					action="<c:url value='/end-point/add-major-interest' />">
-					<input name="user-type" type="hidden" value="professional" /> <input
-						type="submit" class="btn btn-success" value="Enter">
+					<input name="user-type" type="hidden" value="professional" /> 
 				</form>
 			</div>
-			<br>
-			<br>
-			
+
 			<div class="col-md-6">
 
-				<div class="lefto">
-					<h3 class="format">A Recruiter?</h3>
+				<div class="lefto" style="padding-left: 2%;">
+					<br/><br/><br/><br/><br/><br/><br/>
+					<h3 class="format text-warning"><a style="" href="<c:url value='/end-point/add-major-interest?user-type=recruiter' />">A Recruiter?</a></h3>
+					<p class="alerto" style="color: white;">
+					<span><i class="fa fa-star-o" aria-hidden="true"></i></span>Advertise
+					your vacancy now.<span><i class="fa fa-star-o"
+						aria-hidden="true"></i></span> Reach your specialized candidates.<span><i
+						class="fa fa-star-o" aria-hidden="true"></i></span> Access over 1 million
+					professional CV's here.
+				</p>
 				</div>
+				
 				<form method="post"
 					action="<c:url value='/end-point/add-major-interest' />">
-					<input name="user-type" type="hidden" value="recruiter" /> <input
-						type="submit" class="btn btn-success" value="Enter">
+					<input name="user-type" type="hidden" value="recruiter" /> 
 				</form>
 			</div>
 
@@ -125,15 +97,7 @@ body {
 
 		<div class="row">
 			<div class="col-md-6"></div>
-			<div class="col-md-6">
-				<p class="alerto">
-					<span><i class="fa fa-star-o" aria-hidden="true"></i></span>Advertise
-					your vacancy now.<span><i class="fa fa-star-o"
-						aria-hidden="true"></i></span> Reach your specialized candidates.<span><i
-						class="fa fa-star-o" aria-hidden="true"></i></span> Access over 1 million
-					professional CV's here.
-				</p>
-			</div>
+			<div class="col-md-6"></div>
 		</div>
 
 		<footer>

@@ -23,6 +23,11 @@ public class AddMajorInterestServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = -2054099378365196693L;
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		doPost(req, resp);
+	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)

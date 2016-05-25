@@ -63,8 +63,9 @@
 							<label>Allow LinkedIn Applications</label>
 							<div class="checkbox">
 								<label style="font-style: italic; font-size: 0.9em; color: #777"><input
-									type="checkbox" value="true" name="allow-linkedIn">Do you want to
-									allow employees to apply with their LinkedIn profile?</label>
+									type="checkbox" value="true" name="allow-linkedIn">Do
+									you want to allow employees to apply with their LinkedIn
+									profile?</label>
 							</div>
 						</div>
 					</div>
@@ -80,8 +81,9 @@
 							<label>Allow Facebook Applications</label>
 							<div class="checkbox">
 								<label style="font-style: italic; font-size: 0.9em; color: #777"><input
-									type="checkbox" value="true" name="allow-facebook">Do you want to
-									allow employees to apply with their Facebook profile?</label>
+									type="checkbox" value="true" name="allow-facebook">Do
+									you want to allow employees to apply with their Facebook
+									profile?</label>
 							</div>
 						</div>
 					</div>
@@ -147,16 +149,12 @@
 						<div class="form-group">
 							<label>Career Level:</label> <select class="form-control"
 								name="career-level">
-								<option>Student
-									(Undergraduate/Graduate)</option>
+								<option>Student (Undergraduate/Graduate)</option>
 								<option>Entry Level</option>
 								<option>Experienced (Non-Managerial)</option>
-								<option>Manager (Manager/Supervisor of
-									Staff)</option>
-								<option>Executive (SVP,VP,Department
-									Head etc)</option>
-								<option>Senoir Executive (President,
-									CFO. etc)</option>
+								<option>Manager (Manager/Supervisor of Staff)</option>
+								<option>Executive (SVP,VP,Department Head etc)</option>
+								<option>Senoir Executive (President, CFO. etc)</option>
 							</select>
 						</div>
 					</div>
@@ -253,50 +251,38 @@
 								multiple="multiple"
 								style="display: block; width: 100%; box-sizing: border-box"
 								name="job-category" id="job-category">
-								<option>Administration/ Office/ Operations</option>
-								<option>Advertising/ PR / Marketing</option>
-								<option>Agriculture / Agro Allied</option>
-								<option>Analyst/ Quality Control</option>
-								<option>Automotive/ Car Services</option>
-								<option>Aviation/ Airline</option>
-								<option>Banking</option>
-								<option>Construction / Mining</option>
-								<option>Consulting</option>
-								<option>Customer Service</option>
-								<option>Driving / Haulage</option>
-								<option>Engineering</option>
-								<option>Executive / Management</option>
-								<option>Finance / Accounting</option>
-								<option>Freelance / Data Entry</option>
-								<option>Government Agencies</option>
-								<option>Graduate /Freshers</option>
-								<option>Hospitality / Food Services</option>
-								<option>HSE/ Safety/ Risk Management</option>
-								<option>Human Resources / Recruitment</option>
-								<option>ICT/ Software</option>
-								<option>Internship/ Industrial Training</option>
-								<option>Law/ Legal</option>
-								<option>Manufacturing/ Production</option>
-								<option>Maritime Services / Shipping</option>
-								<option>Media / Art</option>
-								<option>Medical/ Health</option>
-								<option>Military / Para-Military</option>
-								<option>NGO / Community Services</option>
-								<option>Oil and Gas</option>
-								<option>Other</option>
-								<option>Procurement/ Purchasing</option>
-								<option>Programming / Web development</option>
-								<option>Project Management</option>
-								<option>Research/ Survey</option>
-								<option>Sales / Business Development</option>
-								<option>Secretarial / PA</option>
-								<option>Security / Intelligence</option>
-								<option>Surveying / Real Estate / Property</option>
-								<option>Teaching / Education Services</option>
-								<option>Technical/ Artisan</option>
-								<option>Telecom</option>
-								<option>Tourism / Travels</option>
-								<option>Transport / Logistics / Supply</option>
+								<option value="50">Accounting / Audit / Tax</option>
+								<option value="72">Administration &amp; Office Support</option>
+								<option value="107">Agriculture/Farming</option>
+								<option value="53">Banking / Finance / Insurance</option>
+								<option value="83">Building Design/Architecture</option>
+								<option value="54">Construction</option>
+								<option value="84">Consulting/Business Strategy &amp;
+									Planning</option>
+								<option value="85">Creatives(Arts, Design, Fashion)</option>
+								<option value="82">Customer Service</option>
+								<option value="76">Education/Teaching/Training</option>
+								<option value="56">Engineering</option>
+								<option value="79">Executive / Top Management</option>
+								<option value="66">Healthcare / Pharmaceutical</option>
+								<option value="59">Hospitality / Leisure / Travels</option>
+								<option value="60">Human Resources</option>
+								<option value="61">Information Technology</option>
+								<option value="67">Legal</option>
+								<option value="101">Logistics / Transportation</option>
+								<option value="58">Manufacturing / Production</option>
+								<option value="51">Marketing / Advertising /
+									Communications</option>
+								<option value="81">NGO/Community Services &amp; Dev</option>
+								<option value="68">Oil&amp;Gas / Mining / Energy</option>
+								<option value="74">Project / Programme Management</option>
+								<option value="105">QA&amp;QC / HSE</option>
+								<option value="70">Real Estate / Property</option>
+								<option value="103">Research</option>
+								<option value="71">Sales/Business Development</option>
+								<option value="106">Supply Chain / Procurement</option>
+								<option value="77">Telecommunications</option>
+								<option value="104">Vocational Trade and Services</option>
 
 							</select>
 						</div>
@@ -312,13 +298,15 @@
 					<div class="col-sm-12">
 						<div class="form-group">
 							<label>Job Description:</label>
-							<textarea class="tiny" rows="3" class="form-control" name="job-description"></textarea>
+							<textarea class="tiny" rows="3" class="form-control"
+								name="job-description"></textarea>
 						</div>
 					</div>
 					<div class="col-sm-12">
 						<div class="form-group">
 							<label>Extra Information</label>
-							<textarea class="tiny" id="additional-properties" name="extra-info"></textarea>
+							<textarea class="tiny" id="additional-properties"
+								name="extra-info"></textarea>
 						</div>
 					</div>
 					<div class="col-sm-12">
@@ -336,18 +324,18 @@
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script src="/js/jquery-ui.min.js"></script>
 	<script src="/js/main.js"></script>
-	
+
 	<script src="/js/multiple-select.js"></script>
 	<script type="text/javascript">
 		tinymce.init({
 			selector : '.tiny'
 		});
 		$(document).ready(function() {
-			$( ".normal-select" ).selectmenu();
-			$( ".datepicker" ).datepicker({
-			      changeMonth: true,
-			      changeYear: true
-			    });
+			$(".normal-select").selectmenu();
+			$(".datepicker").datepicker({
+				changeMonth : true,
+				changeYear : true
+			});
 			$('#job-category').multipleSelect();
 
 		});

@@ -266,7 +266,7 @@ div.transbox form input {
 					<a class="pull-left" href="#"><img
 						class="media-object img-rounded" src="images/job.png"></a>
 					<div class="media-body">
-						<h4 class="media-heading"><strong>JOBS</strong></h4>
+						<h4 class="media-heading"><strong><a href="/bq/open/find-job">JOBS</a></strong></h4>
 						<h5 class="job">Get hired in industries of your choice.</h5>
 						<p class="plat">Start your exciting career journey here</p>
 						<p class="plat">There's nothing wrong with trying something

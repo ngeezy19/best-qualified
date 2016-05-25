@@ -625,6 +625,25 @@ public class Util {
 		return mjs;
 
 	}
+	
+	public static void indexJob(Job job, Company c) {
+		Document.Builder db = Document.newBuilder();
+		db = db.setId(KeyFactory.keyToString(job.getId()))
+				.addField(Field.newBuilder().setName("jobTitle").setAtom(job.getJobTitle()))
+				.addField(Field.newBuilder().setName("jobTitle").setText(job.getJobTitle()))
+				.addField(Field.newBuilder().setName("location").setAtom(job.getLocation()))
+				.addField(Field.newBuilder().setName("salaryRange").setAtom(job.getSalaryRange()))
+				.addField(Field.newBuilder().setName("careerLevel").setAtom(job.getCareerLevel()))
+				.addField(Field.newBuilder().setName("jobType").setAtom(job.getJobType()))
+				.addField(Field.newBuilder().setName("experience").setAtom(job.getExperience()))
+				.addField(Field.newBuilder().setName("jobCategory").setAtom(job.getJobCategory()))
+				.addField(Field.newBuilder().setName("datePosted").setDate(job.getDatePosted())).
+				addField(Field.newBuilder().setName("companyName").setText(c.getCompanyName()))
+				;
+		
+		SearchDocumentIndexService.indexDocument("jobs",
+				db.build());
+	}
 
 	public static void addToSearchIndex(Job job, Company c) {
 		Document.Builder db = Document.newBuilder();

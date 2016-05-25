@@ -8,12 +8,22 @@ public class InterestedJob implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 9087061423485594475L;
-	private String companyName, pictureUrl, jobTitle, postedTime, jobKey,companyKey;
+	private String companyName, pictureUrl, jobTitle, postedTime, jobKey,companyKey,location;
 	public String getCompanyName() {
 		return companyName;
 	}
 	
 	
+	public String getLocation() {
+		return location;
+	}
+
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+
 	public String getJobKey() {
 		return jobKey;
 	}

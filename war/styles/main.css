@@ -423,6 +423,8 @@ body {
 
 .alerto {
 	color: white;
+	font-weight: bold;
+    text-shadow: 1px 1px black;
 }
 
 .alerto span {
