@@ -626,7 +626,7 @@ public class Util {
 
 	}
 	
-	public static void indexJob(Job job, Company c) {
+	public static void addToSearchIndex(Job job, Company c) {
 		Document.Builder db = Document.newBuilder();
 		db = db.setId(KeyFactory.keyToString(job.getId()))
 				.addField(Field.newBuilder().setName("jobTitle").setAtom(job.getJobTitle()))
@@ -645,7 +645,7 @@ public class Util {
 				db.build());
 	}
 
-	public static void addToSearchIndex(Job job, Company c) {
+	/*public static void addToSearchIndex(Job job, Company c) {
 		Document.Builder db = Document.newBuilder();
 		db = db.setId(KeyFactory.keyToString(job.getId()));
 		db = db.addFacet(Facet.withAtom("location", job.getLocation()));
@@ -674,7 +674,7 @@ public class Util {
 		SearchDocumentIndexService.indexDocument("JobSearchDocuments",
 				db.build());
 
-	}
+	}*/
 
 	public static ProfessionalProfileBean createProfessionalProfileBean(User u,
 			CandidateProfile cp) {

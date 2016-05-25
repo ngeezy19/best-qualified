@@ -117,11 +117,11 @@
 					<div class="col-sm-6">
 						<div class="form-group">
 							<label>Salary:</label> <select class="form-control" name="salary">
-								<option>10,000 - 50,000</option>
-								<option>50,000 - 100,000</option>
-								<option>100,000 - 300,000</option>
-								<option>300,000 - 500,000</option>
-								<option>Unspecified</option>
+								<option value="201">10,000 - 50,000</option>
+								<option value="201">50,000 - 100,000</option>
+								<option value="201">100,000 - 300,000</option>
+								<option value="201">300,000 - 500,000</option>
+								<option value="201">Unspecified</option>
 							</select>
 						</div>
 					</div>
@@ -149,12 +149,12 @@
 						<div class="form-group">
 							<label>Career Level:</label> <select class="form-control"
 								name="career-level">
-								<option>Student (Undergraduate/Graduate)</option>
-								<option>Entry Level</option>
-								<option>Experienced (Non-Managerial)</option>
-								<option>Manager (Manager/Supervisor of Staff)</option>
-								<option>Executive (SVP,VP,Department Head etc)</option>
-								<option>Senoir Executive (President, CFO. etc)</option>
+								<option value="101">Student (Undergraduate/Graduate)</option>
+								<option value="102">Entry Level</option>
+								<option value="103">Experienced (Non-Managerial)</option>
+								<option value="104">Manager (Manager/Supervisor of Staff)</option>
+								<option value="105">Executive (SVP,VP,Department Head etc)</option>
+								<option value="106">Senoir Executive (President, CFO. etc)</option>
 							</select>
 						</div>
 					</div>
