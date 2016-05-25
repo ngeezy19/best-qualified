@@ -109,7 +109,6 @@ public class NewJob extends HttpServlet {
 					job.setJobTitle(jobTitle);
 					job.setJobType(jobType);
 					job.setLocation(jobRegion);
-					job.setLocation(location);
 					job.setSalaryRange(salary);
 					job.setExperience(jobExperience);
 					job.setApplicationUrl(applicationUrl);
