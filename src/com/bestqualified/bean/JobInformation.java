@@ -3,6 +3,8 @@ package com.bestqualified.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import com.bestqualified.util.Util;
+
 public class JobInformation implements Serializable {
 
 	/**
@@ -12,7 +14,7 @@ public class JobInformation implements Serializable {
 
 	private String jobTitle, companyName, datePosted, jobDesc, extraInfo, experience,
 			pictureUrl, companyDesc, careerLevel, location, industry, jobType, pageUrl,
-			qualification, deadline, companyWebsite, applicationWebsite, applicationUrl, webKey;
+			qualification, deadline, companyWebsite, applicationWebsite, applicationUrl, webKey, salaryRange;
 	
 	public String getPageUrl() {
 		return pageUrl;
@@ -39,7 +41,7 @@ public class JobInformation implements Serializable {
 		return experience;
 	}
 	public void setExperience(String experience) {
-		this.experience = experience;
+		this.experience = Util.getExperienceValue(experience);
 	}
 	public String getJobTitle() {
 		return jobTitle;
@@ -87,7 +89,7 @@ public class JobInformation implements Serializable {
 		return careerLevel;
 	}
 	public void setCareerLevel(String careerLevel) {
-		this.careerLevel = careerLevel;
+		this.careerLevel = Util.getCareerLevelValue(careerLevel);
 	}
 	public String getLocation() {
 		return location;
@@ -99,13 +101,13 @@ public class JobInformation implements Serializable {
 		return industry;
 	}
 	public void setIndustry(String industry) {
-		this.industry = industry;
+		this.industry = Util.getJobCategoryValue(industry);
 	}
 	public String getJobType() {
 		return jobType;
 	}
 	public void setJobType(String jobType) {
-		this.jobType = jobType;
+		this.jobType = Util.getJobTypeValue(jobType);
 	}
 	public String getQualification() {
 		return qualification;
@@ -136,6 +138,12 @@ public class JobInformation implements Serializable {
 	}
 	public void setRelatedJobs(List<InterestedJob> relatedJobs) {
 		this.relatedJobs = relatedJobs;
+	}
+	public String getSalaryRange() {
+		return salaryRange;
+	}
+	public void setSalaryRange(String salaryRange) {
+		this.salaryRange = Util.getSalaryValue(salaryRange);
 	}
 	
 

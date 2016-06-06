@@ -79,6 +79,15 @@ import com.google.appengine.api.images.ServingUrlOptions;
 import com.google.appengine.api.search.Document;
 import com.google.appengine.api.search.Facet;
 import com.google.appengine.api.search.Field;
+import com.google.appengine.api.search.Index;
+import com.google.appengine.api.search.IndexSpec;
+import com.google.appengine.api.search.Query;
+import com.google.appengine.api.search.QueryOptions;
+import com.google.appengine.api.search.Results;
+import com.google.appengine.api.search.ScoredDocument;
+import com.google.appengine.api.search.SearchServiceFactory;
+import com.google.appengine.api.search.SortExpression;
+import com.google.appengine.api.search.SortOptions;
 import com.google.appengine.api.urlfetch.HTTPResponse;
 import com.google.appengine.api.urlfetch.URLFetchServiceFactory;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
@@ -625,56 +634,75 @@ public class Util {
 		return mjs;
 
 	}
-	
+
 	public static void addToSearchIndex(Job job, Company c) {
 		Document.Builder db = Document.newBuilder();
 		db = db.setId(KeyFactory.keyToString(job.getId()))
-				.addField(Field.newBuilder().setName("jobTitle").setAtom(job.getJobTitle()))
-				.addField(Field.newBuilder().setName("jobTitle").setText(job.getJobTitle()))
-				.addField(Field.newBuilder().setName("location").setAtom(job.getLocation()))
-				.addField(Field.newBuilder().setName("salaryRange").setAtom(job.getSalaryRange()))
-				.addField(Field.newBuilder().setName("careerLevel").setAtom(job.getCareerLevel()))
-				.addField(Field.newBuilder().setName("jobType").setAtom(job.getJobType()))
-				.addField(Field.newBuilder().setName("experience").setAtom(job.getExperience()))
-				.addField(Field.newBuilder().setName("jobCategory").setAtom(job.getJobCategory()))
-				.addField(Field.newBuilder().setName("datePosted").setDate(job.getDatePosted())).
-				addField(Field.newBuilder().setName("companyName").setText(c.getCompanyName()))
-				;
-		
-		SearchDocumentIndexService.indexDocument("jobs",
-				db.build());
+				.addField(
+						Field.newBuilder().setName("jobTitle")
+								.setAtom(job.getJobTitle()))
+				.addField(
+						Field.newBuilder().setName("jobTitle")
+								.setText(job.getJobTitle()))
+				.addField(
+						Field.newBuilder().setName("location")
+								.setAtom(job.getLocation()))
+				.addField(
+						Field.newBuilder().setName("salaryRange")
+								.setAtom(job.getSalaryRange()))
+				.addField(
+						Field.newBuilder().setName("careerLevel")
+								.setAtom(job.getCareerLevel()))
+				.addField(
+						Field.newBuilder().setName("jobType")
+								.setAtom(job.getJobType()))
+				.addField(
+						Field.newBuilder().setName("experience")
+								.setAtom(job.getExperience()))
+				.addField(
+						Field.newBuilder().setName("jobCategory")
+								.setAtom(job.getJobCategory()))
+				.addField(
+						Field.newBuilder().setName("datePosted")
+								.setDate(job.getDatePosted()))
+				.addField(
+						Field.newBuilder().setName("companyName")
+								.setText(c.getCompanyName()));
+
+		SearchDocumentIndexService.indexDocument("jobs", db.build());
 	}
 
-	/*public static void addToSearchIndex(Job job, Company c) {
-		Document.Builder db = Document.newBuilder();
-		db = db.setId(KeyFactory.keyToString(job.getId()));
-		db = db.addFacet(Facet.withAtom("location", job.getLocation()));
-		db = db.addFacet(Facet.withAtom("educationLevel",
-				job.getEducationLevel()));
-		db = db.addFacet(Facet.withAtom("salaryRange", job.getSalaryRange()));
-		db = db.addFacet(Facet.withAtom("careerLevel", job.getCareerLevel()));
-		db = db.addFacet(Facet.withAtom("jobType", job.getJobType()));
-		db = db.addFacet(Facet.withAtom("experience", job.getExperience()));
-		db = db.addFacet(Facet.withAtom("companyName", c.getCompanyName()));
-		db = db.addFacet(Facet.withAtom("jobTitle", job.getJobTitle()));
-		db = db.addFacet(Facet.withAtom("jobCategory", job.getJobCategory()));
-		db = db.addField(Field.newBuilder().setName("location")
-				.setText(job.getLocation()));
-		db = db.addField(Field.newBuilder().setName("description")
-				.setHTML(job.getDescription().getValue()));
-		db = db.addField(Field.newBuilder().setName("companyName")
-				.setText(c.getCompanyName()));
-		db = db.addField(Field.newBuilder().setName("jobTitle")
-				.setText(job.getJobTitle()));
-		db = db.addField(Field.newBuilder().setName("companyKey")
-				.setText(KeyFactory.keyToString(c.getId())));
-		db = db.addField(Field.newBuilder().setName("datePosted")
-				.setDate(job.getDatePosted()));
-
-		SearchDocumentIndexService.indexDocument("JobSearchDocuments",
-				db.build());
-
-	}*/
+	/*
+	 * public static void addToSearchIndex(Job job, Company c) {
+	 * Document.Builder db = Document.newBuilder(); db =
+	 * db.setId(KeyFactory.keyToString(job.getId())); db =
+	 * db.addFacet(Facet.withAtom("location", job.getLocation())); db =
+	 * db.addFacet(Facet.withAtom("educationLevel", job.getEducationLevel()));
+	 * db = db.addFacet(Facet.withAtom("salaryRange", job.getSalaryRange())); db
+	 * = db.addFacet(Facet.withAtom("careerLevel", job.getCareerLevel())); db =
+	 * db.addFacet(Facet.withAtom("jobType", job.getJobType())); db =
+	 * db.addFacet(Facet.withAtom("experience", job.getExperience())); db =
+	 * db.addFacet(Facet.withAtom("companyName", c.getCompanyName())); db =
+	 * db.addFacet(Facet.withAtom("jobTitle", job.getJobTitle())); db =
+	 * db.addFacet(Facet.withAtom("jobCategory", job.getJobCategory())); db =
+	 * db.addField(Field.newBuilder().setName("location")
+	 * .setText(job.getLocation())); db =
+	 * db.addField(Field.newBuilder().setName("description")
+	 * .setHTML(job.getDescription().getValue())); db =
+	 * db.addField(Field.newBuilder().setName("companyName")
+	 * .setText(c.getCompanyName())); db =
+	 * db.addField(Field.newBuilder().setName("jobTitle")
+	 * .setText(job.getJobTitle())); db =
+	 * db.addField(Field.newBuilder().setName("companyKey")
+	 * .setText(KeyFactory.keyToString(c.getId()))); db =
+	 * db.addField(Field.newBuilder().setName("datePosted")
+	 * .setDate(job.getDatePosted()));
+	 * 
+	 * SearchDocumentIndexService.indexDocument("JobSearchDocuments",
+	 * db.build());
+	 * 
+	 * }
+	 */
 
 	public static ProfessionalProfileBean createProfessionalProfileBean(User u,
 			CandidateProfile cp) {
@@ -1256,18 +1284,21 @@ public class Util {
 
 	public static List<CorrectionBean> toCorrectionBean(String answers) {
 		JsonParser jsonParser = new JsonParser();
-      
-        JsonArray jsonArr = (JsonArray)jsonParser.parse(answers);;
-        Gson googleJson = new Gson();
-        Type listType = new TypeToken<List<AssessmentQuestionBean>>() {}.getType();
-        ArrayList<AssessmentQuestionBean> jsonObjList = googleJson.fromJson(jsonArr, listType);
-        return assessmentQuestionToCorrectionBean(jsonObjList);
+
+		JsonArray jsonArr = (JsonArray) jsonParser.parse(answers);
+		;
+		Gson googleJson = new Gson();
+		Type listType = new TypeToken<List<AssessmentQuestionBean>>() {
+		}.getType();
+		ArrayList<AssessmentQuestionBean> jsonObjList = googleJson.fromJson(
+				jsonArr, listType);
+		return assessmentQuestionToCorrectionBean(jsonObjList);
 	}
 
 	private static List<CorrectionBean> assessmentQuestionToCorrectionBean(
 			ArrayList<AssessmentQuestionBean> jsonObjList) {
 		List<CorrectionBean> cbs = new ArrayList<>();
-		for(AssessmentQuestionBean aqb : jsonObjList) {
+		for (AssessmentQuestionBean aqb : jsonObjList) {
 			CorrectionBean cb = new CorrectionBean();
 			cb.setWebkey(aqb.getWebkey());
 			cb.setAnswer(aqb.getCorrectAnswer());
@@ -1293,6 +1324,283 @@ public class Util {
 	}
 
 	public static double getRating(int score, int total) {
-		return Math.round(score*5/total);
+		return Math.round(score * 5 / total);
+	}
+
+	public static List<InterestedJob> getRelatedJobs(Job job) {
+		String jobType = job.getJobType();
+		String salaryRange = job.getSalaryRange();
+		String jobCategory = job.getJobCategory();
+		String careerLevel = job.getCareerLevel();
+		String experience = job.getExperience();
+		String location = job.getLocation();
+
+		String qStr = "";
+		if (Util.notNull(location)) {
+			// qStr += " OR";
+			qStr += "location:" + location;
+		}
+		/*
+		 * if (Util.notNull(jobType)) { qStr += "jobType:" + jobType; }
+		 * 
+		 * if (Util.notNull(salaryRange)) {
+		 * 
+		 * qStr += " salaryRange:" + salaryRange; }
+		 * 
+		 * if (Util.notNull(jobCategory)) {
+		 * 
+		 * qStr += " jobCategory:" + jobCategory; }
+		 * 
+		 * if (Util.notNull(careerLevel)) {
+		 * 
+		 * qStr += " careerLevel:" + careerLevel; }
+		 * 
+		 * if (Util.notNull(experience)) {
+		 * 
+		 * qStr += " experience:" + experience; }
+		 */
+
+		SortOptions sortOptions = SortOptions
+				.newBuilder()
+				.addSortExpression(
+						SortExpression
+								.newBuilder()
+								.setExpression("datePosted")
+								.setDirection(
+										SortExpression.SortDirection.DESCENDING))
+				.build();
+		QueryOptions options = QueryOptions
+				.newBuilder()
+				.setLimit(10)
+				.setFieldsToReturn("jobTitle", "companyName", "location",
+						"datePosted").setSortOptions(sortOptions).build();
+		Query query = Query.newBuilder().setOptions(options).build(qStr);
+		IndexSpec indexSpec = IndexSpec.newBuilder().setName("jobs").build();
+		Index index = SearchServiceFactory.getSearchService().getIndex(
+				indexSpec);
+		Results<ScoredDocument> result = index.search(query);
+		List<InterestedJob> ijs = new ArrayList<>();
+		for (ScoredDocument sd : result) {
+			if (KeyFactory.keyToString(job.getId()).equals(sd.getId())) {
+				continue;
+			}
+			InterestedJob ij = new InterestedJob();
+			ij.setCompanyName(sd.getOnlyField("companyName").getText());
+			ij.setJobKey(sd.getId());
+			Iterable<Field> itr = sd.getFields("jobTitle");
+			for (Field f : itr) {
+				ij.setJobTitle(f.getAtom());
+				break;
+			}
+
+			ij.setPictureUrl(StringConstants.DEFAULT_COMPANY_LOGO);
+			ij.setPostedTime(Util.getPostedTime(sd.getOnlyField("datePosted")
+					.getDate()));
+			ij.setLocation(sd.getOnlyField("location").getAtom());
+			ijs.add(ij);
+		}
+
+		return ijs;
+	}
+
+	public static String getJobTypeValue(String code) {
+		String value = "";
+		switch (code) {
+		case "301":
+			value = StringConstants.JOBTYPE_301;
+			break;
+		case "302":
+			value = StringConstants.JOBTYPE_302;
+			break;
+		case "303":
+			value = StringConstants.JOBTYPE_303;
+			break;
+		case "304":
+			value = StringConstants.JOBTYPE_304;
+			break;
+		case "305":
+			value = StringConstants.JOBTYPE_305;
+			break;
+		case "306":
+			value = StringConstants.JOBTYPE_306;
+			break;
+		}
+		return value;
+	}
+
+	public static String getCareerLevelValue(String code) {
+		String value = "";
+		switch (code) {
+		case "101":
+			value = StringConstants.CAREER_LEVEL_101;
+			break;
+		case "102":
+			value = StringConstants.CAREER_LEVEL_102;
+			break;
+		case "103":
+			value = StringConstants.CAREER_LEVEL_103;
+			break;
+		case "104":
+			value = StringConstants.CAREER_LEVEL_104;
+			break;
+		case "105":
+			value = StringConstants.CAREER_LEVEL_105;
+			break;
+		case "106":
+			value = StringConstants.CAREER_LEVEL_106;
+			break;
+		}
+		return value;
+	}
+
+	public static String getExperienceValue(String code) {
+		String value = "";
+		switch (code) {
+		case "401":
+			value = StringConstants.EXPERIENCE_401;
+			break;
+		case "402":
+			value = StringConstants.EXPERIENCE_402;
+			break;
+		case "403":
+			value = StringConstants.EXPERIENCE_403;
+			break;
+		case "404":
+			value = StringConstants.EXPERIENCE_404;
+			break;
+		case "405":
+			value = StringConstants.EXPERIENCE_405;
+			break;
+		case "406":
+			value = StringConstants.EXPERIENCE_406;
+			break;
+		case "407":
+			value = StringConstants.EXPERIENCE_407;
+			break;
+		case "408":
+			value = StringConstants.EXPERIENCE_408;
+			break;
+		}
+		return value;
+	}
+
+	public static String getSalaryValue(String code) {
+		String value = "";
+		switch (code) {
+		case "201":
+			value = StringConstants.SALARY_201;
+			break;
+		case "202":
+			value = StringConstants.SALARY_202;
+			break;
+		case "203":
+			value = StringConstants.SALARY_203;
+			break;
+		case "204":
+			value = StringConstants.SALARY_204;
+			break;
+		case "205":
+			value = StringConstants.SALARY_205;
+			break;
+		}
+		return value;
+	}
+
+	public static String getJobCategoryValue(String code) {
+		String value = "";
+		switch (code) {
+		case "85":
+			value = StringConstants.JOB_CATEGORY_85;
+			break;
+		case "84":
+			value = StringConstants.JOB_CATEGORY_84;
+			break;
+		case "54":
+			value = StringConstants.JOB_CATEGORY_54;
+			break;
+		case "83":
+			value = StringConstants.JOB_CATEGORY_83;
+			break;
+		case "53":
+			value = StringConstants.JOB_CATEGORY_53;
+			break;
+		case "107":
+			value = StringConstants.JOB_CATEGORY_107;
+			break;
+		case "72":
+			value = StringConstants.JOB_CATEGORY_72;
+			break;
+		case "50":
+			value = StringConstants.JOB_CATEGORY_50;
+			break;
+		case "82":
+			value = StringConstants.JOB_CATEGORY_82;
+			break;
+		case "76":
+			value = StringConstants.JOB_CATEGORY_76;
+			break;
+		case "56":
+			value = StringConstants.JOB_CATEGORY_56;
+			break;
+		case "79":
+			value = StringConstants.JOB_CATEGORY_79;
+			break;
+		case "66":
+			value = StringConstants.JOB_CATEGORY_66;
+			break;
+		case "59":
+			value = StringConstants.JOB_CATEGORY_59;
+			break;
+		case "60":
+			value = StringConstants.JOB_CATEGORY_60;
+			break;
+		case "61":
+			value = StringConstants.JOB_CATEGORY_61;
+			break;
+		case "67":
+			value = StringConstants.JOB_CATEGORY_67;
+			break;
+		case "101":
+			value = StringConstants.JOB_CATEGORY_76;
+			break;
+		case "58":
+			value = StringConstants.JOB_CATEGORY_58;
+			break;
+		case "51":
+			value = StringConstants.JOB_CATEGORY_51;
+			break;
+		case "81":
+			value = StringConstants.JOB_CATEGORY_81;
+			break;
+		case "68":
+			value = StringConstants.JOB_CATEGORY_68;
+			break;
+		case "74":
+			value = StringConstants.JOB_CATEGORY_74;
+			break;
+		case "105":
+			value = StringConstants.JOB_CATEGORY_105;
+			break;
+		case "70":
+			value = StringConstants.JOB_CATEGORY_70;
+			break;
+		case "103":
+			value = StringConstants.JOB_CATEGORY_103;
+			break;
+		case "71":
+			value = StringConstants.JOB_CATEGORY_71;
+			break;
+		case "106":
+			value = StringConstants.JOB_CATEGORY_106;
+			break;
+		case "77":
+			value = StringConstants.JOB_CATEGORY_77;
+			break;
+		case "104":
+			value = StringConstants.JOB_CATEGORY_104;
+			break;
+
+		}
+		return value;
 	}
 }

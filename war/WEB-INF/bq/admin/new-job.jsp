@@ -118,10 +118,10 @@
 						<div class="form-group">
 							<label>Salary:</label> <select class="form-control" name="salary">
 								<option value="201">10,000 - 50,000</option>
-								<option value="201">50,000 - 100,000</option>
-								<option value="201">100,000 - 300,000</option>
-								<option value="201">300,000 - 500,000</option>
-								<option value="201">Unspecified</option>
+								<option value="202">50,000 - 100,000</option>
+								<option value="203">100,000 - 300,000</option>
+								<option value="204">300,000 - 500,000</option>
+								<option value="205">Unspecified</option>
 							</select>
 						</div>
 					</div>
@@ -213,13 +213,14 @@
 						<div class="form-group">
 							<label>Years of Experience:</label> <select class="form-control"
 								name="job-experience">
-								<option>0 - 1 year</option>
-								<option>0 - 2 years</option>
-								<option>1 - 3 years</option>
-								<option>2 - 5 years</option>
-								<option>3 - 5 years</option>
-								<option>5 - 10 years</option>
-								<option>more than 10 years</option>
+								<option value="401">0 - 1 year</option>
+								<option value="402">0 - 2 years</option>
+								<option value="403">1 - 3 years</option>
+								<option value="404">2 - 5 years</option>
+								<option value="405">3 - 5 years</option>
+								<option value="406">5 - 10 years</option>
+								<option value="407">7 - 10 years</option>
+								<option value="408">More than 10 years</option>
 							</select>
 						</div>
 					</div>
@@ -235,12 +236,12 @@
 						<div class="form-group">
 							<label>Job Type:</label> <select class="form-control"
 								name="job-type">
-								<option>Freelance</option>
-								<option>Full Time</option>
-								<option>Internship</option>
-								<option>Part Time</option>
-								<option>Permanent</option>
-								<option>Temporary</option>
+								<option value="301">Freelance</option>
+								<option value="302">Full Time</option>
+								<option value="303">Internship</option>
+								<option value="304">Part Time</option>
+								<option value="305">Permanent</option>
+								<option value="306">Temporary</option>
 							</select>
 						</div>
 					</div>

@@ -322,6 +322,22 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>FindJobServlet</servlet-name>
 		<url-pattern>/bq/open/find-job</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>AllJobServlet</servlet-name>
+		<servlet-class>com.bestqualified.servlets.AllJobsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AllJobServlet</servlet-name>
+		<url-pattern>/bq/open/all-jobs</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>CoachingHome</servlet-name>
+		<servlet-class>com.bestqualified.servlets.coaching.InitCoaching</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CoachingHome</servlet-name>
+		<url-pattern>/bq/coaching/home</url-pattern>
+	</servlet-mapping>
 	<!-- ***************************************************SERVLET*********************************************************** -->
 	<servlet>
 		<servlet-name>NewsLetterSubscription</servlet-name>

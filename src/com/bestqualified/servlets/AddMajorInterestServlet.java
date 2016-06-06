@@ -105,9 +105,33 @@ public class AddMajorInterestServlet extends HttpServlet {
 						session.setAttribute("user", u);
 						session.removeAttribute("majorInterestError");
 					}
-					RequestDispatcher rd = req.getRequestDispatcher("/bq/closed/init-dashboard");
-					rd.forward(req, resp);
-					return;
+					
+					Object o3 = null;
+					Object o4 = null;
+					synchronized (session) {
+						o3 = session.getAttribute("jobApplicationSignUp");
+						if(o3 != null) {
+							o4 = session.getAttribute("jobKey");
+						}
+						session.removeAttribute("jobApplicationSignUp");
+						session.removeAttribute("jobKey");
+					}
+					if(o4 != null) {
+						String jobWebKey = (String) o4;
+						resp.sendRedirect(resp.encodeRedirectURL("/bq/open/job?job-key="+jobWebKey));
+						return;
+					}else if(session.getAttribute("requestUri") != null) {
+						String uri = (String) session.getAttribute("requestUri");
+						String query = (String) session.getAttribute("requestUri");
+						uri = uri+"?"+query;
+						resp.sendRedirect(resp.encodeRedirectURL(uri));
+						return;
+					}else {
+						RequestDispatcher rd = req.getRequestDispatcher("/bq/closed/init-dashboard");
+						rd.forward(req, resp);
+						return;
+					}
+					
 
 				} else {
 					synchronized (session) {

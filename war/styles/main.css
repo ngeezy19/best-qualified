@@ -662,6 +662,149 @@ body {
 	display: none;
 }
 
+/*new css */
+
+.carousel.fade {
+  opacity: 1;
+}
+.carousel.fade .item {
+  transition: opacity ease-out .7s;
+  left: 0;
+  opacity: 0; /* hide all slides */
+  top: 0;
+  position: absolute;
+  width: 100%;
+  display: block;
+}
+.carousel.fade .item:first-child {
+  top: auto;
+  opacity: 1; /* show first slide */
+  position: relative;
+}
+.carousel.fade .item.active {
+  opacity: 1;
+}
+.carousel.fade .item img{
+    height:400px;
+    width: 100%;
+}
+
+.carousel-caption{
+    left: 0;
+}
+
+/*New Edits*/
+#edi{
+    font-weight: bold;
+    color: #003171;
+    font-style: italic;
+}
+
+#edi a{
+    color: #003171;
+}
+
+#edi span{
+    padding:1px;
+}
+
+#adopo h4{
+    color: #16A085;
+    text-transform: uppercase;
+    border-bottom: 1px solid #16A085;
+    padding-bottom: 5px;
+}
+
+#adopo p{
+    width: 290px;
+}
+
+
+#blogodo h4{
+    color: #8E44AD;
+    text-transform: uppercase;
+    border-bottom: 1px solid #8E44AD;
+    padding-bottom: 5px;
+}
+
+#lol{
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.ibo{
+    font-style: italic;
+    color: #6C7A89;
+    font-weight: bold;
+}
+
+#socialo a{
+    margin-right: 10px;
+}
+
+#fb aspx#sthash{
+    color: #3b5998;
+}
+
+#tw a{
+    color: #00aced;
+}
+
+#go a{
+    color: #F43222;
+}
+
+.jobfix li{
+    width: 187px;
+    height: 90px;
+    background: #fff;
+    padding: 10px 15px;
+    float: left;
+    margin: 1px;
+    color: #2b353e;
+    box-sizing: border-box;
+    border: 1px solid #bababa;
+    border-radius: 3px;
+    position: relative;
+    list-style-type: none;
+   
+}
+
+.jobfix h5{
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-size: 13px;
+}
+
+
+
+#fru h4{
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #000;
+}
+
+#vawa span{
+    font-size: 14px;
+    text-transform: none;
+    color: #757D75;
+    text-transform: capitalize;
+    font-weight:normal;
+    margin-left: 12px;
+}
+
+.mojo p{
+    font-size: 15px;
+    margin-top: 2px;
+    font-weight: bold;
+}
+
+.mojo span a{
+    font-size: 13px;
+    font-style: italic;
+    font-weight: bold;
+}
+
 /*****************************************sign up css **************************************************/
 @media screen and (max-width: 1200px) {
 	.login-div {

@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="/styles/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
 	href="/styles/jquery.webui-popover.min.css">
-bootstrap-rating.css
 <link rel="stylesheet" href="/styles/bootstrap-rating.css">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/styles/animate.css">

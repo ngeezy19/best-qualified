@@ -66,6 +66,7 @@ public class JobApplicationServlet extends HttpServlet {
 			synchronized (session) {
 				session.setAttribute("cvSent", true);
 				session.removeAttribute("noCV");
+				session.removeAttribute("jobKey");
 			}
 
 			Util.sendApplicationEmails(u, cp, job, url, req);
@@ -76,11 +77,16 @@ public class JobApplicationServlet extends HttpServlet {
 					.encodeRedirectURL("/bq/open/job-information"));
 			return;
 		} else {
+			synchronized (session) {
+				session.removeAttribute("jobKey");
+			}
 			if (url.contains("http://")) {
 				resp.sendRedirect(url);
 			} else {
 				resp.sendRedirect("http://" + url);
 			}
+			
+			
 
 			return;
 		}

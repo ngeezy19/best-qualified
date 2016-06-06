@@ -2,6 +2,7 @@ package com.bestqualified.servlets;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bestqualified.bean.InterestedJob;
 import com.bestqualified.bean.JobInformation;
 import com.bestqualified.controllers.GeneralController;
 import com.bestqualified.entities.Company;
@@ -74,6 +76,8 @@ public class JobServlet extends HttpServlet {
 		ji.setApplicationWebsite(job.getEducationLevel());
 		ji.setDeadline(new SimpleDateFormat("dd-MMM-YYYY").format(job.getClosingDate()));
 		
+		List<InterestedJob> ijs = Util.getRelatedJobs(job);
+		ji.setRelatedJobs(ijs);
 		synchronized (session) {
 			session.setAttribute("jobInformation", ji);
 		}

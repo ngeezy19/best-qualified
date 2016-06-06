@@ -68,9 +68,21 @@ public class EmailVerificationServlet extends HttpServlet {
 						session.removeAttribute("sub");
 						session.setAttribute("user", u);
 					}
+					
+					Object o3 = null;
+					synchronized (session) {
+						o3 = session.getAttribute("jobApplicationSignUp");
+					}
+					
+					if(o3 != null) {
+						resp.sendRedirect(
+								resp.encodeRedirectURL("/end-point/add-major-interest?user-type=PROFESSIONAL"));
+					}else {
+						resp.sendRedirect(
+								resp.encodeRedirectURL("/major-interest"));
+					}
 
-					resp.sendRedirect(
-							resp.encodeRedirectURL("/major-interest"));
+					
 					return;
 				} else {
 					synchronized (session) {

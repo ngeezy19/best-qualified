@@ -75,6 +75,76 @@ public class StringConstants {
 	public static final String SEARCH_RESULT = "searchResult";
 	public static final String UNKNOWN_USER = "/images/unknown-user.jpg";
 	public static final String DEFAULT_COMPANY_LOGO = "/images/company.png";
+	public static final String JOBTYPE_301 = "Freelance";
+	public static final String JOBTYPE_302 = "Full Time";
+	public static final String JOBTYPE_303 = "Internship";
+	public static final String JOBTYPE_304 = "Part Time";
+	public static final String JOBTYPE_305 = "Permanent";
+	public static final String JOBTYPE_306 = "Temporary";
+	public static final String CAREER_LEVEL_101 = "Student (Undergraduate/Graduate)";
+	public static final String CAREER_LEVEL_102 = "Entry Level";
+	public static final String CAREER_LEVEL_103 = "Experienced (Non-Managerial)";
+	public static final String CAREER_LEVEL_104 = "Managerial";
+	public static final String CAREER_LEVEL_105 = "Executive";
+	public static final String CAREER_LEVEL_106 = "Senoir Executive";
+	public static final String EXPERIENCE_401 = "0 - 1 year";
+	public static final String EXPERIENCE_402 = "0 - 2 years";
+	public static final String EXPERIENCE_403 = "1 - 3 years";
+	public static final String EXPERIENCE_404 = "2 - 5 years";
+	public static final String EXPERIENCE_405 = "3 - 5 years";
+	public static final String EXPERIENCE_406 = "5 - 10 years";
+	public static final String EXPERIENCE_407 = "7 - 10 years";
+	public static final String EXPERIENCE_408 = "More than 10 years";
+	public static final String SALARY_201 = "10,000 - 50,000";
+	public static final String SALARY_202 = "50,000 - 100,000";
+	public static final String SALARY_203 = "100,000 - 300,000";
+	public static final String SALARY_204 = "300,000 - 500,000";
+	public static final String SALARY_205 = "Unspecified";
+	public static final String JOB_CATEGORY_50 = "Accounting / Audit / Tax";
+	public static final String JOB_CATEGORY_72 = "Administration & Office Support";
+	public static final String JOB_CATEGORY_107 = "Agriculture/Farming";
+	public static final String JOB_CATEGORY_53 = "Banking / Finance / Insurance";
+	public static final String JOB_CATEGORY_83 = "Building Design/Architecture";
+	public static final String JOB_CATEGORY_54 = "Construction";
+	public static final String JOB_CATEGORY_84 = "Consulting/Business Strategy Planning";
+	public static final String JOB_CATEGORY_85 = "Creatives(Arts, Design, Fashion)";
+	public static final String JOB_CATEGORY_82 = "Customer Service";
+	public static final String JOB_CATEGORY_76 = "Education/Teaching/Training";
+	public static final String JOB_CATEGORY_56 = "Engineering";
+	public static final String JOB_CATEGORY_79 = "Executive / Top Management";
+	public static final String JOB_CATEGORY_66 = "Healthcare / Pharmaceutical";
+	public static final String JOB_CATEGORY_59 = "Hospitality / Leisure / Travels";
+	public static final String JOB_CATEGORY_60 = "Human Resources";
+	public static final String JOB_CATEGORY_61 = "Information Technology";
+	public static final String JOB_CATEGORY_67 = "Legal";
+	public static final String JOB_CATEGORY_101 = "Logistics / Transportation";
+	public static final String JOB_CATEGORY_58 = "Manufacturing / Production";
+	public static final String JOB_CATEGORY_51 = "Marketing / Advertising / Communications";
+	public static final String JOB_CATEGORY_81 = "NGO/Community Services & Dev";
+	public static final String JOB_CATEGORY_68 = "Oil & Gas / Mining / Energy";
+	public static final String JOB_CATEGORY_74 = "Project / Programme Management";
+	public static final String JOB_CATEGORY_105 = "QA & QC / HSE";
+	public static final String JOB_CATEGORY_70 = "Real Estate / Property";
+	public static final String JOB_CATEGORY_103 = "Research";
+	public static final String JOB_CATEGORY_71 = "Sales/Business Development";
+	public static final String JOB_CATEGORY_106 = "Supply Chain / Procurement";
+	public static final String JOB_CATEGORY_77 = "Telecommunications";
+	public static final String JOB_CATEGORY_104 = "Vocational Trade and Services";
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

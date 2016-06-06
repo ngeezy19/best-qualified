@@ -1,0 +1,77 @@
+.spotlight-div {
+	border: 1px solid black;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	background-color: black;
+	color: white;
+}
+
+#in-spotlight {
+	border: 1px solid black;
+	padding: 2%;
+	padding-bottom: 4px;
+	padding-top:4px;
+	background-color: red;
+	font-size: 16px;
+	z-index: 1000;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-weight: bold;
+}
+
+.spotlight-image-div {
+	position: relative;
+}
+
+.spotlight-title {
+	background-color: yellow;
+	color: blue;
+	padding: 2%;
+}
+
+.author-info {
+	font-style: italic;
+	font-size: 9pt
+}
+
+.article-header {
+	border: 1px solid rgb(59,89,100);
+	padding: 2%;
+	font-size: 13pt;
+	border-left: 4px solid red;
+	background-color: rgb(59,89,157);
+	color: white;
+	margin-bottom: 2%;
+}
+
+.tools-div {
+	border: 1px solid cacaca;
+	background-image: url("/images/concrete_seamless.png");
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+.tools {
+	color: black;
+	text-align: center;
+	font-weight: bolder;
+}
+
+.tool-name {
+	color: white
+}
+
+.tool-name {
+	border: 1px solid black;
+	padding: 2%;
+	padding-bottom: 4px;
+	padding-top:4px;
+	background-color: rgb(1,49,67);
+	font-size: 16px;
+	z-index: 1000;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-weight: bold;
+}

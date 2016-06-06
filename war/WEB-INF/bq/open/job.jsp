@@ -45,8 +45,7 @@
 }
 </style>
 </head>
-<body
-	style="background-image: url(/images/background.jpg); background-repeat: repeat;">
+<body>
 	<div id="fb-root"></div>
 	<script>
 		(function(d, s, id) {
@@ -79,30 +78,33 @@
 	</script>
 	<%@ include file="/main-nav.html"%>
 	<div class="container dashboard-body"
-		style="margin-top: 8%; margin-bottom: 2%;">
-		<div class="col-sm-12" style="margin-bottom: 2%">
-			<div class="col-sm-12 dashboard-section no-padding-div"
-				style="padding-bottom: 0px; padding-top: 0px">
-				<div class="col-sm-3"
-					style="background-color: gray; color: white; font-family: arial; font-weight: bold; text-align: center; height: 4.4em">
-					<img alt="Find a job" src="/images/find_a_job.png">
+		style="height: 350px; padding: 3%; margin-bottom: 2%; border-bottom: 1px #cacaca solid; width: 100%; padding-top: 4%; padding-bottom: none; background-image: url('/images/concrete_seamless.png')"></div>
+	<div class="container dashboard-body"
+		style="width: 80%; margin: 0 auto; margin-top: -300px; margin-bottom: 2%;">
+
+		<div class="row">
+			<div class="col-md-12" style="text-align: center; padding: 2%;">
+				<div class="fb-share-button"
+					style="line-height: 0.7; vertical-align: baseline; display: inline-block;"
+					data-href="/bq/open/job?job-key=${jobInformation.webKey}"
+					data-layout="button"></div>
+
+				<script src="//platform.linkedin.com/in.js" type="text/javascript">
+					lang: en_US
+				</script>
+				<script type="IN/Share"
+					data-url="http://localhost:8888/bq/open/job?job-key=${jobInformation.webKey}"></script>
+				<div class="g-plus" data-action="share" data-annotation="none"
+					data-href="http://localhost:8888/bq/open/job?job-key=${jobInformation.webKey}"></div>
+				<a class="twitter-share-button"
+					href="https://twitter.com/intent/tweet"></a>
+				<div style="display: inline-block;">
+					<a
+						href="mailto:?Subject=Job recommendation from Best Qualified&amp;Body=Hello, Here%20is%20a%20job%20you%20may%20like%20${jobInformation.pageUrl}">
+						<img src="/images/email-big.png" style="vertical-align: baseline;"
+						alt="Email" />
+					</a>
 				</div>
-				<form action="<c:url value='/bq/open/job-search' />">
-					<div class="col-sm-7" style="margin-top: 1%;">
-						<div class="form-group">
-							<input class="form-control" placeholder="jobs"/ >
-						</div>
-					</div>
-					<div class="col-sm-2" style="margin-top: 1%;">
-						<div class="form-group">
-							<input type="submit" value="Search" class="btn btn-primary"/ >
-						</div>
-					</div>
-					<div class="col-sm-12" style="background-color: gray; color: white">
-						<div class="col-sm-12" style="text-align: right">Advanced
-							Search</div>
-					</div>
-				</form>
 			</div>
 		</div>
 		<div class="col-sm-8">
@@ -121,44 +123,35 @@
 					<p>Your Application has been sent successfully, Good Luck.</p>
 				</div>
 			</c:if>
-			<div class="col-sm-12 dashboard-section" style="margin-bottom: 2%">
-				<div class="col-sm-12">
-					<div class="col-sm-3">
-						<img alt="" src="${jobInformation.pictureUrl}"
-							class="img img-responsive">
+			<div class="col-sm-12"
+				style="margin-bottom: 2%; background-color: white; padding-top: 2%; border: 1px #cacaca solid">
+				<div class="col-sm-12 no-padding-div">
+					<div class="col-sm-12 no-padding-div"
+						style="background-color: rgba(255, 200, 45, 0.5)">
+						<div class="col-sm-3">
+							<img alt="" src="${jobInformation.pictureUrl}"
+								class="img img-responsive">
+						</div>
+						<div class="col-sm-9">
+							<h4>
+								<a href="#"><c:out value="${jobInformation.jobTitle}" /></a>
+							</h4>
+							<h5 style="font-family: calibri">
+								<c:out value="${jobInformation.companyName}" />
+							</h5>
+							<h5>
+								<i class="text-danger" style="font-family: calibri">Posted <c:out
+										value="${jobInformation.datePosted}" /></i>
+							</h5>
+							<p>
+								<a
+									href="<c:url value='/bq/closed/job/application?job-key=${jobInformation.webKey}' />"
+									class="btn btn-primary">Apply</a> <a class="btn btn-success">Save</a>
+							</p>
+						</div>
 					</div>
-					<div class="col-sm-9">
-						<h4>
-							<a href="#"><c:out value="${jobInformation.jobTitle}" /></a>
-						</h4>
-						<h5 style="font-family: calibri">
-							<c:out value="${jobInformation.companyName}" />
-						</h5>
-						<h5>
-							<i class="text-danger" style="font-family: calibri">Posted <c:out
-									value="${jobInformation.datePosted}" /></i>
-						</h5>
-						<p>
-
-							<c:choose>
-								<c:when test="${not empty professionalDashboard.professionalLevel}">
-									<a
-										href="<c:url value='/bq/closed/job/application?job-key=${jobInformation.webKey}' />"
-										class="btn btn-primary">Apply</a>
-								</c:when>
-								<c:otherwise>
-									<button type="button" class="btn btn-info" data-toggle="modal"
-										data-target="#myModal">Start Assessment Test</button>
-								</c:otherwise>
-							</c:choose>
 
 
-							<a class="btn btn-success">Save</a>
-						</p>
-					</div>
-					<div class="col-sm-12">
-						<hr />
-					</div>
 					<div class="col-sm-12">
 
 						<p>${jobInformation.jobDesc}</p>
@@ -169,32 +162,7 @@
 								class="btn  btn-primary">Apply</a> <a class="btn  btn-success">Save</a>
 						</p>
 					</div>
-					<div class="row">
-						<div class="col-md-12" style="text-align: center; padding: 2%;">
-							<div class="fb-share-button"
-								style="line-height: 0.7; vertical-align: baseline; display: inline-block;"
-								data-href="/bq/open/job?job-key=${jobInformation.webKey}"
-								data-layout="button"></div>
 
-							<script src="//platform.linkedin.com/in.js"
-								type="text/javascript">
-								lang: en_US
-							</script>
-							<script type="IN/Share"
-								data-url="http://localhost:8888/bq/open/job?job-key=${jobInformation.webKey}"></script>
-							<div class="g-plus" data-action="share" data-annotation="none"
-								data-href="http://localhost:8888/bq/open/job?job-key=${jobInformation.webKey}"></div>
-							<a class="twitter-share-button"
-								href="https://twitter.com/intent/tweet"></a>
-							<div style="display: inline-block;">
-								<a
-									href="mailto:?Subject=Job recommendation from Best Qualified&amp;Body=Hello, Here%20is%20a%20job%20you%20may%20like%20${jobInformation.pageUrl}">
-									<img src="/images/email-big.png"
-									style="vertical-align: baseline;" alt="Email" />
-								</a>
-							</div>
-						</div>
-					</div>
 
 
 				</div>
@@ -216,55 +184,100 @@
 			</c:if>
 		</div>
 		<div class="col-sm-4">
-			<div class="col-sm-12 discussion-sidebar">
+			<div class="col-sm-12 discussion-sidebar"
+				style="background-color: rgba(57, 255, 20, 0.6)">
 				<h4 style="border-bottom: 1px gray solid">Job Summary</h4>
-				<strong style="display: block;">Company</strong>
-				<p>
-					<c:out value='${jobInformation.companyName}' />
-				</p>
-				<strong style="display: block;">Job Level</strong>
-				<p>
-					<c:out value='${jobInformation.careerLevel}' />
-				</p>
-				<strong style="display: block;">Location</strong>
-				<p>
-					<c:out value='${jobInformation.location}' />
-				</p>
-				<!-- <strong style="display: block;">Industry</strong>
-				<p><c:out value='${jobInformation.location}' /></p> -->
-				<strong style="display: block;">Job Type</strong>
-				<p>
-					<c:out value='${jobInformation.jobType}' />
-				</p>
-				<strong style="display: block;">Mininum Qualification</strong>
-				<p>
-					<c:out value='${jobInformation.qualification}' />
-				</p>
-				<strong style="display: block;">Prefered Years of
-					Experience</strong>
-				<p>
-					<c:out value='${jobInformation.experience}' />
-				</p>
-				<strong style="display: block;">Application Deadline</strong>
-				<p>
-					<c:out value='${jobInformation.deadline}' />
-				</p>
+				<c:if test='${not empty jobInformation.companyName}'>
+					<strong style="display: block;">Company</strong>
+					<p>
+						<c:out value='${jobInformation.companyName}' />
+					</p>
+				</c:if>
+
+				<c:if test='${not empty jobInformation.careerLevel}'>
+					<strong style="display: block;">Job Level</strong>
+					<p>
+						<c:out value='${jobInformation.careerLevel}' />
+					</p>
+				</c:if>
+
+				<c:if test='${not empty jobInformation.location}'>
+					<strong style="display: block;">Location</strong>
+					<p>
+						<c:out value='${jobInformation.location}' />
+					</p>
+				</c:if>
+				<c:if test='${not empty jobInformation.industry}'>
+					<strong style="display: block;">Industry</strong>
+					<p>
+						<c:out value='${jobInformation.industry}' />
+				</c:if>
+
+				<c:if test='${not empty jobInformation.jobType}'>
+					<strong style="display: block;">Job Type</strong>
+					<p>
+						<c:out value='${jobInformation.jobType}' />
+					</p>
+				</c:if>
+
+				<c:if test='${not empty jobInformation.qualification}'>
+					<strong style="display: block;">Mininum Qualification</strong>
+					<p>
+						<c:out value='${jobInformation.qualification}' />
+					</p>
+				</c:if>
+
+				<c:if test='${not empty jobInformation.experience}'>
+					<strong style="display: block;">Prefered Years of
+						Experience</strong>
+					<p>
+						<c:out value='${jobInformation.experience}' />
+					</p>
+				</c:if>
+
+				<c:if test='${not empty jobInformation.deadline}'>
+					<strong style="display: block;">Application Deadline</strong>
+					<p>
+						<c:out value='${jobInformation.deadline}' />
+					</p>
+				</c:if>
+
 			</div>
 			<c:if test="${not empty jobInformation.relatedJobs}">
-				<div class="col-sm-12 dashboard-section">
-					<div class="col-sm-12" style="border-bottom: 1px gray solid">
-						<div class="col-sm-3">
-							<img alt="" src="/images/company.png" class="img img-responsive">
-						</div>
-						<div class="col-sm-9">
-							<h4>Sales Manager</h4>
-							<h5>Flex Sales Company</h5>
-							<h5>
-								Posted 3 mins ago <a class="btn btn-primary pull-right">View</a>
-							</h5>
-						</div>
-
+				<div class="col-sm-12 dashboard-section no-padding-div"
+					style="border: 2px orange solid; padding-top: 0px; padding-bottom: 0px">
+					<div class="col-sm-12 no-padding-div"
+						style="background-color: orange; color: white; font-weight: bold; text-align: center;">
+						<h4>Related Jobs</h4>
 					</div>
+					<c:forEach var="item" items="${jobInformation.relatedJobs}">
+						<div class="col-sm-12 no-padding-div"
+							style="border-bottom: 1px #e1e1e1 solid; margin-top: 2%;">
+							<div class="col-sm-3">
+								<a href="/bq/open/job?job-key=${item.jobKey}"><img alt=""
+									src="${item.pictureUrl}" class="img img-responsive"></a>
+							</div>
+							<div class="col-sm-9 no-padding-div" style="padding-right: 2%;">
+
+								<a href="/bq/open/job?job-key=${item.jobKey}"><c:out
+										value="${item.jobTitle}" /></a>
+
+								<h5
+									style="font-family: calibri; margin-top: 2px; margin-bottom: 0px">
+									<c:out value="${item.companyName}" />
+								</h5>
+								<h5 style="margin-top: 5px">
+									<strong class="text-success"><c:out
+											value='${item.location}' /></strong> <i style="font-family: calibri"
+										class="text-danger pull-right">Posted <c:out
+											value="${item.postedTime}" />
+									</i>
+
+								</h5>
+							</div>
+
+						</div>
+					</c:forEach>
 				</div>
 			</c:if>
 

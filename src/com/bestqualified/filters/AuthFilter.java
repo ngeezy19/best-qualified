@@ -90,6 +90,13 @@ public class AuthFilter implements Filter {
 				return;
 			}
 		} else {
+			String jobKey = req.getParameter("job-key");
+			if(jobKey!=null) {
+				synchronized (session) {
+					session.setAttribute("jobKey", jobKey);
+					session.setAttribute("jobApplicationSignUp", true);
+				}
+			}
 			resp.sendRedirect(resp.encodeRedirectURL("/sign-in"));
 		}
 

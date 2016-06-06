@@ -15,6 +15,7 @@ import com.bestqualified.bean.JobSearchResult;
 import com.bestqualified.util.StringConstants;
 import com.bestqualified.util.Util;
 import com.google.appengine.api.search.Cursor;
+import com.google.appengine.api.search.Field;
 import com.google.appengine.api.search.Index;
 import com.google.appengine.api.search.IndexSpec;
 import com.google.appengine.api.search.Query;
@@ -24,6 +25,7 @@ import com.google.appengine.api.search.ScoredDocument;
 import com.google.appengine.api.search.SearchServiceFactory;
 import com.google.appengine.api.search.SortExpression;
 import com.google.appengine.api.search.SortOptions;
+import com.google.gson.Gson;
 
 public class FindJobServlet extends HttpServlet {
 
@@ -133,7 +135,8 @@ public class FindJobServlet extends HttpServlet {
 		}
 
 		Cursor cursor = null;
-		if (Util.notNull(jsr.getCursor())) {
+		String c = jsr.getCursor();
+		if (c!=null && c.isEmpty()) {
 			cursor = Cursor.newBuilder().build(jsr.getCursor());
 		} else {
 			cursor = Cursor.newBuilder().build();
@@ -167,11 +170,16 @@ public class FindJobServlet extends HttpServlet {
 			InterestedJob ij = new InterestedJob();
 			ij.setCompanyName(sd.getOnlyField("companyName").getText());
 			ij.setJobKey(sd.getId());
-			ij.setJobTitle(sd.getOnlyField("jobTitle").getText());
+			Iterable<Field> itr = sd.getFields("jobTitle");
+			for(Field f : itr) {
+				ij.setJobTitle(f.getAtom());
+				break;
+			}
+			
 			ij.setPictureUrl(StringConstants.DEFAULT_COMPANY_LOGO);
 			ij.setPostedTime(Util.getPostedTime(sd.getOnlyField("datePosted")
 					.getDate()));
-			ij.setLocation(sd.getOnlyField("jobTitle").getText());
+			ij.setLocation(sd.getOnlyField("location").getAtom());
 			ijs.add(ij);
 		}
 		jsr.setIjobs(ijs);
@@ -179,7 +187,7 @@ public class FindJobServlet extends HttpServlet {
 		if(cursor != null) {
 			jsr.setCursor(cursor.toWebSafeString());
 		}else {
-			jsr.setCursor("null");
+			jsr.setCursor(null);
 		}
 		jsr.setTotalNumber(totalMatches);
 		jsr.setNumberFetched(numberOfDocsReturned);
@@ -187,7 +195,10 @@ public class FindJobServlet extends HttpServlet {
 		synchronized (session) {
 			session.setAttribute("jobSearchResult", jsr);
 		}
-		resp.sendRedirect(resp.encodeRedirectURL("/bq/open/jobs-search-result"));
+		
+		resp.setContentType("äpplication/json");
+		String json = new Gson().toJson(jsr);
+		resp.getWriter().write(json);
 		
 		
 
