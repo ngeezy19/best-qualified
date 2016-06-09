@@ -17,6 +17,7 @@ import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.User;
 import com.bestqualified.util.EntityConverter;
 
+
 public class JobApplicationFilter implements Filter {
 
 	@Override
@@ -52,17 +53,18 @@ public class JobApplicationFilter implements Filter {
 			}
 			
 			if(cp.getCv() == null) {
-				synchronized (session) {
+				/*synchronized (session) {
 					session.setAttribute("noCV",true);
 					session.removeAttribute("cvSent");
-				}
-				resp.sendRedirect(resp.encodeRedirectURL("/bq/open/job-information"));
+				}*/
+				resp.setContentType("application/json");
+				resp.sendError(HttpServletResponse.SC_EXPECTATION_FAILED, "no-cv");
 				return;
 			}else {
-				synchronized (session) {
+				/*synchronized (session) {
 					session.removeAttribute("noCV");
 					session.removeAttribute("cvSent");
-				}
+				}*/
 				arg2.doFilter(arg0, arg1);
 			}
 		}

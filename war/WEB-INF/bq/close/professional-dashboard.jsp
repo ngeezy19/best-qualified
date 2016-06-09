@@ -23,6 +23,15 @@
 	margin-right: 2%;
 }
 
+.jobs-list {
+	border-bottom: 1px #e1e1e1 solid;
+	margin-top: 2%;
+}
+
+[class~='jobs-list']:last-of-type {
+	border-bottom: none;
+}
+
 #get-rated {
 	-webkit-animation-duration: 2s;
 	-webkit-animation-delay: 2s;
@@ -33,24 +42,11 @@
 <body
 	style="background-image: url(/images/background.jpg); background-repeat: repeat;">
 	<%@ include file="/main-nav.html"%>
-	<div class="container dashboard-body" style="margin-top: 8%;">
-		<c:if test="${empty professionalDashboard.professionalLevel}">
-
-			<div class="alert alert-info">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<h5 style="font-weight: bold;">You have not taken our
-					assessment test.</h5>
-				<p>
-					Professionals who have taken our assessment test can apply for jobs
-					and get found by recruiters.
-					<button class="btn btn-primary take-assessment" data-toggle="modal"
-						data-target="#myModal">Take assessment test now</button>
-				</p>
-			</div>
-		</c:if>
+	<div class="container dashboard-body">
+		<br /> <br /> <br />
 		<div class="col-sm-8">
 			<div class="col-sm-12" style="margin-bottom: 2%;">
-				<div class="col-sm-2">
+				<div class="col-sm-2 hidden-xs hidden-sm">
 					<div class="dashboard-section">
 						<img alt="" src="/images/personal-profile.png"
 							style="width: 80%; margin: 0 auto" class="img img-responsive">
@@ -84,32 +80,11 @@
 						<c:set var="intemediate" value="INTERMEDIATE" />
 						<c:set var="advanced" value="ADVANCED" />
 
-						<h4
-							style="text-align: center; padding-top: 2%; font-weight: bolder; font-size: 14pt; color: #DAA520">
-							<input type="hidden" class="rating" data-readonly
-								data-fractions="2" value="${professionalDashboard.rating}">
-						</h4>
 						<div style="text-align: center;">
-							<c:choose>
-								<c:when
-									test="${professionalDashboard.professionalLevel == beginner }">
-									Beginner
-								</c:when>
-								<c:when
-									test="${professionalDashboard.professionalLevel == intemediate }">
-									Intemediate
-								</c:when>
-								<c:when
-									test="${professionalDashboard.professionalLevel == advanced }">
-									Experienced
-								</c:when>
-								<c:otherwise>
-									<h4 id="get-rated" class="animated tada"
-										style="font-weight: bolder; color: red">Get Rated!</h4>
-									<input type="button" data-toggle="modal" data-target="#myModal"
-										class="btn btn-success btn-xs" value="Take Assessment Test" />
-								</c:otherwise>
-							</c:choose>
+							<h4 id="get-rated" class="animated tada"
+								style="font-weight: bolder; color: red">Test Yourself!</h4>
+							<input type="button" data-toggle="modal" data-target="#myModal"
+								class="btn btn-success btn-xs" value="Take Free Assessment Test" />
 						</div>
 
 					</div>
@@ -164,17 +139,12 @@
 						<div class="col-sm-12"
 							style="border-bottom: 1px #e1e1e1 solid; margin-bottom: 2%; margin-top: 2%;">
 							<div class="col-sm-3">
-								<a<c:choose><c:when test="${empty professionalDashboard.professionalLevel}">class="call-no-assessment" href="#"</c:when>
-										<c:otherwise>href="/bq/open/job?job-key=${item.jobKey}"</c:otherwise>
-										</c:choose>"><img
-									alt="" src="${item.pictureUrl}" class="img img-responsive"></a>
+								<a href="/bq/open/job?job-key=${item.jobKey}"></a><img alt=""
+									src="${item.pictureUrl}" class="img img-responsive"></a>
 							</div>
 							<div class="col-sm-9">
 								<h4>
-									<a
-										<c:choose><c:when test="${empty professionalDashboard.professionalLevel}">class="call-no-assessment" href="#"</c:when>
-										<c:otherwise>href="/bq/open/job?job-key=${item.jobKey}"</c:otherwise>
-										</c:choose>><c:out
+									<a href="/bq/open/job?job-key=${item.jobKey}"><c:out
 											value="${item.jobTitle}" /></a>
 								</h4>
 								<h5 style="font-family: calibri">
@@ -183,10 +153,7 @@
 								<h5>
 									<i class="text-danger" style="font-family: calibri">Posted
 										<c:out value="${item.postedTime}" />
-									</i> <a
-										<c:choose><c:when test="${empty professionalDashboard.professionalLevel}">class="call-no-assessment pull-right" href="#"</c:when>
-										<c:otherwise>href="/bq/open/job?job-key=${item.jobKey}"</c:otherwise>
-										</c:choose>
+									</i> <a href="/bq/open/job?job-key=${item.jobKey}"
 										class="pull-right">View</a>
 								</h5>
 							</div>
@@ -259,92 +226,107 @@
 		</div>
 		<div class="col-sm-4">
 
-			<div class="col-sm-12 dashboard-row no-padding-div">
-				<iframe src="http://localhost:8888/images/ad1/negotiatn_ext.html"
-					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
-			</div>
-			<div class="col-sm-12 dashboard-row no-padding-div">
-				<iframe src="http://localhost:8888/images/ad2/bootcamp_ext.html"
-					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
-			</div>
-			<div class="col-sm-12 dashboard-row no-padding-div">
-				<iframe src="http://localhost:8888/images/ad3/tools_or_luck.html"
-					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
-			</div>
-
-		</div>
-
-
-
-	</div>
-	<!-- Modal -->
-	<div id="myModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-
-			<!-- Modal content-->
-			<div class="modal-content"
-				style="background-image: url('/images/experience-level.jpg');">
-				<div class="modal-header" style="border: none">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-
-				</div>
-
-				<div class="modal-body">
-					<h4 class="modal-title text-warning" style="font-weight: bolder;">Select
-						your level of experience</h4>
-					<form id="exp-level-form"
-						action="<c:url value='/bq/close/get-assessment-questions'/>">
-						<select name="exp-level">
-							<option value="Beginner">Beginner (0-3 yrs)</option>
-							<option value="Intermediate">Intermediate (4-7 yrs)</option>
-							<option value="Experienced">Experienced 8+ yrs</option>
-						</select> <input class="btn btn-info" type="submit" value="Start test">
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-
-		</div>
-	</div>
-	<div id="myModal1" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-
-			<!-- Modal content-->
-			<div class="modal-content"
-				style="background-image: url('/images/experience-level.jpg');">
-				<div class="modal-header" style="border: none">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-
-				</div>
-				<div class="modal-body">
-					<h4 style="font-weight: bolder;" class="text-warning">
-						Hello
-						<c:out value='${professionalDashboard.name}' />
-
+			<div>
+				<div class="col-sm-12 dashboard-row dashboard-section">
+					<h4>
+						Saved Jobs (
+						<c:out value='${fn:length(professionalDashboard.savedJobs)}' />
+						)
 					</h4>
-					<p>You have to take our assessment test before you can apply
-						for a job and get found by recruiters.</p>
-					<p>
-						<strong class="text-danger">Select your experience level</strong>
+					<p>Save jobs so that you can review Later</p>
+					<p style="text-align: right">
+						<a href="#" id="see-saved-jobs">See all your Saved Jobs</a>
 					</p>
-					<form id="exp-level-form"
-						action="<c:url value='/bq/close/get-assessment-questions'/>">
-						<select name="exp-level">
-							<option value="Beginner">Beginner (0-3 yrs)</option>
-							<option value="Intermediate">Intermediate (4-7 yrs)</option>
-							<option value="Experienced">Experienced 8+ yrs</option>
-						</select> <input class="btn btn-info" type="submit" value="Start test">
-					</form>
+					<div id="saved-jobs-div" style="display: none">
+						<c:forEach var="item" items="${professionalDashboard.savedJobs}">
+							<div class="col-sm-12 no-padding-div jobs-list">
+								<div class="col-sm-3">
+									<a href="/bq/open/job?job-key=${item.jobKey}"><img alt=""
+										src="${item.pictureUrl}" class="img img-responsive"></a>
+								</div>
+								<div class="col-sm-9 no-padding-div" style="padding-right: 2%;">
+
+									<a href="/bq/open/job?job-key=${item.jobKey}"><c:out
+											value="${item.jobTitle}" /></a>
+
+									<h5
+										style="font-family: calibri; margin-top: 2px; margin-bottom: 0px">
+										<c:out value="${item.companyName}" />
+									</h5>
+									<h5 style="margin-top: 5px">
+										<strong class="text-success"><c:out
+												value='${item.location}' /></strong> <i style="font-family: calibri"
+											class="text-danger pull-right">Posted <c:out
+												value="${item.postedTime}" />
+										</i>
+
+									</h5>
+								</div>
+
+							</div>
+						</c:forEach>
+					</div>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<div class="col-sm-12 dashboard-row dashboard-section">
+					<h4>
+						Job Alerts (
+						<c:out value='${myJobs.jobAlerts}' />
+						)
+					</h4>
+					<p>Get alerts when jobs that meet your specifications are
+						available.</p>
+					<p style="text-align: right;">
+						<a href="#">View your Job alerts</a>
+					</p>
+
+				</div>
+				<div class="col-sm-12 dashboard-row dashboard-section">
+					<h4>
+						Job Applications (
+						<c:out value='${fn:length(professionalDashboard.appliedJobs)}' />
+						)
+					</h4>
+					<p>Review your past job applications.</p>
+					<p style="text-align: right">
+						<a href="#" id="see-applied-jobs">View Applications</a>
+					</p>
+					<div id="applied-jobs-div" style="display: none">
+						<c:forEach var="item" items="${professionalDashboard.appliedJobs}">
+							<div class="col-sm-12 no-padding-div jobs-list">
+								<div class="col-sm-3">
+									<a href="/bq/open/job?job-key=${item.jobKey}"><img alt=""
+										src="${item.pictureUrl}" class="img img-responsive"></a>
+								</div>
+								<div class="col-sm-9 no-padding-div" style="padding-right: 2%;">
+
+									<a href="/bq/open/job?job-key=${item.jobKey}"><c:out
+											value="${item.jobTitle}" /></a>
+
+									<h5
+										style="font-family: calibri; margin-top: 2px; margin-bottom: 0px">
+										<c:out value="${item.companyName}" />
+									</h5>
+									<h5 style="margin-top: 5px">
+										<strong class="text-success"><c:out
+												value='${item.location}' /></strong> <i style="font-family: calibri"
+											class="text-danger pull-right">Posted <c:out
+												value="${item.postedTime}" />
+										</i>
+
+									</h5>
+								</div>
+
+							</div>
+						</c:forEach>
+					</div>
 				</div>
 			</div>
 
 		</div>
+
 	</div>
+
+	<
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
@@ -357,6 +339,17 @@
 			$(".call-no-assessment").click(function(e) {
 				e.preventDefault();
 				$("#myModal1").modal();
+			});
+
+			$("#see-saved-jobs").click(function(event) {
+				event.preventDefault();
+				$("#saved-jobs-div").slideToggle();
+
+			});
+			$("#see-applied-jobs").click(function(event) {
+				event.preventDefault();
+				$("#applied-jobs-div").slideToggle();
+
 			});
 		});
 	</script>

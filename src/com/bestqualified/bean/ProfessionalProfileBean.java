@@ -24,7 +24,6 @@ public class ProfessionalProfileBean implements Serializable {
 	private List<Award> awards;
 	private List<Certification> certifications;
 	
-	
 	public String getCvSafeString() {
 		return cvSafeString;
 	}

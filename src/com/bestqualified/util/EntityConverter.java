@@ -16,6 +16,7 @@ import com.bestqualified.entities.Company;
 import com.bestqualified.entities.Education;
 import com.bestqualified.entities.EducationLevel;
 import com.bestqualified.entities.Job;
+import com.bestqualified.entities.JobAlert;
 import com.bestqualified.entities.JobCategory;
 import com.bestqualified.entities.JobRegion;
 import com.bestqualified.entities.Project;
@@ -29,6 +30,27 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 
 public class EntityConverter {
+	
+	public static Entity JobAlertToEntity(JobAlert ja) {
+		Entity e = new Entity(ja.getId());
+		e.setIndexedProperty("careerLevel", ja.getCareerLevel());
+		e.setIndexedProperty("jobType", ja.getJobType());
+		e.setIndexedProperty("location", ja.getLocation());
+		e.setIndexedProperty("salary", ja.getSalary());
+		e.setUnindexedProperty("email", ja.getEmail());
+		return e;
+	}
+	
+	public static JobAlert entityToJobAlert(Entity e) {
+		JobAlert ja = new JobAlert();
+		ja.setId(e.getKey());
+		ja.setCareerLevel((String) e.getProperty("careerLevel"));
+		ja.setEmail((String) e.getProperty("email"));
+		ja.setJobType((String) e.getProperty("jobType"));
+		ja.setLocation((String) e.getProperty("location"));
+		ja.setSalary((String) e.getProperty("salary"));
+		return ja;
+	}
 
 	public static Entity awardToEntity(Award a) {
 		Entity ent = new Entity(a.getId());

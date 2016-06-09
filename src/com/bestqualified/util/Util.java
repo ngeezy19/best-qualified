@@ -263,7 +263,7 @@ public class Util {
 		return l;
 	}
 
-	private static List<InterestedJob> toInterestedJobs(List<Job> jobs) {
+	public static List<InterestedJob> toInterestedJobs(List<Job> jobs) {
 		List<InterestedJob> l = new ArrayList<>();
 		List<Key> cKeys = new ArrayList<>();
 		for (Job jb : jobs) {
@@ -417,6 +417,19 @@ public class Util {
 		pd.setRating(u.getRating());
 		pd.setCurrentEmployer(cp.getCurrentEmployer());
 		pd.setiJobs(Util.getJobs(cp.getCareerLevel(), cp.getEducation()));
+		List<Key> sjs = cp.getSavedJobs();
+		if(sjs != null) {
+			Map<Key,Entity> map = GeneralController.findByKeys(sjs);
+			List<Job> jobs = new ArrayList<>();
+			for(Key k: map.keySet()) {
+				jobs.add(EntityConverter.entityToJob(map.get(k)));
+			}
+			List<InterestedJob> isjs = Util.toInterestedJobs(jobs);
+			pd.setSavedJobs(isjs);
+		} else {
+			pd.setSavedJobs(new ArrayList<InterestedJob>());
+		}
+		
 		pd.setName(u.getFirstName() + " " + u.getLastName());
 		pd.setNoOfConnections(String.valueOf((cp.getConnections() == null) ? 0
 				: cp.getConnections().size()));

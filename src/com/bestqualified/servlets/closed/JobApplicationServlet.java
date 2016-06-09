@@ -17,7 +17,6 @@ import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.Job;
 import com.bestqualified.entities.User;
 import com.bestqualified.util.EntityConverter;
-import com.bestqualified.util.MemcacheProvider;
 import com.bestqualified.util.Util;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -28,54 +27,66 @@ public class JobApplicationServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = -1298221095466832976L;
-
+	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
 		User u = null;
 		CandidateProfile cp = null;
 		HttpSession session = req.getSession();
-		String webSafeKey = req.getParameter("job-key");
-		Key key = KeyFactory.stringToKey(webSafeKey);
 		
-		Job job = Util.getJobFromCache(key);
-		String url = job.getApplicationUrl();
 		synchronized (session) {
 			cp = (CandidateProfile) session.getAttribute("professionalProfile");
 			u = (User) session.getAttribute("user");
+			
 		}
-
+		String webSafeKey = req.getParameter("job-key");
+		
+		Key key = KeyFactory.stringToKey(webSafeKey);
+		
+	
+		
 		Set<Key> kys = cp.getJobsApplied();
-		if (kys == null) {
-			kys = new HashSet<>();
-		}
-		kys.add(job.getId());
-		cp.setJobsApplied(kys);
-
-		List<Key> ks = job.getNewApplicants();
-		if (ks == null) {
-			ks = new ArrayList<>();
-		}
-		if(!ks.contains(u.getUserKey())) {
-			ks.add(u.getUserKey());
+		
+		if(kys!=null && kys.contains(key)) {
+			resp.sendError(HttpServletResponse.SC_NOT_ACCEPTABLE, "already applied");
+			return;
 		}
 		
-		job.setNewApplicants(ks);
+		Job job = Util.getJobFromCache(key);
+		String url = job.getApplicationUrl();
 		if (url.contains("@")) {
 			synchronized (session) {
-				session.setAttribute("cvSent", true);
-				session.removeAttribute("noCV");
+				
 				session.removeAttribute("jobKey");
 			}
 
 			Util.sendApplicationEmails(u, cp, job, url, req);
+			if (kys == null) {
+				kys = new HashSet<>();
+			}
+			kys.add(job.getId());
+			cp.setJobsApplied(kys);
+			
+			List<Key> ks = job.getNewApplicants();
+			if (ks == null) {
+				ks = new ArrayList<>();
+			}
+			
+			if(!ks.contains(u.getUserKey())) {
+				ks.add(u.getUserKey());
+			}
+			
+			job.setNewApplicants(ks);
+			resp.setContentType("application/json");
 			GeneralController.createWithCrossGroup(
 					EntityConverter.candidateProfileToEntity(cp),
 					EntityConverter.jobToEntity(job));
-			resp.sendRedirect(resp
-					.encodeRedirectURL("/bq/open/job-information"));
-			return;
+			synchronized (session) {
+				session.setAttribute("professionalProfile", cp);
+			}
+		
 		} else {
 			synchronized (session) {
 				session.removeAttribute("jobKey");
@@ -85,11 +96,15 @@ public class JobApplicationServlet extends HttpServlet {
 			} else {
 				resp.sendRedirect("http://" + url);
 			}
-			
-			
-
 			return;
 		}
+	
+		
+		
+
+		
+		
+		
 	}
 
 }

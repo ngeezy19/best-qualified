@@ -1,12 +1,21 @@
 function addError(msgD, msg) {
-	msgD.removeClass("alert-success");
-	msgD.addClass("alert alert-danger");
+	msgD.removeClass("bq-alert-success");
+	msgD.removeClass("bq-alert-warning");
+	msgD.addClass("bq-alert bq-alert-danger");
+	msgD.html(msg);
+}
+
+function addWarning(msgD, msg) {
+	msgD.removeClass("bq-alert-success");
+	msgD.removeClass("bq-alert-danger");
+	msgD.addClass("bq-alert bq-alert-warning");
 	msgD.html(msg);
 }
 
 function addSuccess(msgD, msg) {
-	msgD.removeClass("alert-danger");
-	msgD.addClass("alert alert-success");
+	msgD.removeClass("bq-alert-danger");
+	msgD.removeClass("bq-alert-warning");
+	msgD.addClass("bq-alert bq-alert-success");
 	msgD.html(msg);
 }
 

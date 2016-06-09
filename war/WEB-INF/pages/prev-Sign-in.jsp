@@ -77,7 +77,7 @@ body {
 								<div class="form-group col-md-6">
 									<label class=" control-label" for="textinput">Email</label>
 									<div class="">
-										<input name="email" value="${sin.email }"
+										<input name="email" value="${sin.email}"
 											class="form-control input-md" type="text">
 
 									</div>

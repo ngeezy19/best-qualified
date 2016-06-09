@@ -70,7 +70,6 @@
 }
 
 #find-a-job {
-	
 	position: relative;
 	-webkit-animation-name: example1; /* Chrome, Safari, Opera */
 	-webkit-animation-duration: 4s; /* Chrome, Safari, Opera */
@@ -80,47 +79,145 @@
 }
 
 /* Chrome, Safari, Opera */
-@-webkit-keyframes example1 {
-     0%   {left:0px;}
-    25%  {left:60%;}
-    50%  {left:60%;}
-    75%  {left:0px;}
-    100% {left:0px;}
+@
+-webkit-keyframes example1 { 0% {
+	left: 0px;
+}
+
+25%
+{
+left
+:
+60%;
+}
+50%
+{
+left
+:
+60%;
+}
+75%
+{
+left
+:
+0px;
+}
+100%
+{
+left
+:
+0px;
+}
 }
 
 /* Standard syntax */
-@keyframes example1 {
-    0%   {left:0px;}
-    25%  {left:60%;}
-    50%  {left:60%;}
-    75%  {left:0px;}
-    100% {left:0px;}
+@
+keyframes example1 { 0% {
+	left: 0px;
 }
 
+25%
+{
+left
+:
+60%;
+}
+50%
+{
+left
+:
+60%;
+}
+75%
+{
+left
+:
+0px;
+}
+100%
+{
+left
+:
+0px;
+}
+}
 #animation-div {
 	color: white;
 	background-color: darkblue;
-    -webkit-animation-name: example; /* Chrome, Safari, Opera */
-    -webkit-animation-duration: 4s; /* Chrome, Safari, Opera */
-    animation-name: example;
-    animation-duration: 5s;
-   animation-iteration-count: infinite;
+	-webkit-animation-name: example; /* Chrome, Safari, Opera */
+	-webkit-animation-duration: 4s; /* Chrome, Safari, Opera */
+	animation-name: example;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+}
+
+#banner-img {
+	-webkit-animation-duration: 5s;
+	-webkit-animation-delay: 5s;
+	-webkit-animation-iteration-count: infinite;
 }
 
 /* Chrome, Safari, Opera */
-@-webkit-keyframes example {
-    0%   {background-color: darkblue;}
-    25%  {background-color: #DA4453;}
-    50%  {background-color: #967ADC;}
-    100% {background-color: #4A89DC;}
+@
+-webkit-keyframes example { 0% {
+	background-color: darkblue;
+}
+
+25%
+{
+background-color
+:
+ 
+#DA4453
+;
+}
+50%
+{
+background-color
+:
+ 
+#967ADC
+;
+}
+100%
+{
+background-color
+:
+ 
+#4A89DC
+;
+}
 }
 
 /* Standard syntax */
-@keyframes example {
-    0%   {background-color: darkblue;}
-    25%  {background-color: #DA4453;}
-    50%  {background-color: #967ADC;}
-    100% {background-color: #4A89DC;}
+@
+keyframes example { 0% {
+	background-color: darkblue;
+}
+25%
+{
+background-color
+:
+ 
+#DA4453
+;
+}
+50%
+{
+background-color
+:
+ 
+#967ADC
+;
+}
+100%
+{
+background-color
+:
+ 
+#4A89DC
+;
+}
 }
 </style>
 </head>
@@ -130,36 +227,19 @@
 		<div class="container dashboard-body"
 			style="margin-top: 10px; padding: 3%; margin-bottom: 2%; border-bottom: 1px #cacaca solid; width: 100%; padding-top: 4%; padding-bottom: none; background-image: url('/images/concrete_seamless.png')">
 			<div class="row">
-				<div class="col-sm-12">
-					<h1 class="" style="font-family: arial; color: #a349a4">Get
-						hired in industries of your choice.</h1>
-				</div>
-				<div class="col-sm-6" style="color: white;">
 
-					<ul style="color: black">
-						<li style="list-style: none"><h4>
-								<span style="margin-right: 2%;"
-									class="glyphicon glyphicon-ok list-bullet"></span>Start your
-								exciting career journey here.
-							</h4></li>
-						<li style="list-style: none"><h4>
-								<span style="margin-right: 2%;"
-									class="glyphicon glyphicon-ok list-bullet"></span>There's
-								nothing wrong with trying something new.
-							</h4></li>
-						<li style="list-style: none"><h4>
-								<span style="margin-right: 2%;"
-									class="glyphicon glyphicon-ok list-bullet"></span>A variety of
-								career choices are available.
-							</h4></li>
-					</ul>
+				<div class="col-sm-6" style="color: white;">
+					<img id="banner-img" class="img img-responsive animated flipInX"
+						alt="" src="/images/jobs-slide-1.png">
 				</div>
-				<div class="col-sm-6" style="margin-top: -10px">
+				<div class="col-sm-6" style="">
+					<br />
 					<div class="col-sm-12 no-padding-div"
 						style="background-color: rgba(200, 191, 231, 0.5); border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px">
 						<div class="col-sm-12"
 							style="background-color: rgba(79, 193, 233, 0.4); padding: 1%">
-							<img id="find-a-job" class="img img-responsive" src="/images/find_a_job.png">
+							<img id="find-a-job" class="img img-responsive"
+								src="/images/find_a_job.png">
 						</div>
 						<div class="col-sm-12" style="padding: 2%">
 
@@ -643,10 +723,10 @@
 					</div>
 					<div class="col-sm-12 no-padding-div"
 						style="background-image: url('/images/assess.jpg'); height: 320px; background-size: cover; border: 1px green solid; margin-top: 2%; margin-bottom: 2%; position: relative;">
-						<div id="get-rated" class="animated tada" 
+						<div id="get-rated" class="animated tada"
 							style="text-align: center; line-height: 1.2; width: 45%; position: absolute; right: 10px; padding: 1%; background-color: rgba(190, 190, 190, 0.5); top: 6em">
 							<a
-								style="cursor:pointer; text-decoration: none; color: red; font-weight: 700; font-size: 15pt; font-family: arial;">Take
+								style="cursor: pointer; text-decoration: none; color: red; font-weight: 700; font-size: 15pt; font-family: arial;">Take
 								Free Assessment</a>
 						</div>
 					</div>
@@ -656,22 +736,24 @@
 						style="border: 1px #eaeaea solid">
 						<div class="col-sm-12 no-padding-div"
 							style="padding: 1%; border-bottom: 1px #eaeaea solid">
-							<div class="col-sm-5 no-padding-div text-primary" style="font-family: calibri; font-weight: bold;">
-								<span  class="results-found"><c:out
+							<div class="col-sm-5 no-padding-div text-primary"
+								style="font-family: calibri; font-weight: bold;">
+								<span class="results-found"><c:out
 										value='${jobSearchResult.totalNumber}' /></span> results found
 							</div>
 							<form class="form-inline" role="form" action="<c:url value='' />">
 								<div class="col-sm-4 no-padding-div"></div>
-								<div class="col-sm-3 no-padding-div"
-									style="text-align: right">
-									<label style="padding-right: 4%;">Show  </label><select style="width: 3em; display: inline" name="number-of-entries"><option>${jobSearchResult.numberToFetch}</option>
+								<div class="col-sm-3 no-padding-div" style="text-align: right">
+									<label style="padding-right: 4%;">Show </label><select
+										style="width: 3em; display: inline" name="number-of-entries"><option>${jobSearchResult.numberToFetch}</option>
 										<option>10</option>
 										<option>25</option>
 										<option>50</option></select>
 								</div>
 							</form>
 						</div>
-						<div id="list-container" class="col-sm-12 no-padding-div" style="padding-bottom: 0px; margin-bottom: 2%;">
+						<div id="list-container" class="col-sm-12 no-padding-div"
+							style="padding-bottom: 0px; margin-bottom: 2%;">
 							<c:forEach var="item" items="${jobSearchResult.ijobs}">
 								<div class="col-sm-12"
 									style="border-bottom: 1px #e1e1e1 solid; margin-top: 2%;">
@@ -680,11 +762,13 @@
 											src="${item.pictureUrl}" class="img img-responsive"></a>
 									</div>
 									<div class="col-sm-9 no-padding-div" style="padding-top: 2%;">
-										
-											<a style="font-size: 12pt" href="/bq/open/job?job-key=${item.jobKey}"><c:out
-													value="${item.jobTitle}" /></a>
-										
-										<h5 style="font-family: calibri; margin-top: 0px; margin-bottom: 0px">
+
+										<a style="font-size: 12pt"
+											href="/bq/open/job?job-key=${item.jobKey}"><c:out
+												value="${item.jobTitle}" /></a>
+
+										<h5
+											style="font-family: calibri; margin-top: 0px; margin-bottom: 0px">
 											<c:out value="${item.companyName}" />
 										</h5>
 										<h5 style="margin-top: 5px; margin-bottom: 5px">
@@ -720,7 +804,8 @@
 						</div>
 						<div class="col-sm-12 no-padding-div"
 							style="background-image: url('/images/resume.png'); height: 280px; background-size: contain; position: relative;">
-							<div id="animation-div" style="position: absolute; bottom: 0px; width: 100%; padding: 1%; text-align: center;">
+							<div id="animation-div"
+								style="position: absolute; bottom: 0px; width: 100%; padding: 1%; text-align: center;">
 								<h4>Free Resume Evaluation</h4>
 								<h4>CLICK HERE</h4>
 							</div>
@@ -748,20 +833,85 @@
 									style="text-align: center; font-weight: bolder; color: purple; font-family: arial">Sign
 									Up for free Job alerts</h3>
 								<div class="col-sm-6  form-group ">
-									<label>Job Location: </label> <input class="form-control"
-										placeholder="">
+									<label>Job Location </label> <select class="form-control "
+										name="job-region">
+										<option></option>
+										<option>Abia</option>
+										<option>Abuja</option>
+										<option>Adamawa</option>
+										<option>Anambra</option>
+										<option>Akwa Ibom</option>
+										<option>Bauchi</option>
+										<option>Bayelsa</option>
+										<option>Benue</option>
+										<option>Borno</option>
+										<option>Cross River</option>
+										<option>Delta</option>
+										<option>Ebonyi</option>
+										<option>Enugu</option>
+										<option>Edo</option>
+										<option>Ekiti</option>
+										<option>Gombe</option>
+										<option>Imo</option>
+										<option>Jigawa</option>
+										<option>Kaduna</option>
+										<option>Kano</option>
+										<option>Katsina</option>
+										<option>Kebbi</option>
+										<option>Kogi</option>
+										<option>Kwara</option>
+										<option>Lagos</option>
+										<option>Nasarawa</option>
+										<option>Niger</option>
+										<option>Ogun</option>
+										<option>Ondo</option>
+										<option>Osun</option>
+										<option>Oyo</option>
+										<option>Plateau</option>
+										<option>Rivers</option>
+										<option>Sokoto</option>
+										<option>Taraba</option>
+										<option>Yobe</option>
+										<option>Zamfara</option>
+									</select>
 								</div>
 								<div class="col-sm-6 form-group ">
-									<label>Industry of your choice: </label> <input
-										class="form-control" placeholder="">
+									<label>Career Level </label> <select class="form-control"
+										name="career-level">
+										<option></option>
+										<option value="101">Student (Undergraduate/Graduate)</option>
+										<option value="102">Entry Level</option>
+										<option value="103">Experienced (Non-Managerial)</option>
+										<option value="104">Manager (Manager/Supervisor of
+											Staff)</option>
+										<option value="105">Executive (SVP,VP,Department Head
+											etc)</option>
+										<option value="106">Senoir Executive (President, CFO.
+											etc)</option>
+									</select>
 								</div>
 								<div class="col-sm-6 form-group ">
-									<label>Salary Range: </label> <input class="form-control"
-										placeholder="">
+									<label>Salary Range </label> <select class="form-control"
+										name="salary">
+										<option></option>
+										<option value="201">10,000 - 50,000</option>
+										<option value="202">50,000 - 100,000</option>
+										<option value="203">100,000 - 300,000</option>
+										<option value="204">300,000 - 500,000</option>
+										<option value="205">Unspecified</option>
+									</select>
 								</div>
 								<div class="col-sm-6 form-group">
-									<label>Are you open to travel?: </label> <input
-										class="form-control" placeholder="">
+									<label>Job Type </label> <select class="form-control"
+										name="job-type">
+										<option></option>
+										<option value="301">Freelance</option>
+										<option value="302">Full Time</option>
+										<option value="303">Internship</option>
+										<option value="304">Part Time</option>
+										<option value="305">Permanent</option>
+										<option value="306">Temporary</option>
+									</select>
 								</div>
 								<div class="col-sm-12 form-group">
 									<label>Email: </label> <input class="form-control"
@@ -781,42 +931,42 @@
 			</div>
 		</div>
 		<div id="myModal1" class="modal fade" role="dialog">
-		<div class="modal-dialog">
+			<div class="modal-dialog">
 
-			<!-- Modal content-->
-			<div class="modal-content"
-				style="background-image: url('/images/experience-level.jpg');">
-				<div class="modal-header" style="border: none">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<!-- Modal content-->
+				<div class="modal-content"
+					style="background-image: url('/images/experience-level.jpg');">
+					<div class="modal-header" style="border: none">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 
-				</div>
-				<div class="modal-body">
-					<h4 style="font-weight: bolder;" class="text-warning">
-						Hello
-						<c:out value='${professionalDashboard.name}' />
+					</div>
+					<div class="modal-body">
+						<h4 style="font-weight: bolder;" class="text-warning">
+							Hello
+							<c:out value='${professionalDashboard.name}' />
 
-					</h4>
-					<p>You have to take our assessment test before you can apply
-						for a job and get found by recruiters.</p>
-					<p>
-						<strong class="text-danger">Select your experience level</strong>
-					</p>
-					<form id="exp-level-form"
-						action="<c:url value='/bq/close/get-assessment-questions'/>">
-						<select name="exp-level">
-							<option value="Beginner">Beginner (0-3 yrs)</option>
-							<option value="Intermediate">Intermediate (4-7 yrs)</option>
-							<option value="Experienced">Experienced 8+ yrs</option>
-						</select> <input class="btn btn-info" type="submit" value="Start test">
-					</form>
+						</h4>
+						<p>You have to take our assessment test before you can apply
+							for a job and get found by recruiters.</p>
+						<p>
+							<strong class="text-danger">Select your experience level</strong>
+						</p>
+						<form id="exp-level-form"
+							action="<c:url value='/bq/close/get-assessment-questions'/>">
+							<select name="exp-level">
+								<option value="Beginner">Beginner (0-3 yrs)</option>
+								<option value="Intermediate">Intermediate (4-7 yrs)</option>
+								<option value="Experienced">Experienced 8+ yrs</option>
+							</select> <input class="btn btn-info" type="submit" value="Start test">
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
+
 			</div>
-
 		</div>
-	</div>
 	</form>
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
@@ -828,12 +978,16 @@
 	<script src="/js/main.js"></script>
 	<script src="/js/filter.js"></script>
 	<script type="text/javascript">
+		var slideCounter = 1;
+		var imgs = [ "/images/jobs-slide-1.png", "/images/jobs-slide-2.png",
+				"/images/jobs-slide-3.png", "/images/jobs-slide-4.png" ];
 		$(document)
 				.ready(
 						function() {
 							$("#get-rated").click(function() {
 								$("#myModal1").modal();
 							});
+							setInterval(startSlider, 5000);
 							$(".filter-header")
 									.click(
 											function() {
@@ -848,6 +1002,14 @@
 																"glyphicon glyphicon-chevron-down glyphicon glyphicon-chevron-up");
 											});
 						});
+		function startSlider() {
+
+			if (slideCounter > 3) {
+				slideCounter = 0;
+			}
+			$("#banner-img").prop("src", imgs[slideCounter]);
+			slideCounter++;
+		}
 	</script>
 </body>
 </html>

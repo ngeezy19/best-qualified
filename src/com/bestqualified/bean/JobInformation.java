@@ -15,7 +15,14 @@ public class JobInformation implements Serializable {
 	private String jobTitle, companyName, datePosted, jobDesc, extraInfo, experience,
 			pictureUrl, companyDesc, careerLevel, location, industry, jobType, pageUrl,
 			qualification, deadline, companyWebsite, applicationWebsite, applicationUrl, webKey, salaryRange;
+	private boolean saved;
 	
+	public boolean isSaved() {
+		return saved;
+	}
+	public void setSaved(boolean saved) {
+		this.saved = saved;
+	}
 	public String getPageUrl() {
 		return pageUrl;
 	}

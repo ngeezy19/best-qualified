@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.bestqualified.bean.ProfessionalProfileBean;
 import com.bestqualified.controllers.GeneralController;
 import com.bestqualified.entities.CandidateProfile;
+import com.bestqualified.entities.User;
 import com.bestqualified.util.EntityConverter;
 import com.bestqualified.util.Util;
 import com.google.appengine.api.blobstore.BlobKey;
@@ -50,11 +51,18 @@ public class UploadServlet extends HttpServlet {
 			ProfessionalProfileBean ppb = null;
 			synchronized (session) {
 				cp = (CandidateProfile) session.getAttribute("professionalProfile");
+				User u = (User) session.getAttribute("user");
 				ppb = (ProfessionalProfileBean) session.getAttribute("uppb");
 				cp.setCv(key);
+				if(ppb == null) {
+					ppb = Util.createProfessionalProfileBean(u, cp);
+				}
 				ppb.setCv(fi.getFilename());
 				ppb.setCvSafeString(key.getKeyString());
+				session.setAttribute("professionalProfile", cp);
+				session.setAttribute("uppb", ppb);
 			}
+			
 			if(Util.notNull(oldKey)) {
 				BlobKey bk = new BlobKey(oldKey);
 				BlobstoreServiceFactory.getBlobstoreService().delete(bk);

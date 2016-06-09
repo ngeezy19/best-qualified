@@ -15,8 +15,24 @@ public class ProfessionalDashboard implements Serializable {
 	private double rating;
 	private List<InterestedJob> iJobs;
 	private List<Article> articles;
+	private List<InterestedJob> savedJobs,appliedJobs;
 	
 	
+	public List<InterestedJob> getAppliedJobs() {
+		return appliedJobs;
+	}
+
+	public void setAppliedJobs(List<InterestedJob> appliedJobs) {
+		this.appliedJobs = appliedJobs;
+	}
+
+	public List<InterestedJob> getSavedJobs() {
+		return savedJobs;
+	}
+
+	public void setSavedJobs(List<InterestedJob> savedJobs) {
+		this.savedJobs = savedJobs;
+	}
 
 	public String getProfessionalLevel() {
 		return professionalLevel;

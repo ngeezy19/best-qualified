@@ -24,6 +24,7 @@ import com.bestqualified.util.EntityConverter;
 import com.bestqualified.util.Util;
 import com.google.appengine.api.datastore.Entity;
 
+
 public class AuthFilter implements Filter {
 
 	@Override
@@ -93,11 +94,18 @@ public class AuthFilter implements Filter {
 			String jobKey = req.getParameter("job-key");
 			if(jobKey!=null) {
 				synchronized (session) {
-					session.setAttribute("jobKey", jobKey);
-					session.setAttribute("jobApplicationSignUp", true);
+					session.setAttribute("requestUri", "/bq/open/job");
+					session.setAttribute("queryString","job-key="+jobKey);
 				}
 			}
-			resp.sendRedirect(resp.encodeRedirectURL("/sign-in"));
+			String mode = req.getParameter("mode");
+			if(mode.equalsIgnoreCase("ajax")) {
+				resp.sendError(HttpServletResponse.SC_PAYMENT_REQUIRED, resp.encodeRedirectURL("/sign-in"));
+				return;
+			}else {
+				resp.sendRedirect(resp.encodeRedirectURL("/sign-in"));
+			}
+			
 		}
 
 	}

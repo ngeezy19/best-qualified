@@ -7,7 +7,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jobs Result</title>
+<title>${jobInformation.jobTitle}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/styles/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
@@ -77,7 +77,7 @@
 		}(document, "script", "twitter-wjs"));
 	</script>
 	<%@ include file="/main-nav.html"%>
-	<div class="container dashboard-body"
+	<div class="container dashboard-body hidden-xs hidden-sm"
 		style="height: 350px; padding: 3%; margin-bottom: 2%; border-bottom: 1px #cacaca solid; width: 100%; padding-top: 4%; padding-bottom: none; background-image: url('/images/concrete_seamless.png')"></div>
 	<div class="container dashboard-body"
 		style="width: 80%; margin: 0 auto; margin-top: -300px; margin-bottom: 2%;">
@@ -108,21 +108,7 @@
 			</div>
 		</div>
 		<div class="col-sm-8">
-			<c:if test="${noCV}">
-				<div class="bq-alert bq-alert-warning">
-					<p>You have to update your profile and upload your CV.</p>
-					<p>
-						Go to your<a
-							href="<c:url value='/bq/closed/init-professional-profile'/>">
-							profile</a>
-					</p>
-				</div>
-			</c:if>
-			<c:if test="${cvSent}">
-				<div class="bq-alert bq-alert-success">
-					<p>Your Application has been sent successfully, Good Luck.</p>
-				</div>
-			</c:if>
+			<div id="msg-div"></div>
 			<div class="col-sm-12"
 				style="margin-bottom: 2%; background-color: white; padding-top: 2%; border: 1px #cacaca solid">
 				<div class="col-sm-12 no-padding-div">
@@ -144,9 +130,20 @@
 										value="${jobInformation.datePosted}" /></i>
 							</h5>
 							<p>
-								<a
-									href="<c:url value='/bq/closed/job/application?job-key=${jobInformation.webKey}' />"
-									class="btn btn-primary">Apply</a> <a class="btn btn-success">Save</a>
+								<button class="btn btn-primary apply-button">Apply</button>
+								<input id="web-key" type="hidden"
+									value="${jobInformation.webKey}">
+								<c:if test="${not empty user }">
+									<c:choose>
+										<c:when test="${jobInformation.saved}">
+											<a class="btn  btn-danger unsave-job">Unsave</a>
+										</c:when>
+										<c:otherwise>
+											<a class="btn  btn-success save-job">Save</a>
+										</c:otherwise>
+									</c:choose>
+
+								</c:if>
 							</p>
 						</div>
 					</div>
@@ -157,9 +154,17 @@
 						<p>${jobInformation.jobDesc}</p>
 						<p>${jobInformation.extraInfo}</p>
 						<p>
-							<a
-								href="<c:url value='/bq/closed/job/application?app-url=${jobInformation.applicationUrl}' />"
-								class="btn  btn-primary">Apply</a> <a class="btn  btn-success">Save</a>
+							<button class="btn  btn-primary apply-button">Apply</button>
+							<c:if test="${not empty user }">
+								<c:choose>
+									<c:when test="${jobInformation.saved}">
+										<a class="btn  btn-danger unsave-job">Unsave</a>
+									</c:when>
+									<c:otherwise>
+										<a class="btn  btn-success save-job">Save</a>
+									</c:otherwise>
+								</c:choose>
+							</c:if>
 						</p>
 					</div>
 
@@ -314,11 +319,172 @@
 
 		</div>
 	</div>
+
+	<!-- Modal -->
+	<div id="cvModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header" style="border-bottom: none">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Upload Your CV</h4>
+				</div>
+				<div class="modal-body">
+					<div id="upload-cv-div">
+						<form method="post" id="cv-form">
+							<div class="form-group">
+								<input name="cv-file" type="file" class="form-control">
+							</div>
+							<div class="form-group">
+								<input class="btn btn-default upload-cv" type="button"
+									value="Upload">
+							</div>
+						</form>
+					</div>
+				</div>
+				
+			</div>
+
+		</div>
+	</div>
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.webui-popover.min.js"></script>
 	<script src="/js/waitMe.js"></script>
 	<script src="/js/main.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var saveButton = $(".save-job");
+			saveButton.click(function() {
+				var wk = $("#web-key").val();
+				$.ajax({
+					url : '/bq/close/save-job',
+					method : 'post',
+					data : {
+						"web-key" : wk,
+						"mode" : "true"
+					},
+					success : function() {
+						saveButton.text("Unsave");
+						saveButton.removeClass("btn-success");
+						saveButton.addClass("btn-danger");
+					},
+					error : function() {
+						alert("error");
+					}
+				});
+
+			});
+			var unsaveButton = $(".unsave-job");
+			unsaveButton.click(function() {
+				var wk = $("#web-key").val();
+				$.ajax({
+					url : '/bq/close/save-job',
+					method : 'post',
+					data : {
+						"web-key" : wk,
+						"mode" : "false"
+					},
+					success : function() {
+						unsaveButton.text("Save");
+						unsaveButton.removeClass("btn-danger");
+						unsaveButton.addClass("btn-success");
+					},
+					error : function() {
+						alert("error");
+					}
+				});
+
+			});
+			
+			$("#cvModal").on('show.bs.modal', function() {
+				$.ajax({
+					url : "/bq/close/get-file-upload-url",
+					success : function(data) {
+						$("#cv-form").prop("action", data);
+					}
+				});
+			});
+			
+			$(".upload-cv").click(function() {
+				$(this).prop('disabled', true);
+				$("#cv-form").submit();
+			});
+			
+			$("#cv-form").on(
+					'submit',
+					function(e) {
+						var cov = $(".upload-cv");
+						/*cov.waitMe({
+							effect : 'ios',
+							color : 'gray',
+							sizeW : '15',
+							sizeH : '15'
+						});*/
+						var x = $(this).attr('action');
+
+						$.ajax({
+							url : x,
+							type : 'POST',
+							dataType : "json",
+							data : new FormData(this),
+							processData : false,
+							contentType : false,
+							success : function(data) {
+
+								$("#cvModal").modal("hide");
+							},
+							error : function(jqXHR, status,
+									errorThrown) {
+								alert("error");
+							},
+							complete : function() {
+								cov.prop('disabled', false);
+								$("#cvModal").modal("hide");
+							}
+						});
+						e.preventDefault();
+					});
+
+			$(".apply-button").click(function() {
+				var x = $("#web-key").val();
+				var msgD = $("#msg-div");
+				var redirect = false;
+				var y ="";
+				$.ajax({
+					url : "/bq/closed/job/application",
+					method : "POST",
+					data : {
+						"job-key" : x,
+						"mode" : "ajax"
+					},
+					dataType : "json",
+					success : function(data) {
+						alert("success");
+						//addSuccess($("#msg-div"),"You application has been sent successfully. Good Luck!");
+					},
+					error : function(xhr) {
+						console.log(xhr);
+						if (xhr.status == 417) {
+							$("#cvModal").modal();
+						} else if(xhr.status == 406) {
+							addWarning($("#msg-div"), "You have already applied for this job.");
+						} else if(xhr.status == 402) {
+							redirect = true;
+							y=xhr.statusText;
+						} 
+					},
+					complete : function () {
+						if(redirect) {
+							
+							window.location.assign(y);
+						}
+					}
+				});
+			});
+		});
+	</script>
 </body>
 </html>

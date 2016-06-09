@@ -388,27 +388,13 @@ div.transbox form input {
 		<!-- carousel images -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="/images/slide4.jpg" alt="carousel_image_4">
-			<!-- 	<div class="container" style="text-align: right;">
-					<div class="carousel-caption" style="left: 0; text-align: left;">
-						<h4>
-							LET'S GET
-							</h3>
-							<h3>YOU THAT JOB</h3>
-							<h1>SALES & MARKETING</h1>
-
-							<p>
-								<a class="btn btn-lg btn-primary" href="#" role="button">Sign
-									up today</a>
-							</p>
-					</div>
-				</div> -->
+				<img src="/images/bq-slide-1.jpg" alt="carousel_image_4">
 			</div>
 			<div class="item">
-				<img src="/images/slide2.png" alt="carousel_image_2">
+				<img src="/images/bq-slide-2.jpg" alt="carousel_image_2">
 			</div>
 			<div class="item">
-				<img src="/images/slide1.jpg" alt="carousel_image_1">
+				<img src="/images/bq-slide-3.jpg" alt="carousel_image_1">
 			</div>
 
 		</div>
@@ -471,9 +457,9 @@ div.transbox form input {
 			<div class="row">
 			<div class="col-md-6">
 				<div class="media headlines">
-                        <a class="pull-left" href="#"><img class="media-object img-rounded" src="/images/coaching.png"></a>
+                        <a class="pull-left" href="/bq/coaching/home"><img class="media-object img-rounded" src="/images/coaching.png"></a>
                         <div class="media-body">
-                          <h4 class="media-heading"><strong>GUDIANCE & HAND HOLDING</strong></h4>
+                          <h4 class="media-heading"><strong><a href="/bq/coaching/home">GUDIANCE & HAND HOLDING</a></strong></h4>
                           <h5 class="jobss">Get hired in industries of your choice</h5>
                           <p class="plat"> Latest career advice will be sent to your inbox.</p>
     					  <p id="edi">
