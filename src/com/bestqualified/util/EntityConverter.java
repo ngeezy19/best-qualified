@@ -6,12 +6,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.bestqualified.entities.Article;
 import com.bestqualified.entities.AssessmentQuestion;
 import com.bestqualified.entities.Award;
 import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.CareerLevel;
 import com.bestqualified.entities.CareerSummary;
 import com.bestqualified.entities.Certification;
+import com.bestqualified.entities.Comment;
 import com.bestqualified.entities.Company;
 import com.bestqualified.entities.Education;
 import com.bestqualified.entities.EducationLevel;
@@ -30,6 +32,53 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 
 public class EntityConverter {
+	
+	public static Comment entityToComment(Entity e) {
+		Comment c = new Comment();
+		c.setKey(e.getKey());
+		c.setAuthor((Key) e.getProperty("author"));
+		c.setBody((Text) e.getProperty("body"));
+		c.setDate((Date) e.getProperty("date"));
+		c.setComments((List<Key>) e.getProperty("comment"));
+		return c;
+	}
+	
+	public static Article entityToArticle(Entity e) {
+		Article a = new Article();
+		a.setKey(e.getKey());
+		a.setAuthor((Key) e.getProperty("author"));
+		a.setBody((Text) e.getProperty("body"));
+		a.setComments((List<Key>) e.getProperty("comments"));
+		a.setDate((Date) e.getProperty("date"));
+		a.setSubscribers((List<Key>) e.getProperty("subscribers"));
+		a.setTag((List<String>) e.getProperty("tag"));
+		a.setTitle((String) e.getProperty("title"));
+		a.setViews((Integer) e.getProperty("views"));
+		return a;
+	}
+	
+	public static Entity ArticleToEntity(Article a) {
+		Entity e = new Entity(a.getKey());
+		e.setUnindexedProperty("title", a.getTitle());
+		e.setIndexedProperty("date", a.getDate());
+		e.setUnindexedProperty("views", a.getViews());
+		e.setUnindexedProperty("body", a.getBody());
+		e.setIndexedProperty("author", a.getAuthor());
+		e.setUnindexedProperty("category", a.getCategory().name());
+		e.setUnindexedProperty("comments", a.getComments());
+		e.setUnindexedProperty("subscribers", a.getSubscribers());
+		e.setUnindexedProperty("tags", a.getTag());
+		return e;
+	}
+	
+	public static Entity commentToEntity(Comment c) {
+		Entity e = new Entity(c.getKey());
+		e.setUnindexedProperty("author", c.getAuthor());
+		e.setUnindexedProperty("date", c.getDate());
+		e.setUnindexedProperty("comments", c.getComments());
+		e.setUnindexedProperty("body", c.getBody());
+		return e;
+	}
 	
 	public static Entity JobAlertToEntity(JobAlert ja) {
 		Entity e = new Entity(ja.getId());

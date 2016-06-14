@@ -13,10 +13,208 @@
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/styles/animate.css">
 <link rel="stylesheet" href="/styles/coaching.css">
+<link rel="stylesheet" href="/styles/font-awesome.min.css">
+<link href="http://fonts.googleapis.com/css?family=Corben"
+	rel="stylesheet" type="text/css">
+<style type="text/css">
+.flat-social span {
+	margin-left: 1%;
+}
+
+.flat-social {
+	padding: 0px;
+	margin-top: 2%;
+}
+
+.flat-social li {
+	list-style: none;
+	display: inline;
+	width: 4em;
+}
+
+.social-facebook,.social-twitter,.social-google,.social-linkedin {
+	color: white;
+	font-size: 10pt;
+	width: 4em !important;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-web-border-radius: 5px;
+	padding: 3px;
+	padding-left: 4px;
+	padding-right: 4px;
+	width: 4em !important;
+}
+
+.social-facebook {
+	background-color: #39599f
+}
+
+.social-facebook:hover {
+	background-color: #39599f;
+}
+
+.social-twitter {
+	background-color: #45b0e3
+}
+
+.social-facebook:hover {
+	background-color: blue;
+}
+
+.social-google {
+	background-color: #dc4a38
+}
+
+.social-google:hover {
+	background-color: red;
+}
+
+.social-linkedin {
+	background-color: #006699
+}
+
+.social-linked:hover {
+	background-color: blue;
+}
+
+.post-box-title a {
+	text-decoration: none;
+	font-family: 'Corben', Georgia, Times, serif !important;
+}
+
+#animation-div {
+	color: white;
+	background-color: darkblue;
+	-webkit-animation-name: example; /* Chrome, Safari, Opera */
+	-webkit-animation-duration: 4s; /* Chrome, Safari, Opera */
+	animation-name: example;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+}
+/* Chrome, Safari, Opera */
+@
+-webkit-keyframes example { 0% {
+	background-color: darkblue;
+}
+
+25%
+{
+background-color
+
+
+:
+
+
+#DA4453
+
+
+;
+}
+50%
+{
+background-color
+
+
+:
+
+
+#967ADC
+
+
+;
+}
+75%
+{
+background-color
+
+
+:
+
+
+#4A89DC
+
+
+;
+}
+100%
+{
+background-color
+
+
+:
+
+
+#DA4453
+
+
+;
+}
+}
+
+/* Standard syntax */
+@
+keyframes example { 0% {
+	background-color: darkblue;
+}
+25%
+{
+background-color
+
+
+:
+
+
+#DA4453
+
+
+;
+}
+50%
+{
+background-color
+
+
+:
+
+
+#967ADC
+
+
+;
+}
+75%
+{
+background-color
+
+
+:
+
+
+#4A89DC
+
+
+;
+}
+100%
+{
+background-color
+
+
+:
+
+
+#DA4453
+
+
+;
+}
+}
+</style>
 </head>
 <body>
 	<%@ include file="/main-nav.html"%>
-	<br/><br/>
+	<br />
+	<br />
 	<div class="container-fluid" style="padding: 0">
 		<!-- carousel -->
 		<div id="my_carousel" class="carousel fade" data-ride="carousel">
@@ -66,9 +264,41 @@
 		<!-- end .carousel -->
 	</div>
 	<div class="container" style="margin-top: 2%;">
+		<div class="row tools-div"
+			style="margin-bottom: 2%; padding-bottom: 2%;">
+			<h4 class="tools">TOOLS</h4>
+			<div class="col-sm-3">
+				<h4>
+					<span class="tool-name">Interview Cheats</span>
+				</h4>
+				<div
+					style="height: 150px; background-color: rgba(255, 0, 0, 0.6); padding-top: 7%; cursor: pointer">
+					<h3 style="text-align: center; color: white">Interview cheat
+						sheets by skill sets</h3>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<h4>
+					<span class="tool-name">Assessment</span>
+				</h4>
+				<div style="height: 150px; background-color: green"></div>
+			</div>
+			<div class="col-sm-3">
+				<h4>
+					<span class="tool-name">Reading List</span>
+				</h4>
+				<div style="height: 150px; background-color: pink"></div>
+			</div>
+			<div class="col-sm-3">
+				<h4>
+					<span class="tool-name">Sales Documents</span>
+				</h4>
+				<div style="height: 150px; background-color: orange"></div>
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-sm-8">
-				<div class="col-sm-12 no-padding-div spotlight-div">
+				<div class="col-sm-12  spotlight-div">
 					<div class="col-sm-5 spotlight-image-div">
 						<span id="in-spotlight">LASTEST ARTICLE</span> <img
 							class="img img-responsive spotlight-image" alt=""
@@ -90,13 +320,9 @@
 						</p>
 					</div>
 				</div>
-				<div class="col-sm-12">
-					<div style="width: 100%; background-color: #eaeaea;">
-						<h2 style="text-align: center; padding: 1em;">HTML AD</h2>
-					</div>
-				</div>
-				<div class="col-sm-12 no-padding-div">
-					<div class="col-sm-6">
+
+				<div class="col-sm-12 no-padding-div" style="margin-top: 2%;">
+					<div class="col-sm-6" style="padding-left: 0px">
 						<div class="article-header">ARTICLE GROUP X</div>
 						<div>
 							<img class="img img-responsive" src="/images/article1.jpg">
@@ -114,7 +340,7 @@
 							venenatis faucibus...<a href="#">read more</a>
 						</p>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-6" style="padding-right: 0px">
 						<div class="article-header">ARTICLE GROUP Y</div>
 						<div>
 							<img class="img img-responsive" src="/images/article2.jpg">
@@ -133,18 +359,111 @@
 						</p>
 					</div>
 				</div>
-				<div class="col-sm-12" style="margin-bottom: 2%;">
-					<div style="width: 100%; background-color: olive;">
-						<h2 style="text-align: center; padding: 1em;">HTML AD</h2>
+
+				<div class="col-sm-12 no-padding-div">
+					<div class="article-header">From Our Blog</div>
+					<div class="col-sm-12 no-padding-div"
+						style="margin-bottom: 2%;">
+						<article class="col-sm-12 no-padding-div" style="border-bottom: 1px solid #cacaca">
+							<h3 class="post-box-title">
+								<a href="#"> Top IITS Colleges In India With Their Rankings</a>
+							</h3>
+							<p class="text-muted">
+								<span><i class="fa fa-clock-o"></i> 2 weeks ago</span> <span><i
+									class="fa fa-comments"></i><a> 0</a></span>
+							</p>
+
+
+							<div class="col-sm-12 no-padding-div">
+								<p>Indian Institutes of Technology or IITs is the top
+									engineering institutionsin India that most of the people prefer
+									to study and improve their career in engineering. IITs in India
+									have the main objective for creating the talented pool for the
+									trained engineers and scientists so that they many contribute
+									towards.</p>
+
+							</div>
+							<div class="col-sm-12 no-padding-div">
+								<a class="more-link" href="#">Read More »</a>
+							</div>
+							<div class="col-sm-12 no-padding-div">
+								<ul class="flat-social">
+									<li><a href="#" class="social-facebook" rel="external"
+										target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a></li>
+									<li><a href="#" class="social-twitter" rel="external"
+										target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a></li>
+									<li><a href="#" class="social-google" rel="external"
+										target="_blank"><i class="fa fa-google-plus"></i> <span>Google
+												+</span></a></li>
+									<li><a href="#" class="social-linkedin" rel="external"
+										target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a></li>
+								</ul>
+								<div style="clear: both"></div>
+							</div>
+
+						</article>
+						<article class="col-sm-12 no-padding-div">
+							<h3 class="post-box-title">
+								<a href="#"> Top IITS Colleges In India With Their Rankings</a>
+							</h3>
+							<p class="text-muted">
+								<span><i class="fa fa-clock-o"></i> 2 weeks ago</span> <span><i
+									class="fa fa-comments"></i><a> 0</a></span>
+							</p>
+
+
+							<div class="col-sm-12 no-padding-div">
+								<p>Indian Institutes of Technology or IITs is the top
+									engineering institutionsin India that most of the people prefer
+									to study and improve their career in engineering. IITs in India
+									have the main objective for creating the talented pool for the
+									trained engineers and scientists so that they many contribute
+									towards.</p>
+
+							</div>
+							<div class="col-sm-12 no-padding-div">
+								<a class="more-link" href="#">Read More »</a>
+							</div>
+							<div class="col-sm-12 no-padding-div">
+								<ul class="flat-social">
+									<li><a href="#" class="social-facebook" rel="external"
+										target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a></li>
+									<li><a href="#" class="social-twitter" rel="external"
+										target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a></li>
+									<li><a href="#" class="social-google" rel="external"
+										target="_blank"><i class="fa fa-google-plus"></i> <span>Google
+												+</span></a></li>
+									<li><a href="#" class="social-linkedin" rel="external"
+										target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a></li>
+								</ul>
+								<div style="clear: both"></div>
+							</div>
+
+						</article>
 					</div>
 				</div>
 			</div>
 			<div class="col-sm-4">
+				<div class="col-sm-12"
+					style="margin-bottom: 2%; font-family: 'Corben', Georgia, Times, serif !important; font-weight:">
+					<div id="animation-div" style="text-align: center; padding: 2%;">
+						<h2>Want to be a coach?</h2>
+						<h4>Click here</h4>
+					</div>
+				</div>
 				<div class="col-sm-12" style="margin-bottom: 2%;">
 					<a href="#"><img class="img img-responsive"
 						style="border: 1px solid purple; padding: 2%;"
 						src="/images/coach.png"></a>
 				</div>
+				<div class="col-sm-12" style="margin-bottom: 2%;">
+					<div class="article-header">Featured Video</div>
+					<iframe
+						style="margin: 0 auto; width: 100%; height: auto; border: 1px blue solid"
+						src="https://www.youtube.com/embed/_OkipHHmUNQ?rel=0"
+						frameborder="0" allowfullscreen></iframe>
+				</div>
+
 				<div class="col-sm-12">
 					<div class="article-header">POPULAR ARTICLES</div>
 					<div class="col-sm-12 no-padding-div"
@@ -291,34 +610,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row tools-div"
-			style="margin-bottom: 2%; padding-bottom: 2%;">
-			<h4 class="tools">TOOLS</h4>
-			<div class="col-sm-3">
-				<h4>
-					<span class="tool-name">Assessment Tool</span>
-				</h4>
-				<div style="height: 200px; background-color: red"></div>
-			</div>
-			<div class="col-sm-3">
-				<h4>
-					<span class="tool-name">Coaching Tool A</span>
-				</h4>
-				<div style="height: 200px; background-color: green"></div>
-			</div>
-			<div class="col-sm-3">
-				<h4>
-					<span class="tool-name">Coaching Tool X</span>
-				</h4>
-				<div style="height: 200px; background-color: pink"></div>
-			</div>
-			<div class="col-sm-3">
-				<h4>
-					<span class="tool-name">Coaching Tool Y</span>
-				</h4>
-				<div style="height: 200px; background-color: orange"></div>
-			</div>
-		</div>
+
 	</div>
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>

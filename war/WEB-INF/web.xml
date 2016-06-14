@@ -346,6 +346,22 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>CoachingHome</servlet-name>
 		<url-pattern>/bq/coaching/home</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>CommunityHome</servlet-name>
+		<servlet-class>com.bestqualified.servlets.community.InitCommunity</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommunityHome</servlet-name>
+		<url-pattern>/bq/community/home</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>SaveJobAlert</servlet-name>
+		<servlet-class>com.bestqualified.servlets.SaveJobAlert</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SaveJobAlert</servlet-name>
+		<url-pattern>/bq/open/save-job-alert</url-pattern>
+	</servlet-mapping>
 	<!-- ***************************************************SERVLET*********************************************************** -->
 	<servlet>
 		<servlet-name>NewsLetterSubscription</servlet-name>

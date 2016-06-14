@@ -7,39 +7,35 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" style="color: white" href="/index">Best Qualified</a>
+			<a class="navbar-brand" style="color: white" href="/index">Best
+				Qualified</a>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/index"><span
 						class="glyphicon glyphicon-home" style="color: white;"></span></a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="/bq/open/all-jobs">Get Hired<span class="caret"></span></a>
+					href="/bq/open/all-jobs">Career Mobility</a></li>
+				<li class="dropdown"><a class="dropdown-toggle" href="#"
+					data-toggle="dropdown">Guidiance & Hand Holding<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="/bq/open/all-jobs">Jobs Search</a></li>
-						<li><a href="#">Browse Jobs</a></li>
-						<li><a href="#">Advanced Search</a></li>
-						<li><a href="#">Saved Jobs</a></li>
-						<li><a href="#">Apply History</a></li>
+						<li><a href="#">Coaching</a></li>
+						<li><a href="#">Tools</span></a></li>
+						<li><a href="#">Training</a></li>
 					</ul></li>
 				<li class="dropdown"><a class="dropdown-toggle" href="#"
-					data-toggle="dropdown">Training<span class="caret"></span></a>
+					data-toggle="dropdown">Certifications<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Free Courses</a></li>
-						<li><a href="#">Corporate Training</a></li>
-						<li><a href="#">Workshops</a></li>
-						<li><a href="#">Professional Associations</a></li>
-						<li><a href="#">Sales & Marketing Certifications</a></li>
+						<li><a href="/certifications/Advertising.html">Advertising</a></li>
+						<li><a href="/certifications/Creatives.html">Creatives</a></li>
+						<li><a href="/certifications/Marketing.html">Marketing</a></li>
+						<li><a href="/certifications/PublicRelations.html">Public
+								Relations</a></li>
+						<li><a href="/certifications/Sales.html">Sales</a></li>
 					</ul></li>
-				<li class="dropdown"><a class="dropdown-toggle" href="#"
-					data-toggle="dropdown">Career Advice<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Career Blog</a></li>
-						<li><a href="#">Career Guide</a></li>
-						<li><a href="#">Find a Coach/Mentor</a></li>
-						<li><a href="#">Assessments</a></li>
-					</ul></li>
-				<li><a href="#">Community</a></li>
+				<li><a href="/bq/community/home">Network</a></li>
+				<li><a href="#">Blog</a></li>
 			</ul>
 			<c:choose>
 				<c:when test="${user.authenticated}">
@@ -63,9 +59,9 @@
 		</div>
 	</div>
 </nav>
-<c:set var="userType"  value="PROFESSIONAL"/>
+<c:set var="userType" value="PROFESSIONAL" />
 <c:choose>
-	
+
 	<c:when test="${user.userType eq userType}">
 		<div class="content hide popover-content" id="popover-content">
 			<ul style="padding: none !important">
@@ -75,7 +71,7 @@
 					href="<c:url value='/bq/closed/init-professional-profile' />">Improve
 						Your Profile</a></li>
 				<li style="list-style: none;"><a
-					href="<c:url value='/bq/closed/init-jobs' />">Find a Job</a></li>
+					href="<c:url value='/bq/open/all-jobs' />">Find a Job</a></li>
 				<li style="list-style: none;"><a
 					href="<c:url value='/logout' />">Logout</a></li>
 			</ul>
