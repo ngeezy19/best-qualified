@@ -20,6 +20,8 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -60,6 +62,7 @@ import com.bestqualified.entities.Certification;
 import com.bestqualified.entities.Company;
 import com.bestqualified.entities.Education;
 import com.bestqualified.entities.Job;
+import com.bestqualified.entities.JobAlert;
 import com.bestqualified.entities.Project;
 import com.bestqualified.entities.Recruiter;
 import com.bestqualified.entities.User;
@@ -77,7 +80,6 @@ import com.google.appengine.api.images.ImagesService;
 import com.google.appengine.api.images.ImagesServiceFactory;
 import com.google.appengine.api.images.ServingUrlOptions;
 import com.google.appengine.api.search.Document;
-import com.google.appengine.api.search.Facet;
 import com.google.appengine.api.search.Field;
 import com.google.appengine.api.search.Index;
 import com.google.appengine.api.search.IndexSpec;
@@ -101,6 +103,8 @@ import com.google.gson.reflect.TypeToken;
 public class Util {
 
 	public static final String SERVICE_ACCOUNT = "bestqualified.profiliant@gmail.com";
+	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 	public static boolean notNull(String... args) {
 		if (args == null) {
@@ -114,6 +118,11 @@ public class Util {
 		return true;
 	}
 
+	public static boolean isEmail(String email) {
+		Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+		Matcher matcher = pattern.matcher(email);
+		return matcher.matches();
+	}
 	public static String generateRandomCode(int minVal, int maxVal) {
 		Random ran = new Random();
 		return new Integer(minVal + ran.nextInt(maxVal)).toString();
@@ -418,10 +427,10 @@ public class Util {
 		pd.setCurrentEmployer(cp.getCurrentEmployer());
 		pd.setiJobs(Util.getJobs(cp.getCareerLevel(), cp.getEducation()));
 		List<Key> sjs = cp.getSavedJobs();
-		if(sjs != null) {
-			Map<Key,Entity> map = GeneralController.findByKeys(sjs);
+		if (sjs != null) {
+			Map<Key, Entity> map = GeneralController.findByKeys(sjs);
 			List<Job> jobs = new ArrayList<>();
-			for(Key k: map.keySet()) {
+			for (Key k : map.keySet()) {
 				jobs.add(EntityConverter.entityToJob(map.get(k)));
 			}
 			List<InterestedJob> isjs = Util.toInterestedJobs(jobs);
@@ -429,7 +438,33 @@ public class Util {
 		} else {
 			pd.setSavedJobs(new ArrayList<InterestedJob>());
 		}
-		
+
+		List<Key> jals = cp.getJobAlerts();
+		if (jals != null) {
+			Map<Key, Entity> map = GeneralController.findByKeys(jals);
+			List<JobAlert> jobAlerts = new ArrayList<>();
+			for (Key k : map.keySet()) {
+				jobAlerts.add(EntityConverter.entityToJobAlert(map.get(k)));
+			}
+			pd.setJobAlerts(jobAlerts);
+		} else {
+			pd.setJobAlerts(new ArrayList<JobAlert>());
+		}
+
+		if (cp.getJobsApplied() != null) {
+			List<Key> jbsa = new ArrayList<>();
+			jbsa.addAll(cp.getJobsApplied());
+
+			Map<Key, Entity> map = GeneralController.findByKeys(jbsa);
+			List<Job> jobs = new ArrayList<>();
+			for (Key k : map.keySet()) {
+				jobs.add(EntityConverter.entityToJob(map.get(k)));
+			}
+			List<InterestedJob> isjs = Util.toInterestedJobs(jobs);
+			pd.setAppliedJobs(isjs);
+
+		}
+
 		pd.setName(u.getFirstName() + " " + u.getLastName());
 		pd.setNoOfConnections(String.valueOf((cp.getConnections() == null) ? 0
 				: cp.getConnections().size()));
@@ -446,6 +481,7 @@ public class Util {
 		pd.setProfileLevel(Util.getprofileLevel(pd.getProfileStrength()));
 		pd.setProfileColor(Util.getProfileColor(pd.getProfileStrength()));
 		pd.setTagline(u.getTagline());
+
 		return pd;
 	}
 

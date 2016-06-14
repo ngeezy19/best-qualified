@@ -270,13 +270,14 @@
 				<div class="col-sm-12 dashboard-row dashboard-section">
 					<h4>
 						Job Alerts (
-						<c:out value='${myJobs.jobAlerts}' />
+						<c:out value='${fn:length(professionalDashboard.jobAlerts)}' />
 						)
 					</h4>
 					<p>Get alerts when jobs that meet your specifications are
 						available.</p>
 					<p style="text-align: right;">
-						<a href="#">View your Job alerts</a>
+						<a class="pull-left"  href="#">Create New</a>
+						<a  href="#">View All</a>
 					</p>
 
 				</div>

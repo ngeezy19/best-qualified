@@ -805,6 +805,33 @@ body {
     font-weight: bold;
 }
 
+#animation-div {
+	color: white;
+	background-color: darkblue;
+	-webkit-animation-name: example; /* Chrome, Safari, Opera */
+	-webkit-animation-duration: 4s; /* Chrome, Safari, Opera */
+	animation-name: example;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes example {
+    0%   {background-color:darkblue;}
+    25%  {background-color:#DA4453;}
+    50%  {background-color:#967ADC;}
+    75%  {background-color:#4A89DC;}
+    100% {background-color:#DA4453;}
+}
+
+/* Standard syntax */
+@keyframes example {
+    0%   {background-color:darkblue;}
+    25%  {background-color:#DA4453;}
+    50%  {background-color:#967ADC;}
+    75%  {background-color:#4A89DC;}
+    100% {background-color:#DA4453;}
+}
+
 /*****************************************sign up css **************************************************/
 @media screen and (max-width: 1200px) {
 	.login-div {

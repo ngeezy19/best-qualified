@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bestqualified.bean.InterestedJob;
+import com.bestqualified.bean.ProfessionalDashboard;
 import com.bestqualified.controllers.GeneralController;
 import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.Job;
@@ -35,18 +37,17 @@ public class JobApplicationServlet extends HttpServlet {
 		User u = null;
 		CandidateProfile cp = null;
 		HttpSession session = req.getSession();
-		
+		Object opd = null;
+		ProfessionalDashboard pd = null;
 		synchronized (session) {
 			cp = (CandidateProfile) session.getAttribute("professionalProfile");
 			u = (User) session.getAttribute("user");
+			opd = session.getAttribute("professionalDashboard");
 			
 		}
 		String webSafeKey = req.getParameter("job-key");
 		
 		Key key = KeyFactory.stringToKey(webSafeKey);
-		
-	
-		
 		Set<Key> kys = cp.getJobsApplied();
 		
 		if(kys!=null && kys.contains(key)) {
@@ -57,10 +58,7 @@ public class JobApplicationServlet extends HttpServlet {
 		Job job = Util.getJobFromCache(key);
 		String url = job.getApplicationUrl();
 		if (url.contains("@")) {
-			synchronized (session) {
-				
-				session.removeAttribute("jobKey");
-			}
+			
 
 			Util.sendApplicationEmails(u, cp, job, url, req);
 			if (kys == null) {
@@ -83,8 +81,25 @@ public class JobApplicationServlet extends HttpServlet {
 			GeneralController.createWithCrossGroup(
 					EntityConverter.candidateProfileToEntity(cp),
 					EntityConverter.jobToEntity(job));
+			if(opd == null) {
+				pd = Util.initProfessionalDashboardBean(u,cp);
+			}else {
+				pd = (ProfessionalDashboard) opd;
+			}
+			List<InterestedJob> list = pd.getAppliedJobs();
+			if(list==null) {
+				list = new ArrayList<>();
+			}
+			List<InterestedJob> ij = null;
+			Job j = Util.getJobFromCache(key);
+			List<Job> jobs = new ArrayList<>();
+			jobs.add(j);
+			ij = Util.toInterestedJobs(jobs);
+			list.addAll(ij);
+			pd.setAppliedJobs(list);
 			synchronized (session) {
 				session.setAttribute("professionalProfile", cp);
+				session.setAttribute("professionalDashBoard", pd);
 			}
 		
 		} else {

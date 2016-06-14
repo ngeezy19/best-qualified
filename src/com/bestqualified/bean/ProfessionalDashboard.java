@@ -3,6 +3,8 @@ package com.bestqualified.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import com.bestqualified.entities.JobAlert;
+
 public class ProfessionalDashboard implements Serializable {
 
 	/**
@@ -16,16 +18,8 @@ public class ProfessionalDashboard implements Serializable {
 	private List<InterestedJob> iJobs;
 	private List<Article> articles;
 	private List<InterestedJob> savedJobs,appliedJobs;
+	private List<JobAlert> jobAlerts;
 	
-	
-	public List<InterestedJob> getAppliedJobs() {
-		return appliedJobs;
-	}
-
-	public void setAppliedJobs(List<InterestedJob> appliedJobs) {
-		this.appliedJobs = appliedJobs;
-	}
-
 	public List<InterestedJob> getSavedJobs() {
 		return savedJobs;
 	}
@@ -148,6 +142,22 @@ public class ProfessionalDashboard implements Serializable {
 				+ profileColor + ", professionalLevel=" + professionalLevel
 				+ ", profileStrength=" + profileStrength + ", rating=" + rating
 				+ ", iJobs=" + iJobs + ", articles=" + articles + "]";
+	}
+
+	public List<InterestedJob> getAppliedJobs() {
+		return appliedJobs;
+	}
+
+	public void setAppliedJobs(List<InterestedJob> appliedJobs) {
+		this.appliedJobs = appliedJobs;
+	}
+
+	public List<JobAlert> getJobAlerts() {
+		return jobAlerts;
+	}
+
+	public void setJobAlerts(List<JobAlert> jobAlerts) {
+		this.jobAlerts = jobAlerts;
 	}
 
 }

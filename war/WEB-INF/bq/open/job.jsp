@@ -325,7 +325,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<div class="modal-content">
+			<div class="modal-content" style="background-image: url('/images/experience-level.jpg');">
 				<div class="modal-header" style="border-bottom: none">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Upload Your CV</h4>
@@ -474,7 +474,9 @@
 						} else if(xhr.status == 402) {
 							redirect = true;
 							y=xhr.statusText;
-						} 
+						} else if(xhr.status == 200) {
+							addSuccess($("#msg-div"),"You application has been sent successfully. Good Luck!");
+						}
 					},
 					complete : function () {
 						if(redirect) {
