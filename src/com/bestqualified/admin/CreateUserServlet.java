@@ -62,7 +62,6 @@ public class CreateUserServlet extends HttpServlet{
 		}
 		
 		
-		
 		else {
 			
 			User u = new User("admin", role);
@@ -70,6 +69,8 @@ public class CreateUserServlet extends HttpServlet{
 			Entity e = EntityConverter.userToEntity(u);
 			GeneralController.create(e);
 			u.setPassword(password);
+			
+			
 			synchronized (session) {
 				session.setAttribute("user", u);
 			}
