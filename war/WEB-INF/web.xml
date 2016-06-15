@@ -362,6 +362,42 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>SaveJobAlert</servlet-name>
 		<url-pattern>/bq/open/save-job-alert</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+  <servlet-name>AdminLoginServlet</servlet-name>
+  <servlet-class>com.bestqualified.admin.AdminLoginServlet</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>AdminLoginServlet</servlet-name>
+  <url-pattern>/bq/admin/admin-login</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>UpdatePassword</servlet-name>
+  <servlet-class>com.bestqualified.admin.UpdatePassword</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>UpdatePassword</servlet-name>
+  <url-pattern>/bq/admin/update-password</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>CreateUserServlet</servlet-name>
+  <servlet-class>com.bestqualified.admin.CreateUserServlet</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>CreateUserServlet</servlet-name>
+  <url-pattern>/bq/admin/create-user</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>CreateArticleServlet</servlet-name>
+  <servlet-class>com.bestqualified.admin.CreateArticle</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>CreateArticleServlet</servlet-name>
+  <url-pattern>/bq/admin/create-article</url-pattern>
+ </servlet-mapping>
 	<!-- ***************************************************SERVLET*********************************************************** -->
 	<servlet>
 		<servlet-name>NewsLetterSubscription</servlet-name>
