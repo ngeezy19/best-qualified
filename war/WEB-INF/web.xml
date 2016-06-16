@@ -362,6 +362,22 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>SaveJobAlert</servlet-name>
 		<url-pattern>/bq/open/save-job-alert</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>AdminLoginServlet</servlet-name>
+		<servlet-class>com.bestqualified.admin.AdminLoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminLoginServlet</servlet-name>
+		<url-pattern>/bq/admin/admin-login</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>RequestCoachServlet</servlet-name>
+		<servlet-class>com.bestqualified.servlets.coaching.RequestCoach</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RequestCoachServlet</servlet-name>
+		<url-pattern>/bq/coaching/send-coach-request</url-pattern>
+	</servlet-mapping>
 	<!-- ***************************************************SERVLET*********************************************************** -->
 	<servlet>
 		<servlet-name>NewsLetterSubscription</servlet-name>
@@ -372,7 +388,95 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/bq/open/handler/newsletter-subscribe</url-pattern>
 	</servlet-mapping>
 	<!-- ************************************************JSP*************************************************************** -->
+	<servlet>
+		<servlet-name>SalesDocumentPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/coaching/tools/sales-document.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SalesDocumentPage</servlet-name>
+		<url-pattern>/bq/coaching/tools/sales-document</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ReadingListPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/coaching/tools/reading-list.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReadingListPage</servlet-name>
+		<url-pattern>/bq/coaching/tools/reading-list</url-pattern>
+	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>AssessmentPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/coaching/tools/assessment.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AssessmentPage</servlet-name>
+		<url-pattern>/bq/coaching/tools/assessment</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>InterviewCheatsPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/coaching/tools/interview-cheats.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewCheatsPage</servlet-name>
+		<url-pattern>/bq/coaching/tools/interview-cheats</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>TrainingPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/coaching/training.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TrainingPage</servlet-name>
+		<url-pattern>/bq/coaching/training</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>CertificationPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/certifications/cert.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CertificationPage</servlet-name>
+		<url-pattern>/bq/certifications</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AdvertisingPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/certifications/advertising.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdvertisingPage</servlet-name>
+		<url-pattern>/bq/certifications/advertising</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>CreativesPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/certifications/creatives.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreativesPage</servlet-name>
+		<url-pattern>/bq/certifications/creatives</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>MarketingPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/certifications/marketing.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MarketingPage</servlet-name>
+		<url-pattern>/bq/certifications/marketing</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>PublicRelationsPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/certifications/public-relations.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PublicRelationsPage</servlet-name>
+		<url-pattern>/bq/certifications/public-relations</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>SalesPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/certifications/sales.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SalesPage</servlet-name>
+		<url-pattern>/bq/certifications/sales</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>ManageProjectPage</servlet-name>
 		<jsp-file>/WEB-INF/bq/close/manage-project.jsp</jsp-file>
@@ -380,6 +484,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>ManageProjectPage</servlet-name>
 		<url-pattern>/bq/close/manage-project-page</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CoachRequest</servlet-name>
+		<jsp-file>/WEB-INF/bq/coaching/coach-request.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CoachRequest</servlet-name>
+		<url-pattern>/bq/coaching/request-coach</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

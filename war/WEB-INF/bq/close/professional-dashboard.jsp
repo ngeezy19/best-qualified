@@ -43,56 +43,50 @@
 	style="background-image: url(/images/background.jpg); background-repeat: repeat;">
 	<%@ include file="/main-nav.html"%>
 	<div class="container dashboard-body">
-		<br /> <br /> <br />
+		<br /> <br /> <br /> <br />
 		<div class="col-sm-8">
-			<div class="col-sm-12" style="margin-bottom: 2%;">
-				<div class="col-sm-2 hidden-xs hidden-sm">
-					<div class="dashboard-section">
-						<img alt="" src="/images/personal-profile.png"
-							style="width: 80%; margin: 0 auto" class="img img-responsive">
-					</div>
-				</div>
-				<div class="col-sm-10 dashboard-section">
-					<div class="col-sm-8" style="border-right: 1px solid #dddddd;">
-						<div class="col-sm-3 no-padding-div">
-							<img src="/images/unknown-user.jpg"
-								class="img img-responsive img-circle" />
-						</div>
-						<div class="col-sm-9 no-padding-div">
-							<ul>
-								<li style="list-style: none;"><h4>
-										<c:out value='${professionalDashboard.name}' />
-									</h4></li>
-								<li style="list-style: none;"><c:out
-										value='${professionalDashboard.tagline}' /></li>
-								<li style="list-style: none;"><c:out
-										value='${professionalDashboard.currentEmployer}' /></li>
-								<c:if test='${empty professionalDashboard.tagline }'>
-									<li style="list-style: none;"><a
+			<div class="row">
+				<div class="col-sm-12 dashboard-section no-padding-div"
+					style="padding: 0px">
+					<div class="col-sm-8" style="border-right: 1px solid #eaeaea">
+
+						<img src="/images/unknown-user.jpg"
+							class="img img-responsive img-circle"
+							/ style="width: 6em; float: left; margin: 1%; margin-right: 4%;">
+						<div style="padding: 1%;">
+							<h4 style="margin-bottom: 1%;">
+								<c:out value='${professionalDashboard.name}' />
+							</h4>
+							<div>
+								<c:out value='${professionalDashboard.tagline}' />
+								at
+								<c:out value='${professionalDashboard.currentEmployer}' />
+							</div>
+							<c:if test='${empty professionalDashboard.tagline }'>
+								<div>
+									<a
 										href="<c:url value='/bq/closed/init-professional-profile"' />">Edit
-											Profile</a></li>
-								</c:if>
-							</ul>
+										Profile</a>
+								</div>
+							</c:if>
 						</div>
-					</div>
-					<div class="col-sm-4">
-						<c:set var="beginner" value="BEGINNER" />
-						<c:set var="intemediate" value="INTERMEDIATE" />
-						<c:set var="advanced" value="ADVANCED" />
 
-						<div style="text-align: center;">
-							<h4 id="get-rated" class="animated tada"
-								style="font-weight: bolder; color: red">Test Yourself!</h4>
-							<input type="button" data-toggle="modal" data-target="#myModal"
-								class="btn btn-success btn-xs" value="Take Free Assessment Test" />
+					</div>
+					<div class="col-sm-4 no-pading-div" style="padding: 1%;">
+						<div>
+							<h4>4 articles</h4>
+							<h4>1024 connections</h4>
 						</div>
 
 					</div>
 				</div>
-				<div class="col-sm-2"></div>
-				<div class="col-sm-10 dashboard-section" style="border-top: none">
-					<div class="col-sm-8" style="border-right: 1px solid #dddddd;">
-						<div class="col-sm-12 no-padding-div">
+			</div>
+			<div class="row">
+				<div class="col-sm-12 dashboard-section no-padding-div"
+					style="padding: 0px; border-top: none;">
+					<div class="col-sm-8"
+						style="border-right: 1px solid #eaeaea; padding: 5px">
+						<div class="col-sm-12">
 							<p style="margin-bottom: 5px">
 								<strong>Your profile strength is at <c:out
 										value='${professionalDashboard.profileLevel}' /> level
@@ -107,28 +101,32 @@
 								to professionals with completed profiles.</div>
 							<div>
 								<a class="btn btn-xs btn-primary"
-									href="<c:url value="/bq/closed/init-professional-profile" />">Improve
-									your Profile</a>
+									href="<c:url value="/bq/closed/init-professional-profile" />">Personal</a>
+								<a class="btn btn-xs btn-primary"
+									href="<c:url value="/bq/closed/init-professional-profile" />">Summary</a>
+								<a class="btn btn-xs btn-primary"
+									href="<c:url value="/bq/closed/init-professional-profile" />">Education</a>
+								<a class="btn btn-xs btn-primary"
+									href="<c:url value="/bq/closed/init-professional-profile" />">Experience</a>
+								<a class="btn btn-xs btn-primary"
+									href="<c:url value="/bq/closed/init-professional-profile" />">Certifications</a>
+								<a class="btn btn-xs btn-primary"
+									href="<c:url value="/bq/closed/init-professional-profile" />">CV</a>
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-4">
-						<h4 class="text-primary" style="text-align: center">Profile
-							Views</h4>
-						<span><c:out
-								value='${professionalDashboard.noOfProfileViewers}' /></span>
-						companies viewed your profile in the last 30 days
+						<h5 class="text-muted" style="font-size: 12pt">Profile Views
+							in Last 30 Days</h5>
+						<div style="float: left">10 companies</div>
+						<div style="float: left">12 professionals</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-12" style="margin-bottom: 2%;">
-				<div class="col-sm-2">
-					<div class="dashboard-section">
-						<img alt="" src="/images/jobs.png" class="img img-responsive"
-							style="width: 80%; margin: 0 auto">
-					</div>
-				</div>
-				<div class="col-sm-10 dashboard-section">
+
+			<div class="row" style="margin-top: 2%;">
+
+				<div class="col-sm-12 dashboard-section">
 					<div class="col-sm-12">
 						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666">Jobs
 							that may interest you</h4>
@@ -136,18 +134,19 @@
 
 					<c:forEach var="item" items="${professionalDashboard.iJobs}">
 
-						<div class="col-sm-12"
+						<div class="col-sm-4 no-padding-div"
 							style="border-bottom: 1px #e1e1e1 solid; margin-bottom: 2%; margin-top: 2%;">
-							<div class="col-sm-3">
+							<div style="float: left; background-color: blue">
 								<a href="/bq/open/job?job-key=${item.jobKey}"></a><img alt=""
-									src="${item.pictureUrl}" class="img img-responsive"></a>
+									src="${item.pictureUrl}" class="img img-responsive"
+									style="width: 4em; margin: 1%"></a>
 							</div>
-							<div class="col-sm-9">
-								<h4>
-									<a href="/bq/open/job?job-key=${item.jobKey}"><c:out
-											value="${item.jobTitle}" /></a>
-								</h4>
-								<h5 style="font-family: calibri">
+							<div style="background-color: red">
+								<h5 style="">
+									<strong> <a href="/bq/open/job?job-key=${item.jobKey}"><c:out
+												value="${item.jobTitle}" /></a></strong>
+								</h5>
+								<h5 style="font-family: calibri;">
 									<c:out value="${item.companyName}" />
 								</h5>
 								<h5>
@@ -165,7 +164,9 @@
 							class="pull-right">View More</a>
 					</div>
 				</div>
+
 			</div>
+
 			<div class="col-sm-12" style="margin-bottom: 2%;">
 				<div class="col-sm-2">
 					<div class="dashboard-section">
@@ -276,8 +277,8 @@
 					<p>Get alerts when jobs that meet your specifications are
 						available.</p>
 					<p style="text-align: right;">
-						<a class="pull-left"  href="#">Create New</a>
-						<a  href="#">View All</a>
+						<a class="pull-left" href="#">Create New</a> <a href="#">View
+							All</a>
 					</p>
 
 				</div>

@@ -172,11 +172,11 @@ p,div {
 				<div class="col-sm-12 col-md-6 module-div certification"
 					style="background-color: rgba(247, 139, 50, 0.2)">
 					<div class="col-sm-12">
-						<a href="/certifications/cert.html"><img class="img img-responsive module-image" alt=""
+						<a href="/bq/certifications"><img class="img img-responsive module-image" alt=""
 							src="/images/certification-icons.png"></a>
 					</div>
 					<div class="col-sm-12 module-title">
-						<a style="color: white" href="/certifications/cert.html"><span class="module-text">Demonstrate Your Ability</span></a>
+						<a style="color: white" href="/bq/certificationsl"><span class="module-text">Demonstrate Your Ability</span></a>
 					</div>
 				</div>
 				<div class="col-sm-12 col-md-6 module-div"
