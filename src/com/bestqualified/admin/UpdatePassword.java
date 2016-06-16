@@ -21,10 +21,17 @@ public class UpdatePassword extends HttpServlet{
 	 */
 	private static final long serialVersionUID = -4892281895097943462L;
 
+	
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
+			throws ServletException ,IOException {
+		doPost(req, resp);
+	}
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String oldpassword = req.getParameter("oldpassword");
 		String newpassword = req.getParameter("newpassword");
 		String retypepass = req.getParameter("retypepass");
+		
+		resp.setContentType("application/json");
 				
 		HttpSession session = req.getSession();
 		
@@ -36,6 +43,7 @@ public class UpdatePassword extends HttpServlet{
 			}
 			
 		}
+		
 		
 		if(!Util.notNull(newpassword)) {
 			synchronized (session) {
