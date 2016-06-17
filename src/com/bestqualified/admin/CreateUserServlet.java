@@ -22,6 +22,12 @@ public class CreateUserServlet extends HttpServlet{
 	private static final long serialVersionUID = -8797505551273179310L;
 	
 	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
+			throws ServletException ,IOException {
+		doPost(req, resp);
+	}
+	
+	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -61,22 +67,30 @@ public class CreateUserServlet extends HttpServlet{
 			
 		}
 		
+		if(!Util.isEmail(email)) {
+			synchronized (session) {
+				resp.sendError(HttpServletResponse.SC_EXPECTATION_FAILED, "Please enter a valid email"); 
+				return;
+				
+			}
+			
+		}
 		
-		else {
 			
 			User u = new User("admin", role);
+			u.setEmail(email);
+			u.setPassword(password);
+			u.setUserType(role);
 			
 			Entity e = EntityConverter.userToEntity(u);
 			GeneralController.create(e);
-			u.setPassword(password);
-			
 			
 			synchronized (session) {
 				session.setAttribute("user", u);
 			}
 			resp.getWriter().write(resp.encodeRedirectURL("/bq/admin/dashboard"));
 			
-		}
+		
 	}
 
 }

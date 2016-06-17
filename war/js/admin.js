@@ -12,6 +12,7 @@ function login (username, password) {
 			window.location.assign(data);
 		},
 		error : function(xhr){
+			console.log(xhr.status);
 			if(xhr.status == 417) {
 				addError($("#msg-div"),xhr.statusText);
 			}else if(xhr.status == 200){

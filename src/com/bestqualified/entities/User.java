@@ -14,7 +14,7 @@ import com.google.appengine.api.datastore.KeyFactory;
 public class User implements Serializable {
 
 	public enum UserType {
-		PROFESSIONAL, RECRUITER;
+		PROFESSIONAL, RECRUITER, SUPER_ADMIN,AUTHOR, ADMIN;
 	}
 
 	/**

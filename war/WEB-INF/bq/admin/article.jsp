@@ -42,10 +42,13 @@
 	  			<label><input type="checkbox" value="">Marketing</label>
 			</div>
 			<div class="checkbox">
-	  			<label><input type="checkbox" value="">Workforce</label>
+	  			<label><input type="checkbox" value="">Public Relations</label>
 			</div>
 			<div class="checkbox">
-	  			<label><input type="checkbox" value="">Recruitment</label>
+	  			<label><input type="checkbox" value="">Advertising</label>
+			</div>
+			<div class="checkbox">
+	  			<label><input type="checkbox" value="">Creatives</label>
 			</div>
 		</div>
 	   </div>

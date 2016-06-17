@@ -431,9 +431,9 @@ div.transbox form input {
 
 			<div class="col-md-6">
 				<div class="media headlines">
-                        <a class="pull-right" href="#"><img class="media-object img-rounded" src="/images/train.png"></a>
+                        <a class="pull-right" href="/bq/certifications"><img class="media-object img-rounded" src="/images/train.png"></a>
                         <div class="media-body">
-                          <h4 class="media-heading" style="font-weight:bold !important;"><a href="/certifications/cert.html">DEMONSTRATE YOUR ABILITY</a></h4>
+                          <h4 class="media-heading" style="font-weight:bold !important;"><a href="/bq/certifications">DEMONSTRATE YOUR ABILITY</a></h4>
                           <h5 class="jobs">Get hired in industries of your choice</h5>
                            <p class="plat"> Free or affordable trainings to improve your career.</p>
     						<p id="edi">

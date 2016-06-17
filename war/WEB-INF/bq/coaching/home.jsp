@@ -84,7 +84,7 @@
 
 #animation-div {
 	color: white;
-	background-color: darkblue;
+	background-color: #013143;
 	-webkit-animation-name: example; /* Chrome, Safari, Opera */
 	-webkit-animation-duration: 4s; /* Chrome, Safari, Opera */
 	animation-name: example;
@@ -94,7 +94,7 @@
 /* Chrome, Safari, Opera */
 @
 -webkit-keyframes example { 0% {
-	background-color: darkblue;
+	background-color: #013143;
 }
 
 25%
@@ -102,10 +102,16 @@
 background-color
 
 
+
+
 :
 
 
+
+
 #DA4453
+
+
 
 
 ;
@@ -115,10 +121,16 @@ background-color
 background-color
 
 
+
+
 :
 
 
+
+
 #967ADC
+
+
 
 
 ;
@@ -128,10 +140,16 @@ background-color
 background-color
 
 
+
+
 :
 
 
+
+
 #4A89DC
+
+
 
 
 ;
@@ -141,10 +159,16 @@ background-color
 background-color
 
 
+
+
 :
 
 
+
+
 #DA4453
+
+
 
 
 ;
@@ -154,17 +178,22 @@ background-color
 /* Standard syntax */
 @
 keyframes example { 0% {
-	background-color: darkblue;
+	background-color: #013143;
 }
-25%
-{
+25%{
 background-color
+
+
 
 
 :
 
 
+
+
 #DA4453
+
+
 
 
 ;
@@ -174,10 +203,16 @@ background-color
 background-color
 
 
+
+
 :
 
 
+
+
 #967ADC
+
+
 
 
 ;
@@ -187,10 +222,16 @@ background-color
 background-color
 
 
+
+
 :
 
 
+
+
 #4A89DC
+
+
 
 
 ;
@@ -200,10 +241,16 @@ background-color
 background-color
 
 
+
+
 :
 
 
+
+
 #DA4453
+
+
 
 
 ;
@@ -215,85 +262,36 @@ background-color
 	<%@ include file="/main-nav.html"%>
 	<br />
 	<br />
-	<div class="container-fluid" style="padding: 0">
-		<!-- carousel -->
-		<div id="my_carousel" class="carousel fade" data-ride="carousel">
-			<!-- methods: data-interval="3000" // seconds between transitions; set to "0" to make it not automatic
-					  data-pause="false" // "hover" is the default
-					  data-wrap="false" // "true" is the default
-		-->
+	<div class="container-fluid">
+			<div class="row" style="margin-bottom: 2%;">
 
-			<!-- indicators -->
-			<!-- <ol class="carousel-indicators">-->
-			<!-- .active makes that carousel image the first to be shown in the rotation -->
-			<!-- data-target referrs to id of carousel; data-slide-to referrs to slide number in array starting with 0 -->
-			<!--	<li data-target="#my_carousel" data-slide-to="0" class="active"></li>
-				<li data-target="#my_carousel" data-slide-to="1" class=""></li>
-				<li data-target="#my_carousel" data-slide-to="2" class=""></li>
-			</ol>
-			-->
-
-			<!-- carousel images -->
-			<div class="carousel-inner">
-				<div class="item active">
-					<img src="/images/bq-coaching-slide-2.jpg" alt="carousel_image_4">
-				</div>
-				<div class="item">
-					<img src="/images/bq-coaching-slide-3.jpg" alt="carousel_image_2">
-				</div>
-				<div class="item">
-					<img src="/images/bq-coaching-slide-4.jpg" alt="carousel_image_1">
-				</div>
-				<div class="item">
-					<img src="/images/bq-coaching-slide-5.jpg" alt="carousel_image_2">
-				</div>
-				<div class="item">
-					<img src="/images/bq-coaching-slide-6.jpg" alt="carousel_image_1">
+				<div class="col-sm-12 no-padding-div" style="color: white; background-image: url('/images/coaching-slide.jpg'); height: 300px; position: relative; width: 100%;">
+					<div style="background-color: rgba(0,0,0,0.0); width: 400px; height: 220px; padding: 1%; position: absolute; bottom: 20px; left: 150px; font-family: century gothic">
+						<h3 id="banner-quote">We cannot hold a torch to light another's path without brightening our own.</h3><br/>
+						<h4 id="banner-author">- Ben Sweetland</h4>
+					</div>
 				</div>
 			</div>
-
-			<!-- side buttons -->
-			<!-- href referrs to the id of the carousel -->
-			<a class="left carousel-control" href="#my_carousel" role="button"
-				data-slide="prev"> <!--<span class="glyphicon glyphicon-chevron-left"></span> -->
-			</a> <a class="right carousel-control" href="#my_carousel" role="button"
-				data-slide="next"> <!--<span class="glyphicon glyphicon-chevron-right"></span>-->
-			</a>
-
 		</div>
-		<!-- end .carousel -->
-	</div>
-	<div class="container" style="margin-top: 2%;">
+	<div class="container" style="margin-top: 1%;">
 		<div class="row tools-div"
-			style="margin-bottom: 2%; padding-bottom: 2%;">
-			<h4 class="tools">TOOLS</h4>
+			style="margin-bottom: 2%;">
+			
 			<div class="col-sm-3">
-				<h4>
-					<span class="tool-name">Interview Cheats</span>
-				</h4>
-				<div
-					style="height: 150px; background-color: rgba(255, 0, 0, 0.6); padding-top: 7%; cursor: pointer">
-					<h3 style="text-align: center; color: white">Interview cheat
-						sheets by skill sets</h3>
-				</div>
+				<a href="/bq/coaching/tools/interview-cheats" class="text-danger"><i  class="fa fa-file fa-5x" aria-hidden="true"></i></a>
+				<a href="/bq/coaching/tools/interview-cheats"><h4>Interview Cheat Sheets</h4></a>
 			</div>
 			<div class="col-sm-3">
-				<h4>
-					<span class="tool-name">Assessment</span>
-				</h4>
-				<div style="height: 150px; background-color: green"></div>
+				<a href="/bq/coaching/tools/assessment" class="text-warning"><i class="fa fa-pencil-square fa-5x" aria-hidden="true"></i></a>
+				<a href="/bq/coaching/tools/assessment"><h4>Assessment Test</h4></a>
 			</div>
 			<div class="col-sm-3">
-				<h4>
-					<span class="tool-name">Reading List</span>
-				</h4>
-				<div style="height: 150px; background-color: pink"></div>
+					<a href="/bq/coaching/tools/reading-list" class="text-success"><i class="fa fa-book fa-5x" aria-hidden="true"></i></a>
+					<a href="/bq/coaching/tools/reading-list"><h4>Reading List</h4></a>
 			</div>
 			<div class="col-sm-3">
-				<h4>
-					<span class="tool-name">Sales Documents</span>
-				</h4>
-				<div style="height: 150px; background-color: orange"></div>
+				<a href="/bq/coaching/tools/sales-documents" style="color: green"><i class="fa fa-file-text fa-5x" aria-hidden="true"></i></a>
+				<a href="/bq/coaching/tools/sales-documents"><h4>Sales Documents</h4></a>
 			</div>
 		</div>
 		<div class="row">
@@ -362,9 +360,9 @@ background-color
 
 				<div class="col-sm-12 no-padding-div">
 					<div class="article-header">From Our Blog</div>
-					<div class="col-sm-12 no-padding-div"
-						style="margin-bottom: 2%;">
-						<article class="col-sm-12 no-padding-div" style="border-bottom: 1px solid #cacaca">
+					<div class="col-sm-12 no-padding-div" style="margin-bottom: 2%;">
+						<article class="col-sm-12 no-padding-div"
+							style="border-bottom: 1px solid #cacaca">
 							<h3 class="post-box-title">
 								<a href="#"> Top IITS Colleges In India With Their Rankings</a>
 							</h3>
@@ -452,7 +450,8 @@ background-color
 					</div>
 				</div>
 				<div class="col-sm-12" style="margin-bottom: 2%;">
-					<a href="#"><img class="img img-responsive"
+					<a href="<c:url value='/bq/coaching/request-coach'/>"><img
+						class="img img-responsive"
 						style="border: 1px solid purple; padding: 2%;"
 						src="/images/coach.png"></a>
 				</div>
@@ -617,5 +616,58 @@ background-color
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/waitMe.js"></script>
 	<script src="/js/main.js"></script>
+	<script type="text/javascript">
+	var slideCounter = 1;
+	var quotes = [ "Tell me and I forget, teach me and I may remember, involve me and I learn.", "Advice is like snow; the softer it falls, the longer it dwells upon, and the deeper it sinks into the mind.",
+			"If you cannot see where you are going, ask someone who has been there before.", "We're here for a reason. I believe a bit of the reason is to throw little torches out to lead people through the dark." ,"We cannot hold a torch to light another's path without brightening our own."];
+	var author = ["- Benjamin Franklin","- Samuel Taylor Coleridge","- J Loren Norris","- Whoopi Goldberg", "- Ben Sweetland"];
+		$(document).ready(function() {
+			
+			startSlider();
+		});
+		function startSlider() {
+			
+			if (slideCounter > 4) {
+				slideCounter = 0;
+			}
+			window.setTimeout(function() {
+				$("#banner-quote").fadeOut("slow","linear", function() {
+					$("#banner-quote").text(quotes[slideCounter]);
+					$("#banner-author").text(author[slideCounter]);
+					slideCounter++;
+					$("#banner-quote").fadeIn("slow","linear",function() {
+						startSlider();
+					})
+				});
+			}, 5000);
+		}
+	</script>
+	<script type='text/javascript' data-cfasync='false'>
+		window.purechatApi = {
+			l : [],
+			t : [],
+			on : function() {
+				this.l.push(arguments);
+			}
+		};
+		(function() {
+			var done = false;
+			var script = document.createElement('script');
+			script.async = true;
+			script.type = 'text/javascript';
+			script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript';
+			document.getElementsByTagName('HEAD').item(0).appendChild(script);
+			script.onreadystatechange = script.onload = function(e) {
+				if (!done
+						&& (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+					var w = new PCWidget({
+						c : '326dbdf5-7eaf-40a8-af52-ee4a7a58550a',
+						f : true
+					});
+					done = true;
+				}
+			};
+		})();
+	</script>
 </body>
 </html>
