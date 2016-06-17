@@ -679,6 +679,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>users</servlet-name>
 		<url-pattern>/users/all</url-pattern>
 	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>community</servlet-name>
+		<jsp-file>/WEB-INF/bq/community/home.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>community</servlet-name>
+		<url-pattern>/community</url-pattern>
+	</servlet-mapping>
+	
 	<session-config>
 		<session-timeout>1800</session-timeout>
 	</session-config>
