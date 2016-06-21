@@ -1,6 +1,7 @@
 package com.bestqualified.servlets;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -22,6 +23,8 @@ import com.google.appengine.api.datastore.Entity;
 
 public class SignInServlet extends HttpServlet {
 
+	
+
 	/**
 	 * 
 	 */
@@ -41,7 +44,9 @@ public class SignInServlet extends HttpServlet {
 			resp.sendRedirect(resp.encodeRedirectURL("/sign-in"));
 			return;
 		}
-		
+		synchronized (session) {
+			session.setAttribute("sinEmail", email);
+		}
 		if(!Util.notNull(password)) {
 			synchronized (session) {
 				session.setAttribute("signinError", "You have to enter your password.");
@@ -52,6 +57,7 @@ public class SignInServlet extends HttpServlet {
 		User u = GeneralController.getUserByCredentials(email,password);
 		if(u == null) {
 			synchronized (session) {
+				session.removeAttribute("sinEmail");
 				session.setAttribute("signinError", "Username/Password do not match");
 			}
 			resp.sendRedirect(resp.encodeRedirectURL("/sign-in"));
@@ -86,6 +92,7 @@ public class SignInServlet extends HttpServlet {
 					synchronized (session) {
 						o1 = session.getAttribute("requestUri");
 						o2 = session.getAttribute("queryString");
+						session.removeAttribute("passwordChangeSuccess");
 					}
 					if(o1 == null) {
 						RequestDispatcher rd = req.getRequestDispatcher("/bq/closed/init-dashboard");

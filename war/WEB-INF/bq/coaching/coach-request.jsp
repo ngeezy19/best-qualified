@@ -114,11 +114,11 @@
 							</div>
 							<div class="form-group col-sm-6">
 								<label>First Name </label> <input name="first-name"
-									value="${user.firstname}" id="first-name" class="form-control">
+									value="${user.firstName}" id="first-name" class="form-control">
 							</div>
 							<div class="form-group col-sm-6">
 								<label>Last Name </label> <input name="last-name" id="last-name"
-									value="${user.lastname}" class="form-control">
+									value="${user.lastName}" class="form-control">
 							</div>
 							<div class="form-group col-sm-6">
 								<label>Email </label> <input name="email" id="email"

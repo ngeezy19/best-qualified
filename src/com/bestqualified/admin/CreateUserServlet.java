@@ -31,7 +31,7 @@ public class CreateUserServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		
 		
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
@@ -53,7 +53,7 @@ public class CreateUserServlet extends HttpServlet{
 		
 		if(!Util.notNull(password)) {
 			synchronized (session) {
-				resp.sendError(HttpServletResponse.SC_EXPECTATION_FAILED, "Please enter your new password");
+				resp.sendError(HttpServletResponse.SC_EXPECTATION_FAILED, "Please enter your password");
 				return;
 			}
 			
@@ -77,18 +77,17 @@ public class CreateUserServlet extends HttpServlet{
 		}
 		
 			
-			User u = new User("admin", role);
+			User u = new User("admin", email);
 			u.setEmail(email);
-			u.setPassword(password);
+			u.setPassword(Util.toSHA512(password));
 			u.setUserType(role);
 			
 			Entity e = EntityConverter.userToEntity(u);
 			GeneralController.create(e);
 			
-			synchronized (session) {
-				session.setAttribute("user", u);
-			}
-			resp.getWriter().write(resp.encodeRedirectURL("/bq/admin/dashboard"));
+			
+			resp.setStatus(HttpServletResponse.SC_OK);
+			resp.getWriter().write("User Created");
 			
 		
 	}

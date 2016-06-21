@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Best Qualified Sign Up</title>
+<title>Sign Up</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -18,155 +18,182 @@
 <link href="/styles/bootflat.min.css" rel="stylesheet">
 <link href="/styles/font-awesome.min.css" rel="stylesheet">
 <link href="/styles/main.css" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Corben"
+	rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Nobile"
+	rel="stylesheet" type="text/css">
 <style type="text/css">
-body {
-	font-family: cabin;
-	background: url(../images/signup-bg.png) no-repeat;
+html,body {
+	height: 100%;
+}
+
+#main-body {
+	height: 100%;
+	background: rgba(135, 206, 250, 0.3);
+	/* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(rgba(122, 149, 192, 0.3),
+		rgba(135, 206, 250, 0.2), rgba(135, 206, 250, 0.1));
+	/* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(rgba(122, 149, 192, 0.3),
+		rgba(135, 206, 250, 0.2), rgba(135, 206, 250, 0.1));
+	/* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(122, 149, 192, 0.3),
+		rgba(135, 206, 250, 0.2), rgba(135, 206, 250, 0.1));
+	/* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(122, 149, 192, 0.3),
+		rgba(135, 206, 250, 0.2), rgba(135, 206, 250, 0.1));
+	/* Standard syntax */
+}
+
+.login-header {
+	border-radius-top: 3px;
+	border: 2px solid rgb(128, 128, 128);
+	width: 30%;
+	border-bottom: none;
+	padding: 1%;
+	padding-left: 2%;
+	border-top-right-radius: 10px;
+	-moz-border-top-right-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	font-size: 14pt;
+	font-weight: bold;
+	color: white;
+	background-color: rgb(128, 128, 128);
+	background-color: rgba(128, 128, 128, 0.5);
+	font-family: 'Corben', Georgia, Times, serif !important;
+}
+
+.login-btn {
+	color: rgb(241, 241, 241);
+	background-color: rgb(72, 103, 170);
+	font-size: 14pt;
+	font-family: 'Corben', Georgia, Times, serif !important;
+	font-weight: bold;
+	padding: 1%;
+	padding-right: 2%;
+	padding-left: 2%;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border: none;
+}
+
+.login-btn:hover {
+	background-color: rgb(73, 96, 160);
+}
+
+.login-body {
+	border: 2px rgb(128, 128, 128) solid;
+	padding: 4%;
+	background: url('/images/concrete_seamless.png');
+}
+
+#main-header {
+	border-bottom: 1px solid #cacaca;
+	padding: 1%;
+	text-align: center;
+	background-color: rgba(59, 89, 152, 0.6)
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: 'Corben', Georgia, Times, serif !important;
+}
+
+p,div {
+	font-family: 'Nobile', Helvetica, Arial, sans-serif !important;
 }
 </style>
-
 </head>
-
-<body>
-
-	
-
-	
-	<br>
-	<br>
-
-	<!-- Page Content -->
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12"></div>
-		</div>
-		<div class="row">
-			<div class="col-md-12"></div>
-		</div>
-
-
-		<br> <br> <br>
-
-
-		<hr />
-		<div class="row">
-			<div class="col-md-6" style="text-align: right;">
-				<div class="righto">
-					<h3 class="format">
-						Join the <span>BEST-QUALIFIED</span> Sales & Marketing
-						Professionals <br> <span><i class="fa fa-thumbs-o-up"
-							aria-hidden="true"></i></span>
-					</h3>
-				</div>
-			</div>
-
-			<div class="col-md-6">
-
-				<div class="auth">
-					<div id="big-form" class="well auth-box">
-						<form method="post" action="<c:url value='/end-point/sign-up' />">
-							<fieldset>
-
-								<!-- Text input-->
-								<div class="form-group col-md-6">
-									<label class=" control-label" for="textinput">First
-										name</label>
-									<div class="">
-										<input name="first-name" value="${sub.firstName }"
-											class="form-control input-md" type="text">
-
-									</div>
-								</div>
-
-								<!-- Text input-->
-								<div class="form-group col-md-6">
-									<label class=" control-label" for="textinput">Last name</label>
-									<div class="">
-										<input name="last-name" value="${sub.lastName }"
-											class="form-control input-md" type="text">
-
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="col-md-12">
-										<br> <br>
-									</div>
-								</div>
-
-								<!-- Text input-->
-								<div class="form-group col-md-6">
-									<label class=" control-label" for="textinput">Email</label>
-									<div class="">
-										<input name="email" value="${sub.email}"
-											class="form-control input-md" type="text">
-
-									</div>
-								</div>
-
-								<!-- Password input-->
-								<div class="form-group col-md-6">
-									<label class=" control-label" for="passwordinput">Password</label>
-									<div class="">
-										<input name="password" type="password"
-											class="form-control input-md" type="password">
-									</div>
-								</div>
-
-
-								<div class="form-group col-md-12">
-									<div class="">
-										<label class="radio-inline" for="radios-0">
-
-											<p class="terms">
-												By clicking Join Now, you agree with the Best Qualified <span>Terms
-													of Use</span> and <span>Cookie Policy</span>
-											</p>
-										</label>
-									</div>
-								</div>
-
-								<!-- Password input-->
-								<div class="form-group col-md-6">
-									<div class="">
-										<button class="btn btn-primary">Join Now</button>
-									</div>
-								</div>
-
-							</fieldset>
-						</form>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-
-			</div>
-
-		</div>
-
-		<div class="row">
-			<div class="col-md-12">
-				<hr />
-			</div>
-		</div>
-		<footer>
-			<div class="row">
-				<div class="col-lg-12">
-					<p></p>
-				</div>
-			</div>
-		</footer>
-
+<body style="height: 100%; background: url('/images/world-map-5.png');">
+	<div class="row" id="main-header">
+		<a href="/index"><img alt="" src="/images/bq-logo.png"></a>
 	</div>
-	<!-- /.container -->
+	<div class="row" style="height: 100%;" id="main-body">
 
-	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
+		<div class="col-sm-12">
+			<h3 class="format">
+				Join the <span class="best">BEST</span><span class="qualified">-QUALIFIED</span>
+				Sales & Marketing Professionals
+			</h3>
+			<div class="login-div-1" style="margin-top: 2%;">
+				<div class="login-header">Sign Up</div>
+				<div class="login-body" style="overflow: auto;">
+					<c:if test="${not empty signupError}">
+						<div class="col-sm-12"><div id="msg-div" class="bq-alert bq-alert-danger">
+							${signupError}
+						</div></div>
+					</c:if>
 
-	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+					<form id="change-password-form" method="post"
+						action="<c:url value='/end-point/sign-up' />">
 
-	<script src="js/script.js"></script>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input name="first-name" value="${sub.firstName }"
+									class="form-control" placeholder="First Name"
+									style="margin-bottom: 3%;" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input name="last-name" value="${sub.lastName }"
+									class="form-control" placeholder="Last Name"
+									style="margin-bottom: 3%;" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input name="email" value="${sub.email }" class="form-control"
+									placeholder="Email" style="margin-bottom: 3%;" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input type="password" name="password" class="form-control"
+									placeholder="Password" style="margin-bottom: 3%;" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input class="login-btn" type="submit" value="Sign Up" />
+								<span>Already have an account? <a href="/sign-in"
+									style="font-weight: bold;">Sign In</a></span>
+							</div>
+
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<hr style="background-color: #cacaca; height: 1px" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<strong class="text-muted"> Social Login</strong>
+								<ul class="flat-social" style="display: inline;">
+									<li><a href="/bq/open/facebook-sign-in"
+										class="social-facebook" rel="external"><i
+											class="fa fa-facebook"></i> <span>Facebook</span></a></li>
+									<!-- <li><a href="#" class="social-twitter" rel="external"
+										target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a></li> -->
+									<!-- <li><a href="#" class="social-google" rel="external"
+										target="_blank"><i class="fa fa-google-plus"></i> <span>Google
+												+</span></a></li> -->
+									<li><a href="/bq/open/linkedin-sign-in"
+										class="social-linkedin" rel="external"><i
+											class="fa fa-linkedin"></i> <span>LinkedIn</span></a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/js/jquery-1.11.2.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
 
 </body>
-
 </html>

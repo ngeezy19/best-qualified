@@ -78,10 +78,14 @@ body {
 }
 
 .bq-alert {
-	padding: 2%;
+	padding: 1%;
 	font-family: calibri;
 	color: white;
 	margin-bottom: 1%;
+	-moz-border-radius : 4px;
+	-webkit-border-radius : 4px;
+	border-radius : 4px;
+	
 }
 
 .bq-alert p {
@@ -89,7 +93,11 @@ body {
 }
 
 .bq-alert-danger {
-	background: red;
+	background: darkred; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(darkred,red); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(darkred, red); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(darkred, red); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(darkred, red); /* Standard syntax */
 	border: 1px darkred solid;
 }
 
@@ -277,10 +285,21 @@ body {
 }
 
 .login-div {
-	width: 25%;
+	width: 60%;
 	margin: 0 auto;
-	margin-top: 1%;
-	font-family: calibri;
+	margin-top: 10%;
+}
+
+.login-div-1 {
+	width: 40%;
+	margin: 0 auto;
+	margin-top: 5%;
+}
+
+.login-div-2 {
+	width: 60%;
+	margin: 0 auto;
+	margin-top: 5%;
 }
 
 .login-input-div {
@@ -450,14 +469,18 @@ body {
 	font-style: italic;
 	color: #fff;
 	font-weight: bold;
-	text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px
+	text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.2), 1px 1px 0px
 		rgba(0, 0, 0, 0.8);
-	padding: 10px;
-	font-size: 35px;
+	text-align: center;
+	
 }
 
-.format span {
-	color: rgb(255, 165, 0);
+.best {
+	color: red;
+}
+
+.qualified {
+	color: #013448;
 }
 
 .lefto {
@@ -968,10 +991,71 @@ background-color
 .grey {
   background-color: #9e9e9e !important;
 }
+.flat-social span {
+	margin-left: 1%;
+}
+
+.flat-social {
+	padding: 0px;
+	margin-top: 2%;
+}
+
+.flat-social li {
+	list-style: none;
+	display: inline;
+	width: 4em;
+}
+
+.social-facebook,.social-twitter,.social-google,.social-linkedin {
+	color: white;
+	font-size: 10pt;
+	width: 4em !important;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-web-border-radius: 5px;
+	padding: 3px;
+	padding-left: 4px;
+	padding-right: 4px;
+	width: 4em !important;
+}
+
+.social-facebook {
+	background-color: rgb(72,103,170)
+}
+
+.social-facebook:hover {
+	background-color: #006699 !important;
+	color : white !important
+}
+
+.social-twitter {
+	background-color: #45b0e3
+}
+
+.social-facebook:hover {
+	background-color: blue;
+}
+
+.social-google {
+	background-color: #dc4a38
+}
+
+.social-google:hover {
+	background-color: red;
+}
+
+.social-linkedin {
+	background-color: rgb(1,119,181)
+}
+
+.social-linkedin:hover {
+	background-color: rgb(52,81,177) !important;
+	color : white !important
+}
 /*****************************************sign up css **************************************************/
 @media screen and (max-width: 1200px) {
 	.login-div {
-		width: 25%;
+		width: 60%;
 	}
 	.dashboard-body {
 		margin-top: 10% !important;
@@ -981,37 +1065,51 @@ background-color
 
 @media screen and (max-width: 992px) {
 	.login-div {
-		width: 40%;
+		width: 65%;
 	}
 	.dashboard-body {
 		margin-top: 8%;
 	}
-	
+	.login-div-1 {
+		width: 50%;
+	}
+	.login-div-2 {
+		width: 70%;
+	}
 	
 }
 
 @media screen and (max-width: 767px) {
-	.login-div {
-		width: 50%;
+	.login-div, .login-div-1 {
+		width: 70%;
 	}
 	.dashboard-body {
 		margin-top: 10%;
 	}
+	.login-div-2 {
+		width: 80%;
+	}
+	
+	
 	
 }
 
 @media screen and (max-width: 480px) {
-	.login-div {
-		width: 65%;
+	.login-div, .login-div-1 {
+		width: 80%;
 	}
 	.dashboard-body {
 		margin-top: 11%;
 	}
 	
+	.login-div-2 {
+		width: 90%;
+	}
+	
 }
 
 @media screen and (max-width: 320px) {
-	.login-div {
+	.login-div, .login-div-1, .login-div-2 {
 		width: 100%;
 	}
 	.dashboard-body {

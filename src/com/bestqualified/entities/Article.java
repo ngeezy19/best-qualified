@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.bestqualified.controllers.GeneralController;
+import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 
@@ -14,6 +15,7 @@ public class Article implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 6543815782172323770L;
+	
 	private Key key;
 	private String title;
 	private Date date;
@@ -24,6 +26,7 @@ public class Article implements Serializable {
 	private Key author;
 	private List<Key> comments;
 	private List<Key> subscribers;
+	private BlobKey imageKey;
 
 	@Override
 	public String toString() {
@@ -34,6 +37,7 @@ public class Article implements Serializable {
 	}
 
 	public String getTitle() {
+		
 		return title;
 	}
 
@@ -105,8 +109,6 @@ public class Article implements Serializable {
 		this.subscribers = subscribers;
 	}
 	
-	
-
 	public Key getKey() {
 		return key;
 	}
@@ -118,6 +120,14 @@ public class Article implements Serializable {
 	public Article() {
 		this.key = GeneralController.ds.allocateIds(
 				Article.class.getSimpleName(), 1).getStart();
+	}
+
+	public BlobKey getImageKey() {
+		return imageKey;
+	}
+
+	public void setImageKey(BlobKey imageKey) {
+		this.imageKey = imageKey;
 	}
 
 }

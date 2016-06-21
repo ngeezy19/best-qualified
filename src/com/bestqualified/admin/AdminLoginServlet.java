@@ -46,10 +46,9 @@ public class AdminLoginServlet extends HttpServlet{
 			
 		}
 		
-		String ut = Util.toSHA512(password);
 		
 		
-		User u = GeneralController.getUserByCredentials(username, ut);
+		User u = GeneralController.getUserByCredentials(username, password);
 		
 		if(u == null) {
 			synchronized (session) {

@@ -17,65 +17,7 @@
 <link href="http://fonts.googleapis.com/css?family=Corben"
 	rel="stylesheet" type="text/css">
 <style type="text/css">
-.flat-social span {
-	margin-left: 1%;
-}
 
-.flat-social {
-	padding: 0px;
-	margin-top: 2%;
-}
-
-.flat-social li {
-	list-style: none;
-	display: inline;
-	width: 4em;
-}
-
-.social-facebook,.social-twitter,.social-google,.social-linkedin {
-	color: white;
-	font-size: 10pt;
-	width: 4em !important;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-web-border-radius: 5px;
-	padding: 3px;
-	padding-left: 4px;
-	padding-right: 4px;
-	width: 4em !important;
-}
-
-.social-facebook {
-	background-color: #39599f
-}
-
-.social-facebook:hover {
-	background-color: #39599f;
-}
-
-.social-twitter {
-	background-color: #45b0e3
-}
-
-.social-facebook:hover {
-	background-color: blue;
-}
-
-.social-google {
-	background-color: #dc4a38
-}
-
-.social-google:hover {
-	background-color: red;
-}
-
-.social-linkedin {
-	background-color: #006699
-}
-
-.social-linked:hover {
-	background-color: blue;
-}
 
 .post-box-title a {
 	text-decoration: none;

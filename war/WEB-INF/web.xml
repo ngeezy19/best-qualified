@@ -225,7 +225,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LinkedInCallback</servlet-name>
-		<url-pattern>/bq/open/linkedin-callback</url-pattern>
+		<url-pattern>/bq/open/linkedin/callback</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -378,6 +378,73 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>RequestCoachServlet</servlet-name>
 		<url-pattern>/bq/coaching/send-coach-request</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>InitForgotPassword</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitForgotPassword</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitForgotPassword</servlet-name>
+		<url-pattern>/endpoint/forgot-password</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>InitVerificationCode</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitVerificationCode</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitVerificationCode</servlet-name>
+		<url-pattern>/endpoint/verification-code</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ChangePassword</servlet-name>
+		<servlet-class>com.bestqualified.servlets.ChangePassword</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChangePassword</servlet-name>
+		<url-pattern>/endpoint/bq/change-password</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>InitPasswordChange</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitPasswordChange</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitPasswordChange</servlet-name>
+		<url-pattern>/endpoint/password-change</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>InitSignUp</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitSignUp</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitSignUp</servlet-name>
+		<url-pattern>/sign-up</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ForgotPassword</servlet-name>
+		<servlet-class>com.bestqualified.servlets.ForgotPassword</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ForgotPassword</servlet-name>
+		<url-pattern>/endpoint/bq/forgot-password</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CreateAdminUser</servlet-name>
+		<servlet-class>com.bestqualified.admin.CreateUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateAdminUser</servlet-name>
+		<url-pattern>/bq/admin/create-user</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CreateArticleServlet</servlet-name>
+		<servlet-class>com.bestqualified.admin.CreateArticleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateArticleServlet</servlet-name>
+		<url-pattern>/bq/admin/create-article</url-pattern>
+	</servlet-mapping>
+	
 	<!-- ***************************************************SERVLET*********************************************************** -->
 	<servlet>
 		<servlet-name>NewsLetterSubscription</servlet-name>
@@ -388,6 +455,31 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/bq/open/handler/newsletter-subscribe</url-pattern>
 	</servlet-mapping>
 	<!-- ************************************************JSP*************************************************************** -->
+	<servlet>
+		<servlet-name>ChangePasswordPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/open/change-password.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChangePasswordPage</servlet-name>
+		<url-pattern>/endpoint/change-password-page</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>VerificationCodePage</servlet-name>
+		<jsp-file>/WEB-INF/bq/open/verification-code.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>VerificationCodePage</servlet-name>
+		<url-pattern>/endpoint/verification-code-page</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ForgotPasswordPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/open/forgot-password.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ForgotPasswordPage</servlet-name>
+		<url-pattern>/endpoint/forgot-password-page</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>SalesDocumentPage</servlet-name>
 		<jsp-file>/WEB-INF/bq/coaching/tools/sales-document.jsp</jsp-file>
@@ -579,7 +671,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SignUpPage</servlet-name>
-		<url-pattern>/sign-up</url-pattern>
+		<url-pattern>/sign-up-page</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>SignInPage</servlet-name>
@@ -669,7 +761,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>article</servlet-name>
-		<url-pattern>/article/new</url-pattern>
+		<url-pattern>/bq/admin/article</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>users</servlet-name>
@@ -677,8 +769,18 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>users</servlet-name>
-		<url-pattern>/users/all</url-pattern>
+		<url-pattern>/bq/admin/users</url-pattern>
 	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>community</servlet-name>
+		<jsp-file>/WEB-INF/bq/community/home.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>community</servlet-name>
+		<url-pattern>/community</url-pattern>
+	</servlet-mapping>
+	
 	<session-config>
 		<session-timeout>1800</session-timeout>
 	</session-config>

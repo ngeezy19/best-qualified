@@ -37,6 +37,20 @@ public class GeneralController {
 	public static final DatastoreService ds = DatastoreServiceFactory
 			.getDatastoreService();
 	private static Transaction txn = null;
+	
+	public static User findUserByEmail(String email) {
+		Query q = new Query(User.class.getSimpleName());
+		q.setFilter(new Query.FilterPredicate("email", FilterOperator.EQUAL,
+				email));
+		PreparedQuery pq = ds.prepare(q);
+		Entity e = null;
+		if (pq.countEntities(FetchOptions.Builder.withDefaults()) == 1) {
+			e = pq.asSingleEntity();
+			return EntityConverter.entityToUser(e);
+		}else {
+			return null;
+		}
+	}
 
 	public static Iterator<Entity> findAll(String className) {
 		Query q = new Query(className);

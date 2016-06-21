@@ -282,333 +282,196 @@ body {
 	<br>
 
 
-	<div class="row">
-		<div class="col-md-12 imgos">
-			<a href="#"><img src="/images/piple/matthew.png" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/elyse.png"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/logo.png" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/1.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/2.jpg" alt=""
-				width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/3.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/4.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/5.jpg" alt=""
-				width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/5.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/6.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/7.jpg" alt=""
-				width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/8.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/9.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/10.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/11.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/12.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/6.jpg" alt=""
-				width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/7.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/8.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/9.jpg" alt=""
-				width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/10.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/11.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/12.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/13.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/8.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/78.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/76.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/77.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/78.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/79.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/8.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/78.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/79.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/80.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/70.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/71.png" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/72.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/73.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/70.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/71.png" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/72.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/73.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/74.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/11.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/12.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/75.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/40.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/77.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/78.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/79.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/8.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/78.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/79.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/80.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/70.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/71.png"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/72.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/73.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/4.jpg" alt=""
-				width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/5.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/6.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/7.jpg" alt=""
-				width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/8.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/9.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/10.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/11.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/12.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/75.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/76.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/77.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/78.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/79.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/8.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/78.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/90.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/77.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/91.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/77.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/78.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/79.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/8.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/78.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/78.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/79.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/80.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/74.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/75.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/76.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/77.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/73.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/74.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/4.jpg" alt=""
-				width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/5.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/6.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/6.jpg" alt=""
-				width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/7.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/27.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/77.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/76.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/77.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/78.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/79.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/8.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/78.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/8.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/4.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/5.jpg" alt=""
-				width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/6.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/7.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/30.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/77.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/78.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/4.jpg" alt=""
-				width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/5.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/6.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/7.jpg" alt=""
-				width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/76.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/77.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/79.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/80.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/4.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/5.jpg" alt=""
-				width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/6.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/7.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/76.jpg"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/77.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/70.jpg" alt="" width="48"
-				height="48"></a> <a href="#"><img src="/images/piple/71.png"
-				alt="" width="48" height="48"></a> <a href="#"><img
-				src="/images/piple/72.jpg" alt="" width="48" height="48"></a> <a
-				href="#"><img src="/images/piple/73.jpg" alt="" width="48"
-				height="48"></a>
+	<!-- carousel -->
+	<div id="my_carousel" class="carousel fade" data-ride="carousel">
+		<!-- methods: data-interval="3000" // seconds between transitions; set to "0" to make it not automatic
+					  data-pause="false" // "hover" is the default
+					  data-wrap="false" // "true" is the default
+		-->
 
+		<!-- indicators -->
+		<!-- <ol class="carousel-indicators">-->
+		<!-- .active makes that carousel image the first to be shown in the rotation -->
+		<!-- data-target referrs to id of carousel; data-slide-to referrs to slide number in array starting with 0 -->
+		<!--	<li data-target="#my_carousel" data-slide-to="0" class="active"></li>
+				<li data-target="#my_carousel" data-slide-to="1" class=""></li>
+				<li data-target="#my_carousel" data-slide-to="2" class=""></li>
+			</ol>
+			-->
 
-		</div>
-	</div>
-
-	<br>
-	<div class="row">
-		<div class="col-md-12 imgo imgot" style="text-align: center;">
-			<a href=""><img src="/images/comi/gd.png" alt=""></a> <a href=""><img
-				src="/images/comi/n.png" alt=""></a> <a href=""><img
-				src="/images/comi/gr.png" alt=""></a> <a href=""><img
-				src="/images/comi/p.png" alt=""></a> <a href=""><img
-				src="/images/comi/r.png" alt=""></a> <a href=""><img
-				src="/images/comi/a.png" alt=""></a> <a href=""><img
-				src="/images/comi/pa.png" alt=""></a>
-
-		</div>
-	</div>
-
-
-	<br>
-	<br>
-	<br>
-
-	<div class="row">
-
-
-		<div class="col-md-12" data-wow-delay="0.2s"
-			style="background-color: rgba(78, 189, 163, 0.10); background-image: url('/images/comi/3.png');">
-			<div class="carousel slide" data-ride="carousel" id="quote-carousel">
-				<!-- Bottom Carousel Indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#quote-carousel" data-slide-to="0" class="active"><img
-						class="img-responsive " src="/images/piple/13.jpg" alt=""></li>
-					<li data-target="#quote-carousel" data-slide-to="1"><img
-						class="img-responsive" src="/images/elyse.png" alt=""></li>
-					<li data-target="#quote-carousel" data-slide-to="2"><img
-						class="img-responsive" src="/images/logo.png" alt=""></li>
-				</ol>
-
-				<!-- Carousel Slides / Quotes -->
-				<div class="carousel-inner text-center">
-
-					<!-- Quote 1 -->
-					<div class="item active">
-						<blockquote>
-							<div class="row">
-								<div class="col-sm-8 col-sm-offset-2">
-
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-										sed do eiusmod tempor incididunt ut labore et dolore magna
-										aliqua. Ut enim ad minim veniam. !</p>
-									<small>Someone famous</small>
-								</div>
-							</div>
-						</blockquote>
-					</div>
-					<!-- Quote 2 -->
-					<div class="item">
-						<blockquote>
-							<div class="row">
-								<div class="col-sm-8 col-sm-offset-2">
-
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-										sed do eiusmod tempor incididunt ut labore et dolore magna
-										aliqua. Ut enim ad minim veniam,</p>
-									<small>Someone famous</small>
-								</div>
-							</div>
-						</blockquote>
-					</div>
-					<!-- Quote 3 -->
-					<div class="item">
-						<blockquote>
-							<div class="row">
-								<div class="col-sm-8 col-sm-offset-2">
-
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-										sed do eiusmod tempor incididunt ut labore et dolore magna
-										aliqua. Ut enim ad minim veniam .</p>
-									<small>Someone famous</small>
-								</div>
-							</div>
-						</blockquote>
-					</div>
-				</div>
-
-				<!-- Carousel Buttons Next/Prev 
-                            <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
-                            <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
-                            -->
+		<!-- carousel images -->
+		<div class="carousel-inner">
+			<div class="item active">
+				<img src="/images/bq-slide-1.jpg" alt="carousel_image_4">
 			</div>
+			<div class="item">
+				<img src="/images/bq-slide-2.jpg" alt="carousel_image_2">
+			</div>
+			<div class="item">
+				<img src="/images/bq-slide-3.jpg" alt="carousel_image_1">
+			</div>
+
 		</div>
 
-		<hr />
+		<!-- side buttons -->
+		<!-- href referrs to the id of the carousel -->
+		<a class="left carousel-control" href="#my_carousel" role="button"
+			data-slide="prev"> <!--<span class="glyphicon glyphicon-chevron-left"></span> -->
+		</a> <a class="right carousel-control" href="#my_carousel" role="button"
+			data-slide="next"> <!--<span class="glyphicon glyphicon-chevron-right"></span>-->
+		</a>
+
 	</div>
-	<br>
-
-
-
-
-
-
-
+	<!-- end .carousel -->
+	
+	<br /><br /><br />
 
 	<div class="container">
-		<div class="row" style="">
-			<div class="col-md-9" id="blogodo">
+	<div class="row" style="">
+		<div class="col-md-9" id="blogodo">
+		
+         <div class="media">
+                <a class="pull-left" href="#"><img class="media-object img-rounded" src="images/am.png" width="320" height="214"></a>
+                    <div class="media-body">
+                      <h3 class="media-heading" id="lol">COMMUNITY</h3>
+                   
+                      <p style="text-align:justify;">The BQ community provides many ways for you to connect with a world of Sales & Marketing experts. Whether it is through membership, national events or the BQ social media channels. The BQ brings Sales & Marketing professionals together to build networks, relationships and solve market place challenges.</p>
+                    </div>
+            </div>
+				<br><br>
+            <div>
+            <h3>Connect Through Membership List </h3>
+            	<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>AMA</th>
+        <th>NIMN</th>
+        <th>LIPSR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>APCON</td></b>
+        <td><b>WISCAR</td></b>
+        <td><b>FSED</td></b>
+      </tr>
+      <tr>
+        <td><b>CIM</td></b>
+        <td><b>NIPR</td></b>
+        <td><b>CIPR</td></b>
+      </tr>
+      <tr>
+        <td><b>CMMP</td></b>
+        <td><b>CIPS</td></b>
+        <td><b>CAS</td></b>
+      </tr>
+      <tr>
+        <td><b>SMC</td></b>
+        <td><b>GAP/GAIQ</td></b>
+        <td><b>CMI</td></b>
+      </tr>
+      <tr>
+        <td><b>SCRUM</td></b>
+        <td><b>HUBSPOT</td></b>
+        <td><b>DMI</td></b>
+      </tr>
+    </tbody>
+  </table>
+            </div>
+           <br>
 
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Ullam enim illum dolores doloribus error voluptas rerum, autem esse
-					illo quibusdam, laudantium, aperiam vel officia! At magni incidunt
-					consectetur a autem?</p>
 
+            <div style="background-image: url('img/comi/3.png');">
+            	<h3>Top Contributors</h3>
+            	<div class="row">
 
-			</div>
-			<div class="col-md-3">
-				<div class="well soweto"
-					style="background: rgba(78, 189, 163, 0.13); padding: 20px;">
-					<h3 class="media-heading" id="lols">Which company has the best
-						work enviroment</h3>
+            		<div class="col-md-4">
+		            		<div class="media">
+		                     <a href="#"><img class="media-object img-circle pull-left" src="images/46.jpg" width="130" height="130"></a>
+			                    <div class="media-body">
+			                    <br><br>
+			                      <h5 class="media-heading  pull-left">Delight Chika</h5>
+			                      <p class="pull-left">Top Content Writer</p>
+			                    </div>
+	            			</div>
+            		</div>
+            		<div class="col-md-4">
+            			<div class="media">
+		                   <a href="#"><img class="media-object img-circle pull-left" src="images/73.jpg" width="130" height="130"></a>
+			                    <div class="media-body">
+			                    <br><br>
+			                      <h5 class="media-heading  pull-left">Ugo Chukwudi</h5>
+			                      <p class="pull-left">Fastest Reply</p>
+			                    </div>
+	            			</div>
+            		</div>
+            		<div class="col-md-4">
+            			<div class="media">
+		                     <a href="#"><img class="media-object img-circle pull-left" src="images/3.jpg" width="130" height="130"></a>
+			                    <div class="media-body">
+			                    <br><br>
+			                      <h5 class="media-heading  pull-left">Stephen Dappa</h5>
+			                      <p class=" pull-left">Number 1 Rookie</p>
+			                    </div>
+	            			</div>
+            		</div>
 
+            	</div>
+            </div>
 
-					<div class="checkbox">
-						<label><input type="checkbox" value="">First Bank
-							Nigeria</label>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Zenith</label>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Workforce</label>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Mtn Nigeria</label>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Cheveron</label>
-					</div>
-
-					<button class="btn btn-info">Vote</button>
-
-
-
-
+            
+		</div>
+		<div class="col-md-3">
+			<div class="well soweto" style="background: rgba(78,189,163,0.13); padding:20px;">
+			 <h3 class="media-heading" id="lols">Which company has the best work enviroment</h3>
+			
+					
+				<div class="checkbox">
+	  				<label><input type="checkbox" value="">First Bank Nigeria</label>
+				</div>
+				<div class="checkbox">
+	  				<label><input type="checkbox" value="">Zenith</label>
+				</div>
+				<div class="checkbox">
+	  				<label><input type="checkbox" value="">Workforce</label>
+				</div>
+				<div class="checkbox">
+	  				<label><input type="checkbox" value="">Mtn Nigeria</label>
+				</div>
+				<div class="checkbox">
+	  				<label><input type="checkbox" value="">Cheveron</label>
 				</div>
 
+	  				<button class="btn btn-info">
+	  					Vote
+	  				</button>              
+            </div>
+
+            <div class="well">
+            	<form role="form">
+  <div class="form-group">
+  <p>Member Log In |</p>
+    <input type="email" class="form-control" id="email" placeholder="email">
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" id="pwd" placeholder="password">
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+            </div>
+
+			<div class="well">
+				            <a class="twitter-timeline"  href="https://twitter.com/FRANKDUPR33" data-widget-id="554987493125554176">Tweets by @BestQualified</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          
+			</div>
+
+				
 			</div>
 		</div>
 	</div>
-	</div>
+</div>
 	<br>
 	<br>
 

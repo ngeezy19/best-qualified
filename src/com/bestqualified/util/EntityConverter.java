@@ -54,12 +54,13 @@ public class EntityConverter {
 		a.setTag((List<String>) e.getProperty("tag"));
 		a.setTitle((String) e.getProperty("title"));
 		a.setViews((Integer) e.getProperty("views"));
+		a.setImageKey((BlobKey) e.getProperty("imageKey"));
 		return a;
 	}
 	
 	public static Entity ArticleToEntity(Article a) {
 		Entity e = new Entity(a.getKey());
-		e.setUnindexedProperty("title", a.getTitle());
+		e.setIndexedProperty("title", a.getTitle());
 		e.setIndexedProperty("date", a.getDate());
 		e.setUnindexedProperty("views", a.getViews());
 		e.setUnindexedProperty("body", a.getBody());
@@ -68,6 +69,7 @@ public class EntityConverter {
 		e.setUnindexedProperty("comments", a.getComments());
 		e.setUnindexedProperty("subscribers", a.getSubscribers());
 		e.setUnindexedProperty("tags", a.getTag());
+		e.setUnindexedProperty("imageKey", a.getImageKey());
 		return e;
 	}
 	

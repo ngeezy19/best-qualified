@@ -35,9 +35,9 @@ public class EmailVerificationServlet extends HttpServlet {
 			Object o1 = null;
 			if(session.isNew()) {
 				synchronized (session) {
-					session.setAttribute("", "Your session has expired. Start again <a href='/login'>here</a>");
+					session.setAttribute("verificationCodeError", "Your session has expired. Start again <a href='/sign-in'>here</a>");
 				}
-				resp.sendRedirect(resp.encodeRedirectURL("/email-verification"));
+				resp.sendRedirect(resp.encodeRedirectURL("/endpoint/verification-code-page"));
 				return;
 			}
 			synchronized (session) {
@@ -49,6 +49,18 @@ public class EmailVerificationServlet extends HttpServlet {
 				SignUpBean sub = (SignUpBean) o;
 				User u = (User) o1;
 				if (sub.getVerificationCode().equals(verificationCode.trim())) {
+					Object o5 = null;
+					synchronized (session) {
+						o5 = session.getAttribute("fromForgotPassword");
+						
+					}
+					if(o5!=null) {
+						resp.sendRedirect(resp.encodeRedirectURL("/endpoint/password-change"));
+						synchronized (session) {
+							session.removeAttribute("fromForgotPassword");
+						}
+						return;
+					}
 					u.setVerified(true);
 					Entity e = EntityConverter.userToEntity(u);
 					GeneralController.create(e);
@@ -64,7 +76,7 @@ public class EmailVerificationServlet extends HttpServlet {
 						e1.printStackTrace();
 					}
 					synchronized (session) {
-						session.removeAttribute("emailVerifyError");
+						session.removeAttribute("verificationCodeError");
 						session.removeAttribute("sub");
 						session.setAttribute("user", u);
 					}
@@ -86,23 +98,23 @@ public class EmailVerificationServlet extends HttpServlet {
 					return;
 				} else {
 					synchronized (session) {
-						session.setAttribute("emailVerifyError", "The code you entered in not correct.");
+						session.setAttribute("verificationCodeError", "The code you entered in not correct.");
 					}
-					resp.sendRedirect(resp.encodeRedirectURL("/email-verification"));
+					resp.sendRedirect(resp.encodeRedirectURL("/endpoint/verification-code-page"));
 					return;
 				}
 			} else {
 				synchronized (session) {
-					session.setAttribute("emailVerifyError", "A fatal error has occured. <a href='/login'>Try again</a>");
+					session.setAttribute("verificationCodeError", "A fatal error has occured. <a href='/login'>Try again</a>");
 				}
-				resp.sendRedirect(resp.encodeRedirectURL("/email-verification"));
+				resp.sendRedirect(resp.encodeRedirectURL("/endpoint/verification-code-page"));
 				return;
 			}
 		} else {
 			synchronized (session) {
-				session.setAttribute("emailVerifyError", "You have to enter the verification code sent to your email.");
+				session.setAttribute("verificationCodeError", "You have to enter the verification code sent to your email.");
 			}
-			resp.sendRedirect(resp.encodeRedirectURL("/email-verification"));
+			resp.sendRedirect(resp.encodeRedirectURL("/endpoint/verification-code-page"));
 		}
 
 	}
