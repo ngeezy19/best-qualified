@@ -129,13 +129,15 @@
 <body>
 	<%@ include file="/main-nav.html"%>
 	<form id="search-form">
-		<div class="container dashboard-body"
-			style="margin-top: 10px; padding: 3%; margin-bottom: 2%; border-bottom: 1px #cacaca solid; width: 100%; padding-top: 4%; padding-bottom: none; background-image: url('/images/concrete_seamless.png')">
-			<div class="row">
+		<br/><br/>
+		<div class="container-fluid">
+			<div class="row" style="margin-bottom: 2%;">
 
-				<div class="col-sm-12" style="color: white;">
-					<img id="banner-img" class="img img-responsive"
-						alt="" src="/images/jobs-slide-1.png">
+				<div class="col-sm-12 no-padding-div" style="color: white; background-image: url('/images/jobs-slide.jpg'); height: 300px; position: relative; width: 100%;">
+					<div style="background-color: rgba(0,0,0,0.0); width: 400px; height: 220px; padding: 1%; position: absolute; bottom: 20px; left: 150px; font-family: century gothic">
+						<h2 id="banner-quote">The reward for work well done is the opportunity to do more</h2><br/>
+						<h4 id="banner-author">- Anonymous</h4>
+					</div>
 				</div>
 				<!-- <div class="col-sm-6" style="">
 					<br />
@@ -884,8 +886,9 @@
 	<script src="/js/filter.js"></script>
 	<script type="text/javascript">
 		var slideCounter = 1;
-		var imgs = [ "/images/jobs-slide-1.png", "/images/jobs-slide-2.png",
-				"/images/jobs-slide-3.png", "/images/jobs-slide-4.png" ];
+		var quotes = [ "The only way to do great work is to love what you do", "If the plan doesn't work, change the plan but never the goal",
+				"Staying motivated will give your job search a clear direction", "The Reward for work well done is the opportunity to do more" ];
+		var author = ["- Steve Jobs","- Anonymous","- Anonymous","- Anonymous"];
 		$(document)
 				.ready(
 						function() {
@@ -946,18 +949,21 @@
 											});
 						});
 		function startSlider() {
+			
 			if (slideCounter > 3) {
 				slideCounter = 0;
 			}
 			window.setTimeout(function() {
-				$("#banner-img").fadeOut("slow","linear", function() {
-					$("#banner-img").prop("src", imgs[slideCounter]);
+				$("#banner-quote").fadeOut("slow","linear", function() {
+					$("#banner-quote").text(quotes[slideCounter]);
+					$("#banner-author").text(author[slideCounter]);
 					slideCounter++;
-					$("#banner-img").fadeIn("slow","linear",function() {
+					$("#banner-quote").fadeIn("slow","linear",function() {
 						startSlider();
 					})
 				});
-			}, 8000);
+			}, 5000);
+			
 			
 			
 		}

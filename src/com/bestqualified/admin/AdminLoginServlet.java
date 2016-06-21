@@ -19,12 +19,7 @@ public class AdminLoginServlet extends HttpServlet{
 	 */
 	private static final long serialVersionUID = -186851539590755821L;
 	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(req, resp);
-	}
+	
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username = req.getParameter("username");
@@ -51,10 +46,9 @@ public class AdminLoginServlet extends HttpServlet{
 			
 		}
 		
-		String ut = Util.toSHA512(password);
 		
 		
-		User u = GeneralController.getUserByCredentials(username, ut);
+		User u = GeneralController.getUserByCredentials(username, password);
 		
 		if(u == null) {
 			synchronized (session) {

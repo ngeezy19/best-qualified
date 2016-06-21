@@ -42,22 +42,22 @@ public class ResendConfirmationCode extends HttpServlet {
 			Util.sendConfirmationCodeEmail(su.getEmail(), body);
 			synchronized (session) {
 				session.setAttribute("sub", su);
-				session.removeAttribute("verificationError");
+				session.removeAttribute("verificationCodeError");
 			}
 			
-			resp.sendRedirect(resp.encodeRedirectURL("/email-verification"));
+			resp.sendRedirect(resp.encodeRedirectURL("/endpoint/verification-code-page"));
 		} catch (AddressException e) {
 			e.printStackTrace();
-			session.setAttribute("emailVerifyError","The email address " + su.getEmail()
+			session.setAttribute("verificationCodeError","The email address " + su.getEmail()
 					+ " is either invalid or does not exist.");
-			resp.sendRedirect(resp.encodeRedirectURL("/email-verification"));
+			resp.sendRedirect(resp.encodeRedirectURL("/endpoint/verification-code-page"));
 			return;
 
 		} catch (MessagingException e) {
 			e.printStackTrace();
-			session.setAttribute("emailVerifyError","We could not send a confirmation code to " + su.getEmail()
+			session.setAttribute("verificationCodeError","We could not send a verification code to " + su.getEmail()
 					+ ". Please try again later.");
-			resp.sendRedirect(resp.encodeRedirectURL("/email-verification"));
+			resp.sendRedirect(resp.encodeRedirectURL("/endpoint/verification-code-page"));
 			return;
 			
 		}

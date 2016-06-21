@@ -43,6 +43,7 @@ import com.bestqualified.bean.AssessmentQuestionBean;
 import com.bestqualified.bean.CorrectionBean;
 import com.bestqualified.bean.FacebookAccessTokenResponse;
 import com.bestqualified.bean.InterestedJob;
+import com.bestqualified.bean.LinkedInAccessTokenResponse;
 import com.bestqualified.bean.ManageProjectBean;
 import com.bestqualified.bean.MyJobs;
 import com.bestqualified.bean.ProView;
@@ -105,6 +106,16 @@ public class Util {
 	public static final String SERVICE_ACCOUNT = "bestqualified.profiliant@gmail.com";
 	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+	public static final String AT_LEAST_ONE_DIGIT = "((?=.*\\d))";
+	public static final String AT_LEAST_ONE_LOWERCASE_ALPHABET = "(?=.*[a-z])";
+	public static final String AT_LEAST_ONE_UPPERCASE_ALPHABET = "(?=.*[A-Z])";
+	public static final String AT_LEAST_ONE_SYMBOL = "(?=.*[!@#$%])";
+	
+	public static boolean containsPattern(String testString, String pattern) {
+		Pattern p = Pattern.compile(pattern);
+		Matcher matcher = p.matcher(testString);
+		return matcher.matches();
+	}
 
 	public static boolean notNull(String... args) {
 		if (args == null) {
@@ -1651,5 +1662,73 @@ public class Util {
 
 		}
 		return value;
+	}
+
+	public static LinkedInAccessTokenResponse toLinkedInAccessToken(
+			String respString) {
+		respString = respString.replace("{", "").replace("}", "")
+				.replace("\"", "");
+		String[] str = respString.split(",");
+		LinkedInAccessTokenResponse latr = new LinkedInAccessTokenResponse();
+		for (String s : str) {
+			String[] ss = s.split(":");
+			if (ss[0].equalsIgnoreCase("access_token")) {
+				if (ss.length > 1) {
+					latr.setAccessToken(ss[1]);
+				}
+
+			} else if (ss[0].equalsIgnoreCase("expires_in")) {
+				if (ss.length > 1) {
+					latr.setExpires(ss[1]);
+				}
+
+			}
+
+		}
+		return latr;
+	}
+
+	public static SocialUser toLinkedInSocialUser(String respString) {
+		SocialUser su = new SocialUser();
+		su.setNetwork(SocialNetwork.LINKEDIN);
+		respString = respString.replace("{", "").replace("}", "")
+				.replace("\"", "");
+		String[] str = respString.split(",");
+		for (String s : str) {
+			String[] ss = s.split(":");
+			if (ss[0].trim().equalsIgnoreCase("emailAddress")) {
+				if (ss.length > 1) {
+					su.setEmail(ss[1].trim());
+				}
+
+			} else if (ss[0].trim().equalsIgnoreCase("firstName")) {
+				if (ss.length > 1) {
+					su.setFirstName(ss[1]);
+				}
+
+			} else if (ss[0].trim().equalsIgnoreCase("headline")) {
+				if (ss.length > 1) {
+					su.setHeadline(ss[1]);
+				}
+
+			} else if (ss[0].trim().equalsIgnoreCase("id")) {
+				if (ss.length > 1) {
+					su.setId(ss[1].trim());
+				}
+
+			} else if (ss[0].trim().equalsIgnoreCase("lastName")) {
+				if (ss.length > 1) {
+					su.setLastName(ss[1]);
+				}
+
+			} else if (ss[0].trim().equalsIgnoreCase("pictureUrl")) {
+				if (ss.length > 1) {
+					su.setPictureUrl(ss[1] + ":" + ss[2]);
+				}
+
+			}
+
+		}
+		return su;
 	}
 }
