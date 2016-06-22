@@ -22,6 +22,7 @@ import com.bestqualified.entities.JobAlert;
 import com.bestqualified.entities.JobCategory;
 import com.bestqualified.entities.JobRegion;
 import com.bestqualified.entities.Project;
+import com.bestqualified.entities.ReadingList;
 import com.bestqualified.entities.Recruiter;
 import com.bestqualified.entities.User;
 import com.bestqualified.entities.WorkExperience;
@@ -32,6 +33,32 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 
 public class EntityConverter {
+	
+	public static ReadingList entityToReadingList(Entity e){
+		ReadingList rl = new ReadingList();
+		rl.setId(e.getKey());
+		rl.setDate ((Date) e.getProperty("date"));
+		rl.setBookTitle ((String) e.getProperty("bookTitle"));
+		rl.setPublisher((String) e.getProperty("publisher"));
+		rl.setAuthor((String) e.getProperty("author"));
+		rl.setDescription((Text) e.getProperty("description"));
+		rl.setLink((String) e.getProperty("link"));
+		rl.setImageKey((BlobKey) e.getProperty("imageKey"));
+		return rl;
+		
+	}
+	
+	public static Entity ReadingListToEntity(ReadingList rl) {
+		Entity e = new Entity(rl.getId());
+		e.setIndexedProperty("date", rl.getDate());
+		e.setUnindexedProperty("bookTitle", rl.getBookTitle());
+		e.setIndexedProperty("author", rl.getAuthor());
+		e.setUnindexedProperty("description", rl.getDescription());
+		e.setUnindexedProperty("imageKey", rl.getImageKey());
+		e.setUnindexedProperty("publisher", rl.getPublisher());
+		e.setUnindexedProperty("link", rl.getLink());
+		return e;
+		}
 	
 	public static Comment entityToComment(Entity e) {
 		Comment c = new Comment();
