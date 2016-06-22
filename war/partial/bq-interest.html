@@ -1,6 +1,6 @@
 
 
-	<form id="be-a-coach">
+	<form id="be-a-coach" action="<c:url value='/bq/endpoint/be-a-coach'/>">
 		<div class="row">
 			<div class="form-group col-sm-12">
 				<p style="font-family: calibri; font-size: 10pt !important">* All fields are required</p>
@@ -68,6 +68,7 @@
 					</textarea>
 			</div>
 		</div>
+		<input type="hidden" name="user-type" value="COACH"/>
 		<div class="row">
 			<div class="form-group col-sm-12">
 				<input type="submit" value="Continue" class="btn btn-primary">
@@ -76,7 +77,7 @@
 	</form>
 
 
-	<form id="recruit-professionals">
+	<form id="recruit-professionals" action="<c:url value='/bq/endpoint/recruit-professional-user' />">
 		<div class="row">
 			<div class="form-group col-sm-12">
 				<p>Your company name, description, location and logo are
@@ -115,6 +116,7 @@
 					</textarea>
 			</div>
 		</div>
+		<input type="hidden" name="user-type" value="RECRUITER"/>
 		<div class="row">
 			<div class="form-group col-sm-12">
 				<input type="submit" value="Continue" class="btn btn-primary">
@@ -123,7 +125,7 @@
 	</form>
 
 
-	<form id="connect-with-professionals">
+	<form id="connect-with-professionals" action="/bq/endpoint/default-user" method="post">
 		<div class="row">
 			<div class="form-group col-sm-12">
 				<p>Tell us where you work, All fields are required</p>
@@ -139,6 +141,7 @@
 					placeholder="Organization" required="required" />
 			</div>
 		</div>
+		<input type="hidden" name="user-type" value="PROFESSIONAL"/>
 		<div class="row">
 			<div class="form-group col-sm-12">
 				<input type="submit" value="Continue" class="btn btn-primary">
@@ -147,7 +150,7 @@
 	</form>
 
 
-	<form id="find-a-job">
+	<form id="find-a-job" action="<c:url value='/bq/endpoint/find-a-job-user' />" method="post">
 		<div class="row">
 			<div class="form-group col-sm-12">
 				<p style="font-family: calibri !important; font-size: 9pt !important; color: red">* All fields are required</p>
@@ -159,7 +162,7 @@
 					placeholder="Mobile Number" required="required" />
 			</div>
 			<div class="form-group col-sm-6">
-				<input class="form-control" name="dob" placeholder="Date Of Birth"
+				<input class="form-control datepicker" name="dob" placeholder="Date Of Birth"
 					required="required" />
 			</div>
 		</div>
@@ -188,7 +191,7 @@
 
 				<select required="required" class="form-control"
 					name="educational-level">
-					<option value="" disabled selected hidden>Education Level</option>
+					<option value="" disabled selected hidden>Highest Education Level</option>
 					<option>Higher National Diploma</option>
 					<option>Bachelor's Degree</option>
 					<option>Master's Degree</option>
@@ -212,8 +215,8 @@
 		<div class="row">
 			<div class="form-group col-sm-6">
 
-				<select class="form-control" required="required" name="job-region">
-					<option value="" disabled selected hidden>Job Region</option>
+				<select class="form-control" required="required" name="loaction">
+					<option value="" disabled selected hidden>Your Location</option>
 					<option>Abia</option>
 					<option>Abuja</option>
 					<option>Adamawa</option>
@@ -253,6 +256,7 @@
 					<option>Zamfara</option>
 				</select>
 			</div>
+			<input type="hidden" name="user-type" value="PROFESSIONAL"/>
 			<div class="form-group col-sm-6">
 				<select class="form-control" name="salary" required="required">
 					<option value="" disabled selected hidden>Salary</option>

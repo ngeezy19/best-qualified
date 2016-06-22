@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/styles/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
 	href="/styles/jquery.webui-popover.min.css">
-<link rel="stylesheet" href="/styles/bootstrap-rating.css">
+<link rel="stylesheet" href="/styles/font-awesome.min.css">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/styles/animate.css">
 
@@ -124,111 +124,120 @@
 				</div>
 			</div>
 
-			<div class="row" style="margin-top: 2%;">
-
-				<div class="col-sm-12 dashboard-section">
+			<div class="row" style="margin-top: 2%; margin-bottom: 2%;">
+				<div class="col-sm-12 card-panel"
+					style="background-color: #fafafa; margin-bottom: 2px">
 					<div class="col-sm-12">
-						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666">Jobs
-							that may interest you</h4>
+						<h4 style="cursor: pointer;" id="article-trig">
+							Write an article <i class="fa fa-pencil-square-o"
+								aria-hidden="true"></i>
+						</h4>
 					</div>
-
-					<c:forEach var="item" items="${professionalDashboard.iJobs}">
-
-						<div class="col-sm-4 no-padding-div"
-							style="border-bottom: 1px #e1e1e1 solid; margin-bottom: 2%; margin-top: 2%;">
-							<div style="float: left; background-color: blue">
-								<a href="/bq/open/job?job-key=${item.jobKey}"></a><img alt=""
-									src="${item.pictureUrl}" class="img img-responsive"
-									style="width: 4em; margin: 1%"></a>
-							</div>
-							<div style="background-color: red">
-								<h5 style="">
-									<strong> <a href="/bq/open/job?job-key=${item.jobKey}"><c:out
-												value="${item.jobTitle}" /></a></strong>
-								</h5>
-								<h5 style="font-family: calibri;">
-									<c:out value="${item.companyName}" />
-								</h5>
-								<h5>
-									<i class="text-danger" style="font-family: calibri">Posted
-										<c:out value="${item.postedTime}" />
-									</i> <a href="/bq/open/job?job-key=${item.jobKey}"
-										class="pull-right">View</a>
-								</h5>
-							</div>
-
+					<div class="col-sm-12 article-div" style="display: none">
+						<div class="form-group">
+							<input placeholder="Title" id="article-title"
+								class="form-control" name="article-title" />
 						</div>
-					</c:forEach>
-					<div class="col-sm-12" style="margin-top: 2%;">
-						<a href="<c:url value='/bq/closed/init-jobs' />"
-							class="pull-right">View More</a>
-					</div>
-				</div>
-
-			</div>
-
-			<div class="col-sm-12" style="margin-bottom: 2%;">
-				<div class="col-sm-2">
-					<div class="dashboard-section">
-						<img alt="" src="/images/articles.png" class="img img-responsive"
-							style="width: 80%; margin: 0 auto">
-					</div>
-				</div>
-				<div class="col-sm-10 dashboard-section">
-					<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666">Stories
-						and Articles on Best Qualified</h4>
-					<div
-						style="border-bottom: 1px gray solid; overflow: auto; margin-bottom: 2%;">
-						<div class="col-sm-3">
-							<img alt="" src="/images/story1.jpg" class="img img-responsive">
+						<div class="form-group">
+							<textarea rows="7" class="form-control tiny" id="article-text"
+								name="article-text"></textarea>
 						</div>
-						<div class="col-sm-9">
-							<p>
-								<strong>Article Title</strong> <i>by firstname lastname</i>
-							</p>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-								Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus
-								neque, id</p>
-							<p>like Comment Share</p>
+						<div class="form-group">
+							<span>Add a featured image</span> <input type="file" name="image"
+								class="form-control" />
 						</div>
-					</div>
-					<div
-						style="border-bottom: 1px gray solid; overflow: auto; margin-bottom: 2%;">
-						<div class="col-sm-3">
-							<img alt="" src="/images/story2.jpg" class="img img-responsive">
-						</div>
-						<div class="col-sm-9">
-							<p>
-								<strong>Article Title</strong> <i>by firstname lastname</i>
-							</p>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-								Morbi commodo, ipsum sed pharetra gravida, ipsum dolor sit amet,
-								consectetuer</p>
-							<p>like Comment Share</p>
-						</div>
-					</div>
-					<div>
-						<div class="col-sm-3">
-							<img alt="" src="/images/story3.jpg" class="img img-responsive">
-						</div>
-						<div class="col-sm-9">
-							<p>
-								<strong>Article Title</strong> <i>by firstname lastname</i>
-							</p>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing
-								rhoncus neque, id pulvinar odio lorem non turpis.Lorem ipsum
-								dolor sit amet, consectetuer</p>
-							<p>like Comment Share</p>
+						<div class="form-group">
+							<input type="button" class="btn btn-primary" value="Post Article" />
+							<input id="close-article" type="button" class="btn btn-danger"
+								value="Close" />
 						</div>
 					</div>
 				</div>
 			</div>
+
+
+			<c:forEach var="item" items="${professionalDashboard.articles}">
+				<div class="row" style="margin-bottom: 4px;">
+					<div class="col-sm-2">
+						<div class="card-panel">
+							<img alt="" src="/images/articles.png" class="img img-responsive">
+						</div>
+					</div>
+					<div class="col-sm-10 card-panel">
+						<div class="col-sm-3 no-padding-div">
+							<a href='<c:url value="bq/network/get-post?id=${item.webkey}" />'><img
+								class="" src="${item.pictureUrl}" width="130" height="130"></a>
+						</div>
+						<div class="col-sm-9" style="padding: 2%;">
+							<a href='<c:url value="bq/network/get-post?id=${item.webkey}" />'><h3
+									class="media-heading" id="lol">${item.title}</h3></a>
+							<p class="text-muted">
+								<span><i class="fa fa-user"></i> BEST-QUALIFIED</span> <span><i
+									class="fa fa-clock-o"></i> <c:out value='${item.postDate}' /></span>
+								<span><i class="fa fa-comments"></i><a> 0</a></span>
+							</p>
+							<p>
+								${item.snippet}<span><a
+									href='<c:url value="bq/network/get-post?id=${item.webkey}" />'><i
+										class="fa fa-angle-double-right" aria-hidden="true"></i></a></span>
+							</p>
+
+							<p id="socialo">
+								<span id="fb"> <a href=""><i
+										class="fa fa-facebook-square" aria-hidden="true"
+										style="color: #3b5998;"></i> Share</a></span> <span id="tw"><a
+									href=""><i class="fa fa-twitter-square" aria-hidden="true"
+										style="color: #00aced;"></i> Tweet</a></span> <span id="go"><a
+									href=""><i class="fa fa-google-plus-square"
+										aria-hidden="true" style="color: #F43222;"></i> Share</a></span>
+
+							</p>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+
+
+
 
 		</div>
 		<div class="col-sm-4">
 
 			<div>
-				<div class="col-sm-12 dashboard-row dashboard-section">
+				<div class="col-sm-12 dashboard-row card-panel">
+					<h4>Jobs that may interest you</h4>
+					<c:forEach var="item" items="${professionalDashboard.iJobs}">
+						<div class="col-sm-12 no-padding-div"
+							style="border-bottom: 1px #e1e1e1 solid; margin-top: 2%;">
+							<div class="col-sm-3">
+								<a href="/bq/open/job?job-key=${item.jobKey}"><img alt=""
+									src="${item.pictureUrl}" class="img img-responsive"></a>
+							</div>
+							<div class="col-sm-9 no-padding-div" style="padding-top: 2%;">
+
+								<a style="font-size: 12pt"
+									href="/bq/open/job?job-key=${item.jobKey}"><c:out
+										value="${item.jobTitle}" /></a>
+
+								<h5
+									style="font-family: calibri; margin-top: 0px; margin-bottom: 0px">
+									<c:out value="${item.companyName}" />
+								</h5>
+								<h5 style="margin-top: 5px; margin-bottom: 5px">
+									<strong class="text-success"><c:out
+											value='${item.location}' /></strong> <i style="font-family: calibri"
+										class="text-danger pull-right">Posted <c:out
+											value="${item.postedTime}" />
+									</i>
+
+								</h5>
+							</div>
+
+						</div>
+					</c:forEach>
+					<div class="col-sm-12 no-padding-div"><a href="">View More</a></div>
+				</div>
+				<div class="col-sm-12 dashboard-row card-panel">
 					<h4>
 						Saved Jobs (
 						<c:out value='${fn:length(professionalDashboard.savedJobs)}' />
@@ -268,7 +277,7 @@
 						</c:forEach>
 					</div>
 				</div>
-				<div class="col-sm-12 dashboard-row dashboard-section">
+				<div class="col-sm-12 dashboard-row card-panel">
 					<h4>
 						Job Alerts (
 						<c:out value='${fn:length(professionalDashboard.jobAlerts)}' />
@@ -282,7 +291,7 @@
 					</p>
 
 				</div>
-				<div class="col-sm-12 dashboard-row dashboard-section">
+				<div class="col-sm-12 dashboard-row card-panel">
 					<h4>
 						Job Applications (
 						<c:out value='${fn:length(professionalDashboard.appliedJobs)}' />
@@ -352,6 +361,12 @@
 				event.preventDefault();
 				$("#applied-jobs-div").slideToggle();
 
+			});
+			$("#article-trig").click(function() {
+				$(".article-div").slideDown("slow");
+			});
+			$("#close-article").click(function() {
+				$(".article-div").slideUp("slow");
 			});
 		});
 	</script>

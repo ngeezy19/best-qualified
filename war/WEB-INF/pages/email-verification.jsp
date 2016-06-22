@@ -59,9 +59,9 @@ body {
 				<div class="auth">
 					<div id="big-form" class="well auth-box"
 						style="margin-left: 0px; margin-top: 5px">
-						<c:if test='${not empty emailVerifyError}'>
+						<c:if test='${not empty verificationCodeError}'>
 							<div class="bq-alert bq-alert-danger">
-								<p>${emailVerifyError}</p>
+								<p>${verificationCodeError}</p>
 							</div>
 						</c:if>
 						<h4 style="color: #003366; text-align: left;">We need to

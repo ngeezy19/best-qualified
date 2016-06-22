@@ -11,7 +11,6 @@ import com.bestqualified.entities.AssessmentQuestion;
 import com.bestqualified.entities.Award;
 import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.CareerLevel;
-import com.bestqualified.entities.CareerSummary;
 import com.bestqualified.entities.Certification;
 import com.bestqualified.entities.Comment;
 import com.bestqualified.entities.Company;
@@ -53,7 +52,7 @@ public class EntityConverter {
 		a.setSubscribers((List<Key>) e.getProperty("subscribers"));
 		a.setTag((List<String>) e.getProperty("tag"));
 		a.setTitle((String) e.getProperty("title"));
-		a.setViews((Integer) e.getProperty("views"));
+		a.setViews((Long) e.getProperty("views"));
 		a.setImageKey((BlobKey) e.getProperty("imageKey"));
 		return a;
 	}
@@ -137,27 +136,7 @@ public class EntityConverter {
 		return cl;
 	}
 
-	public static Entity careerSummaryToEntity(CareerSummary cs) {
 
-		Entity e = new Entity(CareerSummary.class.getSimpleName());
-		e.setUnindexedProperty(StringConstants.JOB_TYPE, cs.getJobType());
-		e.setUnindexedProperty(StringConstants.JOB_SPECIALIZATION,
-				cs.getSpecialization());
-		e.setUnindexedProperty(StringConstants.YEARS_OF_EXPERIENCE,
-				cs.getYearsOfExperience());
-		return e;
-	}
-
-	public static CareerSummary entityToCareerSummary(Entity e) {
-		CareerSummary cs = new CareerSummary();
-		cs.setId(e.getKey());
-		cs.setJobType((Key) e.getProperty(StringConstants.JOB_TYPE));
-		cs.setSpecialization((Key) e
-				.getProperty(StringConstants.JOB_SPECIALIZATION));
-		cs.setYearsOfExperience((int) e
-				.getProperty(StringConstants.YEARS_OF_EXPERIENCE));
-		return cs;
-	}
 
 	public static Entity certificationToEntity(Certification c) {
 		Entity e = new Entity(Certification.class.getSimpleName());
@@ -412,7 +391,9 @@ public class EntityConverter {
 		e.setUnindexedProperty("education", cp.getEducation());
 		e.setUnindexedProperty("awards", cp.getAwards());
 		e.setUnindexedProperty("certifications", cp.getCertifications());
-		e.setUnindexedProperty("careerSummary", cp.getCareerSummary());
+		e.setUnindexedProperty("yearsOfExperience", cp.getYearsOfExperience());
+		e.setUnindexedProperty("highestEducationLevel", cp.getHighestEducationLevel());
+		e.setUnindexedProperty("jobType", cp.getJobType());
 		e.setUnindexedProperty("profileDescription", cp.getProfileDescription());
 		e.setUnindexedProperty("nationality", cp.getNationality());
 		e.setUnindexedProperty("lga", cp.getLga());
@@ -429,8 +410,10 @@ public class EntityConverter {
 			Key userKey) {
 		CandidateProfile cp = new CandidateProfile(userKey);
 		cp.setAwards((List<Key>) e.getProperty("awards"));
-		cp.setCareerLevel((Key) e.getProperty("careerLevel"));
-		cp.setCareerSummary((Key) e.getProperty("careerSummary"));
+		cp.setCareerLevel((String) e.getProperty("careerLevel"));
+		cp.setYearsOfExperience((String) e.getProperty("yearsOfExperience"));
+		cp.setHighestEducationLevel((String) e.getProperty("highestEducationLevel"));
+		cp.setJobType((String) e.getProperty("jobType"));
 		cp.setCertifications((List<Key>) e.getProperty("certifications"));
 		cp.setCurrentEmployer((String) e.getProperty("currentEmployer"));
 		cp.setCurrentCountry((String) e.getProperty("currentCountry"));

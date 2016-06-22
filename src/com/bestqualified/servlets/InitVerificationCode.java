@@ -26,7 +26,11 @@ public class InitVerificationCode extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		Object o = null;
+		Object o1 = null;
+		Object o2 = null;
 		synchronized (session) {
+			o2 = session.getAttribute("fromForgotPassword");
+			o1 = session.getAttribute("sub");
 			o = session.getAttribute("user");
 			session.removeAttribute("verificationCodeError");
 		}
@@ -34,9 +38,16 @@ public class InitVerificationCode extends HttpServlet {
 			resp.sendRedirect("/sign-in");
 			return;
 		}else {
+			SignUpBean sub = null;
 			User u = (User) o;
-			SignUpBean sub = Util.userToSignUpBean(u);
+			
+			if(o1 == null && o2 !=null) {//coming from forgot password
+				sub = Util.userToSignUpBean(u);
+			}else if(o1 != null)  {
+				sub = (SignUpBean) o1;
+			}
 			String body = Util.getConfirmationCodeEmailBody(sub.getVerificationCode(), sub.getFirstName());
+			System.out.println(sub.getVerificationCode());
 			try {
 				Util.sendConfirmationCodeEmail(sub.getEmail(), body);
 			} catch (AddressException e1) {
@@ -47,8 +58,10 @@ public class InitVerificationCode extends HttpServlet {
 				e1.printStackTrace();
 			}
 			
+			
 			synchronized (session) {
 				session.setAttribute("sub", sub);
+				session.setMaxInactiveInterval(86400);
 			}
 			resp.sendRedirect("/endpoint/verification-code-page");
 		}
