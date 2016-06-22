@@ -446,6 +446,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+<<<<<<< HEAD
 		<servlet-name>InitIndex</servlet-name>
 		<servlet-class>com.bestqualified.servlets.InitIndex</servlet-class>
 	</servlet>
@@ -490,6 +491,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/bq/endpoint/be-a-coach</url-pattern>
 	</servlet-mapping>
 	
+=======
+		<servlet-name>CreateReadingList</servlet-name>
+		<servlet-class>com.bestqualified.admin.CreateReadingList</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateReadingList</servlet-name>
+		<url-pattern>/bq/admin/create-reading-list</url-pattern>
+	</servlet-mapping>
+>>>>>>> d6be80ce4a89cf7d5e9b1501fcd787a262c6d60a
 	<!-- ***************************************************SERVLET*********************************************************** -->
 	<servlet>
 		<servlet-name>NewsLetterSubscription</servlet-name>
