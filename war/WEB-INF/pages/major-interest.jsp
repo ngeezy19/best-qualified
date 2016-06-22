@@ -178,8 +178,10 @@ p,div {
 	</div>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery-ui.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
+			
 			$(".mj").click(function() {
 				var parent = $(this).closest(".form-group");
 				var url = parent.find(".url").val();
@@ -191,6 +193,10 @@ p,div {
 					setTimeout(function(){
 						container.slideDown("slow");
 					}, 500);
+					$(".datepicker").datepicker({
+						changeMonth : true,
+						changeYear : true
+					});
 					
 				});
 				

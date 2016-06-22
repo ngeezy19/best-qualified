@@ -90,26 +90,11 @@ public class SignUpServlet extends HttpServlet {
 			u.setVerified(false);
 			Entity e = EntityConverter.userToEntity(u);
 			GeneralController.create(e);
-			String body = Util.getConfirmationCodeEmailBody(sub.getVerificationCode(), sub.getFirstName());
-			try {
-				Util.sendConfirmationCodeEmail(sub.getEmail(), body);
-			} catch (AddressException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (MessagingException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
 			synchronized (session) {
 				session.removeAttribute("signupError");
 				session.setAttribute("user", u);
-				session.setMaxInactiveInterval(86400);
 			}
 		}
-		
-	
-		System.out.println(sub.getVerificationCode());
-		
 		resp.sendRedirect(resp.encodeRedirectURL("/endpoint/verification-code"));
 	}
 

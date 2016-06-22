@@ -189,10 +189,9 @@ div.transbox form input {
 .quick-search-list li a {
 	color: white;
 }
-
-
 </style>
-<body style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;">
+<body
+	style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;">
 
 	<%@ include file="/main-nav.html"%>
 	<!-- 
@@ -409,277 +408,249 @@ div.transbox form input {
 
 	</div>
 	<!-- end .carousel -->
-	<br><br><br>
+	<br>
+	<br>
+	<br>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
 				<div class="media headlines">
-                        <a class="pull-left" href="#"><img class="media-object img-rounded" src="/images/job.png"></a>
-                        <div class="media-body">
-                          <h4 class="media-heading"><strong><a href="/bq/open/all-jobs" style="text-decoration: none;">CAREER MOBILITY</a></strong></h4>
-                          <h5 class="job">Get hired in industries of your choice</h5>
-						  <p class="plat">Start your exciting career journey here</p>
+					<a class="pull-left" href="#"><img
+						class="media-object img-rounded" src="/images/job.png"></a>
+					<div class="media-body">
+						<h4 class="media-heading">
+							<strong><a href="/bq/open/all-jobs"
+								style="text-decoration: none;">CAREER MOBILITY</a></strong>
+						</h4>
+						<h5 class="job">Get hired in industries of your choice</h5>
+						<p class="plat">Start your exciting career journey here</p>
 
-						  <p id="edi">
-    						<span>Search from over: 520, 000+ jobs today!</span>  
-    						<span><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></span>
-    					  </p> 
-                        
-                        </div>
-                 </div>
+						<p id="edi">
+							<span>Search from over: 520, 000+ jobs today!</span> <span><a
+								href="#"><i class="fa fa-angle-double-right"
+									aria-hidden="true"></i></a></span>
+						</p>
+
+					</div>
+				</div>
 			</div>
 
 			<div class="col-md-6">
 				<div class="media headlines">
-                        <a class="pull-right" href="/bq/certifications"><img class="media-object img-rounded" src="/images/train.png"></a>
-                        <div class="media-body">
-                          <h4 class="media-heading" style="font-weight:bold !important;"><a href="/bq/certifications">DEMONSTRATE YOUR ABILITY</a></h4>
-                          <h5 class="jobs">Get hired in industries of your choice</h5>
-                           <p class="plat"> Free or affordable trainings to improve your career.</p>
-    						<p id="edi">
-    						<span><a href="#">ama</a></span>  
-    						<span><a href="#">apcon</a></span>  
-    						<span><a href="#">cim</a></span> 
-    						<span><a href="">nipr</a></span> 
-    						<span><a href="#">nimn</a></span>
-    						<span><a href="#">hse</a></span>
-    						<span><a href="#">oracle</a></span>
-    						<span><a href="#">.Net</a></span>
-    						<span><a href="#">cibm</a></span>
-    						<span><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></span>
-    						</p> 
-                        </div>
-                 </div>
+					<a class="pull-right" href="/bq/certifications"><img
+						class="media-object img-rounded" src="/images/train.png"></a>
+					<div class="media-body">
+						<h4 class="media-heading" style="font-weight: bold !important;">
+							<a href="/bq/certifications">DEMONSTRATE YOUR ABILITY</a>
+						</h4>
+						<h5 class="jobs">Get hired in industries of your choice</h5>
+						<p class="plat">Free or affordable trainings to improve your
+							career.</p>
+						<p id="edi">
+							<span><a href="#">ama</a></span> <span><a href="#">apcon</a></span>
+							<span><a href="#">cim</a></span> <span><a href="">nipr</a></span>
+							<span><a href="#">nimn</a></span> <span><a href="#">hse</a></span>
+							<span><a href="#">oracle</a></span> <span><a href="#">.Net</a></span>
+							<span><a href="#">cibm</a></span> <span><a href="#"><i
+									class="fa fa-angle-double-right" aria-hidden="true"></i></a></span>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
-		
+
 		<hr />
-			<div class="row">
+		<div class="row">
 			<div class="col-md-6">
 				<div class="media headlines">
-                        <a class="pull-left" href="/bq/coaching/home"><img class="media-object img-rounded" src="/images/coaching.png"></a>
-                        <div class="media-body">
-                          <h4 class="media-heading"><strong><a href="/bq/coaching/home">GUDIANCE & HAND HOLDING</a></strong></h4>
-                          <h5 class="jobss">Get hired in industries of your choice</h5>
-                          <p class="plat"> Latest career advice will be sent to your inbox.</p>
-    					  <p id="edi">
-    					   <span><a href="#"> <i class="fa fa-circle" aria-hidden="true" style="color: #4DAF7C;"></i> 2000</a> professionals online! Talk to one now!</span> 
-    						<span><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></span>
-    					  </p>
-    					 
-                        </div>
-                 </div>
+					<a class="pull-left" href="/bq/coaching/home"><img
+						class="media-object img-rounded" src="/images/coaching.png"></a>
+					<div class="media-body">
+						<h4 class="media-heading">
+							<strong><a href="/bq/coaching/home">GUDIANCE & HAND
+									HOLDING</a></strong>
+						</h4>
+						<h5 class="jobss">Get hired in industries of your choice</h5>
+						<p class="plat">Latest career advice will be sent to your
+							inbox.</p>
+						<p id="edi">
+							<span><a href="#"> <i class="fa fa-circle"
+									aria-hidden="true" style="color: #4DAF7C;"></i> 2000
+							</a> professionals online! Talk to one now!</span> <span><a href="#"><i
+									class="fa fa-angle-double-right" aria-hidden="true"></i></a></span>
+						</p>
+
+					</div>
+				</div>
 			</div>
 
 			<div class="col-md-6">
 				<div class="media headlines">
-                        <a class="pull-right" href="/bq/community/home"><img class="media-object img-rounded" src="/images/community.png"></a>
-                        <div class="media-body">
-                          <h4 class="media-heading"><a href="/bq/community/home"><strong>OUR NETWORK</strong></a></h4>
-                          <h5 class="jobsss">Get hired in industries of your choice</h5>
-                          <p class="plat"> Plug into new communities that can improve your network.</p>
-                          <p id="edi">
-    					   <span>Over<a href="#"> 1000</a> groups of sales professional</span> 
-    						<span><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></span>
-    					  </p>
+					<a class="pull-right" href="/bq/community/home"><img
+						class="media-object img-rounded" src="/images/community.png"></a>
+					<div class="media-body">
+						<h4 class="media-heading">
+							<a href="/bq/community/home"><strong>OUR NETWORK</strong></a>
+						</h4>
+						<h5 class="jobsss">Get hired in industries of your choice</h5>
+						<p class="plat">Plug into new communities that can improve
+							your network.</p>
+						<p id="edi">
+							<span>Over<a href="#"> 1000</a> groups of sales
+								professional
+							</span> <span><a href="#"><i class="fa fa-angle-double-right"
+									aria-hidden="true"></i></a></span>
+						</p>
 
-                        </div>
-                 </div>
+					</div>
+				</div>
 			</div>
 		</div>
 
 
 	</div>
 	<hr />
-<div class="container">
-	<div class="row" style="">
-		<div class="col-md-2" style="text-align: center;">
-			<a href=""><img src="/images/addd.jpg" alt="" class="img-responsive" style="height:508px; width: 180px; border:1px solid #BF55EC;"></a>
-		</div>
-		<div class="col-md-7" id="blogodo">
-			<h4>FROM OUR COMMUNITY</h4>
-			<div class="media">
-                <a class="pull-left" href="#"><img class="media-object img-rounded" src="/images/matthew.png" width="130" height="130"></a>
-                    <div class="media-body">
-                      <h3 class="media-heading" id="lol">How to secure you first sales job gig</h3>
-                      <p class="ibo"> BestQualified: 12 Apr 2016</p>
-                      <p>Just because you feel average (or a little less than average sometimes) doesn't mean everyone else has to know your secret. Here's how to look like the...<span><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></span></p>
+	<div class="container">
+		<div class="row" style="">
+			<div class="col-md-2" style="text-align: center;">
+				<a href=""><img src="/images/addd.jpg" alt=""
+					class="img-responsive"
+					style="height: 508px; width: 180px; border: 1px solid #BF55EC;"></a>
+			</div>
+			<div class="col-md-7" id="blogodo">
+				<h4>FROM OUR COMMUNITY</h4>
+				<c:forEach var="item" items="${indexBean.articles}">
+					<div class="media">
+						<a class="pull-left"
+							href='<c:url value="bq/network/get-post?id=${item.webkey}" />'><img
+							class="media-object img-rounded" src="${item.pictureUrl}"
+							width="130" height="130"></a>
+						<div class="media-body">
+							<a href='<c:url value="bq/network/get-post?id=${item.webkey}" />'><h3
+									class="media-heading" id="lol">${item.title}</h3></a>
+							<p class="text-muted">
+								<span><i class="fa fa-user"></i> BEST-QUALIFIED</span> <span><i
+									class="fa fa-clock-o"></i> <c:out value='${item.postDate}' /></span>
+								<span><i class="fa fa-comments"></i><a> 0</a></span>
+							</p>
+							<p>
+								${item.snippet}<span><a
+									href='<c:url value="bq/network/get-post?id=${item.webkey}" />'><i
+										class="fa fa-angle-double-right" aria-hidden="true"></i></a></span>
+							</p>
 
-                      <p id="socialo">
-                      <span id="fb"> <a href=""><i class="fa fa-facebook-square" aria-hidden="true" style="color: #3b5998;"></i> Share</a></span> 
-                      <span id="tw"><a href=""><i class="fa fa-twitter-square" aria-hidden="true" style="color: #00aced;"></i> Tweet</a></span>
-                      <span id="go"><a href=""><i class="fa fa-google-plus-square" aria-hidden="true" style="color:#F43222;"></i> Share</a></span>
+							<p id="socialo">
+								<span id="fb"> <a href=""><i
+										class="fa fa-facebook-square" aria-hidden="true"
+										style="color: #3b5998;"></i> Share</a></span> <span id="tw"><a
+									href=""><i class="fa fa-twitter-square" aria-hidden="true"
+										style="color: #00aced;"></i> Tweet</a></span> <span id="go"><a
+									href=""><i class="fa fa-google-plus-square"
+										aria-hidden="true" style="color: #F43222;"></i> Share</a></span>
 
-                      </p>
-                    </div>
-            </div>
-            	<div class="media">
-                <a class="pull-left" href="#"><img class="media-object img-rounded" src="/images/elyse.png" width="130" height="130"></a>
-                    <div class="media-body">
-                      <h3 class="media-heading" id="lol">6 common reasons why you didn't get the job</h3>
-                      <p class="ibo"> Delight Kc Chika: 4 Jun 2016</p>
-                      <p style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;">Landed yet another interview, but are less than optimistic that you'll actually receive a job offer? Maybe it's time you reviewed your interview routine...<span><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></span></p>
+							</p>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+			<div class="col-md-3" id="adopo">
+				<div class="well" style="background: rgba(78, 189, 163, 0.13);">
+					<h4>Are you a recruiter</h4>
+					<ul class="disc-bullet">
+						<li>Post jobs and monitor your applications</li>
+						<li>Use our extensive database to search candidates</li>
+						<li><em>And much more…</em></li>
+					</ul>
 
-                      <p id="socialo">
-                      <span id="fb"> <a href=""><i class="fa fa-facebook-square" aria-hidden="true" style="color: #3b5998;"></i> Share</a></span> 
-                      <span id="tw"><a href=""><i class="fa fa-twitter-square" aria-hidden="true" style="color: #00aced;"></i> Tweet</a></span>
-                      <span id="go"><a href=""><i class="fa fa-google-plus-square" aria-hidden="true" style="color:#F43222;"></i> Share</a></span>
+					<div style="text-align: center;">
+						<p>
+							<button class="btn btn-info">Register Now</button>
+						</p>
+					</div>
 
-                      </p>
-                    </div>
-            </div>
 
-            <div class="media">
-                <a class="pull-left" href="#"><img class="media-object img-rounded" src="/images/logo-s.png" width="130" height="130"></a>
-                    <div class="media-body">
-                      <h3 class="media-heading" id="lol">Why you won't get called back for an interview</h3>
-                      <p class="ibo"> Ngozi Njeze: 24 Aug 2016</p>
-                      <p style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;">Before hitting the "send" button, you take a deep breath. Seconds later, off goes your CV and cover letter to who might be your potential employer....<span><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></span></p>
-
-                      <p id="socialo">
-                      <span id="fb"> <a href=""><i class="fa fa-facebook-square" aria-hidden="true" style="color: #3b5998;"></i> Share</a></span> 
-                      <span id="tw"><a href=""><i class="fa fa-twitter-square" aria-hidden="true" style="color: #00aced;"></i> Tweet</a></span>
-                      <span id="go"><a href=""><i class="fa fa-google-plus-square" aria-hidden="true" style="color:#F43222;"></i> Share</a></span>
-
-                      </p>
-                    </div>
-            </div>
-		</div>
-		<div class="col-md-3" id="adopo">
-			<div class="well" style="background: rgba(78,189,163,0.13);">
-			<h4>Are you a recruiter</h4>
-				<ul class="disc-bullet">
-					<li>Post jobs and monitor your applications</li>
-					<li>Use our extensive database to search candidates</li>
-					<li><em>And much more…</em></li> 
-				</ul>
-
-				<div style="text-align: center;">
-				<p><button class="btn btn-info">Register Now</button></p>
 				</div>
 
-				
-			</div>
-
-			<div>
-			<br>
-			<h4 style="color: #000; !important">INTERVIEW ADVICE</h4>
-			<a href=""><img src="/images/ad.png" alt="" class="img-responsive"></a>	
+				<div>
+					<br>
+					<h4 style="color: #000;">INTERVIEW ADVICE</h4>
+					<a href=""><img src="/images/ad.png" alt=""
+						class="img-responsive"></a>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-	<br><br>
+	<br>
+	<br>
 
-	
-	
 
-			<div class="container">		
-			<div class="row" id="fru">
-				
-				<div class="col-md-12 jobfix">
+
+
+	<div class="container">
+		<div class="row" id="fru">
+
+			<div class="col-md-12 jobfix">
 				<div class="row">
 					<div class="col-md-6" id="vawa">
-						<h4>Latest Jobs <span><a href="">View all <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></span> </h4>
+						<h4>
+							Latest Jobs <span><a
+								href="<c:url value='/bq/open/all-jobs'/>">View all <i
+									class="fa fa-angle-double-right" aria-hidden="true"></i></a></span>
+						</h4>
 					</div>
 
 				</div>
 
-					<ul style="margin-left: -37px;">
-		                <li>
-		                    <h5><a href="#">Regulatory Officer</a></h5>
-		                    <span>Company: First Bank</span>
-		                    <p>Location: Abuja</p>
-		                </li>
+				<ul style="margin-left: -37px;">
+					<c:forEach var="item" items="${indexBean.ijs}">
+						<li>
+							<h5>
+								<a href="/bq/open/job?job-key=${item.jobKey}"><c:out value="${item.jobTitle}" /></a>
+							</h5> <span><c:out value="${item.companyName}" /></span>
+							<p><c:out value="${item.postedTime}" /></p>
+						</li>
+					</c:forEach>
+					<li style="background: rgba(78, 189, 163, 0.4);">
+						<div class="media">
+							<a class="pull-left" href="#"><i
+								class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+							<div class="mojo">
+								<p>
+									<a href="" style="font-size: 13px">GET JOB ALERTS</a>
+								</p>
+								<span><a href="#">Get the latest jobs first direct to
+										your inbox.</a></span>
+							</div>
+						</div>
+					</li>
+					<li style="background: rgba(241, 115, 66, 0.4);">
+						<div class="media">
+							<a class="pull-left" href="#"><i
+								class="fa fa-cloud-upload fa-2x" aria-hidden="true"></i></a>
+							<div class="mojo">
+								<p>
+									<a href="">UPLOAD CV</a>
+								</p>
+								<span><a href="#">Let employers and recruiters find
+										you!.</a></span>
+							</div>
+						</div>
+					</li>
 
-		                 <li>
-		                    <h5><a href="#">Regulatory Officer</a></h5>
-		                    <span>Company: First Bank</span>
-		                    <p>Location: Abuja</p>
-		                </li>
-
-		                 <li>
-		                    <h5><a href="#">Regulatory Officer</a></h5>
-		                    <span>Company: First Bank</span>
-		                    <p>Location: Abuja</p>
-		                </li>
-
-		                 <li>
-		                    <h5><a href="#">Regulatory Officer</a></h5>
-		                    <span>Company: First Bank</span>
-		                    <p>Location: Abuja</p>
-		                </li>
-
-		                <li>
-		                    <h5><a href="#">Regulatory Officer</a></h5>
-		                    <span>Company: First Bank</span>
-		                    <p>Location: Abuja</p>
-		                </li>
-
-		                <li>
-		                    <h5><a href="#">Regulatory Officer</a></h5>
-		                    <span>Company: First Bank</span>
-		                    <p>Location: Abuja</p>
-		                </li>
-
-		                <li>
-		                    <h5><a href="#">Regulatory Officer</a></h5>
-		                    <span>Company: First Bank</span>
-		                    <p>Location: Abuja</p>
-		                </li>
-
-		                <li>
-		                    <h5><a href="#">Regulatory Officer</a></h5>
-		                    <span>Company: First Bank</span>
-		                    <p>Location: Abuja</p>
-		                </li>
-
-		                 <li>
-		                    <h5><a href="#">Regulatory Officer</a></h5>
-		                    <span>Company: First Bank</span>
-		                    <p>Location: Abuja</p>
-		                </li>
-
-		                 <li>
-		                    <h5><a href="#">Regulatory Officer</a></h5>
-		                    <span>Company: First Bank</span>
-		                    <p>Location: Abuja</p>
-		                </li>
-
-		              
-		                <li style="background: rgba(78,189,163,0.4);">
-		                <div class="media">
-				                <a class="pull-left" href="#"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
-				                    <div class="mojo">
-				                      	<p> <a href="" style="font-size: 13px">GET JOB ALERTS</a></p>
-				                      	<span><a href="#">Get the latest jobs first direct to your inbox.</a></span>
-				                    </div>
-	            		</div> 
-		                </li>
-
-		                
-		                <li style="background: rgba(241,115,66,0.4);">
-		                    <div class="media">
-				                <a class="pull-left" href="#"><i class="fa fa-cloud-upload fa-2x" aria-hidden="true"></i></a>
-				                    <div class="mojo">
-				                      	<p> <a href="">UPLOAD CV</a></p>
-				                      	<span><a href="#">Let employers and recruiters find you!.</a></span>
-				                    </div>
-	            		</div> 
-		                </li>
-						
-		             </ul>	
-				</div>
+				</ul>
 			</div>
-</div>
-	
+		</div>
+	</div>
 
 
 
 
 
-<br><br> <br>
-<div class="container">
+
+	<br>
+	<br>
+	<br>
+	<div class="container">
 		<div class="row">
 			<div class="col-md-12  headline">
 				<h4>Our Partners</h4>
@@ -688,12 +659,12 @@ div.transbox form input {
 
 		<div class="row">
 			<div class="col-md-12 imgo" style="text-align: center;">
-				<a href=""><img src="/images/1.png" alt=""></a>
-				<a href=""><img src="/images/2.png" alt=""></a>
-				<a href=""><img src="/images/3.png" alt=""></a>
-				<a href=""><img src="/images/4.png" alt=""></a>
-				<a href=""><img src="/images/5.png" alt=""></a>
-				<a href=""><img src="/images/6.png" alt=""></a>
+				<a href=""><img src="/images/1.png" alt=""></a> <a href=""><img
+					src="/images/2.png" alt=""></a> <a href=""><img
+					src="/images/3.png" alt=""></a> <a href=""><img
+					src="/images/4.png" alt=""></a> <a href=""><img
+					src="/images/5.png" alt=""></a> <a href=""><img
+					src="/images/6.png" alt=""></a>
 
 			</div>
 		</div>
@@ -703,5 +674,12 @@ div.transbox form input {
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/waitMe.js"></script>
 	<script src="/js/main.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$.ajax({
+				url : "/init-index"
+			});
+		});
+	</script>
 </body>
 </html>

@@ -19,7 +19,7 @@ public class Article implements Serializable {
 	private Key key;
 	private String title;
 	private Date date;
-	private int views;
+	private long views;
 	private Text body;
 	private ArticleCategory category;
 	private List<String> tag;
@@ -53,11 +53,11 @@ public class Article implements Serializable {
 		this.date = date;
 	}
 
-	public int getViews() {
+	public long getViews() {
 		return views;
 	}
 
-	public void setViews(int views) {
+	public void setViews(long views) {
 		this.views = views;
 	}
 

@@ -39,6 +39,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bestqualified.bean.Article;
 import com.bestqualified.bean.AssessmentQuestionBean;
 import com.bestqualified.bean.CorrectionBean;
 import com.bestqualified.bean.FacebookAccessTokenResponse;
@@ -110,7 +111,7 @@ public class Util {
 	public static final String AT_LEAST_ONE_LOWERCASE_ALPHABET = "(?=.*[a-z])";
 	public static final String AT_LEAST_ONE_UPPERCASE_ALPHABET = "(?=.*[A-Z])";
 	public static final String AT_LEAST_ONE_SYMBOL = "(?=.*[!@#$%])";
-	
+
 	public static boolean containsPattern(String testString, String pattern) {
 		Pattern p = Pattern.compile(pattern);
 		Matcher matcher = p.matcher(testString);
@@ -134,6 +135,7 @@ public class Util {
 		Matcher matcher = pattern.matcher(email);
 		return matcher.matches();
 	}
+
 	public static String generateRandomCode(int minVal, int maxVal) {
 		Random ran = new Random();
 		return new Integer(minVal + ran.nextInt(maxVal)).toString();
@@ -265,7 +267,7 @@ public class Util {
 		return sub;
 	}
 
-	public static List<InterestedJob> getJobs(Key careerLevel,
+	public static List<InterestedJob> getJobs(String careerLevel,
 			List<Key> education) {
 		List<InterestedJob> l = null;
 		if (careerLevel != null & education != null) {
@@ -432,9 +434,8 @@ public class Util {
 	public static ProfessionalDashboard initProfessionalDashboardBean(User u,
 			CandidateProfile cp) {
 		ProfessionalDashboard pd = new ProfessionalDashboard();
-		// pd.setArticles(Util.getDashboardArticles());
+		pd.setArticles(Util.toArticleBeans(GeneralController.getNArticlesByDate(3)));
 		pd.setProfessionalLevel(u.getProfessionalLevel());
-		pd.setRating(u.getRating());
 		pd.setCurrentEmployer(cp.getCurrentEmployer());
 		pd.setiJobs(Util.getJobs(cp.getCareerLevel(), cp.getEducation()));
 		List<Key> sjs = cp.getSavedJobs();
@@ -1730,5 +1731,28 @@ public class Util {
 
 		}
 		return su;
+	}
+
+	public static List<Article> toArticleBeans(
+			List<com.bestqualified.entities.Article> articles) {
+		List<Article> aas = new ArrayList<>();
+		for (com.bestqualified.entities.Article art : articles) {
+			Article a = new Article();
+			User u = EntityConverter.entityToUser(GeneralController
+					.findByKey(art.getAuthor()));
+			
+			a.setAuthor(u.getFirstName()+" "+u.getLastName());
+			a.setTitle(art.getTitle());
+			a.setSnippet(art.getBody().getValue().substring(0, 200)+"...");
+			ImagesService imagesService = ImagesServiceFactory.getImagesService();
+			ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(art.getImageKey()).imageSize(250);
+			String servingUrl = imagesService.getServingUrl(options);
+			a.setPictureUrl(servingUrl);
+			a.setPostDate(new SimpleDateFormat("dd MMMM yyyy").format(art.getDate()));
+			a.setWebkey(KeyFactory.keyToString(art.getKey()));
+			aas.add(a);
+		}
+
+		return aas;
 	}
 }

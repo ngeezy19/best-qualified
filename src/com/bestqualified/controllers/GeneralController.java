@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.bestqualified.bean.SocialUser;
+import com.bestqualified.entities.Article;
 import com.bestqualified.entities.AssessmentQuestion;
 import com.bestqualified.entities.Job;
 import com.bestqualified.entities.User;
@@ -28,6 +29,7 @@ import com.google.appengine.api.datastore.Query.CompositeFilterOperator;
 import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
+import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.datastore.QueryResultList;
 import com.google.appengine.api.datastore.Transaction;
 import com.google.appengine.api.datastore.TransactionOptions;
@@ -37,6 +39,30 @@ public class GeneralController {
 	public static final DatastoreService ds = DatastoreServiceFactory
 			.getDatastoreService();
 	private static Transaction txn = null;
+	
+	public static List<Job> getNJobs(int no) {
+		List<Job> jobs = new ArrayList<>();
+		Query q = new Query(Job.class.getSimpleName());
+		//q.addSort("date", SortDirection.DESCENDING);
+		PreparedQuery pq = ds.prepare(q);
+		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(no));
+		for(Entity e: ents) {
+			jobs.add(EntityConverter.entityToJob(e));
+		}
+		return jobs;
+	}
+	
+	public static List<Article> getNArticlesByDate(int no) {
+		List<Article> articles = new ArrayList<>();
+		Query q = new Query(Article.class.getSimpleName());
+		q.addSort("date", SortDirection.DESCENDING);
+		PreparedQuery pq = ds.prepare(q);
+		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(no));
+		for(Entity e: ents) {
+			articles.add(EntityConverter.entityToArticle(e));
+		}
+		return articles;
+	}
 	
 	public static User findUserByEmail(String email) {
 		Query q = new Query(User.class.getSimpleName());
