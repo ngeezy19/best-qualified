@@ -49,7 +49,7 @@ public class ProcessRating extends HttpServlet {
 				if(b) {
 					u.setRating(rating);
 					u.setProfessionalLevel(level);
-					pd.setRating(rating);
+					//pd.setRating(rating);
 					pd.setProfileLevel(level);
 				} else {
 					u.setRating(rating);
