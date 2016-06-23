@@ -112,7 +112,7 @@ public class CreateReadingList extends HttpServlet {
 		
 		synchronized (session) {
 			session.setAttribute("articleSuccess", "Reading List Created");
-			resp.sendRedirect(resp.encodeRedirectURL("/bq/admin/reading-list"));
+			resp.sendRedirect(resp.encodeRedirectURL("/bq/admin/create-reading-list"));
 			return;
 		}
 	}

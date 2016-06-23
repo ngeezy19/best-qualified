@@ -85,16 +85,44 @@
 			</div>
 		</div>
 	</div>
+	
 
 	<div class="container" style="margin-top: 2%; margin-bottom: 2%;">
 		<div class="col-sm-8">
 			
 
 		</div>
-		<div class="col-sm-4">
+		
+		
+		<c:forEach var="item" items="${readingList}">
+		
+		<div class="col-sm-9">
+			<div class="card-panel ">
+				<div class="row valign-wrapper">
+					<div class="col-sm-3">
+						<img src="${item.imageUrl }" alt=""
+							class="img img-responsive">
+						
+					</div>
+					<div class="col-sm-9">
+						
+						<h4 style = "font-family: Corben;" ><a href ="<c:out value='${item.link}' />"><c:out value='${item.bookTitle}' /></a></h4>
+						<p><strong class="text-muted"><c:out value='${item.author}' /></strong></p>
+						<p style="font-family: Calibri;"><c:out value='${item.description.value}' /></p>
+						<p><a href="<c:out value='${item.link}' />">Purchase here</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</c:forEach>
+	
+		<div class="col-sm-3">
 			<%@ include file="/WEB-INF/pages/certification-sidebar.html"%>
 		</div>
 	</div>
+	
+	
 
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
