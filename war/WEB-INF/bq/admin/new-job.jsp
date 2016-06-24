@@ -149,6 +149,7 @@
 						<div class="form-group">
 							<label>Career Level:</label> <select class="form-control"
 								name="career-level">
+								<option value="" disabled selected>Career Level</option>
 								<option value="101">Student (Undergraduate/Graduate)</option>
 								<option value="102">Entry Level</option>
 								<option value="103">Experienced (Non-Managerial)</option>

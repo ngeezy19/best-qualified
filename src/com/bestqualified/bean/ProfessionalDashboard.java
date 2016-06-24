@@ -14,12 +14,46 @@ public class ProfessionalDashboard implements Serializable {
 	private String name, pictureUrl, tagline, currentEmployer, noOfConnections,
 			noOfProfileViewers, profileLevel, profileColor, professionalLevel;
 	private long profileStrength;
-	private double rating;
 	private List<InterestedJob> iJobs;
 	private List<Article> articles;
 	private List<InterestedJob> savedJobs,appliedJobs;
 	private List<JobAlert> jobAlerts;
+	private List<UserView> users;
+	private long connections, personalArticles, companies, professionals;
 	
+	
+	public long getCompanies() {
+		return companies;
+	}
+
+	public void setCompanies(long companies) {
+		this.companies = companies;
+	}
+
+	public long getProfessionals() {
+		return professionals;
+	}
+
+	public void setProfessionals(long professionals) {
+		this.professionals = professionals;
+	}
+
+	public long getPersonalArticles() {
+		return personalArticles;
+	}
+
+	public void setPersonalArticles(long personalArticles) {
+		this.personalArticles = personalArticles;
+	}
+
+	public List<UserView> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<UserView> users) {
+		this.users = users;
+	}
+
 	public List<InterestedJob> getSavedJobs() {
 		return savedJobs;
 	}
@@ -36,13 +70,7 @@ public class ProfessionalDashboard implements Serializable {
 		this.professionalLevel = professionalLevel;
 	}
 
-	public double getRating() {
-		return rating;
-	}
-
-	public void setRating(double rating) {
-		this.rating = rating;
-	}
+	
 
 	public String getProfileColor() {
 		return profileColor;
@@ -132,6 +160,8 @@ public class ProfessionalDashboard implements Serializable {
 		this.articles = articles;
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "ProfessionalDashboard [name=" + name + ", pictureUrl="
@@ -140,8 +170,10 @@ public class ProfessionalDashboard implements Serializable {
 				+ ", noOfProfileViewers=" + noOfProfileViewers
 				+ ", profileLevel=" + profileLevel + ", profileColor="
 				+ profileColor + ", professionalLevel=" + professionalLevel
-				+ ", profileStrength=" + profileStrength + ", rating=" + rating
-				+ ", iJobs=" + iJobs + ", articles=" + articles + "]";
+				+ ", profileStrength=" + profileStrength + ", iJobs=" + iJobs
+				+ ", articles=" + articles + ", savedJobs=" + savedJobs
+				+ ", appliedJobs=" + appliedJobs + ", jobAlerts=" + jobAlerts
+				+ "]";
 	}
 
 	public List<InterestedJob> getAppliedJobs() {
@@ -158,6 +190,14 @@ public class ProfessionalDashboard implements Serializable {
 
 	public void setJobAlerts(List<JobAlert> jobAlerts) {
 		this.jobAlerts = jobAlerts;
+	}
+
+	public long getConnections() {
+		return connections;
+	}
+
+	public void setConnections(long connections) {
+		this.connections = connections;
 	}
 
 }

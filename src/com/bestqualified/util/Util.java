@@ -39,10 +39,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bestqualified.bean.Article;
 import com.bestqualified.bean.AssessmentQuestionBean;
 import com.bestqualified.bean.CorrectionBean;
 import com.bestqualified.bean.FacebookAccessTokenResponse;
 import com.bestqualified.bean.InterestedJob;
+import com.bestqualified.bean.LinkedInAccessTokenResponse;
 import com.bestqualified.bean.ManageProjectBean;
 import com.bestqualified.bean.MyJobs;
 import com.bestqualified.bean.ProView;
@@ -105,6 +107,16 @@ public class Util {
 	public static final String SERVICE_ACCOUNT = "bestqualified.profiliant@gmail.com";
 	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+	public static final String AT_LEAST_ONE_DIGIT = "((?=.*\\d))";
+	public static final String AT_LEAST_ONE_LOWERCASE_ALPHABET = "(?=.*[a-z])";
+	public static final String AT_LEAST_ONE_UPPERCASE_ALPHABET = "(?=.*[A-Z])";
+	public static final String AT_LEAST_ONE_SYMBOL = "(?=.*[!@#$%])";
+
+	public static boolean containsPattern(String testString, String pattern) {
+		Pattern p = Pattern.compile(pattern);
+		Matcher matcher = p.matcher(testString);
+		return matcher.matches();
+	}
 
 	public static boolean notNull(String... args) {
 		if (args == null) {
@@ -123,6 +135,7 @@ public class Util {
 		Matcher matcher = pattern.matcher(email);
 		return matcher.matches();
 	}
+
 	public static String generateRandomCode(int minVal, int maxVal) {
 		Random ran = new Random();
 		return new Integer(minVal + ran.nextInt(maxVal)).toString();
@@ -254,7 +267,7 @@ public class Util {
 		return sub;
 	}
 
-	public static List<InterestedJob> getJobs(Key careerLevel,
+	public static List<InterestedJob> getJobs(String careerLevel,
 			List<Key> education) {
 		List<InterestedJob> l = null;
 		if (careerLevel != null & education != null) {
@@ -421,9 +434,8 @@ public class Util {
 	public static ProfessionalDashboard initProfessionalDashboardBean(User u,
 			CandidateProfile cp) {
 		ProfessionalDashboard pd = new ProfessionalDashboard();
-		// pd.setArticles(Util.getDashboardArticles());
+		pd.setArticles(Util.toArticleBeans(GeneralController.getNArticlesByDate(3)));
 		pd.setProfessionalLevel(u.getProfessionalLevel());
-		pd.setRating(u.getRating());
 		pd.setCurrentEmployer(cp.getCurrentEmployer());
 		pd.setiJobs(Util.getJobs(cp.getCareerLevel(), cp.getEducation()));
 		List<Key> sjs = cp.getSavedJobs();
@@ -480,7 +492,14 @@ public class Util {
 		pd.setProfileStrength(Util.calculateProfileStrength(u, cp));
 		pd.setProfileLevel(Util.getprofileLevel(pd.getProfileStrength()));
 		pd.setProfileColor(Util.getProfileColor(pd.getProfileStrength()));
-		pd.setTagline(u.getTagline());
+		
+		if(Util.notNull(u.getTagline(), cp.getCurrentEmployer())) {
+			pd.setTagline(u.getTagline()+" at "+cp.getCurrentEmployer());
+		}else if(Util.notNull(u.getTagline())) {
+			pd.setTagline(u.getTagline());
+		} else if(Util.notNull(cp.getCurrentEmployer())) {
+			pd.setTagline("Works at "+cp.getCurrentEmployer());
+		}
 
 		return pd;
 	}
@@ -1651,5 +1670,96 @@ public class Util {
 
 		}
 		return value;
+	}
+
+	public static LinkedInAccessTokenResponse toLinkedInAccessToken(
+			String respString) {
+		respString = respString.replace("{", "").replace("}", "")
+				.replace("\"", "");
+		String[] str = respString.split(",");
+		LinkedInAccessTokenResponse latr = new LinkedInAccessTokenResponse();
+		for (String s : str) {
+			String[] ss = s.split(":");
+			if (ss[0].equalsIgnoreCase("access_token")) {
+				if (ss.length > 1) {
+					latr.setAccessToken(ss[1]);
+				}
+
+			} else if (ss[0].equalsIgnoreCase("expires_in")) {
+				if (ss.length > 1) {
+					latr.setExpires(ss[1]);
+				}
+
+			}
+
+		}
+		return latr;
+	}
+
+	public static SocialUser toLinkedInSocialUser(String respString) {
+		SocialUser su = new SocialUser();
+		su.setNetwork(SocialNetwork.LINKEDIN);
+		respString = respString.replace("{", "").replace("}", "")
+				.replace("\"", "");
+		String[] str = respString.split(",");
+		for (String s : str) {
+			String[] ss = s.split(":");
+			if (ss[0].trim().equalsIgnoreCase("emailAddress")) {
+				if (ss.length > 1) {
+					su.setEmail(ss[1].trim());
+				}
+
+			} else if (ss[0].trim().equalsIgnoreCase("firstName")) {
+				if (ss.length > 1) {
+					su.setFirstName(ss[1]);
+				}
+
+			} else if (ss[0].trim().equalsIgnoreCase("headline")) {
+				if (ss.length > 1) {
+					su.setHeadline(ss[1]);
+				}
+
+			} else if (ss[0].trim().equalsIgnoreCase("id")) {
+				if (ss.length > 1) {
+					su.setId(ss[1].trim());
+				}
+
+			} else if (ss[0].trim().equalsIgnoreCase("lastName")) {
+				if (ss.length > 1) {
+					su.setLastName(ss[1]);
+				}
+
+			} else if (ss[0].trim().equalsIgnoreCase("pictureUrl")) {
+				if (ss.length > 1) {
+					su.setPictureUrl(ss[1] + ":" + ss[2]);
+				}
+
+			}
+
+		}
+		return su;
+	}
+
+	public static List<Article> toArticleBeans(
+			List<com.bestqualified.entities.Article> articles) {
+		List<Article> aas = new ArrayList<>();
+		for (com.bestqualified.entities.Article art : articles) {
+			Article a = new Article();
+			User u = EntityConverter.entityToUser(GeneralController
+					.findByKey(art.getAuthor()));
+			
+			a.setAuthor(u.getFirstName()+" "+u.getLastName());
+			a.setTitle(art.getTitle());
+			a.setSnippet(art.getBody().getValue().substring(0, 200)+"...");
+			ImagesService imagesService = ImagesServiceFactory.getImagesService();
+			ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(art.getImageKey()).imageSize(250);
+			String servingUrl = imagesService.getServingUrl(options);
+			a.setPictureUrl(servingUrl);
+			a.setPostDate(new SimpleDateFormat("dd MMMM yyyy").format(art.getDate()));
+			a.setWebkey(KeyFactory.keyToString(art.getKey()));
+			aas.add(a);
+		}
+
+		return aas;
 	}
 }

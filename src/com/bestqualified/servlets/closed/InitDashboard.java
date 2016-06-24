@@ -21,7 +21,7 @@ public class InitDashboard extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 4023352739669480983L;
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -43,29 +43,33 @@ public class InitDashboard extends HttpServlet {
 		if (o != null) {
 			User u = (User) o;
 			if (u.getUserType().equalsIgnoreCase(
-					User.UserType.PROFESSIONAL.name())) {
+					User.UserType.PROFESSIONAL.name())
+					|| u.getUserType().equalsIgnoreCase(
+							User.UserType.COACH.name())) {
 				ProfessionalDashboard pd = null;
 				synchronized (session) {
 					o1 = session.getAttribute("professionalProfile");
 					CandidateProfile cp = (CandidateProfile) o1;
-					pd = Util.initProfessionalDashboardBean(u,cp);
+					pd = Util.initProfessionalDashboardBean(u, cp);
 					session.setAttribute("professionalDashboard", pd);
 				}
-				
-				resp.sendRedirect(resp.encodeRedirectURL("/bq/closed/professional/dashboard"));
+
+				resp.sendRedirect(resp
+						.encodeRedirectURL("/bq/closed/professional/dashboard"));
 				return;
-				
+
 			} else if (u.getUserType().equalsIgnoreCase(
 					User.UserType.RECRUITER.name())) {
 				RecruiterDashboardBean rdb = null;
 				synchronized (session) {
 					o1 = session.getAttribute("employerProfile");
-					Recruiter r =  (Recruiter) o1;
-					rdb= Util.initRecruiterDashboardBean(u,r);
+					Recruiter r = (Recruiter) o1;
+					rdb = Util.initRecruiterDashboardBean(u, r);
 					session.setAttribute("recruiterDashboard", rdb);
 				}
-				
-				resp.sendRedirect(resp.encodeRedirectURL("/bq/closed/recruiter/dashboard"));
+
+				resp.sendRedirect(resp
+						.encodeRedirectURL("/bq/closed/recruiter/dashboard"));
 				return;
 			}
 		} else {

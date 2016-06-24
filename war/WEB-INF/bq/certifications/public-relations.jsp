@@ -75,13 +75,15 @@
 	<%@ include file="/main-nav.html"%>
 	<br />
 	<div class="container-fluid grad1">
-		<br/>
+		<br />
 		<div class="row">
 			<div class="col-sm-7" style="text-align: center;">
-				
-				<h1 style="color: #013143; font-family: roboto; margin-top: 10%;">
-					<span class="pull-right">Become A Certified Sales
-						Professional</span>
+
+				<h1 style="color: #013143; font-family: roboto; margin-top: 10%; text-align: center;">
+					<span>Open new doors of opportunities
+						with<br/> <span style="color: red">Public Relations
+							Certifications</span>
+					</span>
 				</h1>
 			</div>
 			<div class="col-sm-5">

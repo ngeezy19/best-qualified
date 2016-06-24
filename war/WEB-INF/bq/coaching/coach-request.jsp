@@ -66,20 +66,20 @@
 	<%@ include file="/main-nav.html"%>
 	<br />
 	<div class="container-fluid grad1">
-		<br />
+		<br /><br/>
 		<div class="row">
 			<div class="col-sm-7" style="text-align: center;">
 
 				<h1
 					style="color: #013143; font-family: roboto; margin-top: 10%; font-size: 32pt">
-					<span class="text-primary">Need A Coach?</span> <span
+					<span class="text-primary">Need a Coach?</span> <span
 						style="color: red; padding-left: 1%;">Talk To Us Now</span>
 				</h1>
 
 			</div>
 			<div class="col-sm-5">
 				<div>
-					<img alt="" src="/images/sales-professional.png"
+					<img alt="" src="/images/coaching-image.png"
 						class="img img-responsive">
 				</div>
 			</div>
@@ -91,11 +91,11 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="training-intro" style="padding: 2%;">
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-							Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-							natoque penatibus et magnis dis parturient montes, nascetur
-							ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
-							pretium quis</p>
+						<p>Need help in preparing for an interview, or in solving a
+							workplace problem or just some form of guidance in the
+							application of a concept/tactic in the workplace?</p>
+						<p>Fill out the form below and we would connect you to the
+							best coach.</p>
 					</div>
 				</div>
 			</div>
@@ -114,11 +114,11 @@
 							</div>
 							<div class="form-group col-sm-6">
 								<label>First Name </label> <input name="first-name"
-									value="${user.firstname}" id="first-name" class="form-control">
+									value="${user.firstName}" id="first-name" class="form-control">
 							</div>
 							<div class="form-group col-sm-6">
 								<label>Last Name </label> <input name="last-name" id="last-name"
-									value="${user.lastname}" class="form-control">
+									value="${user.lastName}" class="form-control">
 							</div>
 							<div class="form-group col-sm-6">
 								<label>Email </label> <input name="email" id="email"

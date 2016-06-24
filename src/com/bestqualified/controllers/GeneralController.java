@@ -8,8 +8,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.bestqualified.bean.SocialUser;
+import com.bestqualified.entities.Article;
 import com.bestqualified.entities.AssessmentQuestion;
 import com.bestqualified.entities.Job;
+import com.bestqualified.entities.ReadingList;
 import com.bestqualified.entities.User;
 import com.bestqualified.util.EntityConverter;
 import com.bestqualified.util.Util;
@@ -28,6 +30,7 @@ import com.google.appengine.api.datastore.Query.CompositeFilterOperator;
 import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
+import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.datastore.QueryResultList;
 import com.google.appengine.api.datastore.Transaction;
 import com.google.appengine.api.datastore.TransactionOptions;
@@ -37,6 +40,56 @@ public class GeneralController {
 	public static final DatastoreService ds = DatastoreServiceFactory
 			.getDatastoreService();
 	private static Transaction txn = null;
+	
+	public static List<Job> getNJobs(int no) {
+		List<Job> jobs = new ArrayList<>();
+		Query q = new Query(Job.class.getSimpleName());
+		//q.addSort("date", SortDirection.DESCENDING);
+		PreparedQuery pq = ds.prepare(q);
+		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(no));
+		for(Entity e: ents) {
+			jobs.add(EntityConverter.entityToJob(e));
+		}
+		return jobs;
+	}
+	
+	public static List<Article> getNArticlesByDate(int no) {
+		List<Article> articles = new ArrayList<>();
+		Query q = new Query(Article.class.getSimpleName());
+		q.addSort("date", SortDirection.DESCENDING);
+		PreparedQuery pq = ds.prepare(q);
+		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(no));
+		for(Entity e: ents) {
+			articles.add(EntityConverter.entityToArticle(e));
+		}
+		return articles;
+	}
+	
+	public static List<ReadingList> getNReadingListByDate(int no) {
+		List<ReadingList> readingList = new ArrayList<>();
+		Query q = new Query(ReadingList.class.getSimpleName());
+		q.addSort("date", SortDirection.DESCENDING);
+		PreparedQuery pq = ds.prepare(q);
+		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(no));
+		for(Entity e: ents) {
+			readingList.add(EntityConverter.entityToReadingList(e));
+		}
+		return readingList;
+	}
+	
+	public static User findUserByEmail(String email) {
+		Query q = new Query(User.class.getSimpleName());
+		q.setFilter(new Query.FilterPredicate("email", FilterOperator.EQUAL,
+				email));
+		PreparedQuery pq = ds.prepare(q);
+		Entity e = null;
+		if (pq.countEntities(FetchOptions.Builder.withDefaults()) == 1) {
+			e = pq.asSingleEntity();
+			return EntityConverter.entityToUser(e);
+		}else {
+			return null;
+		}
+	}
 
 	public static Iterator<Entity> findAll(String className) {
 		Query q = new Query(className);

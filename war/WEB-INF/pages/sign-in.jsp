@@ -30,6 +30,28 @@
 	text-align: center;
 }
 
+html,body {
+	height: 100%;
+}
+
+#main-body {
+	height: 100%;
+	background: rgba(135, 206, 250, 0.3);
+	/* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(rgba(122, 149, 192, 0.3),
+		rgba(135, 206, 250, 0.2), rgba(135, 206, 250, 0.1));
+	/* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(rgba(122, 149, 192, 0.3),
+		rgba(135, 206, 250, 0.2), rgba(135, 206, 250, 0.1));
+	/* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(122, 149, 192, 0.3),
+		rgba(135, 206, 250, 0.2), rgba(135, 206, 250, 0.1));
+	/* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(122, 149, 192, 0.3),
+		rgba(135, 206, 250, 0.2), rgba(135, 206, 250, 0.1));
+	/* Standard syntax */
+}
+
 .module-title {
 	border: 1px gray solid;
 	border-top-right-radius: 10px;
@@ -53,11 +75,7 @@
 	background: linear-gradient(black, gray);
 }
 
-.login-div {
-	width: 60%;
-	margin: 0 auto;
-	margin-top: 10%;
-}
+
 
 .login-header {
 	border-radius-top: 3px;
@@ -98,22 +116,21 @@ to {
 
 .login-btn {
 	color: rgb(241, 241, 241);
-	background-color: rgb(59, 89, 200);
-	/*background-color: rgba(128,128,128,0.5);*/
+	background-color: rgb(72,103,170);
 	font-size: 14pt;
 	font-family: 'Corben', Georgia, Times, serif !important;
 	font-weight: bold;
-	border: 2px white solid !important;
 	padding: 1%;
 	padding-right: 2%;
 	padding-left: 2%;
 	border-radius: 7px;
 	-moz-border-radius: 7px;
 	-webkit-border-radius: 7px;
+	border: none;
 }
 
 .login-btn:hover {
-	background-color: rgb(59, 89, 152);
+	background-color: rgb(73,96,160);
 }
 
 .login-body {
@@ -144,13 +161,12 @@ p,div {
 }
 </style>
 </head>
-<body
-	style="height: 100%; background: url('/images/world-map-5.png'); background-color: rgba(135, 206, 250, 0.3)">
+<body style="height: 100%; background: url('/images/world-map-5.png');">
 	<div class="row" id="main-header">
-		<img alt="" src="/images/bq-logo.png">
+		<a href="/index"><img alt="" src="/images/bq-logo.png"></a>
 	</div>
-	<div class="row" style="height: 100%;">
-		<div class="col-sm-6" style="">
+	<div class="row" style="height: 100%;" id="main-body">
+		<div class="col-sm-6 hidden-xs" style="">
 			<h3
 				style="text-align: center; margin-top: 8%; text-shadow: 1px 1px 1px #ccc;">Leading
 				Sales & Marketing Career Site</h3>
@@ -172,11 +188,13 @@ p,div {
 				<div class="col-sm-12 col-md-6 module-div certification"
 					style="background-color: rgba(247, 139, 50, 0.2)">
 					<div class="col-sm-12">
-						<a href="/bq/certifications"><img class="img img-responsive module-image" alt=""
+						<a href="/bq/certifications"><img
+							class="img img-responsive module-image" alt=""
 							src="/images/certification-icons.png"></a>
 					</div>
 					<div class="col-sm-12 module-title">
-						<a style="color: white" href="/bq/certificationsl"><span class="module-text">Demonstrate Your Ability</span></a>
+						<a style="color: white" href="/bq/certificationsl"><span
+							class="module-text">Demonstrate Your Ability</span></a>
 					</div>
 				</div>
 				<div class="col-sm-12 col-md-6 module-div"
@@ -194,11 +212,13 @@ p,div {
 				<div class="col-sm-12 col-md-6 module-div"
 					style="background-color: rgba(227, 7, 7, 0.2)">
 					<div class="col-sm-12">
-						<a href="/bq/community/home"><img class="img img-responsive module-image" alt=""
+						<a href="/bq/community/home"><img
+							class="img img-responsive module-image" alt=""
 							src="/images/network.png"></a>
 					</div>
 					<div class="col-sm-12 module-title">
-						<a style="color: white" href="/bq/community/home"><span class="module-text">Our Network</span></a>
+						<a style="color: white" href="/bq/community/home"><span
+							class="module-text">Our Network</span></a>
 					</div>
 				</div>
 			</div>
@@ -207,15 +227,26 @@ p,div {
 			<div class="login-div">
 				<div class="login-header">Account Login</div>
 				<div class="login-body">
-					<div msg-div></div>
+				<c:choose>
+					<c:when test="${not empty passwordChangeSuccess}">
+						<div id='msg-div' class="bq-alert bq-alert-success">
+							<c:out value='${passwordChangeSuccess}' />
+						</div>
+					</c:when>
+					<c:when test="${not empty signinError}">
+						<div id='msg-div' class="bq-alert bq-alert-danger">
+							<c:out value='${signinError}' />
+						</div>
+					</c:when>
+				</c:choose>
 					<form id="sign-in-form" method="post"
 						action="<c:url value='/end-point/sign-in' />">
 						<div class="form-group">
-							<input name="email" value="${sin.email}" class="form-control"
+							<input name="email" value="${sinEmail}" class="form-control"
 								placeholder="EMail" />
 						</div>
 						<div style="text-align: right; font-family: calibri">
-							<a href="#" style="font-weight: bold;">Forgot Password?</a>
+							<a href="/endpoint/forgot-password" style="font-weight: bold;">Forgot Password?</a>
 						</div>
 						<div class="form-group">
 							<input class="form-control" type="password" name="password"
@@ -229,13 +260,20 @@ p,div {
 					</form>
 					<hr style="background-color: #cacaca; height: 1px" />
 					<div>
-						<h4 class="text-muted">
-							Social Login
-							<li style="color: #3b5998; padding: 2%;"
-								class="fa fa-facebook-square fa-lg"></li>
-							<li style="color: #007bb5; padding: 2%;"
-								class="fa fa-linkedin-square fa-lg"></li>
-						</h4>
+						<strong class="text-muted"> Social Login</strong>
+						<ul class="flat-social" style="display: inline;">
+							<li><a href="/bq/open/facebook-sign-in"
+								class="social-facebook" rel="external"><i
+									class="fa fa-facebook"></i> <span>Facebook</span></a></li>
+							<!-- <li><a href="#" class="social-twitter" rel="external"
+										target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a></li> -->
+							<!-- <li><a href="#" class="social-google" rel="external"
+										target="_blank"><i class="fa fa-google-plus"></i> <span>Google
+												+</span></a></li> -->
+							<li><a href="/bq/open/linkedin-sign-in"
+								class="social-linkedin" rel="external"><i
+									class="fa fa-linkedin"></i> <span>LinkedIn</span></a></li>
+						</ul>
 					</div>
 
 				</div>
@@ -244,6 +282,6 @@ p,div {
 	</div>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	
+
 </body>
 </html>

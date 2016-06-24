@@ -1,3 +1,28 @@
+function createUser(username, password, role) {
+	console.log(username); console.log(password); console.log(role);
+	$.ajax({
+		url : "/bq/admin/create-user",
+		data : {
+			"email" : username,
+			"password" : password,
+			"role": role
+		},
+		method : "POST",
+		dataType : "json",
+		success : function(data) {
+			addSuccess($("#msg-div"),data);
+		},
+		error : function(xhr){
+			console.log(xhr.status);
+			if(xhr.status == 417) {
+				addError($("#msg-div"),xhr.statusText);
+			}else if(xhr.status == 200){
+				addSuccess($("#msg-div"),xhr.statusText);
+			}
+		}
+	});
+}
+
 function login (username, password) {
 	
 	$.ajax({
@@ -9,14 +34,14 @@ function login (username, password) {
 		method : "POST",
 		dataType : "json",
 		success : function(data) {
-			window.location.assign(data);
+			window.location.assign("/bq/admin/dashboard");
 		},
 		error : function(xhr){
 			console.log(xhr.status);
 			if(xhr.status == 417) {
 				addError($("#msg-div"),xhr.statusText);
 			}else if(xhr.status == 200){
-				window.location.assign(xhr.statusText);
+				window.location.assign("/bq/admin/dashboard");
 			}
 		}
 	});

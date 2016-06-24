@@ -72,8 +72,8 @@
 
 				<h1
 					style="color: #013143; font-family: roboto; margin-top: 10%; font-size: 32pt">
-					<span class="text-primary">Need A Coach?</span> <span
-						style="color: red; padding-left: 1%;">Talk To Us Now</span>
+					<span class="text-primary">Ten Top<span
+						style="color: red; padding-left: 1%;">Must Read books </span>for this month.</span>
 				</h1>
 
 			</div>
@@ -86,15 +86,57 @@
 		</div>
 	</div>
 
-	<div class="container" style="margin-top: 2%; margin-bottom: 2%;">
-		<div class="col-sm-8">
-			
 
+	<div class="container" style="margin-top: 2%; margin-bottom: 2%;">
+		
+
+		<div class="col-sm-8">
+		<div class="row">
+				<div class="col-sm-12">
+					<div class="training-intro">
+						<h3 style="color: orange; margin: 0px; ">Reading List for the Month</h3>
+						
+						
+					</div>
+				</div>
+			</div>
+			<c:forEach var="item" items="${readingList}">
+
+
+				<div class="card-panel grad1">
+					<div class="row valign-wrapper">
+						<div class="col-sm-3">
+							<img src="${item.imageUrl }" alt="" class="img img-responsive">
+
+						</div>
+						<div class="col-sm-9">
+
+							<h4 style="font-family: Corben;">
+								<a style= "color: red" href="<c:out value='${item.link}' />"><c:out
+										value='${item.bookTitle}' /></a>
+							</h4>
+							<p>
+								<strong class="text-muted"><c:out
+										value='${item.author}' /></strong>
+							</p>
+							<p style="font-family: Calibri;">${item.description.value}</p>
+							<p>
+								<a href="<c:out value='${item.link}' />">Purchase here</a>
+							</p>
+						</div>
+					</div>
+				</div>
+
+
+			</c:forEach>
 		</div>
+
 		<div class="col-sm-4">
 			<%@ include file="/WEB-INF/pages/certification-sidebar.html"%>
 		</div>
 	</div>
+
+
 
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>

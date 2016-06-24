@@ -43,14 +43,15 @@
 
 .workshop-info {
 	margin-top: 2%;
-	 background: #fafafa; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#eaeaea,white); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#eaeaea, white); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#eaeaea, white); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#eaeaea, white); /* Standard syntax */
+	background: #fafafa; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(#eaeaea, white);
+	/* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#eaeaea, white);
+	/* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#eaeaea, white);
+	/* For Firefox 3.6 to 15 */
+	background: linear-gradient(#eaeaea, white); /* Standard syntax */
 }
-
-
 
 .workshop-info p {
 	font-family: calibri
@@ -59,7 +60,7 @@
 </head>
 <body>
 	<%@ include file="/main-nav.html"%>
-	<br />
+	<br /><br/>
 	<div class="container-fluid grad1">
 		<br />
 		<div class="row">
@@ -74,7 +75,7 @@
 			</div>
 			<div class="col-sm-5">
 				<div>
-					<img alt="" src="/images/sales-professional.png"
+					<img alt="" src="/images/get-sharpened.png"
 						class="img img-responsive">
 				</div>
 			</div>
@@ -86,15 +87,12 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="training-intro">
-						<h3 style="color: orange; ">Complimentary Workshops</h3>
-						<p style="font-family: calibri">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-							Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-							natoque penatibus et magnis dis parturient montes, nascetur
-							ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
-							pretium quis</p>
-						<p style="font-size: 10pt">
-							<i>Service provided by <a href="www.salesmaxx.com" target="_blank">SalesMaxx</a></i>
-						</p>
+						<p>As a Sales & Marketing
+							professional, BQ offers you a wide range of complimentary
+							trainings - in partnership with SalesMaxx - at all stages of your
+							career.</p>
+						<p>Improve your marketing practice today by choosing the
+							trainings that best meets your needs.</p>
 					</div>
 				</div>
 			</div>
@@ -102,18 +100,19 @@
 				<div class="col-sm-12">
 					<div class="col-sm-12 no-padding-div workshop-info card-panel">
 						<div class="col-sm-3">
-							<img alt="" src="/images/salesmaxx4.jpg" class="img img-responsive">
+							<img alt="" src="/images/salesmaxx4.jpg"
+								class="img img-responsive">
 						</div>
 						<div class="col-sm-9">
 							<h4>
 								<a href="#">Funnel & Pipeline Management</a>
 							</h4>
-							<p>A strategic customer often
-								holds significant revenue and margin potentials, however the
-								account manager has to mine and work the account to yield those
-								opportunities. This is the workshop to attend if you are
-								managing a strategic account and your share-of-wallet has
-								remained the same or is increasingly dwindling over the years.</p>
+							<p>A strategic customer often holds significant revenue and
+								margin potentials, however the account manager has to mine and
+								work the account to yield those opportunities. This is the
+								workshop to attend if you are managing a strategic account and
+								your share-of-wallet has remained the same or is increasingly
+								dwindling over the years.</p>
 							<a class="btn btn-danger">Read Full Details</a>
 						</div>
 					</div>
@@ -123,18 +122,19 @@
 				<div class="col-sm-12">
 					<div class="col-sm-12 no-padding-div workshop-info card-panel">
 						<div class="col-sm-3">
-							<img alt="" src="/images/salesmaxx3.jpg" class="img img-responsive">
+							<img alt="" src="/images/salesmaxx3.jpg"
+								class="img img-responsive">
 						</div>
 						<div class="col-sm-9">
 							<h4>
 								<a href="#">Acing the Sales Interview</a>
 							</h4>
-							<p>A strategic customer often
-								holds significant revenue and margin potentials, however the
-								account manager has to mine and work the account to yield those
-								opportunities. This is the workshop to attend if you are
-								managing a strategic account and your share-of-wallet has
-								remained the same or is increasingly dwindling over the years.</p>
+							<p>A strategic customer often holds significant revenue and
+								margin potentials, however the account manager has to mine and
+								work the account to yield those opportunities. This is the
+								workshop to attend if you are managing a strategic account and
+								your share-of-wallet has remained the same or is increasingly
+								dwindling over the years.</p>
 							<a class="btn btn-danger">Read Full Details</a>
 						</div>
 					</div>
@@ -144,18 +144,19 @@
 				<div class="col-sm-12">
 					<div class="col-sm-12 no-padding-div workshop-info card-panel">
 						<div class="col-sm-3">
-							<img alt="" src="/images/salesmaxx2.jpg" class="img img-responsive">
+							<img alt="" src="/images/salesmaxx2.jpg"
+								class="img img-responsive">
 						</div>
 						<div class="col-sm-9">
 							<h4>
 								<a href="#">Your Network, Your career,& your business</a>
 							</h4>
-							<p>A strategic customer often
-								holds significant revenue and margin potentials, however the
-								account manager has to mine and work the account to yield those
-								opportunities. This is the workshop to attend if you are
-								managing a strategic account and your share-of-wallet has
-								remained the same or is increasingly dwindling over the years.</p>
+							<p>A strategic customer often holds significant revenue and
+								margin potentials, however the account manager has to mine and
+								work the account to yield those opportunities. This is the
+								workshop to attend if you are managing a strategic account and
+								your share-of-wallet has remained the same or is increasingly
+								dwindling over the years.</p>
 							<a class="btn btn-danger">Read Full Details</a>
 						</div>
 					</div>
@@ -165,18 +166,19 @@
 				<div class="col-sm-12">
 					<div class="col-sm-12 no-padding-div workshop-info card-panel">
 						<div class="col-sm-3">
-							<img alt="" src="/images/salesmaxx1.jpg" class="img img-responsive">
+							<img alt="" src="/images/salesmaxx1.jpg"
+								class="img img-responsive">
 						</div>
 						<div class="col-sm-9">
 							<h4>
 								<a href="#">Finding &Winning Profitable Business</a>
 							</h4>
-							<p>A strategic customer often
-								holds significant revenue and margin potentials, however the
-								account manager has to mine and work the account to yield those
-								opportunities. This is the workshop to attend if you are
-								managing a strategic account and your share-of-wallet has
-								remained the same or is increasingly dwindling over the years.</p>
+							<p>A strategic customer often holds significant revenue and
+								margin potentials, however the account manager has to mine and
+								work the account to yield those opportunities. This is the
+								workshop to attend if you are managing a strategic account and
+								your share-of-wallet has remained the same or is increasingly
+								dwindling over the years.</p>
 							<a class="btn btn-danger">Read Full Details</a>
 						</div>
 					</div>
@@ -186,18 +188,19 @@
 				<div class="col-sm-12">
 					<div class="col-sm-12 no-padding-div workshop-info card-panel">
 						<div class="col-sm-3">
-							<img alt="" src="/images/salesmaxx2.jpg" class="img img-responsive">
+							<img alt="" src="/images/salesmaxx2.jpg"
+								class="img img-responsive">
 						</div>
 						<div class="col-sm-9">
 							<h4>
 								<a href="#">Managing Targets & Quotas</a>
 							</h4>
-							<p>A strategic customer often
-								holds significant revenue and margin potentials, however the
-								account manager has to mine and work the account to yield those
-								opportunities. This is the workshop to attend if you are
-								managing a strategic account and your share-of-wallet has
-								remained the same or is increasingly dwindling over the years.</p>
+							<p>A strategic customer often holds significant revenue and
+								margin potentials, however the account manager has to mine and
+								work the account to yield those opportunities. This is the
+								workshop to attend if you are managing a strategic account and
+								your share-of-wallet has remained the same or is increasingly
+								dwindling over the years.</p>
 							<a class="btn btn-danger">Read Full Details</a>
 						</div>
 					</div>
@@ -207,18 +210,19 @@
 				<div class="col-sm-12">
 					<div class="col-sm-12 no-padding-div workshop-info card-panel">
 						<div class="col-sm-3">
-							<img alt="" src="/images/salesmaxx3.jpg" class="img img-responsive">
+							<img alt="" src="/images/salesmaxx3.jpg"
+								class="img img-responsive">
 						</div>
 						<div class="col-sm-9">
 							<h4>
 								<a href="#">Getting Sales Strategy Right</a>
 							</h4>
-							<p>A strategic customer often
-								holds significant revenue and margin potentials, however the
-								account manager has to mine and work the account to yield those
-								opportunities. This is the workshop to attend if you are
-								managing a strategic account and your share-of-wallet has
-								remained the same or is increasingly dwindling over the years.</p>
+							<p>A strategic customer often holds significant revenue and
+								margin potentials, however the account manager has to mine and
+								work the account to yield those opportunities. This is the
+								workshop to attend if you are managing a strategic account and
+								your share-of-wallet has remained the same or is increasingly
+								dwindling over the years.</p>
 							<a class="btn btn-danger">Read Full Details</a>
 						</div>
 					</div>
@@ -228,18 +232,19 @@
 				<div class="col-sm-12">
 					<div class="col-sm-12 no-padding-div workshop-info card-panel">
 						<div class="col-sm-3">
-							<img alt="" src="/images/salesmaxx2.jpg" class="img img-responsive">
+							<img alt="" src="/images/salesmaxx2.jpg"
+								class="img img-responsive">
 						</div>
 						<div class="col-sm-9">
 							<h4>
 								<a href="#">Cross & Up sell your products</a>
 							</h4>
-							<p>A strategic customer often
-								holds significant revenue and margin potentials, however the
-								account manager has to mine and work the account to yield those
-								opportunities. This is the workshop to attend if you are
-								managing a strategic account and your share-of-wallet has
-								remained the same or is increasingly dwindling over the years.</p>
+							<p>A strategic customer often holds significant revenue and
+								margin potentials, however the account manager has to mine and
+								work the account to yield those opportunities. This is the
+								workshop to attend if you are managing a strategic account and
+								your share-of-wallet has remained the same or is increasingly
+								dwindling over the years.</p>
 							<a class="btn btn-danger">Read Full Details</a>
 						</div>
 					</div>
@@ -249,18 +254,19 @@
 				<div class="col-sm-12">
 					<div class="col-sm-12 no-padding-div workshop-info card-panel">
 						<div class="col-sm-3">
-							<img alt="" src="/images/salesmaxx1.jpg" class="img img-responsive">
+							<img alt="" src="/images/salesmaxx1.jpg"
+								class="img img-responsive">
 						</div>
 						<div class="col-sm-9">
 							<h4>
 								<a href="#">Sales Proposals that sell</a>
 							</h4>
-							<p>A strategic customer often
-								holds significant revenue and margin potentials, however the
-								account manager has to mine and work the account to yield those
-								opportunities. This is the workshop to attend if you are
-								managing a strategic account and your share-of-wallet has
-								remained the same or is increasingly dwindling over the years.</p>
+							<p>A strategic customer often holds significant revenue and
+								margin potentials, however the account manager has to mine and
+								work the account to yield those opportunities. This is the
+								workshop to attend if you are managing a strategic account and
+								your share-of-wallet has remained the same or is increasingly
+								dwindling over the years.</p>
 							<a class="btn btn-danger">Read Full Details</a>
 						</div>
 					</div>
@@ -270,18 +276,19 @@
 				<div class="col-sm-12">
 					<div class="col-sm-12 no-padding-div workshop-info card-panel">
 						<div class="col-sm-3">
-							<img alt="" src="/images/salesmaxx4.jpg" class="img img-responsive">
+							<img alt="" src="/images/salesmaxx4.jpg"
+								class="img img-responsive">
 						</div>
 						<div class="col-sm-9">
 							<h4>
 								<a href="#">Mastering Sales Negotiation Tactics</a>
 							</h4>
-							<p>A strategic customer often
-								holds significant revenue and margin potentials, however the
-								account manager has to mine and work the account to yield those
-								opportunities. This is the workshop to attend if you are
-								managing a strategic account and your share-of-wallet has
-								remained the same or is increasingly dwindling over the years.</p>
+							<p>A strategic customer often holds significant revenue and
+								margin potentials, however the account manager has to mine and
+								work the account to yield those opportunities. This is the
+								workshop to attend if you are managing a strategic account and
+								your share-of-wallet has remained the same or is increasingly
+								dwindling over the years.</p>
 							<a class="btn btn-danger">Read Full Details</a>
 						</div>
 					</div>
@@ -291,18 +298,19 @@
 				<div class="col-sm-12">
 					<div class="col-sm-12 no-padding-div workshop-info card-panel">
 						<div class="col-sm-3">
-							<img alt="" src="/images/salesmaxx3.jpg" class="img img-responsive">
+							<img alt="" src="/images/salesmaxx3.jpg"
+								class="img img-responsive">
 						</div>
 						<div class="col-sm-9">
 							<h4>
 								<a href="#">Protecting & Growing Key Accounts</a>
 							</h4>
-							<p>A strategic customer often
-								holds significant revenue and margin potentials, however the
-								account manager has to mine and work the account to yield those
-								opportunities. This is the workshop to attend if you are
-								managing a strategic account and your share-of-wallet has
-								remained the same or is increasingly dwindling over the years.</p>
+							<p>A strategic customer often holds significant revenue and
+								margin potentials, however the account manager has to mine and
+								work the account to yield those opportunities. This is the
+								workshop to attend if you are managing a strategic account and
+								your share-of-wallet has remained the same or is increasingly
+								dwindling over the years.</p>
 							<a class="btn btn-danger">Read Full Details</a>
 						</div>
 					</div>
@@ -312,18 +320,20 @@
 				<div class="col-sm-12">
 					<div class="col-sm-12 no-padding-div workshop-info card-panel">
 						<div class="col-sm-3">
-							<img alt="" src="/images/salesmaxx2.jpg" class="img img-responsive">
+							<img alt="" src="/images/salesmaxx2.jpg"
+								class="img img-responsive">
 						</div>
 						<div class="col-sm-9">
 							<h4>
-								<a href="#">Customer Profiling - Weeding - Out - To - Win (WTW)</a>
+								<a href="#">Customer Profiling - Weeding - Out - To - Win
+									(WTW)</a>
 							</h4>
-							<p>A strategic customer often
-								holds significant revenue and margin potentials, however the
-								account manager has to mine and work the account to yield those
-								opportunities. This is the workshop to attend if you are
-								managing a strategic account and your share-of-wallet has
-								remained the same or is increasingly dwindling over the years.</p>
+							<p>A strategic customer often holds significant revenue and
+								margin potentials, however the account manager has to mine and
+								work the account to yield those opportunities. This is the
+								workshop to attend if you are managing a strategic account and
+								your share-of-wallet has remained the same or is increasingly
+								dwindling over the years.</p>
 							<a class="btn btn-danger">Read Full Details</a>
 						</div>
 					</div>
@@ -333,24 +343,25 @@
 				<div class="col-sm-12">
 					<div class="col-sm-12 no-padding-div workshop-info card-panel">
 						<div class="col-sm-3">
-							<img alt="" src="/images/salesmaxx1.jpg" class="img img-responsive">
+							<img alt="" src="/images/salesmaxx1.jpg"
+								class="img img-responsive">
 						</div>
 						<div class="col-sm-9">
 							<h4>
 								<a href="#">Using Technology to support Sales</a>
 							</h4>
-							<p>A strategic customer often
-								holds significant revenue and margin potentials, however the
-								account manager has to mine and work the account to yield those
-								opportunities. This is the workshop to attend if you are
-								managing a strategic account and your share-of-wallet has
-								remained the same or is increasingly dwindling over the years.</p>
+							<p>A strategic customer often holds significant revenue and
+								margin potentials, however the account manager has to mine and
+								work the account to yield those opportunities. This is the
+								workshop to attend if you are managing a strategic account and
+								your share-of-wallet has remained the same or is increasingly
+								dwindling over the years.</p>
 							<a class="btn btn-danger">Read Full Details</a>
 						</div>
 					</div>
 				</div>
 			</div>
-			
+
 		</div>
 		<div class="col-sm-4">
 			<%@ include file="/WEB-INF/pages/certification-sidebar.html"%>

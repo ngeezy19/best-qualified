@@ -47,7 +47,7 @@ public class SignUpServlet extends HttpServlet {
 			synchronized (session) {
 				session.setAttribute("signupError", "You have to enter your first name.");
 			}
-			resp.sendRedirect(resp.encodeRedirectURL("/sign-up"));
+			resp.sendRedirect(resp.encodeRedirectURL("/sign-up-page"));
 			return;
 		}
 		
@@ -55,7 +55,7 @@ public class SignUpServlet extends HttpServlet {
 			synchronized (session) {
 				session.setAttribute("signupError", "You have to enter your last name.");
 			}
-			resp.sendRedirect(resp.encodeRedirectURL("/sign-up"));
+			resp.sendRedirect(resp.encodeRedirectURL("/sign-up-page"));
 			return;
 		}
 		
@@ -63,50 +63,39 @@ public class SignUpServlet extends HttpServlet {
 			synchronized (session) {
 				session.setAttribute("signupError", "You have to enter your email address.");
 			}
-			resp.sendRedirect(resp.encodeRedirectURL("/sign-up"));
+			resp.sendRedirect(resp.encodeRedirectURL("/sign-up-page"));
 			return;
 		}
 		
 		if(!Util.notNull(password)) {
 			synchronized (session) {
 				session.setAttribute("signupError", "You have to enter a password");
+				
 			}
-			resp.sendRedirect(resp.encodeRedirectURL("/sign-up"));
+			resp.sendRedirect(resp.encodeRedirectURL("/sign-up-page"));
 			return;
 		}
 		
 		if(GeneralController.userEmailExist(email)) {
 			synchronized (session) {
-				session.setAttribute("signupError", email+" already exist. If it belongs to you, Login");
+				session.setAttribute(
+						"signupError",
+						email
+								+ " already exist. If it belongs to you, <a href='/sign-in'><strong>Sign In</strong></a>");
 			}
-			resp.sendRedirect(resp.encodeRedirectURL("/sign-up"));
+			resp.sendRedirect(resp.encodeRedirectURL("/sign-up-page"));
 			return;
 		} else {
 			User u = Util.signUpBeanToUser(sub);
 			u.setVerified(false);
 			Entity e = EntityConverter.userToEntity(u);
 			GeneralController.create(e);
-			String body = Util.getConfirmationCodeEmailBody(sub.getVerificationCode(), sub.getFirstName());
-			try {
-				Util.sendConfirmationCodeEmail(sub.getEmail(), body);
-			} catch (AddressException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (MessagingException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
 			synchronized (session) {
 				session.removeAttribute("signupError");
 				session.setAttribute("user", u);
-				session.setMaxInactiveInterval(86400);
 			}
 		}
-		
-	
-		System.out.println(sub.getVerificationCode());
-		
-		resp.sendRedirect(resp.encodeRedirectURL("/email-verification"));
+		resp.sendRedirect(resp.encodeRedirectURL("/endpoint/verification-code"));
 	}
 
 }

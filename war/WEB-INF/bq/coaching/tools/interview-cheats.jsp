@@ -27,7 +27,6 @@
 
 .grad2 h4 {
 	color: red;
-	
 }
 
 .grad2 li {
@@ -41,8 +40,6 @@
 	background: -moz-linear-gradient(left, #eaeaea, white);
 	background: linear-gradient(to left, #eaeaea, white);
 }
-
-
 
 .training-intro {
 	border: 1px solid #444;
@@ -97,27 +94,30 @@
 			<div class="row" style="margin-bottom: 1%;">
 				<div class="col-sm-12">
 					<div class="training-intro">
-						<h3 style="color: orange">Interview Cheats Sheets</h3>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-							Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-							natoque penatibus et magnis dis parturient montes, nascetur
-							ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
-							pretium quis</p>
+						<p>Relax!</p>
+						<p>No need to panic. We got you covered.</p>
+						<p>Grab an interview cheat sheet to guide and get you
+							prepared before, during and after your interview.</p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-6 no-padding-div">
-					
+
 					<div class="col-sm-12 ">
 						<div class="card-panel grad2">
 							<h4 style="border-bottom: 1px solid dotted;">Advertising</h4>
 							<ul>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Strategic Accounts Management (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales Pipeline management (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning Sales Presentations (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales Pipeline management (docx)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning Sales Presentations (ppt)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Strategic
+										Accounts Management (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales
+										Pipeline management (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning
+										Sales Presentations (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales
+										Pipeline management (docx)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning
+										Sales Presentations (ppt)</a></li>
 							</ul>
 						</div>
 					</div>
@@ -125,11 +125,16 @@
 						<div class="card-panel grad2">
 							<h4 style="border-bottom: 1px solid dotted;">Sales</h4>
 							<ul>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Strategic Accounts Management (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales Pipeline management (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning Sales Presentations (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales Pipeline management (docx)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning Sales Presentations (ppt)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Strategic
+										Accounts Management (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales
+										Pipeline management (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning
+										Sales Presentations (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales
+										Pipeline management (docx)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning
+										Sales Presentations (ppt)</a></li>
 							</ul>
 						</div>
 					</div>
@@ -137,11 +142,16 @@
 						<div class="card-panel grad2">
 							<h4 style="border-bottom: 1px solid dotted;">Creatives</h4>
 							<ul>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Strategic Accounts Management (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales Pipeline management (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning Sales Presentations (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales Pipeline management (docx)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning Sales Presentations (ppt)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Strategic
+										Accounts Management (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales
+										Pipeline management (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning
+										Sales Presentations (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales
+										Pipeline management (docx)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning
+										Sales Presentations (ppt)</a></li>
 							</ul>
 						</div>
 					</div>
@@ -152,11 +162,16 @@
 							<h4 style="border-bottom: 1px solid dotted;">Public
 								Relations</h4>
 							<ul>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Strategic Accounts Management (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales Pipeline management (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning Sales Presentations (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales Pipeline management (docx)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning Sales Presentations (ppt)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Strategic
+										Accounts Management (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales
+										Pipeline management (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning
+										Sales Presentations (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales
+										Pipeline management (docx)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning
+										Sales Presentations (ppt)</a></li>
 							</ul>
 						</div>
 					</div>
@@ -164,11 +179,16 @@
 						<div class="card-panel grad2">
 							<h4 style="border-bottom: 1px solid dotted;">Marketing</h4>
 							<ul>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Strategic Accounts Management (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales Pipeline management (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning Sales Presentations (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales Pipeline management (docx)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning Sales Presentations (ppt)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Strategic
+										Accounts Management (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales
+										Pipeline management (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning
+										Sales Presentations (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales
+										Pipeline management (docx)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning
+										Sales Presentations (ppt)</a></li>
 							</ul>
 						</div>
 					</div>
@@ -177,15 +197,20 @@
 							<h4 style="border-bottom: 1px solid dotted;">Public
 								Relations</h4>
 							<ul>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Strategic Accounts Management (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales Pipeline management (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning Sales Presentations (pdf)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales Pipeline management (docx)</a></li>
-								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning Sales Presentations (ppt)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Strategic
+										Accounts Management (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales
+										Pipeline management (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning
+										Sales Presentations (pdf)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Sales
+										Pipeline management (docx)</a></li>
+								<li><a href="/doc/dummy-doc.pdf" target="_blank">Winning
+										Sales Presentations (ppt)</a></li>
 							</ul>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
 
