@@ -45,7 +45,7 @@
 
 				<div class="media">
 					<a class="pull-left" href="#"><img
-						class="media-object img-rounded" src="images/am.png" width="320"
+						class="media-object img-rounded" src="/images/am.png" width="320"
 						height="214"></a>
 					<div class="media-body">
 						<h3 class="media-heading" id="lol">COMMUNITY</h3>
@@ -123,7 +123,7 @@
 						<div class="col-md-4">
 							<div class="media">
 								<a href="#"><img class="media-object img-circle pull-left"
-									src="images/46.jpg" width="130" height="130"></a>
+									src="/images/46.jpg" width="130" height="130"></a>
 								<div class="media-body">
 									<br> <br>
 									<h5 class="media-heading  pull-left">Delight Chika</h5>
@@ -134,7 +134,7 @@
 						<div class="col-md-4">
 							<div class="media">
 								<a href="#"><img class="media-object img-circle pull-left"
-									src="images/73.jpg" width="130" height="130"></a>
+									src="/images/73.jpg" width="130" height="130"></a>
 								<div class="media-body">
 									<br> <br>
 									<h5 class="media-heading  pull-left">Ugo Chukwudi</h5>
@@ -145,7 +145,7 @@
 						<div class="col-md-4">
 							<div class="media">
 								<a href="#"><img class="media-object img-circle pull-left"
-									src="images/3.jpg" width="130" height="130"></a>
+									src="/images/3.jpg" width="130" height="130"></a>
 								<div class="media-body">
 									<br> <br>
 									<h5 class="media-heading  pull-left">Stephen Dappa</h5>

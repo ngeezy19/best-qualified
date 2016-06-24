@@ -159,7 +159,7 @@
 					</div>
 					<form
 						action="<%=blobstoreService.createUploadUrl(
-					"/bq/endpoint/find-a-job-user", options)%>"
+					"/bq/close/create-article", options)%>"
 						method="post" enctype="multipart/form-data">
 						<div class="col-sm-12 article-div" style="display: none">
 							<div class="form-group">
