@@ -446,6 +446,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 
 	<servlet>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 89c8eb2f44bf92a9dfaa3abbcdc9fde8216965e4
 		<servlet-name>InitIndex</servlet-name>
 		<servlet-class>com.bestqualified.servlets.InitIndex</servlet-class>
 	</servlet>
@@ -489,15 +493,33 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>BeACoach</servlet-name>
 		<url-pattern>/bq/endpoint/be-a-coach</url-pattern>
 	</servlet-mapping>
+<<<<<<< HEAD
 
 	<servlet>
 		<servlet-name>CreateReadingList</servlet-name>
+=======
+	
+	<servlet>
+		<servlet-name>SaveReadingList</servlet-name>
+>>>>>>> 89c8eb2f44bf92a9dfaa3abbcdc9fde8216965e4
 		<servlet-class>com.bestqualified.admin.CreateReadingList</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>CreateReadingList</servlet-name>
-		<url-pattern>/bq/admin/create-reading-list</url-pattern>
+		<servlet-name>SaveReadingList</servlet-name>
+		<url-pattern>/bq/admin/save-reading-list</url-pattern>
 	</servlet-mapping>
+<<<<<<< HEAD
+=======
+	
+	<servlet>
+		<servlet-name>GetReadingList</servlet-name>
+		<servlet-class>com.bestqualified.servlets.GetReadingList</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetReadingList</servlet-name>
+		<url-pattern>/bq/coaching/tools/get-reading-list</url-pattern>
+	</servlet-mapping>
+>>>>>>> 89c8eb2f44bf92a9dfaa3abbcdc9fde8216965e4
 
 	<!-- ***************************************************SERVLET*********************************************************** -->
 	<servlet>
@@ -509,6 +531,17 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/bq/open/handler/newsletter-subscribe</url-pattern>
 	</servlet-mapping>
 	<!-- ************************************************JSP*************************************************************** -->
+	
+	<servlet>
+		<servlet-name>CreateReadingList</servlet-name>
+		<jsp-file>/WEB-INF/bq/admin/reading-list.jsp</jsp-file>	
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>CreateReadingList</servlet-name>
+		<url-pattern>/bq/admin/create-reading-list</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>ChangePasswordPage</servlet-name>
 		<jsp-file>/WEB-INF/bq/open/change-password.jsp</jsp-file>

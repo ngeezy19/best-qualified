@@ -11,6 +11,7 @@ import com.bestqualified.bean.SocialUser;
 import com.bestqualified.entities.Article;
 import com.bestqualified.entities.AssessmentQuestion;
 import com.bestqualified.entities.Job;
+import com.bestqualified.entities.ReadingList;
 import com.bestqualified.entities.User;
 import com.bestqualified.util.EntityConverter;
 import com.bestqualified.util.Util;
@@ -62,6 +63,18 @@ public class GeneralController {
 			articles.add(EntityConverter.entityToArticle(e));
 		}
 		return articles;
+	}
+	
+	public static List<ReadingList> getNReadingListByDate(int no) {
+		List<ReadingList> readingList = new ArrayList<>();
+		Query q = new Query(ReadingList.class.getSimpleName());
+		q.addSort("date", SortDirection.DESCENDING);
+		PreparedQuery pq = ds.prepare(q);
+		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(no));
+		for(Entity e: ents) {
+			readingList.add(EntityConverter.entityToReadingList(e));
+		}
+		return readingList;
 	}
 	
 	public static User findUserByEmail(String email) {
