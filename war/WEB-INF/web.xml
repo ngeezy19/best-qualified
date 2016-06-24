@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns="http://java.sun.com/xml/ns/javaee"
-xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
 	<listener>
 		<listener-class>com.bestqualified.listeners.BestQualifiedSessionListener</listener-class>
 	</listener>
@@ -209,7 +209,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>AddMajorInterestServlet</servlet-name>
 		<url-pattern>/end-point/add-major-interest</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>FacebookCallback</servlet-name>
 		<servlet-class>com.bestqualified.servlets.FacebookCallback</servlet-class>
@@ -218,7 +218,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>FacebookCallback</servlet-name>
 		<url-pattern>/bq/open/facebook/callback</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>LinkedInCallback</servlet-name>
 		<servlet-class>com.bestqualified.servlets.LinkedInCallback</servlet-class>
@@ -227,7 +227,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>LinkedInCallback</servlet-name>
 		<url-pattern>/bq/open/linkedin/callback</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>LinkedInSignIn</servlet-name>
 		<servlet-class>com.bestqualified.servlets.LinkedInSignIn</servlet-class>
@@ -236,7 +236,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>LinkedInSignIn</servlet-name>
 		<url-pattern>/bq/open/linkedin-sign-in</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>FacebookSignIn</servlet-name>
 		<servlet-class>com.bestqualified.servlets.FacebookSignIn</servlet-class>
@@ -245,7 +245,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>FacebookSignIn</servlet-name>
 		<url-pattern>/bq/open/facebook-sign-in</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>JobSearch</servlet-name>
 		<servlet-class>com.bestqualified.servlets.JobSearch</servlet-class>
@@ -254,7 +254,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>JobSearch</servlet-name>
 		<url-pattern>/bq/open/job-search</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>Job</servlet-name>
 		<servlet-class>com.bestqualified.servlets.JobServlet</servlet-class>
@@ -263,7 +263,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Job</servlet-name>
 		<url-pattern>/bq/open/job</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>ServeBlob</servlet-name>
 		<servlet-class>com.bestqualified.servlets.closed.ServeBlob</servlet-class>
@@ -272,7 +272,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>ServeBlob</servlet-name>
 		<url-pattern>/bq/close/serve-blob</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>ManageProjectServlet</servlet-name>
 		<servlet-class>com.bestqualified.servlets.closed.ManageProjectServlet</servlet-class>
@@ -281,7 +281,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>ManageProjectServlet</servlet-name>
 		<url-pattern>/bq/close/manage-project</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>InitBrowseProfiles</servlet-name>
 		<servlet-class>com.bestqualified.servlets.closed.InitBrowseProfiles</servlet-class>
@@ -426,7 +426,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>ForgotPassword</servlet-name>
 		<url-pattern>/endpoint/bq/forgot-password</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>CreateAdminUser</servlet-name>
 		<servlet-class>com.bestqualified.admin.CreateUserServlet</servlet-class>
@@ -435,7 +435,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>CreateAdminUser</servlet-name>
 		<url-pattern>/bq/admin/create-user</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>CreateArticleServlet</servlet-name>
 		<servlet-class>com.bestqualified.admin.CreateArticleServlet</servlet-class>
@@ -443,8 +443,9 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>CreateArticleServlet</servlet-name>
 		<url-pattern>/bq/admin/create-article</url-pattern>
+		<url-pattern>/bq/close/create-article</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 
 		<servlet-name>InitIndex</servlet-name>
@@ -454,7 +455,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>InitIndex</servlet-name>
 		<url-pattern>/init-index</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>JobSeeker</servlet-name>
 		<servlet-class>com.bestqualified.servlets.JobSeeker</servlet-class>
@@ -463,7 +464,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>JobSeeker</servlet-name>
 		<url-pattern>/bq/endpoint/find-a-job-user</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>DefaultUserServlet</servlet-name>
 		<servlet-class>com.bestqualified.servlets.DefaultUserServlet</servlet-class>
@@ -472,7 +473,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>DefaultUserServlet</servlet-name>
 		<url-pattern>/bq/endpoint/default-user</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>RecruitProfessionalServlet</servlet-name>
 		<servlet-class>com.bestqualified.servlets.RecruitProfessionalServlet</servlet-class>
@@ -481,7 +482,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>RecruitProfessionalServlet</servlet-name>
 		<url-pattern>/bq/endpoint/recruit-professional-user</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>BeACoach</servlet-name>
 		<servlet-class>com.bestqualified.servlets.BeACoach</servlet-class>
@@ -490,14 +491,36 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>BeACoach</servlet-name>
 		<url-pattern>/bq/endpoint/be-a-coach</url-pattern>
 	</servlet-mapping>
+<<<<<<< HEAD
+
+
+	<servlet>
+		<servlet-name>SaveReadingList</servlet-name>
+
+=======
 	
 	<servlet>
 		<servlet-name>SaveReadingList</servlet-name>
+>>>>>>> 89c8eb2f44bf92a9dfaa3abbcdc9fde8216965e4
 		<servlet-class>com.bestqualified.admin.CreateReadingList</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SaveReadingList</servlet-name>
 		<url-pattern>/bq/admin/save-reading-list</url-pattern>
+<<<<<<< HEAD
+	</servlet-mapping>
+
+	
+	<servlet>
+		<servlet-name>GetReadingList</servlet-name>
+		<servlet-class>com.bestqualified.servlets.GetReadingList</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetReadingList</servlet-name>
+		<url-pattern>/bq/coaching/tools/get-reading-list</url-pattern>
+	</servlet-mapping>
+
+=======
 	</servlet-mapping>
 	
 	<servlet>
@@ -508,6 +531,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>GetReadingList</servlet-name>
 		<url-pattern>/bq/coaching/tools/get-reading-list</url-pattern>
 	</servlet-mapping>
+>>>>>>> 89c8eb2f44bf92a9dfaa3abbcdc9fde8216965e4
 
 	<!-- ***************************************************SERVLET*********************************************************** -->
 	<servlet>
@@ -554,7 +578,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>ForgotPasswordPage</servlet-name>
 		<url-pattern>/endpoint/forgot-password-page</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>SalesDocumentPage</servlet-name>
 		<jsp-file>/WEB-INF/bq/coaching/tools/sales-document.jsp</jsp-file>
@@ -571,7 +595,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>ReadingListPage</servlet-name>
 		<url-pattern>/bq/coaching/tools/reading-list</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>AssessmentPage</servlet-name>
 		<jsp-file>/WEB-INF/bq/coaching/tools/assessment.jsp</jsp-file>
@@ -652,7 +676,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>ManageProjectPage</servlet-name>
 		<url-pattern>/bq/close/manage-project-page</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>CoachRequest</servlet-name>
 		<jsp-file>/WEB-INF/bq/coaching/coach-request.jsp</jsp-file>
@@ -661,7 +685,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>CoachRequest</servlet-name>
 		<url-pattern>/bq/coaching/request-coach</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>JobSearchPage</servlet-name>
 		<jsp-file>/WEB-INF/bq/open/jobs.jsp</jsp-file>
@@ -670,7 +694,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>JobSearchPage</servlet-name>
 		<url-pattern>/bq/open/jobs-search-result</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>BrowseProjectPage</servlet-name>
 		<jsp-file>/WEB-INF/bq/close/browse-profiles.jsp</jsp-file>
@@ -679,7 +703,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>BrowseProjectPage</servlet-name>
 		<url-pattern>/bq/close/recruiter/browse-profiles</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>Project</servlet-name>
 		<jsp-file>/WEB-INF/bq/close/project.jsp</jsp-file>
@@ -688,7 +712,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Project</servlet-name>
 		<url-pattern>/bq/close/project</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>JobsPage</servlet-name>
 		<jsp-file>/WEB-INF/bq/close/jobs.jsp</jsp-file>
@@ -697,7 +721,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>JobsPage</servlet-name>
 		<url-pattern>/bq/close/jobs</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>NewProject</servlet-name>
 		<jsp-file>/WEB-INF/bq/close/new-project.jsp</jsp-file>
@@ -706,7 +730,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>NewProject</servlet-name>
 		<url-pattern>/bq/close/new-project</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>JobInfoPage</servlet-name>
 		<jsp-file>/WEB-INF/bq/open/job.jsp</jsp-file>
@@ -715,7 +739,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>JobInfoPage</servlet-name>
 		<url-pattern>/bq/open/job-information</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>JobResultPage</servlet-name>
 		<jsp-file>/WEB-INF/bq/open/job-search.jsp</jsp-file>
@@ -772,7 +796,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>AdminNewJobPage</servlet-name>
 		<url-pattern>/bq/admin/new-job</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>AdminNewMiscProperties</servlet-name>
 		<jsp-file>/WEB-INF/bq/admin/new-misc-properties.jsp</jsp-file>
@@ -781,7 +805,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>AdminNewMiscProperties</servlet-name>
 		<url-pattern>/bq/admin/new-misc-properties</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>LoginPage</servlet-name>
 		<jsp-file>/WEB-INF/bq/open/login.jsp</jsp-file>
@@ -846,8 +870,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>users</servlet-name>
 		<url-pattern>/bq/admin/users</url-pattern>
 	</servlet-mapping>
-	
-		<servlet>
+
+	<servlet>
 		<servlet-name>community</servlet-name>
 		<jsp-file>/WEB-INF/bq/community/home.jsp</jsp-file>
 	</servlet>
@@ -855,14 +879,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>community</servlet-name>
 		<url-pattern>/community</url-pattern>
 	</servlet-mapping>
-	
+
 	<session-config>
 		<session-timeout>1800</session-timeout>
 	</session-config>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<context-param>
 		<param-name>LinkedInClientId</param-name>
 		<param-value>77ciyhkk0lhyeu</param-value>
@@ -882,5 +906,5 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<param-name>FacebookClientSecret</param-name>
 		<param-value>b43a32be081ca0863328638d2270cda3</param-value>
 	</context-param>
-	
+
 </web-app>

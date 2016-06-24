@@ -40,9 +40,20 @@ public class CandidateProfile implements Serializable {
 	private List<Key> connections, savedJobs, jobAlerts;
 	private BlobKey cv;
 	private String highestEducationLevel;
+	private List<Key> articles;
 	
 	
 	
+	public List<Key> getArticles() {
+		return articles;
+	}
+
+
+	public void setArticles(List<Key> articles) {
+		this.articles = articles;
+	}
+
+
 	public String getHighestEducationLevel() {
 		return highestEducationLevel;
 	}

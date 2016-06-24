@@ -80,8 +80,8 @@
 			<div class="col-sm-7" style="text-align: center;">
 				
 				<h1 style="color: #013143; font-family: roboto; margin-top: 10%;">
-					<span class="pull-right">Become A Certified Sales
-						Professional</span>
+					<span class="pull-right"><span style="color: red">Get Certified, </span>
+						Increase and improve on your creative experiences</span>
 				</h1>
 			</div>
 			<div class="col-sm-5">

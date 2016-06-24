@@ -1,6 +1,8 @@
 package com.bestqualified.servlets;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +16,9 @@ import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.User;
 import com.bestqualified.util.EntityConverter;
 import com.bestqualified.util.Util;
+import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.blobstore.BlobstoreService;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 
 public class JobSeeker extends HttpServlet {
@@ -25,6 +30,18 @@ public class JobSeeker extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		
+		BlobstoreService blobstoreService = BlobstoreServiceFactory
+				.getBlobstoreService();
+		Map<String, List<BlobKey>> blobFields = blobstoreService
+				.getUploads(req);
+		List<BlobKey> blobKeys = blobFields.get("cv");
+		BlobKey blobKey = null;
+		if (blobKeys != null && !blobKeys.isEmpty()) {
+			// We're only expecting one, so take the first one.
+			blobKey = blobKeys.get(0);
+		}
+		
 		String mobileNumber = req.getParameter("mobile-number");
 		String gender = req.getParameter("gender");
 		String educationLevel = req.getParameter("educational-level");
@@ -61,6 +78,7 @@ public class JobSeeker extends HttpServlet {
 			u.setPhone(mobileNumber);
 			u.setGender(gender.toUpperCase());
 			cp.setCurrentState(location);
+			cp.setCv(blobKey);
 			cp.setCareerLevel(careerLevel);
 			cp.setHighestEducationLevel(educationLevel);
 			cp.setYearsOfExperience(experience);

@@ -2,6 +2,18 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page
+	import="com.google.appengine.api.blobstore.BlobstoreServiceFactory"%>
+<%@ page import="com.google.appengine.api.blobstore.BlobstoreService"%>
+<%@ page import="com.google.appengine.api.blobstore.UploadOptions"%>
+
+<%
+	BlobstoreService blobstoreService = BlobstoreServiceFactory
+			.getBlobstoreService();
+	UploadOptions options = UploadOptions.Builder
+			.withMaxUploadSizeBytesPerBlob(2 * 1024 * 1024)
+			.maxUploadSizeBytes(2 * 1024 * 1024);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,85 +58,97 @@
 		<br /> <br /> <br /> <br />
 		<div class="col-sm-8">
 			<div class="row">
-				<div class="col-sm-12 dashboard-section no-padding-div"
-					style="padding: 0px">
-					<div class="col-sm-8" style="border-right: 1px solid #eaeaea">
+				<div class="col-sm-12 card-panel">
+					<div class="col-sm-12 no-padding-div" style="padding: 0px">
+						<div class="col-sm-8" style="border-right: 1px solid #eaeaea">
 
-						<img src="/images/unknown-user.jpg"
-							class="img img-responsive img-circle"
-							/ style="width: 6em; float: left; margin: 1%; margin-right: 4%;">
-						<div style="padding: 1%;">
-							<h4 style="margin-bottom: 1%;">
-								<c:out value='${professionalDashboard.name}' />
-							</h4>
-							<div>
-								<c:out value='${professionalDashboard.tagline}' />
-								at
-								<c:out value='${professionalDashboard.currentEmployer}' />
-							</div>
-							<c:if test='${empty professionalDashboard.tagline }'>
+							<img src="/images/unknown-user.jpg"
+								class="img img-responsive img-circle"
+								/ style="width: 6em; float: left; margin: 1%; margin-right: 4%;">
+							<div style="padding: 1%;">
+								<h4 style="margin-bottom: 1%;">
+									<c:out value='${professionalDashboard.name}' />
+								</h4>
 								<div>
-									<a
-										href="<c:url value='/bq/closed/init-professional-profile"' />">Edit
-										Profile</a>
+									<c:out value='${professionalDashboard.tagline}' />
 								</div>
-							</c:if>
-						</div>
-
-					</div>
-					<div class="col-sm-4 no-pading-div" style="padding: 1%;">
-						<div>
-							<h4>4 articles</h4>
-							<h4>1024 connections</h4>
-						</div>
-
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12 dashboard-section no-padding-div"
-					style="padding: 0px; border-top: none;">
-					<div class="col-sm-8"
-						style="border-right: 1px solid #eaeaea; padding: 5px">
-						<div class="col-sm-12">
-							<p style="margin-bottom: 5px">
-								<strong>Your profile strength is at <c:out
-										value='${professionalDashboard.profileLevel}' /> level
-								</strong>
-							</p>
-							<div
-								style="height: 1em; width: 100%; border: 2px gray solid; border-radius: 6px; -moz-border-radius: 6px; -webkit-border-radius: 6px">
-								<div
-									style="height: 100%; background-color: ${professionalDashboard.profileColor};width: ${professionalDashboard.profileStrength}%;"></div>
+								<div style="color: green">
+									<c:out value='${user.email}' />
+								</div>
+								<c:if test='${empty professionalDashboard.tagline }'>
+									<div>
+										<a
+											href="<c:url value='/bq/closed/init-professional-profile"' />">Edit
+											Profile</a>
+									</div>
+								</c:if>
 							</div>
-							<div style="font-family: calibri">Employers give priority
-								to professionals with completed profiles.</div>
+
+						</div>
+						<div class="col-sm-4 no-pading-div"
+							style="padding: 1%; border-bottom: 1px solid #dadada">
 							<div>
-								<a class="btn btn-xs btn-primary"
-									href="<c:url value="/bq/closed/init-professional-profile" />">Personal</a>
-								<a class="btn btn-xs btn-primary"
-									href="<c:url value="/bq/closed/init-professional-profile" />">Summary</a>
-								<a class="btn btn-xs btn-primary"
-									href="<c:url value="/bq/closed/init-professional-profile" />">Education</a>
-								<a class="btn btn-xs btn-primary"
-									href="<c:url value="/bq/closed/init-professional-profile" />">Experience</a>
-								<a class="btn btn-xs btn-primary"
-									href="<c:url value="/bq/closed/init-professional-profile" />">Certifications</a>
-								<a class="btn btn-xs btn-primary"
-									href="<c:url value="/bq/closed/init-professional-profile" />">CV</a>
+								<h4>
+									<c:out value="${professionalDashboard.personalArticles }" />
+									articles
+								</h4>
+								<h4>
+									<c:out value='${professionalDashboard.connections }' />
+									connections
+								</h4>
 							</div>
+
 						</div>
 					</div>
-					<div class="col-sm-4">
-						<h5 class="text-muted" style="font-size: 12pt">Profile Views
-							in Last 30 Days</h5>
-						<div style="float: left">10 companies</div>
-						<div style="float: left">12 professionals</div>
+
+					<div class="col-sm-12  no-padding-div"
+						style="padding: 0px; border-top: none;">
+						<div class="col-sm-8"
+							style="border-right: 1px solid #eaeaea; padding: 5px">
+							<div class="col-sm-12">
+								<p style="margin-bottom: 5px">
+									<strong>Your profile strength is at <c:out
+											value='${professionalDashboard.profileLevel}' /> level
+									</strong>
+								</p>
+								<div
+									style="height: 1em; width: 100%; border: 2px gray solid; border-radius: 6px; -moz-border-radius: 6px; -webkit-border-radius: 6px">
+									<div
+										style="height: 100%; background-color: ${professionalDashboard.profileColor};width: ${professionalDashboard.profileStrength}%;"></div>
+								</div>
+								<div style="font-family: calibri">
+									<p class="text-success">Employers give priority to
+										professionals with completed profiles.</p>
+								</div>
+								<div>
+									<a class="btn btn-xs btn-primary"
+										href="<c:url value="/bq/closed/init-professional-profile" />">Personal</a>
+									<a class="btn btn-xs btn-primary"
+										href="<c:url value="/bq/closed/init-professional-profile" />">Summary</a>
+									<a class="btn btn-xs btn-primary"
+										href="<c:url value="/bq/closed/init-professional-profile" />">Education</a>
+									<a class="btn btn-xs btn-primary"
+										href="<c:url value="/bq/closed/init-professional-profile" />">Experience</a>
+									<a class="btn btn-xs btn-primary"
+										href="<c:url value="/bq/closed/init-professional-profile" />">Certifications</a>
+									<a class="btn btn-xs btn-primary"
+										href="<c:url value="/bq/closed/init-professional-profile" />">CV</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<h5 class="text-info" style="font-size: 12pt">Profile Views
+								in Last 30 Days</h5>
+							<div style="">${professionalDashboard.companies}companies</div>
+							,
+							<div style="">${professionalDashboard.professionals}
+								professionals</div>
+						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="row" style="margin-top: 2%; margin-bottom: 2%;">
+			<div class="row" style="margin-bottom: 2%;">
 				<div class="col-sm-12 card-panel"
 					style="background-color: #fafafa; margin-bottom: 2px">
 					<div class="col-sm-12">
@@ -133,25 +157,31 @@
 								aria-hidden="true"></i>
 						</h4>
 					</div>
-					<div class="col-sm-12 article-div" style="display: none">
-						<div class="form-group">
-							<input placeholder="Title" id="article-title"
-								class="form-control" name="article-title" />
+					<form
+						action="<%=blobstoreService.createUploadUrl(
+					"/bq/close/create-article", options)%>"
+						method="post" enctype="multipart/form-data">
+						<div class="col-sm-12 article-div" style="display: none">
+							<div class="form-group">
+								<input placeholder="Title" id="article-title"
+									class="form-control" name="title" />
+							</div>
+							<div class="form-group">
+								<textarea rows="7" class="form-control tiny" id="article-text"
+									name="post"></textarea>
+							</div>
+							<input type="hidden" name="subscribe" value="true" />
+							<div class="form-group">
+								<span>Add a featured image</span> <input type="file"
+									name="image" class="form-control" />
+							</div>
+							<div class="form-group">
+								<input type="submit" class="btn btn-primary"
+									value="Post Article" /> <input id="close-article"
+									type="button" class="btn btn-danger" value="Close" />
+							</div>
 						</div>
-						<div class="form-group">
-							<textarea rows="7" class="form-control tiny" id="article-text"
-								name="article-text"></textarea>
-						</div>
-						<div class="form-group">
-							<span>Add a featured image</span> <input type="file" name="image"
-								class="form-control" />
-						</div>
-						<div class="form-group">
-							<input type="button" class="btn btn-primary" value="Post Article" />
-							<input id="close-article" type="button" class="btn btn-danger"
-								value="Close" />
-						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 
@@ -235,7 +265,9 @@
 
 						</div>
 					</c:forEach>
-					<div class="col-sm-12 no-padding-div"><a href="">View More</a></div>
+					<div class="col-sm-12 no-padding-div">
+						<a href="">View More</a>
+					</div>
 				</div>
 				<div class="col-sm-12 dashboard-row card-panel">
 					<h4>
