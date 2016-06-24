@@ -559,7 +559,7 @@ div.transbox form input {
 					<ul class="disc-bullet">
 						<li>Post jobs and monitor your applications</li>
 						<li>Use our extensive database to search candidates</li>
-						<li><em>And much more…</em></li>
+						<li><i>And much more...</i></li>
 					</ul>
 
 					<div style="text-align: center;">

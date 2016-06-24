@@ -79,8 +79,8 @@
 		<div class="row">
 			<div class="col-sm-7" style="text-align: center;">
 				
-				<h1 style="color: #013143; font-family: roboto; margin-top: 10%;">
-					<span class="pull-right">Earn Valuable Credentials For A Marketing Professional</span>
+				<h1 style="color: #013143; font-family: roboto; margin-top: 10%; text-align: center">
+					<span>Earn Valuable Credentials For A<br/> <span style="color: red">Marketing Professional</span></span>
 				</h1>
 			</div>
 			<div class="col-sm-5">

@@ -430,6 +430,7 @@ public class EntityConverter {
 		e.setUnindexedProperty("cv", cp.getCv());
 		e.setUnindexedProperty("jobAlerts", cp.getJobAlerts());
 		e.setUnindexedProperty("savedJobs", cp.getSavedJobs());
+		e.setUnindexedProperty("articles", cp.getArticles());
 		return e;
 	}
 
@@ -464,6 +465,7 @@ public class EntityConverter {
 		cp.setCv((BlobKey) e.getProperty("cv"));
 		cp.setSavedJobs((List<Key>) e.getProperty("savedJobs"));
 		cp.setJobAlerts((List<Key>) e.getProperty("jobAlerts"));
+		cp.setArticles((List<Key>) e.getProperty("articles"));
 		return cp;
 	}
 

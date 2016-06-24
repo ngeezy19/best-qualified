@@ -11,14 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bestqualified.bean.ProfessionalDashboard;
 import com.bestqualified.controllers.GeneralController;
 import com.bestqualified.entities.Article;
 import com.bestqualified.entities.ArticleCategory;
+import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.User;
 import com.bestqualified.util.EntityConverter;
 import com.bestqualified.util.Util;
 import com.google.appengine.api.blobstore.BlobKey;
-import com.google.appengine.api.blobstore.BlobstoreFailureException;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -50,13 +51,20 @@ public class CreateArticleServlet extends HttpServlet {
 		String bodystr = req.getParameter("post");
 		String category = req.getParameter("category");
 		String subscribe = req.getParameter("subscribe");
-		
+
 		HttpSession session = req.getSession();
 
 		if (!Util.notNull(title)) {
 			synchronized (session) {
 				session.setAttribute("articleError", "Enter Title");
-				resp.sendRedirect(resp.encodeRedirectURL("/bq/admin/article"));
+				if (Util.notNull(subscribe)) {
+					resp.sendRedirect(resp
+							.encodeRedirectURL("/bq/closed/professional/dashboard"));
+				} else {
+					resp.sendRedirect(resp
+							.encodeRedirectURL("/bq/admin/article"));
+				}
+
 				return;
 
 			}
@@ -66,7 +74,13 @@ public class CreateArticleServlet extends HttpServlet {
 		if (!Util.notNull(bodystr)) {
 			synchronized (session) {
 				session.setAttribute("articleError", "Enter Post");
-				resp.sendRedirect(resp.encodeRedirectURL("/bq/admin/article"));
+				if (Util.notNull(subscribe)) {
+					resp.sendRedirect(resp
+							.encodeRedirectURL("/bq/closed/professional/dashboard"));
+				} else {
+					resp.sendRedirect(resp
+							.encodeRedirectURL("/bq/admin/article"));
+				}
 				return;
 			}
 
@@ -74,14 +88,11 @@ public class CreateArticleServlet extends HttpServlet {
 
 		ArticleCategory cat = null;
 		if (Util.notNull(category)) {
-			cat = ArticleCategory.valueOf(category
-					.toUpperCase());
+			cat = ArticleCategory.valueOf(category.toUpperCase());
 
-		}else {
+		} else {
 			cat = ArticleCategory.OTHER;
 		}
-
-		
 
 		User u = null;
 		Object o = null;
@@ -92,14 +103,11 @@ public class CreateArticleServlet extends HttpServlet {
 
 		if (o != null) {
 			u = (User) o;
-			List<Key> subscr = new ArrayList<>();
-			if(Util.notNull(subscribe)) {
-				subscr.add(u.getUserKey());
-			}
+
 			Text body = new Text(bodystr);
 
 			Date date = new Date();
-			
+
 			Article article = new Article();
 			article.setTitle(title);
 			article.setBody(body);
@@ -107,14 +115,48 @@ public class CreateArticleServlet extends HttpServlet {
 			article.setCategory(cat);
 			article.setAuthor(u.getUserKey());
 			article.setImageKey(blobKey);
+			ProfessionalDashboard pd = null;
+			List<Key> subscr = new ArrayList<>();
+			if (Util.notNull(subscribe)) {
+				subscr.add(u.getUserKey());
+				CandidateProfile cp = EntityConverter.entityToCandidateProfile(
+						GeneralController.findByKey(u.getUserInfo()),
+						u.getUserKey());
+				List<Key> articles = cp.getArticles();
+				if(articles==null) {
+					articles = new ArrayList<>();
+				}
+				articles.add(article.getKey());
+				
+				Object o1 = null;
+				synchronized (session) {
+					o1 = session.getAttribute("professionalDashboard");
+				}
+				if (o1 != null) {
+					pd = (ProfessionalDashboard) o1;
+					List<Article> art1 = new ArrayList<>();
+					art1.add(article);
+					List<com.bestqualified.bean.Article> arts = Util.toArticleBeans(art1);
+					pd.getArticles().add(0, arts.get(0));
+					pd.setPersonalArticles(pd.getPersonalArticles()+1);
+				}
+			}
+
 			article.setSubscribers(subscr);
 
 			Entity e = EntityConverter.ArticleToEntity(article);
 			GeneralController.create(e);
 
 			synchronized (session) {
-				session.setAttribute("articleSuccess", "Article Created");
-				resp.sendRedirect(resp.encodeRedirectURL("/bq/admin/article"));
+				session.setAttribute("professionalDashboard", pd);
+				if (Util.notNull(subscribe)) {
+					resp.sendRedirect(resp
+							.encodeRedirectURL("/bq/closed/professional/dashboard"));
+				} else {
+					session.setAttribute("articleSuccess", "Article Created");
+					resp.sendRedirect(resp
+							.encodeRedirectURL("/bq/admin/article"));
+				}
 				return;
 			}
 

@@ -75,12 +75,15 @@
 	<%@ include file="/main-nav.html"%>
 	<br />
 	<div class="container-fluid grad1">
-		<br/>
+		<br />
 		<div class="row">
 			<div class="col-sm-7" style="text-align: center;">
-				
+
 				<h1 style="color: #013143; font-family: roboto; margin-top: 10%;">
-					<span class="pull-right">Set Yourself apart with highly sought after Advertising Credentials</span>
+					<span class="pull-right">Set Yourself apart with highly
+						sought after<span style="color: red"> Advertising
+							Credentials</span>
+					</span>
 				</h1>
 			</div>
 			<div class="col-sm-5">

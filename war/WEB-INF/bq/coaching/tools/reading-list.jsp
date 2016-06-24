@@ -72,8 +72,8 @@
 
 				<h1
 					style="color: #013143; font-family: roboto; margin-top: 10%; font-size: 32pt">
-					<span class="text-primary">Need A Coach?</span> <span
-						style="color: red; padding-left: 1%;">Talk To Us Now</span>
+					<span class="text-primary">Ten Top<span
+						style="color: red; padding-left: 1%;">Must Read books </span>for this month.</span>
 				</h1>
 
 			</div>

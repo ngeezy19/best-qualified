@@ -492,7 +492,14 @@ public class Util {
 		pd.setProfileStrength(Util.calculateProfileStrength(u, cp));
 		pd.setProfileLevel(Util.getprofileLevel(pd.getProfileStrength()));
 		pd.setProfileColor(Util.getProfileColor(pd.getProfileStrength()));
-		pd.setTagline(u.getTagline());
+		
+		if(Util.notNull(u.getTagline(), cp.getCurrentEmployer())) {
+			pd.setTagline(u.getTagline()+" at "+cp.getCurrentEmployer());
+		}else if(Util.notNull(u.getTagline())) {
+			pd.setTagline(u.getTagline());
+		} else if(Util.notNull(cp.getCurrentEmployer())) {
+			pd.setTagline("Works at "+cp.getCurrentEmployer());
+		}
 
 		return pd;
 	}

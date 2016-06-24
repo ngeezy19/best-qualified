@@ -19,8 +19,33 @@ public class ProfessionalDashboard implements Serializable {
 	private List<InterestedJob> savedJobs,appliedJobs;
 	private List<JobAlert> jobAlerts;
 	private List<UserView> users;
+	private long connections, personalArticles, companies, professionals;
 	
 	
+	public long getCompanies() {
+		return companies;
+	}
+
+	public void setCompanies(long companies) {
+		this.companies = companies;
+	}
+
+	public long getProfessionals() {
+		return professionals;
+	}
+
+	public void setProfessionals(long professionals) {
+		this.professionals = professionals;
+	}
+
+	public long getPersonalArticles() {
+		return personalArticles;
+	}
+
+	public void setPersonalArticles(long personalArticles) {
+		this.personalArticles = personalArticles;
+	}
+
 	public List<UserView> getUsers() {
 		return users;
 	}
@@ -165,6 +190,14 @@ public class ProfessionalDashboard implements Serializable {
 
 	public void setJobAlerts(List<JobAlert> jobAlerts) {
 		this.jobAlerts = jobAlerts;
+	}
+
+	public long getConnections() {
+		return connections;
+	}
+
+	public void setConnections(long connections) {
+		this.connections = connections;
 	}
 
 }
