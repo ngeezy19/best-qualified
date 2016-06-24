@@ -29,11 +29,11 @@ public class DefaultUserServlet extends HttpServlet {
 		String jobTitle = req.getParameter("job-title");
 		String organization = req.getParameter("organisation");
 		HttpSession session = req.getSession();
-		if (Util.notNull(jobTitle)) {
+		if (!Util.notNull(jobTitle)) {
 			session.setAttribute("", "Enter your job title.");
 		}
 
-		if (Util.notNull(organization)) {
+		if (!Util.notNull(organization)) {
 			session.setAttribute("", "organization.");
 		}
 
