@@ -491,23 +491,17 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>BeACoach</servlet-name>
 		<url-pattern>/bq/endpoint/be-a-coach</url-pattern>
 	</servlet-mapping>
-<<<<<<< HEAD
 
 
 	<servlet>
 		<servlet-name>SaveReadingList</servlet-name>
 
-=======
-	
-	<servlet>
-		<servlet-name>SaveReadingList</servlet-name>
->>>>>>> 89c8eb2f44bf92a9dfaa3abbcdc9fde8216965e4
 		<servlet-class>com.bestqualified.admin.CreateReadingList</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SaveReadingList</servlet-name>
 		<url-pattern>/bq/admin/save-reading-list</url-pattern>
-<<<<<<< HEAD
+
 	</servlet-mapping>
 
 	
@@ -520,18 +514,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/bq/coaching/tools/get-reading-list</url-pattern>
 	</servlet-mapping>
 
-=======
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>GetReadingList</servlet-name>
-		<servlet-class>com.bestqualified.servlets.GetReadingList</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>GetReadingList</servlet-name>
-		<url-pattern>/bq/coaching/tools/get-reading-list</url-pattern>
-	</servlet-mapping>
->>>>>>> 89c8eb2f44bf92a9dfaa3abbcdc9fde8216965e4
 
 	<!-- ***************************************************SERVLET*********************************************************** -->
 	<servlet>
