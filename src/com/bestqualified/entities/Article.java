@@ -20,6 +20,7 @@ public class Article implements Serializable {
 	private String title;
 	private Date date;
 	private long views;
+	private long nComments;
 	private Text body;
 	private ArticleCategory category;
 	private List<String> tag;
@@ -35,6 +36,20 @@ public class Article implements Serializable {
 				+ ", tag=" + tag + ", author=" + author + ", comments="
 				+ comments + ", subscribers=" + subscribers + "]";
 	}
+	
+	
+
+	public long getnComments() {
+		return nComments;
+	}
+
+
+
+	public void setnComments(long nComments) {
+		this.nComments = nComments;
+	}
+
+
 
 	public String getTitle() {
 		

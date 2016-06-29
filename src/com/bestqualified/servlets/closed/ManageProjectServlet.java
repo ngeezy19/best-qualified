@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bestqualified.bean.ManageProjectBean;
-import com.bestqualified.bean.ProjectBean1;
+import com.bestqualified.bean.ProjectBean;
 import com.bestqualified.controllers.GeneralController;
 import com.bestqualified.entities.Project;
 import com.bestqualified.entities.Recruiter;
@@ -46,7 +46,7 @@ public class ManageProjectServlet extends HttpServlet {
 				for(Key k : projects) {
 					l1.add(EntityConverter.entityToProject(ents.get(k)));
 				}
-				List<ProjectBean1> l2 = Util.toProjectBean1(l1); 
+				List<ProjectBean> l2 = Util.toProjectBean1(l1); 
 				ManageProjectBean mpb = Util.getManageProjectBean(l2);
 				synchronized (session) {
 					session.setAttribute("manageProjectBean", mpb);

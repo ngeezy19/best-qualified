@@ -1,4 +1,5 @@
 package com.bestqualified.controllers;
+
 //third commit
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,6 +10,7 @@ import java.util.Map;
 
 import com.bestqualified.bean.SocialUser;
 import com.bestqualified.entities.Article;
+import com.bestqualified.entities.ArticleCategory;
 import com.bestqualified.entities.AssessmentQuestion;
 import com.bestqualified.entities.Job;
 import com.bestqualified.entities.ReadingList;
@@ -40,43 +42,72 @@ public class GeneralController {
 	public static final DatastoreService ds = DatastoreServiceFactory
 			.getDatastoreService();
 	private static Transaction txn = null;
-	
+
+	public static List<Article> getLatestArticles(String categoryName, int i) {
+
+		List<Article> articles = new ArrayList<>();
+		Query q = new Query(Article.class.getSimpleName());
+		q.setFilter(new FilterPredicate("category", FilterOperator.EQUAL,
+				categoryName));
+		q.addSort("date", SortDirection.DESCENDING);
+		PreparedQuery pq = ds.prepare(q);
+		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(i));
+		for (Entity e : ents) {
+			articles.add(EntityConverter.entityToArticle(e));
+		}
+		return articles;
+	}
+
+	public static List<com.bestqualified.entities.Article> getNDiscussions(int i) {
+		List<Article> articles = new ArrayList<>();
+		Query q = new Query(Article.class.getSimpleName());
+		q.setFilter(new FilterPredicate("category", FilterOperator.EQUAL,
+				ArticleCategory.DISCUSSION.name()));
+		q.addSort("nComments", SortDirection.DESCENDING);
+		PreparedQuery pq = ds.prepare(q);
+		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(i));
+		for (Entity e : ents) {
+			articles.add(EntityConverter.entityToArticle(e));
+		}
+		return articles;
+	}
+
 	public static List<Job> getNJobs(int no) {
 		List<Job> jobs = new ArrayList<>();
 		Query q = new Query(Job.class.getSimpleName());
-		//q.addSort("date", SortDirection.DESCENDING);
+		q.addSort("datePosted", SortDirection.DESCENDING);
 		PreparedQuery pq = ds.prepare(q);
 		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(no));
-		for(Entity e: ents) {
+		for (Entity e : ents) {
 			jobs.add(EntityConverter.entityToJob(e));
 		}
 		return jobs;
 	}
-	
+
 	public static List<Article> getNArticlesByDate(int no) {
 		List<Article> articles = new ArrayList<>();
 		Query q = new Query(Article.class.getSimpleName());
 		q.addSort("date", SortDirection.DESCENDING);
 		PreparedQuery pq = ds.prepare(q);
 		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(no));
-		for(Entity e: ents) {
+		for (Entity e : ents) {
 			articles.add(EntityConverter.entityToArticle(e));
 		}
 		return articles;
 	}
-	
+
 	public static List<ReadingList> getNReadingListByDate(int no) {
 		List<ReadingList> readingList = new ArrayList<>();
 		Query q = new Query(ReadingList.class.getSimpleName());
 		q.addSort("date", SortDirection.DESCENDING);
 		PreparedQuery pq = ds.prepare(q);
 		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(no));
-		for(Entity e: ents) {
+		for (Entity e : ents) {
 			readingList.add(EntityConverter.entityToReadingList(e));
 		}
 		return readingList;
 	}
-	
+
 	public static User findUserByEmail(String email) {
 		Query q = new Query(User.class.getSimpleName());
 		q.setFilter(new Query.FilterPredicate("email", FilterOperator.EQUAL,
@@ -86,7 +117,7 @@ public class GeneralController {
 		if (pq.countEntities(FetchOptions.Builder.withDefaults()) == 1) {
 			e = pq.asSingleEntity();
 			return EntityConverter.entityToUser(e);
-		}else {
+		} else {
 			return null;
 		}
 	}
@@ -165,10 +196,11 @@ public class GeneralController {
 		Query q = new Query("User");
 		Filter f1 = new Query.FilterPredicate("emails", FilterOperator.EQUAL,
 				email);
-		/*Filter f2 = new Query.FilterPredicate("email", FilterOperator.EQUAL,
-				email);
-		Filter f = new CompositeFilter(CompositeFilterOperator.OR,
-				Arrays.asList(f1, f2));*/
+		/*
+		 * Filter f2 = new Query.FilterPredicate("email", FilterOperator.EQUAL,
+		 * email); Filter f = new CompositeFilter(CompositeFilterOperator.OR,
+		 * Arrays.asList(f1, f2));
+		 */
 		q.setFilter(f1);
 		PreparedQuery pq = ds.prepare(q);
 		if (pq.countEntities(FetchOptions.Builder.withDefaults()) == 1) {
@@ -243,8 +275,6 @@ public class GeneralController {
 		// TODO Auto-generated method stub
 		return ds.get(cKeys);
 	}
-	
-	
 
 	public static Iterator<Entity> findAll(String simpleName, int i) {
 		Query q = new Query(simpleName);
@@ -267,13 +297,13 @@ public class GeneralController {
 			ents = pq.asQueryResultList(FetchOptions.Builder.withLimit(limit)
 					.startCursor(c));
 		}
-		
-		if(ents.size() < limit) {
+
+		if (ents.size() < limit) {
 			cursorString = null;
 		} else {
 			cursorString = ents.getCursor().toWebSafeString();
 		}
-		
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("entities", ents);
 		map.put("cursor", cursorString);
@@ -282,11 +312,12 @@ public class GeneralController {
 
 	public static List<Entity> getAssessmentQuestionsBylevel(String level) {
 		Query q = new Query(AssessmentQuestion.class.getSimpleName());
-		q.setFilter(new Query.FilterPredicate("category",FilterOperator.EQUAL, level));
+		q.setFilter(new Query.FilterPredicate("category", FilterOperator.EQUAL,
+				level));
 		PreparedQuery pq = ds.prepare(q);
 		Iterator<Entity> its = pq.asIterator();
 		List<Entity> ents = new ArrayList<>();
-		while(its.hasNext()) {
+		while (its.hasNext()) {
 			ents.add(its.next());
 		}
 		return ents;

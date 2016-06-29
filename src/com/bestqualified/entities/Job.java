@@ -16,7 +16,8 @@ public class Job implements Serializable {
 	private static final long serialVersionUID = -7898460568156561794L;
 	
 	private Key id;
-	
+	private List<String> skills;
+	private Text jobRoles;
 	private Date closingDate;
 	private String salaryRange;
 	private String salaryCurrency;
@@ -33,7 +34,6 @@ public class Job implements Serializable {
 	private String jobTitle;
 	private Date datePosted;
 	private Text description;
-	private List<Key> invitesSent;
 	private Text customAttributes;
 	private String experience;
 	private String applicationUrl;
@@ -47,9 +47,10 @@ public class Job implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Job [id=" + id + ", closingDate=" + closingDate
-				+ ", salaryRange=" + salaryRange + ", salaryCurrency="
-				+ salaryCurrency + ", careerLevel=" + careerLevel
+		return "Job [id=" + id + ", skills=" + skills + ", jobRoles="
+				+ jobRoles + ", closingDate=" + closingDate + ", salaryRange="
+				+ salaryRange + ", salaryCurrency=" + salaryCurrency
+				+ ", careerLevel=" + careerLevel
 				+ ", allowLinkedInApplication=" + allowLinkedInApplication
 				+ ", allowFacebookApplication=" + allowFacebookApplication
 				+ ", Location=" + Location + ", educationLevel="
@@ -57,14 +58,31 @@ public class Job implements Serializable {
 				+ ", jobType=" + jobType + ", jobCategory=" + jobCategory
 				+ ", Employer=" + Employer + ", applicants=" + applicants
 				+ ", jobTitle=" + jobTitle + ", datePosted=" + datePosted
-				+ ", description=" + description + ", invitesSent="
-				+ invitesSent + ", customAttributes=" + customAttributes
-				+ ", experience=" + experience + ", applicationUrl="
-				+ applicationUrl + "]";
+				+ ", description=" + description + ", customAttributes="
+				+ customAttributes + ", experience=" + experience
+				+ ", applicationUrl=" + applicationUrl + ", company=" + company
+				+ ", viewers=" + viewers + ", newApplicants=" + newApplicants
+				+ "]";
 	}
 	
 	
-	
+
+	public List<String> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(List<String> skills) {
+		this.skills = skills;
+	}
+
+	public Text getJobRoles() {
+		return jobRoles;
+	}
+
+	public void setJobRoles(Text jobRoles) {
+		this.jobRoles = jobRoles;
+	}
+
 	public List<Key> getNewApplicants() {
 		return newApplicants;
 	}
@@ -198,12 +216,7 @@ public class Job implements Serializable {
 	public void setDescription(Text description) {
 		this.description = description;
 	}
-	public List<Key> getInvitesSent() {
-		return invitesSent;
-	}
-	public void setInvitesSent(List<Key> invitesSent) {
-		this.invitesSent = invitesSent;
-	}
+	
 	public Text getCustomAttributes() {
 		return customAttributes;
 	}

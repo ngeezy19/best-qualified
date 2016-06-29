@@ -4,6 +4,38 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
+	<servlet>
+		<servlet-name>InitRecruiterMajorInterest1</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitRecruiterMajorInterest1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitRecruiterMajorInterest1</servlet-name>
+		<url-pattern>/endpoint/init-recruiter-mj1</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>InitRecruiterMajorInterest2</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitRecruiterMajorInterest2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitRecruiterMajorInterest2</servlet-name>
+		<url-pattern>/endpoint/init-recruiter-mj2</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>InitRecruiterMajorInterest3</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitRecruiterMajorInterest3</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitRecruiterMajorInterest3</servlet-name>
+		<url-pattern>/endpoint/init-recruiter-mj3</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>InitRecruiterMajorInterest4</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitRecruiterMajorInterest4</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitRecruiterMajorInterest4</servlet-name>
+		<url-pattern>/endpoint/init-recruiter-mj4</url-pattern>
+	</servlet-mapping>
 	<listener>
 		<listener-class>com.bestqualified.listeners.BestQualifiedSessionListener</listener-class>
 	</listener>
@@ -346,14 +378,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>CoachingHome</servlet-name>
 		<url-pattern>/bq/coaching/home</url-pattern>
 	</servlet-mapping>
-	<servlet>
-		<servlet-name>CommunityHome</servlet-name>
-		<servlet-class>com.bestqualified.servlets.community.InitCommunity</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>CommunityHome</servlet-name>
-		<url-pattern>/bq/community/home</url-pattern>
-	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>SaveJobAlert</servlet-name>
 		<servlet-class>com.bestqualified.servlets.SaveJobAlert</servlet-class>
@@ -493,6 +518,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 
 
+
 	<servlet>
 		<servlet-name>SaveReadingList</servlet-name>
 
@@ -504,7 +530,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 
 	</servlet-mapping>
 
-	
 	<servlet>
 		<servlet-name>GetReadingList</servlet-name>
 		<servlet-class>com.bestqualified.servlets.GetReadingList</servlet-class>
@@ -512,6 +537,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<servlet-mapping>
 		<servlet-name>GetReadingList</servlet-name>
 		<url-pattern>/bq/coaching/tools/get-reading-list</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>InitCommunityBean</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitCommunityBean</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitCommunityBean</servlet-name>
+		<url-pattern>/community</url-pattern>
 	</servlet-mapping>
 
 
@@ -859,7 +893,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>community</servlet-name>
-		<url-pattern>/community</url-pattern>
+		<url-pattern>/bq/community</url-pattern>
 	</servlet-mapping>
 
 	<session-config>

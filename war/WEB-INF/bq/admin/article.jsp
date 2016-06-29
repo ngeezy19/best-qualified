@@ -33,7 +33,7 @@
 		<div class="row">
 			<form
 				action="<%=blobstoreService
-					.createUploadUrl("/bq/endpoint/find-a-job-user",options)%>"
+					.createUploadUrl("/bq/admin/create-article",options)%>"
 				method="post" enctype="multipart/form-data">
 				<div class="col-md-12">
 					<h3>Create New Article</h3>

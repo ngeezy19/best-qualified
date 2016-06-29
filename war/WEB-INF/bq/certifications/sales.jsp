@@ -104,10 +104,7 @@
 						</div>
 						<div class="col-sm-12 no-padding-div cert-view-content">
 							<p style="margin-bottom: 0px">National Association of Sales
-								Professionals (NASP) Certified Professional Sales Person (CPSP)
-								a comprehensive 6 week, online course created from 20 years of
-								modeling, interviewing, and coaching the top 1% of sales
-								professionals in the world</p>
+								Professionals (NASP) provides memberships, training and certifications</p>
 						</div>
 						<div class="col-sm-12 no-padding-div cert-view-content">
 							<h4>Certified Professional Sales Person (CPSP)</h4>
@@ -133,13 +130,43 @@
 										<strong>Audience</strong>
 									</h5>
 									<ul>
-										<li>SalesManagers and Executives</li>
+										<li>Sales Professionals</li>
 									</ul>
 								</div>
 							</div>
 							<div class="col-sm-12">
-								<p>Find more information on
-									http://certification.hubspot.com/inbound-sales-certification</p>
+									<p><a href="https://www.nasp.com/program/certified-professional-sales-person">Learn more</a></p>
+							</div>
+						</div>
+						<div class="col-sm-12 no-padding-div cert-view-content">
+						<h4>Voice of Influence</h4>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Learning Outcome</strong>
+
+									</h5>
+									<ul>
+										<li>Become a master communicator and influencer</li>
+										<li>Learn and use the specific vocal and influence techniques </li>
+										<li>Deliver message confidently and seamlessly</li>
+									</ul>
+								</div>
+
+							</div>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Audience</strong>
+									</h5>
+									<ul>
+										<li>Sales Professionals</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<p><a href="https://www.nasp.com/program/voice-of-influence">Learn more</a></p>
+									
 							</div>
 						</div>
 					</div>
@@ -156,9 +183,7 @@
 								self-paced classes. The certification is important for an
 								introduction to inbound sales. It includes modules which would
 								prepare sales (or non-sales) professionals to better identify,
-								connect, explore and advise the modern buyer. The inbound Sales
-								Certification Course can be taken by sales associates, sales
-								leaders, entrepreneurs and inbound marketers.</p>
+								connect, explore and advise the modern buyer.</p>
 						</div>
 						<div class="col-sm-12 no-padding-div cert-view-content">
 							<h4>Inbound Sales Certification</h4>
@@ -184,18 +209,18 @@
 										<strong>Audience</strong>
 									</h5>
 									<ul>
-										<li>SalesManagers and Executives</li>
+										<li>Sales Associates, Sales Leaders, Entrepreneurs and Inbound marketers</li>
 									</ul>
 								</div>
 							</div>
 							<div class="col-sm-12">
-								<p>Find more information on
-									http://certification.hubspot.com/inbound-sales-certification</p>
+									<p><a href="http://certification.hubspot.com/inbound-sales-certification">Learn more</a></p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			
 			<div class="col-sm-4">
 				<%@ include file="/WEB-INF/pages/certification-sidebar.html"%>
 			</div>

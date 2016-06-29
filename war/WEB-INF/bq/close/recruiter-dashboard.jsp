@@ -24,234 +24,155 @@
 <body
 	style="background-image: url(/images/background.jpg); background-repeat: repeat;">
 	<%@ include file="/main-nav.html"%>
-	<div class="container dashboard-body" style="margin-top: 8%;">
-		<div class="col-sm-8">
-			<div class="col-sm-12" style="margin-bottom: 2%;">
-				<div class="col-sm-2">
-					<div class="dashboard-section">
-						<img alt="" src="/images/personal-profile.png"
-							style="width: 80%; margin: 0 auto" class="img img-responsive">
-					</div>
-				</div>
-				<div class="col-sm-10 dashboard-section">
-					<div class="col-sm-8" style="border-right: 1px solid #dddddd;">
-						<div class="col-sm-3 no-padding-div">
-							<img src="/images/unknown-user.jpg"
-								class="img img-responsive img-circle" />
-						</div>
-						<div class="col-sm-9 no-padding-div">
-							<ul>
-								<li style="list-style: none;"><h4>
-										<c:out value='${recruiterDashboard.firstName}' />
-										<c:out value='${recruiterDashboard.lastName}' />
-									</h4></li>
-								<li style="list-style: none;"><c:out
-										value='${recruiterDashboard.tagline}' /></li>
-								<li style="list-style: none;"><c:out
-										value='${recruiterDashboard.company}' /></li>
-								<c:if test='${empty recruiterDashboard.tagline }'>
-									<li style="list-style: none;"><a
-										href="<c:url value='/bq/closed/init-professional-profile"' />">Edit
-											Profile</a></li>
-								</c:if>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div style="text-align: center;">
-							<span style="font-size: 22pt"><c:out
-									value='${recruiterDashboard.noConnections}' /> </span> connections
-						</div>
-						<div style="text-align: center;">
-							<a href="#">Meet professionals</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-2"></div>
-				<div class="col-sm-10 dashboard-section" style="border-top: none">
-					<div class="col-sm-12">
-						<c:choose>
-							<c:when test="${recruiterDashboard.numberOfProjects eq 0}">
-								<p class="text-danger">
-									<strong>You do not have an active project</strong>
-								</p>
-								<p>A project lets you manage your job post, save applicant's
-									profile and search results.</p>
-								<p>
-									<a href="<c:url value='/bq/close/new-project' />"
-										class="btn btn-primary btn-xs">Create new project</a>
-								</p>
-							</c:when>
-							<c:otherwise>
-								<p>
-									<strong class="text-success">You have <c:out
-											value="${recruiterDashboard.numberOfProjects}" /> active <c:choose>
-											<c:when test="${recruiterDashboard.numberOfProjects eq 1}">project.</c:when>
-											<c:otherwise>projects.</c:otherwise>
-										</c:choose>
-									</strong>
-								</p>
-								<p>
-									<a class="btn btn-xs btn-primary"
-										href="<c:url value='/bq/close/new-project' />">Create new
-										project</a>
-									<a class="btn btn-xs btn-primary" href="<c:url value='/bq/close/manage-project' />">Manage projects</a>
-									<a class="btn btn-xs btn-primary"
-										href="<c:url value='/bq/close/init-browse-profiles' />">Browse Profiles</a>
-								</p>
-							</c:otherwise>
-						</c:choose>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-12" style="margin-bottom: 2%;">
-				<div class="col-sm-2">
-					<div class="dashboard-section">
-						<img alt="" src="/images/jobs.png" class="img img-responsive"
-							style="width: 80%; margin: 0 auto">
-					</div>
-				</div>
-				<div class="col-sm-10 dashboard-section">
-					<div class="col-sm-12">
-						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666">Your
-							Applicants</h4>
-					</div>
-					<div class="col-sm-12">
-						<c:choose>
-							<c:when test='${fn:length(recruiterDashboard.applicants) > 0}'>
-								<p>You have ${fn:length(recruiterDashboard.applicants)} new
-									applicants</p>
-							</c:when>
-							<c:otherwise>
-								<c:choose>
-									<c:when test="${recruiterDashboard.numberOfProjects eq 0}">
-										<p class="text-danger">
-											<strong>You do not have an active project</strong>
-										</p>
-										<p>
-											<a href="<c:url value='/bq/close/new-project' />">Create
-												a project</a> then post a job in your project, Applicants for
-											your job post will show up here.
-										</p>
-									</c:when>
+	<br />
+	<br />
+	<br />
 
-									<c:otherwise>
-										<p class="text-danger">
-											<strong>You do not any new applicants</strong>
-										</p>
-										<p>
-											<a class="btn btn-primary btn-xs" href="#">Browse
-												profiles</a>
-										</p>
-									</c:otherwise>
-								</c:choose>
-							</c:otherwise>
-						</c:choose>
-					</div>
-					<c:forEach var="item" items="${professionalDashboard.iJobs}">
+	<div style="width: 65%; float: left">
+		<div style="width: 80%; float: right;">
+			<div class="container-fluid">
+				<div class="row card-panel">
 
-						<div class="col-sm-12"
-							style="border-bottom: 1px #e1e1e1 solid; margin-bottom: 2%; margin-top: 2%;">
-							<div class="col-sm-3">
-								<a href="<c:url value='/bq/open/job?job-key=${item.jobKey}' />"><img
-									alt="" src="${item.pictureUrl}" class="img img-responsive"></a>
+					<div class="col-sm-12"">
+						<div class="col-sm-8 no-padding-div">
+							<div class="col-sm-3 no-padding-div">
+								<img src="${recruiterDashboard.imageUrl}"
+									class="img img-responsive img-circle" />
 							</div>
-							<div class="col-sm-9">
-								<h4>
-									<a href="/bq/open/job?job-key=${item.jobKey}"><c:out
-											value="${item.jobTitle}" /></a>
+							<div class="col-sm-9 no-padding-div">
+
+								<h4 style="margin-top: 2px">
+									<c:out value='${recruiterDashboard.name}' />
 								</h4>
-								<h5 style="font-family: calibri">
-									<c:out value="${item.companyName}" />
+								<h5>
+									<c:out value='${recruiterDashboard.tagLine}' />
 								</h5>
 								<h5>
-									<i style="font-family: calibri">Posted <c:out
-											value="${item.postedTime}" /></i> <a
-										href="<c:url value='/bq/open/job?job-key=${item.jobKey}' />"
-										class="pull-right">View</a>
+									<c:out value='${recruiterDashboard.email}' />
 								</h5>
+
 							</div>
-
 						</div>
-					</c:forEach>
+						<div class="col-sm-4"></div>
+					</div>
 
 				</div>
-			</div>
-			<div class="col-sm-12" style="margin-bottom: 2%;">
-				<div class="col-sm-2">
-					<div class="dashboard-section">
-						<img alt="" src="/images/articles.png" class="img img-responsive"
-							style="width: 80%; margin: 0 auto">
-					</div>
+				<div class="row card-panel">
+					<div class="col-sm-4">New Project</div>
+					<div class="col-sm-4">Manage Projects</div>
+					<div class="col-sm-4">Search for candidates</div>
 				</div>
-				<div class="col-sm-10 dashboard-section">
-					<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666">Stories
-						and Articles on Best Qualified</h4>
-					<div
-						style="border-bottom: 1px gray solid; overflow: auto; margin-bottom: 2%;">
-						<div class="col-sm-3">
-							<img alt="" src="/images/story1.jpg" class="img img-responsive">
+				<c:forEach var="item" items="${recruiterDashboard.projects}">
+					<div class="row">
+						<div class="col-sm-2" style="padding-right: 0px">
+							<div class="card-panel">
+								<img alt="" src="${item.companyLogo}" class="img img-responsive">
+							</div>
 						</div>
-						<div class="col-sm-9">
-							<p>
-								<strong>Article Title</strong> <i>by firstname lastname</i>
-							</p>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-								Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus
-								neque, id</p>
-							<p>like Comment Share</p>
-						</div>
-					</div>
-					<div
-						style="border-bottom: 1px gray solid; overflow: auto; margin-bottom: 2%;">
-						<div class="col-sm-3">
-							<img alt="" src="/images/story2.jpg" class="img img-responsive">
-						</div>
-						<div class="col-sm-9">
-							<p>
-								<strong>Article Title</strong> <i>by firstname lastname</i>
-							</p>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-								Morbi commodo, ipsum sed pharetra gravida, ipsum dolor sit amet,
-								consectetuer</p>
-							<p>like Comment Share</p>
-						</div>
-					</div>
-					<div>
-						<div class="col-sm-3">
-							<img alt="" src="/images/story3.jpg" class="img img-responsive">
-						</div>
-						<div class="col-sm-9">
-							<p>
-								<strong>Article Title</strong> <i>by firstname lastname</i>
-							</p>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing
-								rhoncus neque, id pulvinar odio lorem non turpis.Lorem ipsum
-								dolor sit amet, consectetuer</p>
-							<p>like Comment Share</p>
-						</div>
-					</div>
-				</div>
-			</div>
+						<div class="col-sm-10">
+							<div class="col-sm-12 no-padding-div card-panel">
+								<div class="col-sm-4 alert alert-warning"
+									style="line-height: 1.8">
+									<div>
+										<a href="#"><c:out value="${item.newApplicants}" /> new
+											applicants</a>
+									</div>
+									<div>
+										<a href="#"><c:out value="${item.totalApplicants}" />
+											total applicants</a>
+									</div>
+									<div>
+										<a href="#"><c:out value="${item.inviteSent}" /> invites
+											sent</a>
+									</div>
+								</div>
+								<div class="col-sm-8">
+									<h4>
+										<a href="#"><c:out value="${item.name}" /></a>
+									</h4>
+									<div>
+										<span class="text-danger"><c:out
+												value="${item.jobTitle}" /></span>
+									</div>
+									<div>
+										<strong class="text-muted">Created:</strong>
+										<c:out value="${item.dateCreated}" />
+									</div>
+									<div class="">
+										<strong class="text-muted">Expires:</strong>
+										<c:out value="${item.expiryDate}" />
+									</div>
+								</div>
+								<div class="dropdown pull-right">
+									<button class="btn btn-success btn-sm dropdown-toggle"
+										type="button" data-toggle="dropdown">
+										Action <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li><a href="#">Close Project</a></li>
+										<li><a href="#">Edit Project</a></li>
+										<li><a href="#">View Job Post</a></li>
+									</ul>
+								</div>
 
-		</div>
-		<div class="col-sm-4">
-			<div class="col-sm-12  no-padding-div" style="margin-bottom: 2%;">
-				<iframe src="http://localhost:8888/images/ad1/negotiatn_ext.html"
-					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
-			</div>
-			<div class="col-sm-12 no-padding-div" style="margin-bottom: 2%;">
-				<iframe src="http://localhost:8888/images/ad2/bootcamp_ext.html"
-					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
-			</div>
-			<div class="col-sm-12  no-padding-div" style="margin-bottom: 2%;">
-				<iframe src="http://localhost:8888/images/ad3/tools_or_luck.html"
-					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 
 	</div>
-	<%@ include file="/WEB-INF/pages/footer.html"%>
+	<div style="float: left; position: relative;">
+		<div style="position: fixed;">
+			<div style="width: 300px;" class="card-panel">
+				<div class="container-fluid">
+					<div class="row">
+						<h4>Suggested Candidates</h4>
+					</div>
+					<c:forEach var="item" items="${recruiterDashboard.prospects}">
+						<div class="row" style="margin-bottom: 2%;">
+							<div class="col-sm-3 no-padding-div">
+								<img class="img img-responsive img-circle" alt=""
+									<c:choose><c:when test='${empty item.pictureUrl }'> src="/images/unknown-user.jpg"</c:when><c:otherwise> src="${item.pictureUrl}"</c:otherwise></c:choose>>
+							</div>
+							<div class="col-sm-8">
+								<h5 style="margin-bottom: 2px">
+									<c:out value='${item.firstName}' />
+									<c:out value='${item.lastName}' />
+								</h5>
+								<div class="text-success" style="font-family: calibri">
+									<c:out value='${item.highestQualification}' />
+								</div>
+								<div class="text-info" style="font-size: 10pt; font-stretch: narrower; font-style: italic;">
+									<c:out value='${item.yearsOfExperience}' />
+									years experience
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+	<div class="container">
+		<div class="row"
+			style="border-top: 1px solid #aaaaaa; text-align: center; margin: 5%; padding: 2%;">
+			<div class="col-sm-3">
+				<a href="#">Career Mobility</a>
+			</div>
+			<div class="col-sm-3">
+				<a href="#">Guidiance & Hand holding</a>
+			</div>
+			<div class="col-sm-3">
+				<a href="#">Certifications</a>
+			</div>
+			<div class="col-sm-3">
+				<a href="#">Community</a>
+			</div>
+		</div>
+	</div>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.webui-popover.min.js"></script>

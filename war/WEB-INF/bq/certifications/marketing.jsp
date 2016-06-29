@@ -187,8 +187,7 @@
 								</div>
 							</div>
 							<div class="col-sm-12">
-								<p>Find more information on
-									http://certification.hubspot.com/inbound-sales-certification</p>
+								<p><a href="http://nimn.com.ng/">Learn more</a></p>
 							</div>
 						</div>
 					</div>
@@ -229,13 +228,13 @@
 										<strong>Audience</strong>
 									</h5>
 									<ul>
-										<li>SalesManagers and Executives</li>
+										<li>Marketers</li>
 									</ul>
 								</div>
 							</div>
 							<div class="col-sm-12">
-								<p>Find more information on
-									http://certification.hubspot.com/inbound-sales-certification</p>
+								
+									<p><a href="https://www.ama.org/events-training/Certification/Pages/default.aspx">Learn more</a></p>
 							</div>
 						</div>
 					</div>
@@ -260,11 +259,9 @@
 
 									</h5>
 									<ul>
-										<li>Cultivate sales habits of top Fortune 500 executives</li>
-										<li>Learn the power of creating and utilizing "personal
-											identity" to amplify your multitude of strengths</li>
-										<li>Develop lasting behaviors that will make you a stand
-											out professional</li>
+										<li>Understand marketing principles</li>
+										<li>Understand different ways of communicating with different customers </li>
+										<li>Understand digital marketing and key tools used for communication</li>
 									</ul>
 								</div>
 
@@ -275,7 +272,7 @@
 										<strong>Audience</strong>
 									</h5>
 									<ul>
-										<li>SalesManagers and Executives</li>
+										<li>Managers in non-marketing functions, entrepreneurs, apprentices and those starting out in a marketing career</li>
 									</ul>
 								</div>
 							</div>
@@ -287,11 +284,9 @@
 
 									</h5>
 									<ul>
-										<li>Cultivate sales habits of top Fortune 500 executives</li>
-										<li>Learn the power of creating and utilizing "personal
-											identity" to amplify your multitude of strengths</li>
-										<li>Develop lasting behaviors that will make you a stand
-											out professional</li>
+										<li>Understand the role and function of marketing in some depth</li>
+										<li>Learn the different ways of communicating with customers, both inside and outside the organisation</li>
+										
 									</ul>
 								</div>
 
@@ -302,7 +297,7 @@
 										<strong>Audience</strong>
 									</h5>
 									<ul>
-										<li>SalesManagers and Executives</li>
+										<li>Marketing assistants or others working in marketing support roles</li>
 									</ul>
 								</div>
 							</div>
@@ -314,11 +309,9 @@
 
 									</h5>
 									<ul>
-										<li>Cultivate sales habits of top Fortune 500 executives</li>
-										<li>Learn the power of creating and utilizing "personal
-											identity" to amplify your multitude of strengths</li>
-										<li>Develop lasting behaviors that will make you a stand
-											out professional</li>
+										<li>Learn the strategic marketing planning process</li>
+										<li>Understand of key marketing metrics and measurement techniques</li>
+										
 									</ul>
 								</div>
 
@@ -329,7 +322,7 @@
 										<strong>Audience</strong>
 									</h5>
 									<ul>
-										<li>SalesManagers and Executives</li>
+										<li>Marketers in operational, supervisory or management roles</li>
 									</ul>
 								</div>
 							</div>
@@ -341,18 +334,25 @@
 
 									</h5>
 									<ul>
-										<li>Cultivate sales habits of top Fortune 500 executives</li>
-										<li>Learn the power of creating and utilizing "personal
-											identity" to amplify your multitude of strengths</li>
-										<li>Develop lasting behaviors that will make you a stand
-											out professional</li>
+										<li>Transition into strategic marketing management</li>
+										<li>Learn how to work more cross functionally at a senior management level</li>
+										<li>Learn to demonstrate leadership and influence</li>
 									</ul>
 								</div>
-
+										
 							</div>
 							<div class="col-sm-12">
-								<p>Find more information on
-									http://certification.hubspot.com/inbound-sales-certification</p>
+								<div class="info-div grad1">
+									<h5>
+										<strong>Audience</strong>
+									</h5>
+									<ul>
+										<li>Experienced marketers and senior business people</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<p><a href="http://www.cim.co.uk/qualifications/">Learn more</a></p>
 							</div>
 						</div>
 					</div>
@@ -370,106 +370,40 @@
 						<div class="col-sm-12 no-padding-div cert-view-content">
 							<h4>Associate CMMP</h4>
 							<div class="col-sm-12">
-								<div class="info-div grad1">
-									<h5>
-										<strong>Learning Outcome</strong>
-
-									</h5>
-									<ul>
-										<li>Cultivate sales habits of top Fortune 500 executives</li>
-										<li>Learn the power of creating and utilizing "personal
-											identity" to amplify your multitude of strengths</li>
-										<li>Develop lasting behaviors that will make you a stand
-											out professional</li>
-									</ul>
-								</div>
-
+								
 							</div>
-							<div class="col-sm-12">
-								<div class="info-div grad1">
-									<h5>
-										<strong>Audience</strong>
-									</h5>
-									<ul>
-										<li>SalesManagers and Executives</li>
-									</ul>
-								</div>
-							</div>
+							
+						
 							<h4>Manager CMMP</h4>
+							
 							<div class="col-sm-12">
-								<div class="info-div grad1">
-									<h5>
-										<strong>Learning Outcome</strong>
-
-									</h5>
-									<ul>
-										<li>Cultivate sales habits of top Fortune 500 executives</li>
-										<li>Learn the power of creating and utilizing "personal
-											identity" to amplify your multitude of strengths</li>
-										<li>Develop lasting behaviors that will make you a stand
-											out professional</li>
-									</ul>
-								</div>
-
-							</div>
-							<div class="col-sm-12">
-								<div class="info-div grad1">
-									<h5>
-										<strong>Audience</strong>
-									</h5>
-									<ul>
-										<li>SalesManagers and Executives</li>
-									</ul>
-								</div>
+								
 							</div>
 							<h4>Executive CMMP</h4>
 							<div class="col-sm-12">
-								<div class="info-div grad1">
-									<h5>
-										<strong>Learning Outcome</strong>
-
-									</h5>
-									<ul>
-										<li>Cultivate sales habits of top Fortune 500 executives</li>
-										<li>Learn the power of creating and utilizing "personal
-											identity" to amplify your multitude of strengths</li>
-										<li>Develop lasting behaviors that will make you a stand
-											out professional</li>
-									</ul>
-								</div>
+								
 
 							</div>
-							<div class="col-sm-12">
-								<div class="info-div grad1">
-									<h5>
-										<strong>Audience</strong>
-									</h5>
-									<ul>
-										<li>SalesManagers and Executives</li>
-									</ul>
-								</div>
-							</div>
+						
 							<h4>Chartered CMMP</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">
 									<h5>
-										<strong>Learning Outcome</strong>
+										<strong>Criteria</strong>
 
 									</h5>
 									<ul>
-										<li>Cultivate sales habits of top Fortune 500 executives</li>
-										<li>Learn the power of creating and utilizing "personal
-											identity" to amplify your multitude of strengths</li>
-										<li>Develop lasting behaviors that will make you a stand
-											out professional</li>
+										<li>meet specific academic requirements</li>
+										<li>meet specific work experience requirements</li>
+										<li>go through certain mandatory courses</li>
+										<li>pass an exam demonstrating competencies in the workplace</li>
+										<li>successfully complete previous CMMP level where appropriate</li>
 									</ul>
 								</div>
 
 							</div>
 							<div class="col-sm-12">
-								<p>Find more information on
-									http://certification.hubspot.com/inbound-sales-certification</p>
-							</div>
+								<p><a href="http://www.theiimp.org/cmmp-designation/">Learn more</a></p>
 						</div>
 					</div>
 				</div>
@@ -481,8 +415,8 @@
 						<div class="col-sm-12 no-padding-div cert-view-content">
 							<p style="margin-bottom: 0px">The inbound Certification is a free qualification offered by Hubspot. 
 							It covers the principal components of Inbound Marketing and has a self–paced set of courses. 
-							The certification is important if professionals want to understand the fundamentals of attracting visitors, lead nurturing and conversion, close customers and delight customers into promoters. 
-						The Inbound Marketing Certification Course can be taken by Marketers, non-marketers, entrepreneurs and students</p>
+							The certification is important if professionals want to understand the fundamentals of attracting visitors, 
+							lead nurturing and conversion, close customers and delight customers into promoters. </p>
 						</div>
 						<div class="col-sm-12 no-padding-div cert-view-content">
 							<h4>Inbound Marketing Certification</h4>
@@ -508,13 +442,13 @@
 										<strong>Audience</strong>
 									</h5>
 									<ul>
-										<li>SalesManagers and Executives</li>
+										<li>Marketers, non-marketers, entrepreneurs and students</li>
 									</ul>
 								</div>
 							</div>
 							<div class="col-sm-12">
-								<p>Find more information on
-									http://certification.hubspot.com/inbound-sales-certification</p>
+							<p><a href="http://certification.hubspot.com/inbound-sales-certification">Learn more</a></p>
+								
 							</div>
 						</div>
 					</div>

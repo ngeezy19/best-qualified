@@ -1,6 +1,9 @@
 package com.bestqualified.servlets;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -74,7 +77,15 @@ public class JobSeeker extends HttpServlet {
 			if(cp == null) {
 				cp = new CandidateProfile(u.getUserKey());
 			}
-			
+			Date d = null;
+			if(dob != null) {
+				try {
+					d = new SimpleDateFormat("MM/dd/yyyy").parse(dob);
+				} catch (ParseException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+			}
 			u.setPhone(mobileNumber);
 			u.setGender(gender.toUpperCase());
 			cp.setCurrentState(location);
@@ -83,12 +94,16 @@ public class JobSeeker extends HttpServlet {
 			cp.setHighestEducationLevel(educationLevel);
 			cp.setYearsOfExperience(experience);
 			u.setUserInfo(cp.getId());
+			cp.setJobType(jobType);
+			u.setBirthDate(d);
 			Entity e = EntityConverter.candidateProfileToEntity(cp);
 			Entity e1 = EntityConverter.userToEntity(u);
 			GeneralController.createWithCrossGroup(e1, e);
 			synchronized (session) {
 				session.setAttribute("professionalProfile", cp);
 			}
+			
+			Util.addToSearchIndex(u, cp);
 
 			RequestDispatcher rd = req
 					.getRequestDispatcher("/end-point/add-major-interest");

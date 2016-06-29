@@ -233,11 +233,7 @@ public class SaveProject extends HttpServlet {
 			ProjectBean pb = new ProjectBean();
 			pb.setDateCreated(new SimpleDateFormat("dd-MMM-YYYY").format(p.getDateCreated()));
 			pb.setDescription(p.getDescription().getValue());
-			pb.setJob(job);
-			pb.setName(p.getName());
-			pb.setProfiles(new ArrayList<ProView>());
-			pb.setSafeKey(p.getSafeKey());
-			pb.setSavedSearch(new ArrayList<ProView>());
+			
 			synchronized (session) {
 				session.setAttribute("projectBean", pb);
 			}
