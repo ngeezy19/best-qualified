@@ -97,12 +97,12 @@
 						<div class="form-group">
 							<label>Education Level:</label> <select class="form-control"
 								name="educational-level">
-								<option>Higher National Diploma</option>
-								<option>Bachelor's Degree</option>
-								<option>Master's Degree</option>
-								<option>Post Graduate Diploma</option>
-								<option>Doctorate</option>
-								<option>professional</option>
+								<option value="501">Higher National Diploma</option>
+								<option value="502">Bachelor's Degree</option>
+								<option value="503">Master's Degree</option>
+								<option value="504">Post Graduate Diploma</option>
+								<option value="505">Doctorate</option>
+								<option value="506">Professional</option>
 							</select>
 						</div>
 					</div>

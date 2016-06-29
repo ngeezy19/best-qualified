@@ -45,6 +45,8 @@ public class FindJobServlet extends HttpServlet {
 		String[] jobCategory = req.getParameterValues("jobCategory");
 		String[] experience = req.getParameterValues("experience");
 		String title = req.getParameter("title");
+		
+		
 
 		String qStr = "";
 		if (Util.notNull(title)) {

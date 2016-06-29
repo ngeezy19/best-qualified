@@ -4,6 +4,38 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
+	<servlet>
+		<servlet-name>InitRecruiterMajorInterest1</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitRecruiterMajorInterest1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitRecruiterMajorInterest1</servlet-name>
+		<url-pattern>/endpoint/init-recruiter-mj1</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>InitRecruiterMajorInterest2</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitRecruiterMajorInterest2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitRecruiterMajorInterest2</servlet-name>
+		<url-pattern>/endpoint/init-recruiter-mj2</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>InitRecruiterMajorInterest3</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitRecruiterMajorInterest3</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitRecruiterMajorInterest3</servlet-name>
+		<url-pattern>/endpoint/init-recruiter-mj3</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>InitRecruiterMajorInterest4</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitRecruiterMajorInterest4</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitRecruiterMajorInterest4</servlet-name>
+		<url-pattern>/endpoint/init-recruiter-mj4</url-pattern>
+	</servlet-mapping>
 	<listener>
 		<listener-class>com.bestqualified.listeners.BestQualifiedSessionListener</listener-class>
 	</listener>
@@ -492,18 +524,29 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/bq/endpoint/be-a-coach</url-pattern>
 	</servlet-mapping>
 
+<<<<<<< HEAD
+	
+	<servlet>
+		<servlet-name>SaveReadingList</servlet-name>
+=======
 
 	<servlet>
 		<servlet-name>SaveReadingList</servlet-name>
 
+>>>>>>> 9053336f32da65804a08d4fa451e6748859b0b9d
 		<servlet-class>com.bestqualified.admin.CreateReadingList</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SaveReadingList</servlet-name>
 		<url-pattern>/bq/admin/save-reading-list</url-pattern>
+<<<<<<< HEAD
+
+	</servlet-mapping>
+=======
 
 	</servlet-mapping>
 
+>>>>>>> 9053336f32da65804a08d4fa451e6748859b0b9d
 	
 	<servlet>
 		<servlet-name>GetReadingList</servlet-name>
@@ -513,7 +556,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>GetReadingList</servlet-name>
 		<url-pattern>/bq/coaching/tools/get-reading-list</url-pattern>
 	</servlet-mapping>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 9053336f32da65804a08d4fa451e6748859b0b9d
 
 	<!-- ***************************************************SERVLET*********************************************************** -->
 	<servlet>

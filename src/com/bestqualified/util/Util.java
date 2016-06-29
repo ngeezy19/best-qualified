@@ -50,8 +50,7 @@ import com.bestqualified.bean.MyJobs;
 import com.bestqualified.bean.ProView;
 import com.bestqualified.bean.ProfessionalDashboard;
 import com.bestqualified.bean.ProfessionalProfileBean;
-import com.bestqualified.bean.ProjectBean1;
-import com.bestqualified.bean.ProjectView;
+import com.bestqualified.bean.ProjectBean;
 import com.bestqualified.bean.RecruiterDashboardBean;
 import com.bestqualified.bean.SignUpBean;
 import com.bestqualified.bean.SocialUser;
@@ -434,7 +433,8 @@ public class Util {
 	public static ProfessionalDashboard initProfessionalDashboardBean(User u,
 			CandidateProfile cp) {
 		ProfessionalDashboard pd = new ProfessionalDashboard();
-		pd.setArticles(Util.toArticleBeans(GeneralController.getNArticlesByDate(3)));
+		pd.setArticles(Util.toArticleBeans(GeneralController
+				.getNArticlesByDate(3)));
 		pd.setProfessionalLevel(u.getProfessionalLevel());
 		pd.setCurrentEmployer(cp.getCurrentEmployer());
 		pd.setiJobs(Util.getJobs(cp.getCareerLevel(), cp.getEducation()));
@@ -492,13 +492,13 @@ public class Util {
 		pd.setProfileStrength(Util.calculateProfileStrength(u, cp));
 		pd.setProfileLevel(Util.getprofileLevel(pd.getProfileStrength()));
 		pd.setProfileColor(Util.getProfileColor(pd.getProfileStrength()));
-		
-		if(Util.notNull(u.getTagline(), cp.getCurrentEmployer())) {
-			pd.setTagline(u.getTagline()+" at "+cp.getCurrentEmployer());
-		}else if(Util.notNull(u.getTagline())) {
+
+		if (Util.notNull(u.getTagline(), cp.getCurrentEmployer())) {
+			pd.setTagline(u.getTagline() + " at " + cp.getCurrentEmployer());
+		} else if (Util.notNull(u.getTagline())) {
 			pd.setTagline(u.getTagline());
-		} else if(Util.notNull(cp.getCurrentEmployer())) {
-			pd.setTagline("Works at "+cp.getCurrentEmployer());
+		} else if (Util.notNull(cp.getCurrentEmployer())) {
+			pd.setTagline("Works at " + cp.getCurrentEmployer());
 		}
 
 		return pd;
@@ -703,7 +703,94 @@ public class Util {
 
 	}
 
+	public static void addToSearchIndex(User u, CandidateProfile cp) {
+
+		String experience = Util.getExperience(cp.getYearsOfExperience());
+		Document.Builder db = Document.newBuilder();
+		db = db.setId(KeyFactory.keyToString(u.getUserKey()))
+				.addField(
+						Field.newBuilder().setName("firstName")
+								.setText(u.getFirstName()))
+				.addField(
+						Field.newBuilder().setName("lastName")
+								.setText(u.getLastName()))
+				.addField(
+						Field.newBuilder().setName("email")
+								.setAtom(u.getEmail()))
+				.addField(
+						Field.newBuilder().setName("phone")
+								.setAtom(u.getPhone()))
+				.addField(
+						Field.newBuilder().setName("gender")
+								.setAtom(u.getGender()))
+				.addField(
+						Field.newBuilder().setName("tagline")
+								.setText(u.getTagline()))
+				.addField(
+						Field.newBuilder().setName("careerLevel")
+								.setAtom(cp.getCareerLevel()))
+				.addField(
+						Field.newBuilder().setName("currentState")
+								.setAtom(cp.getCurrentState()))
+				.addField(
+						Field.newBuilder().setName("currentCountry")
+								.setAtom(cp.getCurrentCountry()))
+				.addField(
+						Field.newBuilder().setName("jobType")
+								.setAtom(cp.getJobType()))
+				.addField(
+						Field.newBuilder().setName("highestEducationLevel")
+								.setText(cp.getHighestEducationLevel()))
+				.addField(
+						Field.newBuilder().setName("currentEmployer")
+								.setText(cp.getCurrentEmployer()))
+				.addField(
+						Field.newBuilder().setName("experience")
+								.setAtom(experience))
+				.addField(
+						Field.newBuilder().setName("pictureUrl")
+								.setAtom(u.getPictureUrl()))
+				.addField(
+						Field.newBuilder().setName("yearsOfExperience")
+								.setAtom(cp.getYearsOfExperience()));
+
+		SearchDocumentIndexService.indexDocument("professionals", db.build());
+
+	}
+
+	private static String getExperience(String yearsOfExperience) {
+		if (yearsOfExperience != null) {
+			int i = Integer.parseInt(yearsOfExperience);
+			if (i >= 0 && i <= 1) {
+				return "401";
+			} else if (i >= 0 && i <= 2) {
+				return "402";
+			} else if (i >= 1 && i <= 3) {
+				return "403";
+			} else if (i >= 2 && i <= 5) {
+				return "404";
+			} else if (i >= 3 && i <= 5) {
+				return "405";
+			} else if (i >= 5 && i <= 10) {
+				return "406";
+			} else if (i >= 7 && i <= 10) {
+				return "407";
+			} else {
+				return "408";
+			}
+		} else {
+			return null;
+		}
+
+	}
+
 	public static void addToSearchIndex(Job job, Company c) {
+		String companyName = null;
+		if (c == null) {
+			companyName = "Confidential";
+		} else {
+			companyName = c.getCompanyName();
+		}
 		Document.Builder db = Document.newBuilder();
 		db = db.setId(KeyFactory.keyToString(job.getId()))
 				.addField(
@@ -735,42 +822,10 @@ public class Util {
 								.setDate(job.getDatePosted()))
 				.addField(
 						Field.newBuilder().setName("companyName")
-								.setText(c.getCompanyName()));
+								.setText(companyName));
 
 		SearchDocumentIndexService.indexDocument("jobs", db.build());
 	}
-
-	/*
-	 * public static void addToSearchIndex(Job job, Company c) {
-	 * Document.Builder db = Document.newBuilder(); db =
-	 * db.setId(KeyFactory.keyToString(job.getId())); db =
-	 * db.addFacet(Facet.withAtom("location", job.getLocation())); db =
-	 * db.addFacet(Facet.withAtom("educationLevel", job.getEducationLevel()));
-	 * db = db.addFacet(Facet.withAtom("salaryRange", job.getSalaryRange())); db
-	 * = db.addFacet(Facet.withAtom("careerLevel", job.getCareerLevel())); db =
-	 * db.addFacet(Facet.withAtom("jobType", job.getJobType())); db =
-	 * db.addFacet(Facet.withAtom("experience", job.getExperience())); db =
-	 * db.addFacet(Facet.withAtom("companyName", c.getCompanyName())); db =
-	 * db.addFacet(Facet.withAtom("jobTitle", job.getJobTitle())); db =
-	 * db.addFacet(Facet.withAtom("jobCategory", job.getJobCategory())); db =
-	 * db.addField(Field.newBuilder().setName("location")
-	 * .setText(job.getLocation())); db =
-	 * db.addField(Field.newBuilder().setName("description")
-	 * .setHTML(job.getDescription().getValue())); db =
-	 * db.addField(Field.newBuilder().setName("companyName")
-	 * .setText(c.getCompanyName())); db =
-	 * db.addField(Field.newBuilder().setName("jobTitle")
-	 * .setText(job.getJobTitle())); db =
-	 * db.addField(Field.newBuilder().setName("companyKey")
-	 * .setText(KeyFactory.keyToString(c.getId()))); db =
-	 * db.addField(Field.newBuilder().setName("datePosted")
-	 * .setDate(job.getDatePosted()));
-	 * 
-	 * SearchDocumentIndexService.indexDocument("JobSearchDocuments",
-	 * db.build());
-	 * 
-	 * }
-	 */
 
 	public static ProfessionalProfileBean createProfessionalProfileBean(User u,
 			CandidateProfile cp) {
@@ -854,124 +909,114 @@ public class Util {
 	public static RecruiterDashboardBean initRecruiterDashboardBean(User u,
 			Recruiter r) {
 		RecruiterDashboardBean rdb = new RecruiterDashboardBean();
-		rdb.setFirstName(u.getFirstName());
-		rdb.setLastName(u.getLastName());
-		rdb.setTagline(u.getTagline());
-		if (r.getCompany() != null) {
-			Company c = EntityConverter.entityToCompany(GeneralController
-					.findByKey(r.getCompany()));
-			rdb.setCompany(c.getCompanyName());
-		}
-		if (r.getConnections() != null) {
-			rdb.setNoConnections(String.valueOf(r.getConnections().size()));
-		} else {
-			rdb.setNoConnections(String.valueOf(0));
-		}
-		if (r.getProjects() == null) {
-			rdb.setNumberOfProjects(0);
-		} else {
-			rdb.setNumberOfProjects(r.getProjects().size());
+		rdb.setName(u.getFirstName() + " " + u.getLastName());
+		if (u.getPictureUrl() == null) {
+			rdb.setImageUrl("/images/unknown-user.jpg");
 		}
 
-		// rdb.setProjectView(Util.getProjectViews(r.getProjects()));
-		Map<String, Set<Key>> map = Util.getApplicants(r.getProjects());
-		List<Key> applicants = Util.getApplicantsList(map);
-		List<ProView> users = new ArrayList<>();
-		for (Key k : applicants) {
-			ProView pv = Util.getProview(map, k);
-			if (pv != null) {
-				users.add(pv);
+		if (r.getCompany() != null) {
+			Entity e = GeneralController.findByKey(r.getCompany());
+			Company c = EntityConverter.entityToCompany(e);
+			if (Util.notNull(u.getTagline(), c.getCompanyName())) {
+				rdb.setTagLine(u.getTagline() + " at " + c.getCompanyName());
+			} else if (Util.notNull(u.getTagline())) {
+				rdb.setTagLine(u.getTagline());
+			} else if (Util.notNull(c.getCompanyName())) {
+				rdb.setTagLine("Works at " + c.getCompanyName());
 			}
 		}
-		rdb.setApplicants(users);
+
+		rdb.setEmail(u.getEmail());
+
+		List<Key> projectKeys = r.getProjects();
+		Map<Key, Entity> projectEntities = GeneralController
+				.findByKeys(projectKeys);
+		rdb.setProjects(Util.getProjectBeans(projectEntities));
+		rdb.setProspects(Util.getProspects(projectEntities));
+
+		// rdb.setSavedSearch(Util.getSavedSearch(r.));
+
 		return rdb;
 	}
 
-	private static ProView getProview(Map<String, Set<Key>> map, Key userKey) {
-		User u = EntityConverter.entityToUser(GeneralController
-				.findByKey(userKey));
-		ProView p = new ProView();
-		if (u.getUserType().equalsIgnoreCase(User.UserType.PROFESSIONAL.name())) {
-			CandidateProfile cp = EntityConverter.entityToCandidateProfile(
-					GeneralController.findByKey(u.getUserInfo()), userKey);
-			for (String s : map.keySet()) {
-				Set<Key> kys = map.get(s);
-				for (Key k : kys) {
-					if (k == userKey) {
-						p.setProjectName(s);
-						break;
-					}
-				}
-				break;
+	private static List<ProView> getProspects(Map<Key, Entity> projectEntities) {
+		List<Key> jobKeys = new ArrayList<>();
+		Set<Key> keys = projectEntities.keySet();
+		for (Key k : keys) {
+			Entity e = projectEntities.get(k);
+			Object o = e.getProperty("job");
+			if (o != null) {
+				Key kk = (Key) o;
+				jobKeys.add(kk);
 			}
-			p.setCountry(cp.getCurrentCountry());
-			p.setFirstName(u.getFirstName());
-			p.setLastName(u.getLastName());
-			if (cp.getConnections() != null) {
-				p.setNumberOfConnections(String.valueOf(cp.getConnections()
-						.size()));
-			}
-			p.setState(cp.getCurrentState());
-
-			// education
-			if (cp.getEducation() != null) {
-				Education edu = null;
-				Map<Key, Entity> mp = GeneralController.findByKeys(cp
-						.getEducation());
-				for (Key k : cp.getEducation()) {
-					Education e = EntityConverter.entityToEducation(mp.get(k));
-					if (edu == null) {
-						edu = e;
-					} else if (e.getEndYear().equalsIgnoreCase("current")
-							|| e.getEndYear().equalsIgnoreCase("to date")) {
-						edu = e;
-						break;
-					} else if (Integer.parseInt(e.getEndYear()) > Integer
-							.parseInt(edu.getEndYear())) {
-						edu = e;
-					} else if (Integer.parseInt(e.getEndYear()) == Integer
-							.parseInt(edu.getEndYear())) {
-						if (Integer.parseInt(e.getEndMonth()) > Integer
-								.parseInt(edu.getEndMonth())) {
-							edu = e;
-						}
-					}
-
-				}
-				p.setEducation(edu);
-			}
-
-			// work experience
-			if (cp.getWorkExperience() != null) {
-				WorkExperience we = null;
-				Map<Key, Entity> mp = GeneralController.findByKeys(cp
-						.getWorkExperience());
-				for (Key k : cp.getWorkExperience()) {
-					WorkExperience wex = EntityConverter
-							.entityToWorkExperience(mp.get(k));
-					if (we == null) {
-						we = wex;
-					} else if (wex.getEndYear().equalsIgnoreCase("current")
-							|| wex.getEndYear().equalsIgnoreCase("to date")) {
-						we = wex;
-						break;
-					} else if (Integer.parseInt(wex.getEndYear()) > Integer
-							.parseInt(we.getEndYear())) {
-						we = wex;
-					} else if (Integer.parseInt(wex.getEndYear()) == Integer
-							.parseInt(we.getEndYear())) {
-						if (Integer.parseInt(wex.getEndMonth()) > Integer
-								.parseInt(we.getEndMonth())) {
-							we = wex;
-						}
-					}
-
-				}
-				p.setWorkExperience(we);
-			}
-
 		}
-		return p;
+		List<Job> jobs = new ArrayList<>();
+		Map<Key, Entity> map = GeneralController.findByKeys(jobKeys);
+		for (Key k : jobKeys) {
+			jobs.add(EntityConverter.entityToJob(map.get(k)));
+		}
+		Set<String> experience = new HashSet<>();
+		Set<String> education = new HashSet<>();
+		for (Job j : jobs) {
+			if (j.getExperience() != null) {
+				experience.add(j.getExperience());
+			}
+			if (j.getEducationLevel() != null) {
+				education.add(j.getEducationLevel());
+			}
+		}
+		return getProview(experience, education);
+	}
+
+	private static List<ProView> getProview(Set<String> experience,
+			Set<String> education) {
+		List<String> exp = new ArrayList<>();
+		exp.addAll(experience);
+		List<String> edu = new ArrayList<>();
+		edu.addAll(education);
+		String q = "";
+		String end = null;
+		for (int i = 0; i < exp.size(); i++) {
+			if (i == exp.size() - 1) {
+				end = ")";
+			} else {
+				end = ") OR";
+			}
+			q += " (experience:" + exp.get(i) + end;
+		}
+		
+		if(!edu.isEmpty()) {
+			q+=" OR ";
+		}
+		for (int i = 0; i < edu.size(); i++) {
+			if (i == edu.size() - 1) {
+				end = ")";
+			} else {
+				end = ") OR";
+			}
+			q += " (highestEducationLevel:" + edu.get(i) + end;
+		}
+		QueryOptions options = QueryOptions
+				.newBuilder()
+				.setLimit(10)
+				.setFieldsToReturn("firstName", "lastName", "highestEducationLevel",
+						"yearsOfExperience","pictureUrl").build();
+		Query query = Query.newBuilder().setOptions(options).build(q);
+		IndexSpec indexSpec = IndexSpec.newBuilder().setName("professionals").build();
+		Index index = SearchServiceFactory.getSearchService().getIndex(
+				indexSpec);
+		Results<ScoredDocument> result = index.search(query);
+		List<ProView> pvs = new ArrayList<>();
+		for (ScoredDocument sd : result) { 
+			ProView pv = new ProView();
+			pv.setFirstName(sd.getOnlyField("firstName").getText());
+			pv.setLastName(sd.getOnlyField("lastName").getText());
+			//pv.setPictureUrl(sd.getOnlyField("pictureUrl").getAtom());
+			pv.setYearsOfExperience(sd.getOnlyField("yearsOfExperience").getAtom());
+			pv.setHighestQualification(sd.getOnlyField("highestEducationLevel").getText());
+			pvs.add(pv);
+		}
+		return pvs;
 	}
 
 	private static List<Key> getApplicantsList(Map<String, Set<Key>> map) {
@@ -1008,29 +1053,57 @@ public class Util {
 
 	}
 
-	private static List<ProjectView> getProjectViews(List<Key> projects) {
-		if (projects != null) {
-			List<ProjectView> ps = new ArrayList<>();
-			Map<Key, Entity> ents = GeneralController.findByKeys(projects);
+	public static List<ProjectBean> getProjectBeans(Map<Key, Entity> ents) {
+		if (ents != null) {
+			List<ProjectBean> ps = new ArrayList<>();
+			Set<Key> projects = ents.keySet();
 			for (Key k : projects) {
-				ps.add(Util.projectToView(EntityConverter.entityToProject(ents
+				ps.add(Util.toProjectBean(EntityConverter.entityToProject(ents
 						.get(k))));
 			}
 			return ps;
 
 		} else {
-			return new ArrayList<ProjectView>();
+			return new ArrayList<ProjectBean>();
 		}
 	}
 
-	private static ProjectView projectToView(Project project) {
-		ProjectView pv = new ProjectView();
-		pv.setName(project.getName());
-		Job j = EntityConverter.entityToJob(GeneralController.findByKey(project
-				.getId()));
-		pv.setView(j.getViewers().size());
-		pv.setWebKey(project.getSafeKey());
-		return pv;
+	private static ProjectBean toProjectBean(Project project) {
+		ProjectBean pb = new ProjectBean();
+		pb.setName(project.getName());
+		pb.setDateCreated(new SimpleDateFormat("yyyy MMM dd").format(project
+				.getDateCreated()));
+		if (project.getDescription() != null) {
+			pb.setDescription(project.getDescription().getValue());
+		}
+		if (project.getInvitees() != null) {
+			pb.setInviteSent(project.getInvitees().size());
+		}
+		if (project.getNewApplicants() != null) {
+			pb.setNewApplicants(project.getNewApplicants().size());
+		}
+		if (project.getApplicants() != null) {
+			pb.setTotalApplicants(project.getApplicants().size());
+		}
+
+		pb.setWebKey(project.getSafeKey());
+		if (project.getJobs() != null) {
+			Job j = EntityConverter.entityToJob(GeneralController
+					.findByKey(project.getJobs()));
+			pb.setJobTitle(j.getJobTitle());
+			pb.setExpiryDate(new SimpleDateFormat("yyyy MMM dd").format(j
+					.getClosingDate()));
+			if (j.getCompany() != null) {
+				Company c = EntityConverter.entityToCompany(GeneralController
+						.findByKey(j.getCompany()));
+				if (c.getLogo() == null) {
+					pb.setCompanyLogo(StringConstants.DEFAULT_COMPANY_LOGO);
+				} else {
+					pb.setCompanyLogo(Util.getPictureUrl(c.getLogo()));
+				}
+			}
+		}
+		return pb;
 	}
 
 	public static void sendApplicationEmails(User u, CandidateProfile cp,
@@ -1146,34 +1219,30 @@ public class Util {
 
 	}
 
-	public static List<ProjectBean1> toProjectBean1(List<Project> l1) {
-		List<ProjectBean1> pb1 = new ArrayList<>();
+	public static List<ProjectBean> toProjectBean1(List<Project> l1) {
+		List<ProjectBean> pb1 = new ArrayList<>();
 		for (Project p : l1) {
-			ProjectBean1 pb = new ProjectBean1();
+			ProjectBean pb = new ProjectBean();
 			pb.setDateCreated(new SimpleDateFormat("dd-MMM-yyyy").format(p
 					.getDateCreated()));
 			pb.setDescription(p.getDescription().getValue());
 			pb.setName(p.getName());
 			if (p.getProfiles() == null) {
-				pb.setSavedProfile(0);
+				// pb.setSavedProfile(0);
 			} else {
-				pb.setSavedProfile(p.getProfiles().size());
+				// pb.setSavedProfile(p.getProfiles().size());
 			}
 			if (p.getSavedSearch() == null) {
-				pb.setSavedSearch(0);
+				// pb.setSavedSearch(0);
 				;
 			} else {
-				pb.setSavedSearch(p.getSavedSearch().size());
+				// pb.setSavedSearch(p.getSavedSearch().size());
 			}
 
 			pb.setWebKey(p.getSafeKey());
 			if (p.getJobs() != null) {
 				Job j = Util.getJobFromCache(p.getJobs());
-				if (j.getInvitesSent() == null) {
-					pb.setInviteSent(0);
-				} else {
-					pb.setInviteSent(j.getInvitesSent().size());
-				}
+
 				if (j.getNewApplicants() == null) {
 					pb.setNewApplicants(0);
 					pb.setTotalApplicants(0);
@@ -1204,15 +1273,18 @@ public class Util {
 		return job;
 	}
 
-	public static ManageProjectBean getManageProjectBean(List<ProjectBean1> l2) {
+	public static ManageProjectBean getManageProjectBean(List<ProjectBean> l2) {
 		ManageProjectBean mpb = new ManageProjectBean();
-		for (ProjectBean1 pb1 : l2) {
+		for (ProjectBean pb1 : l2) {
 			mpb.setNewApplicants(mpb.getNewApplicants()
 					+ pb1.getNewApplicants());
-			mpb.setSavedProfiles(mpb.getSavedProfiles() + pb1.getSavedProfile());
-			mpb.setTotalApplicants(mpb.getTotalApplicants()
-					+ pb1.getTotalApplicants());
-			mpb.setSavedSearch(mpb.getSavedSearch() + pb1.getSavedSearch());
+			/*
+			 * mpb.setSavedProfiles(mpb.getSavedProfiles() +
+			 * pb1.getSavedProfile());
+			 * mpb.setTotalApplicants(mpb.getTotalApplicants() +
+			 * pb1.getTotalApplicants());
+			 * mpb.setSavedSearch(mpb.getSavedSearch() + pb1.getSavedSearch());
+			 */
 		}
 		mpb.setPb1(l2);
 		return mpb;
@@ -1521,6 +1593,31 @@ public class Util {
 		return value;
 	}
 
+	public static String getEducationLevelValue(String code) {
+		String value = "";
+		switch (code) {
+		case "501":
+			value = StringConstants.EDUCATION_LEVEL_501;
+			break;
+		case "502":
+			value = StringConstants.EDUCATION_LEVEL_502;
+			break;
+		case "503":
+			value = StringConstants.EDUCATION_LEVEL_503;
+			break;
+		case "504":
+			value = StringConstants.EDUCATION_LEVEL_504;
+			break;
+		case "505":
+			value = StringConstants.EDUCATION_LEVEL_505;
+			break;
+		case "506":
+			value = StringConstants.EDUCATION_LEVEL_506;
+			break;
+		}
+		return value;
+	}
+
 	public static String getExperienceValue(String code) {
 		String value = "";
 		switch (code) {
@@ -1747,19 +1844,41 @@ public class Util {
 			Article a = new Article();
 			User u = EntityConverter.entityToUser(GeneralController
 					.findByKey(art.getAuthor()));
-			
-			a.setAuthor(u.getFirstName()+" "+u.getLastName());
+
+			a.setAuthor(u.getFirstName() + " " + u.getLastName());
 			a.setTitle(art.getTitle());
-			a.setSnippet(art.getBody().getValue().substring(0, 200)+"...");
-			ImagesService imagesService = ImagesServiceFactory.getImagesService();
-			ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(art.getImageKey()).imageSize(250);
+			a.setSnippet(art.getBody().getValue().substring(0, 200) + "...");
+			ImagesService imagesService = ImagesServiceFactory
+					.getImagesService();
+			ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(
+					art.getImageKey()).imageSize(250);
 			String servingUrl = imagesService.getServingUrl(options);
 			a.setPictureUrl(servingUrl);
-			a.setPostDate(new SimpleDateFormat("dd MMMM yyyy").format(art.getDate()));
+			a.setPostDate(new SimpleDateFormat("dd MMMM yyyy").format(art
+					.getDate()));
 			a.setWebkey(KeyFactory.keyToString(art.getKey()));
 			aas.add(a);
 		}
 
 		return aas;
+	}
+
+	public static Recruiter mergeRecruiters(Recruiter r, Recruiter orr) {
+		if (r.getCompany() != null) {
+			orr.setCompany(r.getCompany());
+		}
+		if (r.getJobs() != null) {
+			if (orr.getJobs() == null) {
+				orr.setJobs(new ArrayList<Key>());
+			}
+			orr.getJobs().addAll(r.getJobs());
+		}
+		if (r.getProjects() != null) {
+			if (orr.getProjects() == null) {
+				orr.setProjects(new ArrayList<Key>());
+			}
+			orr.getProjects().addAll(r.getProjects());
+		}
+		return orr;
 	}
 }

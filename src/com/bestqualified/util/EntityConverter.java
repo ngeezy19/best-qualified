@@ -21,6 +21,7 @@ import com.bestqualified.entities.JobAlert;
 import com.bestqualified.entities.JobCategory;
 import com.bestqualified.entities.JobRegion;
 import com.bestqualified.entities.Project;
+import com.bestqualified.entities.ProjectLog;
 import com.bestqualified.entities.ReadingList;
 import com.bestqualified.entities.Recruiter;
 import com.bestqualified.entities.User;
@@ -32,6 +33,23 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 
 public class EntityConverter {
+	
+	public static ProjectLog entityToProjectLog(Entity e) {
+		ProjectLog p = new ProjectLog();
+		p.setId(e.getKey());
+		p.setActivity(ProjectLog.Activity.valueOf((String)e.getProperty("activity")));
+		p.setComment((Text) e.getProperty("comment"));
+		p.setDate((Date) e.getProperty("date"));
+		return p;
+	}
+	
+	public static Entity projectLogToEntity(ProjectLog p) {
+		Entity e = new Entity(p.getId());
+		e.setIndexedProperty("date", p.getDate());
+		e.setUnindexedProperty("activity", p.getActivity().name());
+		e.setUnindexedProperty("comment", p.getComment());
+		return e;
+	}
 	
 	public static ReadingList entityToReadingList(Entity e){
 		ReadingList rl = new ReadingList();
@@ -302,7 +320,8 @@ public class EntityConverter {
 		e.setUnindexedProperty(StringConstants.APPLICANTS, j.getApplicants());
 		e.setIndexedProperty(StringConstants.DATE_POSTED, j.getDatePosted());
 		e.setUnindexedProperty(StringConstants.DESCRIPTION, j.getDescription());
-		e.setUnindexedProperty(StringConstants.INVITES_SENT, j.getInvitesSent());
+		e.setUnindexedProperty("jobRoles", j.getJobRoles());
+		e.setUnindexedProperty("skills", j.getSkills());
 		e.setUnindexedProperty(StringConstants.CUSTOM_ATTRIBUTES,
 				j.getCustomAttributes());
 		e.setProperty(StringConstants.SALARY_RANGE, j.getSalaryRange());
@@ -342,8 +361,8 @@ public class EntityConverter {
 		j.setApplicants((List<Key>) e.getProperty(StringConstants.APPLICANTS));
 		j.setDatePosted((Date) e.getProperty(StringConstants.DATE_POSTED));
 		j.setDescription((Text) e.getProperty(StringConstants.DESCRIPTION));
-		j.setInvitesSent((List<Key>) e
-				.getProperty(StringConstants.INVITES_SENT));
+		j.setJobRoles((Text) e.getProperty("jobRoles"));
+		j.setSkills((List<String>) e.getProperty("skills"));
 		j.setCustomAttributes((Text) e
 				.getProperty(StringConstants.CUSTOM_ATTRIBUTES));
 		j.setExperience((String) e.getProperty(StringConstants.EXPERIENCE));
@@ -431,6 +450,7 @@ public class EntityConverter {
 		e.setUnindexedProperty("jobAlerts", cp.getJobAlerts());
 		e.setUnindexedProperty("savedJobs", cp.getSavedJobs());
 		e.setUnindexedProperty("articles", cp.getArticles());
+		e.setUnindexedProperty("salaryRange", cp.getSalaryRange());
 		return e;
 	}
 
@@ -466,6 +486,7 @@ public class EntityConverter {
 		cp.setSavedJobs((List<Key>) e.getProperty("savedJobs"));
 		cp.setJobAlerts((List<Key>) e.getProperty("jobAlerts"));
 		cp.setArticles((List<Key>) e.getProperty("articles"));
+		cp.setSalaryRange((String) e.getProperty("salaryRange"));
 		return cp;
 	}
 
@@ -560,6 +581,13 @@ public class EntityConverter {
 		if(entity.getProperty("description")!=null) {
 			p.setDescription((Text)entity.getProperty("description"));
 		}
+		p.setApplicants((List<Key>) entity.getProperty("applicants"));
+		p.setSearchConditions((List<EmbeddedEntity>) entity.getProperty("searchConditions"));
+		p.setShortListedCandidates((List<Key>) entity.getProperty("shortListedCandidates"));
+		p.setInvitees((List<Key>) entity.getProperty("invitees"));
+		p.setLogs((List<Key>) entity.getProperty("logs"));
+		p.setInterviewDate((Date) entity.getProperty("interviewDate"));
+		p.setNewApplicants((List<Key>) entity.getProperty("newApplicants"));
 		
 		return p;
 	}
@@ -572,6 +600,13 @@ public class EntityConverter {
 		e.setUnindexedProperty("savedSearch", p.getSavedSearch());
 		e.setUnindexedProperty("description", p.getDescription());
 		e.setIndexedProperty("dateCreated", p.getDateCreated());
+		e.setUnindexedProperty("shortListedCandidates", p.getShortListedCandidates());
+		e.setUnindexedProperty("searchConditions", p.getSearchConditions());
+		e.setUnindexedProperty("interviewDate", p.getInterviewDate());
+		e.setUnindexedProperty("invitees", p.getInvitees());
+		e.setUnindexedProperty("logs", p.getLogs());
+		e.setUnindexedProperty("applicants", p.getApplicants());
+		e.setUnindexedProperty("newApplicants", p.getApplicants());
 		return e;
 	}
 
