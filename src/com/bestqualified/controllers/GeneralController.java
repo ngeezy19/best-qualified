@@ -75,7 +75,7 @@ public class GeneralController {
 	public static List<Job> getNJobs(int no) {
 		List<Job> jobs = new ArrayList<>();
 		Query q = new Query(Job.class.getSimpleName());
-		q.addSort("date", SortDirection.DESCENDING);
+		q.addSort("datePosted", SortDirection.DESCENDING);
 		PreparedQuery pq = ds.prepare(q);
 		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(no));
 		for (Entity e : ents) {

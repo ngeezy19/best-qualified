@@ -486,11 +486,11 @@ div.transbox form input {
 
 			<div class="col-md-6">
 				<div class="media headlines">
-					<a class="pull-right" href="/bq/community/home"><img
+					<a class="pull-right" href="/community"><img
 						class="media-object img-rounded" src="/images/community.png"></a>
 					<div class="media-body">
 						<h4 class="media-heading">
-							<a href="/bq/community/home"><strong>OUR NETWORK</strong></a>
+							<a href="/community"><strong>OUR NETWORK</strong></a>
 						</h4>
 						<h5 class="jobsss">Get hired in industries of your choice</h5>
 						<p class="plat">Plug into new communities that can improve

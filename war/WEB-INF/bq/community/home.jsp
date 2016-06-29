@@ -39,95 +39,94 @@
 		</div>
 	</div>
 
-	
-	<div class="container-fluid index-first-header" style="background-color:#87CEFA; width:100%;
-   margin: 0;
-   padding: 0;
-   top: 0;
-   left: 0;">
-		 Wednesday, June 29, 2016
-		<div style="float:right;"><i class="fa fa-twitter" aria-hidden="true"></i>
-			<i class="fa fa-linkedin" aria-hidden="true"></i>
-			<i class="fa fa-facebook" aria-hidden="true"></i>
-			<i class="fa fa-google-plus" aria-hidden="true"></i>
-			
-		 </div>
+
+	<div class="container-fluid index-first-header"
+		style="background-color: #87CEFA; width: 100%; margin: 0; padding: 1%; top: 0; left: 0;">
+		Wednesday, June 29, 2016
+		<div style="float: right;">
+			<i class="fa fa-twitter fa-2x" aria-hidden="true"></i> <i
+				class="fa fa-linkedin fa-2x" aria-hidden="true"></i> <i
+				class="fa fa-facebook fa-2x" aria-hidden="true"></i> <i
+				class="fa fa-google-plus fa-2x" aria-hidden="true"></i>
+
 		</div>
-		
-	<div class="container">
-	<div class="row">
-	<div style="border-style:solid; border-color:#87CEFA;">
-								<h4>
-									Article
-								</h4>
-								<p>Topic Author Time</p>
-							</div>
 	</div>
-	<div class="row">
-		<div class=col-sm-3>
-		<div style="border-style:solid; border-color:#87CEFA;">
-								<p>
-									<a href="" style="font-size: 50px">Find a Coach</a>
-								</p>
-								
-							</div>
-		</div>
-		<div style=" margin:auto;" class=" col-sm-5 embed-responsive embed-responsive-16by9">
-	  		<iframe width="320" height="214" class="embed-responsive-item" src="http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=0"></iframe>
-		</div>
-		<div class=col-sm-4>
-		<div style="border-style:solid; border-color:#87CEFA;">
-								<h4>
-									Discussion
-								</h4>
-								<p>Topic Author Time</p>
-							</div>
-		</div>
-		</div>
+
+	<div class="container">
 		<div class="row">
-		<div class="col-sm-3" style="border-style:solid; border-color:#87CEFA;"><h4>
-									Have you read?
-								</h4>
-								<c:forEach var="item" items="${readingList}">
+			<div style="border-style: solid; border-color: #87CEFA;">
+
+				<c:forEach var="item" items="${communityBean.latestArticles}">
+					<h4>${item.title }</h4>
 
 
-				
-					
-						
+					<c:out value='${item.author}' />
+				</c:forEach>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class=col-sm-3>
+				<div style="border-style: solid; border-color: #87CEFA;">
+					<p>
+						<a href="" style="font-size: 50px">Find a Coach</a>
+					</p>
+
+				</div>
+				<div class="row">
+					<div class="col-sm-12"
+						style="border-style: solid; border-color: #87CEFA;">
+						<h4>Have you read?</h4>
+						<c:forEach var="item" items="${communityBean.readingList}">
+
 							<img src="${item.imageUrl }" alt="" class="img img-responsive">
 							<h4 style="font-family: Corben;">
-								<c:out
-										value='${item.bookTitle}' /><
+								<c:out value='${item.bookTitle}' />
+								<
 							</h4>
-							
-								<c:out
-										value='${item.author}' />
-							
+
+							<c:out value='${item.author}' />
+					</div>
+
+
+					</c:forEach>
 				</div>
+			</div>
+			<div class=" col-sm-5">
+				<iframe width="100%" height="100%" class="embed-responsive-item"
+					src="http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=0"></iframe>
+			</div>
+			<div class=col-sm-4>
+				<div style="border-style: solid; border-color: #87CEFA;">
+					<h4>Discussion</h4>
+					<p>Topic Author Time</p>
+				</div>
+			</div>
+		</div>
 
-
-			</c:forEach></div>
-	<div class="col-sm-5" style="border-style:solid; border-color:#87CEFA;">
-								<h4>
-									Articles from the community
-								</h4>
-								<p>Topic Author Time</p>
-							</div>
+		<div class="col-sm-5"
+			style="border-style: solid; border-color: #87CEFA;">
+			<h4>Articles from the community</h4>
+			<p>Topic Author Time</p>
+		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-3" style="border-style:solid; border-color:#87CEFA;">
-								<p>
-									<a href="" style="font-size: 50px">Find a Job</a>
-								</p></div>
+		<div class="col-sm-3"
+			style="border-style: solid; border-color: #87CEFA;">
+			<p>
+				<a href="" style="font-size: 50px">Find a Job</a>
+			</p>
+		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-3" style="border-style:solid; border-color:#87CEFA;"><h4>
-									Jobs
-								</h4>
-								<p>Topic Author Time</p></div>
+		<div class="col-sm-3"
+			style="border-style: solid; border-color: #87CEFA;">
+			<h4>Jobs</h4>
+			<p>Topic Author Time</p>
+		</div>
 	</div>
-	
-			<!-- div class="row col-md-3">
+
+	<!-- div class="row col-md-3">
 		
 				<!-- div class="well">
 					<a class="twitter-timeline" href="https://twitter.com/FRANKDUPR33"
@@ -150,9 +149,9 @@
 
 
 			</div-->
-		</div-->
-		</div>
-	
+	</div-->
+	</div>
+
 
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
@@ -167,8 +166,8 @@
 				"Networking is an essential part of building wealth.",
 				"If you want to go fast, go alone. If you want to go far, go with others.",
 				'The single greatest "people skill" is a highly developed & authentic interest in the other person.' ];
-		var author = [ "- Robert. T. Kiyosaki", "- Christine Comaford-Lynch", "- Armstrong Williams",
-				"- African proverbs", "- Bob Burg" ];
+		var author = [ "- Robert. T. Kiyosaki", "- Christine Comaford-Lynch",
+				"- Armstrong Williams", "- African proverbs", "- Bob Burg" ];
 		$(document).ready(function() {
 
 			startSlider();
