@@ -99,7 +99,7 @@ public class AuthFilter implements Filter {
 				}
 			}
 			String mode = req.getParameter("mode");
-			if(mode.equalsIgnoreCase("ajax")) {
+			if(mode != null && mode.equalsIgnoreCase("ajax")) {
 				resp.sendError(HttpServletResponse.SC_PAYMENT_REQUIRED, resp.encodeRedirectURL("/sign-in"));
 				return;
 			}else {

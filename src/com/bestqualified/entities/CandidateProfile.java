@@ -41,9 +41,20 @@ public class CandidateProfile implements Serializable {
 	private BlobKey cv;
 	private String highestEducationLevel;
 	private List<Key> articles;
+	private String salaryRange;
 	
 	
 	
+	public String getSalaryRange() {
+		return salaryRange;
+	}
+
+
+	public void setSalaryRange(String salaryRange) {
+		this.salaryRange = salaryRange;
+	}
+
+
 	public List<Key> getArticles() {
 		return articles;
 	}
