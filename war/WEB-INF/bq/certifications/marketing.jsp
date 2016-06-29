@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css"
 	href="/styles/jquery.webui-popover.min.css">
 <link rel="stylesheet" href="/styles/main.css">
-<title>Sales</title>
+<title>Marketing</title>
 <style type="text/css">
 .grad1 {
 	height: 250px;
@@ -98,17 +98,68 @@
 				<div class="row" style="margin-bottom: 1%;">
 					<div class="col-sm-12 cert-view no-padding-div">
 						<div class="col-sm-12 cert-view-header no-padding-div">
-							<h3>NASP</h3>
+							<h3>NIMN</h3>
 						</div>
 						<div class="col-sm-12 no-padding-div cert-view-content">
-							<p style="margin-bottom: 0px">National Association of Sales
-								Professionals (NASP) Certified Professional Sales Person (CPSP)
-								a comprehensive 6 week, online course created from 20 years of
-								modeling, interviewing, and coaching the top 1% of sales
-								professionals in the world</p>
+							<p style="margin-bottom: 0px">The National Institute of Marketing of Nigeria (NIMN) is the body for professionals engaged in marketing and related fields. Membership is compulsory for all marketing practitioners in Nigeria.
+							 The NIMN provides trainings, examinations and consultancy activities as a means of ensuring that its members adopt professional approach to marketing</p>
 						</div>
 						<div class="col-sm-12 no-padding-div cert-view-content">
-							<h4>Certified Professional Sales Person (CPSP)</h4>
+							<h4>Foundation Certificate in Marketing</h4>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Learning Outcome</strong>
+
+									</h5>
+									<ul>
+										<li>Cultivate sales habits of top Fortune 500 executives</li>
+										<li>Learn the power of creating and utilizing "personal
+											identity" to amplify your multitude of strengths</li>
+										<li>Develop lasting behaviors that will make you a stand
+											out professional</li>
+									</ul>
+								</div>
+
+							</div>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Audience</strong>
+									</h5>
+									<ul>
+										<li>SalesManagers and Executives</li>
+									</ul>
+								</div>
+							</div>
+							<h4>Chartered Graduate Diploma in Marketing</h4>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Learning Outcome</strong>
+
+									</h5>
+									<ul>
+										<li>Cultivate sales habits of top Fortune 500 executives</li>
+										<li>Learn the power of creating and utilizing "personal
+											identity" to amplify your multitude of strengths</li>
+										<li>Develop lasting behaviors that will make you a stand
+											out professional</li>
+									</ul>
+								</div>
+
+							</div>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Audience</strong>
+									</h5>
+									<ul>
+										<li>SalesManagers and Executives</li>
+									</ul>
+								</div>
+							</div>
+							<h4>Chartered Post Graduate Diploma in Marketing</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">
 									<h5>
@@ -136,8 +187,7 @@
 								</div>
 							</div>
 							<div class="col-sm-12">
-								<p>Find more information on
-									http://certification.hubspot.com/inbound-sales-certification</p>
+								<p><a href="http://nimn.com.ng/">Learn more</a></p>
 							</div>
 						</div>
 					</div>
@@ -145,24 +195,235 @@
 				<div class="row" style="margin-bottom: 1%">
 					<div class="col-sm-12 cert-view no-padding-div">
 						<div class="col-sm-12 cert-view-header no-padding-div">
-							<h3>Hubspot</h3>
+							<h3>AMA</h3>
 						</div>
 						<div class="col-sm-12 no-padding-div cert-view-content">
-							<p style="margin-bottom: 0px">The Inbound Sales Certification
-								is a free qualification offered by Hubspot. It consists of a 5
-								self-paced classes. The certification is important for an
-								introduction to inbound sales. It includes modules which would
-								prepare sales (or non-sales) professionals to better identify,
-								connect, explore and advise the modern buyer. The inbound Sales
-								Certification Course can be taken by sales associates, sales
-								leaders, entrepreneurs and inbound marketers.</p>
+							<p style="margin-bottom: 0px">The American Marketing Association (AMA) is a professional body based in the United States. 
+							The AMA provides membership, training, and certification in Marketing. 
+							To demonstrate a mastery of the core marketing knowledge and principles earn the Professional Certified Marketing (PCM).</p>
 						</div>
 						<div class="col-sm-12 no-padding-div cert-view-content">
-							<h4>Inbound Sales Certification</h4>
+							<h4>Professional Certified Marketing</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">
 									<h5>
-										<strong>Inbound Sales Certificate can be earned by</strong>
+										<strong>American Marketing Association's PCM can be earned by</strong>
+
+									</h5>
+									<ul>
+									<li>providing proof of formal education and professional experience</li>
+										<li>successful completion of a certification exam</li>
+										<li>adherence to a code of ethics</li>
+										<li>The PCM requires that already certified professionals go for recertification every 3 years. 
+											This involves obtaining 40 Continuing Education Units (CEUs) over 3 years and undergoing the recertification process. 
+											One unit is approximately 1 hour of attending seminars, eLearning, university coursework, instructor-led training, conferences and seminars, 
+											researching and publishing, speaking and instruction and other activities which encourage professional growth.</li>
+									</ul>
+								</div>
+
+							</div>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Audience</strong>
+									</h5>
+									<ul>
+										<li>Marketers</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-12">
+								
+									<p><a href="https://www.ama.org/events-training/Certification/Pages/default.aspx">Learn more</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+							
+				<div class="row" style="margin-bottom: 1%;">
+					<div class="col-sm-12 cert-view no-padding-div">
+						<div class="col-sm-12 cert-view-header no-padding-div">
+							<h3>CIM</h3>
+						</div>
+						<div class="col-sm-12 no-padding-div cert-view-content">
+							<p style="margin-bottom: 0px">The Chartered Institute of Marketing (CIM) is a professional association based in the United Kingdom.
+							 The CIM offers membership, training and certification in Marketing and related subjects, especially in Marketing and Sales.</p>
+						</div>
+						<div class="col-sm-12 no-padding-div cert-view-content">
+							<h4>Foundation Certificate in Marketing</h4>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Learning Outcome</strong>
+
+									</h5>
+									<ul>
+										<li>Understand marketing principles</li>
+										<li>Understand different ways of communicating with different customers </li>
+										<li>Understand digital marketing and key tools used for communication</li>
+									</ul>
+								</div>
+
+							</div>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Audience</strong>
+									</h5>
+									<ul>
+										<li>Managers in non-marketing functions, entrepreneurs, apprentices and those starting out in a marketing career</li>
+									</ul>
+								</div>
+							</div>
+							<h4>Certificate in Professional Marketing</h4>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Learning Outcome</strong>
+
+									</h5>
+									<ul>
+										<li>Understand the role and function of marketing in some depth</li>
+										<li>Learn the different ways of communicating with customers, both inside and outside the organisation</li>
+										
+									</ul>
+								</div>
+
+							</div>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Audience</strong>
+									</h5>
+									<ul>
+										<li>Marketing assistants or others working in marketing support roles</li>
+									</ul>
+								</div>
+							</div>
+							<h4>Diploma in Professional Marketing</h4>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Learning Outcome</strong>
+
+									</h5>
+									<ul>
+										<li>Learn the strategic marketing planning process</li>
+										<li>Understand of key marketing metrics and measurement techniques</li>
+										
+									</ul>
+								</div>
+
+							</div>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Audience</strong>
+									</h5>
+									<ul>
+										<li>Marketers in operational, supervisory or management roles</li>
+									</ul>
+								</div>
+							</div>
+							<h4>Post Graduate Diploma in Marketing</h4>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Learning Outcome</strong>
+
+									</h5>
+									<ul>
+										<li>Transition into strategic marketing management</li>
+										<li>Learn how to work more cross functionally at a senior management level</li>
+										<li>Learn to demonstrate leadership and influence</li>
+									</ul>
+								</div>
+										
+							</div>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Audience</strong>
+									</h5>
+									<ul>
+										<li>Experienced marketers and senior business people</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<p><a href="http://www.cim.co.uk/qualifications/">Learn more</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-bottom: 1%;">
+					<div class="col-sm-12 cert-view no-padding-div">
+						<div class="col-sm-12 cert-view-header no-padding-div">
+							<h3>CMMP</h3>
+						</div>
+						<div class="col-sm-12 no-padding-div cert-view-content">
+							<p style="margin-bottom: 0px">The Certified Marketing Management Professional (CMMP) is a globally-accepted certification provided by the International Institute of Marketing Professional (IIMP) and based in Canada. 
+							The CMMP demonstrates high professional, educational and ethical standards in marketing.
+							It is also an indication of marketing knowledge, skills and abilities.</p>
+						</div>
+						<div class="col-sm-12 no-padding-div cert-view-content">
+							<h4>Associate CMMP</h4>
+							<div class="col-sm-12">
+								
+							</div>
+							
+						
+							<h4>Manager CMMP</h4>
+							
+							<div class="col-sm-12">
+								
+							</div>
+							<h4>Executive CMMP</h4>
+							<div class="col-sm-12">
+								
+
+							</div>
+						
+							<h4>Chartered CMMP</h4>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Criteria</strong>
+
+									</h5>
+									<ul>
+										<li>meet specific academic requirements</li>
+										<li>meet specific work experience requirements</li>
+										<li>go through certain mandatory courses</li>
+										<li>pass an exam demonstrating competencies in the workplace</li>
+										<li>successfully complete previous CMMP level where appropriate</li>
+									</ul>
+								</div>
+
+							</div>
+							<div class="col-sm-12">
+								<p><a href="http://www.theiimp.org/cmmp-designation/">Learn more</a></p>
+						</div>
+					</div>
+				</div>
+								<div class="row" style="margin-bottom: 1%">
+					<div class="col-sm-12 cert-view no-padding-div">
+						<div class="col-sm-12 cert-view-header no-padding-div">
+							<h3>Hubspot</h3>
+						</div>
+						<div class="col-sm-12 no-padding-div cert-view-content">
+							<p style="margin-bottom: 0px">The inbound Certification is a free qualification offered by Hubspot. 
+							It covers the principal components of Inbound Marketing and has a self–paced set of courses. 
+							The certification is important if professionals want to understand the fundamentals of attracting visitors, 
+							lead nurturing and conversion, close customers and delight customers into promoters. </p>
+						</div>
+						<div class="col-sm-12 no-padding-div cert-view-content">
+							<h4>Inbound Marketing Certification</h4>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Inbound Marketing Certificate can be earned by</strong>
 
 									</h5>
 									<ul>
@@ -181,17 +442,17 @@
 										<strong>Audience</strong>
 									</h5>
 									<ul>
-										<li>SalesManagers and Executives</li>
+										<li>Marketers, non-marketers, entrepreneurs and students</li>
 									</ul>
 								</div>
 							</div>
 							<div class="col-sm-12">
-								<p>Find more information on
-									http://certification.hubspot.com/inbound-sales-certification</p>
+							<p><a href="http://certification.hubspot.com/inbound-sales-certification">Learn more</a></p>
+								
 							</div>
 						</div>
 					</div>
-				</div>
+					</div>			
 			</div>
 			<div class="col-sm-4">
 				<%@ include file="/WEB-INF/pages/certification-sidebar.html"%>
@@ -202,4 +463,4 @@
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 </body>
-</html>s
+</html>
