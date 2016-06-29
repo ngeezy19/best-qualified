@@ -99,6 +99,7 @@ public class EntityConverter {
 		a.setTitle((String) e.getProperty("title"));
 		a.setViews((Long) e.getProperty("views"));
 		a.setImageKey((BlobKey) e.getProperty("imageKey"));
+		a.setnComments((Integer)e.getProperty("nComments"));
 		return a;
 	}
 	
@@ -114,6 +115,7 @@ public class EntityConverter {
 		e.setUnindexedProperty("subscribers", a.getSubscribers());
 		e.setUnindexedProperty("tags", a.getTag());
 		e.setUnindexedProperty("imageKey", a.getImageKey());
+		e.setIndexedProperty("nComment", a.getnComments());
 		return e;
 	}
 	
