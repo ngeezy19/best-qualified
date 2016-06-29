@@ -260,7 +260,7 @@
 								<div class="col-sm-12">
 									<div class="info-div grad1">
 										<h4>CIW Web Design Specialist</h4>
-										<h4>CIW Web Design Specialist</h4>
+										<h4>CIW E-Commerce Specialist</h4>
 									</div>
 
 								</div>

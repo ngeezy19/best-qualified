@@ -524,29 +524,21 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/bq/endpoint/be-a-coach</url-pattern>
 	</servlet-mapping>
 
-<<<<<<< HEAD
-	
-	<servlet>
-		<servlet-name>SaveReadingList</servlet-name>
-=======
-
 	<servlet>
 		<servlet-name>SaveReadingList</servlet-name>
 
->>>>>>> 9053336f32da65804a08d4fa451e6748859b0b9d
+
 		<servlet-class>com.bestqualified.admin.CreateReadingList</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SaveReadingList</servlet-name>
 		<url-pattern>/bq/admin/save-reading-list</url-pattern>
-<<<<<<< HEAD
-
-	</servlet-mapping>
-=======
 
 	</servlet-mapping>
 
->>>>>>> 9053336f32da65804a08d4fa451e6748859b0b9d
+
+	
+
 	
 	<servlet>
 		<servlet-name>GetReadingList</servlet-name>
@@ -556,10 +548,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>GetReadingList</servlet-name>
 		<url-pattern>/bq/coaching/tools/get-reading-list</url-pattern>
 	</servlet-mapping>
-<<<<<<< HEAD
-=======
-
->>>>>>> 9053336f32da65804a08d4fa451e6748859b0b9d
 
 	<!-- ***************************************************SERVLET*********************************************************** -->
 	<servlet>

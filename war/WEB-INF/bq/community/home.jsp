@@ -24,14 +24,14 @@
 	<br>
 	<br>
 	<div class="container-fluid">
-		<div class="row" style="margin-bottom: 2%;">
+		<div class="row" style="">
 
 			<div class="col-sm-12 no-padding-div"
 				style="color: white; background-image: url('/images/community-slide.jpg'); height: 300px; position: relative; width: 100%;">
 				<div
 					style="background-color: rgba(0, 0, 0, 0.0); width: 400px; height: 220px; padding: 1%; position: absolute; bottom: 20px; left: 150px; font-family: century gothic">
 					<h3 id="banner-quote">The single greatest "people skill" is a
-						highly developed & authentic interest in the other person</h3>
+						highly developed and authentic interest in the other person</h3>
 					<br />
 					<h4 id="banner-author">- Bob Burg</h4>
 				</div>
@@ -39,170 +39,97 @@
 		</div>
 	</div>
 
+	
+	<div class="container-fluid index-first-header" style="background-color:#87CEFA; width:100%;
+   margin: 0;
+   padding: 0;
+   top: 0;
+   left: 0;">
+		 Wednesday, June 29, 2016
+		<div style="float:right;"><i class="fa fa-twitter" aria-hidden="true"></i>
+			<i class="fa fa-linkedin" aria-hidden="true"></i>
+			<i class="fa fa-facebook" aria-hidden="true"></i>
+			<i class="fa fa-google-plus" aria-hidden="true"></i>
+			
+		 </div>
+		</div>
+		
 	<div class="container">
-		<div class="row" style="">
-			<div class="col-md-9" id="blogodo">
-
-				<div class="media">
-					<a class="pull-left" href="#"><img
-						class="media-object img-rounded" src="/images/am.png" width="320"
-						height="214"></a>
-					<div class="media-body">
-						<h3 class="media-heading" id="lol">COMMUNITY</h3>
-
-						<p style="text-align: justify;">The BQ community provides many
-							ways for you to connect with a world of Sales & Marketing
-							experts. Whether it is through membership, national events or the
-							BQ social media channels. The BQ brings Sales & Marketing
-							professionals together to build networks, relationships and solve
-							market place challenges.</p>
-					</div>
-				</div>
-				<br> <br>
-				<div>
-					<h3>Connect Through Membership List</h3>
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>AMA</th>
-								<th>NIMN</th>
-								<th>LIPSR</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><b>APCON</td>
-								</b>
-								<td><b>WISCAR</td>
-								</b>
-								<td><b>FSED</td>
-								</b>
-							</tr>
-							<tr>
-								<td><b>CIM</td>
-								</b>
-								<td><b>NIPR</td>
-								</b>
-								<td><b>CIPR</td>
-								</b>
-							</tr>
-							<tr>
-								<td><b>CMMP</td>
-								</b>
-								<td><b>CIPS</td>
-								</b>
-								<td><b>CAS</td>
-								</b>
-							</tr>
-							<tr>
-								<td><b>SMC</td>
-								</b>
-								<td><b>GAP/GAIQ</td>
-								</b>
-								<td><b>CMI</td>
-								</b>
-							</tr>
-							<tr>
-								<td><b>SCRUM</td>
-								</b>
-								<td><b>HUBSPOT</td>
-								</b>
-								<td><b>DMI</td>
-								</b>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<br>
-
-
-				<div style="background-image: url('img/comi/3.png');">
-					<h3>Top Contributors</h3>
-					<div class="row">
-
-						<div class="col-md-4">
-							<div class="media">
-								<a href="#"><img class="media-object img-circle pull-left"
-									src="/images/46.jpg" width="130" height="130"></a>
-								<div class="media-body">
-									<br> <br>
-									<h5 class="media-heading  pull-left">Delight Chika</h5>
-									<p class="pull-left">Top Content Writer</p>
-								</div>
+	<div class="row">
+	<div style="border-style:solid; border-color:#87CEFA;">
+								<h4>
+									Article
+								</h4>
+								<p>Topic Author Time</p>
 							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="media">
-								<a href="#"><img class="media-object img-circle pull-left"
-									src="/images/73.jpg" width="130" height="130"></a>
-								<div class="media-body">
-									<br> <br>
-									<h5 class="media-heading  pull-left">Ugo Chukwudi</h5>
-									<p class="pull-left">Fastest Reply</p>
-								</div>
+	</div>
+	<div class="row">
+		<div class=col-sm-3>
+		<div style="border-style:solid; border-color:#87CEFA;">
+								<p>
+									<a href="" style="font-size: 50px">Find a Coach</a>
+								</p>
+								
 							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="media">
-								<a href="#"><img class="media-object img-circle pull-left"
-									src="/images/3.jpg" width="130" height="130"></a>
-								<div class="media-body">
-									<br> <br>
-									<h5 class="media-heading  pull-left">Stephen Dappa</h5>
-									<p class=" pull-left">Number 1 Rookie</p>
-								</div>
+		</div>
+		<div style=" margin:auto;" class=" col-sm-5 embed-responsive embed-responsive-16by9">
+	  		<iframe width="320" height="214" class="embed-responsive-item" src="http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=0"></iframe>
+		</div>
+		<div class=col-sm-4>
+		<div style="border-style:solid; border-color:#87CEFA;">
+								<h4>
+									Discussion
+								</h4>
+								<p>Topic Author Time</p>
 							</div>
-						</div>
+		</div>
+		</div>
+		<div class="row">
+		<div class="col-sm-3" style="border-style:solid; border-color:#87CEFA;"><h4>
+									Have you read?
+								</h4>
+								<c:forEach var="item" items="${readingList}">
 
-					</div>
+
+				
+					
+						
+							<img src="${item.imageUrl }" alt="" class="img img-responsive">
+							<h4 style="font-family: Corben;">
+								<c:out
+										value='${item.bookTitle}' /><
+							</h4>
+							
+								<c:out
+										value='${item.author}' />
+							
 				</div>
 
 
-			</div>
-			<div class="col-md-3">
-				<div class="well soweto"
-					style="background: rgba(78, 189, 163, 0.13); padding: 20px;">
-					<h3 class="media-heading" id="lols">Which company has the best
-						work enviroment</h3>
-
-
-					<div class="checkbox">
-						<label><input type="checkbox" value="">First Bank
-							Nigeria</label>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Zenith</label>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Workforce</label>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Mtn Nigeria</label>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Cheveron</label>
-					</div>
-
-					<button class="btn btn-info">Vote</button>
-				</div>
-
-				<div class="well">
-					<form role="form">
-						<div class="form-group">
-							<p>Member Log In |</p>
-							<input type="email" class="form-control" id="email"
-								placeholder="email">
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" id="pwd"
-								placeholder="password">
-						</div>
-
-						<button type="submit" class="btn btn-default">Submit</button>
-					</form>
-				</div>
-
-				<div class="well">
+			</c:forEach></div>
+	<div class="col-sm-5" style="border-style:solid; border-color:#87CEFA;">
+								<h4>
+									Articles from the community
+								</h4>
+								<p>Topic Author Time</p>
+							</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3" style="border-style:solid; border-color:#87CEFA;">
+								<p>
+									<a href="" style="font-size: 50px">Find a Job</a>
+								</p></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3" style="border-style:solid; border-color:#87CEFA;"><h4>
+									Jobs
+								</h4>
+								<p>Topic Author Time</p></div>
+	</div>
+	
+			<!-- div class="row col-md-3">
+		
+				<!-- div class="well">
 					<a class="twitter-timeline" href="https://twitter.com/FRANKDUPR33"
 						data-widget-id="554987493125554176">Tweets by @BestQualified</a>
 					<script>
@@ -222,9 +149,10 @@
 				</div>
 
 
-			</div>
+			</div-->
+		</div-->
 		</div>
-	</div>
+	
 
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
