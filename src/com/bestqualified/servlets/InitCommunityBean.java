@@ -31,10 +31,10 @@ public class InitCommunityBean extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String date = new SimpleDateFormat("MMMM dd HH:mm:ss zzzz yyyy")
+		String date = new SimpleDateFormat("MMMM dd yyyy")
 				.format(new Date());
 		List<ReadingList> readingList = GeneralController
-				.getNReadingListByDate(5);
+				.getNReadingListByDate(3);
 		List<Job> jobs = GeneralController.getNJobs(5);
 		List<InterestedJob> ijs = Util.toInterestedJobs(jobs);
 		List<com.bestqualified.entities.Article> mainPost = GeneralController
@@ -73,7 +73,12 @@ public class InitCommunityBean extends HttpServlet {
 		synchronized (session) {
 			session.setAttribute("communityBean", cb);
 		}
+<<<<<<< HEAD
+		
+		resp.sendRedirect(resp.encodeRedirectURL("/community"));
+=======
 		resp.sendRedirect(resp.encodeRedirectURL("/bq/community"));
+>>>>>>> a8061972e7abc1cdb9fa973a01802dd295b26b55
 	}
 
 }
