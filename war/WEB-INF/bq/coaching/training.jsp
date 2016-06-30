@@ -33,13 +33,7 @@
 	/* Standard syntax (must be last) */
 }
 
-.training-intro {
-	border: 1px solid #444;
-	background: #666;
-	padding: 2%;
-	border-left: 5px solid orange;
-	color: white;
-}
+
 
 .workshop-info {
 	margin-top: 2%;

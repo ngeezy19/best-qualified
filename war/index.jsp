@@ -425,10 +425,8 @@ div.transbox form input {
 						<h5 class="job">Get hired in industries of your choice</h5>
 						<p class="plat">Start your exciting career journey here</p>
 
-						<p id="edi">
-							<span>Search from over: 520, 000+ jobs today!</span> <span><a
-								href="#"><i class="fa fa-angle-double-right"
-									aria-hidden="true"></i></a></span>
+						<p id="edi" class="text-muted">
+							<span>Search from over: 520, 000+ jobs today!</span>
 						</p>
 
 					</div>
@@ -441,18 +439,15 @@ div.transbox form input {
 						class="media-object img-rounded" src="/images/train.png"></a>
 					<div class="media-body">
 						<h4 class="media-heading" style="font-weight: bold !important;">
-							<a href="/bq/certifications">DEMONSTRATE YOUR ABILITY</a>
+							<a href="/bq/certifications" style="text-decoration: none;">DEMONSTRATE
+								YOUR ABILITY</a>
 						</h4>
 						<h5 class="jobs">Get hired in industries of your choice</h5>
 						<p class="plat">Free or affordable trainings to improve your
 							career.</p>
-						<p id="edi">
-							<span><a href="#">ama</a></span> <span><a href="#">apcon</a></span>
-							<span><a href="#">cim</a></span> <span><a href="">nipr</a></span>
-							<span><a href="#">nimn</a></span> <span><a href="#">hse</a></span>
-							<span><a href="#">oracle</a></span> <span><a href="#">.Net</a></span>
-							<span><a href="#">cibm</a></span> <span><a href="#"><i
-									class="fa fa-angle-double-right" aria-hidden="true"></i></a></span>
+						<p id="edi" class="text-muted">
+							<span>AMA</span> <span>APCON</span> <span>CIM</span> <span>NIPR</span>
+							<span>NIMN</span> <span>HSE</span> <span>CIBM</span> <span></span>
 						</p>
 					</div>
 				</div>
@@ -467,18 +462,14 @@ div.transbox form input {
 						class="media-object img-rounded" src="/images/coaching.png"></a>
 					<div class="media-body">
 						<h4 class="media-heading">
-							<strong><a href="/bq/coaching/home">GUDIANCE & HAND
-									HOLDING</a></strong>
+							<strong><a href="/bq/coaching/home"
+								style="text-decoration: none;">GUDIANCE & HAND HOLDING</a></strong>
 						</h4>
 						<h5 class="jobss">Get hired in industries of your choice</h5>
 						<p class="plat">Latest career advice will be sent to your
 							inbox.</p>
-						<p id="edi">
-							<span><a href="#"> <i class="fa fa-circle"
-									aria-hidden="true" style="color: #4DAF7C;"></i> 2000
-							</a> professionals online! Talk to one now!</span> <span><a href="#"><i
-									class="fa fa-angle-double-right" aria-hidden="true"></i></a></span>
-						</p>
+						<p id="edi" class="text-muted">2000 professionals online! Talk
+							to one now!</p>
 
 					</div>
 				</div>
@@ -486,21 +477,26 @@ div.transbox form input {
 
 			<div class="col-md-6">
 				<div class="media headlines">
+<<<<<<< HEAD
+					<a class="pull-right" href="/bq/community"><img
+						class="media-object img-rounded" src="/images/community.png"></a>
+					<div class="media-body">
+						<h4 class="media-heading">
+							<a href="/bq/community" style="text-decoration: none;"><strong>OUR
+									NETWORK</strong></a>
+=======
 					<a class="pull-right" href="/community"><img
 						class="media-object img-rounded" src="/images/community.png"></a>
 					<div class="media-body">
 						<h4 class="media-heading">
 							<a href="/community"><strong>OUR NETWORK</strong></a>
+>>>>>>> a8061972e7abc1cdb9fa973a01802dd295b26b55
 						</h4>
 						<h5 class="jobsss">Get hired in industries of your choice</h5>
 						<p class="plat">Plug into new communities that can improve
 							your network.</p>
-						<p id="edi">
-							<span>Over<a href="#"> 1000</a> groups of sales
-								professional
-							</span> <span><a href="#"><i class="fa fa-angle-double-right"
-									aria-hidden="true"></i></a></span>
-						</p>
+						<p id="edi" class="text-muted">1000 groups of sales
+							professional</p>
 
 					</div>
 				</div>
@@ -605,9 +601,12 @@ div.transbox form input {
 					<c:forEach var="item" items="${indexBean.ijs}">
 						<li>
 							<h5>
-								<a href="/bq/open/job?job-key=${item.jobKey}"><c:out value="${item.jobTitle}" /></a>
+								<a href="/bq/open/job?job-key=${item.jobKey}"><c:out
+										value="${item.jobTitle}" /></a>
 							</h5> <span><c:out value="${item.companyName}" /></span>
-							<p><c:out value="${item.postedTime}" /></p>
+							<p>
+								<c:out value="${item.postedTime}" />
+							</p>
 						</li>
 					</c:forEach>
 					<li style="background: rgba(78, 189, 163, 0.4);">

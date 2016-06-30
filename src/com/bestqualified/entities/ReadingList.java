@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.bestqualified.controllers.GeneralController;
+import com.bestqualified.util.Util;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
@@ -95,6 +96,7 @@ public class ReadingList implements Serializable{
 
 	public void setImageKey(BlobKey imageKey) {
 		this.imageKey = imageKey;
+		this.imageUrl = Util.getPictureUrl(imageKey);
 	}
 	
 	public String getImageUrl() {

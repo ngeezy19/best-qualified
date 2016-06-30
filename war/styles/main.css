@@ -1,5 +1,83 @@
+.training-intro {
+	border: 1px solid #6a293e;
+	background: #983b59;
+	padding: 2%;
+	border-left: 5px solid #59983b;
+	color: white;
+}
+
+.banner-grad {
+	 background: #ebeef4; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(-90deg, #c4cde0, #ebeef4, white); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(-90deg, #c4cde0, #ebeef4, white); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(-90deg, #c4cde0, #ebeef4, white); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(-90deg, #c4cde0, #ebeef4, white); /* Standard syntax */
+}
+
+.banner-grad .span-1 {
+	color: #983b59
+}
+
+.banner-grad .span-2 {
+	color: #59983b;
+}
+
+.dropdown-menu {
+	background-color: #899bc1
+}
+
+.dropdown-menu li:hover {
+	background-color: #4e69a2 !important;
+}
+
+.dropdown-menu a:hover {
+	background-color: #4e69a2 !important
+}
+
+.navbar-nav a {
+	
+	color: white !important;
+}
+
+.navbar-nav a:hover {
+	
+	color: #eaeaea !important;
+}
+
 .dropdown-submenu {
     position: relative;
+}
+
+.filter-values {
+	display: none;
+}
+
+.filter-heading h4 {
+	margin-top: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: white;
+	background-color: #4FC1E9;
+	text-align: center;
+	border-bottom: 1px #3BAFDA solid;
+}
+
+.filter-header {
+	padding: 2%;
+	background-color: #eaeaea;
+	cursor: pointer;
+	border-top: 1px gray solid;
+}
+
+.filter-header:hover {
+	background-color: #dedede;
+}
+
+.filter-values {
+	border-top: 1px gray solid;
+	padding: 2%;
+	max-height: 200px;
+	overflow: auto;
 }
 
 .dropdown-submenu>.dropdown-menu {
@@ -219,7 +297,7 @@ body {
 }
 
 #footer-div {
-	background-color: #013143;
+	background-color: #3b5998;
 	padding-top: 2%;
 	padding-left: 4%;
 	padding-right: 4%;

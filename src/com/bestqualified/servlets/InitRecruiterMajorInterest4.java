@@ -48,31 +48,33 @@ public class InitRecruiterMajorInterest4 extends HttpServlet {
 		String companyName = req.getParameter("company-name");
 		String website = req.getParameter("company-website");
 		String description = req.getParameter("company-description");
+		HttpSession session = req.getSession();
+		Object o = null;
+		Entity e = null;
 		Company c = null;
 		Job j = null;
+		synchronized (session) {
+			o = session.getAttribute("job");
+		}
+		if (o == null) {
+			resp.sendError(HttpServletResponse.SC_EXPECTATION_FAILED,
+					"Your session has expired. <a href='/sign-up'>Start again</a>");
+			return;
+		} else {
+			j = (Job) o;
+			e = EntityConverter.jobToEntity(j);
+		}
 		if(Util.notNull(companyName)) {
 			c = new Company();
 			c.setCompanyName(companyName);
 			c.setCompanyWebsite(website);
 			c.setDescription(new Text(description));
 			c.setLogo(blobKey);
-			HttpSession session = req.getSession();
-			Object o = null;
-			synchronized (session) {
-				o = session.getAttribute("job");
-			}
-			
-			if (o == null) {
-				resp.sendError(HttpServletResponse.SC_EXPECTATION_FAILED,
-						"Your session has expired. <a href='/sign-up'>Start again</a>");
-				return;
-			} else {
-				j = (Job) o;
-				j.setCompany(c.getId());
-				Entity e = EntityConverter.jobToEntity(j);
-				Entity e1 = EntityConverter.companyToEntity(c);
-				GeneralController.createWithCrossGroup(e,e1);
-			}
+			j.setCompany(c.getId());
+			Entity e1 = EntityConverter.companyToEntity(c);
+			GeneralController.createWithCrossGroup(e,e1);
+		}else {
+			GeneralController.create(e);
 		}
 		Util.addToSearchIndex(j, c);
 		RequestDispatcher rd = req.getRequestDispatcher("/bq/endpoint/recruit-professional-user");

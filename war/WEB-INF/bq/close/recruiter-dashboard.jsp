@@ -2,6 +2,18 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page
+	import="com.google.appengine.api.blobstore.BlobstoreServiceFactory"%>
+<%@ page import="com.google.appengine.api.blobstore.BlobstoreService"%>
+<%@ page import="com.google.appengine.api.blobstore.UploadOptions"%>
+
+<%
+	BlobstoreService blobstoreService = BlobstoreServiceFactory
+			.getBlobstoreService();
+	UploadOptions options = UploadOptions.Builder
+			.withMaxUploadSizeBytesPerBlob(2 * 1024 * 1024)
+			.maxUploadSizeBytes(2 * 1024 * 1024);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +25,8 @@
 <link rel="stylesheet" type="text/css"
 	href="/styles/jquery.webui-popover.min.css">
 <link rel="stylesheet" href="/styles/main.css">
+<link rel="stylesheet" href="/styles/font-awesome.min.css">
+
 <style type="text/css">
 .subnav li {
 	list-style: none;
@@ -53,14 +67,45 @@
 
 							</div>
 						</div>
-						<div class="col-sm-4"></div>
+						<div class="col-sm-4"
+							style="border: 1px #dadada dotted; color: white; background-color: darkgreen;">
+							<h5>
+								<c:out value='${fn:length(recruiterDashboard.projects)}' />
+								Project(s)
+							</h5>
+							<h5>
+								<c:out value='${fn:length(recruiterDashboard.savedSearch)}' />
+								Saved Search(es)
+							</h5>
+						</div>
 					</div>
 
 				</div>
-				<div class="row card-panel">
-					<div class="col-sm-4">New Project</div>
-					<div class="col-sm-4">Manage Projects</div>
-					<div class="col-sm-4">Search for candidates</div>
+				<div class="row card-panel"
+					style="padding: 2px; color: white; background-color: gray">
+					<div class="col-sm-4">
+						<h4>
+							<i class="fa fa-plus-square-o" aria-hidden="true"
+								style="padding-right: 1%;"></i> New Project
+						</h4>
+					</div>
+					<div class="col-sm-4">
+						<h4 style="cursor: pointer;" id="article-trig">
+							<i class="fa fa-newspaper-o" aria-hidden="true"
+								style="padding-right: 1%;"></i> Write an article</h4>
+					</div>
+					<div class="col-sm-4">
+						<h4 style="cursor: pointer;" id="discussion-trig">
+							<i class="fa fa-comments-o" aria-hidden="true"
+								style="padding-right: 1%;"></i> Start a discussion
+						</h4>
+					</div>
+					<div class="col-sm-12 no-padding-div">
+						<%@ include file="/partial/new-article.html"%>
+					</div>
+					<div class="col-sm-12 no-padding-div">
+						<%@ include file="/partial/new-discussion.html"%>
+					</div>
 				</div>
 				<c:forEach var="item" items="${recruiterDashboard.projects}">
 					<div class="row">
@@ -144,7 +189,8 @@
 								<div class="text-success" style="font-family: calibri">
 									<c:out value='${item.highestQualification}' />
 								</div>
-								<div class="text-info" style="font-size: 10pt; font-stretch: narrower; font-style: italic;">
+								<div class="text-info"
+									style="font-size: 10pt; font-stretch: narrower; font-style: italic;">
 									<c:out value='${item.yearsOfExperience}' />
 									years experience
 								</div>
@@ -177,5 +223,6 @@
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.webui-popover.min.js"></script>
 	<script src="/js/waitMe.js"></script>
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script src="/js/main.js"></script>
 </body>
