@@ -5,6 +5,14 @@
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 	<servlet>
+		<servlet-name>AllCandidates</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.AllCandidates</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AllCandidates</servlet-name>
+		<url-pattern>/bq/closed/all-candidates</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>InitRecruiterMajorInterest1</servlet-name>
 		<servlet-class>com.bestqualified.servlets.InitRecruiterMajorInterest1</servlet-class>
 	</servlet>
@@ -380,11 +388,11 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>CommunityHome</servlet-name>
-		<servlet-class>com.bestqualified.servlets.community.InitCommunity</servlet-class>
+		<servlet-class>com.bestqualified.servlets.InitCommunityBean</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>CommunityHome</servlet-name>
-		<url-pattern>/bq/community/home</url-pattern>
+		<url-pattern>/bq/community</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>SaveJobAlert</servlet-name>
@@ -557,6 +565,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/bq/open/handler/newsletter-subscribe</url-pattern>
 	</servlet-mapping>
 	<!-- ************************************************JSP*************************************************************** -->
+	<servlet>
+		<servlet-name>FindCandidates</servlet-name>
+		<jsp-file>/WEB-INF/bq/close/find-candidates.jsp</jsp-file>	
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>FindCandidates</servlet-name>
+		<url-pattern>/bq/closed/find-candidate</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>CreateReadingList</servlet-name>

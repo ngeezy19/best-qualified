@@ -15,19 +15,7 @@
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/styles/animate.css">
 <style type="text/css">
-.filter-values {
-	display: none;
-}
 
-.filter-heading h4 {
-	margin-top: 0px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	color: white;
-	background-color: #4FC1E9;
-	text-align: center;
-	border-bottom: 1px #3BAFDA solid;
-}
 
 #job-alert-modal label {
 	color: darkgreen;
@@ -35,23 +23,7 @@
 	font-size: 10pt;
 }
 
-.filter-header {
-	padding: 2%;
-	background-color: #eaeaea;
-	cursor: pointer;
-	border-top: 1px gray solid;
-}
 
-.filter-header:hover {
-	background-color: #dedede;
-}
-
-.filter-values {
-	border-top: 1px gray solid;
-	padding: 2%;
-	max-height: 200px;
-	overflow: auto;
-}
 
 .list-bullet {
 	border: 1px red #8CC152;
@@ -934,19 +906,7 @@
 								$("#myModal1").modal();
 							});
 							startSlider();
-							$(".filter-header")
-									.click(
-											function() {
-
-												var par = $(this).closest(
-														".filter-component");
-												par.find(".filter-values")
-														.slideToggle();
-												$(this)
-														.find(".filter-arrow")
-														.toggleClass(
-																"glyphicon glyphicon-chevron-down glyphicon glyphicon-chevron-up");
-											});
+							
 						});
 		function startSlider() {
 			

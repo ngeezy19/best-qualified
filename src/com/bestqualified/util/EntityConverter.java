@@ -99,7 +99,11 @@ public class EntityConverter {
 		a.setTitle((String) e.getProperty("title"));
 		a.setViews((Long) e.getProperty("views"));
 		a.setImageKey((BlobKey) e.getProperty("imageKey"));
-		a.setnComments((Integer)e.getProperty("nComments"));
+		Object o = e.getProperty("nComments");
+		if(o != null) {
+			a.setnComments((Long)e.getProperty("nComments"));
+		}
+		
 		return a;
 	}
 	
@@ -110,7 +114,7 @@ public class EntityConverter {
 		e.setUnindexedProperty("views", a.getViews());
 		e.setUnindexedProperty("body", a.getBody());
 		e.setIndexedProperty("author", a.getAuthor());
-		e.setUnindexedProperty("category", a.getCategory().name());
+		e.setIndexedProperty("category", a.getCategory().name());
 		e.setUnindexedProperty("comments", a.getComments());
 		e.setUnindexedProperty("subscribers", a.getSubscribers());
 		e.setUnindexedProperty("tags", a.getTag());

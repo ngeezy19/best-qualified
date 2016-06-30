@@ -35,8 +35,36 @@ function addPopOver() {
 }
 
 $(document).ready(function() {
+	$(".filter-header")
+	.click(
+			function() {
+
+				var par = $(this).closest(
+						".filter-component");
+				par.find(".filter-values")
+						.slideToggle();
+				$(this)
+						.find(".filter-arrow")
+						.toggleClass(
+								"glyphicon glyphicon-chevron-down glyphicon glyphicon-chevron-up");
+			});
+	tinymce.init({
+		selector : '.tiny'
+	});
 	
+	$("#discussion-trig").click(function() {
+		$(".discussion-div").slideDown("slow");
+	});
+	$("#close-discussion").click(function() {
+		$(".discussion-div").slideUp("slow");
+	});
 	
+	$("#article-trig").click(function() {
+		$(".article-div").slideDown("slow");
+	});
+	$("#close-article").click(function() {
+		$(".article-div").slideUp("slow");
+	});
 	
 	$("#imginfo").mouseenter(function() {
 		addPopOver();

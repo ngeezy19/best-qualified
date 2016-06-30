@@ -1,0 +1,24 @@
+<form action="<%=blobstoreService.createUploadUrl(
+					"/bq/close/create-article", options)%>
+	" method="post" enctype="multipart/form-data">
+	<div class="col-sm-12 article-div" style="display: none;background-color: white; padding-top: 2%; ">
+		<div class="form-group">
+			<input placeholder="Title" id="article-title" class="form-control"
+				name="title" />
+		</div>
+		<div class="form-group">
+			<textarea rows="7" class="form-control tiny" id="article-text"
+				name="post"></textarea>
+		</div>
+		<input type="hidden" name="subscribe" value="true" />
+		<div class="form-group">
+			<span>Add a featured image</span> <input type="file" name="image"
+				class="form-control" />
+		</div>
+		<div class="form-group">
+			<input type="submit" class="btn btn-primary" value="Post Article" />
+			<input id="close-article" type="button" class="btn btn-danger"
+				value="Close" />
+		</div>
+	</div>
+</form>
