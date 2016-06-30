@@ -101,9 +101,14 @@ public class EntityConverter {
 		a.setImageKey((BlobKey) e.getProperty("imageKey"));
 		Object o = e.getProperty("nComments");
 		if(o != null) {
+<<<<<<< HEAD
 			a.setnComments((Long)e.getProperty("nComments"));
 		}
 		
+=======
+			   a.setnComments((Long)e.getProperty("nComments"));
+			  }
+>>>>>>> a8061972e7abc1cdb9fa973a01802dd295b26b55
 		return a;
 	}
 	

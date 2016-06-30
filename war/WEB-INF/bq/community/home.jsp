@@ -46,14 +46,14 @@
 	<br>
 	<br>
 	<div class="container-fluid">
-		<div class="row" style="margin-bottom: 2%;">
+		<div class="row" style="">
 
 			<div class="col-sm-12 no-padding-div"
 				style="color: white; background-image: url('/images/community-slide.jpg'); height: 300px; position: relative; width: 100%;">
 				<div
 					style="background-color: rgba(0, 0, 0, 0.0); width: 400px; height: 220px; padding: 1%; position: absolute; bottom: 20px; left: 150px; font-family: century gothic">
 					<h3 id="banner-quote">The single greatest "people skill" is a
-						highly developed & authentic interest in the other person</h3>
+						highly developed and authentic interest in the other person</h3>
 					<br />
 					<h4 id="banner-author">- Bob Burg</h4>
 				</div>
@@ -73,6 +73,7 @@
 		</div>
 	</div>
 
+<<<<<<< HEAD
 	<div class="container">
 		<div class="row alert alert-warning" style="text-align: center">
 			<div class="col-sm-12">
@@ -211,7 +212,121 @@
 			
 		</div>
 
+=======
+
+	<div class="container-fluid index-first-header"
+		style="background-color: #87CEFA; width: 100%; margin: 0; padding: 1%; top: 0; left: 0;">
+		Wednesday, June 29, 2016
+		<div style="float: right;">
+			<i class="fa fa-twitter fa-2x" aria-hidden="true"></i> <i
+				class="fa fa-linkedin fa-2x" aria-hidden="true"></i> <i
+				class="fa fa-facebook fa-2x" aria-hidden="true"></i> <i
+				class="fa fa-google-plus fa-2x" aria-hidden="true"></i>
+
+		</div>
 	</div>
+
+	<div class="container">
+		<div class="row">
+			<div style="border-style: solid; border-color: #87CEFA;">
+
+				<c:forEach var="item" items="${communityBean.latestArticles}">
+					<h4>${item.title }</h4>
+
+
+					<c:out value='${item.author}' />
+				</c:forEach>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class=col-sm-3>
+				<div style="border-style: solid; border-color: #87CEFA;">
+					<p>
+						<a href="" style="font-size: 50px">Find a Coach</a>
+					</p>
+
+				</div>
+				<div class="row">
+					<div class="col-sm-12"
+						style="border-style: solid; border-color: #87CEFA;">
+						<h4>Have you read?</h4>
+						<c:forEach var="item" items="${communityBean.readingList}">
+
+							<img src="${item.imageUrl }" alt="" class="img img-responsive">
+							<h4 style="font-family: Corben;">
+								<c:out value='${item.bookTitle}' />
+								<
+							</h4>
+
+							<c:out value='${item.author}' />
+					</div>
+
+
+					</c:forEach>
+				</div>
+			</div>
+			<div class=" col-sm-5">
+				<iframe width="100%" height="100%" class="embed-responsive-item"
+					src="http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=0"></iframe>
+			</div>
+			<div class=col-sm-4>
+				<div style="border-style: solid; border-color: #87CEFA;">
+					<h4>Discussion</h4>
+					<p>Topic Author Time</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-5"
+			style="border-style: solid; border-color: #87CEFA;">
+			<h4>Articles from the community</h4>
+			<p>Topic Author Time</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3"
+			style="border-style: solid; border-color: #87CEFA;">
+			<p>
+				<a href="" style="font-size: 50px">Find a Job</a>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3"
+			style="border-style: solid; border-color: #87CEFA;">
+			<h4>Jobs</h4>
+			<p>Topic Author Time</p>
+		</div>
+	</div>
+
+	<!-- div class="row col-md-3">
+		
+				<!-- div class="well">
+					<a class="twitter-timeline" href="https://twitter.com/FRANKDUPR33"
+						data-widget-id="554987493125554176">Tweets by @BestQualified</a>
+					<script>
+						!function(d, s, id) {
+							var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/
+									.test(d.location) ? 'http' : 'https';
+							if (!d.getElementById(id)) {
+								js = d.createElement(s);
+								js.id = id;
+								js.src = p
+										+ "://platform.twitter.com/widgets.js";
+								fjs.parentNode.insertBefore(js, fjs);
+							}
+						}(document, "script", "twitter-wjs");
+					</script>
+
+				</div>
+
+
+			</div-->
+	</div-->
+>>>>>>> a8061972e7abc1cdb9fa973a01802dd295b26b55
+	</div>
+
 
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>

@@ -386,6 +386,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>CoachingHome</servlet-name>
 		<url-pattern>/bq/coaching/home</url-pattern>
 	</servlet-mapping>
+<<<<<<< HEAD
 	<servlet>
 		<servlet-name>CommunityHome</servlet-name>
 		<servlet-class>com.bestqualified.servlets.InitCommunityBean</servlet-class>
@@ -394,6 +395,9 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>CommunityHome</servlet-name>
 		<url-pattern>/bq/community</url-pattern>
 	</servlet-mapping>
+=======
+	
+>>>>>>> a8061972e7abc1cdb9fa973a01802dd295b26b55
 	<servlet>
 		<servlet-name>SaveJobAlert</servlet-name>
 		<servlet-class>com.bestqualified.servlets.SaveJobAlert</servlet-class>
@@ -533,18 +537,18 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 
 
-	
-	
 
 	<servlet>
 		<servlet-name>SaveReadingList</servlet-name>
+
 		<servlet-class>com.bestqualified.admin.CreateReadingList</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SaveReadingList</servlet-name>
 		<url-pattern>/bq/admin/save-reading-list</url-pattern>
+
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>GetReadingList</servlet-name>
 		<servlet-class>com.bestqualified.servlets.GetReadingList</servlet-class>
@@ -552,6 +556,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<servlet-mapping>
 		<servlet-name>GetReadingList</servlet-name>
 		<url-pattern>/bq/coaching/tools/get-reading-list</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>InitCommunityBean</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitCommunityBean</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitCommunityBean</servlet-name>
+		<url-pattern>/community</url-pattern>
 	</servlet-mapping>
 
 
@@ -908,7 +921,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>community</servlet-name>
-		<url-pattern>/community</url-pattern>
+		<url-pattern>/bq/community</url-pattern>
 	</servlet-mapping>
 
 	<session-config>

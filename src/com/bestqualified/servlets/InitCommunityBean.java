@@ -73,8 +73,12 @@ public class InitCommunityBean extends HttpServlet {
 		synchronized (session) {
 			session.setAttribute("communityBean", cb);
 		}
+<<<<<<< HEAD
 		
 		resp.sendRedirect(resp.encodeRedirectURL("/community"));
+=======
+		resp.sendRedirect(resp.encodeRedirectURL("/bq/community"));
+>>>>>>> a8061972e7abc1cdb9fa973a01802dd295b26b55
 	}
 
 }
