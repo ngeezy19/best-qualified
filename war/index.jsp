@@ -477,20 +477,13 @@ div.transbox form input {
 
 			<div class="col-md-6">
 				<div class="media headlines">
-<<<<<<< HEAD
-					<a class="pull-right" href="/bq/community"><img
-						class="media-object img-rounded" src="/images/community.png"></a>
-					<div class="media-body">
-						<h4 class="media-heading">
-							<a href="/bq/community" style="text-decoration: none;"><strong>OUR
-									NETWORK</strong></a>
-=======
+
 					<a class="pull-right" href="/community"><img
 						class="media-object img-rounded" src="/images/community.png"></a>
 					<div class="media-body">
 						<h4 class="media-heading">
 							<a href="/community"><strong>OUR NETWORK</strong></a>
->>>>>>> a8061972e7abc1cdb9fa973a01802dd295b26b55
+
 						</h4>
 						<h5 class="jobsss">Get hired in industries of your choice</h5>
 						<p class="plat">Plug into new communities that can improve
@@ -649,25 +642,7 @@ div.transbox form input {
 	<br>
 	<br>
 	<br>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12  headline">
-				<h4>Our Partners</h4>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-12 imgo" style="text-align: center;">
-				<a href=""><img src="/images/1.png" alt=""></a> <a href=""><img
-					src="/images/2.png" alt=""></a> <a href=""><img
-					src="/images/3.png" alt=""></a> <a href=""><img
-					src="/images/4.png" alt=""></a> <a href=""><img
-					src="/images/5.png" alt=""></a> <a href=""><img
-					src="/images/6.png" alt=""></a>
-
-			</div>
-		</div>
-	</div>
+	
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>

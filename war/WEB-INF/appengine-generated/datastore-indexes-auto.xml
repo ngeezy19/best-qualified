@@ -1,29 +1,4 @@
-<<<<<<< HEAD
-<!-- Indices written at Thu, 30 Jun 2016 13:44:43 UTC -->
+<!-- Indices written at Thu, 30 Jun 2016 15:46:37 WAT -->
 
-<datastore-indexes>
+<datastore-indexes/>
 
-    <!-- Used 2 times in query history -->
-=======
-<!-- Indices written at Wed, 29 Jun 2016 17:14:29 WAT -->
-
-<datastore-indexes>
-
-    <!-- Used 6 times in query history -->
->>>>>>> a8061972e7abc1cdb9fa973a01802dd295b26b55
-    <datastore-index kind="Article" ancestor="false" source="auto">
-        <property name="category" direction="asc"/>
-        <property name="nComments" direction="desc"/>
-    </datastore-index>
-
-<<<<<<< HEAD
-    <!-- Used 10 times in query history -->
-=======
-    <!-- Used 22 times in query history -->
->>>>>>> a8061972e7abc1cdb9fa973a01802dd295b26b55
-    <datastore-index kind="Article" ancestor="false" source="auto">
-        <property name="category" direction="asc"/>
-        <property name="date" direction="desc"/>
-    </datastore-index>
-
-</datastore-indexes>
