@@ -133,7 +133,7 @@
 									</ul>
 								</div>
 							</div>
-							
+							<div class="col-sm-12 no-padding-div cert-view-content">
 							<h4>Professional Diploma in Public Relations</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">
@@ -165,8 +165,8 @@
 						</div>
 					</div>
 				</div>
+				</div>
 				
-				<div class="row" style="margin-bottom: 1%;">
 					<div class="col-sm-12 cert-view no-padding-div">
 						<div class="col-sm-12 cert-view-header no-padding-div">
 							<h3>CIPR</h3>
@@ -203,7 +203,8 @@
 									</ul>
 								</div>
 							</div>
-							
+							</div>
+							<div class="col-sm-12 no-padding-div cert-view-content">
 							<h4>Advanced Certificate in Public Relations</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">
@@ -229,6 +230,7 @@
 									</ul>
 								</div>
 							</div>
+							<div class="col-sm-12 no-padding-div cert-view-content">
 							<h4>Diploma in Public Relations</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">

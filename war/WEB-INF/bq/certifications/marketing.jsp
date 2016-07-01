@@ -180,6 +180,8 @@
 									</ul>
 								</div>
 							</div>
+							</div>
+							<div class="col-sm-12 no-padding-div cert-view-content">
 							<h4>Certificate in Professional Marketing</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">
@@ -205,6 +207,8 @@
 									</ul>
 								</div>
 							</div>
+							</div>
+							<div class="col-sm-12 no-padding-div cert-view-content">
 							<h4>Diploma in Professional Marketing</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">
@@ -230,6 +234,8 @@
 									</ul>
 								</div>
 							</div>
+							</div>
+							<div class="col-sm-12 no-padding-div cert-view-content">
 							<h4>Post Graduate Diploma in Marketing</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">
@@ -296,6 +302,8 @@
 									</ul>
 								</div>
 							</div>
+							</div>
+							<div class="col-sm-12 no-padding-div cert-view-content">
 							<h4>Chartered Graduate Diploma in Marketing</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">
@@ -321,6 +329,8 @@
 									</ul>
 								</div>
 							</div>
+							</div>
+							<div class="col-sm-12 no-padding-div cert-view-content">
 							<h4>Chartered Post Graduate Diploma in Marketing</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">
@@ -330,7 +340,7 @@
 									</h5>
 									<ul>
 										<li>Understand strategic marketing management</li>
-										<li>Learn product development & brand management</li>
+										<li>Learn product development a brand management</li>
 										<li>Develop skills in distribution and logistics management</li>
 									</ul>
 								</div>
@@ -378,8 +388,10 @@
 										
 									</ul>
 								</div>
+								</div>
 
 							</div>
+							<div class="col-sm-12 no-padding-div cert-view-content">
 							<h4>Manager CMMP</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">
@@ -397,7 +409,8 @@
 								</div>
 
 							</div>
-							
+							</div>
+							<div class="col-sm-12 no-padding-div cert-view-content">
 							<h4>Executive CMMP</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">
@@ -415,7 +428,8 @@
 								</div>
 
 							</div>
-						
+						</div>
+						<div class="col-sm-12 no-padding-div cert-view-content">
 							<h4>Chartered CMMP</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">
