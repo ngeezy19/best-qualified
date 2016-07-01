@@ -454,10 +454,12 @@
 					</div>
 					</div>			
 			</div>
+			</div>
 			<div class="col-sm-4">
 				<%@ include file="/WEB-INF/pages/certification-sidebar.html"%>
 			</div>
-		</div>
+		
+	</div>
 	</div>
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
