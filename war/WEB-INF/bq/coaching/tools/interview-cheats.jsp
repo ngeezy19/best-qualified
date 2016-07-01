@@ -16,67 +16,19 @@
 <link rel="stylesheet" href="/styles/font-awesome.min.css">
 <link href="http://fonts.googleapis.com/css?family=Corben"
 	rel="stylesheet" type="text/css">
-<style type="text/css">
-.grad1 {
-	background: #dadada;
-	background: -webkit-linear-gradient(right, #dadada, white);
-	background: -o-linear-gradient(left, #dadada, white);
-	background: -moz-linear-gradient(left, #dadada, white);
-	background: linear-gradient(to left, #dadada, white);
-}
 
-.grad2 h4 {
-	color: red;
-}
-
-.grad2 li {
-	line-height: 1.8
-}
-
-.grad2 {
-	background: #eaeaea;
-	background: -webkit-linear-gradient(right, #eaeaea, white);
-	background: -o-linear-gradient(left, #eaeaea, white);
-	background: -moz-linear-gradient(left, #eaeaea, white);
-	background: linear-gradient(to left, #eaeaea, white);
-}
-
-.training-intro {
-	border: 1px solid #444;
-	background: #666;
-	padding: 2%;
-	border-left: 5px solid orange;
-	color: white;
-}
-
-.workshop-info {
-	margin-top: 2%;
-	background: #fafafa; /* For browsers that do not support gradients */
-	background: -webkit-linear-gradient(#eaeaea, white);
-	/* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(#eaeaea, white);
-	/* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(#eaeaea, white);
-	/* For Firefox 3.6 to 15 */
-	background: linear-gradient(#eaeaea, white); /* Standard syntax */
-}
-
-.workshop-info p {
-	font-family: calibri
-}
-</style>
 </head>
 <body>
 	<%@ include file="/main-nav.html"%>
 	<br />
-	<div class="container-fluid grad1">
+	<div class="banner-grad">
 		<br />
 		<div class="row">
 			<div class="col-sm-7" style="text-align: center;">
 
 				<h1
 					style="color: #013143; font-family: roboto; margin-top: 10%; font-size: 32pt">
-					<span class="text-primary">Preparing For An Interview?</span>
+					<span class="span-1">Preparing For An Interview?</span>
 				</h1>
 
 			</div>

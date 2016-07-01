@@ -672,23 +672,13 @@
 						style="border: 2px purple solid; cursor: pointer;">
 						<img class="img img-responsive" src="/images/job-alert.jpg">
 					</div>
-					<div class="col-sm-12 no-padding-div"
-						style="border: 2px darkblue solid; margin-top: 3%;">
-						<div class="col-sm-12 no-padding"
-							style="background-color: darkblue">
-							<h4 style="color: white; text-align: center;">
-								Check the Quality of your <span
-									style="font-weight: bold; color: red; font-family: tahoma; font-size: 26pt">Resume</span>
-							</h4>
-						</div>
-						<div class="col-sm-12 no-padding-div"
-							style="background-image: url('/images/resume.png'); height: 280px; background-size: contain; position: relative;">
-							<div id="animation-div"
-								style="position: absolute; bottom: 0px; width: 100%; padding: 1%; text-align: center;">
-								<h4>Free Resume Evaluation</h4>
-								<h4>CLICK HERE</h4>
-							</div>
-						</div>
+					
+						<div class="col-sm-12 no-padding-div" style="margin-bottom: 2%;">
+						<a href="<c:url value='/bq/coaching/request-coach'/>"><img
+						class="img img-responsive"
+						style="border: 1px solid purple; padding: 2%;"
+						src="/images/coach.png"></a>
+				</div>
 					</div>
 				</div>
 			</div>

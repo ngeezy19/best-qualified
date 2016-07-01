@@ -563,7 +563,7 @@ div.transbox form input {
 				<div>
 					<br>
 					<h4 style="color: #000;">INTERVIEW ADVICE</h4>
-					<a href=""><img src="/images/ad.png" alt=""
+					<a href="/bq/coaching/tools/interview-cheats"><img src="/images/ad.png" alt=""
 						class="img-responsive"></a>
 				</div>
 			</div>
