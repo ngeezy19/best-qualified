@@ -22,13 +22,14 @@
 	<%@ include file="/main-nav.html"%>
 	<br />
 	<div class="container-fluid banner-grad">
-		<br /><br/>
+		<br /> <br />
 		<div class="row">
 			<div class="col-sm-7" style="text-align: center;">
 
 				<h1
 					style="color: #013143; font-family: roboto; margin-top: 10%; font-size: 32pt">
-					<span class="span-1">Need a Coach?</span> <span class="span-2" style="padding-left: 2%;">Talk To Us Now</span>
+					<span class="span-1">Need a Coach?</span> <span class="span-2"
+						style="padding-left: 2%;">Talk To Us Now</span>
 				</h1>
 
 			</div>
@@ -67,6 +68,12 @@
 							<div class="col-sm-12">
 								<div id="msg-div"></div>
 							</div>
+							
+							<div class="form-group col-sm-12">
+								<h5 class="text-primary"
+									style="margin-bottom: 4px; font-weight: bold;">* Tell Us
+									About Yourself</h5>
+							</div>
 							<div class="form-group col-sm-6">
 								<label>First Name </label> <input name="first-name"
 									value="${user.firstName}" id="first-name" class="form-control">
@@ -83,28 +90,72 @@
 								<label>Phone </label> <input name="phone" id="phone"
 									value="${user.phone}" class="form-control">
 							</div>
+
 							<div class="form-group col-sm-12">
-								<label>Title </label> <input name="title" id="title"
-									class="form-control">
-							</div>
-							<div class="form-group col-sm-12">
-								<label>Body:</label>
-								<textarea class="tiny form-control" rows="12" name="content"
+								<h5 class="text-primary"
+									style="margin-bottom: 6px; font-weight: bold;">* What do
+									you want to discuss about?</h5>
+								<textarea class="tiny form-control" rows="7" name="content"
 									id="content"></textarea>
 							</div>
-							<div class="form-group col-sm-12">
+							<div class="form-group col-sm-12" style="display: none;">
 								<input type="button" id="send-request" class="btn btn-primary"
-									value="Send Request" />
+									value="Continue" />
 							</div>
-						</div>
 					</form>
-				</div>
-			</div>
+					<div class="form-group col-sm-12" id="service-div">
+						<table class="table table-responsibe table-striped table-bordered">
+							<thead style="background-color: #3b5998; color: white">
+								<tr>
+									<th>Service</th>
+									<th style="text-align: right;">Cost (NGN)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr id="online" style="">
+									<td><label class="radio-inline"><input
+											type="radio" id="online-radio" name="coaching-type"
+											value="online">Online Coaching</label></td>
+									<td style="text-align: right;">50,000</td>
+								</tr>
+								<tr id="oneonone" style="">
+									<td><label class="radio-inline"><input
+											type="radio" name="coaching-type" value="oneonone"
+											id="one-radio">1-on-1 coaching</label></td>
+									<td style="text-align: right;">75,000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="form-group col-sm-12">
+						<form name="form1" id="interswitch-tansaction-form"
+							action="https://stageserv.interswitchng.com/test_paydirect/pay"
+							method="post">
+							<input name="product_id" type="hidden" value="6112" /> <input
+								name="amount" type="hidden" value="5000000" /> <input
+								name="currency" type="hidden" value="566" /> <input
+								name="site_redirect_url" type="hidden"
+								value="http://localhost:8888/" /> <input name="site_name"
+								type="hidden" value="https://www.salesmaxx.com" /> <input
+								name="txn_ref" type="hidden" value="1234123123" /> <input
+								name="pay_item_id" type="hidden" value="101" /> <input
+								name="hash" type="hidden" value="418" />
+							<div>
+								<input type="submit" class="btn btn-primary" value="Pay Now"><br />
+								<img alt="" src="/images/interswitch-logo.png">
+							</div>
+						</form>
+					</div>
 
+				</div>
+
+			</div>
 		</div>
-		<div class="col-sm-4">
-			<%@ include file="/WEB-INF/pages/certification-sidebar.html"%>
-		</div>
+
+	</div>
+	<div class="col-sm-4">
+		<%@ include file="/WEB-INF/pages/certification-sidebar.html"%>
+	</div>
 	</div>
 
 	<%@ include file="/WEB-INF/pages/footer.html"%>
@@ -114,64 +165,58 @@
 	<script src="/js/main.js"></script>
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							tinymce.init({
-								selector : '.tiny'
-							});
+		$(document).ready(function() {
+			tinymce.init({
+				selector : '.tiny'
+			});
 
-							$("#send-request")
-									.click(
-											function() {
+			$("#online-radio").click(function() {
+				$("#oneonone").hide();
+				$("#online").slideDown();
+				$(this).prop("disabled", true);
+				$("#one-radio").prop("disabled", false);
+			});
 
-												$
-														.ajax({
-															url : "/bq/coaching/send-coach-request",
-															method : "POST",
-															data : {
-																"first-name" : $(
-																		"#first-name")
-																		.val(),
-																"last-name" : $(
-																		"#last-name")
-																		.val(),
-																"email" : $(
-																		"#email")
-																		.val(),
-																"phone" : $(
-																		"#phone")
-																		.val(),
-																"title" : $(
-																		"#title")
-																		.val(),
-																"content" : tinymce
-																		.get(
-																				'content')
-																		.getContent()
-															},
-															dataType : "json",
-															success : function(
-																	data) {
-																addSuccess(
-																		$("#msg-div"),
-																		"Your request has been sent. A coach will contact you shortly.");
-															},
-															error : function(
-																	xhr) {
-																if (xhr.status == 417) {
-																	addError(
-																			$("#msg-div"),
-																			xhr.statusText);
-																} else if (xhr.status == 200) {
-																	addSuccess(
-																			$("#msg-div"),
-																			"Your request has been sent. A coach will contact you shortly.");
-																}
-															}
-														});
-											});
-						});
+			$("#one-radio").click(function() {
+				$("#online").hide();
+				$("#oneonone").slideDown();
+				$(this).prop("disabled", true);
+				$("#online").prop("disabled", false);
+			});
+
+			$("#send-request").click(function() {
+
+				$.ajax({
+					url : "/bq/coaching/send-coach-request",
+					method : "POST",
+					data : {
+						"first-name" : $("#first-name").val(),
+						"last-name" : $("#last-name").val(),
+						"email" : $("#email").val(),
+						"phone" : $("#phone").val(),
+						"title" : $("#title").val(),
+						"content" : tinymce.get('content').getContent()
+					},
+					dataType : "json",
+					success : function(data) {
+						$("#service-div").slideDown();
+						//addSuccess(
+						//$("#msg-div"),
+						//"Your request has been sent. A coach will contact you shortly.");
+					},
+					error : function(xhr) {
+						if (xhr.status == 417) {
+							addError($("#msg-div"), xhr.statusText);
+						} else if (xhr.status == 200) {
+							$("#service-div").slideDown();
+							//addSuccess(
+							//$("#msg-div"),
+							//"Your request has been sent. A coach will contact you shortly.");
+						}
+					}
+				});
+			});
+		});
 	</script>
 </body>
 </html>

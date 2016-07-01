@@ -84,7 +84,7 @@
 				<div class="row card-panel"
 					style="padding: 2px; color: white; background-color: gray">
 					<div class="col-sm-4">
-						<h4>
+						<h4 style="cursor: pointer;" id="project-trig">
 							<i class="fa fa-plus-square-o" aria-hidden="true"
 								style="padding-right: 1%;"></i> New Project
 						</h4>
@@ -99,6 +99,15 @@
 							<i class="fa fa-comments-o" aria-hidden="true"
 								style="padding-right: 1%;"></i> Start a discussion
 						</h4>
+					</div>
+					<div class="col-sm-12">
+						<%@ include file="/partial/create-project.html"%>
+					</div>
+					<div class="col-sm-12">
+						<%@ include file="/partial/create-job.html"%>
+					</div>
+					<div class="col-sm-12">
+						<%@ include file="/partial/add-company.html"%>
 					</div>
 					<div class="col-sm-12 no-padding-div">
 						<%@ include file="/partial/new-article.html"%>
@@ -202,27 +211,13 @@
 		</div>
 	</div>
 	<div style="clear: both;"></div>
-	<div class="container">
-		<div class="row"
-			style="border-top: 1px solid #aaaaaa; text-align: center; margin: 5%; padding: 2%;">
-			<div class="col-sm-3">
-				<a href="#">Career Mobility</a>
-			</div>
-			<div class="col-sm-3">
-				<a href="#">Guidiance & Hand holding</a>
-			</div>
-			<div class="col-sm-3">
-				<a href="#">Certifications</a>
-			</div>
-			<div class="col-sm-3">
-				<a href="#">Community</a>
-			</div>
-		</div>
-	</div>
+	
+	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.webui-popover.min.js"></script>
 	<script src="/js/waitMe.js"></script>
-	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script src="/js/main.js"></script>
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+	
 </body>

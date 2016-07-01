@@ -25,7 +25,6 @@ public class RequestCoach extends HttpServlet {
 		String lastName = req.getParameter("last-name");
 		String email = req.getParameter("email");
 		String phone = req.getParameter("phone");
-		String title = req.getParameter("title");
 		String body = req.getParameter("content");
 		
 		resp.setContentType("application/json");
@@ -50,24 +49,20 @@ public class RequestCoach extends HttpServlet {
 					"You have to enter your phone number.");
 			return;
 		}
-		if (!Util.notNull(title)) {
-			resp.sendError(HttpServletResponse.SC_EXPECTATION_FAILED,
-					"You have to enter a title for your discussion.");
-			return;
-		}
+		
 		if (!Util.notNull(body)) {
 			resp.sendError(HttpServletResponse.SC_EXPECTATION_FAILED,
 					"You have to enter content for your discussion.");
 			return;
 		}
 
-		String content = "<p>Hello Coach</p>" + "<h4>" + title + "</h4><div>"
+		String content = "<p>Hello Coach</p>" + "<h4></h4><div>"
 				+ body + "</div><div><p>Regards,</p><p>" + firstName + " "
 				+ lastName + "</p><p><strong>EMail: </strong>" + email
 				+ "</p><p><strong>Phone: </strong>" + phone + "</p></div>";
 		try {
 			Util.sendEmail(Util.SERVICE_ACCOUNT, "admin@bestqualified.com",
-					title, content);
+					"New Coaching Request", content);
 			resp.setStatus(HttpServletResponse.SC_OK);
 		} catch (AddressException e) {
 			// TODO Auto-generated catch block

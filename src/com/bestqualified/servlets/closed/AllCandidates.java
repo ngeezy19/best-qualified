@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bestqualified.bean.ProView;
 import com.google.appengine.api.search.Index;
@@ -30,10 +31,9 @@ public class AllCandidates extends HttpServlet {
 		
 		QueryOptions options = QueryOptions
 				.newBuilder()
-				.setLimit(10)
 				.setFieldsToReturn("firstName", "lastName", "highestEducationLevel",
 						"yearsOfExperience","pictureUrl").build();
-		Query query = Query.newBuilder().setOptions(options).build();
+		Query query = Query.newBuilder().setOptions(options).build("");
 		IndexSpec indexSpec = IndexSpec.newBuilder().setName("professionals").build();
 		Index index = SearchServiceFactory.getSearchService().getIndex(
 				indexSpec);
@@ -48,7 +48,10 @@ public class AllCandidates extends HttpServlet {
 			pv.setHighestQualification(sd.getOnlyField("highestEducationLevel").getText());
 			pvs.add(pv);
 		}
-		//return pvs;
+		HttpSession session = req.getSession();
+		synchronized (session) {
+			session.setAttribute("allCandidates", pvs);
+		}
 		resp.sendRedirect(resp.encodeRedirectURL("/bq/closed/find-candidate"));
 	}
 

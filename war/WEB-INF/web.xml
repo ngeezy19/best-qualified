@@ -5,6 +5,15 @@
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 	<servlet>
+		<servlet-name>FindCandidateServlet</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.FindCandidateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FindCandidateServlet</servlet-name>
+		<url-pattern>/bq/closed/search-candidate</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>AllCandidates</servlet-name>
 		<servlet-class>com.bestqualified.servlets.closed.AllCandidates</servlet-class>
 	</servlet>
@@ -386,18 +395,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>CoachingHome</servlet-name>
 		<url-pattern>/bq/coaching/home</url-pattern>
 	</servlet-mapping>
-<<<<<<< HEAD
-	<servlet>
-		<servlet-name>CommunityHome</servlet-name>
-		<servlet-class>com.bestqualified.servlets.InitCommunityBean</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>CommunityHome</servlet-name>
-		<url-pattern>/bq/community</url-pattern>
-	</servlet-mapping>
-=======
-	
->>>>>>> a8061972e7abc1cdb9fa973a01802dd295b26b55
+
 	<servlet>
 		<servlet-name>SaveJobAlert</servlet-name>
 		<servlet-class>com.bestqualified.servlets.SaveJobAlert</servlet-class>
@@ -557,7 +555,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>GetReadingList</servlet-name>
 		<url-pattern>/bq/coaching/tools/get-reading-list</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>InitCommunityBean</servlet-name>
 		<servlet-class>com.bestqualified.servlets.InitCommunityBean</servlet-class>
@@ -580,24 +578,24 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<!-- ************************************************JSP*************************************************************** -->
 	<servlet>
 		<servlet-name>FindCandidates</servlet-name>
-		<jsp-file>/WEB-INF/bq/close/find-candidates.jsp</jsp-file>	
+		<jsp-file>/WEB-INF/bq/close/find-candidates.jsp</jsp-file>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>FindCandidates</servlet-name>
 		<url-pattern>/bq/closed/find-candidate</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>CreateReadingList</servlet-name>
-		<jsp-file>/WEB-INF/bq/admin/reading-list.jsp</jsp-file>	
+		<jsp-file>/WEB-INF/bq/admin/reading-list.jsp</jsp-file>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>CreateReadingList</servlet-name>
 		<url-pattern>/bq/admin/create-reading-list</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>ChangePasswordPage</servlet-name>
 		<jsp-file>/WEB-INF/bq/open/change-password.jsp</jsp-file>

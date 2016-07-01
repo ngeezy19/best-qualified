@@ -33,16 +33,17 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 
 public class EntityConverter {
-	
+
 	public static ProjectLog entityToProjectLog(Entity e) {
 		ProjectLog p = new ProjectLog();
 		p.setId(e.getKey());
-		p.setActivity(ProjectLog.Activity.valueOf((String)e.getProperty("activity")));
+		p.setActivity(ProjectLog.Activity.valueOf((String) e
+				.getProperty("activity")));
 		p.setComment((Text) e.getProperty("comment"));
 		p.setDate((Date) e.getProperty("date"));
 		return p;
 	}
-	
+
 	public static Entity projectLogToEntity(ProjectLog p) {
 		Entity e = new Entity(p.getId());
 		e.setIndexedProperty("date", p.getDate());
@@ -50,21 +51,21 @@ public class EntityConverter {
 		e.setUnindexedProperty("comment", p.getComment());
 		return e;
 	}
-	
-	public static ReadingList entityToReadingList(Entity e){
+
+	public static ReadingList entityToReadingList(Entity e) {
 		ReadingList rl = new ReadingList();
 		rl.setId(e.getKey());
-		rl.setDate ((Date) e.getProperty("date"));
-		rl.setBookTitle ((String) e.getProperty("bookTitle"));
+		rl.setDate((Date) e.getProperty("date"));
+		rl.setBookTitle((String) e.getProperty("bookTitle"));
 		rl.setPublisher((String) e.getProperty("publisher"));
 		rl.setAuthor((String) e.getProperty("author"));
 		rl.setDescription((Text) e.getProperty("description"));
 		rl.setLink((String) e.getProperty("link"));
 		rl.setImageKey((BlobKey) e.getProperty("imageKey"));
 		return rl;
-		
+
 	}
-	
+
 	public static Entity ReadingListToEntity(ReadingList rl) {
 		Entity e = new Entity(rl.getId());
 		e.setIndexedProperty("date", rl.getDate());
@@ -75,8 +76,8 @@ public class EntityConverter {
 		e.setUnindexedProperty("publisher", rl.getPublisher());
 		e.setUnindexedProperty("link", rl.getLink());
 		return e;
-		}
-	
+	}
+
 	public static Comment entityToComment(Entity e) {
 		Comment c = new Comment();
 		c.setKey(e.getKey());
@@ -86,7 +87,7 @@ public class EntityConverter {
 		c.setComments((List<Key>) e.getProperty("comment"));
 		return c;
 	}
-	
+
 	public static Article entityToArticle(Entity e) {
 		Article a = new Article();
 		a.setKey(e.getKey());
@@ -100,18 +101,13 @@ public class EntityConverter {
 		a.setViews((Long) e.getProperty("views"));
 		a.setImageKey((BlobKey) e.getProperty("imageKey"));
 		Object o = e.getProperty("nComments");
-		if(o != null) {
-<<<<<<< HEAD
-			a.setnComments((Long)e.getProperty("nComments"));
+		if (o != null) {
+
+			a.setnComments((Long) e.getProperty("nComments"));
 		}
-		
-=======
-			   a.setnComments((Long)e.getProperty("nComments"));
-			  }
->>>>>>> a8061972e7abc1cdb9fa973a01802dd295b26b55
 		return a;
 	}
-	
+
 	public static Entity ArticleToEntity(Article a) {
 		Entity e = new Entity(a.getKey());
 		e.setIndexedProperty("title", a.getTitle());
@@ -127,7 +123,7 @@ public class EntityConverter {
 		e.setIndexedProperty("nComment", a.getnComments());
 		return e;
 	}
-	
+
 	public static Entity commentToEntity(Comment c) {
 		Entity e = new Entity(c.getKey());
 		e.setUnindexedProperty("author", c.getAuthor());
@@ -136,7 +132,7 @@ public class EntityConverter {
 		e.setUnindexedProperty("body", c.getBody());
 		return e;
 	}
-	
+
 	public static Entity JobAlertToEntity(JobAlert ja) {
 		Entity e = new Entity(ja.getId());
 		e.setIndexedProperty("careerLevel", ja.getCareerLevel());
@@ -146,7 +142,7 @@ public class EntityConverter {
 		e.setUnindexedProperty("email", ja.getEmail());
 		return e;
 	}
-	
+
 	public static JobAlert entityToJobAlert(Entity e) {
 		JobAlert ja = new JobAlert();
 		ja.setId(e.getKey());
@@ -192,8 +188,6 @@ public class EntityConverter {
 		return cl;
 	}
 
-
-
 	public static Entity certificationToEntity(Certification c) {
 		Entity e = new Entity(Certification.class.getSimpleName());
 		e.setUnindexedProperty(StringConstants.NAME, c.getName());
@@ -234,15 +228,14 @@ public class EntityConverter {
 	}
 
 	public static Company entityToCompany(Entity e) {
-		
-		if(e == null) {
+
+		if (e == null) {
 			return null;
 		}
 		Company c = new Company();
 		c.setId(e.getKey());
 		c.setAddress((String) e.getProperty(StringConstants.ADDRESS));
-		c.setCompanyName((String) e
-				.getProperty("companyName"));
+		c.setCompanyName((String) e.getProperty("companyName"));
 		c.setCompanyWebsite((String) e
 				.getProperty(StringConstants.COMPANY_WEBSITE));
 		c.setDescription((Text) e.getProperty(StringConstants.DESCRIPTION));
@@ -277,7 +270,7 @@ public class EntityConverter {
 
 	public static Education entityToEducation(Entity e) {
 		Education edu = new Education();
-		if(e == null) {
+		if (e == null) {
 			return edu;
 		}
 		edu.setId(e.getKey());
@@ -285,7 +278,8 @@ public class EntityConverter {
 				.getProperty(StringConstants.CLASSIFICATION));
 		edu.setCourse((String) e.getProperty(StringConstants.COURSE));
 		edu.setInstitution((String) e.getProperty(StringConstants.INSTITUITION));
-		edu.setQualification((String) e.getProperty(StringConstants.QUALIFICATION));
+		edu.setQualification((String) e
+				.getProperty(StringConstants.QUALIFICATION));
 		edu.setEndMonth((String) e.getProperty("endMonth"));
 		edu.setEndYear((String) e.getProperty("endYear"));
 		edu.setStartMonth((String) e.getProperty("startMonth"));
@@ -340,7 +334,7 @@ public class EntityConverter {
 		e.setUnindexedProperty(StringConstants.APPLICATION_URL,
 				j.getApplicationUrl());
 		e.setUnindexedProperty(StringConstants.COMPANY, j.getCompany());
-		e.setProperty("viewers",j.getViewers());
+		e.setProperty("viewers", j.getViewers());
 		e.setUnindexedProperty("newApplicants", j.getNewApplicants());
 		return e;
 
@@ -367,8 +361,7 @@ public class EntityConverter {
 				.getProperty(StringConstants.ALLOW_LINKEDIN_APPLICATION));
 		j.setPositionFilled((boolean) e
 				.getProperty(StringConstants.POSITION_FILLED));
-		j.setJobCategory((String) e
-				.getProperty(StringConstants.JOB_CATEGORY));
+		j.setJobCategory((String) e.getProperty(StringConstants.JOB_CATEGORY));
 		j.setApplicants((List<Key>) e.getProperty(StringConstants.APPLICANTS));
 		j.setDatePosted((Date) e.getProperty(StringConstants.DATE_POSTED));
 		j.setDescription((Text) e.getProperty(StringConstants.DESCRIPTION));
@@ -414,7 +407,7 @@ public class EntityConverter {
 
 	public static Entity recruiterToEntity(Recruiter r) {
 		Entity e = new Entity(r.getId());
-		
+
 		e.setIndexedProperty("userKey", r.getUserKey());
 		e.setUnindexedProperty(StringConstants.COMPANY, r.getCompany());
 		e.setUnindexedProperty(StringConstants.JOBS,
@@ -449,7 +442,8 @@ public class EntityConverter {
 		e.setUnindexedProperty("awards", cp.getAwards());
 		e.setUnindexedProperty("certifications", cp.getCertifications());
 		e.setUnindexedProperty("yearsOfExperience", cp.getYearsOfExperience());
-		e.setUnindexedProperty("highestEducationLevel", cp.getHighestEducationLevel());
+		e.setUnindexedProperty("highestEducationLevel",
+				cp.getHighestEducationLevel());
 		e.setUnindexedProperty("jobType", cp.getJobType());
 		e.setUnindexedProperty("profileDescription", cp.getProfileDescription());
 		e.setUnindexedProperty("nationality", cp.getNationality());
@@ -471,7 +465,8 @@ public class EntityConverter {
 		cp.setAwards((List<Key>) e.getProperty("awards"));
 		cp.setCareerLevel((String) e.getProperty("careerLevel"));
 		cp.setYearsOfExperience((String) e.getProperty("yearsOfExperience"));
-		cp.setHighestEducationLevel((String) e.getProperty("highestEducationLevel"));
+		cp.setHighestEducationLevel((String) e
+				.getProperty("highestEducationLevel"));
 		cp.setJobType((String) e.getProperty("jobType"));
 		cp.setCertifications((List<Key>) e.getProperty("certifications"));
 		cp.setCurrentEmployer((String) e.getProperty("currentEmployer"));
@@ -556,7 +551,7 @@ public class EntityConverter {
 
 	public static WorkExperience entityToWorkExperience(Entity e) {
 		WorkExperience we = new WorkExperience();
-		if(e==null) {
+		if (e == null) {
 			return we;
 		}
 		we.setId(e.getKey());
@@ -585,33 +580,36 @@ public class EntityConverter {
 		Project p = new Project();
 		p.setId(entity.getKey());
 		p.setDateCreated((Date) entity.getProperty("dateCreated"));
-		p.setJobs( (Key) entity.getProperty("job"));
+		p.setJobs((Key) entity.getProperty("job"));
 		p.setName((String) entity.getProperty("name"));
 		p.setProfiles((List<Key>) entity.getProperty("profile"));
 		p.setSavedSearch((List<Key>) entity.getProperty("savedSearch"));
-		if(entity.getProperty("description")!=null) {
-			p.setDescription((Text)entity.getProperty("description"));
+		if (entity.getProperty("description") != null) {
+			p.setDescription((Text) entity.getProperty("description"));
 		}
 		p.setApplicants((List<Key>) entity.getProperty("applicants"));
-		p.setSearchConditions((List<EmbeddedEntity>) entity.getProperty("searchConditions"));
-		p.setShortListedCandidates((List<Key>) entity.getProperty("shortListedCandidates"));
+		p.setSearchConditions((List<EmbeddedEntity>) entity
+				.getProperty("searchConditions"));
+		p.setShortListedCandidates((List<Key>) entity
+				.getProperty("shortListedCandidates"));
 		p.setInvitees((List<Key>) entity.getProperty("invitees"));
 		p.setLogs((List<Key>) entity.getProperty("logs"));
 		p.setInterviewDate((Date) entity.getProperty("interviewDate"));
 		p.setNewApplicants((List<Key>) entity.getProperty("newApplicants"));
-		
+
 		return p;
 	}
 
 	public static Entity projectToEntity(Project p) {
 		Entity e = new Entity(p.getId());
-		e.setUnindexedProperty("job",p.getJobs() );
+		e.setUnindexedProperty("job", p.getJobs());
 		e.setUnindexedProperty("name", p.getName());
 		e.setUnindexedProperty("profile", p.getProfiles());
 		e.setUnindexedProperty("savedSearch", p.getSavedSearch());
 		e.setUnindexedProperty("description", p.getDescription());
 		e.setIndexedProperty("dateCreated", p.getDateCreated());
-		e.setUnindexedProperty("shortListedCandidates", p.getShortListedCandidates());
+		e.setUnindexedProperty("shortListedCandidates",
+				p.getShortListedCandidates());
 		e.setUnindexedProperty("searchConditions", p.getSearchConditions());
 		e.setUnindexedProperty("interviewDate", p.getInterviewDate());
 		e.setUnindexedProperty("invitees", p.getInvitees());
@@ -630,7 +628,7 @@ public class EntityConverter {
 		aq.setExplanation((Text) e.getProperty("explanation"));
 		return aq;
 	}
-	
+
 	public static Entity AssessmentQuestionToEntity(AssessmentQuestion aq) {
 		Entity e = new Entity(aq.getId());
 		e.setIndexedProperty("category", aq.getCategory());
