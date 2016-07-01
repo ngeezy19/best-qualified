@@ -9,7 +9,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/styles/bootstrap.min.css">
-
+<link rel="stylesheet" type="text/css"
+	href="/styles/jquery.webui-popover.min.css">
 <link rel="stylesheet" href="/styles/waitMe.css">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/styles/font-awesome.min.css">
@@ -483,7 +484,10 @@ div.transbox form input {
 					<div class="media-body">
 						<h4 class="media-heading">
 							<a href="/community"><strong>OUR NETWORK</strong></a>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 16fe53527c317bbcaf2cc1c72cd579956f6486f6
 						</h4>
 						<h5 class="jobsss">Get hired in industries of your choice</h5>
 						<p class="plat">Plug into new communities that can improve
@@ -646,8 +650,7 @@ div.transbox form input {
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/waitMe.js"></script>
-	<script src="/js/main.js"></script>
+	<script src="/js/jquery.webui-popover.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$.ajax({

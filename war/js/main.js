@@ -52,6 +52,10 @@ $(document).ready(function() {
 		selector : '.tiny'
 	});
 	
+	$("#project-trig").click(function() {
+		$("#create-project-div").slideDown("slow");
+	});
+	
 	$("#discussion-trig").click(function() {
 		$(".discussion-div").slideDown("slow");
 	});

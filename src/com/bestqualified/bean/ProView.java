@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import com.bestqualified.entities.Education;
 import com.bestqualified.entities.WorkExperience;
+import com.bestqualified.util.Util;
 
 public class ProView implements Serializable {
 
@@ -43,7 +44,10 @@ public class ProView implements Serializable {
 	}
 
 	public void setHighestQualification(String highestQualification) {
-		this.highestQualification = highestQualification;
+		if(highestQualification != null) {
+			this.highestQualification = Util.getEducationLevelValue(highestQualification);
+		}
+		
 	}
 
 	public String getPictureUrl() {
