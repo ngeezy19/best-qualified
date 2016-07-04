@@ -844,6 +844,7 @@
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.webui-popover.min.js"></script>
 	<script src="/js/waitMe.js"></script>
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script src="/js/main.js"></script>
 	<script src="/js/filter.js"></script>
 	<script type="text/javascript">

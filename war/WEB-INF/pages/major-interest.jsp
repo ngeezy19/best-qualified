@@ -415,6 +415,9 @@ p,div {
 	<script src="/js/main.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
+			tinymce.init({
+				selector : '.tiny'
+			});
 			$(".datepicker").datepicker({
 				changeMonth : true,
 				changeYear : true

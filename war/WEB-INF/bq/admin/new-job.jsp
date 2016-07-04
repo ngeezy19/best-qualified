@@ -323,7 +323,7 @@
 
 	</div>
 	<script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
-	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+	s
 	<script src="/js/jquery-ui.min.js"></script>
 	<script src="/js/main.js"></script>
 

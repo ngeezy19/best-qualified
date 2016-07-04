@@ -16,16 +16,66 @@ public class RecruiterDashboardBean implements Serializable {
 	private List<ProView> prospects;
 	private List<ProjectBean> projects;
 	private List<SavedSearch> savedSearch;
+	private String cursor, searchString;
+	private boolean moreCandidates;
+	private long totalCandidates;
+
 	
+	public long getTotalCandidates() {
+		return totalCandidates;
+	}
+
+
+
+	public void setTotalCandidates(long totalCandidates) {
+		this.totalCandidates = totalCandidates;
+	}
+
+
+
+	public boolean isMoreCandidates() {
+		return moreCandidates;
+	}
+
+
+
+	public void setMoreCandidates(boolean moreCandidates) {
+		this.moreCandidates = moreCandidates;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "RecruiterDashboardBean [name=" + name + ", imageUrl="
 				+ imageUrl + ", tagLine=" + tagLine + ", email=" + email
 				+ ", prospects=" + prospects + ", projects=" + projects
-				+ ", savedSearch=" + savedSearch + "]";
+				+ ", savedSearch=" + savedSearch + ", cursor=" + cursor
+				+ ", searchString=" + searchString + "]";
 	}
+
 	
-	
+
+	public String getCursor() {
+		return cursor;
+	}
+
+
+	public void setCursor(String cursor) {
+		this.cursor = cursor;
+	}
+
+
+	public String getSearchString() {
+		return searchString;
+	}
+
+
+	public void setSearchString(String searchString) {
+		this.searchString = searchString;
+	}
+
+
 	public List<SavedSearch> getSavedSearch() {
 		return savedSearch;
 	}

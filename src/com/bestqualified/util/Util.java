@@ -41,6 +41,7 @@ import javax.servlet.http.HttpSession;
 
 import com.bestqualified.bean.Article;
 import com.bestqualified.bean.AssessmentQuestionBean;
+import com.bestqualified.bean.CandidateSearchResult;
 import com.bestqualified.bean.CorrectionBean;
 import com.bestqualified.bean.FacebookAccessTokenResponse;
 import com.bestqualified.bean.InterestedJob;
@@ -932,14 +933,14 @@ public class Util {
 		Map<Key, Entity> projectEntities = GeneralController
 				.findByKeys(projectKeys);
 		rdb.setProjects(Util.getProjectBeans(projectEntities));
-		rdb.setProspects(Util.getProspects(projectEntities));
+		rdb=(Util.setProspects(projectEntities,rdb));
 
 		// rdb.setSavedSearch(Util.getSavedSearch(r.));
 
 		return rdb;
 	}
 
-	private static List<ProView> getProspects(Map<Key, Entity> projectEntities) {
+	private static RecruiterDashboardBean setProspects(Map<Key, Entity> projectEntities, RecruiterDashboardBean rdb) {
 		List<Key> jobKeys = new ArrayList<>();
 		Set<Key> keys = projectEntities.keySet();
 		for (Key k : keys) {
@@ -965,11 +966,11 @@ public class Util {
 				education.add(j.getEducationLevel());
 			}
 		}
-		return getProview(experience, education);
+		return initProview(experience, education,rdb);
 	}
 
-	private static List<ProView> getProview(Set<String> experience,
-			Set<String> education) {
+	private static RecruiterDashboardBean initProview(Set<String> experience,
+			Set<String> education, RecruiterDashboardBean rdb) {
 		List<String> exp = new ArrayList<>();
 		exp.addAll(experience);
 		List<String> edu = new ArrayList<>();
@@ -996,9 +997,12 @@ public class Util {
 			}
 			q += " (highestEducationLevel:" + edu.get(i) + end;
 		}
+		
+		rdb.setSearchString(q);
+		
 		QueryOptions options = QueryOptions
 				.newBuilder()
-				.setLimit(10)
+				.setLimit(4)
 				.setFieldsToReturn("firstName", "lastName", "highestEducationLevel",
 						"yearsOfExperience","pictureUrl").build();
 		Query query = Query.newBuilder().setOptions(options).build(q);
@@ -1016,7 +1020,8 @@ public class Util {
 			pv.setHighestQualification(sd.getOnlyField("highestEducationLevel").getText());
 			pvs.add(pv);
 		}
-		return pvs;
+		rdb.setProspects(pvs);
+		return rdb;
 	}
 
 	private static List<Key> getApplicantsList(Map<String, Set<Key>> map) {
@@ -1511,7 +1516,7 @@ public class Util {
 				.build();
 		QueryOptions options = QueryOptions
 				.newBuilder()
-				.setLimit(10)
+				.setLimit(5)
 				.setFieldsToReturn("jobTitle", "companyName", "location",
 						"datePosted").setSortOptions(sortOptions).build();
 		Query query = Query.newBuilder().setOptions(options).build(qStr);

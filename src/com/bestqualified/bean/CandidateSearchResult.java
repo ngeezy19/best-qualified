@@ -22,6 +22,9 @@ public class CandidateSearchResult implements Serializable {
 	private long numberFetched;
 	private long numberToFetch = 10;
 	private String cursor;
+	
+	
+	
 	public String getSearchString() {
 		return searchString;
 	}

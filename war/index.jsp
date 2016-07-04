@@ -484,10 +484,7 @@ div.transbox form input {
 					<div class="media-body">
 						<h4 class="media-heading">
 							<a href="/community"><strong>OUR NETWORK</strong></a>
-<<<<<<< HEAD
-=======
 
->>>>>>> 16fe53527c317bbcaf2cc1c72cd579956f6486f6
 						</h4>
 						<h5 class="jobsss">Get hired in industries of your choice</h5>
 						<p class="plat">Plug into new communities that can improve
@@ -521,8 +518,8 @@ div.transbox form input {
 						<div class="media-body">
 							<a href='<c:url value="bq/network/get-post?id=${item.webkey}" />'><h3
 									class="media-heading" id="lol">${item.title}</h3></a>
-							<p class="text-muted">
-								<span><i class="fa fa-user"></i> BEST-QUALIFIED</span> <span><i
+							<p style="color: #983b59; font-family: calibri; letter-spacing: 3px">
+								<span style="margin-left: 5px;"><i class="fa fa-user"></i> BEST-QUALIFIED</span> <span><i
 									class="fa fa-clock-o"></i> <c:out value='${item.postDate}' /></span>
 								<span><i class="fa fa-comments"></i><a> 0</a></span>
 							</p>
@@ -600,8 +597,8 @@ div.transbox form input {
 							<h5>
 								<a href="/bq/open/job?job-key=${item.jobKey}"><c:out
 										value="${item.jobTitle}" /></a>
-							</h5> <span><c:out value="${item.companyName}" /></span>
-							<p>
+							</h5> <span style="font-family: calibri; color: #983b59"><c:out value="${item.companyName}" /></span>
+							<p style="font-size: 10pt; color: #59983b; font-style: italic;">
 								<c:out value="${item.postedTime}" />
 							</p>
 						</li>
