@@ -412,6 +412,7 @@ div.transbox form input {
 	<br>
 	<br>
 	<br>
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
@@ -440,8 +441,7 @@ div.transbox form input {
 						class="media-object img-rounded" src="/images/train.png"></a>
 					<div class="media-body">
 						<h4 class="media-heading" style="font-weight: bold !important;">
-							<a href="/bq/certifications" style="text-decoration: none;">DEMONSTRATE
-								YOUR ABILITY</a>
+							<a href="/bq/certifications" style="text-decoration: none;">CERTIFICATIONS</a>
 						</h4>
 						<h5 class="jobs">Get hired in industries of your choice</h5>
 						<p class="plat">Free or affordable trainings to improve your
@@ -464,7 +464,7 @@ div.transbox form input {
 					<div class="media-body">
 						<h4 class="media-heading">
 							<strong><a href="/bq/coaching/home"
-								style="text-decoration: none;">GUDIANCE & HAND HOLDING</a></strong>
+								style="text-decoration: none;">CAREER SUPPORT</a></strong>
 						</h4>
 						<h5 class="jobss">Get hired in industries of your choice</h5>
 						<p class="plat">Latest career advice will be sent to your
@@ -483,7 +483,11 @@ div.transbox form input {
 						class="media-object img-rounded" src="/images/community.png"></a>
 					<div class="media-body">
 						<h4 class="media-heading">
+<<<<<<< HEAD
 							<a href="/community"><strong>OUR NETWORK</strong></a>
+=======
+							<a href="/community"><strong>COMMUNITY</strong></a>
+>>>>>>> f854347cf7368ca6a2cd79fa07333cffbd38c1a9
 
 						</h4>
 						<h5 class="jobsss">Get hired in industries of your choice</h5>
@@ -550,7 +554,7 @@ div.transbox form input {
 						<li>Post jobs and monitor your applications</li>
 						<li>Use our extensive database to search candidates</li>
 						<li><i>And much more...</i></li>
-					</ul>
+					</ ul>
 
 					<div style="text-align: center;">
 						<p>
