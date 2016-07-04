@@ -195,179 +195,8 @@ div.transbox form input {
 	style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;">
 
 	<%@ include file="/main-nav.html"%>
-	<!-- 
-	<div class="container-fluid background"
-		style="height: auto; background-image: url('/images/bq-slide.jpg'); background-repeat: no-repeat; background-size: 100% 100%; margin-top: 3em">
-
-		<div class="transbox row"
-			style="width: 90%; margin: 0 auto; margin-top: 17%; margin-bottom: 7%;">
-			<div class="col-sm-12">
-				<form class="" role="form">
-					<div class="col-sm-5">
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="keyword"
-								placeholder="Keywords">
-						</div>
-					</div>
-					<div class="col-sm-5">
-						<div class="form-group">
-							<select class="form-control input-lg">
-								<option>Free Courses</option>
-								<option>Jobs</option>
-								<option>Professional Association</option>
-								<option>Sales & Marketing Certification</option>
-								<option>Training</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-sm-2">
-						<button type="submit" class="btn btn-primary btn-lg">Search</button>
-					</div>
-					<div class="col-sm-12" style="color: white;">
-						<div class="checkbox">
-							<label><input type="checkbox" value="">Search
-								titles only</label>
-						</div>
-					</div>
-					<div class="col-sm-12" style="margin-top: 0">
-						<hr />
-					</div>
-					<div class="col-sm-12 no-padding-div" style="color: white;">
-
-						<ul class="quick-search-list">
-							<li><strong>Quick Search: </strong></li>
-							<li><a href="#">Free Courses</a></li>
-							<li><a href="#">Jobs</a></li>
-							<li><a href="#">Professional Association</a></li>
-							<li><a href="#">Sales & Marketing Certification</a></li>
-							<li><a href="#">Training</a></li>
-						</ul>
-					</div>
-				</form>
-
-			</div>
-
-
-		</div>
-	</div>
-	<div class="container-fluid index-first-header" style="margin-bottom: 2%;">
-		<div class="row">
-			<div class="col-sm-12 ">
-				<h1 style="">
-					<strong>The No.1 Marketing & Sales Career Site</strong>
-				</h1>
-				<h2 class="text-muted">Your roadmap to a successful career.</h2>
-
-			</div>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6">
-				<div class="media headlines">
-					<a class="pull-left" href="#"><img
-						class="media-object img-rounded" src="images/job.png"></a>
-					<div class="media-body">
-						<h4 class="media-heading"><strong><a href="/bq/open/all-jobs">JOBS</a></strong></h4>
-						<h5 class="job">Get hired in industries of your choice.</h5>
-						<p class="plat">Start your exciting career journey here</p>
-						<p class="plat">There's nothing wrong with trying something
-							new.</p>
-						<p class="plat">A variety of career choices are available.</p>
-						<p class="plat"></p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-6">
-				<div class="media headlines">
-					<a class="pull-right" href="#"><img
-						class="media-object img-rounded" src="images/train.png"></a>
-					<div class="media-body">
-						<h4 class="media-heading"><strong>CERTIFICATIONS</strong></h4>
-						<h5 class="jobs">Earn valuable certifications.</h5>
-						<p class="plat">Free or affordable trainings to improve your
-							career.</p>
-						<p class="plat">Join professional Sales & Marketing
-							associations</p>
-						<p class="plat">Gain the differentiator against the
-							competition in the industry.</p>
-						<p class="plat">Get the latest and updated trainings in your
-							field.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<hr />
-		<div class="row">
-			<div class="col-md-6">
-				<div class="media headlines">
-					<a class="pull-left" href="#"><img
-						class="media-object img-rounded" src="images/coaching.png"></a>
-					<div class="media-body">
-						<h4 class="media-heading"><strong>COACHING/MENTORING</strong></h4>
-						<h5 class="jobss">Everyone can do with a helping hand.</h5>
-						<p class="plat">Latest career advice will be sent to your
-							inbox.</p>
-						<p class="plat">Help is always available for your job
-							interviews.</p>
-						<p class="plat">Resolve your mid-career crisis using our
-							mentor.</p>
-						<p class="plat">Get a coach to equip you with winning tips.</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-6">
-				<div class="media headlines">
-					<a class="pull-right" href="#"><img
-						class="media-object img-rounded" src="images/community.png"></a>
-					<div class="media-body">
-						<h4 class="media-heading"><strong>OUR NETWORK</strong></h4>
-						<h5 class="jobsss">Join our community of BQ professionals</h5>
-						<p class="plat">Plug into new communities that can improve
-							your network.</p>
-						<p class="plat">Meet and share opinions with other
-							professionals.</p>
-						<p class="plat">Knowing me...knowing you helps your career.</p>
-
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-	</div>
-	<hr />
-
 	<br>
 	<br>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12  headline">
-				<h4>Top Companies</h4>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-12 imgo" style="text-align: center;">
-				<a href=""><img src="images/1.png" alt=""></a> <a href=""><img
-					src="images/2.png" alt=""></a> <a href=""><img
-					src="images/3.png" alt=""></a> <a href=""><img
-					src="images/4.png" alt=""></a> <a href=""><img
-					src="images/5.png" alt=""></a> <a href=""><img
-					src="images/6.png" alt=""></a>
-
-			</div>
-		</div>
-	</div> -->
-	<br>
-	<br>
-
-
 	<!-- carousel -->
 	<div id="my_carousel" class="carousel fade" data-ride="carousel">
 		<!-- methods: data-interval="3000" // seconds between transitions; set to "0" to make it not automatic
@@ -412,7 +241,7 @@ div.transbox form input {
 	<br>
 	<br>
 	<br>
-	
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
@@ -483,12 +312,7 @@ div.transbox form input {
 						class="media-object img-rounded" src="/images/community.png"></a>
 					<div class="media-body">
 						<h4 class="media-heading">
-<<<<<<< HEAD
-							<a href="/community"><strong>OUR NETWORK</strong></a>
-=======
 							<a href="/community"><strong>COMMUNITY</strong></a>
->>>>>>> f854347cf7368ca6a2cd79fa07333cffbd38c1a9
-
 						</h4>
 						<h5 class="jobsss">Get hired in industries of your choice</h5>
 						<p class="plat">Plug into new communities that can improve
@@ -522,10 +346,12 @@ div.transbox form input {
 						<div class="media-body">
 							<a href='<c:url value="bq/network/get-post?id=${item.webkey}" />'><h3
 									class="media-heading" id="lol">${item.title}</h3></a>
-							<p style="color: #983b59; font-family: calibri; letter-spacing: 3px">
-								<span style="margin-left: 5px;"><i class="fa fa-user"></i> BEST-QUALIFIED</span> <span><i
-									class="fa fa-clock-o"></i> <c:out value='${item.postDate}' /></span>
-								<span><i class="fa fa-comments"></i><a> 0</a></span>
+							<p
+								style="color: #983b59; font-family: calibri; letter-spacing: 3px">
+								<span style="margin-left: 5px;"><i class="fa fa-user"></i>
+									BEST-QUALIFIED</span> <span><i class="fa fa-clock-o"></i> <c:out
+										value='${item.postDate}' /></span> <span><i
+									class="fa fa-comments"></i><a> 0</a></span>
 							</p>
 							<p>
 								${item.snippet}<span><a
@@ -553,23 +379,20 @@ div.transbox form input {
 					<ul class="disc-bullet">
 						<li>Post jobs and monitor your applications</li>
 						<li>Use our extensive database to search candidates</li>
-						<li><i>And much more...</i></li>
-					</ ul>
+						<li><i>And much more...</i></li> </ ul>
 
-					<div style="text-align: center;">
-						<p>
-							<button class="btn btn-info">Register Now</button>
-						</p>
-					</div>
-
-
+						<div style="text-align: center;">
+							<p>
+								<button class="btn btn-info">Register Now</button>
+							</p>
+						</div>
 				</div>
 
 				<div>
 					<br>
 					<h4 style="color: #000;">INTERVIEW ADVICE</h4>
-					<a href="/bq/coaching/tools/interview-cheats"><img src="/images/ad.png" alt=""
-						class="img-responsive"></a>
+					<a href="/bq/coaching/tools/interview-cheats"><img
+						src="/images/ad.png" alt="" class="img-responsive"></a>
 				</div>
 			</div>
 		</div>
@@ -601,7 +424,8 @@ div.transbox form input {
 							<h5>
 								<a href="/bq/open/job?job-key=${item.jobKey}"><c:out
 										value="${item.jobTitle}" /></a>
-							</h5> <span style="font-family: calibri; color: #983b59"><c:out value="${item.companyName}" /></span>
+							</h5> <span style="font-family: calibri; color: #983b59"><c:out
+									value="${item.companyName}" /></span>
 							<p style="font-size: 10pt; color: #59983b; font-style: italic;">
 								<c:out value="${item.postedTime}" />
 							</p>
@@ -647,7 +471,7 @@ div.transbox form input {
 	<br>
 	<br>
 	<br>
-	
+
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
