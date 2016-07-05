@@ -86,7 +86,7 @@
 			</div>
 			<div class="col-sm-5">
 				<div>
-					<img alt="" src="/images/sales-professional.png"
+					<img alt="" src="/images/creatives.png"
 						class="img img-responsive">
 				</div>
 			</div>

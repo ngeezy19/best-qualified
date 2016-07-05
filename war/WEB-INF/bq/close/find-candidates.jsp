@@ -405,11 +405,12 @@
 						<button class="btn btn-primary pull-right">Save Search</button>
 					</div>
 				</div>
-				<c:forEach var="item" items="${allCandidates}">
+				<div id="list-container" class="col-sm-12 no-padding-div">
+				<c:forEach var="item" items="${recruiterDashboard.prospects}">
 					<div class="row"
 						style="padding: 2%; background-color: white; border-bottom: 1px solid #dadada">
 						<div class="col-sm-1" style="padding-top: 5%;">
-							<input type="checkbox">
+							<input class="select-prospect" type="checkbox">
 						</div>
 						<div class="col-sm-3" style="text-align: center">
 							<img class="img img-responsive img-circle" alt=""
@@ -418,8 +419,8 @@
 						</div>
 						<div class="col-sm-8 no-padding-div">
 							<h5 style="margin-bottom: 2px; font-size: 12pt">
-								<c:out value='${item.firstName}' />
-								<c:out value='${item.lastName}' />
+								<span id="candidate-name"><c:out value='${item.firstName}' />
+								<c:out value='${item.lastName}' /></span>
 								<i style="color: #983b59" class="fa fa-envelope pull-right" aria-hidden="true"></i><i
 								style="color: #983b59"	class="fa fa-trash pull-right" aria-hidden="true"></i>
 							</h5>
@@ -445,6 +446,7 @@
 						</div>
 					</div>
 				</c:forEach>
+				</div>
 			</div>
 			<div class="col-sm-3">
 				<%@ include file="/WEB-INF/pages/certification-sidebar.html"%>

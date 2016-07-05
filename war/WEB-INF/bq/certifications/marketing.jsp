@@ -14,7 +14,7 @@
 <title>Marketing</title>
 <style type="text/css">
 .grad1 {
-	height: 250px;
+	
 	background: #dadada; /* For browsers that do not support gradients */
 	background: -webkit-linear-gradient(right, #dadada, white);
 	/* For Safari 5.1 to 6.0 */
@@ -85,7 +85,7 @@
 			</div>
 			<div class="col-sm-5">
 				<div>
-					<img alt="" src="/images/sales-professional.png"
+					<img alt="" src="/images/marketing.png"
 						class="img img-responsive">
 				</div>
 			</div>

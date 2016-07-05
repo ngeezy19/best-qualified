@@ -74,7 +74,7 @@
 	</div>
 
 	<div class="container">
-		<div class="row alert alert-warning" style="text-align: center">
+		<div class="row alert alert-warning" style="text-align: center; margin-top: 2%;">
 			<div class="col-sm-12">
 				<c:forEach var="item" items="${communityBean.latestArticles}">
 					<div class="latest-articles">
