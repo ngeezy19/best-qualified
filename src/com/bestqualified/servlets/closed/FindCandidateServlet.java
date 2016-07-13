@@ -145,7 +145,7 @@ public class FindCandidateServlet extends HttpServlet {
 				.build();
 		QueryOptions options = QueryOptions
 				.newBuilder()
-				.setLimit(Integer.parseInt(num))
+				.setLimit(10).setSortOptions(sortOptions)
 				.setFieldsToReturn("firstName", "lastName", "highestEducationLevel",
 						"yearsOfExperience","pictureUrl").setSortOptions(sortOptions)
 				.setCursor(cursor).build();

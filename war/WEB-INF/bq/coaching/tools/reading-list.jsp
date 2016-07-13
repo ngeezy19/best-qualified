@@ -50,7 +50,7 @@
 		<div class="row">
 				<div class="col-sm-12">
 					<div class="training-intro">
-						<h3 style="color: orange; margin: 0px; ">Reading List for the Month</h3>
+						<h3 style="color: white; margin: 0px; ">Reading List for the Month</h3>
 						
 						
 					</div>
