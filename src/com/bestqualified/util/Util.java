@@ -61,6 +61,7 @@ import com.bestqualified.entities.AssessmentQuestion;
 import com.bestqualified.entities.Award;
 import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.Certification;
+import com.bestqualified.entities.Community;
 import com.bestqualified.entities.Company;
 import com.bestqualified.entities.Education;
 import com.bestqualified.entities.Job;
@@ -985,9 +986,9 @@ public class Util {
 			}
 			q += " (experience:" + exp.get(i) + end;
 		}
-		
-		if(!edu.isEmpty()) {
-			q+=" OR ";
+
+		if (!edu.isEmpty()) {
+			q += " OR ";
 		}
 		for (int i = 0; i < edu.size(); i++) {
 			if (i == edu.size() - 1) {
@@ -1006,18 +1007,21 @@ public class Util {
 				.setFieldsToReturn("firstName", "lastName", "highestEducationLevel",
 						"yearsOfExperience","pictureUrl").build();
 		Query query = Query.newBuilder().setOptions(options).build(q);
-		IndexSpec indexSpec = IndexSpec.newBuilder().setName("professionals").build();
+		IndexSpec indexSpec = IndexSpec.newBuilder().setName("professionals")
+				.build();
 		Index index = SearchServiceFactory.getSearchService().getIndex(
 				indexSpec);
 		Results<ScoredDocument> result = index.search(query);
 		List<ProView> pvs = new ArrayList<>();
-		for (ScoredDocument sd : result) { 
+		for (ScoredDocument sd : result) {
 			ProView pv = new ProView();
 			pv.setFirstName(sd.getOnlyField("firstName").getText());
 			pv.setLastName(sd.getOnlyField("lastName").getText());
-			//pv.setPictureUrl(sd.getOnlyField("pictureUrl").getAtom());
-			pv.setYearsOfExperience(sd.getOnlyField("yearsOfExperience").getAtom());
-			pv.setHighestQualification(sd.getOnlyField("highestEducationLevel").getText());
+			// pv.setPictureUrl(sd.getOnlyField("pictureUrl").getAtom());
+			pv.setYearsOfExperience(sd.getOnlyField("yearsOfExperience")
+					.getAtom());
+			pv.setHighestQualification(sd.getOnlyField("highestEducationLevel")
+					.getText());
 			pvs.add(pv);
 		}
 		rdb.setProspects(pvs);
@@ -1267,6 +1271,7 @@ public class Util {
 	}
 
 	public static Job getJobFromCache(Key key) {
+
 		Object o = MemcacheProvider.JOBS.get(key);
 		Job job = null;
 		if (o == null) {
@@ -1276,6 +1281,64 @@ public class Util {
 			job = (Job) o;
 		}
 		return job;
+	}
+
+	public static List<Community> getCommunityFromCache(List<Key> keys) {
+
+		Map<Key, Object> map = MemcacheProvider.COMMUNITIES.getAll(keys);
+
+		List<Community> obj = new ArrayList<>();
+		List<Key> ki = new ArrayList<>();
+		
+		for (Key k : keys) {
+			Object o = map.get(k);
+			if (o!=null){
+				obj.add((Community) o);
+			}else {
+				ki.add(k);
+			}
+			
+		}
+		
+		if(!ki.isEmpty()){
+			Map<Key, Entity> entm = GeneralController.findByKeys(ki);
+			for (Key key : ki) {
+				Community c = EntityConverter.entityToCommunity(entm.get(key));
+				obj.add(c);
+				MemcacheProvider.COMMUNITIES.put(c.getId(), c);
+			}
+		}
+
+		return obj;
+	}
+	
+	public static List<com.bestqualified.entities.Article> getPostsFromCache(List<Key> keys) {
+
+		Map<Key, Object> map = MemcacheProvider.ARTICLES.getAll(keys);
+
+		List<com.bestqualified.entities.Article> obj = new ArrayList<>();
+		List<Key> ki = new ArrayList<>();
+		
+		for (Key k : keys) {
+			Object o = map.get(k);
+			if (o!=null){
+				obj.add((com.bestqualified.entities.Article) o);
+			}else {
+				ki.add(k);
+			}
+			
+		}
+		
+		if(!ki.isEmpty()){
+			Map<Key, Entity> entm = GeneralController.findByKeys(ki);
+			for (Key key : ki) {
+				com.bestqualified.entities.Article c = EntityConverter.entityToArticle(entm.get(key));
+				obj.add(c);
+				MemcacheProvider.ARTICLES.put(c.getKey(), c);
+			}
+		}
+
+		return obj;
 	}
 
 	public static ManageProjectBean getManageProjectBean(List<ProjectBean> l2) {
@@ -1887,5 +1950,4 @@ public class Util {
 		return orr;
 	}
 
-	
 }

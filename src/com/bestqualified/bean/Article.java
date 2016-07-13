@@ -2,6 +2,7 @@ package com.bestqualified.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Article implements Serializable, Comparable<Article> {
 
@@ -11,6 +12,9 @@ public class Article implements Serializable, Comparable<Article> {
 	private static final long serialVersionUID = -7886491805459375745L;
 	private String pictureUrl,title,author,snippet, webkey;
 	private String postDate;
+	private String link;
+	private long likes;
+	private long shares;
 	
 	public String getPictureUrl() {
 		return pictureUrl;
@@ -53,11 +57,30 @@ public class Article implements Serializable, Comparable<Article> {
 	public void setSnippet(String snippet) {
 		this.snippet = snippet;
 	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
+	}
+	public long getLikes() {
+		return likes;
+	}
+	public void setLikes(long likes) {
+		this.likes = likes;
+	}
+	public long getShares() {
+		return shares;
+	}
+	public void setShares(long shares) {
+		this.shares = shares;
+	}
 	@Override
 	public String toString() {
 		return "Article [pictureUrl=" + pictureUrl + ", title=" + title
 				+ ", author=" + author + ", snippet=" + snippet + ", webkey="
-				+ webkey + ", postDate=" + postDate + "]";
+				+ webkey + ", postDate=" + postDate + ", link=" + link
+				+ ", likes=" + likes + ", shares=" + shares + "]";
 	}
 	
 

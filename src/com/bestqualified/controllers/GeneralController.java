@@ -12,6 +12,7 @@ import com.bestqualified.bean.SocialUser;
 import com.bestqualified.entities.Article;
 import com.bestqualified.entities.ArticleCategory;
 import com.bestqualified.entities.AssessmentQuestion;
+import com.bestqualified.entities.Community;
 import com.bestqualified.entities.Job;
 import com.bestqualified.entities.ReadingList;
 import com.bestqualified.entities.User;
@@ -50,6 +51,34 @@ public class GeneralController {
 		q.setFilter(new FilterPredicate("category", FilterOperator.EQUAL,
 				categoryName));
 		q.addSort("date", SortDirection.DESCENDING);
+		PreparedQuery pq = ds.prepare(q);
+		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(i));
+		for (Entity e : ents) {
+			articles.add(EntityConverter.entityToArticle(e));
+		}
+		return articles;
+	}
+	
+	public static List<Community> getNCommunities(int i) {
+		List<Community> communities = new ArrayList<>();
+		Query q = new Query(Community.class.getSimpleName());
+		q.setKeysOnly();
+		q.addSort("name", SortDirection.ASCENDING);
+		PreparedQuery pq = ds.prepare(q);
+		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(i));
+		for(Entity e : ents) {
+			communities.add(EntityConverter.entityToCommunity(e));
+		}
+		return communities;
+		
+	}
+	
+	public static List<com.bestqualified.entities.Article> getTrendingPosts(int i) {
+		List<Article> articles = new ArrayList<>();
+		Query q = new Query(Article.class.getSimpleName());
+		q.setKeysOnly();
+		q.setFilter(new FilterPredicate("commPublic", FilterOperator.EQUAL, true));
+		q.addSort("nComments", SortDirection.DESCENDING);
 		PreparedQuery pq = ds.prepare(q);
 		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(i));
 		for (Entity e : ents) {
@@ -187,6 +216,14 @@ public class GeneralController {
 		List<Entity> l = Arrays.asList(entities);
 		txn = ds.beginTransaction(TransactionOptions.Builder.withXG(true));
 		ds.put(l);
+		txn.commitAsync();
+
+	}
+	
+	public static void createWithCrossGroup(List<Entity> entities) {
+		
+		txn = ds.beginTransaction(TransactionOptions.Builder.withXG(true));
+		ds.put(entities);
 		txn.commitAsync();
 
 	}

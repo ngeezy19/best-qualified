@@ -63,11 +63,11 @@ public class InitCommunityBean extends HttpServlet {
 		
 		CommunityBean cb = new CommunityBean();
 		cb.setCurrentDate(date);
-		cb.setDiscussions(dis);
-		cb.setJobs(ijs);
-		cb.setLatestArticles(la);
-		cb.setMainPosts(mps);
-		cb.setReadingList(readingList);
+		//cb.setDiscussions(dis);
+	//	cb.setJobs(ijs);
+	//	cb.setLatestArticles(la);
+	//	cb.setMainPosts(mps);
+	//	cb.setReadingList(readingList);
 		
 		HttpSession session = req.getSession();
 		synchronized (session) {

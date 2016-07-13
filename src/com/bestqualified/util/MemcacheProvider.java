@@ -10,6 +10,9 @@ public class MemcacheProvider {
 			.getMemcacheService("jobs");
 	public static final MemcacheService RECRUITER = MemcacheServiceFactory
 			.getMemcacheService("recruiter");
-	
+	public static final MemcacheService COMMUNITIES = MemcacheServiceFactory
+			.getMemcacheService("community");
+	public static final MemcacheService ARTICLES = MemcacheServiceFactory
+			.getMemcacheService("articles");
 	
 }
