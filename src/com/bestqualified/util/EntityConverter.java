@@ -13,6 +13,7 @@ import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.CareerLevel;
 import com.bestqualified.entities.Certification;
 import com.bestqualified.entities.Comment;
+import com.bestqualified.entities.Community;
 import com.bestqualified.entities.Company;
 import com.bestqualified.entities.Education;
 import com.bestqualified.entities.EducationLevel;
@@ -24,12 +25,14 @@ import com.bestqualified.entities.Project;
 import com.bestqualified.entities.ProjectLog;
 import com.bestqualified.entities.ReadingList;
 import com.bestqualified.entities.Recruiter;
+import com.bestqualified.entities.Topic;
 import com.bestqualified.entities.User;
 import com.bestqualified.entities.WorkExperience;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.datastore.EmbeddedEntity;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.Link;
 import com.google.appengine.api.datastore.Text;
 
 public class EntityConverter {
@@ -87,6 +90,57 @@ public class EntityConverter {
 		c.setComments((List<Key>) e.getProperty("comment"));
 		return c;
 	}
+	
+	
+	public static Topic entityToTopic(Entity e) {
+		Topic t = new Topic();
+		t.setId(e.getKey());
+		t.setDateCreated((Date) e.getProperty("date"));
+		t.setTitle((String) e.getProperty("title"));
+		t.setPosts((List<Key>) e.getProperty("posts"));
+		return t;
+		
+		
+	}
+	
+	public static Entity topicToEntity(Topic t) {
+		Entity e = new Entity(t.getId());
+		e.setIndexedProperty("title", t.getTitle());
+		e.setIndexedProperty("date", t.getDateCreated());
+		e.setUnindexedProperty("posts", t.getPosts());
+		return e;
+	}
+	public static Community entityToCommunity(Entity e) {
+		Community comm = new Community();
+		comm.setId(e.getKey());
+		comm.setCommPublic((boolean) e.getProperty("commPublic"));
+		comm.setDateCreated((Date) e.getProperty("date"));
+		comm.setImage((BlobKey) e.getProperty("image"));
+		comm.setLongDesc((Text) e.getProperty("longDesc"));
+		comm.setShortDesc((Text) e.getProperty("shortDesc"));
+		comm.setMembers((List<Key>) e.getProperty("members"));
+		comm.setName((String) e.getProperty("name"));
+		comm.setOwner((Key) e.getProperty("owner"));
+		comm.setTopics((List<Key>) e.getProperty("topics"));
+		comm.setWallpaper((BlobKey) e.getProperty("wallpaper"));
+		return comm;
+		
+	}
+	
+	public static Entity communityToEntity(Community c) {
+		Entity e = new Entity(c.getId());
+		e.setIndexedProperty("name", c.getName());
+		e.setIndexedProperty("date", c.getDateCreated());
+		e.setUnindexedProperty("image", c.getImage());
+		e.setIndexedProperty("longDesc", c.getLongDesc());
+		e.setUnindexedProperty("members", c.getMembers());
+		e.setUnindexedProperty("owner", c.getOwner());
+		e.setUnindexedProperty("shortDesc", c.getShortDesc());
+		e.setUnindexedProperty("topics", c.getTopics());
+		e.setUnindexedProperty("wallpaper", c.getWallpaper());
+		e.setUnindexedProperty("commPublic", c.isCommPublic());
+		return e;
+	}
 
 	public static Article entityToArticle(Entity e) {
 		Article a = new Article();
@@ -100,11 +154,24 @@ public class EntityConverter {
 		a.setTitle((String) e.getProperty("title"));
 		a.setViews((Long) e.getProperty("views"));
 		a.setImageKey((BlobKey) e.getProperty("imageKey"));
+		a.setLink((Link) e.getProperty("link"));
 		Object o = e.getProperty("nComments");
+		Object l = e.getProperty("likes");
+		Object s = e.getProperty("shares");
 
 		if(o != null) {
 
 			   a.setnComments((Long)e.getProperty("nComments"));
+			  }
+		
+		
+		if(l != null) {
+
+			   a.setLikes((Long)e.getProperty("likes"));
+			  }
+		if(s != null) {
+
+			   a.setLikes((Long)e.getProperty("shares"));
 			  }
 
 		return a;
@@ -122,7 +189,10 @@ public class EntityConverter {
 		e.setUnindexedProperty("subscribers", a.getSubscribers());
 		e.setUnindexedProperty("tags", a.getTag());
 		e.setUnindexedProperty("imageKey", a.getImageKey());
+		e.setUnindexedProperty("link", a.getLink());
 		e.setIndexedProperty("nComment", a.getnComments());
+		e.setIndexedProperty("likes", a.getLikes());
+		e.setIndexedProperty("shares", a.getShares());
 		return e;
 	}
 
