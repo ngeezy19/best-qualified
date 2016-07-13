@@ -156,7 +156,6 @@ public class EntityConverter {
 		a.setImageKey((BlobKey) e.getProperty("imageKey"));
 		a.setLink((Link) e.getProperty("link"));
 		Object o = e.getProperty("nComments");
-<<<<<<< HEAD
 		Object l = e.getProperty("likes");
 		Object s = e.getProperty("shares");
 
@@ -175,12 +174,6 @@ public class EntityConverter {
 			   a.setLikes((Long)e.getProperty("shares"));
 			  }
 
-=======
-		if (o != null) {
-
-			a.setnComments((Long) e.getProperty("nComments"));
-		}
->>>>>>> d6bb2a2a9ea73ef00982f38c4424a8a03ef938be
 		return a;
 	}
 

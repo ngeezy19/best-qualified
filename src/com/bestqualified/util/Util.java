@@ -1003,16 +1003,9 @@ public class Util {
 		
 		QueryOptions options = QueryOptions
 				.newBuilder()
-<<<<<<< HEAD
-				.setLimit(10)
-				.setFieldsToReturn("firstName", "lastName",
-						"highestEducationLevel", "yearsOfExperience",
-						"pictureUrl").build();
-=======
 				.setLimit(4)
 				.setFieldsToReturn("firstName", "lastName", "highestEducationLevel",
 						"yearsOfExperience","pictureUrl").build();
->>>>>>> d6bb2a2a9ea73ef00982f38c4424a8a03ef938be
 		Query query = Query.newBuilder().setOptions(options).build(q);
 		IndexSpec indexSpec = IndexSpec.newBuilder().setName("professionals")
 				.build();
