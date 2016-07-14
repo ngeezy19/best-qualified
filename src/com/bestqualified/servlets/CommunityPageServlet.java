@@ -39,14 +39,12 @@ public class CommunityPageServlet extends HttpServlet {
 
 		Community c = null;
 
-		List<Community> communities = GeneralController.getNCommunities(10);
-		List<Key> cKey = new ArrayList<>();
+		
+		List<Key> cKey = GeneralController.getNCommunities(10);
 
-		for (Community comm : communities) {
-			cKey.add(comm.getId());
-		}
+		
 
-		communities = Util.getCommunityFromCache(cKey);
+		List<Community> communities = Util.getCommunityFromCache(cKey);
 
 		Map<String, String> map = new HashMap<>();
 		for (Community co : communities) {

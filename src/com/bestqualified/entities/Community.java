@@ -1,5 +1,6 @@
 package com.bestqualified.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -8,8 +9,12 @@ import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 
-public class Community {
+public class Community implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4660639606849347181L;
 	private Key id;
 	private String name;
 	private Text longDesc;
