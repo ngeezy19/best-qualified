@@ -37,7 +37,7 @@ public class CommunityPageServlet extends HttpServlet {
 
 		HttpSession session = req.getSession();
 
-		Community c = null;
+
 
 		
 		List<Key> cKey = GeneralController.getNCommunities(10);
@@ -48,7 +48,7 @@ public class CommunityPageServlet extends HttpServlet {
 
 		Map<String, String> map = new HashMap<>();
 		for (Community co : communities) {
-			map.put(KeyFactory.keyToString(c.getId()), c.getName());
+			map.put(KeyFactory.keyToString(co.getId()), co.getName());
 
 		}
 

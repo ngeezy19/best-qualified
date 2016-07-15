@@ -1,9 +1,14 @@
 package com.bestqualified.bean;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class CommunityPageBean {
+public class CommunityPageBean implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1126668110617153893L;
 	private Map<String, String> communities;
 	private List<Article> posts;
 	

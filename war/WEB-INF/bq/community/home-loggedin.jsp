@@ -30,7 +30,6 @@ a { text-decoration: none; color: #00A5CC; }
 li { list-style-type: none; }
 
 header { 
-	
 	width: 100%; 
 	height: 50px; 
 	margin: auto;
@@ -44,7 +43,7 @@ header {
 	font-weight: bolder;
    margin: 0 0 0 6px;
 }
-nav {position:fixed; width: 100%; text-align: center; }
+nav { width: 100%; text-align: center; }
 nav a { 
 	display: block; 
 	padding: 15px 0;
@@ -115,40 +114,18 @@ nav li:last-child a { border-bottom: none; }
 </div>
 </header>
 
-
 <nav class="menu">
-
 	<ul >
     	<li><a href="#">HOME</a></li>
         <li><a href="#">COMMUNITIES</a></li>
         <li><a href="#">ARTICLES</a></li>
+        <li><a href="#">PROFILE</a></li>
+        <li><a href="#">PEOPLE</a></li>
         <li><a href="#">HELP</a></li>
     </ul>
-    
 </nav>
 		
-		
-	<div> 
-	
-	<div class="row">
-        <div class="col-sm-3">
-          <div class="card-panel">
-            <div>
-              <img src="images/creat2.png">
-              
-            </div>
-            <div>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="">
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      	
-      </div>	</div>
+		</div>
 
 	
 	<script src="/js/jquery-1.11.2.min.js"></script>
