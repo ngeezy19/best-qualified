@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bestqualified.bean.CommunityBean;
 import com.bestqualified.bean.CommunityPageBean;
 import com.bestqualified.controllers.GeneralController;
 import com.bestqualified.entities.Article;
@@ -46,25 +47,19 @@ public class CommunityPageServlet extends HttpServlet {
 
 		List<Community> communities = Util.getCommunityFromCache(cKey);
 
-		Map<String, String> map = new HashMap<>();
-		for (Community co : communities) {
-			map.put(KeyFactory.keyToString(co.getId()), co.getName());
-
-		}
-
+		//Map<String, String> map = new HashMap<>();
+		List<CommunityBean> cmBean = Util.toCommunityBeans(communities);
+		
 	
-		List<Article> posts = GeneralController.getTrendingPosts(10);
-		List<Key> aKey = new ArrayList<>();
+		List<Article> posts = new ArrayList<>();
+	
 		
-		for (Article article : posts) {
-			aKey.add(article.getKey());
-		}
-		
-		posts = Util.getPostsFromCache(aKey);
+		posts = Util.getPostsFromCache(GeneralController.getTrendingPosts(10));
 		
 		CommunityPageBean cpb = new CommunityPageBean();
-		cpb.setCommunities(map);
-
+		//cpb.setCommunities(map);
+		
+		cpb.setCommunities(cmBean);
 		cpb.setPosts(Util.toArticleBeans(posts));
 		
 		synchronized (session) {

@@ -73,16 +73,16 @@ public class GeneralController {
 		
 	}
 	
-	public static List<com.bestqualified.entities.Article> getTrendingPosts(int i) {
-		List<Article> articles = new ArrayList<>();
+	public static List<Key> getTrendingPosts(int i) {
+		List<Key> articles = new ArrayList<>();
 		Query q = new Query(Article.class.getSimpleName());
 		q.setKeysOnly();
-		q.setFilter(new FilterPredicate("commPublic", FilterOperator.EQUAL, true));
-		q.addSort("nComments", SortDirection.DESCENDING);
+		//q.setFilter(new FilterPredicate("commPublic", FilterOperator.EQUAL, true));
+		//q.addSort("nComments", SortDirection.DESCENDING);
 		PreparedQuery pq = ds.prepare(q);
 		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(i));
 		for (Entity e : ents) {
-			articles.add(EntityConverter.entityToArticle(e));
+			articles.add(e.getKey());
 		}
 		return articles;
 	}

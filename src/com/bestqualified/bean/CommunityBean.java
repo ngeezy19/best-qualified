@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.bestqualified.entities.ReadingList;
+import com.google.appengine.api.datastore.Key;
 
 public class CommunityBean implements Serializable {
 
@@ -14,17 +15,22 @@ public class CommunityBean implements Serializable {
 	private static final long serialVersionUID = -9129909997718509114L;
 	
 	private String currentDate;
+	private String wallpaper;
 	private String image;
 	private String name;
 	private String shortDesc;
 	private String longDesc;
 	private Map<String, String> topics;
+	private String webSafeKey;
 	private List<Article> post;
+	private List<Key> members;
 	@Override
 	public String toString() {
-		return "CommunityBean [currentDate=" + currentDate + ", image=" + image
-				+ ", name=" + name + ", shortDesc=" + shortDesc + ", longDesc="
-				+ longDesc + ", topics=" + topics + ", post=" + post + "]";
+		return "CommunityBean [currentDate=" + currentDate + ", wallpaper="
+				+ wallpaper + ", image=" + image + ", name=" + name
+				+ ", shortDesc=" + shortDesc + ", longDesc=" + longDesc
+				+ ", topics=" + topics + ", webSafeKey=" + webSafeKey
+				+ ", post=" + post + ", members=" + members + "]";
 	}
 	public String getCurrentDate() {
 		return currentDate;
@@ -67,6 +73,24 @@ public class CommunityBean implements Serializable {
 	}
 	public void setPost(List<Article> post) {
 		this.post = post;
+	}
+	public String getWebSafeKey() {
+		return webSafeKey;
+	}
+	public void setWebSafeKey(String webSafeKey) {
+		this.webSafeKey = webSafeKey;
+	}
+	public String getWallpaper() {
+		return wallpaper;
+	}
+	public void setWallpaper(String wallpaper) {
+		this.wallpaper = wallpaper;
+	}
+	public List<Key> getMembers() {
+		return members;
+	}
+	public void setMembers(List<Key> members) {
+		this.members = members;
 	}
 	
 	

@@ -122,6 +122,15 @@ nav li:last-child a { border-bottom: none; }
         <li><a href="#">PROFILE</a></li>
         <li><a href="#">PEOPLE</a></li>
         <li><a href="#">HELP</a></li>
+        <li>
+        
+					<i class="fa fa-facebook" aria-hidden="true"></i><i
+						class="fa fa-google-plus" aria-hidden="true"></i><i
+						class="fa fa-twitter" aria-hidden="true"></i><i
+						class="fa fa-linkedin" aria-hidden="true"></i>
+				
+        </li>
+        
     </ul>
 </nav>
 		

@@ -42,6 +42,7 @@ import javax.servlet.http.HttpSession;
 import com.bestqualified.bean.Article;
 import com.bestqualified.bean.AssessmentQuestionBean;
 import com.bestqualified.bean.CandidateSearchResult;
+import com.bestqualified.bean.CommunityBean;
 import com.bestqualified.bean.CorrectionBean;
 import com.bestqualified.bean.FacebookAccessTokenResponse;
 import com.bestqualified.bean.InterestedJob;
@@ -1931,6 +1932,33 @@ public class Util {
 		return aas;
 	}
 
+	public static List<CommunityBean> toCommunityBeans(List<Community> community){
+		List<CommunityBean> cobean = new ArrayList<>();
+		for(Community com : community) {
+			CommunityBean cb = new CommunityBean();
+			cb.setName(com.getName());
+			cb.setShortDesc(com.getShortDesc().getValue());
+			cb.setLongDesc(com.getLongDesc().getValue());
+			cb.setCurrentDate(new SimpleDateFormat("dd MMMM yyyy").format(com.getDateCreated()));
+			cb.setMembers(com.getMembers());
+			//cb.setTopics(com.getTopics());
+			
+			ImagesService imagesService = ImagesServiceFactory
+					.getImagesService();
+			ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(
+					com.getImage()).imageSize(150);
+			ServingUrlOptions options1 = ServingUrlOptions.Builder.withBlobKey(
+					com.getWallpaper()).imageSize(250);
+			String servingUrl = imagesService.getServingUrl(options);
+			String servingUrlWall = imagesService.getServingUrl(options1);
+			cb.setWallpaper(servingUrlWall);
+			cb.setImage(servingUrl);
+			cb.setWebSafeKey(KeyFactory.keyToString(com.getId()));
+			cobean.add(cb);
+		}
+		
+		return cobean;
+	}
 	public static Recruiter mergeRecruiters(Recruiter r, Recruiter orr) {
 		if (r.getCompany() != null) {
 			orr.setCompany(r.getCompany());
