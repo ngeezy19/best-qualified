@@ -37,20 +37,18 @@ public class CommunityPageServlet extends HttpServlet {
 
 		HttpSession session = req.getSession();
 
-		Community c = null;
 
-		List<Community> communities = GeneralController.getNCommunities(10);
-		List<Key> cKey = new ArrayList<>();
 
-		for (Community comm : communities) {
-			cKey.add(comm.getId());
-		}
+		
+		List<Key> cKey = GeneralController.getNCommunities(10);
 
-		communities = Util.getCommunityFromCache(cKey);
+		
+
+		List<Community> communities = Util.getCommunityFromCache(cKey);
 
 		Map<String, String> map = new HashMap<>();
 		for (Community co : communities) {
-			map.put(KeyFactory.keyToString(c.getId()), c.getName());
+			map.put(KeyFactory.keyToString(co.getId()), co.getName());
 
 		}
 

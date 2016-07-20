@@ -59,15 +59,15 @@ public class GeneralController {
 		return articles;
 	}
 	
-	public static List<Community> getNCommunities(int i) {
-		List<Community> communities = new ArrayList<>();
+	public static List<Key> getNCommunities(int i) {
+		List<Key> communities = new ArrayList<>();
 		Query q = new Query(Community.class.getSimpleName());
 		q.setKeysOnly();
 		q.addSort("name", SortDirection.ASCENDING);
 		PreparedQuery pq = ds.prepare(q);
 		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(i));
 		for(Entity e : ents) {
-			communities.add(EntityConverter.entityToCommunity(e));
+			communities.add(e.getKey());
 		}
 		return communities;
 		

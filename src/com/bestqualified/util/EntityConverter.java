@@ -132,7 +132,7 @@ public class EntityConverter {
 		e.setIndexedProperty("name", c.getName());
 		e.setIndexedProperty("date", c.getDateCreated());
 		e.setUnindexedProperty("image", c.getImage());
-		e.setIndexedProperty("longDesc", c.getLongDesc());
+		e.setUnindexedProperty("longDesc", c.getLongDesc());
 		e.setUnindexedProperty("members", c.getMembers());
 		e.setUnindexedProperty("owner", c.getOwner());
 		e.setUnindexedProperty("shortDesc", c.getShortDesc());

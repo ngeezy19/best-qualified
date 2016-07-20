@@ -34,6 +34,12 @@ public class AdminCreateCommunity extends HttpServlet {
 	private static final long serialVersionUID = 616027673877299693L;
 
 	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		resp.getWriter().write("Here");
+	}
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -139,6 +145,7 @@ public class AdminCreateCommunity extends HttpServlet {
 		}
 
 		Community community = new Community();
+		community.setName(name);
 		community.setDateCreated(date);
 		community.setLongDesc(textlongDesc);
 		community.setShortDesc(textshortDesc);
@@ -147,7 +154,7 @@ public class AdminCreateCommunity extends HttpServlet {
 		community.setWallpaper(blobKeyWall);
 		community.setOwner(u.getUserKey());
 
-		if (!Util.notNull(commPubPriv)) {
+		if (Util.notNull(commPubPriv)) {
 			community.setCommPublic(true);
 		}
 		
@@ -157,7 +164,7 @@ public class AdminCreateCommunity extends HttpServlet {
 		
 		synchronized (session) {
 			session.setAttribute("communitySuccess", "Community Created");
-			resp.sendRedirect(resp.encodeRedirectURL("/bq/admin/create-community"));
+			resp.sendRedirect(resp.encodeRedirectURL("/bq/admin/communityad"));
 			return;
 		}
 	}

@@ -27,11 +27,18 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<form
-				action="<%=blobstoreService.createUploadUrl(
-					"/bq/admin/create-community", options)%>"
-				method="post" enctype="multipart/form-data">
-
+			<form method="post"
+				action="<%=blobstoreService
+					.createUploadUrl("/bq/admin/create-community")%>"
+				enctype="multipart/form-data">
+				<c:choose>
+					<c:when test="${not empty communitySuccess }">
+						<div class="alert alert-success">${ communitySuccess }</div>
+					</c:when>
+					<c:when test="${not empty communityError }">
+						<div class="alert alert-danger">${ communityError }</div>
+					</c:when>
+				</c:choose>
 
 				<div class="col-md-12">
 					<h3>Create Community</h3>
@@ -71,7 +78,8 @@
 					</div>
 
 					<div>
-						<input type="checkbox" name="public-private" value="true"> Make community public<BR>
+						<input type="checkbox" name="public-private" value="true">
+						Make community public<BR>
 					</div>
 
 					<button type="submit" class="btn btn-default">Enter</button>
