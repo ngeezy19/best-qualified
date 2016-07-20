@@ -489,6 +489,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>GetCommunities</servlet-name>
+		<servlet-class>com.bestqualified.servlets.GetCommunities</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetCommunities</servlet-name>
+		<url-pattern>/bq/get-comm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 
 		<servlet-name>InitIndex</servlet-name>
 		<servlet-class>com.bestqualified.servlets.InitIndex</servlet-class>
@@ -564,7 +573,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>InitCommunityBean</servlet-name>
 		<url-pattern>/community</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>AdminCreateCommunity</servlet-name>
 		<servlet-class>com.bestqualified.admin.AdminCreateCommunity</servlet-class>
@@ -573,7 +582,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>AdminCreateCommunity</servlet-name>
 		<url-pattern>/bq/admin/create-community</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>CommunityPageServlet</servlet-name>
 		<servlet-class>com.bestqualified.servlets.CommunityPageServlet</servlet-class>
@@ -938,7 +947,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>community</servlet-name>
 		<url-pattern>/bq/community</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>admincommunity</servlet-name>
 		<jsp-file>/WEB-INF/bq/admin/create-community.jsp</jsp-file>

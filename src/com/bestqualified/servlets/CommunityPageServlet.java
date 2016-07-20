@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bestqualified.bean.CommunityBean;
 import com.bestqualified.bean.CommunityPageBean;
 import com.bestqualified.controllers.GeneralController;
 import com.bestqualified.entities.Article;
@@ -37,6 +38,7 @@ public class CommunityPageServlet extends HttpServlet {
 
 		HttpSession session = req.getSession();
 
+<<<<<<< HEAD
 
 
 		
@@ -49,24 +51,25 @@ public class CommunityPageServlet extends HttpServlet {
 		Map<String, String> map = new HashMap<>();
 		for (Community co : communities) {
 			map.put(KeyFactory.keyToString(co.getId()), co.getName());
+=======
+		List<Key> cKey = GeneralController.getNCommunities(10);
 
-		}
+		List<Community> communities = Util.getCommunityFromCache(cKey);
 
-	
-		List<Article> posts = GeneralController.getTrendingPosts(10);
-		List<Key> aKey = new ArrayList<>();
-		
-		for (Article article : posts) {
-			aKey.add(article.getKey());
-		}
-		
-		posts = Util.getPostsFromCache(aKey);
-		
+		// Map<String, String> map = new HashMap<>();
+		List<CommunityBean> cmBean = Util.toCommunityBeans(communities);
+
+		List<Article> posts = new ArrayList<>();
+>>>>>>> 6b2c023d27b9ee6075b71d2c7641aa0f281a7163
+
+		posts = Util.getPostsFromCache(GeneralController.getTrendingPosts(10));
+
 		CommunityPageBean cpb = new CommunityPageBean();
-		cpb.setCommunities(map);
+		// cpb.setCommunities(map);
 
+		cpb.setCommunities(cmBean);
 		cpb.setPosts(Util.toArticleBeans(posts));
-		
+
 		synchronized (session) {
 			session.setAttribute("communityPageBean", cpb);
 		}
