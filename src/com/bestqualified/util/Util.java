@@ -1940,7 +1940,7 @@ public class Util {
 			cb.setShortDesc(com.getShortDesc().getValue());
 			cb.setLongDesc(com.getLongDesc().getValue());
 			cb.setCurrentDate(new SimpleDateFormat("dd MMMM yyyy").format(com.getDateCreated()));
-			cb.setMembers(com.getMembers());
+			cb.setMembers(com.getMembers()); 
 			//cb.setTopics(com.getTopics());
 			
 			ImagesService imagesService = ImagesServiceFactory
@@ -1976,6 +1976,24 @@ public class Util {
 			orr.getProjects().addAll(r.getProjects());
 		}
 		return orr;
+	}
+
+	public static Map<String, String> getCommunityMap(List<Community> comm) {
+		// TODO Auto-generated method stub
+		
+		Map<String, String> map = new HashMap<>();
+		
+		
+		for (Community community : comm) {
+			
+			String key = KeyFactory.keyToString(community.getId());
+			String name = community.getName();
+			map.put(key, name);
+			
+		}
+		
+		
+		return map;
 	}
 
 }

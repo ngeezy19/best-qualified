@@ -38,30 +38,23 @@ public class CommunityPageServlet extends HttpServlet {
 
 		HttpSession session = req.getSession();
 
-
-
-		
 		List<Key> cKey = GeneralController.getNCommunities(10);
-
-		
 
 		List<Community> communities = Util.getCommunityFromCache(cKey);
 
-		//Map<String, String> map = new HashMap<>();
+		// Map<String, String> map = new HashMap<>();
 		List<CommunityBean> cmBean = Util.toCommunityBeans(communities);
-		
-	
+
 		List<Article> posts = new ArrayList<>();
-	
-		
+
 		posts = Util.getPostsFromCache(GeneralController.getTrendingPosts(10));
-		
+
 		CommunityPageBean cpb = new CommunityPageBean();
-		//cpb.setCommunities(map);
-		
+		// cpb.setCommunities(map);
+
 		cpb.setCommunities(cmBean);
 		cpb.setPosts(Util.toArticleBeans(posts));
-		
+
 		synchronized (session) {
 			session.setAttribute("communityPageBean", cpb);
 		}

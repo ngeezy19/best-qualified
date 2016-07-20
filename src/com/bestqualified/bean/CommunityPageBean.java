@@ -11,8 +11,7 @@ public class CommunityPageBean implements Serializable {
 	private static final long serialVersionUID = -1126668110617153893L;
 	private List<CommunityBean> communities;
 	private List<Article> posts;
-	
-	
+
 	@Override
 	public String toString() {
 		return "CommunityPageBean [communities=" + communities + ", posts="
@@ -35,5 +34,4 @@ public class CommunityPageBean implements Serializable {
 		this.posts = posts;
 	}
 
-	
 }

@@ -80,18 +80,19 @@ public class CommunityBean implements Serializable {
 	public void setWebSafeKey(String webSafeKey) {
 		this.webSafeKey = webSafeKey;
 	}
-	public String getWallpaper() {
-		return wallpaper;
-	}
-	public void setWallpaper(String wallpaper) {
-		this.wallpaper = wallpaper;
-	}
 	public List<Key> getMembers() {
 		return members;
 	}
 	public void setMembers(List<Key> members) {
 		this.members = members;
 	}
+	public String getWallpaper() {
+		return wallpaper;
+	}
+	public void setWallpaper(String wallpaper) {
+		this.wallpaper = wallpaper;
+	}
+	
 	
 	
 	
