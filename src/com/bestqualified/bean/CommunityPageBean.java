@@ -9,11 +9,9 @@ public class CommunityPageBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -1126668110617153893L;
-<<<<<<< HEAD
-	private Map<String, String> communities;
-=======
+
 	private List<CommunityBean> communities;
->>>>>>> 6b2c023d27b9ee6075b71d2c7641aa0f281a7163
+
 	private List<Article> posts;
 
 	@Override

@@ -38,20 +38,7 @@ public class CommunityPageServlet extends HttpServlet {
 
 		HttpSession session = req.getSession();
 
-<<<<<<< HEAD
 
-
-		
-		List<Key> cKey = GeneralController.getNCommunities(10);
-
-		
-
-		List<Community> communities = Util.getCommunityFromCache(cKey);
-
-		Map<String, String> map = new HashMap<>();
-		for (Community co : communities) {
-			map.put(KeyFactory.keyToString(co.getId()), co.getName());
-=======
 		List<Key> cKey = GeneralController.getNCommunities(10);
 
 		List<Community> communities = Util.getCommunityFromCache(cKey);
@@ -60,7 +47,7 @@ public class CommunityPageServlet extends HttpServlet {
 		List<CommunityBean> cmBean = Util.toCommunityBeans(communities);
 
 		List<Article> posts = new ArrayList<>();
->>>>>>> 6b2c023d27b9ee6075b71d2c7641aa0f281a7163
+
 
 		posts = Util.getPostsFromCache(GeneralController.getTrendingPosts(10));
 

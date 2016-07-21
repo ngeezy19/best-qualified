@@ -24,71 +24,12 @@
 	text-align: right;
 }
 
-<<<<<<< HEAD
-* { padding: 0; margin: 0; }
-body { font-family: sans-serif; }
-a { text-decoration: none; color: #00A5CC; }
-li { list-style-type: none; }
-
-header { 
-	
-	width: 100%; 
-	height: 50px; 
-	margin: auto;
-	border-bottom: 1px solid #EEE;
-}
-#brand {
-	
-	line-height: 50px;
-	color: #E5DAC0;
-	font-size: 25px;
-	font-weight: bolder;
-   margin: 0 0 0 6px;
-}
-nav {position:fixed; width: 100%; text-align: center; }
-nav a { 
-	display: block; 
-	padding: 15px 0;
-	border-bottom: 1px solid #C3AA6E;
-	color: #F0EADC;
-}
-nav a:hover { background: #E5DAC0; color: #FFF; }
-nav li:last-child a { border-bottom: none; }
-
-/*-----------------------------------------*/
-
-.menu {
-	width: 240px;
-	height: 100%;
-	position: absolute;
-	background: #D9C9A3;
-	left: -240px;
-	transition: all .3s ease-in-out;
-	-webkit-transition: all .3s ease-in-out;
-	-moz-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
-	-o-transition: all .3s ease-in-out;
-	
-}
-.menu-icon {
-	padding: 10px 20px;
-	background: #E5DAC0;
-	color: #987D3E;
-	cursor: pointer;
-	float: left;
-	margin: 6px 6px 0 0;
-	border-radius: 5px;
-=======
-body,html {
-	height: 100%;
->>>>>>> 6b2c023d27b9ee6075b71d2c7641aa0f281a7163
 }
 #menuToggle { display: none; }
 
 #menuToggle:checked ~ .menu { position: absolute; left: 0; }
 
-<<<<<<< HEAD
-=======
+
 body {
 	padding: 0;
 	margin: 0;
@@ -247,7 +188,7 @@ hr.style15:after {
 	color: #8c8b8b;
 	font-size: 18px;
 }
->>>>>>> 6b2c023d27b9ee6075b71d2c7641aa0f281a7163
+
 </style>
 </head>
 
@@ -257,15 +198,6 @@ hr.style15:after {
 	<br>
 	<div class="container-fluid">
 		<div class="row">
-<<<<<<< HEAD
-
-
-			
-				<br>
-				
-=======
-
-
 
 			<br>
 
@@ -379,74 +311,18 @@ hr.style15:after {
 
 				
 			</section>
->>>>>>> 6b2c023d27b9ee6075b71d2c7641aa0f281a7163
+
 		</div>
 	</div>
 
-	<div class="container-fluid">
-	
-	<input type="checkbox" id="menuToggle">
-<label for="menuToggle" class="menu-icon">&#9776;</label>
 
-<<<<<<< HEAD
-<header>
-<div id="brand">
-<div class="col-sm-6 pull-right icons">
-					<i class="fa fa-facebook" aria-hidden="true"></i><i
-						class="fa fa-google-plus" aria-hidden="true"></i><i
-						class="fa fa-twitter" aria-hidden="true"></i><i
-						class="fa fa-linkedin" aria-hidden="true"></i>
-				</div>
-</div>
-</header>
-
-
-<nav class="menu">
-
-	<ul >
-    	<li><a href="#">HOME</a></li>
-        <li><a href="#">COMMUNITIES</a></li>
-        <li><a href="#">ARTICLES</a></li>
-        <li><a href="#">HELP</a></li>
-    </ul>
-    
-</nav>
-		
-		
-	<div> 
-	
-	<div class="row">
-        <div class="col-sm-3">
-          <div class="card-panel">
-            <div>
-              <img src="images/creat2.png">
-              
-            </div>
-            <div>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="">
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      	
-      </div>	</div>
-
-	
-=======
-
->>>>>>> 6b2c023d27b9ee6075b71d2c7641aa0f281a7163
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/waitMe.js"></script>
 	<script src="/js/main.js"></script>
-<<<<<<< HEAD
-=======
+
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
->>>>>>> 6b2c023d27b9ee6075b71d2c7641aa0f281a7163
+
 
 </body>
 </html>

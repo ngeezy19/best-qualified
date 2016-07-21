@@ -6,10 +6,8 @@
 <%@ page import="com.google.appengine.api.blobstore.UploadOptions"%>
 
 <%
-	BlobstoreService blobstoreService = BlobstoreServiceFactory
-			.getBlobstoreService();
-	UploadOptions options = UploadOptions.Builder
-			.withMaxUploadSizeBytesPerBlob(2 * 1024 * 1024)
+	BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+	UploadOptions options = UploadOptions.Builder.withMaxUploadSizeBytesPerBlob(2 * 1024 * 1024)
 			.maxUploadSizeBytes(2 * 1024 * 1024);
 %>
 
@@ -28,17 +26,8 @@
 	<div class="container">
 		<div class="row">
 			<form method="post"
-				action="<%=blobstoreService
-					.createUploadUrl("/bq/admin/create-community")%>"
+				action="<%=blobstoreService.createUploadUrl("/bq/get-comm")%>"
 				enctype="multipart/form-data">
-				<c:choose>
-					<c:when test="${not empty communitySuccess }">
-						<div class="alert alert-success">${ communitySuccess }</div>
-					</c:when>
-					<c:when test="${not empty communityError }">
-						<div class="alert alert-danger">${ communityError }</div>
-					</c:when>
-				</c:choose>
 
 				<div class="col-md-12">
 					<h3>Create Post</h3>
@@ -48,7 +37,15 @@
 
 
 					<div class="form-group">
-						<label for="name">Name of Community:</label> <input
+						<label for="community">Community:</label> <select name="item">
+							<c:foreach var="item" items=${getCommunity.commap }>
+								<option value="${item.value}">${item.value}</option>
+								<c:if test="${item != selected}">
+									<option value="${item}">${item}</option>
+								</c:if>
+
+							</c:foreach>
+						</select> <input
 							class="form-control" name="name">
 					</div>
 
@@ -63,7 +60,7 @@
 							size = 2MB</i>
 					</div>
 
-					
+
 
 					<button type="submit" class="btn btn-default">Enter</button>
 				</div>

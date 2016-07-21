@@ -543,7 +543,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/bq/endpoint/be-a-coach</url-pattern>
 	</servlet-mapping>
 
-
+	<servlet>
+	    <servlet-name>CreatePost</servlet-name>
+	    <servlet-class>com.bestqualified.admin.CreatePost</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>CreatePost</servlet-name>
+	    <url-pattern>/bq/admin/create-post</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>SaveReadingList</servlet-name>
@@ -610,6 +617,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<servlet-mapping>
 		<servlet-name>FindCandidates</servlet-name>
 		<url-pattern>/bq/closed/find-candidate</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AdminPost</servlet-name>
+		<jsp-file>/WEB-INF/bq/admin/create-post.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>AdminPost</servlet-name>
+		<url-pattern>/bq/admin/comm-postad</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
