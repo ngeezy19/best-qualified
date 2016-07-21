@@ -1,13 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page
 	import="com.google.appengine.api.blobstore.BlobstoreServiceFactory"%>
 <%@ page import="com.google.appengine.api.blobstore.BlobstoreService"%>
 <%@ page import="com.google.appengine.api.blobstore.UploadOptions"%>
 
 <%
-	BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
-	UploadOptions options = UploadOptions.Builder.withMaxUploadSizeBytesPerBlob(2 * 1024 * 1024)
+	BlobstoreService blobstoreService = BlobstoreServiceFactory
+			.getBlobstoreService();
+	UploadOptions options = UploadOptions.Builder
+			.withMaxUploadSizeBytesPerBlob(2 * 1024 * 1024)
 			.maxUploadSizeBytes(2 * 1024 * 1024);
 %>
 
@@ -26,7 +30,7 @@
 	<div class="container">
 		<div class="row">
 			<form method="post"
-				action="<%=blobstoreService.createUploadUrl("/bq/get-comm")%>"
+				action="<%=blobstoreService.createUploadUrl("/bq/admin/create-post")%>"
 				enctype="multipart/form-data">
 
 				<div class="col-md-12">
@@ -37,16 +41,12 @@
 
 
 					<div class="form-group">
-						<label for="community">Community:</label> <select name="item">
-							<c:foreach var="item" items=${getCommunity.commap }>
-								<option value="${item.value}">${item.value}</option>
-								<c:if test="${item != selected}">
-									<option value="${item}">${item}</option>
-								</c:if>
+						<label for="community">Community</label> <select id="item" name="item">
+							<c:forEach var="item" items="${getCommunity}">
+								<option value="${item.key }">${item.value}</option>
+							</c:forEach>
 
-							</c:foreach>
-						</select> <input
-							class="form-control" name="name">
+						</select>
 					</div>
 
 
@@ -73,6 +73,9 @@
 		tinymce.init({
 			selector : '.tiny'
 		});
+	</script>
+	<script type="text/javascript">
+		
 	</script>
 
 </body>

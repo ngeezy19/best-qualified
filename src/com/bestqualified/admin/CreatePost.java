@@ -73,11 +73,14 @@ public class CreatePost extends HttpServlet {
 
 	//	List<Entity> listOfPosts = new ArrayList<>();
 
-	//	List<Key> keys = new ArrayList<>();
 		
-		Community c = new Community();
-		c.setName(dropd);
-		Entity e = EntityConverter.communityToEntity(c);
+		//find selected community,get community from memcache
+		//get listofposts in the community, add key of new post to list of posts
+		
+		
+	 
+		//c.setName(dropd);
+	//	Entity e = EntityConverter.communityToEntity(c);
 
 		Article art = new Article();
 		art.setDate(date);
@@ -85,7 +88,7 @@ public class CreatePost extends HttpServlet {
 		art.setImageKey(blobKey);
 		art.setAuthor(u.getUserKey());
 		Entity e1 = EntityConverter.ArticleToEntity(art);
-		GeneralController.createWithCrossGroup(e,e1);
+	//	GeneralController.createWithCrossGroup(e,e1);
 
 		synchronized (session) {
 			session.setAttribute("postSuccess", "Post Created");
