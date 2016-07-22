@@ -39,6 +39,7 @@ public class GetCommunities extends HttpServlet {
 		
 		synchronized (session) {
 			session.setAttribute("getCommunity", commap);
+			session.setAttribute("getCommKey", comm);
 		}
 		resp.sendRedirect(resp.encodeRedirectURL("/bq/admin/comm-postad"));
 	}

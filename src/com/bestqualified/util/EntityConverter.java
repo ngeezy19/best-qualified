@@ -123,6 +123,7 @@ public class EntityConverter {
 		comm.setOwner((Key) e.getProperty("owner"));
 		comm.setTopics((List<Key>) e.getProperty("topics"));
 		comm.setWallpaper((BlobKey) e.getProperty("wallpaper"));
+		comm.setPosts((List<Key>) e.getProperty("posts"));
 		return comm;
 		
 	}
@@ -139,6 +140,7 @@ public class EntityConverter {
 		e.setUnindexedProperty("topics", c.getTopics());
 		e.setUnindexedProperty("wallpaper", c.getWallpaper());
 		e.setUnindexedProperty("commPublic", c.isCommPublic());
+		e.setUnindexedProperty("posts", c.getPosts());
 		return e;
 	}
 

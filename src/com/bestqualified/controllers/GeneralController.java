@@ -77,7 +77,7 @@ public class GeneralController {
 		List<Key> articles = new ArrayList<>();
 		Query q = new Query(Article.class.getSimpleName());
 		q.setKeysOnly();
-		//q.setFilter(new FilterPredicate("commPublic", FilterOperator.EQUAL, true));
+		q.setFilter(new FilterPredicate("category", FilterOperator.NOT_EQUAL, "POST"));
 		//q.addSort("nComments", SortDirection.DESCENDING);
 		PreparedQuery pq = ds.prepare(q);
 		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(i));

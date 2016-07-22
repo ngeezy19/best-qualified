@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.bestqualified.controllers.GeneralController;
 import com.bestqualified.entities.Article;
+import com.bestqualified.entities.ArticleCategory;
 import com.bestqualified.entities.Community;
 import com.bestqualified.entities.Topic;
 import com.bestqualified.entities.User;
@@ -24,6 +25,7 @@ import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.Text;
 
 public class CreatePost extends HttpServlet {
@@ -33,6 +35,7 @@ public class CreatePost extends HttpServlet {
 	 */
 	private static final long serialVersionUID = -390620203106727185L;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -71,24 +74,54 @@ public class CreatePost extends HttpServlet {
 		Date date = new Date();
 		Text textBody = new Text(body);
 
-	//	List<Entity> listOfPosts = new ArrayList<>();
+		Key key = null;
+		List<Community> cK = null;
+		Object o1 = null;
+		synchronized (session) {
+			o1 = session.getAttribute("getCommKey");
+		}
 
-		
-		//find selected community,get community from memcache
+		if (o1 != null) {
+			cK = (List<Community>) o1;
+		}
+
+		List<Key> postId = new ArrayList<>();
+		//find selected community,get community (list) from session
 		//get listofposts in the community, add key of new post to list of posts
 		
+		key = KeyFactory.stringToKey(dropd);
 		
-	 
-		//c.setName(dropd);
+		Community comm = null;
+		
+		
+		for (Community c : cK) {
+			
+			if(key.equals(c.getId())){
+				comm = c;
+			  
+			  break;
+			}
+		}
+		
+		List<Key> listOfPosts = comm.getPosts();
+		
+		if(listOfPosts==null){
+			listOfPosts = new ArrayList<>();
+		}
+		
 	//	Entity e = EntityConverter.communityToEntity(c);
 
 		Article art = new Article();
 		art.setDate(date);
 		art.setBody(textBody);
 		art.setImageKey(blobKey);
+		art.setCategory(ArticleCategory.POST);
 		art.setAuthor(u.getUserKey());
-		Entity e1 = EntityConverter.ArticleToEntity(art);
-	//	GeneralController.createWithCrossGroup(e,e1);
+		//listOfPosts.add(EntityConverter.ArticleToEntity(art));
+		listOfPosts.add(art.getKey());
+		comm.setPosts(listOfPosts);
+		
+		GeneralController.createWithCrossGroup(EntityConverter.communityToEntity(comm),EntityConverter.ArticleToEntity(art));
 
 		synchronized (session) {
 			session.setAttribute("postSuccess", "Post Created");
@@ -96,5 +129,4 @@ public class CreatePost extends HttpServlet {
 			return;
 		}
 	}
-
 }

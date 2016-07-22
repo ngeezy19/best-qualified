@@ -24,6 +24,7 @@ public class Community implements Serializable {
 	private Date dateCreated;
 	private Key owner;
 	private List<Key> topics;
+	private List<Key> posts;
 	private Text shortDesc;
 	private BlobKey wallpaper;
 	@Override
@@ -31,8 +32,9 @@ public class Community implements Serializable {
 		return "Community [id=" + id + ", name=" + name + ", longDesc="
 				+ longDesc + ", commPublic=" + commPublic + ", members="
 				+ members + ", image=" + image + ", dateCreated=" + dateCreated
-				+ ", owner=" + owner + ", topics=" + topics + ", shortDesc="
-				+ shortDesc + ", wallpaper=" + wallpaper + "]";
+				+ ", owner=" + owner + ", topics=" + topics + ", posts="
+				+ posts + ", shortDesc=" + shortDesc + ", wallpaper="
+				+ wallpaper + "]";
 	}
 	public Key getId() {
 		return id;
@@ -100,10 +102,17 @@ public class Community implements Serializable {
 	public void setWallpaper(BlobKey wallpaper) {
 		this.wallpaper = wallpaper;
 	}
+	public List<Key> getPosts() {
+		return posts;
+	}
+	public void setPosts(List<Key> posts) {
+		this.posts = posts;
+	}
 	public Community() {
 		this.id = GeneralController.ds.allocateIds(
 				Community.class.getSimpleName(), 1).getStart();
 	}
+	
 	
 	
 	

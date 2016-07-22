@@ -52,7 +52,7 @@ public class CommunityPageServlet extends HttpServlet {
 		posts = Util.getPostsFromCache(GeneralController.getTrendingPosts(10));
 
 		CommunityPageBean cpb = new CommunityPageBean();
-		// cpb.setCommunities(map);
+		
 
 		cpb.setCommunities(cmBean);
 		cpb.setPosts(Util.toArticleBeans(posts));
