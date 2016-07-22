@@ -1917,6 +1917,7 @@ public class Util {
 			a.setAuthor(u.getFirstName() + " " + u.getLastName());
 			a.setTitle(art.getTitle());
 			a.setSnippet(art.getBody().getValue().substring(0, 200) + "...");
+			if(art.getImageKey()!=null){
 			ImagesService imagesService = ImagesServiceFactory
 					.getImagesService();
 			ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(
@@ -1926,6 +1927,7 @@ public class Util {
 			a.setPostDate(new SimpleDateFormat("dd MMMM yyyy").format(art
 					.getDate()));
 			a.setWebkey(KeyFactory.keyToString(art.getKey()));
+			}
 			aas.add(a);
 		}
 

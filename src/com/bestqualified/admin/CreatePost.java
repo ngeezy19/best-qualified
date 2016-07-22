@@ -85,9 +85,6 @@ public class CreatePost extends HttpServlet {
 			cK = (List<Community>) o1;
 		}
 
-		List<Key> postId = new ArrayList<>();
-		//find selected community,get community (list) from session
-		//get listofposts in the community, add key of new post to list of posts
 		
 		key = KeyFactory.stringToKey(dropd);
 		
@@ -108,16 +105,14 @@ public class CreatePost extends HttpServlet {
 		if(listOfPosts==null){
 			listOfPosts = new ArrayList<>();
 		}
-		
-	//	Entity e = EntityConverter.communityToEntity(c);
-
+	
 		Article art = new Article();
 		art.setDate(date);
 		art.setBody(textBody);
 		art.setImageKey(blobKey);
 		art.setCategory(ArticleCategory.POST);
 		art.setAuthor(u.getUserKey());
-		//listOfPosts.add(EntityConverter.ArticleToEntity(art));
+		
 		listOfPosts.add(art.getKey());
 		comm.setPosts(listOfPosts);
 		

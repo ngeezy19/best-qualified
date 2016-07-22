@@ -238,11 +238,11 @@ hr.style15:after {
 
 								<div id="hint" class="card-panel">
 									<div>
-										<a href="#"> <img class=img-responsive src="${item.image}"></a>
+										<a href='<c:url value="/community?webkey=${item.webSafeKey}" />'> <img class=img-responsive src="${item.image}"></a>
 
 									</div>
 									<div>
-										<a style="text-decoration: none;" href="#">
+										<a style="text-decoration: none;" href='<c:url value="/community?webkey=${item.webSafeKey}" />'>
 											<h3>
 												<c:out value="${item.name}" />
 											</h3>
@@ -250,7 +250,7 @@ hr.style15:after {
 									</div>
 									<hr class="style15">
 									<div>
-										<a style="text-decoration: none;" href="#">
+										<a style="text-decoration: none;" href='<c:url value="/community?webkey=${item.webSafeKey}" />'>
 											<p>${item.shortDesc}</p>
 										</a>
 									</div>
@@ -272,12 +272,12 @@ hr.style15:after {
 							<c:forEach var="item" items="${communityPageBean.posts}">
 								<div class="media card-panel">
 									<a class="pull-left"
-										href='<c:url value="bq/network/get-post?id=${item.webkey}" />'><img
+										href='<c:url value="/community?id=${item.webkey}" />'><img
 										class="media-object img-rounded" src="${item.pictureUrl}"
 										width="130" height="130"></a>
 									<div class="media-body">
 										<a
-											href='<c:url value="bq/network/get-post?id=${item.webkey}" />'><h3
+											href='<c:url value="/community?id=${item.webkey}" />'><h3
 												class="media-heading" id="lol">${item.title}</h3></a>
 										<p
 											style="color: #983b59; font-family: calibri; letter-spacing: 3px">
@@ -288,7 +288,7 @@ hr.style15:after {
 										</p>
 										<p>
 											${item.snippet}<span><a
-												href='<c:url value="bq/network/get-post?id=${item.webkey}" />'><i
+												href='<c:url value="/community?id=${item.webkey}" />'><i
 													class="fa fa-angle-double-right" aria-hidden="true"></i></a></span>
 										</p>
 

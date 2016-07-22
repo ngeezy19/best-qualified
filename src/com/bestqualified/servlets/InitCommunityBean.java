@@ -12,14 +12,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bestqualified.bean.Article;
 import com.bestqualified.bean.CommunityBean;
 import com.bestqualified.bean.InterestedJob;
 import com.bestqualified.controllers.GeneralController;
+import com.bestqualified.entities.Article;
 import com.bestqualified.entities.ArticleCategory;
+import com.bestqualified.entities.Community;
 import com.bestqualified.entities.Job;
 import com.bestqualified.entities.ReadingList;
+import com.bestqualified.util.EntityConverter;
+import com.bestqualified.util.MemcacheProvider;
 import com.bestqualified.util.Util;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Text;
 
 public class InitCommunityBean extends HttpServlet {
 
@@ -31,51 +37,56 @@ public class InitCommunityBean extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String date = new SimpleDateFormat("MMMM dd yyyy")
-				.format(new Date());
-		List<ReadingList> readingList = GeneralController
-				.getNReadingListByDate(3);
-		List<Job> jobs = GeneralController.getNJobs(5);
-		List<InterestedJob> ijs = Util.toInterestedJobs(jobs);
-		List<com.bestqualified.entities.Article> mainPost = GeneralController
-				.getNArticlesByDate(10);
-		List<Article> mps = Util.toArticleBeans(mainPost);
-		List<com.bestqualified.entities.Article> discussion = GeneralController
-				.getNDiscussions(10);
-		List<Article> dis = Util.toArticleBeans(discussion);
-		List<com.bestqualified.entities.Article> sales = GeneralController
-				.getLatestArticles(ArticleCategory.SALES.name(), 1);
-		List<com.bestqualified.entities.Article> advertising = GeneralController
-				.getLatestArticles(ArticleCategory.ADVERTISING.name(), 1);
-		List<com.bestqualified.entities.Article> marketing = GeneralController
-				.getLatestArticles(ArticleCategory.MARKETING.name(), 1);
-		List<com.bestqualified.entities.Article> pr = GeneralController
-				.getLatestArticles(ArticleCategory.PUBLIC_RELATIONS.name(), 1);
-		List<com.bestqualified.entities.Article> creatives = GeneralController
-				.getLatestArticles(ArticleCategory.CREATIVES.name(), 1);
-		List<com.bestqualified.entities.Article> latestArticles = new ArrayList<>();
-		latestArticles.addAll(creatives);
-		latestArticles.addAll(sales);
-		latestArticles.addAll(advertising);
-		latestArticles.addAll(marketing);
-		latestArticles.addAll(pr);
-		List<Article> la = Util.toArticleBeans(latestArticles);
+		
+		HttpSession session = req.getSession();
+
+		String webKey = req.getParameter("webkey");
+
+		Key key = KeyFactory.stringToKey(webKey);
+		Object o = MemcacheProvider.COMMUNITIES.get(key);
+		Community c = null;
+		if (o == null) {
+			c = EntityConverter.entityToCommunity(GeneralController
+					.findByKey(key));
+			MemcacheProvider.COMMUNITIES.put(key, c);
+
+		} else {
+			c = (Community) o;
+		}
+		// EntityConverter.entityToCommunity(GeneralController.findByKey(KeyFactory.stringToKey(webKey)));
+		// c.getId();
+
+		List<Article> commPosts = GeneralController.getNArticlesByDate(5);
+
+		for (Article at : commPosts) {
+
+			at.setAuthor(at.getAuthor());
+			at.setBody(at.getBody());
+			at.setDate(at.getDate());
+			at.setImageKey(at.getImageKey());
+			at.setKey(at.getKey());
+			at.setLikes(at.getLikes());
+			at.setComments(at.getComments());
+			at.setnComments(at.getnComments());
+		}
 		
 		CommunityBean cb = new CommunityBean();
 		cb.setCurrentDate(date);
-		//cb.setDiscussions(dis);
-	//	cb.setJobs(ijs);
-	//	cb.setLatestArticles(la);
-	//	cb.setMainPosts(mps);
-	//	cb.setReadingList(readingList);
+		cb.setPost(Util.toArticleBeans(commPosts));
+		cb.setImage(Util.getPictureUrl(c.getImage()));
+		cb.setName(c.getName());
+		cb.setLongDesc(c.getLongDesc().getValue());
+		cb.setShortDesc(c.getShortDesc().getValue());
+		cb.setMembers(c.getMembers());
+		cb.setWebSafeKey(c.getId().getName());
 		
-		HttpSession session = req.getSession();
+
 		synchronized (session) {
 			session.setAttribute("communityBean", cb);
 		}
 
 		resp.sendRedirect(resp.encodeRedirectURL("/bq/community"));
 
-	}
 
+	}
 }
