@@ -571,6 +571,24 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>GetReadingList</servlet-name>
 		<url-pattern>/bq/coaching/tools/get-reading-list</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GetAllArticles</servlet-name>
+		<servlet-class>com.bestqualified.servlets.GetAllArticles</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllArticles</servlet-name>
+		<url-pattern>/bq/community/article</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GetAllCommunities</servlet-name>
+		<servlet-class>com.bestqualified.servlets.GetAllCommunities</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllCommunities</servlet-name>
+		<url-pattern>/bq/community/comms</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>InitCommunityBean</servlet-name>
@@ -629,6 +647,26 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/bq/admin/comm-postad</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>CommArticles</servlet-name>
+		<jsp-file>/WEB-INF/bq/community/articles.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>CommArticles</servlet-name>
+		<url-pattern>/bq/comm-articles</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AllCommunities</servlet-name>
+		<jsp-file>/WEB-INF/bq/community/communities.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>AllCommunities</servlet-name>
+		<url-pattern>/bq/comm-all</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>CreateReadingList</servlet-name>
 		<jsp-file>/WEB-INF/bq/admin/reading-list.jsp</jsp-file>
@@ -963,6 +1001,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<servlet-mapping>
 		<servlet-name>community</servlet-name>
 		<url-pattern>/bq/community</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>singlcomm</servlet-name>
+		<jsp-file>/WEB-INF/bq/community/single-community.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>singlcomm</servlet-name>
+		<url-pattern>/bq/single-comm</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

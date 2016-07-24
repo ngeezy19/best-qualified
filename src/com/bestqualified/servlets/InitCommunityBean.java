@@ -41,7 +41,19 @@ public class InitCommunityBean extends HttpServlet {
 		HttpSession session = req.getSession();
 
 		String webKey = req.getParameter("webkey");
+		
+		if (!Util.notNull(webKey)) {
+			synchronized (session) {
+				session.setAttribute("CommError",
+						"no community selected");
+				resp.sendRedirect(resp
+						.encodeRedirectURL("/bq/general-community"));
+				return;
 
+			}
+
+		}
+		
 		Key key = KeyFactory.stringToKey(webKey);
 		Object o = MemcacheProvider.COMMUNITIES.get(key);
 		Community c = null;
@@ -53,8 +65,7 @@ public class InitCommunityBean extends HttpServlet {
 		} else {
 			c = (Community) o;
 		}
-		// EntityConverter.entityToCommunity(GeneralController.findByKey(KeyFactory.stringToKey(webKey)));
-		// c.getId();
+		
 
 		List<Article> commPosts = GeneralController.getNArticlesByDate(5);
 
@@ -71,7 +82,7 @@ public class InitCommunityBean extends HttpServlet {
 		}
 		
 		CommunityBean cb = new CommunityBean();
-		cb.setCurrentDate(date);
+		cb.setCurrentDate(new Date().toString());
 		cb.setPost(Util.toArticleBeans(commPosts));
 		cb.setImage(Util.getPictureUrl(c.getImage()));
 		cb.setName(c.getName());
@@ -85,7 +96,7 @@ public class InitCommunityBean extends HttpServlet {
 			session.setAttribute("communityBean", cb);
 		}
 
-		resp.sendRedirect(resp.encodeRedirectURL("/bq/community"));
+		resp.sendRedirect(resp.encodeRedirectURL("/bq/single-comm"));
 
 
 	}

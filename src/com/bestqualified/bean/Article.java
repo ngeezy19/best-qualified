@@ -11,10 +11,12 @@ public class Article implements Serializable, Comparable<Article> {
 	 */
 	private static final long serialVersionUID = -7886491805459375745L;
 	private String pictureUrl,title,author,snippet, webkey;
+	private String body;
 	private String postDate;
 	private String link;
 	private long likes;
 	private long shares;
+	private long nComments;
 	
 	public String getPictureUrl() {
 		return pictureUrl;
@@ -33,6 +35,12 @@ public class Article implements Serializable, Comparable<Article> {
 	}
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+	public String getBody() {
+		return body;
+	}
+	public void setBody(String body) {
+		this.body = body;
 	}
 	public String getPostDate() {
 		return postDate;
@@ -75,12 +83,17 @@ public class Article implements Serializable, Comparable<Article> {
 	public void setShares(long shares) {
 		this.shares = shares;
 	}
+	public long getnComments() {
+		return nComments;
+	}
+	public void setnComments(long nComments) {
+		this.nComments = nComments;
+	}
 	@Override
 	public String toString() {
-		return "Article [pictureUrl=" + pictureUrl + ", title=" + title
-				+ ", author=" + author + ", snippet=" + snippet + ", webkey="
-				+ webkey + ", postDate=" + postDate + ", link=" + link
-				+ ", likes=" + likes + ", shares=" + shares + "]";
+		return "Article [pictureUrl=" + pictureUrl + ", title=" + title + ", author=" + author + ", snippet=" + snippet
+				+ ", webkey=" + webkey + ", body=" + body + ", postDate=" + postDate + ", link=" + link + ", likes="
+				+ likes + ", shares=" + shares + ", nComments=" + nComments + "]";
 	}
 	
 

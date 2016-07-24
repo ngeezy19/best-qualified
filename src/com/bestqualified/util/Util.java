@@ -1917,6 +1917,10 @@ public class Util {
 			a.setAuthor(u.getFirstName() + " " + u.getLastName());
 			a.setTitle(art.getTitle());
 			a.setSnippet(art.getBody().getValue().substring(0, 200) + "...");
+			a.setBody(art.getBody().getValue());
+			a.setLikes(art.getLikes());
+			a.setnComments(art.getnComments());
+			a.setShares(art.getShares());
 			if(art.getImageKey()!=null){
 			ImagesService imagesService = ImagesServiceFactory
 					.getImagesService();

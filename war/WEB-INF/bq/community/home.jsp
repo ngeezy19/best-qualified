@@ -24,15 +24,9 @@
 	text-align: right;
 }
 
-}
-#menuToggle { display: none; }
-
-#menuToggle:checked ~ .menu { position: absolute; left: 0; }
-
 
 body {
-	padding: 0;
-	margin: 0;
+	
 	background-color: #f9f5fb;
 }
 
@@ -56,61 +50,33 @@ p {
 	line-height: 1.5em;
 }
 
-.wrapper {
-	overflow: hidden;
-}
-
-section {
-	
-	-moz-transition: all 200ms ease-in;
-	-webkit-transition: all 200ms ease-in;
-	-o-transition: all 200ms ease-in;
-	transition: all 200ms ease-in;
-}
-
 .divnav {
-	
-	position: fixed;
-	top: 40;
-	left: 0;
-	width: 200px;
-	height: 100%;
-	margin: 0 0 0 -250px;
-	-moz-transition: all 200ms ease-in;
-	-webkit-transition: all 200ms ease-in;
-	-o-transition: all 200ms ease-in;
-	transition: all 200ms ease-in;
-	margin-right:-100px;
-}
-
-.divnav ul {
-	width: 250px;
-	height: 100%;
-	padding: 0;
-	margin: 0;
-	list-style: none;
-	background: #365998;
-	overflow: hidden;
-}
-
-.divnav li {
-	margin: 0;
+	height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 1;
+    left: 0;
+    background-color: #365998; /*not Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
 .divnav a {
-	color: #fff;
-	font-size: 1em;
+	
 	font-family: 'helvetica neue', helvetica, arial, sans-serif;
-	text-decoration: none;
-	display: block;
-	padding: 12px 15px;
-	font-weight: 300;
-	letter-spacing: 2px;
-	border-bottom: 1px solid #333;
+	
+	padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
 }
 
 .divnav a:hover {
-	background: #111;
+	color: #f1f1f1;
 }
 
 .hint {
@@ -121,7 +87,14 @@ section {
 	display: block;
 }
 
-label {
+.closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px !important;
+    margin-left: 50px;
+}
+/* label {
 	display: block;
 	font-family: 'helvetica neue', helvetica, arial, sans-serif;
 	font-weight: 700;
@@ -133,34 +106,10 @@ label {
 	text-align: center;
 	font-size: 2em;
 	line-height: 1.1em;
-	position: fixed;
 	top: 65px;
 	left: 0px;
-	-moz-transition: all 200ms ease-in;
-	-webkit-transition: all 200ms ease-in;
-	-o-transition: all 200ms ease-in;
-	transition: all 200ms ease-in;
-	z-index: 500;
-}
-
-input[type="checkbox"] {
-	display: none;
-}
-
-input[type="checkbox"]:checked ~ .divnav {
-	margin: 0;
-}
-
-input[type="checkbox"]:checked ~ label {
-	left: 260px;
-}
-
-input[type="checkbox"]:checked ~ section {
-	-webkit-transform: translate3d(260px, 0, 0);
-	-moz-transform: translate3d(260px, 0, 0);
-	-o-transform: translate3d(260px, 0, 0);
-	transform: translate3d(260px, 0, 0);
-}
+}	
+*/
 
 hr.style15 {
 	border-top: 4px double #8c8b8b;
@@ -188,6 +137,32 @@ hr.style15:after {
 	color: #8c8b8b;
 	font-size: 18px;
 }
+.lspan{
+	display: block;
+	font-family: 'helvetica neue', helvetica, arial, sans-serif;
+	font-weight: 700;
+	background: #365998;
+	width: 42px;
+	height: 42px;
+	line-height: 42px;
+	color: #fff;
+	text-align: center;
+	font-size: 2em;
+	line-height: 1.1em;
+	margin-left:-20px;
+	top: 0px;
+	left: 0px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+@media screen and (max-height: 450px) {
+    .divnav {padding-top: 15px;}
+    .divnav a {font-size: 18px;}
+}
 
 </style>
 </head>
@@ -203,31 +178,28 @@ hr.style15:after {
 
 		</div>
 	</div>
-
+	
 	<div class="container-fluid">
 
-
-		<div class="wrapper">
-			<input type="checkbox" id="navigation" /> <label for="navigation">
-				&#9776;</label>
-
-
-			<div class="divnav">
-				<ul>
-					<li><a href="#">HOME</a></li>
-					<li><a href="#">COMMUNITIES</a></li>
-					<li><a href="#">ARTICLES</a></li>
+			<div class="divnav" id = "mySidenav">
+				
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;</a>
+					<a href="/bq/general-community">HOME</a>
+					<a href="/bq/community/comms">COMMUNITIES</a>
+					<a href="/bq/community/article">ARTICLES</a>
 					<c:if test="${not empty user }">
-						<li><a href="#">PROFILE</a></li>
+						<a href="#">PROFILE</a>
 					</c:if>
 					<c:if test="${not empty user }">
-						<li><a href="#">PEOPLE</a></li>
+						<a href="#">MY NETWORK</a>
 					</c:if>
-					<li><a href="#">HELP</a></li>
-				</ul>
+					<a href="#">HELP</a>
 			</div>
+			
+			<a href="#"><div class="lspan" onclick="openNav()">&#9776; </div></a>
 
-			<section style="width:70%; margin: 0 auto;">
+			<div id="main">
+			<section style="width:90%; margin: 0 auto;">
 				
 				<h3 class= "headingstyle">Popular Communities</h3>
 					<div class="row">
@@ -256,7 +228,7 @@ hr.style15:after {
 									</div>
 									<div>
 										<a style="text-decoration: none;" href="#">
-											<p>${fn:length(members)}members</p>
+											<p>${fn:length(members)} members</p>
 										</a>
 									</div>
 									<div class="">
@@ -267,10 +239,10 @@ hr.style15:after {
 						</c:forEach>
 					</div>
 					<div class="row">
-						<h3 class= "headingstyle">Trending Posts</h3>
+						<h3 class= "headingstyle" >Trending Posts</h3>
 						<div class="col-sm-9">
 							<c:forEach var="item" items="${communityPageBean.posts}">
-								<div class="media card-panel">
+								<div class="media card-panel" style="margin: auto; width: 100%">
 									<a class="pull-left"
 										href='<c:url value="/community?id=${item.webkey}" />'><img
 										class="media-object img-rounded" src="${item.pictureUrl}"
@@ -313,6 +285,7 @@ hr.style15:after {
 			</section>
 
 		</div>
+
 	</div>
 
 
@@ -322,7 +295,18 @@ hr.style15:after {
 	<script src="/js/main.js"></script>
 
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+	<script type="text/javascript">
+	function openNav() {
+	    document.getElementById("mySidenav").style.width = "250px";
+	    document.getElementById("main").style.marginLeft = "250px";
+	}
 
+	/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+	function closeNav() {
+	    document.getElementById("mySidenav").style.width = "0";
+	    document.getElementById("main").style.marginLeft = "0";
+	}
+	</script>
 
 </body>
 </html>
