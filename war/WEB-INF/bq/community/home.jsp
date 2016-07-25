@@ -232,7 +232,7 @@ hr.style15:after {
 										</a>
 									</div>
 									<div class="">
-										<a style="text-decoration: none;" href="#">JOIN</a>
+										<a style="text-decoration: none;" href='<c:url value="/bq/join-community?webkey=${item.webSafeKey}" />'>JOIN</a>
 									</div>
 								</div>
 							</div>

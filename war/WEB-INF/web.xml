@@ -616,6 +616,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>CommunityPageServlet</servlet-name>
 		<url-pattern>/bq/general-community</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>JoinCommunity</servlet-name>
+		<servlet-class>com.bestqualified.servlets.JoinCommunity</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JoinCommunity</servlet-name>
+		<url-pattern>/bq/join-community</url-pattern>
+	</servlet-mapping>
 
 	<!-- ***************************************************SERVLET*********************************************************** -->
 	<servlet>
