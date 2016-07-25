@@ -92,7 +92,8 @@
 					<div class="col-sm-4">
 						<h4 style="cursor: pointer;" id="article-trig">
 							<i class="fa fa-newspaper-o" aria-hidden="true"
-								style="padding-right: 1%;"></i> Write an article</h4>
+								style="padding-right: 1%;"></i> Write an article
+						</h4>
 					</div>
 					<div class="col-sm-4">
 						<h4 style="cursor: pointer;" id="discussion-trig">
@@ -187,13 +188,18 @@
 					<c:forEach var="item" items="${recruiterDashboard.prospects}">
 						<div class="row" style="margin-bottom: 2%;">
 							<div class="col-sm-3 no-padding-div">
-								<img class="img img-responsive img-circle" alt=""
-									<c:choose><c:when test='${empty item.pictureUrl }'> src="/images/unknown-user.jpg"</c:when><c:otherwise> src="${item.pictureUrl}"</c:otherwise></c:choose>>
+								<a
+									href="<c:url value='/bq/closed/get-candidate-profile?web-key=${item.webkey}'/>"><img
+									class="img img-responsive img-circle" alt=""
+									<c:choose><c:when test='${empty item.pictureUrl }'> src="/images/unknown-user.jpg"</c:when><c:otherwise> src="${item.pictureUrl}"</c:otherwise></c:choose>></a>
 							</div>
 							<div class="col-sm-8">
 								<h5 style="margin-bottom: 2px">
-									<c:out value='${item.firstName}' />
-									<c:out value='${item.lastName}' />
+									<a
+										href="<c:url value='/bq/closed/get-candidate-profile?web-key=${item.webkey}'/>">
+										<c:out value='${item.firstName}' /> <c:out
+											value='${item.lastName}' />
+									</a>
 								</h5>
 								<div class="text-success" style="font-family: calibri">
 									<c:out value='${item.highestQualification}' />
@@ -211,7 +217,7 @@
 		</div>
 	</div>
 	<div style="clear: both;"></div>
-	
+
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
@@ -219,5 +225,5 @@
 	<script src="/js/waitMe.js"></script>
 	<script src="/js/main.js"></script>
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-	
+
 </body>

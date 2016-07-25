@@ -1,6 +1,7 @@
 package com.bestqualified.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class ProjectBean implements Serializable {
 
@@ -11,8 +12,38 @@ public class ProjectBean implements Serializable {
 	
 	private String webKey,name,dateCreated,description, expiryDate,jobTitle,companyLogo;
 	private int newApplicants,totalApplicants,inviteSent;
+	private List<ProView> shortlistedCandidates;;
 	
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((webKey == null) ? 0 : webKey.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProjectBean other = (ProjectBean) obj;
+		if (webKey == null) {
+			if (other.webKey != null)
+				return false;
+		} else if (!webKey.equals(other.webKey))
+			return false;
+		return true;
+	}
+	public List<ProView> getShortlistedCandidates() {
+		return shortlistedCandidates;
+	}
+	public void setShortlistedCandidates(List<ProView> shortlistedCandidates) {
+		this.shortlistedCandidates = shortlistedCandidates;
+	}
 	public String getWebKey() {
 		return webKey;
 	}

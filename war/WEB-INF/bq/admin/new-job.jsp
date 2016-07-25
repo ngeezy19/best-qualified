@@ -326,7 +326,7 @@
 	s
 	<script src="/js/jquery-ui.min.js"></script>
 	<script src="/js/main.js"></script>
-
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script src="/js/multiple-select.js"></script>
 	<script type="text/javascript">
 		tinymce.init({

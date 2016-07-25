@@ -34,7 +34,10 @@ function addPopOver() {
 	});
 }
 
+
+
 $(document).ready(function() {
+	$('[data-toggle="tooltip"]').tooltip(); 
 	$(".filter-header")
 	.click(
 			function() {

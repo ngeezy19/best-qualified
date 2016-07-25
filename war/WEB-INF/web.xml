@@ -4,6 +4,55 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
+	
+	<servlet>
+		<servlet-name>InterswitchResponse</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InterswitchResponse</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterswitchResponse</servlet-name>
+		<url-pattern>/callback/interswitch</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>GetBookURL</servlet-name>
+		<servlet-class>com.bestqualified.servlets.GetBookURL</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetBookURL</servlet-name>
+		<url-pattern>/bq/books</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>SendInviteServlet</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.SendInviteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SendInviteServlet</servlet-name>
+		<url-pattern>/bq/closed/send-invite</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>SavedSearchServlet</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.SaveSearchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SavedSearchServlet</servlet-name>
+		<url-pattern>/bq/closed/save-search</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>GetCandidateProfile</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.GetProfessionalProfile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetCandidateProfile</servlet-name>
+		<url-pattern>/bq/closed/get-candidate-profile</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AddCandidateToProject</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.AddCandidateToProject</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddCandidateToProject</servlet-name>
+		<url-pattern>/bq/closed/add-candidate-to-project</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>FindCandidateServlet</servlet-name>
 		<servlet-class>com.bestqualified.servlets.closed.FindCandidateServlet</servlet-class>
@@ -636,6 +685,25 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/bq/open/handler/newsletter-subscribe</url-pattern>
 	</servlet-mapping>
 	<!-- ************************************************JSP*************************************************************** -->
+	
+	<servlet>
+		<servlet-name>RequestCoachPaymentForm</servlet-name>
+		<jsp-file>/WEB-INF/bq/coaching/coach-payment-form.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>RequestCoachPaymentForm</servlet-name>
+		<url-pattern>/bq/coaching/coach-payment-form</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>RequestCoachForm</servlet-name>
+		<jsp-file>/WEB-INF/bq/coaching/coach-request-form.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>RequestCoachForm</servlet-name>
+		<url-pattern>/bq/coaching/coach-request-form</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>FindCandidates</servlet-name>
 		<jsp-file>/WEB-INF/bq/close/find-candidates.jsp</jsp-file>
