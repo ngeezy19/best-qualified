@@ -65,6 +65,7 @@ public class JoinCommunity extends HttpServlet {
 		}
 		Key key = KeyFactory.stringToKey(webKey);
 		Object o1 = MemcacheProvider.COMMUNITIES.get(key);
+	
 		Community c = null;
 		if (o1 == null) {
 			c = EntityConverter.entityToCommunity(GeneralController.findByKey(key));
@@ -74,7 +75,6 @@ public class JoinCommunity extends HttpServlet {
 			c = (Community) o1;
 		}
 
-		c.setDateCreated(date);
 		
 		listOfMembers.add(u.getUserKey());
 		c.setMembers(listOfMembers);
