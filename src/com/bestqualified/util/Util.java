@@ -39,6 +39,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import com.bestqualified.bean.Article;
 import com.bestqualified.bean.AssessmentQuestionBean;
 import com.bestqualified.bean.CandidateSearchResult;
@@ -103,7 +105,11 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 public class Util {
+	private static final String INTERSWITCH_MAC = "D3D1D05AFE42AD50818167EAC73C109168A0F108F32645C8B59E897FA930DA44F9230910DAC9E20641823799A107A02068F7BC0F4CC41D2952E249552255710F";
 
+	public static final String INTERSWITCH_PRODUCT_ID = "6205";
+
+	private static final String INTERSWITCH_PAY_ITEM_ID = "101";
 	public static final String SERVICE_ACCOUNT = "bestqualified.profiliant@gmail.com";
 	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
@@ -111,6 +117,15 @@ public class Util {
 	public static final String AT_LEAST_ONE_LOWERCASE_ALPHABET = "(?=.*[a-z])";
 	public static final String AT_LEAST_ONE_UPPERCASE_ALPHABET = "(?=.*[A-Z])";
 	public static final String AT_LEAST_ONE_SYMBOL = "(?=.*[!@#$%])";
+
+	public synchronized static String getTransactionRef(String fName,
+			String lName) {
+		// TODO Auto-generated method stub
+		Date d = new Date();
+		Long l = d.getTime();
+		String code = fName.substring(0, 2) + l + lName.substring(0, 2);
+		return code.toUpperCase();
+	}
 
 	public static boolean containsPattern(String testString, String pattern) {
 		Pattern p = Pattern.compile(pattern);
@@ -237,7 +252,7 @@ public class Util {
 				+ "</div><div><h4 style='padding-bottom: 3%;'>Hello "
 				+ firstName
 				+ ",</h4>"
-				+ "<h3 style='color:#d9534f'>Best Qualified Account Created Successfully</h3><p>Your new account is aready.</p>"
+				+ "<h3 style='color:#d9534f'>Best Qualified Account Created Successfully</h3><p>Your new account is ready.</p>"
 				+ "<p>Regards,</p><p>Best Qualified Team</p></div></body>";
 	}
 
@@ -329,28 +344,48 @@ public class Util {
 		} else {
 			difference = TimeUnit.SECONDS.toMinutes(difference);
 			if (difference < 60) {
-				return difference + " minutes ago";
+				if (difference <= 1) {
+					return 1 + " minute ago";
+				} else {
+					return difference + " minutes ago";
+				}
 			} else {
 				difference = TimeUnit.MINUTES.toHours(difference);
 				if (difference < 24) {
-					return difference + " hours ago";
+					if (difference <= 1) {
+						return 1 + " hour ago";
+					} else {
+						return difference + " hours ago";
+					}
 				} else if (difference < 48) {
 					return "yesterday";
 				} else {
 					difference = TimeUnit.HOURS.toDays(difference);
 					if (difference < 7) {
-						return difference + " days ago";
+						if (difference <= 1) {
+							return 1 + " day ago";
+						} else {
+							return difference + " days ago";
+						}
 					} else {
 						difference = Math.round(difference / 7);
 						if (difference < 5) {
-							return difference + " weeks ago";
+							if (difference <= 1) {
+								return 1 + " week ago";
+							} else {
+								return difference + " weeks ago";
+							}
 						} else {
 							difference = Math.round(difference / 30);
 							if (difference < 13) {
-								return difference + " years ago";
+								if (difference <= 1) {
+									return 1 + " year ago";
+								} else {
+									return difference + " years ago";
+								}
 							} else {
 								return Math.round(difference / 355)
-										+ " years ago";
+										+ " days(s) ago";
 							}
 
 						}
@@ -831,6 +866,29 @@ public class Util {
 	public static ProfessionalProfileBean createProfessionalProfileBean(User u,
 			CandidateProfile cp) {
 		ProfessionalProfileBean ppb = new ProfessionalProfileBean();
+		ppb.setFirstName(u.getFirstName());
+		ppb.setLastName(u.getLastName());
+		ppb.setEmail(u.getEmail());
+		ppb.setPhone(u.getPhone());
+		ppb.setGender(u.getGender());
+		ppb.setTagline(u.getTagline());
+		ppb.setProfessionalLevel(u.getProfessionalLevel());
+		ppb.setProfilePicture(u.getPictureUrl());
+		ppb.setBirthdate(new SimpleDateFormat("MMMM-dd-yyyy").format(u
+				.getBirthDate()));
+		ppb.setCurrentState(cp.getCurrentState());
+		ppb.setCurrentCountry(cp.getCurrentCountry());
+		ppb.setCareerLevel(cp.getCareerLevel());
+		ppb.setYearOfExperience(cp.getYearsOfExperience());
+		ppb.setNationality(cp.getNationality());
+		ppb.setLga(cp.getLga());
+		ppb.setStateOfOrigin(cp.getStateOfOrigin());
+		ppb.setWebKey(KeyFactory.keyToString(u.getUserKey()));
+
+		if (cp.getArticles() != null) {
+			ppb.setNoOfArticles(String.valueOf(cp.getArticles().size()));
+		}
+
 		// award
 		List<Award> awards = new ArrayList<>();
 		if (cp.getAwards() != null) {
@@ -887,14 +945,11 @@ public class Util {
 		ppb.setWorkExperience(workExperience);
 		ppb.setEducation(education);
 		ppb.setCurrentEmployer(cp.getCurrentEmployer());
-		ppb.setEmail(u.getEmail());
-		ppb.setFirstName(u.getFirstName());
-		ppb.setLastName(u.getLastName());
-		ppb.setPhone(u.getPhone());
+
 		if (cp.getProfileDescription() != null) {
 			ppb.setProfileSummary(cp.getProfileDescription().getValue());
 		}
-		ppb.setTagline(u.getTagline());
+
 		return ppb;
 	}
 
@@ -933,14 +988,15 @@ public class Util {
 		Map<Key, Entity> projectEntities = GeneralController
 				.findByKeys(projectKeys);
 		rdb.setProjects(Util.getProjectBeans(projectEntities));
-		rdb=(Util.setProspects(projectEntities,rdb));
+		rdb = (Util.setProspects(projectEntities, rdb));
 
 		// rdb.setSavedSearch(Util.getSavedSearch(r.));
 
 		return rdb;
 	}
 
-	private static RecruiterDashboardBean setProspects(Map<Key, Entity> projectEntities, RecruiterDashboardBean rdb) {
+	private static RecruiterDashboardBean setProspects(
+			Map<Key, Entity> projectEntities, RecruiterDashboardBean rdb) {
 		List<Key> jobKeys = new ArrayList<>();
 		Set<Key> keys = projectEntities.keySet();
 		for (Key k : keys) {
@@ -966,7 +1022,7 @@ public class Util {
 				education.add(j.getEducationLevel());
 			}
 		}
-		return initProview(experience, education,rdb);
+		return initProview(experience, education, rdb);
 	}
 
 	private static RecruiterDashboardBean initProview(Set<String> experience,
@@ -985,9 +1041,9 @@ public class Util {
 			}
 			q += " (experience:" + exp.get(i) + end;
 		}
-		
-		if(!edu.isEmpty()) {
-			q+=" OR ";
+
+		if (!edu.isEmpty()) {
+			q += " OR ";
 		}
 		for (int i = 0; i < edu.size(); i++) {
 			if (i == edu.size() - 1) {
@@ -997,27 +1053,33 @@ public class Util {
 			}
 			q += " (highestEducationLevel:" + edu.get(i) + end;
 		}
-		
+
 		rdb.setSearchString(q);
-		
+
 		QueryOptions options = QueryOptions
 				.newBuilder()
 				.setLimit(4)
-				.setFieldsToReturn("firstName", "lastName", "highestEducationLevel",
-						"yearsOfExperience","pictureUrl").build();
+				.setFieldsToReturn("firstName", "lastName",
+						"highestEducationLevel", "yearsOfExperience",
+						"pictureUrl", "email").build();
 		Query query = Query.newBuilder().setOptions(options).build(q);
-		IndexSpec indexSpec = IndexSpec.newBuilder().setName("professionals").build();
+		IndexSpec indexSpec = IndexSpec.newBuilder().setName("professionals")
+				.build();
 		Index index = SearchServiceFactory.getSearchService().getIndex(
 				indexSpec);
 		Results<ScoredDocument> result = index.search(query);
 		List<ProView> pvs = new ArrayList<>();
-		for (ScoredDocument sd : result) { 
+		for (ScoredDocument sd : result) {
 			ProView pv = new ProView();
+			pv.setEmail(sd.getOnlyField("email").getAtom());
 			pv.setFirstName(sd.getOnlyField("firstName").getText());
 			pv.setLastName(sd.getOnlyField("lastName").getText());
-			//pv.setPictureUrl(sd.getOnlyField("pictureUrl").getAtom());
-			pv.setYearsOfExperience(sd.getOnlyField("yearsOfExperience").getAtom());
-			pv.setHighestQualification(sd.getOnlyField("highestEducationLevel").getText());
+			// pv.setPictureUrl(sd.getOnlyField("pictureUrl").getAtom());
+			pv.setYearsOfExperience(sd.getOnlyField("yearsOfExperience")
+					.getAtom());
+			pv.setHighestQualification(sd.getOnlyField("highestEducationLevel")
+					.getText());
+			pv.setWebkey(sd.getId());
 			pvs.add(pv);
 		}
 		rdb.setProspects(pvs);
@@ -1276,6 +1338,31 @@ public class Util {
 			job = (Job) o;
 		}
 		return job;
+	}
+
+	public static User getUserFromCache(Key key) {
+		Object o = MemcacheProvider.USER.get(key);
+		User u = null;
+		if (o == null) {
+			u = EntityConverter.entityToUser(GeneralController.findByKey(key));
+			MemcacheProvider.JOBS.put(key, u);
+		} else {
+			u = (User) o;
+		}
+		return u;
+	}
+
+	public static CandidateProfile getProfessionalFromCache(User u, Key key) {
+		Object o = MemcacheProvider.PROFESSIONAL.get(key);
+		CandidateProfile cp = null;
+		if (o == null) {
+			cp = EntityConverter.entityToCandidateProfile(
+					GeneralController.findByKey(key), u.getUserKey());
+			MemcacheProvider.JOBS.put(key, u);
+		} else {
+			cp = (CandidateProfile) o;
+		}
+		return cp;
 	}
 
 	public static ManageProjectBean getManageProjectBean(List<ProjectBean> l2) {
@@ -1887,5 +1974,49 @@ public class Util {
 		return orr;
 	}
 
-	
+	public static String getBookCategory(String nodeId) {
+		String s = null;
+		switch (nodeId) {
+		case "2698":
+			s = "All Categories";
+			break;
+		case "2699":
+			s = "Advertising";
+			break;
+		case "2700":
+			s = "Consumer Behavoir";
+			break;
+		case "2653":
+			s = "Customer Service";
+			break;
+		case "2702":
+			s = "Marketing";
+			break;
+		case "2711":
+			s = "Public Relation";
+			break;
+		case "2712":
+			s = "Sales & Selling";
+			break;
+		case "6133991011":
+			s = "Search Engine Optimization";
+
+		}
+
+		return s;
+
+	}
+
+	public static String computeWebpayHash(String txnRef, String redirectUrl,
+			long price) {
+		String str = txnRef + INTERSWITCH_PRODUCT_ID + INTERSWITCH_PAY_ITEM_ID
+				+ price + redirectUrl + INTERSWITCH_MAC;
+		return toSHA512(str).toUpperCase();
+	}
+
+	public static String getInterswitchHash(String txnRef) {
+		String str = INTERSWITCH_PRODUCT_ID + txnRef + INTERSWITCH_MAC;
+		return Util.toSHA512(str).toUpperCase();
+	}
+
 }

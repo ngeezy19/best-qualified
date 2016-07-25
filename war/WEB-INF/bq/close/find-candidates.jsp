@@ -61,6 +61,7 @@
 	<div class="container" style="margin-bottom: 2%;">
 		<div class="row">
 			<form id="search-form">
+				<input type="hidden" value="true" name="filter" />
 				<div class="col-sm-3 no-padding">
 					<div class="col-sm-12 no-padding-div"
 						style="padding-top: 0px; border: 1px gray solid; background-color: white;">
@@ -331,7 +332,8 @@
 									</div>
 									<div class="checkbox">
 										<label><input class="form-member" type="checkbox"
-											name="educationLevel" value="504">Post Graduate Diploma</label>
+											name="educationLevel" value="504">Post Graduate
+											Diploma</label>
 									</div>
 									<div class="checkbox">
 										<label><input class="form-member" type="checkbox"
@@ -344,7 +346,7 @@
 
 								</div>
 							</div>
-							
+
 
 							<div class="filter-component">
 								<div class="filter-header">
@@ -393,64 +395,190 @@
 				style="background-color: white; border: 1px solid #dadada; border-top: none;">
 				<div class="row"
 					style="border: 1px solid #2f4779; padding: 1%; background-color: #3b5998">
-					<div class="col-sm-1" style="padding-top: 1%;">
-						<input type="checkbox">
+					<div class="col-sm-4" style="padding-top: 1%;">
+						<input type="checkbox"> <select disabled="disabled"
+							id="bulk-action"><option value="" disabled selected
+								hidden>--ACTION--</option>
+							<option value="1">Add To Project</option>
+							<option value="2">Invite</option>
+							<option value="3">Remove</option></select>
 					</div>
-					<div class="col-sm-5" style="padding-top: 1%;">
-						<select><option>Add To Project</option>
-							<option>Invite</option>
-							<option>Remove</option></select>
+					<div class="col-sm-6"
+						style="padding-top: 1%; color: white; font-weight: bold">
+						<span class="results-found"><c:out
+								value='${recruiterDashboard.totalCandidates}' /></span> candidate(s)
+						found
 					</div>
-					<div class="col-sm-6">
-						<button class="btn btn-primary pull-right">Save Search</button>
+					<div class="col-sm-2" style="padding-top: 1%;">
+						<span class="pull-right" id="save-search"
+							style="color: white; font-weight: bold; font-size: 14pt; cursor: pointer;"><i
+							data-placement="bottom" data-toggle="tooltip" title="Save Search"
+							class="fa fa-floppy-o" aria-hidden="true"></i></span>
 					</div>
 				</div>
 				<div id="list-container" class="col-sm-12 no-padding-div">
-				<c:forEach var="item" items="${recruiterDashboard.prospects}">
-					<div class="row"
-						style="padding: 2%; background-color: white; border-bottom: 1px solid #dadada">
-						<div class="col-sm-1" style="padding-top: 5%;">
-							<input class="select-prospect" type="checkbox">
-						</div>
-						<div class="col-sm-3" style="text-align: center">
-							<img class="img img-responsive img-circle" alt=""
-								style="margin: 0px"
-								<c:choose><c:when test='${empty item.pictureUrl }'> src="/images/unknown-user.jpg"</c:when><c:otherwise> src="${item.pictureUrl}"</c:otherwise></c:choose>>
-						</div>
-						<div class="col-sm-8 no-padding-div">
-							<h5 style="margin-bottom: 2px; font-size: 12pt">
-								<span id="candidate-name"><c:out value='${item.firstName}' />
-								<c:out value='${item.lastName}' /></span>
-								<i style="color: #983b59" class="fa fa-envelope pull-right" aria-hidden="true"></i><i
-								style="color: #983b59"	class="fa fa-trash pull-right" aria-hidden="true"></i>
-							</h5>
-							<div class="text-success" style="font-family: calibri">
-								<c:out value='${item.highestQualification}' />
-								<div class="dropdown pull-right">
-									<button class="btn btn-success dropdown-toggle" type="button"
-										data-toggle="dropdown">
-										Add To Project <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu">
-										<li><a href="#"></a></li>
-										<li><a href="#"></a></li>
-										<li><a href="#"></a></li>
-									</ul>
+					<c:forEach var="item" items="${recruiterDashboard.prospects}">
+						<div class="row"
+							style="padding: 2%; background-color: white; border-bottom: 1px solid #dadada">
+							<input type="hidden" value="${item.webkey}" class="webkey">
+							<input type="hidden" value="${item.email}"
+								class="candidate-email">
+							<div class="col-sm-1" style="padding-top: 5%;">
+								<input class="select-prospect" type="checkbox">
+							</div>
+							<div class="col-sm-3" style="text-align: center">
+								<img class="img img-responsive img-circle" alt=""
+									style="margin: 0px"
+									<c:choose><c:when test='${empty item.pictureUrl }'> src="/images/unknown-user.jpg"</c:when><c:otherwise> src="${item.pictureUrl}"</c:otherwise></c:choose>>
+							</div>
+							<div class="col-sm-8 no-padding-div">
+								<h5 style="margin-bottom: 2px; font-size: 12pt">
+									<span id="candidate-name"><c:out
+											value='${item.firstName}' /> <c:out value='${item.lastName}' /></span>
+									<i data-placement="bottom" data-toggle="tooltip"
+										title="Send Invite" style="color: #983b59; cursor: pointer;"
+										class="fa fa-envelope pull-right invite" aria-hidden="true"></i><i
+										style="color: #983b59" data-placement="bottom"
+										data-toggle="tooltip" title="Remove From List"
+										class="fa fa-trash pull-right" aria-hidden="true"></i>
+								</h5>
+								<div class="text-success" style="font-family: calibri">
+									<c:out value='${item.highestQualification}' />
+									<div class="dropdown pull-right">
+										<button class="btn btn-success add-to-project" type="button">Add
+											To Project</button>
+										<ul class="dropdown-menu"
+											style="background-color: white; padding: 2%;">
+											<c:forEach var="item" items="${recruiterDashboard.projects}">
+												<li><a href="<c:url value='' />"></a>${item.name}</li>
+											</c:forEach>
+										</ul>
+									</div>
+								</div>
+								<div class="text-info"
+									style="font-size: 10pt; font-stretch: narrower; font-style: italic;">
+									<c:out value='${item.yearsOfExperience}' />
+									years experience
 								</div>
 							</div>
-							<div class="text-info"
-								style="font-size: 10pt; font-stretch: narrower; font-style: italic;">
-								<c:out value='${item.yearsOfExperience}' />
-								years experience
-							</div>
 						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<%@ include file="/WEB-INF/pages/certification-sidebar.html"%>
 			</div>
+		</div>
+	</div>
+
+	<div id="save-search-modal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Save Search</h4>
+				</div>
+				<div class="modal-body">
+					<div id="save-search-msg-div"></div>
+					<div class="form-group">
+						<label>Name *</label> <input id="search-name" class="form-control">
+					</div>
+					<div class="form-group">
+						<select id="ss-selected-project" class="form-control">
+							<option value="" disabled selected hidden>* Select a
+								project</option>
+							<c:forEach var="item" items="${recruiterDashboard.projects}">
+								<option value="${item.webKey}">${item.name}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success save-search-btn">Continue</button>
+					<button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="project-modal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">
+						Adding <span id="no-of-candidates"></span> candidate(s) to
+					</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="form-group">
+						<select id="selected-project" class="form-control">
+							<option value="" disabled selected hidden>* Select a
+								project</option>
+							<c:forEach var="item" items="${recruiterDashboard.projects}">
+								<option value="${item.webKey}">${item.name}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success add-candidate-btn">Continue</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div id="invite-modal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4>
+						Inivite: <span id="name-of-candidate"></span>
+					</h4>
+					<h5>
+						Email: <span id="email-of-candidate"></span>
+					</h5>
+				</div>
+				<div class="modal-body">
+					<form id="send-invite-form">
+						<div class="form-group">
+							<label>Project</label> <select name="project-webkey"
+								class="form-control">
+								<option value="" disabled selected hidden>* Select a
+									project</option>
+								<c:forEach var="item" items="${recruiterDashboard.projects}">
+									<option value="${item.webKey}">${item.name}</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="form-group">
+							<label>Message Title</label> <input name="invite-title"
+								class="form-control">
+						</div>
+						<div class="form-group">
+							<input type="hidden" id="invitee-key" name="invitee-key"> <label>Message</label>
+							<textarea name="invite-text" rows="6" class="form-control"
+								style="white-space: pre-wrap;"></textarea>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success send-invite-btn">Send
+						Invite</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
 		</div>
 	</div>
 	<%@ include file="/WEB-INF/pages/footer.html"%>
@@ -462,24 +590,161 @@
 	<script src="/js/main.js"></script>
 	<script src="/js/candidate-filter.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$(".call-no-assessment").click(function(e) {
-				e.preventDefault();
-				$("#myModal1").modal();
-			});
+		var webkeys = [];
+		$(document)
+				.ready(
+						function() {
 
-			$("#see-saved-jobs").click(function(event) {
-				event.preventDefault();
-				$("#saved-jobs-div").slideToggle();
+							$(".send-invite-btn").click(function() {
+								$.ajax({
+									url : "/bq/closed/send-invite",
+									method : "POST",
+									data : $("#send-invite-form").serialize(),
+									success : function() {
+										alert("success");
+									}
+								});
+							});
 
-			});
-			$("#see-applied-jobs").click(function(event) {
-				event.preventDefault();
-				$("#applied-jobs-div").slideToggle();
+							$(".invite").click(function() {
+								var par = $(this).closest(".row");
+								var x = par.find(".webkey").val();
+								var y = par.find("#candidate-name").text();
+								var z = par.find(".candidate-email").text();
+								$("#invitee-key").val(x);
+								$("#name-of-candidate").text(y);
+								$("#email-of-candidate").text(z);
+								$("#invite-modal").modal();
 
-			});
+							});
 
-		});
+							$(".save-search-btn")
+									.click(
+											function() {
+												var x = $("#search-name").val();
+												var y = $(
+														"#ss-selected-project")
+														.val();
+												$
+														.ajax({
+															url : "/bq/closed/save-search",
+															data : {
+																"search-name" : x,
+																"project" : y
+															},
+															method : "POST",
+															dataType : "json",
+															success : function() {
+
+															},
+															error : function(
+																	xhr) {
+																console
+																		.log(xhr);
+																addError(
+																		$("#save-search-msg-div"),
+																		xhr.statusText);
+																if (xhr.status == "200") {
+																	addSuccess(
+																			$("#save-search-msg-div"),
+																			"Search Saved Successfully")
+																}
+															}
+														});
+											});
+							$("#save-search").click(function() {
+								$("#save-search-modal").modal();
+							});
+							$("#bulk-action").change(function() {
+								var val = $(this).val();
+								if (val == "1") {
+									$("#project-modal").modal();
+								}
+							});
+							$(".add-candidate-btn")
+									.on(
+											'click',
+											function() {
+												console.log(webkeys);
+												var data = {
+													"project-key" : $(
+															"#selected-project")
+															.val(),
+													"candidate-key" : webkeys
+												}
+
+												$
+														.ajax({
+															url : '/bq/closed/add-candidate-to-project',
+															method : 'POST',
+															data : data,
+															dataType : "json",
+															success : function() {
+																$(
+																		"#project-modal")
+																		.modal(
+																				"hide");
+															},
+															traditional : true
+														});
+											});
+							$(".add-to-project").click(function() {
+								$(".select-prospect").prop("checked", false);
+								webkeys = [];
+								var par = $(this).closest(".row");
+								var inp = par.find(".webkey").val();
+								webkeys[webkeys.length] = inp;
+
+								$("#project-modal").modal();
+								$("#no-of-candidates").text(webkeys.length);
+
+							});
+							$(".select-prospect")
+									.click(
+											function() {
+												var checked = $(this).is(
+														":checked");
+												var par = $(this).closest(
+														".row");
+												var inp = par.find(".webkey")
+														.val();
+												if (checked) {
+													webkeys[webkeys.length] = inp;
+													$("#bulk-action").prop(
+															"disabled", false);
+												} else {
+													for (i = 0; i < webkeys.length; i++) {
+														if (webkeys[i] === inp) {
+															webkeys
+																	.splice(i,
+																			1);
+														}
+													}
+													if (webkeys.length == 0) {
+														$("#bulk-action").prop(
+																"disabled",
+																true);
+													}
+												}
+												console.log(webkeys);
+											});
+							$(".call-no-assessment").click(function(e) {
+								e.preventDefault();
+								$("#myModal1").modal();
+							});
+
+							$("#see-saved-jobs").click(function(event) {
+								event.preventDefault();
+								$("#saved-jobs-div").slideToggle();
+
+							});
+							$("#see-applied-jobs").click(function(event) {
+								event.preventDefault();
+								$("#applied-jobs-div").slideToggle();
+
+							});
+
+						});
 	</script>
 
 </body>

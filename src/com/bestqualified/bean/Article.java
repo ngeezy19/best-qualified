@@ -8,6 +8,7 @@ public class Article implements Serializable, Comparable<Article> {
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = -7886491805459375745L;
 	private String pictureUrl,title,author,snippet, webkey;
 	private String postDate;

@@ -12,6 +12,7 @@ import com.bestqualified.entities.Award;
 import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.CareerLevel;
 import com.bestqualified.entities.Certification;
+import com.bestqualified.entities.CoachRequest;
 import com.bestqualified.entities.Comment;
 import com.bestqualified.entities.Company;
 import com.bestqualified.entities.Education;
@@ -24,6 +25,7 @@ import com.bestqualified.entities.Project;
 import com.bestqualified.entities.ProjectLog;
 import com.bestqualified.entities.ReadingList;
 import com.bestqualified.entities.Recruiter;
+import com.bestqualified.entities.SavedSearch;
 import com.bestqualified.entities.User;
 import com.bestqualified.entities.WorkExperience;
 import com.google.appengine.api.blobstore.BlobKey;
@@ -33,6 +35,55 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 
 public class EntityConverter {
+	
+	public static Entity CoachRequestToEntity(CoachRequest cr) {
+		Entity e = new Entity(cr.getId());
+		e.setIndexedProperty("date", cr.getDate());
+		e.setIndexedProperty("email", cr.getEmail());
+		e.setIndexedProperty("phone", cr.getPhone());
+		e.setUnindexedProperty("body",cr.getBody());
+		e.setIndexedProperty("type", cr.getType());
+		e.setIndexedProperty("paid", cr.isPaid());
+		e.setIndexedProperty("txnRef", cr.getTxnRef());
+		e.setIndexedProperty("userKey", cr.getUserKey());
+		e.setUnindexedProperty("firstName", cr.getFirstName());
+		e.setUnindexedProperty("lastName", cr.getLastName());
+		return e;
+		
+	}
+	
+	public static CoachRequest entityTpCoachRequest(Entity e) {
+		CoachRequest cr = new CoachRequest();
+		cr.setUserKey((Key) e.getProperty("userKey"));
+		cr.setTxnRef((String) e.getProperty("txnRef"));
+		cr.setBody((Text) e.getProperty("body"));
+		cr.setDate((Date) e.getProperty("date"));
+		cr.setEmail((String) e.getProperty("email"));
+		cr.setId(e.getKey());
+		cr.setPaid((boolean) e.getProperty("paid"));
+		cr.setPhone((String) e.getProperty("phone"));
+		cr.setType((String) e.getProperty("type"));
+		cr.setFirstName((String) e.getProperty("firstName"));
+		cr.setLastName((String) e.getProperty("lastName"));
+		return cr;
+	}
+	
+	public static Entity SavedSearchToEntity(SavedSearch ss) {
+		Entity e = new Entity(ss.getId());
+		e.setIndexedProperty("dateCreated", ss.getDateCreated());
+		e.setUnindexedProperty("name", ss.getName());
+		e.setUnindexedProperty("searchString", ss.getSearchString());
+		return e;
+	}
+	
+	public static SavedSearch entityToSavedSearch(Entity e) {
+		SavedSearch ss = new SavedSearch();
+		ss.setId(e.getKey());
+		ss.setDateCreated((Date) e.getProperty("dateCreated"));
+		ss.setName((String) e.getProperty("name"));
+		ss.setSearchString((String) e.getProperty("searchString"));
+		return ss;
+	}
 
 	public static ProjectLog entityToProjectLog(Entity e) {
 		ProjectLog p = new ProjectLog();
@@ -361,7 +412,7 @@ public class EntityConverter {
 				.getProperty(StringConstants.ALLOW_LINKEDIN_APPLICATION));
 		j.setPositionFilled((boolean) e
 				.getProperty(StringConstants.POSITION_FILLED));
-		j.setJobCategory((String) e.getProperty(StringConstants.JOB_CATEGORY));
+		//j.setJobCategory((String) e.getProperty(StringConstants.JOB_CATEGORY));
 		j.setApplicants((List<Key>) e.getProperty(StringConstants.APPLICANTS));
 		j.setDatePosted((Date) e.getProperty(StringConstants.DATE_POSTED));
 		j.setDescription((Text) e.getProperty(StringConstants.DESCRIPTION));
@@ -498,6 +549,7 @@ public class EntityConverter {
 
 	public static Entity userToEntity(User user) {
 		Entity e = new Entity(user.getUserKey());
+		e.setUnindexedProperty("coachRequest", user.getCoachRequest());
 		e.setIndexedProperty("email", user.getEmail());
 		e.setIndexedProperty("phone", user.getPhone());
 		e.setIndexedProperty("password", user.getPassword());
@@ -546,6 +598,7 @@ public class EntityConverter {
 		u.setTagline((String) e.getProperty("tagline"));
 		u.setProfessionalLevel((String) e.getProperty("professionalLevel"));
 		u.setRating((Double) e.getProperty("rating"));
+		u.setCoachRequest((List<Key>) e.getProperty("coachRequest"));
 		return u;
 	}
 

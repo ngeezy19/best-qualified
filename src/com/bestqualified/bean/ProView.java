@@ -13,7 +13,7 @@ public class ProView implements Serializable {
 	 */
 	private static final long serialVersionUID = 4986859380455459455L;
 	
-	private String firstName,lastName,highestQualification,pictureUrl,yearsOfExperience;
+	private String firstName,lastName,highestQualification,pictureUrl,yearsOfExperience, webkey, email;
 
 	@Override
 	public String toString() {
@@ -21,6 +21,23 @@ public class ProView implements Serializable {
 				+ ", highestQualification=" + highestQualification
 				+ ", pictureUrl=" + pictureUrl + ", yearsOfExperience="
 				+ yearsOfExperience + "]";
+	}
+	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getWebkey() {
+		return webkey;
+	}
+
+	public void setWebkey(String webkey) {
+		this.webkey = webkey;
 	}
 
 	public String getFirstName() {

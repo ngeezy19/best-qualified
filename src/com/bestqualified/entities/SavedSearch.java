@@ -19,8 +19,6 @@ public class SavedSearch implements Serializable {
 	private String name, searchString;
 	private Date dateCreated;
 	
-	
-	
 	@Override
 	public String toString() {
 		return "SavedSearch [id=" + id + ", webKey=" + webKey + ", name="
@@ -36,6 +34,7 @@ public class SavedSearch implements Serializable {
 	}
 	public void setId(Key id) {
 		this.id = id;
+		webKey = KeyFactory.keyToString(id);
 	}
 	public String getWebKey() {
 		return webKey;

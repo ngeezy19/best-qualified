@@ -30,6 +30,7 @@ public class User implements Serializable {
 	private Key userKey;
 	private BlobKey profilePicture;
 	private List<String> emails;
+	private List<Key> coachRequest;
 	private double rating;
 
 	@Override
@@ -275,6 +276,14 @@ public class User implements Serializable {
 	public void setProfilePicture(BlobKey profilePicture) {
 		this.profilePicture = profilePicture;
 
+	}
+
+	public List<Key> getCoachRequest() {
+		return coachRequest;
+	}
+
+	public void setCoachRequest(List<Key> coachRequest) {
+		this.coachRequest = coachRequest;
 	}
 
 }

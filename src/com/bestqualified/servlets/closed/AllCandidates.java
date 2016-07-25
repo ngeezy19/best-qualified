@@ -41,6 +41,7 @@ public class AllCandidates extends HttpServlet {
 		String[] educationLevel = req.getParameterValues("educationLevel");
 		String[] experience = req.getParameterValues("experience");
 		String title = req.getParameter("title");
+		String filter = req.getParameter("filter");
 		
 		String qStr = "";
 		if (Util.notNull(title)) {
@@ -112,16 +113,17 @@ public class AllCandidates extends HttpServlet {
 			return;
 		}else {
 			RecruiterDashboardBean rdb = (RecruiterDashboardBean) o;
-			if(!qStr.isEmpty()) {
-				rdb.setSearchString(qStr);
-			}
-			
 			String c = rdb.getCursor();
 			Cursor cursor = null;
-			if(c==null) {
+			if(filter != null) {
+				rdb.setSearchString(qStr);
 				cursor = Cursor.newBuilder().build();
-			} else {
-				cursor = Cursor.newBuilder().build(c);
+			}else {
+				if(c==null) {
+					cursor = Cursor.newBuilder().build();
+				} else {
+					cursor = Cursor.newBuilder().build(c);
+				}
 			}
 			
 					
@@ -153,6 +155,7 @@ public class AllCandidates extends HttpServlet {
 				//pv.setPictureUrl(sd.getOnlyField("pictureUrl").getAtom());
 				pv.setYearsOfExperience(sd.getOnlyField("yearsOfExperience").getAtom());
 				pv.setHighestQualification(sd.getOnlyField("highestEducationLevel").getText());
+				pv.setWebkey(sd.getId());
 				pvs.add(pv);
 			}
 			rdb.setTotalCandidates(totalMatches);

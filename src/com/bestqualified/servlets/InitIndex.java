@@ -1,6 +1,8 @@
 package com.bestqualified.servlets;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -31,10 +33,14 @@ public class InitIndex extends HttpServlet {
 		ib.setArticles(Util.toArticleBeans(articles));
 		ib.setIjs(Util.toInterestedJobs(jobs));
 		
+		String date = new SimpleDateFormat("MMMM-dd-yyyy")
+		.format(new Date());
+		
 		HttpSession session = req.getSession();
 		
 		synchronized (session) {
 			session.setAttribute("indexBean", ib);
+			session.setAttribute("currentDate", date);
 		}
 		
 	}
