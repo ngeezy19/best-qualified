@@ -1081,10 +1081,9 @@ public class Util {
 					.getAtom());
 			pv.setHighestQualification(sd.getOnlyField("highestEducationLevel")
 					.getText());
-<<<<<<< HEAD
+
 			pv.setWebkey(sd.getId());
-=======
->>>>>>> 3c2e5b13f428c548f877c3f02fc92f5e16099bc2
+
 			pvs.add(pv);
 		}
 		rdb.setProspects(pvs);
@@ -1346,7 +1345,7 @@ public class Util {
 		return job;
 	}
 
-<<<<<<< HEAD
+
 	public static User getUserFromCache(Key key) {
 		Object o = MemcacheProvider.USER.get(key);
 		User u = null;
@@ -1369,8 +1368,8 @@ public class Util {
 		} else {
 			cp = (CandidateProfile) o;
 		}
-		return cp;
-=======
+		return cp;}
+
 	public static List<Community> getCommunityFromCache(List<Key> keys) {
 
 		Map<Key, Object> map = MemcacheProvider.COMMUNITIES.getAll(keys);
@@ -1427,7 +1426,7 @@ public class Util {
 		}
 
 		return obj;
->>>>>>> 3c2e5b13f428c548f877c3f02fc92f5e16099bc2
+
 	}
 
 	public static ManageProjectBean getManageProjectBean(List<ProjectBean> l2) {
@@ -2072,7 +2071,7 @@ public class Util {
 		return orr;
 	}
 
-<<<<<<< HEAD
+
 	public static String getBookCategory(String nodeId) {
 		String s = null;
 		switch (nodeId) {
@@ -2115,8 +2114,8 @@ public class Util {
 
 	public static String getInterswitchHash(String txnRef) {
 		String str = INTERSWITCH_PRODUCT_ID + txnRef + INTERSWITCH_MAC;
-		return Util.toSHA512(str).toUpperCase();
-=======
+		return Util.toSHA512(str).toUpperCase();}
+
 	public static Map<String, String> getCommunityMap(List<Community> comm) {
 		// TODO Auto-generated method stub
 		
@@ -2133,7 +2132,7 @@ public class Util {
 		
 		
 		return map;
->>>>>>> 3c2e5b13f428c548f877c3f02fc92f5e16099bc2
+
 	}
 
 }

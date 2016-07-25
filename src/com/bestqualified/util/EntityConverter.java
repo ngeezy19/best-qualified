@@ -26,11 +26,8 @@ import com.bestqualified.entities.Project;
 import com.bestqualified.entities.ProjectLog;
 import com.bestqualified.entities.ReadingList;
 import com.bestqualified.entities.Recruiter;
-<<<<<<< HEAD
 import com.bestqualified.entities.SavedSearch;
-=======
 import com.bestqualified.entities.Topic;
->>>>>>> 3c2e5b13f428c548f877c3f02fc92f5e16099bc2
 import com.bestqualified.entities.User;
 import com.bestqualified.entities.WorkExperience;
 import com.google.appengine.api.blobstore.BlobKey;
