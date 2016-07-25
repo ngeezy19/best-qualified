@@ -2,8 +2,10 @@ package com.bestqualified.bean;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import com.bestqualified.entities.ReadingList;
+import com.google.appengine.api.datastore.Key;
 
 public class CommunityBean implements Serializable {
 
@@ -11,16 +13,24 @@ public class CommunityBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -9129909997718509114L;
+	
 	private String currentDate;
-	private List<Article> latestArticles,mainPosts,discussions;
-	private List<InterestedJob> jobs;
-	private List<ReadingList> readingList;
+	private String wallpaper;
+	private String image;
+	private String name;
+	private String shortDesc;
+	private String longDesc;
+	private Map<String, String> topics;
+	private String webSafeKey;
+	private List<Article> post;
+	private List<Key> members;
 	@Override
 	public String toString() {
-		return "CommunityBean [currentDate=" + currentDate
-				+ ", latestArticles=" + latestArticles + ", mainPosts="
-				+ mainPosts + ", discussions=" + discussions + ", jobs=" + jobs
-				+ ", readingList=" + readingList + "]";
+		return "CommunityBean [currentDate=" + currentDate + ", wallpaper="
+				+ wallpaper + ", image=" + image + ", name=" + name
+				+ ", shortDesc=" + shortDesc + ", longDesc=" + longDesc
+				+ ", topics=" + topics + ", webSafeKey=" + webSafeKey
+				+ ", post=" + post + ", members=" + members + "]";
 	}
 	public String getCurrentDate() {
 		return currentDate;
@@ -28,36 +38,62 @@ public class CommunityBean implements Serializable {
 	public void setCurrentDate(String currentDate) {
 		this.currentDate = currentDate;
 	}
-	public List<Article> getLatestArticles() {
-		return latestArticles;
+	public String getImage() {
+		return image;
 	}
-	public void setLatestArticles(List<Article> latestArticles) {
-		this.latestArticles = latestArticles;
+	public void setImage(String image) {
+		this.image = image;
 	}
-	public List<Article> getMainPosts() {
-		return mainPosts;
+	public String getName() {
+		return name;
 	}
-	public void setMainPosts(List<Article> mainPosts) {
-		this.mainPosts = mainPosts;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public List<Article> getDiscussions() {
-		return discussions;
+	public String getShortDesc() {
+		return shortDesc;
 	}
-	public void setDiscussions(List<Article> discussions) {
-		this.discussions = discussions;
+	public void setShortDesc(String shortDesc) {
+		this.shortDesc = shortDesc;
 	}
-	public List<InterestedJob> getJobs() {
-		return jobs;
+	public String getLongDesc() {
+		return longDesc;
 	}
-	public void setJobs(List<InterestedJob> jobs) {
-		this.jobs = jobs;
+	public void setLongDesc(String longDesc) {
+		this.longDesc = longDesc;
 	}
-	public List<ReadingList> getReadingList() {
-		return readingList;
+	public Map<String, String> getTopics() {
+		return topics;
 	}
-	public void setReadingList(List<ReadingList> readingList) {
-		this.readingList = readingList;
+	public void setTopics(Map<String, String> topics) {
+		this.topics = topics;
 	}
+	public List<Article> getPost() {
+		return post;
+	}
+	public void setPost(List<Article> post) {
+		this.post = post;
+	}
+	public String getWebSafeKey() {
+		return webSafeKey;
+	}
+	public void setWebSafeKey(String webSafeKey) {
+		this.webSafeKey = webSafeKey;
+	}
+	public List<Key> getMembers() {
+		return members;
+	}
+	public void setMembers(List<Key> members) {
+		this.members = members;
+	}
+	public String getWallpaper() {
+		return wallpaper;
+	}
+	public void setWallpaper(String wallpaper) {
+		this.wallpaper = wallpaper;
+	}
+	
+	
 	
 	
 

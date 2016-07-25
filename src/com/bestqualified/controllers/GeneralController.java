@@ -12,6 +12,7 @@ import com.bestqualified.bean.SocialUser;
 import com.bestqualified.entities.Article;
 import com.bestqualified.entities.ArticleCategory;
 import com.bestqualified.entities.AssessmentQuestion;
+import com.bestqualified.entities.Community;
 import com.bestqualified.entities.Job;
 import com.bestqualified.entities.ReadingList;
 import com.bestqualified.entities.User;
@@ -54,6 +55,34 @@ public class GeneralController {
 		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(i));
 		for (Entity e : ents) {
 			articles.add(EntityConverter.entityToArticle(e));
+		}
+		return articles;
+	}
+	
+	public static List<Key> getNCommunities(int i) {
+		List<Key> communities = new ArrayList<>();
+		Query q = new Query(Community.class.getSimpleName());
+		q.setKeysOnly();
+		q.addSort("name", SortDirection.ASCENDING);
+		PreparedQuery pq = ds.prepare(q);
+		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(i));
+		for(Entity e : ents) {
+			communities.add(e.getKey());
+		}
+		return communities;
+		
+	}
+	
+	public static List<Key> getTrendingPosts(int i) {
+		List<Key> articles = new ArrayList<>();
+		Query q = new Query(Article.class.getSimpleName());
+		q.setKeysOnly();
+		q.setFilter(new FilterPredicate("category", FilterOperator.NOT_EQUAL, "POST"));
+		//q.addSort("nComments", SortDirection.DESCENDING);
+		PreparedQuery pq = ds.prepare(q);
+		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(i));
+		for (Entity e : ents) {
+			articles.add(e.getKey());
 		}
 		return articles;
 	}
@@ -187,6 +216,14 @@ public class GeneralController {
 		List<Entity> l = Arrays.asList(entities);
 		txn = ds.beginTransaction(TransactionOptions.Builder.withXG(true));
 		ds.put(l);
+		txn.commitAsync();
+
+	}
+	
+	public static void createWithCrossGroup(List<Entity> entities) {
+		
+		txn = ds.beginTransaction(TransactionOptions.Builder.withXG(true));
+		ds.put(entities);
 		txn.commitAsync();
 
 	}

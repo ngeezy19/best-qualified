@@ -44,6 +44,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import com.bestqualified.bean.Article;
 import com.bestqualified.bean.AssessmentQuestionBean;
 import com.bestqualified.bean.CandidateSearchResult;
+import com.bestqualified.bean.CommunityBean;
 import com.bestqualified.bean.CorrectionBean;
 import com.bestqualified.bean.FacebookAccessTokenResponse;
 import com.bestqualified.bean.InterestedJob;
@@ -63,6 +64,7 @@ import com.bestqualified.entities.AssessmentQuestion;
 import com.bestqualified.entities.Award;
 import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.Certification;
+import com.bestqualified.entities.Community;
 import com.bestqualified.entities.Company;
 import com.bestqualified.entities.Education;
 import com.bestqualified.entities.Job;
@@ -1079,7 +1081,10 @@ public class Util {
 					.getAtom());
 			pv.setHighestQualification(sd.getOnlyField("highestEducationLevel")
 					.getText());
+<<<<<<< HEAD
 			pv.setWebkey(sd.getId());
+=======
+>>>>>>> 3c2e5b13f428c548f877c3f02fc92f5e16099bc2
 			pvs.add(pv);
 		}
 		rdb.setProspects(pvs);
@@ -1329,6 +1334,7 @@ public class Util {
 	}
 
 	public static Job getJobFromCache(Key key) {
+
 		Object o = MemcacheProvider.JOBS.get(key);
 		Job job = null;
 		if (o == null) {
@@ -1340,6 +1346,7 @@ public class Util {
 		return job;
 	}
 
+<<<<<<< HEAD
 	public static User getUserFromCache(Key key) {
 		Object o = MemcacheProvider.USER.get(key);
 		User u = null;
@@ -1363,6 +1370,64 @@ public class Util {
 			cp = (CandidateProfile) o;
 		}
 		return cp;
+=======
+	public static List<Community> getCommunityFromCache(List<Key> keys) {
+
+		Map<Key, Object> map = MemcacheProvider.COMMUNITIES.getAll(keys);
+
+		List<Community> obj = new ArrayList<>();
+		List<Key> ki = new ArrayList<>();
+		
+		for (Key k : keys) {
+			Object o = map.get(k);
+			if (o!=null){
+				obj.add((Community) o);
+			}else {
+				ki.add(k);
+			}
+			
+		}
+		
+		if(!ki.isEmpty()){
+			Map<Key, Entity> entm = GeneralController.findByKeys(ki);
+			for (Key key : ki) {
+				Community c = EntityConverter.entityToCommunity(entm.get(key));
+				obj.add(c);
+				MemcacheProvider.COMMUNITIES.put(c.getId(), c);
+			}
+		}
+
+		return obj;
+	}
+	
+	public static List<com.bestqualified.entities.Article> getPostsFromCache(List<Key> keys) {
+
+		Map<Key, Object> map = MemcacheProvider.ARTICLES.getAll(keys);
+
+		List<com.bestqualified.entities.Article> obj = new ArrayList<>();
+		List<Key> ki = new ArrayList<>();
+		
+		for (Key k : keys) {
+			Object o = map.get(k);
+			if (o!=null){
+				obj.add((com.bestqualified.entities.Article) o);
+			}else {
+				ki.add(k);
+			}
+			
+		}
+		
+		if(!ki.isEmpty()){
+			Map<Key, Entity> entm = GeneralController.findByKeys(ki);
+			for (Key key : ki) {
+				com.bestqualified.entities.Article c = EntityConverter.entityToArticle(entm.get(key));
+				obj.add(c);
+				MemcacheProvider.ARTICLES.put(c.getKey(), c);
+			}
+		}
+
+		return obj;
+>>>>>>> 3c2e5b13f428c548f877c3f02fc92f5e16099bc2
 	}
 
 	public static ManageProjectBean getManageProjectBean(List<ProjectBean> l2) {
@@ -1940,6 +2005,11 @@ public class Util {
 			a.setAuthor(u.getFirstName() + " " + u.getLastName());
 			a.setTitle(art.getTitle());
 			a.setSnippet(art.getBody().getValue().substring(0, 200) + "...");
+			a.setBody(art.getBody().getValue());
+			a.setLikes(art.getLikes());
+			a.setnComments(art.getnComments());
+			a.setShares(art.getShares());
+			if(art.getImageKey()!=null){
 			ImagesService imagesService = ImagesServiceFactory
 					.getImagesService();
 			ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(
@@ -1949,12 +2019,40 @@ public class Util {
 			a.setPostDate(new SimpleDateFormat("dd MMMM yyyy").format(art
 					.getDate()));
 			a.setWebkey(KeyFactory.keyToString(art.getKey()));
+			}
 			aas.add(a);
 		}
 
 		return aas;
 	}
 
+	public static List<CommunityBean> toCommunityBeans(List<Community> community){
+		List<CommunityBean> cobean = new ArrayList<>();
+		for(Community com : community) {
+			CommunityBean cb = new CommunityBean();
+			cb.setName(com.getName());
+			cb.setShortDesc(com.getShortDesc().getValue());
+			cb.setLongDesc(com.getLongDesc().getValue());
+			cb.setCurrentDate(new SimpleDateFormat("dd MMMM yyyy").format(com.getDateCreated()));
+			cb.setMembers(com.getMembers()); 
+			//cb.setTopics(com.getTopics());
+			
+			ImagesService imagesService = ImagesServiceFactory
+					.getImagesService();
+			ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(
+					com.getImage()).imageSize(150);
+			ServingUrlOptions options1 = ServingUrlOptions.Builder.withBlobKey(
+					com.getWallpaper()).imageSize(250);
+			String servingUrl = imagesService.getServingUrl(options);
+			String servingUrlWall = imagesService.getServingUrl(options1);
+			cb.setWallpaper(servingUrlWall);
+			cb.setImage(servingUrl);
+			cb.setWebSafeKey(KeyFactory.keyToString(com.getId()));
+			cobean.add(cb);
+		}
+		
+		return cobean;
+	}
 	public static Recruiter mergeRecruiters(Recruiter r, Recruiter orr) {
 		if (r.getCompany() != null) {
 			orr.setCompany(r.getCompany());
@@ -1974,6 +2072,7 @@ public class Util {
 		return orr;
 	}
 
+<<<<<<< HEAD
 	public static String getBookCategory(String nodeId) {
 		String s = null;
 		switch (nodeId) {
@@ -2017,6 +2116,24 @@ public class Util {
 	public static String getInterswitchHash(String txnRef) {
 		String str = INTERSWITCH_PRODUCT_ID + txnRef + INTERSWITCH_MAC;
 		return Util.toSHA512(str).toUpperCase();
+=======
+	public static Map<String, String> getCommunityMap(List<Community> comm) {
+		// TODO Auto-generated method stub
+		
+		Map<String, String> map = new HashMap<>();
+		
+		
+		for (Community community : comm) {
+			
+			String key = KeyFactory.keyToString(community.getId());
+			String name = community.getName();
+			map.put(key, name);
+			
+		}
+		
+		
+		return map;
+>>>>>>> 3c2e5b13f428c548f877c3f02fc92f5e16099bc2
 	}
 
 }
