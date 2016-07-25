@@ -33,12 +33,7 @@ public class AdminCreateCommunity extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 616027673877299693L;
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		resp.getWriter().write("Here");
-	}
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -86,7 +81,7 @@ public class AdminCreateCommunity extends HttpServlet {
 				session.setAttribute("communityError",
 						"Enter a short description");
 				resp.sendRedirect(resp
-						.encodeRedirectURL("/bq/admin/create-community"));
+						.encodeRedirectURL("/bq/admin/communityad"));
 				return;
 
 			}
@@ -97,23 +92,23 @@ public class AdminCreateCommunity extends HttpServlet {
 				session.setAttribute("communityError",
 						"Enter a long description");
 				resp.sendRedirect(resp
-						.encodeRedirectURL("/bq/admin/create-community"));
+						.encodeRedirectURL("/bq/admin/communityad"));
 				return;
 
 			}
 
 		}
-		if (!Util.notNull(topics)) {
+	/*	if (!Util.notNull(topics)) {
 			synchronized (session) {
 				session.setAttribute("communityError",
 						"Enter topics that apply to your community");
 				resp.sendRedirect(resp
-						.encodeRedirectURL("/bq/admin/create-community"));
+						.encodeRedirectURL("/bq/admin/communityad"));
 				return;
 
 			}
 
-		}
+		}*/
 
 		User u = null;
 		Object o = null;
@@ -149,7 +144,7 @@ public class AdminCreateCommunity extends HttpServlet {
 		community.setDateCreated(date);
 		community.setLongDesc(textlongDesc);
 		community.setShortDesc(textshortDesc);
-		community.setTopics(keys);
+		//community.setTopics(keys);
 		community.setImage(blobKey);
 		community.setWallpaper(blobKeyWall);
 		community.setOwner(u.getUserKey());

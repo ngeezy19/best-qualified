@@ -181,22 +181,22 @@ hr.style15:after {
 	
 	<div class="container-fluid">
 
-			<div class="divnav" id = "mySidenav">
+			<div class="divnav" id = "mySidenav" style="font-size: 11pt">
 				
-				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;</a>
-					<a href="/bq/general-community">HOME</a>
-					<a href="/bq/community/comms">COMMUNITIES</a>
-					<a href="/bq/community/article">ARTICLES</a>
+				<a style="color: white" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;</a>
+					<a style="color: white" href="/bq/general-community">HOME</a>
+					<a style="color: white" href="/bq/community/comms">COMMUNITIES</a>
+					<a style="color: white" href="/bq/community/article">ARTICLES</a>
 					<c:if test="${not empty user }">
-						<a href="#">PROFILE</a>
+						<a style="color: white" href="#">PROFILE</a>
 					</c:if>
 					<c:if test="${not empty user }">
-						<a href="#">MY NETWORK</a>
+						<a style="color: white" href="#">MY NETWORK</a>
 					</c:if>
-					<a href="#">HELP</a>
+					<a style="color: white" href="#">HELP</a>
 			</div>
 			
-			<a href="#"><div class="lspan" onclick="openNav()">&#9776; </div></a>
+			<a style="color: white" href="#"><div class="lspan" onclick="openNav()">&#9776; </div></a>
 
 			<div id="main">
 			<section style="width:90%; margin: 0 auto;">
