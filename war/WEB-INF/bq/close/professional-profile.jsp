@@ -309,24 +309,17 @@ h4 {
 							style="width: 80%; margin: 0 auto">
 					</div>
 				</div>
+
 				<div class="col-sm-10 card-panel">
 					<div class="col-sm-12 no-padding-div">
 						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
 							class="">Education</h4>
+						<div class="col-sm-12 no-padding-div">
+							<span class="text-primary add-new" style="cursor:pointer;">Add new</span> 
+						</div>
+						<div class="col-sm-12 no-padding-div">
 
-						<div class="col-sm-12 editable-div">
-							<div class="inline-output-1">
-								<c:choose>
-									<c:when test="${fn:length(uppb.education) < 1} ">
-									Tell us about your education.
-								</c:when>
-									<c:otherwise>
-										<span class="text-primary">Add new</span>
-									</c:otherwise>
-								</c:choose>
-								<span class="glyphicon glyphicon-plus edit-tool"></span>
-							</div>
-							<div class="inline-input">
+							<div class="form-div" style="display: none;">
 								<form class="education-form">
 									<div>
 										<label>School Name:</label><br /> <input id="institution"
@@ -417,7 +410,7 @@ h4 {
 										<input type="button"
 											class="btn btn-xs btn-primary save-education"
 											value="Save Education"> <input
-											class="btn btn-xs btn-danger cancel-button" value="Cancel">
+											class="btn btn-xs btn-danger cancel-button" type="button" value="Cancel">
 									</div>
 								</form>
 							</div>
@@ -568,6 +561,107 @@ h4 {
 				</div>
 			</div>
 
+			<div class="row">
+				<div class="col-sm-2">
+					<div class="card-panel">
+						<img alt="" src="/images/certificate-award.png"
+							class="img img-responsive" style="margin: 0 auto; width: 80%">
+					</div>
+				</div>
+				<div class="col-sm-10 card-panel">
+					<div class="col-sm-12 no-padding-div">
+						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
+							class="">Certifications</h4>
+
+						<div class="col-sm-12 editable-div">
+							<div class="inline-output-1">
+								<span class="text-primary">Add new</span> <span
+									class="glyphicon glyphicon-plus edit-tool"></span>
+							</div>
+
+							<div class="inline-input">
+								<form class="award-form">
+									<div>
+										<label>Certification Name:</label><br /> <input id="award"
+											name="award" style="width: 70%;">
+									</div>
+									<div>
+										<label>Additional Information:</label><br /> <input
+											placeholder="" name="extra" id="extra" style="width: 70%;">
+									</div>
+									<div>
+										<label>Time</label><br /> <select name="start-month"
+											id="start-month">
+											<option>January</option>
+											<option>February</option>
+											<option>March</option>
+											<option>April</option>
+											<option>May</option>
+											<option>June</option>
+											<option>July</option>
+											<option>August</option>
+											<option>September</option>
+											<option>October</option>
+											<option>November</option>
+											<option>December</option>
+										</select> <select name="start-year" id="start-year">
+											<option>2000</option>
+											<option>2001</option>
+											<option>2002</option>
+											<option>2003</option>
+											<option>2004</option>
+											<option>2005</option>
+											<option>2006</option>
+											<option>2007</option>
+											<option>2008</option>
+											<option>2009</option>
+											<option>2010</option>
+											<option>2011</option>
+											<option>2012</option>
+											<option>2013</option>
+											<option>2014</option>
+											<option>2015</option>
+											<option>2016</option>
+										</select>
+									</div>
+
+									<div style="margin-top: 2%; margin-bottom: 2%;">
+										<input type="button" class="btn btn-xs btn-primary save-award"
+											value="Save Award"> <input
+											class="btn btn-xs btn-danger cancel-button" value="Cancel">
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="col-sm-12 award-div">
+							<c:set var='awIndex' value='1' />
+							<c:forEach var="item" items="${uppb.awards}">
+								<div class="col-sm-12 module-div"
+									<c:if test="${edIndex < fn:length(uppb.awards)}">style="border-bottom: 1px #d1d1d1 solid"</c:if>>
+									<c:set var='awIndex' value='${awIndex+1}' />
+									<h4 class="name">
+										<c:out value='${item.name}' />
+									</h4>
+									<h5 class="extra" style="font-family: calibri">
+										<c:out value='${item.description}' />
+									</h5>
+									<h5 style="font-family: calibri">
+										<span class="start-month"> <c:out value='${item.month}' /></span>
+										<span class="start-year"> <c:out value='${item.year}' />
+										</span>
+									</h5>
+									<input type="hidden" id="item" value="award" /> <input
+										type="hidden" id="web-key" value="${item.safeKey}" />
+									<p>
+										<a class="delete-item" href="#">Delete</a>
+									</p>
+								</div>
+							</c:forEach>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 		<div class="col-sm-4">
 			<div class="col-sm-12 card-panel no-padding-div">
@@ -614,15 +708,27 @@ h4 {
 					src="/images/ad1/negotiatn_ext.html"
 					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
 			</div>  -->
-			<div class="col-sm-12  no-padding-div">
-				<iframe class="dashboard-section" style="margin: 0"
-					src="/images/ad2/bootcamp_ext.html" width="336" height="280"
-					scrolling="no" frameBorder='0'></iframe>
-			</div>
-			<div class="col-sm-12  no-padding-div">
-				<iframe class="dashboard-section"
-					src="http://localhost:8888/images/ad3/tools_or_luck.html"
-					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
+
+			<div class="col-sm-12 card-panel no-padding-div">
+
+				<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
+					class="">Other Information</h4>
+
+				<div class="col-sm-12 profile-field-div editable-div">
+					<label>Current State:</label>
+					<c:choose>
+						<c:when test='${empty user.phone}'>
+							<span class="inline-output" style="color: orange">Enter a
+								contact phone number</span>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out value='${user.phone}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input"> <input id="phone"
+						value="${user.phone}" class="gen-inline-input" />
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+				</div>
 			</div>
 		</div>
 
@@ -1053,6 +1159,17 @@ h4 {
 														});
 											});
 						});
+	</script>
+	<script type="text/javascript">
+		$(".add-new").click(function(){
+			
+			var parent = $(this).closest(".card-panel");
+			parent.find(".form-div").slideDown();
+		});
+		$(".cancel-button").click(function(){
+			var parent = $(this).closest(".card-panel");
+			parent.find(".form-div").slideUp();
+		});
 	</script>
 </body>
 </html>
