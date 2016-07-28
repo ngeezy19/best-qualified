@@ -718,8 +718,119 @@ h4 {
 					<label>Current State:</label>
 					<c:choose>
 						<c:when test='${empty user.phone}'>
-							<span class="inline-output" style="color: orange">Enter a
-								contact phone number</span>
+							<span class="inline-output" style="color: orange">Enter the State
+								you currently reside in</span>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out value='${user.phone}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input"> <input id="phone"
+						value="${user.phone}" class="gen-inline-input" />
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+				</div>
+				
+				<div class="col-sm-12 profile-field-div editable-div">
+					<label>Current Country:</label>
+					<c:choose>
+						<c:when test='${empty user.phone}'>
+							<span class="inline-output" style="color: orange">Enter the Country
+								you currently reside in</span>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out value='${user.phone}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input"> <input id="phone"
+						value="${user.phone}" class="gen-inline-input" />
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+				</div>
+				
+				<div class="col-sm-12 profile-field-div editable-div">
+					<label>Nationality:</label>
+					<c:choose>
+						<c:when test='${empty user.phone}'>
+							<span class="inline-output" style="color: orange">Enter your Nationality</span>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out value='${user.phone}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input"> <input id="phone"
+						value="${user.phone}" class="gen-inline-input" />
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+				</div>
+				
+				<div class="col-sm-12 profile-field-div editable-div">
+					<label>State of Origin:</label>
+					<c:choose>
+						<c:when test='${empty user.phone}'>
+							<span class="inline-output" style="color: orange">Enter the State
+								you currently reside in</span>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out value='${user.phone}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input"> <input id="phone"
+						value="${user.phone}" class="gen-inline-input" />
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+				</div>
+				
+				<div class="col-sm-12 profile-field-div editable-div">
+					<label>LGA:</label>
+					<c:choose>
+						<c:when test='${empty user.phone}'>
+							<span class="inline-output" style="color: orange">Enter the State
+								you currently reside in</span>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out value='${user.phone}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input"> <input id="phone"
+						value="${user.phone}" class="gen-inline-input" />
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+				</div>
+				
+				<div class="col-sm-12 profile-field-div editable-div">
+					<label>Gender:</label>
+					<c:choose>
+						<c:when test='${empty user.phone}'>
+							<span class="inline-output" style="color: orange">Enter the State
+								you currently reside in</span>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out value='${user.phone}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input"> <input id="phone"
+						value="${user.phone}" class="gen-inline-input" />
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+				</div>
+				
+				<div class="col-sm-12 profile-field-div editable-div">
+					<label>Years of Experience:</label>
+					<c:choose>
+						<c:when test='${empty user.phone}'>
+							<span class="inline-output" style="color: orange">Enter the number of
+								Years of Experience</span>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out value='${user.phone}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input"> <input id="phone"
+						value="${user.phone}" class="gen-inline-input" />
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+				</div>
+				
+				<div class="col-sm-12 profile-field-div editable-div">
+					<label>Career Level:</label>
+					<c:choose>
+						<c:when test='${empty user.phone}'>
+							<span class="inline-output" style="color: orange">Enter the number of
+								Years of Experience</span>
 						</c:when>
 						<c:otherwise>
 							<span class="inline-output"><c:out value='${user.phone}' /></span>
