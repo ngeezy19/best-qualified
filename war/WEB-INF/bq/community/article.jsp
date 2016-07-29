@@ -17,33 +17,34 @@
 <link rel="stylesheet" href="/styles/comi.css">
 
 </head>
-<body>
+<body style="background-color: #edeff5">
 	<%@ include file="/main-nav.html"%>
 	<br>
 	<br>
 	<br>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-9">
-				<div class="media card-panel" style="margin-bottom: 2%; width: 100%">
-					<a class="pull-left"
-						href='<c:url value="/community?id=${item.webkey}" />'><img
-						class="media-object img-rounded" src="${item.pictureUrl}"
-						width="130" height="130"></a>
-					<div class="media-body">
-						<a href='<c:url value="/community?id=${item.webkey}" />'><h3
-								class="media-heading" id="lol">${item.title}</h3></a>
+			<div class=""></div>
+			<div class="col-sm-offset-2 col-sm-8">
+				<div class="card-panel" style="margin-bottom: 2%; width: 100%">
+					<h3 class="text-primary" style="text-align: center" id="lol">${currentArticle.title}</h3>
+					<div>
+						<img
+						class="media-object img-rounded" src="${currentArticle.pictureUrl}" style="width: 100%; margin: 0 auto">
+					</div>
+					
+					<div>
+						
 						<p
-							style="color: #983b59; font-family: calibri; letter-spacing: 3px">
+							style="color: #983b59; font-family: calibri; letter-spacing: 3px; text-align: center; margin: 2%;">
 							<span style="margin-left: 5px;"><i class="fa fa-user"></i>
 								BEST-QUALIFIED</span> <span><i class="fa fa-clock-o"></i> <c:out
-									value='${item.postDate}' /></span> <span><i
+									value='${currentArticle.postDate}' /></span> <span><i
 								class="fa fa-comments"></i><a> 0</a></span>
 						</p>
 						<p>
-							${item.snippet}<span><a
-								href='<c:url value="/community?id=${item.webkey}" />'><i
-									class="fa fa-angle-double-right" aria-hidden="true"></i></a></span>
+							${currentArticle.body}<span><a
+								href='<c:url value="/community?id=${currentArticle.webkey}" />'></a></span>
 						</p>
 
 						<p id="socialo">
