@@ -876,8 +876,11 @@ public class Util {
 		ppb.setTagline(u.getTagline());
 		ppb.setProfessionalLevel(u.getProfessionalLevel());
 		ppb.setProfilePicture(u.getPictureUrl());
+		if(u.getBirthDate()!=null)
+		{
 		ppb.setBirthdate(new SimpleDateFormat("MMMM-dd-yyyy").format(u
 				.getBirthDate()));
+		}
 		ppb.setCurrentState(cp.getCurrentState());
 		ppb.setCurrentCountry(cp.getCurrentCountry());
 		ppb.setCareerLevel(cp.getCareerLevel());
