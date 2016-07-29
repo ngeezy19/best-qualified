@@ -165,19 +165,14 @@ h4 {
 						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
 							class="">Work Experience</h4>
 
-						<div class="col-sm-12 editable-div">
-							<div class="inline-output-1">
-								<c:choose>
-									<c:when test="${fn:length(uppb.workExperience) < 1} ">
-									Tell us about your work experience.
-								</c:when>
-									<c:otherwise>
-										<span class="text-primary">Add new</span>
-									</c:otherwise>
-								</c:choose>
-								<span class="glyphicon glyphicon-plus edit-tool"></span>
-							</div>
-							<div class="inline-input">
+						<div class="col-sm-12 no-padding-div">
+							<span class="text-primary add-new" style="cursor: pointer;">Add
+								new</span>
+						</div>
+
+						<div class="col-sm-12 no-padding-div">
+
+							<div class="form-div">
 								<form class="work-experience-form">
 									<div>
 										<label>Organization Name:</label><br /> <input
@@ -315,7 +310,8 @@ h4 {
 						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
 							class="">Education</h4>
 						<div class="col-sm-12 no-padding-div">
-							<span class="text-primary add-new" style="cursor:pointer;">Add new</span> 
+							<span class="text-primary add-new" style="cursor: pointer;">Add
+								new</span>
 						</div>
 						<div class="col-sm-12 no-padding-div">
 
@@ -410,7 +406,8 @@ h4 {
 										<input type="button"
 											class="btn btn-xs btn-primary save-education"
 											value="Save Education"> <input
-											class="btn btn-xs btn-danger cancel-button" type="button" value="Cancel">
+											class="btn btn-xs btn-danger cancel-button" type="button"
+											value="Cancel">
 									</div>
 								</form>
 							</div>
@@ -472,13 +469,15 @@ h4 {
 						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
 							class="">Awards</h4>
 
-						<div class="col-sm-12 editable-div">
-							<div class="inline-output-1">
-								<span class="text-primary">Add new</span> <span
-									class="glyphicon glyphicon-plus edit-tool"></span>
-							</div>
+						<div class="col-sm-12 no-padding-div">
+							<span class="text-primary add-new" style="cursor: pointer;">Add
+								new</span>
+						</div>
 
-							<div class="inline-input">
+						<div class="col-sm-12 no-padding-div">
+
+
+							<div class="form-div">
 								<form class="award-form">
 									<div>
 										<label>Award Name:</label><br /> <input id="award"
@@ -573,13 +572,14 @@ h4 {
 						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
 							class="">Certifications</h4>
 
-						<div class="col-sm-12 editable-div">
-							<div class="inline-output-1">
-								<span class="text-primary">Add new</span> <span
-									class="glyphicon glyphicon-plus edit-tool"></span>
-							</div>
+						<div class="col-sm-12 no-padding-div">
+							<span class="text-primary add-new" style="cursor: pointer;">Add
+								new</span>
+						</div>
 
-							<div class="inline-input">
+						<div class="col-sm-12 no-padding-div">
+
+							<div class="form-div">
 								<form class="award-form">
 									<div>
 										<label>Certification Name:</label><br /> <input id="award"
@@ -716,129 +716,248 @@ h4 {
 
 				<div class="col-sm-12 profile-field-div editable-div">
 					<label>Current State:</label>
+
 					<c:choose>
-						<c:when test='${empty user.phone}'>
-							<span class="inline-output" style="color: orange">Enter the State
-								you currently reside in</span>
+						<c:when test='${empty uppb.currentState}'>
+							<div>
+								<span style="color: orange">Select the State you reside
+									in:</span>
+
+							</div>
 						</c:when>
 						<c:otherwise>
-							<span class="inline-output"><c:out value='${user.phone}' /></span>
+							<span class="inline-output"><c:out
+									value='${uppb.currentState}' /></span>
 						</c:otherwise>
 					</c:choose>
-					<span class="inline-input"> <input id="phone"
-						value="${user.phone}" class="gen-inline-input" />
+					<span class="inline-input" style="display: none;"> <select
+						id="currentstate">
+							<option></option>
+							<option>Abia</option>
+							<option>Abuja</option>
+							<option>Adamawa</option>
+							<option>Anambra</option>
+							<option>Akwa Ibom</option>
+							<option>Bauchi</option>
+							<option>Bayelsa</option>
+							<option>Benue</option>
+							<option>Borno</option>
+							<option>Cross River</option>
+							<option>Delta</option>
+							<option>Ebonyi</option>
+							<option>Enugu</option>
+							<option>Edo</option>
+							<option>Ekiti</option>
+							<option>Gombe</option>
+							<option>Imo</option>
+							<option>Jigawa</option>
+							<option>Kaduna</option>
+							<option>Kano</option>
+							<option>Katsina</option>
+							<option>Kebbi</option>
+							<option>Kogi</option>
+							<option>Kwara</option>
+							<option>Lagos</option>
+							<option>Nasarawa</option>
+							<option>Niger</option>
+							<option>Ogun</option>
+							<option>Ondo</option>
+							<option>Osun</option>
+							<option>Oyo</option>
+							<option>Plateau</option>
+							<option>Rivers</option>
+							<option>Sokoto</option>
+							<option>Taraba</option>
+							<option>Yobe</option>
+							<option>Zamfara</option>
+
+					</select>
+
 					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
 				</div>
-				
+
 				<div class="col-sm-12 profile-field-div editable-div">
 					<label>Current Country:</label>
 					<c:choose>
-						<c:when test='${empty user.phone}'>
-							<span class="inline-output" style="color: orange">Enter the Country
-								you currently reside in</span>
+						<c:when test='${empty uppb.currentCountry}'>
+							<span class="inline-output" style="color: orange">Enter
+								the Country you currently reside in</span>
 						</c:when>
 						<c:otherwise>
-							<span class="inline-output"><c:out value='${user.phone}' /></span>
+							<span class="inline-output"><c:out
+									value='${uppb.currentCountry}' /></span>
 						</c:otherwise>
 					</c:choose>
 					<span class="inline-input"> <input id="phone"
-						value="${user.phone}" class="gen-inline-input" />
+						value="${uppb.currentCountry}" class="gen-inline-input" />
 					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
 				</div>
-				
+
 				<div class="col-sm-12 profile-field-div editable-div">
 					<label>Nationality:</label>
 					<c:choose>
-						<c:when test='${empty user.phone}'>
-							<span class="inline-output" style="color: orange">Enter your Nationality</span>
+						<c:when test='${empty uppb.nationality}'>
+							<span class="inline-output" style="color: orange">Enter
+								your Nationality</span>
 						</c:when>
 						<c:otherwise>
-							<span class="inline-output"><c:out value='${user.phone}' /></span>
+							<span class="inline-output"><c:out
+									value='${uppb.nationality}' /></span>
 						</c:otherwise>
 					</c:choose>
-					<span class="inline-input"> <input id="phone"
-						value="${user.phone}" class="gen-inline-input" />
+					<span class="inline-input"> <input id="nationality"
+						value="${uppb.nationality}" class="gen-inline-input" />
 					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
 				</div>
-				
+
 				<div class="col-sm-12 profile-field-div editable-div">
 					<label>State of Origin:</label>
+
 					<c:choose>
-						<c:when test='${empty user.phone}'>
-							<span class="inline-output" style="color: orange">Enter the State
-								you currently reside in</span>
+						<c:when test='${empty uppb.stateOfOrigin}'>
+							<div>
+								<span style="color: orange">Select your State of Origin:</span>
+
+							</div>
 						</c:when>
 						<c:otherwise>
-							<span class="inline-output"><c:out value='${user.phone}' /></span>
+							<span class="inline-output"><c:out
+									value='${uppb.stateOfOrigin}' /></span>
 						</c:otherwise>
 					</c:choose>
-					<span class="inline-input"> <input id="phone"
-						value="${user.phone}" class="gen-inline-input" />
+					<span class="inline-input" style="display: none;"> <select
+						id="state">
+							<option></option>
+							<option>Abia</option>
+							<option>Abuja</option>
+							<option>Adamawa</option>
+							<option>Anambra</option>
+							<option>Akwa Ibom</option>
+							<option>Bauchi</option>
+							<option>Bayelsa</option>
+							<option>Benue</option>
+							<option>Borno</option>
+							<option>Cross River</option>
+							<option>Delta</option>
+							<option>Ebonyi</option>
+							<option>Enugu</option>
+							<option>Edo</option>
+							<option>Ekiti</option>
+							<option>Gombe</option>
+							<option>Imo</option>
+							<option>Jigawa</option>
+							<option>Kaduna</option>
+							<option>Kano</option>
+							<option>Katsina</option>
+							<option>Kebbi</option>
+							<option>Kogi</option>
+							<option>Kwara</option>
+							<option>Lagos</option>
+							<option>Nasarawa</option>
+							<option>Niger</option>
+							<option>Ogun</option>
+							<option>Ondo</option>
+							<option>Osun</option>
+							<option>Oyo</option>
+							<option>Plateau</option>
+							<option>Rivers</option>
+							<option>Sokoto</option>
+							<option>Taraba</option>
+							<option>Yobe</option>
+							<option>Zamfara</option>
+
+					</select>
+
 					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
 				</div>
-				
-				<div class="col-sm-12 profile-field-div editable-div">
-					<label>LGA:</label>
-					<c:choose>
-						<c:when test='${empty user.phone}'>
-							<span class="inline-output" style="color: orange">Enter the State
-								you currently reside in</span>
-						</c:when>
-						<c:otherwise>
-							<span class="inline-output"><c:out value='${user.phone}' /></span>
-						</c:otherwise>
-					</c:choose>
-					<span class="inline-input"> <input id="phone"
-						value="${user.phone}" class="gen-inline-input" />
-					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
-				</div>
-				
-				<div class="col-sm-12 profile-field-div editable-div">
+
+				<div class="col-sm-12 editable-div">
+
 					<label>Gender:</label>
 					<c:choose>
-						<c:when test='${empty user.phone}'>
-							<span class="inline-output" style="color: orange">Enter the State
-								you currently reside in</span>
+						<c:when test='${empty user.gender}'>
+							<div>
+								<span style="color: orange">Select Gender</span>
+
+							</div>
 						</c:when>
 						<c:otherwise>
-							<span class="inline-output"><c:out value='${user.phone}' /></span>
+							<span class="inline-output"><c:out value='${user.gender}' /></span>
 						</c:otherwise>
 					</c:choose>
-					<span class="inline-input"> <input id="phone"
-						value="${user.phone}" class="gen-inline-input" />
+					<span class="inline-input" style="display: none;"> <select class="update"
+						id="gender">
+							<option value="female">Female</option>
+							<option value="male">Male</option>
+					</select>
+
 					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+
 				</div>
-				
-				<div class="col-sm-12 profile-field-div editable-div">
+
+
+
+				<div class="col-sm-12 editable-div">
 					<label>Years of Experience:</label>
+
 					<c:choose>
-						<c:when test='${empty user.phone}'>
-							<span class="inline-output" style="color: orange">Enter the number of
-								Years of Experience</span>
+						<c:when test='${empty uppb.yearOfExperience}'>
+							<div>
+								<span style="color: orange">Select Years of Experience</span>
+
+							</div>
 						</c:when>
 						<c:otherwise>
-							<span class="inline-output"><c:out value='${user.phone}' /></span>
+							<span class="inline-output"><c:out
+									value='${uppb.yearOfExperience}' /></span>
 						</c:otherwise>
 					</c:choose>
-					<span class="inline-input"> <input id="phone"
-						value="${user.phone}" class="gen-inline-input" />
+					<span class="inline-input" style="display: none;"> <select
+						id="yearsofexp">
+							<option value="021">0 - 1 year</option>
+							<option value="022">0 - 2 years</option>
+							<option value="123">1 - 3 years</option>
+							<option value="225">2 - 5 years</option>
+							<option value="325">3 - 5 years</option>
+							<option value="5210">5 - 10 years</option>
+							<option value="10plus">more than 10 years</option>
+					</select>
+
 					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+
 				</div>
-				
+
 				<div class="col-sm-12 profile-field-div editable-div">
 					<label>Career Level:</label>
+
 					<c:choose>
-						<c:when test='${empty user.phone}'>
-							<span class="inline-output" style="color: orange">Enter the number of
-								Years of Experience</span>
+						<c:when test='${empty uppb.careerLevel}'>
+							<div>
+								<span style="color: orange">Career Level</span>
+
+							</div>
 						</c:when>
 						<c:otherwise>
-							<span class="inline-output"><c:out value='${user.phone}' /></span>
+							<span class="inline-output"><c:out
+									value='${uppb.careerLevel}' /></span>
 						</c:otherwise>
 					</c:choose>
-					<span class="inline-input"> <input id="phone"
-						value="${user.phone}" class="gen-inline-input" />
+					<span class="inline-input" style="display: none;"> <select
+						id="careerlevel">
+							<option value="underg">Student (Undergraduate/Graduate)</option>
+							<option value="entry">Entry Level</option>
+							<option value="nonmanager">Experienced (Non-Managerial)</option>
+							<option value="manager">Manager (Manager/Supervisor of
+								Staff)</option>
+							<option value="exec">Executive (SVP,VP,Department Head
+								etc)</option>
+							<option value="seniorexec">Senior Executive (President,
+								CFO. etc)</option>
+
+					</select>
+
 					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+
 				</div>
 			</div>
 		</div>
@@ -1272,15 +1391,25 @@ h4 {
 						});
 	</script>
 	<script type="text/javascript">
-		$(".add-new").click(function(){
-			
+		$(".add-new").click(function() {
+
 			var parent = $(this).closest(".card-panel");
 			parent.find(".form-div").slideDown();
 		});
-		$(".cancel-button").click(function(){
+		$(".cancel-button").click(function() {
 			var parent = $(this).closest(".card-panel");
 			parent.find(".form-div").slideUp();
 		});
+
+		$(".update").change(function() {
+
+			var par = $(this).closest(".editable-div");
+			par.find(".inline-output").text($(this).val());
+			$(this).hide();
+			par.find(".inline-output").show();
+
+		});
+
 	</script>
 </body>
 </html>
