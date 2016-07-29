@@ -714,14 +714,14 @@ h4 {
 				<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
 					class="">Other Information</h4>
 
-				<div class="col-sm-12 profile-field-div editable-div">
+				<div class="col-sm-12 editable-div">
 					<label>Current State:</label>
 
 					<c:choose>
 						<c:when test='${empty uppb.currentState}'>
 							<div>
 								<span style="color: orange">Select the State you reside
-									in:</span>
+									in</span>
 
 							</div>
 						</c:when>
@@ -730,9 +730,7 @@ h4 {
 									value='${uppb.currentState}' /></span>
 						</c:otherwise>
 					</c:choose>
-					<span class="inline-input" style="display: none;"> <select
-						id="currentstate">
-							<option></option>
+					<span class="inline-input" style="display: none;"> <select class="update">
 							<option>Abia</option>
 							<option>Abuja</option>
 							<option>Adamawa</option>
@@ -776,7 +774,7 @@ h4 {
 					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
 				</div>
 
-				<div class="col-sm-12 profile-field-div editable-div">
+				<div class="col-sm-12 editable-div">
 					<label>Current Country:</label>
 					<c:choose>
 						<c:when test='${empty uppb.currentCountry}'>
@@ -793,7 +791,7 @@ h4 {
 					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
 				</div>
 
-				<div class="col-sm-12 profile-field-div editable-div">
+				<div class="col-sm-12 editable-div">
 					<label>Nationality:</label>
 					<c:choose>
 						<c:when test='${empty uppb.nationality}'>
@@ -810,7 +808,7 @@ h4 {
 					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
 				</div>
 
-				<div class="col-sm-12 profile-field-div editable-div">
+				<div class="col-sm-12 editable-div">
 					<label>State of Origin:</label>
 
 					<c:choose>
@@ -825,9 +823,7 @@ h4 {
 									value='${uppb.stateOfOrigin}' /></span>
 						</c:otherwise>
 					</c:choose>
-					<span class="inline-input" style="display: none;"> <select
-						id="state">
-							<option></option>
+					<span class="inline-input" style="display: none;"> <select class="update">
 							<option>Abia</option>
 							<option>Abuja</option>
 							<option>Adamawa</option>
@@ -887,8 +883,8 @@ h4 {
 					</c:choose>
 					<span class="inline-input" style="display: none;"> <select class="update"
 						id="gender">
-							<option value="female">Female</option>
-							<option value="male">Male</option>
+							<option>Female</option>
+							<option>Male</option>
 					</select>
 
 					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
@@ -912,28 +908,28 @@ h4 {
 									value='${uppb.yearOfExperience}' /></span>
 						</c:otherwise>
 					</c:choose>
-					<span class="inline-input" style="display: none;"> <select
+					<span class="inline-input" style="display: none;"> <select class="update"
 						id="yearsofexp">
-							<option value="021">0 - 1 year</option>
-							<option value="022">0 - 2 years</option>
-							<option value="123">1 - 3 years</option>
-							<option value="225">2 - 5 years</option>
-							<option value="325">3 - 5 years</option>
-							<option value="5210">5 - 10 years</option>
-							<option value="10plus">more than 10 years</option>
+							<option>0 - 1 year</option>
+							<option>0 - 2 years</option>
+							<option>1 - 3 years</option>
+							<option>2 - 5 years</option>
+							<option>3 - 5 years</option>
+							<option>5 - 10 years</option>
+							<option>more than 10 years</option>
 					</select>
 
 					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
 
 				</div>
 
-				<div class="col-sm-12 profile-field-div editable-div">
+				<div class="col-sm-12 editable-div">
 					<label>Career Level:</label>
 
 					<c:choose>
 						<c:when test='${empty uppb.careerLevel}'>
 							<div>
-								<span style="color: orange">Career Level</span>
+								<span style="color: orange">Career Level:</span>
 
 							</div>
 						</c:when>
@@ -942,24 +938,18 @@ h4 {
 									value='${uppb.careerLevel}' /></span>
 						</c:otherwise>
 					</c:choose>
-<<<<<<< HEAD
-<<<<<<< HEAD
-					<span class="inline-input" style="display: none;"> <select
-=======
+
 					<span class="inline-input" style="display: none;"> <select class="update"
->>>>>>> ca21de1e7f90c9fffd3e7d8c4ad0c6aafb136a68
-=======
-					<span class="inline-input" style="display: none;"> <select class="update"
->>>>>>> ca21de1e7f90c9fffd3e7d8c4ad0c6aafb136a68
+
 						id="careerlevel">
-							<option value="underg">Student (Undergraduate/Graduate)</option>
-							<option value="entry">Entry Level</option>
-							<option value="nonmanager">Experienced (Non-Managerial)</option>
-							<option value="manager">Manager (Manager/Supervisor of
+							<option>Student (Undergraduate/Graduate)</option>
+							<option>Entry Level</option>
+							<option>Experienced (Non-Managerial)</option>
+							<option>Manager (Manager/Supervisor of
 								Staff)</option>
-							<option value="exec">Executive (SVP,VP,Department Head
+							<option>Executive (SVP,VP,Department Head
 								etc)</option>
-							<option value="seniorexec">Senior Executive (President,
+							<option>Senior Executive (President,
 								CFO. etc)</option>
 
 					</select>
@@ -1417,7 +1407,8 @@ h4 {
 			par.find(".inline-output").show();
 
 		});
-
+		
+		
 	</script>
 </body>
 </html>
