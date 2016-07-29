@@ -942,7 +942,7 @@ h4 {
 									value='${uppb.careerLevel}' /></span>
 						</c:otherwise>
 					</c:choose>
-					<span class="inline-input" style="display: none;"> <select
+					<span class="inline-input" style="display: none;"> <select class="update"
 						id="careerlevel">
 							<option value="underg">Student (Undergraduate/Graduate)</option>
 							<option value="entry">Entry Level</option>
