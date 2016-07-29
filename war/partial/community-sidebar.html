@@ -1,0 +1,18 @@
+<div class="divnav" id="mySidenav" style="font-size: 11pt">
+
+	<a style="color: white" href="javascript:void(0)" class="closebtn"
+		onclick="closeNav()">&#9776;</a> <a style="color: white"
+		href="/bq/general-community">HOME</a> <a style="color: white"
+		href="/bq/community/comms">COMMUNITIES</a> <a style="color: white"
+		href="/bq/community/article">ARTICLES</a>
+	<c:if test="${not empty user }">
+		<a style="color: white" href="#">PROFILE</a>
+	</c:if>
+	<c:if test="${not empty user }">
+		<a style="color: white" href="#">MY NETWORK</a>
+	</c:if>
+	<a style="color: white" href="#">HELP</a>
+</div>
+
+<div class="lspan" style="cursor: pointer; z-index: 10"
+		onclick="openNav()">&#9776;</div>

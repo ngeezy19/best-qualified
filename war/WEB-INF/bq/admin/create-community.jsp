@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page
 	import="com.google.appengine.api.blobstore.BlobstoreServiceFactory"%>
 <%@ page import="com.google.appengine.api.blobstore.BlobstoreService"%>
@@ -28,8 +30,8 @@
 	<div class="container">
 		<div class="row">
 			<form method="post"
-				action="<%=blobstoreService
-					.createUploadUrl("/bq/admin/create-community")%>"
+				action="<%=blobstoreService.createUploadUrl(
+					"/bq/admin/create-community", options)%>"
 				enctype="multipart/form-data">
 				<c:choose>
 					<c:when test="${not empty communitySuccess }">

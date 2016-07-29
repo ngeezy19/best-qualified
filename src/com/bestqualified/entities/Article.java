@@ -12,6 +12,18 @@ import com.google.appengine.api.datastore.Text;
 
 public class Article implements Serializable {
 
+	public Key getCommunity() {
+		return community;
+	}
+
+
+
+	public void setCommunity(Key community) {
+		this.community = community;
+	}
+
+
+
 	/**
 	 * 
 	 */
@@ -32,6 +44,7 @@ public class Article implements Serializable {
 	private Link link;
 	private long likes;
 	private long shares;
+	private Key community;
 
 	@Override
 	public String toString() {

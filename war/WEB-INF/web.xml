@@ -6,6 +6,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 	
 	<servlet>
+		<servlet-name>LikeArticle</servlet-name>
+		<servlet-class>com.bestqualified.servlets.LikeArticle</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LikeArticle</servlet-name>
+		<url-pattern>/bq/close/like</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>InterswitchResponse</servlet-name>
 		<servlet-class>com.bestqualified.servlets.InterswitchResponse</servlet-class>
 	</servlet>
@@ -21,6 +30,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>GetBookURL</servlet-name>
 		<url-pattern>/bq/books</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AddComment</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.AddComment</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddComment</servlet-name>
+		<url-pattern>/bq/close/community/comment/add</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>SendInviteServlet</servlet-name>
 		<servlet-class>com.bestqualified.servlets.closed.SendInviteServlet</servlet-class>
@@ -371,6 +390,24 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>ServeBlob</servlet-name>
 		<url-pattern>/bq/close/serve-blob</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UserCreatePost</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.CreatePost</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserCreatePost</servlet-name>
+		<url-pattern>/bq/close/new-post</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>InitCreatePost</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.NewPost</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitCreatePost</servlet-name>
+		<url-pattern>/bq/close/community/post/new</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>ManageProjectServlet</servlet-name>
@@ -631,6 +668,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>GetArticle</servlet-name>
+		<servlet-class>com.bestqualified.servlets.GetArticle</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetArticle</servlet-name>
+		<url-pattern>/bq/community/article/single</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>GetAllCommunities</servlet-name>
 		<servlet-class>com.bestqualified.servlets.GetAllCommunities</servlet-class>
 	</servlet>
@@ -672,7 +718,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>JoinCommunity</servlet-name>
-		<url-pattern>/bq/join-community</url-pattern>
+		<url-pattern>/bq/close/join-community</url-pattern>
 	</servlet-mapping>
 
 	<!-- ***************************************************SERVLET*********************************************************** -->
@@ -963,6 +1009,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<servlet-mapping>
 		<servlet-name>ProfessionalProfilePage</servlet-name>
 		<url-pattern>/bq/close/professional-profile</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>NewPostPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/community/new-post.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NewPostPage</servlet-name>
+		<url-pattern>/bq/close/community/new-post</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>SignUpPage</servlet-name>

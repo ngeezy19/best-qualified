@@ -360,4 +360,17 @@ public class GeneralController {
 		return ents;
 	}
 
+	public static List<Article> getArticlesByCommunity(Key id, int i) {
+		Query q = new Query(Article.class.getSimpleName());
+		q.setFilter(new Query.FilterPredicate("community", FilterOperator.EQUAL,
+				id));
+		PreparedQuery pq = ds.prepare(q);
+		Iterator<Entity> its = pq.asIterator();
+		List<Article> ents = new ArrayList<>();
+		while (its.hasNext()) {
+			ents.add(EntityConverter.entityToArticle(its.next()));
+		}
+		return ents;
+	}
+
 }

@@ -112,6 +112,7 @@ public class CreatePost extends HttpServlet {
 		art.setImageKey(blobKey);
 		art.setCategory(ArticleCategory.POST);
 		art.setAuthor(u.getUserKey());
+		art.setCommunity(comm.getId());
 		
 		listOfPosts.add(art.getKey());
 		comm.setPosts(listOfPosts);

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.bestqualified.entities.Article;
+import com.bestqualified.entities.ArticleCategory;
 import com.bestqualified.entities.AssessmentQuestion;
 import com.bestqualified.entities.Award;
 import com.bestqualified.entities.CandidateProfile;
@@ -139,6 +140,7 @@ public class EntityConverter {
 		c.setBody((Text) e.getProperty("body"));
 		c.setDate((Date) e.getProperty("date"));
 		c.setComments((List<Key>) e.getProperty("comment"));
+		c.setParent((Key) e.getProperty("parent"));
 		return c;
 	}
 	
@@ -208,9 +210,11 @@ public class EntityConverter {
 		a.setViews((Long) e.getProperty("views"));
 		a.setImageKey((BlobKey) e.getProperty("imageKey"));
 		a.setLink((Link) e.getProperty("link"));
+		a.setCategory(ArticleCategory.valueOf((String) e.getProperty("category")));
 		Object o = e.getProperty("nComments");
 		Object l = e.getProperty("likes");
 		Object s = e.getProperty("shares");
+		a.setCommunity((Key) e.getProperty("community"));
 
 		if(o != null) {
 
@@ -246,15 +250,17 @@ public class EntityConverter {
 		e.setIndexedProperty("nComment", a.getnComments());
 		e.setIndexedProperty("likes", a.getLikes());
 		e.setIndexedProperty("shares", a.getShares());
+		e.setIndexedProperty("community", a.getCommunity());
 		return e;
 	}
 
 	public static Entity commentToEntity(Comment c) {
 		Entity e = new Entity(c.getKey());
 		e.setUnindexedProperty("author", c.getAuthor());
-		e.setUnindexedProperty("date", c.getDate());
+		e.setIndexedProperty("date", c.getDate());
 		e.setUnindexedProperty("comments", c.getComments());
 		e.setUnindexedProperty("body", c.getBody());
+		e.setIndexedProperty("parent", c.getParent());
 		return e;
 	}
 

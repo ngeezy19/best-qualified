@@ -2003,10 +2003,10 @@ public class Util {
 			Article a = new Article();
 			User u = EntityConverter.entityToUser(GeneralController
 					.findByKey(art.getAuthor()));
-
+			
 			a.setAuthor(u.getFirstName() + " " + u.getLastName());
 			a.setTitle(art.getTitle());
-			a.setSnippet(art.getBody().getValue().substring(0, 200) + "...");
+			a.setSnippet(art.getBody().getValue().substring(0, 400) + "...");
 			a.setBody(art.getBody().getValue());
 			a.setLikes(art.getLikes());
 			a.setnComments(art.getnComments());
@@ -2015,7 +2015,7 @@ public class Util {
 			ImagesService imagesService = ImagesServiceFactory
 					.getImagesService();
 			ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(
-					art.getImageKey()).imageSize(250);
+					art.getImageKey()).imageSize(500);
 			String servingUrl = imagesService.getServingUrl(options);
 			a.setPictureUrl(servingUrl);
 			a.setPostDate(new SimpleDateFormat("dd MMMM yyyy").format(art
@@ -2042,9 +2042,9 @@ public class Util {
 			ImagesService imagesService = ImagesServiceFactory
 					.getImagesService();
 			ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(
-					com.getImage()).imageSize(150);
+					com.getImage());
 			ServingUrlOptions options1 = ServingUrlOptions.Builder.withBlobKey(
-					com.getWallpaper()).imageSize(250);
+					com.getWallpaper());
 			String servingUrl = imagesService.getServingUrl(options);
 			String servingUrlWall = imagesService.getServingUrl(options1);
 			cb.setWallpaper(servingUrlWall);

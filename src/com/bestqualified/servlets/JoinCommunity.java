@@ -28,7 +28,8 @@ public class JoinCommunity extends HttpServlet {
 	private static final long serialVersionUID = -5311678650298220678L;
 
 	@Override
-	protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = req.getSession();
 
@@ -40,24 +41,25 @@ public class JoinCommunity extends HttpServlet {
 
 		if (o != null) {
 			u = (User) o;
-		}
-		else {
+		} else {
 			synchronized (session) {
 				session.setAttribute("joinError", "no community selected");
-				resp.sendRedirect(resp.encodeRedirectURL("/bq/general-community"));
+				resp.sendRedirect(resp
+						.encodeRedirectURL("/bq/general-community"));
 				return;
-		}
+			}
 		}
 
 		Date date = new Date();
-		List<Key> listOfMembers = new ArrayList<>();
+		List<Key> listOfMembers = null;
 
 		String webKey = req.getParameter("webkey");
 
 		if (!Util.notNull(webKey)) {
 			synchronized (session) {
 				session.setAttribute("joinError", "no community selected");
-				resp.sendRedirect(resp.encodeRedirectURL("/bq/general-community"));
+				resp.sendRedirect(resp
+						.encodeRedirectURL("/bq/general-community"));
 				return;
 
 			}
@@ -65,25 +67,31 @@ public class JoinCommunity extends HttpServlet {
 		}
 		Key key = KeyFactory.stringToKey(webKey);
 		Object o1 = MemcacheProvider.COMMUNITIES.get(key);
-	
+
 		Community c = null;
 		if (o1 == null) {
-			c = EntityConverter.entityToCommunity(GeneralController.findByKey(key));
+			c = EntityConverter.entityToCommunity(GeneralController
+					.findByKey(key));
 			MemcacheProvider.COMMUNITIES.put(key, c);
 
 		} else {
 			c = (Community) o1;
 		}
-
 		
+		listOfMembers = c.getMembers();
+		if(listOfMembers == null) {
+			listOfMembers = new ArrayList<>();
+		}
+
 		listOfMembers.add(u.getUserKey());
 		c.setMembers(listOfMembers);
 
-		GeneralController.createWithCrossGroup(EntityConverter.communityToEntity(c));
+		//GeneralController.createWithCrossGroup(EntityConverter
+			//	.communityToEntity(c));
 
 		synchronized (session) {
-			session.setAttribute("joinSuccess", "Member added");
-			resp.sendRedirect(resp.encodeRedirectURL("/bq/community"));
+			session.setAttribute("communityBean", "Member added");
+			resp.sendRedirect(resp.encodeRedirectURL("/community?webkey="+webKey));
 			return;
 		}
 	}
