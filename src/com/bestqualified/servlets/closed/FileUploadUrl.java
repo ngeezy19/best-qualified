@@ -21,6 +21,7 @@ public class FileUploadUrl extends HttpServlet {
 
 	private static final String CALlBACK = "/upload";
 	private static final String SAVE_PROJECT_URL = "/bq/close/save-project";
+	private static final String NEW_POST = "/bq/close/new-post";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -32,13 +33,15 @@ public class FileUploadUrl extends HttpServlet {
 				.withMaxUploadSizeBytesPerBlob(1024 * 1024 * 1024)
 				.maxUploadSizeBytes(1024 * 1024 * 1024);
 		String upLoadUrl = null;
-		if(param=="new-project") {
+		if (param == "new-project") {
 			upLoadUrl = bss.createUploadUrl(SAVE_PROJECT_URL, upo);
+		} else if (param.equalsIgnoreCase("new-post")) {
+			upLoadUrl = bss.createUploadUrl(NEW_POST, upo);
 		} else {
 			upLoadUrl = bss.createUploadUrl(CALlBACK, upo);
 		}
-	
-		resp.setContentType("text/html");
+
+		resp.setContentType("text/plain");
 		req.setAttribute("uploadUrl", upLoadUrl);
 
 		resp.getWriter().write(upLoadUrl);

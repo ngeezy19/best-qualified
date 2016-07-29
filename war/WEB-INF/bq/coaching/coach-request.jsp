@@ -73,9 +73,10 @@ h2 {
 
 			<div class="col-sm-3" style="padding-top: 1%;">
 				<img alt="" src="/images/manpraying.png"
-					style="height: 250px; width: auto; ">
+					style="height: 250px; width: auto;">
 			</div>
-			<div class="col-sm-9 no-padding-div" style="font-family: roboto; color: #111">
+			<div class="col-sm-9 no-padding-div"
+				style="font-family: roboto; color: #111">
 				<hr style="border-top: 0.05em solid #899bc1" />
 				<h3 style="text-align: justify;">Why waste time trying to
 					figure out how to position you as a top sales professional when the
@@ -106,37 +107,49 @@ h2 {
 					style="width: 25%; margin: 0 auto; margin-top: 2%; margin-bottom: 2%; border-top: 1px solid #8c8b8b; border-bottom: 1px dotted #fff;" />
 			</div>
 			<div class="row">
-				<div class="col-sm-2"></div>
-				<div class="col-sm-5" style="padding: 2%;">
-					<h3 style="margin-bottom: 2%" class="animated fadeIn">
-						<i class="fa fa-line-chart fa-3x" aria-hidden="true"
-							style="margin-right: 1%; color: #983b59"></i> Coaching on Sales
-						Process
-					</h3>
+				<div class="col-sm-3">
+					
+						<div class="col-sm-12">
+							<img alt="" src="/images/coachig-icons-coaching.png" class="img img-responsive">
+						</div>
+						<div class="colsm-12">
+							<h3 style="text-align: center;">Coaching on Sales Process</h3>
+						</div>
+					
 				</div>
-				<div class="col-sm-5" style="padding: 2%;">
-					<h3 style="margin-bottom: 2%;">
-						<i class="fa fa-filter fa-3x" aria-hidden="true"
-							style="margin-right: 1%; color: #3b5998"></i>Sales Strategy
-					</h3>
+				<div class="col-sm-3">
+					
+						<div class="col-sm-12">
+							<img alt="" src="/images/coachig-icons-Strategy.png" class="img img-responsive">
+						</div>
+						<div class="colsm-12">
+							<h3 style="text-align: center;">Sales Strategy</h3>
+						</div>
+					
 				</div>
+				<div class="col-sm-3">
+					
+						<div class="col-sm-12">
+							<img alt="" src="/images/coachig-icons-Behaviour.png" class="img img-responsive">
+						</div>
+						<div class="colsm-12">
+							<h3 style="text-align: center;">Sales Behaviour</h3>
+						</div>
+					
+				</div>
+				<div class="col-sm-3">
+					
+						<div class="col-sm-12">
+							<img alt="" src="/images/coachig-icons-Support.png" class="img img-responsive">
+						</div>
+						<div class="colsm-12">
+							<h3 style="text-align: center;">Career Support</h3>
+						</div>
+					
+				</div>
+				
 			</div>
-			<div class="row">
-				<div class="col-sm-2"></div>
-				<div class="col-sm-5" style="padding: 2%;">
-					<h3 style="margin-bottom: 2%;">
-						<i class="fa fa-users fa-3x" aria-hidden="true"
-							style="margin-right: 1%; color: #59983b"></i>Sales Behaviour
-					</h3>
-				</div>
-				<div class="col-sm-5" style="padding: 2%;">
-					<h3 style="margin-bottom: 2%;">
-						<i class="fa fa-ambulance fa-3x" aria-hidden="true"
-							style="margin-right: 1%; color: #987a3b;"></i>Career Support
-					</h3>
-				</div>
-
-			</div>
+			
 		</div>
 	</div>
 
@@ -204,8 +217,7 @@ h2 {
 
 		</div>
 		<div class="col-sm-3 no-padding-div" style="margin-top: 5px">
-			<img alt=""  class="img img-responsive"
-				src="/images/happy-biz.png">
+			<img alt="" class="img img-responsive" src="/images/happy-biz.png">
 		</div>
 
 	</div>
@@ -231,23 +243,25 @@ h2 {
 					</div>
 				</div>
 				<div class="col-sm-7 no-padding-div"
-					style="padding:2%;padding-bottom: 0px;">
+					style="padding: 2%; padding-bottom: 0px;">
 					<h2 style="color: white;">Case Studies</h2>
 					<div class="col-sm-4">
-						<a target="_blank" href="/casestudies-1.pdf"><img src='/images/cs1.jpg'
-							class="img img-responsive"
+						<a target="_blank" href="/casestudies-1.pdf"><img
+							src='/images/cs1.jpg' class="img img-responsive"
 							style="border: 1px solid gray;"></a>
 						<h4 style="text-align: center;">Case Study 1</h4>
-						<br/>
+						<br />
 					</div>
 					<div class="col-sm-4">
-						<a target="_blank" href="/casestudies-1.pdf"><img src='/images/cs1.jpg'
-							class="img img-responsive" style="border: 1px solid gray"></a>
+						<a target="_blank" href="/casestudies-1.pdf"><img
+							src='/images/cs1.jpg' class="img img-responsive"
+							style="border: 1px solid gray"></a>
 						<h4 style="margin: 3%; text-align: center;">Case Study 2</h4>
 					</div>
 					<div class="col-sm-4">
-						<a target="_blank" href="/casestudies-1.pdf"><img src='/images/cs1.jpg'
-							class="img img-responsive" style="border: 1px solid gray"></a>
+						<a target="_blank" href="/casestudies-1.pdf"><img
+							src='/images/cs1.jpg' class="img img-responsive"
+							style="border: 1px solid gray"></a>
 						<h4 style="margin: 3%; text-align: center;">Case Study 3</h4>
 					</div>
 				</div>
@@ -327,13 +341,13 @@ h2 {
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			
-		/*	$(window).scroll(function(){
-				var aTop = $("#header").height();
-			    if($(this).scrollTop()>=aTop){
-			        alert('ad just passed.');
-			    }
-			  });*/
+
+			/*	$(window).scroll(function(){
+					var aTop = $("#header").height();
+				    if($(this).scrollTop()>=aTop){
+				        alert('ad just passed.');
+				    }
+				  });*/
 
 		});
 	</script>

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -67,7 +68,9 @@ public class InitCommunityBean extends HttpServlet {
 		}
 		
 
-		List<Article> commPosts = GeneralController.getNArticlesByDate(5);
+		List<Article> commPosts = GeneralController.getArticlesByCommunity(c.getId(), 10);
+		
+		
 
 		for (Article at : commPosts) {
 
@@ -89,14 +92,15 @@ public class InitCommunityBean extends HttpServlet {
 		cb.setLongDesc(c.getLongDesc().getValue());
 		cb.setShortDesc(c.getShortDesc().getValue());
 		cb.setMembers(c.getMembers());
-		cb.setWebSafeKey(c.getId().getName());
+		cb.setWebSafeKey(KeyFactory.keyToString(c.getId()));
 		
 
 		synchronized (session) {
 			session.setAttribute("communityBean", cb);
 		}
 
-		resp.sendRedirect(resp.encodeRedirectURL("/bq/single-comm"));
+		RequestDispatcher rd = req.getRequestDispatcher("/bq/single-comm");
+		rd.include(req, resp);
 
 
 	}

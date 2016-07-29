@@ -11,7 +11,30 @@ public class Article implements Serializable, Comparable<Article> {
 	 */
 	
 	private static final long serialVersionUID = -7886491805459375745L;
-	private String pictureUrl,title,author,snippet, webkey;
+	private String pictureUrl,title,author,snippet, webkey, authorImage;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((webkey == null) ? 0 : webkey.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Article other = (Article) obj;
+		if (webkey == null) {
+			if (other.webkey != null)
+				return false;
+		} else if (!webkey.equals(other.webkey))
+			return false;
+		return true;
+	}
 	private String body;
 	private String postDate;
 	private String link;
@@ -19,6 +42,14 @@ public class Article implements Serializable, Comparable<Article> {
 	private long shares;
 	private long nComments;
 	
+	
+	
+	public String getAuthorImage() {
+		return authorImage;
+	}
+	public void setAuthorImage(String authorImage) {
+		this.authorImage = authorImage;
+	}
 	public String getPictureUrl() {
 		return pictureUrl;
 	}

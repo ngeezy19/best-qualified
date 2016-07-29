@@ -11,8 +11,7 @@ public class MemcacheProvider {
 	public static final MemcacheService RECRUITER = MemcacheServiceFactory
 			.getMemcacheService("recruiter");
 	
-	public static final MemcacheService COMMUNITY = MemcacheServiceFactory
-			.getMemcacheService("community");
+	
 	
 	public static final MemcacheService PROFESSIONAL = MemcacheServiceFactory
 			.getMemcacheService("professional");

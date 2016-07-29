@@ -15,262 +15,179 @@
 <link rel="stylesheet" href="/styles/waitMe.css">
 <link rel="stylesheet" href="/styles/font-awesome.min.css">
 <link rel="stylesheet" href="/styles/comi.css">
-<style type="text/css">
-.icons i {
-	margin-right: 2%;
-}
-
-.icons {
-	text-align: right;
-}
-
-body {
-	background-color: #f9f5fb;
-}
-
-h1, p, li {
-	font-family: 'helvetica neue', helvetica, arial, sans-serif;
-	color: #222;
-	margin: 0 0 1em;
-}
-
-section li {
-	margin: 0 0 10px;
-}
-
-h1 {
-	font-size: 2.5em;
-	font-weight: 300;
-}
-
-p {
-	font-size: 1em;
-	line-height: 1.5em;
-}
-
-.imginfo {
-	border: none;
-	position: absolute;
-	display: block;
-	left: 0;
-	right: 0;
-	top: 80px;
-	bottom: 0;
-	width: 100%;
-	height: auto;
-	margin: auto;
-}
-.divinfo {
-	
-	display: block;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	width: 100%;
-	height: auto;
-	
-}
-
-.divnav {
-	height: 100%; /* 100% Full-height */
-	width: 0; /* 0 width - change this with JavaScript */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Stay on top */
-	top: 1;
-	left: 0;
-	background-color: #365998; /*not Black*/
-	overflow-x: hidden; /* Disable horizontal scroll */
-	padding-top: 60px; /* Place content 60px from the top */
-	transition: 0.5s;
-	/* 0.5 second transition effect to slide in the sidenav */
-}
-
-.divnav a {
-	font-family: 'helvetica neue', helvetica, arial, sans-serif;
-	padding: 8px 8px 8px 32px;
-	text-decoration: none;
-	font-size: 25px;
-	color: #818181;
-	display: block;
-	transition: 0.3s
-}
-
-.divnav a:hover {
-	color: #f1f1f1;
-}
-
-.hint {
-	display: none;
-}
-
-.card-panel:hover .hint {
-	display: block;
-}
-
-.closebtn {
-	position: absolute;
-	top: 0;
-	right: 25px;
-	font-size: 36px !important;
-	margin-left: 50px;
-}
-.headingstyle {
-	background: #897aff;
-	border-width: 1px;
-	color: #fff;
-	border-style: solid;
-	font-size: 16px;
-	border-color: #897a90;
-	padding: 5px 15px;
-	margin-bottom: 20px;
-}
-
-hr.style18 { 
- height: 10px;
-	border: 0;
-	box-shadow: 0 10px 10px -10px #8c8b8b inset;
-}
-
-.lspan {
-	display: block;
-	font-family: 'helvetica neue', helvetica, arial, sans-serif;
-	font-weight: 700;
-	background: #365998;
-	width: 42px;
-	height: 42px;
-	line-height: 42px;
-	color: #fff;
-	text-align: center;
-	font-size: 2em;
-	line-height: 1.1em;
-	margin-left: -20px;
-	top: 0px;
-	left: 0px;
-}
-
-.infoname {
-	color: rgba(0, 0, 0, 0.87);
-	font-size: 34px;
-	font-weight: 500;
+<style>
+.new-post-icon {
+	width: 40px;
+	height: 40px;
+	border-radius: 50px;
+	background-color: #c1899b;
+	color: white;
 	line-height: 40px;
-	margin-bottom: -6px;
-	max-height: 105px;
-	overflow: hidden;
-	display: block;
-}
-
-@media screen and (max-height: 450px) {
-	.divnav {
-		padding-top: 15px;
-	}
-	.divnav a {
-		font-size: 18px;
-	}
+	text-align: center;
+	float: left;
+	margin-right: 2%;
 }
 </style>
 </head>
+<%!String[] colors = {};%>
 
-<body>
+<body style="background-color: #edeff5">
 	<%@ include file="/main-nav.html"%>
 	<br>
 	<br>
-	<div class="container-fluid">
+
+
+	<div class="container-fluid" style="margin-top: 0.8em;">
 		<div class="row">
+			<div class="col-sm-3">
 
-			<br>
-
-		</div>
-	</div>
-
-	<div class="container-fluid">
-
-
-		<!-- div class="wrapper">
-			<input type="checkbox" id="navigation" /> <label for="navigation">
-				&#9776;&times;</label-->
-
-
-		<div class="divnav" id="mySidenav">
-
-			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;</a>
-			<a href="/bq/general-community">HOME</a> <a href="/bq/community/comms">COMMUNITIES</a> <a href="/bq/community/article">ARTICLES</a>
-			<c:if test="${not empty user }">
-				<a href="#">PROFILE</a>
-			</c:if>
-			<c:if test="${not empty user }">
-				<a href="#">MY NETWORK</a>
-			</c:if>
-			<a href="#">HELP</a>
-		</div>
-
-		<a href="#"><div class="lspan" onclick="openNav()">&#9776;</div></a>
-
-		<div id="divi">
-			<div class="divinfo" id="divi">
-
-				<div class="col-sm-3 card-panel" style="background:#f9f5fb">
-				
-					<hr class="style18">
-			
-					<div class="row col-sm-12 infoname" style="display: inline-block;">
-						<c:out value='${communityBean.name}' />
-						<br> <br>
+				<div
+					style="width: 300px; position: fixed; height: 100%; background-color: blue">
+					<div class="row">
+						<div class="col-sm-12 no-padding-div">
+							<img src="${communityBean.image}" alt=""
+								class="img img-responsive">
+						</div>
 
 					</div>
-
-
-
-					<div class="row col-sm-12">
-
-						<img src="${communityBean.image}" alt=""
-							class="imginfo img-responsive" height="200" width="200">
-						<br> <br>
-					</div>
-					<br> <br> <br> <br> <br> <br> <br>
-					<br>
-					<br> <br> <br> <br>
-					<br> <br>
-					
-					<div class="row col-sm-12">
-						<c:out value='${communityBean.shortDesc}' />
-					</div>
-				
-					<br>
-					<hr class="style18">
-					<br>
-					<div>
-						<div class="row col-sm-12" style="display: inline-block;">
-							<span style="color: graytext; text-align: center; font-size: medium;">About</span> <br><c:out value='${communityBean.longDesc}' />
+					<div class="row">
+						<div class="col-sm-12 no-padding-div"
+							style="background-color: #983b59; color: white; padding: 2%; text-align: center;">
+							<h3 style="margin: 0px">${communityBean.name}</h3>
 						</div>
 					</div>
-
+					<div class="row">
+						<div class="col-sm-12"
+							style="width: 100%; background-color: #59983b; color: white; padding: 2%; text-align: center;">${communityBean.shortDesc}</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12"
+							style="height: 800px; background-color: #d7ddea; padding: 3%;">
+							<h3 style="color: #3b5998; text-align: center;">About</h3>
+							<p>${communityBean.longDesc}</p>
+						</div>
+					</div>
 				</div>
 
 			</div>
-		</div>
-			<div class="col-sm-8">
-				<c:forEach var="item" items="${communityBean.post}">
-					<div class="col-sm-4">
-						<div class="card-panel" style="width: 100%">
-							<img src="${item.pictureUrl}" alt="" class="img img-responsive">
 
-							${item.author} <br> ${item.postDate} <br> ${item.body}
-							<div> <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>${fn:length(likes)}
-						
-						<i class="fa fa-comments-o" aria-hidden="true"></i>${fn:length(nComments)}
-						
-						<i class="fa fa-bullhorn" aria-hidden="true"></i>${fn:length(shares)}
-						</div>
-						</div>
+
+
+			<div class="col-sm-9" style="margin-top: 1%;">
+
+				<div class="row"
+					style="width: 85%; margin-left: 5%; margin-right: 5%">
+					<div class="col-sm-6">
+						<c:forEach var="item" items="${communityBean.post}" step="2">
+							<div class="card">
+								<div class="card-container">
+									<h4>${item.author}<i style="color: #983b59"
+											class="pull-right">${item.postDate}</i>
+									</h4>
+								</div>
+								<img src="${item.pictureUrl}" alt=""
+									style="width: 100%; border-radius: 0px">
+
+								<div class="card-container">
+									<p>${item.snippet}</p>
+									<hr style="margin-bottom: 0px" />
+									<div style="color: #59983b; font-size: 2rem">
+										<span class="pull-right"><span class="nComment">${fn:length(nComments)}</span></span><i
+											style="margin-right: 5px; cursor: pointer;"
+											class="fa fa-comment-o pull-right make-comment"
+											aria-hidden="true"></i> <i class="fa fa-thumbs-o-up"
+											style="margin-right: 5px; cursor: pointer;"
+											aria-hidden="true"></i> ${fn:length(likes)} <i
+											style="margin-right: 5px; cursor: pointer;"
+											class="fa fa-share-alt" aria-hidden="true"></i>
+										${fn:length(shares)}
+									</div>
+
+								</div>
+								<div class="card-container comment-div"
+									style="background-color: #f4ebee; padding-top: 4px; display: none">
+
+									<div class="form-group">
+										<form class="comment-form">
+											<input type="hidden" value="${item.webkey}" name="webkey" />
+											<textarea name="comment" rows="2"
+												class="form-control comment-area"></textarea>
+										</form>
+									</div>
+									<div class="form-group">
+										<button class="btn btn-primary add-comment-btn">Add
+											Comment</button>
+									</div>
+								</div>
+
+
+							</div>
+						</c:forEach>
 					</div>
-				</c:forEach>
-			</div>
+					<div class="col-sm-6">
+						<c:forEach var="item" items="${communityBean.post}" begin="1"
+							step="2">
+							<div class="card">
+								<div class="card-container">
+									<h4>${item.author}<i style="color: #983b59"
+											class="pull-right">${item.postDate}</i>
+									</h4>
+								</div>
+								<img src="${item.pictureUrl}" alt=""
+									style="width: 100%; border-radius: 0px">
 
-		
+								<div class="card-container">
+									<p>${item.snippet}</p>
+									<hr style="margin-bottom: 0px" />
+									<div style="color: #59983b; font-size: 2rem">
+										<span class="pull-right"><span class="nComment">${fn:length(nComments)}</span></span><i
+											style="margin-right: 5px; cursor: pointer;"
+											class="fa fa-comment-o pull-right make-comment"
+											aria-hidden="true"></i> <i class="fa fa-thumbs-o-up"
+											style="margin-right: 5px; cursor: pointer;"
+											aria-hidden="true"></i> ${fn:length(likes)} <i
+											style="margin-right: 5px; cursor: pointer;"
+											class="fa fa-share-alt" aria-hidden="true"></i>
+										${fn:length(shares)}
+									</div>
+
+								</div>
+								<div class="card-container comment-div"
+									style="background-color: #f4ebee; padding-top: 4px; display: none">
+
+									<div class="form-group">
+										<form class="comment-form">
+											<input type="hidden" value="${item.webkey}" name="webkey" />
+											<textarea name="comment" rows="2"
+												class="form-control comment-area"></textarea>
+										</form>
+									</div>
+									<div class="form-group">
+										<button class="btn btn-primary add-comment-btn">Add
+											Comment</button>
+									</div>
+								</div>
+
+
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</div>
 
+
+	<c:if test="${not empty user}">
+		<div id="new-post-btn" class="fixed-action-btn"
+			style="bottom: 45px; right: 24px;">
+			<a href="<c:url value='/bq/close/community/post/new'/>"
+				class="btn-floating btn-large red"> <i class="fa fa-pencil"
+				aria-hidden="true"></i>
+			</a>
+		</div>
+	</c:if>
 
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
@@ -279,18 +196,37 @@ hr.style18 {
 
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script type="text/javascript">
-		/* Set the width of the side navigation to 250px */
-		function openNav() {
-			document.getElementById("mySidenav").style.width = "250px";
-			document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-		}
+		$(document).ready(function() {
+			$(".make-comment").click(function() {
+				var par = $(this).closest(".card");
+				par.find(".comment-div").slideToggle();
+			});
 
-		/* Set the width of the side navigation to 0 */
-		function closeNav() {
-			document.getElementById("mySidenav").style.width = "0";
-			document.body.style.backgroundColor = "white";
-		}
+			$(".add-comment-btn").click(function() {
+				var x = $(this).closest(".comment-div");
+				var form = x.find(".comment-form");
+				var span = $(this).closest(".card").find(".nComment");
+				var cDiv = $(this).closest(".card").find(".comment-div");
+				var area = cDiv.find(".comment-area");
+				$.ajax({
+					url : "/bq/close/community/comment/add",
+					method : "POST",
+					data : form.serialize(),
+					dataType : "json",
+					success : function(data) {
+						span.text(data);
+						cDiv.slideUp();
+						area.text("");
+					},
+					error : function(xhr) {
+						if (xhr.status == "200") {
+							console.log(xhr.responseText);
+
+						}
+					}
+				});
+			});
+		});
 	</script>
-
 </body>
 </html>
