@@ -475,8 +475,8 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
+			<div class="modal-content"  style="background-color: #c4cde0; color: #17233c;">
+				<div class="modal-header" style="background-color: #a24e69;">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Save Search</h4>
 				</div>
@@ -508,8 +508,8 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
+			<div class="modal-content" style="background-color: #c4cde0; color: #17233c;">
+				<div class="modal-header" style="background-color: #a24e69; color: #17233c;">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">
 						Adding <span id="no-of-candidates"></span> candidate(s) to
@@ -539,11 +539,11 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
+			<div class="modal-content" style="background-color: #c4cde0; color: #17233c;">
+				<div class="modal-header" style="background-color: #a24e69;">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4>
-						Inivite: <span id="name-of-candidate"></span>
+						Invite: <span id="name-of-candidate"></span>
 					</h4>
 					<h5>
 						Email: <span id="email-of-candidate"></span>
