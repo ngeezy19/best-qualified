@@ -28,6 +28,7 @@
 <link href="/styles/bootstrap.min.css" rel="stylesheet">
 <link href="/styles/bootflat.min.css" rel="stylesheet">
 <link href="/styles/font-awesome.min.css" rel="stylesheet">
+<link href="/styles/jquery-ui.min.css" rel="stylesheet">
 <link href="/styles/main.css" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Corben"
 	rel="stylesheet" type="text/css">
@@ -162,11 +163,11 @@ p,div {
 									<div class="row">
 										<div class="form-group col-sm-6">
 											<input class="form-control" type="tel" name="mobile-number"
-												placeholder="Mobile Number" required="required" />
+												placeholder="* Mobile Number" required="required" />
 										</div>
 										<div class="form-group col-sm-6">
 											<input class="form-control datepicker" name="dob"
-												placeholder="Date Of Birth" required="required" />
+												placeholder="* Date Of Birth" required="required" />
 										</div>
 									</div>
 									<div class="row">
@@ -180,7 +181,7 @@ p,div {
 										<div class="form-group col-sm-6">
 											<select class="form-control" name="career-level"
 												required="required">
-												<option value="" disabled selected hidden>Career
+												<option value="" disabled selected hidden>* Career
 													Level</option>
 												<option value="101">Student
 													(Undergraduate/Graduate)</option>
@@ -200,20 +201,21 @@ p,div {
 
 											<select required="required" class="form-control"
 												name="educational-level">
-												<option value="" disabled selected hidden>Highest
+												<option value="" disabled selected hidden>* Highest
 													Education Level</option>
-												<option>Higher National Diploma</option>
-												<option>Bachelor's Degree</option>
-												<option>Master's Degree</option>
-												<option>Post Graduate Diploma</option>
-												<option>Doctorate</option>
-												<option>professional</option>
+												<option value="501">Higher National Diploma</option>
+												<option value="502">Bachelor's Degree</option>
+												<option value="503">Master's Degree</option>
+												<option value="504">Post Graduate Diploma</option>
+												<option value="505">Doctorate</option>
+												<option value="506">Professional</option>
 											</select>
 										</div>
 										<div class="form-group col-sm-6">
 											<select class="form-control" required="required"
 												name="job-type">
-												<option value="" disabled selected hidden>Job Type</option>
+												<option value="" disabled selected hidden>* Job
+													Type</option>
 												<option value="301">Freelance</option>
 												<option value="302">Full Time</option>
 												<option value="303">Internship</option>
@@ -227,8 +229,8 @@ p,div {
 										<div class="form-group col-sm-6">
 
 											<select class="form-control" required="required"
-												name="loaction">
-												<option value="" disabled selected hidden>Your
+												name="location">
+												<option value="" disabled selected hidden>* Your
 													Location</option>
 												<option>Abia</option>
 												<option>Abuja</option>
@@ -273,7 +275,7 @@ p,div {
 										<div class="form-group col-sm-6">
 											<select class="form-control" name="salary"
 												required="required">
-												<option value="" disabled selected hidden>Salary</option>
+												<option value="" disabled selected hidden>* Salary</option>
 												<option value="201">10,000 - 50,000</option>
 												<option value="202">50,000 - 100,000</option>
 												<option value="203">100,000 - 300,000</option>
@@ -286,14 +288,14 @@ p,div {
 									<div class="row">
 										<div class="form-group col-sm-6">
 											<input class="form-control" type="number" name="experience"
-												placeholder="Years Of Experience" required="required" />
+												placeholder="* Years Of Experience" required="required" />
 										</div>
 										<div class="form-group col-sm-6">
 											<input class="form-control" type="file" name="cv"
 												placeholder="Upload Your CV" required="required" /> <span
 												class="text-info"
-												style="font-family: calibri; font-size: 11pt">Upload
-												Your CV</span>
+												style="font-family: calibri; font-size: 11pt">*
+												Upload Your CV</span>
 										</div>
 									</div>
 									<div class="row">
@@ -314,11 +316,12 @@ p,div {
 							<input type="hidden" class="url"
 								value="/partial/bq-interest.html #connect-with-professionals">
 							<div class="col-sm-12 mi-content" style="display: none;">
-								<form id="connect-with-professionals"
+								<form id="recruit-professionals"
 									action="/bq/endpoint/default-user" method="post">
 									<div class="row">
 										<div class="form-group col-sm-12">
-											<p class="text-info" style="color: red; font-size: 10pt">Tell us where you work, * All fields are required</p>
+											<p class="text-info" style="color: red; font-size: 10pt">Tell
+												us where you work, * All fields are required</p>
 										</div>
 									</div>
 									<div class="row">
@@ -348,129 +351,56 @@ p,div {
 								</div>
 							</div>
 							<div class="col-sm-12 mi-content" style="display: none;">
-								<form id="recruit-professionals"
-									action="<c:url value='/bq/endpoint/recruit-professional-user' />">
-									<div class="row">
-										<div class="form-group col-sm-12">
-											<p class="text-info" style="color: red; font-size: 10pt">Your company name, description, location and logo are
-												required</p>
-											<p class="text-info" style="color: red; font-size: 10pt">When recruiting for a third party you will be able to
-												specify the company information to use</p>
-										</div>
-									</div>
 
-									<div class="row">
-										<div class="form-group col-sm-6">
-											<input class="form-control" name="company-name"
-												placeholder="Company Name" required="required" />
+								<div class="section">
+									<input type="hidden" value="1" class="step">
+									<form action="<c:url value='/endpoint/init-recruiter-mj1' />">
+										<div class="row">
+											<div class="form-group col-sm-12">
+												<p class="text-info"
+													style="font-size: 10pt; margin-bottom: 4px; font-weight: bold;">Tell
+													Us about your organization</p>
+												<p class="text-info" style="color: red; font-size: 10pt">*
+													When recruiting for a third party you will be able to
+													specify the company information to use</p>
+											</div>
 										</div>
-										<div class="form-group col-sm-6">
-											<input class="form-control" name="company-location"
-												placeholder="Company Location" required="required" />
+										<div class="row">
+											<div class="form-group col-sm-12">
+												<div class="msg-div"></div>
+											</div>
 										</div>
-									</div>
-									<div class="row">
-										<div class="form-group col-sm-6">
-											<input class="form-control" type="file" name="company-logo"
-												placeholder="Company Logo" required="required" /> <span
-												class="text-info" style="font-size: 10pt">Company Logo</span>
+
+										<div class="row">
+											<div class="form-group col-sm-6">
+												<input class="form-control" name="tagline"
+													placeholder="* Your Job Title" required="required" />
+											</div>
+											<div class="form-group col-sm-6">
+												<input class="form-control" name="recruiter-website"
+													placeholder="Your Company Website" />
+											</div>
 										</div>
-										<div class="form-group col-sm-6">
-											<input class="form-control" name="company-website"
-												placeholder="Company Website" />
+										<div class="row">
+
+											<div class="form-group col-sm-12">
+												<input class="form-control" name="recruiter-company-name"
+													placeholder="* Your Company Name" required="required" />
+											</div>
 										</div>
-									</div>
-									
-									<input type="hidden" name="user-type" value="RECRUITER" />
-									<div class="row">
-										<div class="form-group col-sm-12">
-											<input type="submit" value="Continue" class="btn btn-primary">
+										<div class="row">
+											<div class="form-group col-sm-12">
+												<input type="button" value="Continue"
+													class="btn btn-primary mj-butt">
+											</div>
 										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-12">
-								<div class="radio">
-									<label><input class="mj" type="radio" name="interest">Be
-										a coach</label>
+									</form>
 								</div>
-							</div>
-
-							<div class="col-sm-12 mi-content" style="display: none;">
-								<form id="be-a-coach"
-									action="<c:url value='/bq/endpoint/be-a-coach'/>">
-									<div class="row">
-										<div class="form-group col-sm-12 instructions">
-											<p class="text-info" style="color: red; font-size: 10pt">* All fields are required</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="form-group col-sm-6">
-											<input class="form-control" type="tel" name="mobile-number"
-												placeholder="Mobile Number" required="required" />
-										</div>
-										<div class="form-group col-sm-6">
-											<input class="form-control" name="dob"
-												placeholder="Date Of Birth" required="required" />
-										</div>
-									</div>
-									<div class="row">
-										<div class="form-group col-sm-6">
-
-											<label class="radio-inline"><input type="radio"
-												value="female" name="gender">Female</label> <label
-												class="radio-inline"><input type="radio"
-												name="gender" value="male">Male</label>
-										</div>
-										<div class="form-group col-sm-6">
-											<select required="required" class="form-control"
-												name="educational-level">
-												<option value="" disabled selected hidden>Education
-													Level</option>
-												<option>Higher National Diploma</option>
-												<option>Bachelor's Degree</option>
-												<option>Master's Degree</option>
-												<option>Post Graduate Diploma</option>
-												<option>Doctorate</option>
-												<option>professional</option>
-											</select>
-										</div>
-									</div>
-									<div class="row"
-										style="background-color: #eaeaea; border: 1px solid #dadada; padding-top: 2%; margin-bottom: 1%;">
-										<div class="form-group col-sm-6">
-											<input class="form-control" name="award-name"
-												placeholder="Certification/Award" required="required" />
-										</div>
-										<div class="form-group col-sm-3">
-											<input class="form-control" name="award-month"
-												placeholder="Month Obtained" required="required" />
-										</div>
-										<div class="form-group col-sm-3">
-											<input class="form-control" name="award-year"
-												placeholder="Year Obtained" required="required" />
-										</div>
-										<div class="col-sm-12">Add new</div>
-									</div>
-									<div class="row">
-										<div class="form-group col-sm-12">
-											<input class="form-control" type="file" name="cv"
-												placeholder="Upload Your CV" required="required" /> <span
-												class="text-info" style="font-size: 10pt">Upload Your CV</span>
-										</div>
-									</div>
-									<input type="hidden" name="user-type" value="COACH" />
-									<div class="row">
-										<div class="form-group col-sm-12">
-											<input type="submit" value="Continue" class="btn btn-primary">
-										</div>
-									</div>
-								</form>
+								<%@ include file="/partial/create-project.html"%>
+								<%@ include file="/partial/create-job.html"%>
+								<%@ include file="/partial/add-company.html"%>
 							</div>
 						</div>
-
 					</div>
 
 
@@ -481,9 +411,50 @@ p,div {
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery-ui.min.js"></script>
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+	<script src="/js/main.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
+			tinymce.init({
+				selector : '.tiny'
+			});
+			$(".datepicker").datepicker({
+				changeMonth : true,
+				changeYear : true
+			});
+			$(".mj-butt").click(function() {
+				var form = $(this).closest("form");
+				var par = $(this).closest(".section");
+				var msgD = par.find(".msg-div");
+				var step = par.find(".step").val();
+				$.ajax({
+					url : form.prop("action"),
+					method : "POST",
+					data : form.serialize(),
+					dataType : "json",
+					success : function() {
+						alert("success")
+					},
+					error : function(xhr) {
+						console.log(xhr);
+						if (xhr.status == "417") {
+							addError(msgD, xhr.statusText);
+						} else if (xhr.status == "200") {
+							par.slideUp();
+							if (step == "1") {
+								$("#create-project-div").show();
+							} else if (step == "2") {
+								$("#create-job-div").show();
+							} else if (step == "3") {
+								$("#add-company-info-div").show();
 
+							}
+						}
+
+					}
+
+				});
+			});
 			$(".mj").click(function() {
 				$(".mj").prop('disabled', false);
 				$(this).prop('disabled', true);
@@ -492,9 +463,8 @@ p,div {
 					setTimeout(function() {
 						parent.find(".mi-content").slideDown("slow");
 					}, 500);
-					
+
 				});
-				
 
 			});
 		});

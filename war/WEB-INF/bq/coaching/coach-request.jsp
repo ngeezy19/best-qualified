@@ -17,64 +17,32 @@
 <link href="http://fonts.googleapis.com/css?family=Corben"
 	rel="stylesheet" type="text/css">
 <style type="text/css">
-.grad1 {
-	background: #dadada;
-	background: -webkit-linear-gradient(right, #dadada, white);
-	background: -o-linear-gradient(left, #dadada, white);
-	background: -moz-linear-gradient(left, #dadada, white);
-	background: linear-gradient(to left, #dadada, white);
-}
-
-.cert-view-header {
-	background-color: #013143;
-	background: -webkit-linear-gradient(right, #013143, #738e97);
-	/* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(left, #013143, #738e97);
-	/* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(left, #013143, #738e97);
-	/* For Firefox 3.6 to 15 */
-	background: linear-gradient(to left, #013143, #738e97);
-	/* Standard syntax (must be last) */
-}
-
-.training-intro {
-	border: 1px solid #444;
-	background: #666;
-	padding: 2%;
-	border-left: 5px solid orange;
-	color: white;
-}
-
-.workshop-info {
-	margin-top: 2%;
-	background: #fafafa; /* For browsers that do not support gradients */
-	background: -webkit-linear-gradient(#eaeaea, white);
-	/* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(#eaeaea, white);
-	/* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(#eaeaea, white);
-	/* For Firefox 3.6 to 15 */
-	background: linear-gradient(#eaeaea, white); /* Standard syntax */
-}
-
-.workshop-info p {
-	font-family: calibri
+h2 {
+	font-family: 'Corben', Georgia, Times, serif !important;
+	font-weight: bold;
 }
 </style>
 </head>
 <body>
 	<%@ include file="/main-nav.html"%>
 	<br />
-	<div class="container-fluid grad1">
-		<br /><br/>
+	<div id="header" class="container-fluid banner-grad">
+		<br /> <br />
 		<div class="row">
 			<div class="col-sm-7" style="text-align: center;">
 
 				<h1
-					style="color: #013143; font-family: roboto; margin-top: 10%; font-size: 32pt">
-					<span class="text-primary">Need a Coach?</span> <span
-						style="color: red; padding-left: 1%;">Talk To Us Now</span>
+					style="color: #013143; font-family: roboto; margin-top: 6%; font-size: 32pt">
+					<span class="span-1">BQ Coaching</span> <span class="span-1"
+						style="padding-left: 2%;">& Career Support</span>
 				</h1>
+				<div class="row" style="text-align: center;">
+					<p style="font-size: 12pt; font-weight: bold; color: #3b5998">
+						A platform where we offer a consultative approach to<br /> sales
+						and marketing through the use of bespoke<br /> courses to fit
+						your individual<br /> requirements.
+					</p>
+				</div>
 
 			</div>
 			<div class="col-sm-5">
@@ -83,140 +51,305 @@
 						class="img img-responsive">
 				</div>
 			</div>
+			<div class="col-sm-12 hidden-xs"
+				style="font-weight: bold; padding: 4px; background-color: #c1899b; color: white">
+				<div class="col-sm-6">
+					<c:out value='${currentDate}' />
+				</div>
+				<div class="col-sm-6 pull-right icons">
+					<i class="fa fa-facebook" aria-hidden="true"></i><i
+						class="fa fa-google-plus" aria-hidden="true"></i><i
+						class="fa fa-twitter" aria-hidden="true"></i><i
+						class="fa fa-linkedin" aria-hidden="true"></i>
+				</div>
+			</div>
 		</div>
 	</div>
 
-	<div class="container" style="margin-top: 2%; margin-bottom: 2%;">
-		<div class="col-sm-8">
+	<div class="container">
+
+		<div class="" style="padding-top: 2%;">
+
+
+			<div class="col-sm-3" style="padding-top: 1%;">
+				<img alt="" src="/images/manpraying.png"
+					style="height: 250px; width: auto;">
+			</div>
+			<div class="col-sm-9 no-padding-div"
+				style="font-family: roboto; color: #111">
+				<hr style="border-top: 0.05em solid #899bc1" />
+				<h3 style="text-align: justify;">Why waste time trying to
+					figure out how to position you as a top sales professional when the
+					sales game is constantly changing?</h3>
+
+				<h3 style="text-align: justify;">Request for a Coach today to
+					brainstorm ideas and make critical decisions to be outstanding in
+					your sales career!</h3>
+				<div>
+					<a href="<c:url value='/bq/coaching/coach-request-form' />"
+						class="btn btn-fault btn-lg"
+						style="background-color: #983b59; color: white">Get Started</a>
+					<hr style="border-top: 0.05em solid #899bc1" />
+				</div>
+			</div>
+
+
+		</div>
+
+	</div>
+	<div class="container-fluid"
+		style="background-color: #eee9df; padding: 2%;">
+		<div class="container">
 			<div class="row">
-				<div class="col-sm-12">
-					<div class="training-intro" style="padding: 2%;">
-						<p>Need help in preparing for an interview, or in solving a
-							workplace problem or just some form of guidance in the
-							application of a concept/tactic in the workplace?</p>
-						<p>Fill out the form below and we would connect you to the
-							best coach.</p>
+				<h2 style="color: #983b59; text-align: center;">Some of our
+					service offerings include</h2>
+				<hr
+					style="width: 25%; margin: 0 auto; margin-top: 2%; margin-bottom: 2%; border-top: 1px solid #8c8b8b; border-bottom: 1px dotted #fff;" />
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					
+						<div class="col-sm-12">
+							<img alt="" src="/images/coachig-icons-coaching.png" class="img img-responsive">
+						</div>
+						<div class="colsm-12">
+							<h3 style="text-align: center;">Coaching on Sales Process</h3>
+						</div>
+					
+				</div>
+				<div class="col-sm-3">
+					
+						<div class="col-sm-12">
+							<img alt="" src="/images/coachig-icons-Strategy.png" class="img img-responsive">
+						</div>
+						<div class="colsm-12">
+							<h3 style="text-align: center;">Sales Strategy</h3>
+						</div>
+					
+				</div>
+				<div class="col-sm-3">
+					
+						<div class="col-sm-12">
+							<img alt="" src="/images/coachig-icons-Behaviour.png" class="img img-responsive">
+						</div>
+						<div class="colsm-12">
+							<h3 style="text-align: center;">Sales Behaviour</h3>
+						</div>
+					
+				</div>
+				<div class="col-sm-3">
+					
+						<div class="col-sm-12">
+							<img alt="" src="/images/coachig-icons-Support.png" class="img img-responsive">
+						</div>
+						<div class="colsm-12">
+							<h3 style="text-align: center;">Career Support</h3>
+						</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+
+
+	<div class="container">
+
+
+		<div class="col-sm-9" style="margin-top: 3%; padding-top: 5px;">
+			<h2 style="color: #983b59; text-align: center;">What you stand
+				to gain</h2>
+
+			<div class="row">
+				<div class="col-sm-1" style="text-align: right;">
+					<h2 style="margin-top: 5px;">
+						<i style="color: #3b5998" class="fa fa-check" aria-hidden="true"></i>
+					</h2>
+				</div>
+				<div class="col-sm-11">
+					<h4>We will help you define your goals and strategies leading
+						to maximised sales energy, focus and engagement</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-1" style="text-align: right;">
+					<h2 style="margin-top: 5px;">
+						<i style="color: #3b5998" class="fa fa-check" aria-hidden="true"></i>
+					</h2>
+				</div>
+				<div class="col-sm-11">
+					<h4>Our unique coaching system will help you reach your goals.
+						We ensure that you maintain current, written and public action
+						plans</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-1" style="text-align: right;">
+					<h2 style="margin-top: 5px;">
+						<i style="color: #3b5998" class="fa fa-check" aria-hidden="true"></i>
+					</h2>
+				</div>
+				<div class="col-sm-11">
+					<h4>We will allow you ask exploratory questions and guide you
+						on how to answer them</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-1" style="text-align: right;">
+					<h2 style="margin-top: 5px;">
+						<i style="color: #3b5998" class="fa fa-check" aria-hidden="true"></i>
+					</h2>
+				</div>
+				<div class="col-sm-11">
+					<h4>We also guarantee you actionable feedback throughout the
+						coaching sessions</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-offset-1 col-sm-11">
+					<a href="<c:url value='/bq/coaching/coach-request-form' />"
+						class="btn btn-success btn-lg"
+						style="background-color: #987a3b; border-color: #987a3b">Ask
+						for a coach</a>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-sm-3 no-padding-div" style="margin-top: 5px">
+			<img alt="" class="img img-responsive" src="/images/happy-biz.png">
+		</div>
+
+	</div>
+
+	<div class="container-fluid"
+		style="background-color: #f6f4ef; padding: 2%;">
+		<div class="container">
+			<div class="row" style="background-color: #cdbea0">
+				<div class="col-sm-5 no-padding-div"
+					style="background-color: #b0bcd5; padding: 2%;">
+					<h2 style="color: white;">How It Works</h2>
+					<p>Our BQ Sales Coaching program is designed to identify and
+						facilitate better management performance for sales and marketing
+						professionals.</p>
+					<p>The program is offered as either offline (face to face) or
+						online coaching sessions delivered in 6 session cycles over a
+						3-month period.</p>
+					<div class="form-group" style="text-align: center">
+						<a href="<c:url value='/bq/coaching/coach-request-form' />"
+							class="btn btn-success btn-lg"
+							style="background-color: #ac627a; border-color: #ac627a">Get
+							Started Now</a>
+					</div>
+				</div>
+				<div class="col-sm-7 no-padding-div"
+					style="padding: 2%; padding-bottom: 0px;">
+					<h2 style="color: white;">Case Studies</h2>
+					<div class="col-sm-4">
+						<a target="_blank" href="/casestudies-1.pdf"><img
+							src='/images/cs1.jpg' class="img img-responsive"
+							style="border: 1px solid gray;"></a>
+						<h4 style="text-align: center;">Case Study 1</h4>
+						<br />
+					</div>
+					<div class="col-sm-4">
+						<a target="_blank" href="/casestudies-1.pdf"><img
+							src='/images/cs1.jpg' class="img img-responsive"
+							style="border: 1px solid gray"></a>
+						<h4 style="margin: 3%; text-align: center;">Case Study 2</h4>
+					</div>
+					<div class="col-sm-4">
+						<a target="_blank" href="/casestudies-1.pdf"><img
+							src='/images/cs1.jpg' class="img img-responsive"
+							style="border: 1px solid gray"></a>
+						<h4 style="margin: 3%; text-align: center;">Case Study 3</h4>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-sm-12">
-					<form id="coach-request-form" action="send-coach-request"
-						method="POST">
-						<div class="request-coach-div" style="background-color: white">
-							<div class="col-sm-12">
-								<p class="text-danger" style="font-family: calibri">
-									<i>All fields are required</i>
-								</p>
-							</div>
-							<div class="col-sm-12">
-								<div id="msg-div"></div>
-							</div>
-							<div class="form-group col-sm-6">
-								<label>First Name </label> <input name="first-name"
-									value="${user.firstName}" id="first-name" class="form-control">
-							</div>
-							<div class="form-group col-sm-6">
-								<label>Last Name </label> <input name="last-name" id="last-name"
-									value="${user.lastName}" class="form-control">
-							</div>
-							<div class="form-group col-sm-6">
-								<label>Email </label> <input name="email" id="email"
-									value="${user.email}" class="form-control">
-							</div>
-							<div class="form-group col-sm-6">
-								<label>Phone </label> <input name="phone" id="phone"
-									value="${user.phone}" class="form-control">
-							</div>
-							<div class="form-group col-sm-12">
-								<label>Title </label> <input name="title" id="title"
-									class="form-control">
-							</div>
-							<div class="form-group col-sm-12">
-								<label>Body:</label>
-								<textarea class="tiny form-control" rows="12" name="content"
-									id="content"></textarea>
-							</div>
-							<div class="form-group col-sm-12">
-								<input type="button" id="send-request" class="btn btn-primary"
-									value="Send Request" />
-							</div>
-						</div>
-					</form>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<h2 style="color: #983b59; margin-bottom: 4%; text-align: center;">Testimonials</h2>
+			<div class="col-sm-4">
+				<div class="col-sm-12" style="text-align: center">
+					<img alt="" src="/images/client-1.jpe" class="img img-circle"
+						style="width: 200px; margin: 0 auto; border: 2px solid #983b59">
+				</div>
+				<div class="col-sm-12" style="text-align: center; margin-top: 2%;">
+					<p class="text-muted">"facilitate better management performance
+						for sales and marketing professionalsOur BQ Sales Coaching program
+						is designed to identify and facilitate better management
+						performance for sales and marketing professionals"</p>
+					<p class="text-muted"
+						style="font-family: calibri; font-style: italic; font-weight: bold;">Deborah
+						Cox</p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="col-sm-12" style="text-align: center">
+					<img alt="" src="/images/client-1.jpe" class="img img-circle"
+						style="width: 200px; margin: 0 auto; border: 2px solid #983b59">
+				</div>
+				<div class="col-sm-12 text-muted"
+					style="text-align: center; margin-top: 2%;">
+					<p>"facilitate better management performance for sales and
+						marketing professionalsOur BQ Sales Coaching program is designed
+						to identify and facilitate better management performance for sales
+						and marketing professionals"</p>
+					<p class="text-muted"
+						style="font-family: calibri; font-style: italic; font-weight: bold;">Jamie
+						Jackson</p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="col-sm-12" style="text-align: center">
+					<img alt="" src="/images/client-1.jpe" class="img img-circle"
+						style="width: 200px; margin: 0 auto; border: 2px solid #983b59">
+				</div>
+				<div class="col-sm-12 text-muted"
+					style="text-align: center; margin-top: 2%;">
+					<p>"facilitate better management performance for sales and
+						marketing professionalsOur BQ Sales Coaching program is designed
+						to identify and facilitate better management performance for sales
+						and marketing professionals"</p>
+					<p class="text-muted"
+						style="font-family: calibri; font-style: italic; font-weight: bold;">Nomi
+						Malone</p>
 				</div>
 			</div>
 
 		</div>
-		<div class="col-sm-4">
-			<%@ include file="/WEB-INF/pages/certification-sidebar.html"%>
+		<div class="row" style="margin: 2%;">
+			<div class="form-group" style="text-align: center">
+				<a href="<c:url value='/bq/coaching/coach-request-form' />"
+					class="btn btn-success btn-lg"
+					style="font-size: 22pt; background-color: #983b59; border-color: #983b59">Consult
+					A Coach Now</a>
+			</div>
 		</div>
 	</div>
 
-	<%@ include file="/WEB-INF/pages/footer.html"%>
+	<div class="container-fluid">
+		<div class="row"><%@ include file="/WEB-INF/pages/footer.html"%></div>
+	</div>
+
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/waitMe.js"></script>
 	<script src="/js/main.js"></script>
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							tinymce.init({
-								selector : '.tiny'
-							});
+		$(document).ready(function() {
 
-							$("#send-request")
-									.click(
-											function() {
+			/*	$(window).scroll(function(){
+					var aTop = $("#header").height();
+				    if($(this).scrollTop()>=aTop){
+				        alert('ad just passed.');
+				    }
+				  });*/
 
-												$
-														.ajax({
-															url : "/bq/coaching/send-coach-request",
-															method : "POST",
-															data : {
-																"first-name" : $(
-																		"#first-name")
-																		.val(),
-																"last-name" : $(
-																		"#last-name")
-																		.val(),
-																"email" : $(
-																		"#email")
-																		.val(),
-																"phone" : $(
-																		"#phone")
-																		.val(),
-																"title" : $(
-																		"#title")
-																		.val(),
-																"content" : tinymce
-																		.get(
-																				'content')
-																		.getContent()
-															},
-															dataType : "json",
-															success : function(
-																	data) {
-																addSuccess(
-																		$("#msg-div"),
-																		"Your request has been sent. A coach will contact you shortly.");
-															},
-															error : function(
-																	xhr) {
-																if (xhr.status == 417) {
-																	addError(
-																			$("#msg-div"),
-																			xhr.statusText);
-																} else if (xhr.status == 200) {
-																	addSuccess(
-																			$("#msg-div"),
-																			"Your request has been sent. A coach will contact you shortly.");
-																}
-															}
-														});
-											});
-						});
+		});
 	</script>
 </body>
 </html>

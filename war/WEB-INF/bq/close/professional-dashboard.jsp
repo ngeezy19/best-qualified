@@ -150,38 +150,24 @@
 
 			<div class="row" style="margin-bottom: 2%;">
 				<div class="col-sm-12 card-panel"
-					style="background-color: #fafafa; margin-bottom: 2px">
-					<div class="col-sm-12">
+					style="padding: 2px; color: white; background-color: gray">
+					<div class="col-sm-6">
 						<h4 style="cursor: pointer;" id="article-trig">
-							Write an article <i class="fa fa-pencil-square-o"
-								aria-hidden="true"></i>
+							<i class="fa fa-newspaper-o" aria-hidden="true"
+								style="padding-right: 1%;"></i> Write an article</h4>
+					</div>
+					<div class="col-sm-6">
+						<h4 style="cursor: pointer;" id="discussion-trig">
+							<i class="fa fa-comments-o" aria-hidden="true"
+								style="padding-right: 1%;"></i> Start a discussion
 						</h4>
 					</div>
-					<form
-						action="<%=blobstoreService.createUploadUrl(
-					"/bq/endpoint/find-a-job-user", options)%>"
-						method="post" enctype="multipart/form-data">
-						<div class="col-sm-12 article-div" style="display: none">
-							<div class="form-group">
-								<input placeholder="Title" id="article-title"
-									class="form-control" name="title" />
-							</div>
-							<div class="form-group">
-								<textarea rows="7" class="form-control tiny" id="article-text"
-									name="post"></textarea>
-							</div>
-							<input type="hidden" name="subscribe" value="true" />
-							<div class="form-group">
-								<span>Add a featured image</span> <input type="file"
-									name="image" class="form-control" />
-							</div>
-							<div class="form-group">
-								<input type="submit" class="btn btn-primary"
-									value="Post Article" /> <input id="close-article"
-									type="button" class="btn btn-danger" value="Close" />
-							</div>
-						</div>
-					</form>
+					<div class="col-sm-12 no-padding-div">
+						<%@ include file="/partial/new-article.html"%>
+					</div>
+					<div class="col-sm-12 no-padding-div">
+						<%@ include file="/partial/new-discussion.html"%>
+					</div>
 				</div>
 			</div>
 
@@ -369,12 +355,13 @@
 
 	</div>
 
-	<
+	
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.webui-popover.min.js"></script>
 	<script src="/js/waitMe.js"></script>
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script src="/js/main.js"></script>
 	<script src="/js/bootstrap-rating.min.js"></script>
 	<script type="text/javascript">
@@ -394,12 +381,7 @@
 				$("#applied-jobs-div").slideToggle();
 
 			});
-			$("#article-trig").click(function() {
-				$(".article-div").slideDown("slow");
-			});
-			$("#close-article").click(function() {
-				$(".article-div").slideUp("slow");
-			});
+			
 		});
 	</script>
 

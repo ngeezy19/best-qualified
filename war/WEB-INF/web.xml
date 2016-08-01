@@ -4,6 +4,124 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
+	
+	<servlet>
+		<servlet-name>LikeArticle</servlet-name>
+		<servlet-class>com.bestqualified.servlets.LikeArticle</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LikeArticle</servlet-name>
+		<url-pattern>/bq/close/like</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>InterswitchResponse</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InterswitchResponse</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterswitchResponse</servlet-name>
+		<url-pattern>/callback/interswitch</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>GetBookURL</servlet-name>
+		<servlet-class>com.bestqualified.servlets.GetBookURL</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetBookURL</servlet-name>
+		<url-pattern>/bq/books</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AddComment</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.AddComment</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddComment</servlet-name>
+		<url-pattern>/bq/close/community/comment/add</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SendInviteServlet</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.SendInviteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SendInviteServlet</servlet-name>
+		<url-pattern>/bq/closed/send-invite</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>SavedSearchServlet</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.SaveSearchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SavedSearchServlet</servlet-name>
+		<url-pattern>/bq/closed/save-search</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>GetCandidateProfile</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.GetProfessionalProfile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetCandidateProfile</servlet-name>
+		<url-pattern>/bq/closed/get-candidate-profile</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AddCandidateToProject</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.AddCandidateToProject</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddCandidateToProject</servlet-name>
+		<url-pattern>/bq/closed/add-candidate-to-project</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>FindCandidateServlet</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.FindCandidateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FindCandidateServlet</servlet-name>
+		<url-pattern>/bq/closed/search-candidate</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AllCandidates</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.AllCandidates</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AllCandidates</servlet-name>
+		<url-pattern>/bq/closed/all-candidates</url-pattern>
+		<url-pattern>/bq/closed/find-candidates</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>InitRecruiterMajorInterest1</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitRecruiterMajorInterest1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitRecruiterMajorInterest1</servlet-name>
+		<url-pattern>/endpoint/init-recruiter-mj1</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>InitRecruiterMajorInterest2</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitRecruiterMajorInterest2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitRecruiterMajorInterest2</servlet-name>
+		<url-pattern>/endpoint/init-recruiter-mj2</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>InitRecruiterMajorInterest3</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitRecruiterMajorInterest3</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitRecruiterMajorInterest3</servlet-name>
+		<url-pattern>/endpoint/init-recruiter-mj3</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>InitRecruiterMajorInterest4</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitRecruiterMajorInterest4</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitRecruiterMajorInterest4</servlet-name>
+		<url-pattern>/endpoint/init-recruiter-mj4</url-pattern>
+	</servlet-mapping>
 	<listener>
 		<listener-class>com.bestqualified.listeners.BestQualifiedSessionListener</listener-class>
 	</listener>
@@ -272,6 +390,24 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>ServeBlob</servlet-name>
 		<url-pattern>/bq/close/serve-blob</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UserCreatePost</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.CreatePost</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserCreatePost</servlet-name>
+		<url-pattern>/bq/close/new-post</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>InitCreatePost</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.NewPost</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitCreatePost</servlet-name>
+		<url-pattern>/bq/close/community/post/new</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>ManageProjectServlet</servlet-name>
@@ -345,14 +481,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<servlet-mapping>
 		<servlet-name>CoachingHome</servlet-name>
 		<url-pattern>/bq/coaching/home</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>CommunityHome</servlet-name>
-		<servlet-class>com.bestqualified.servlets.community.InitCommunity</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>CommunityHome</servlet-name>
-		<url-pattern>/bq/community/home</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>SaveJobAlert</servlet-name>
@@ -443,13 +571,20 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<servlet-mapping>
 		<servlet-name>CreateArticleServlet</servlet-name>
 		<url-pattern>/bq/admin/create-article</url-pattern>
+		<url-pattern>/bq/close/create-article</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
-<<<<<<< HEAD
-=======
+		<servlet-name>GetCommunities</servlet-name>
+		<servlet-class>com.bestqualified.servlets.GetCommunities</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetCommunities</servlet-name>
+		<url-pattern>/bq/get-comm</url-pattern>
+	</servlet-mapping>
 
->>>>>>> 89c8eb2f44bf92a9dfaa3abbcdc9fde8216965e4
+	<servlet>
+
 		<servlet-name>InitIndex</servlet-name>
 		<servlet-class>com.bestqualified.servlets.InitIndex</servlet-class>
 	</servlet>
@@ -493,24 +628,27 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>BeACoach</servlet-name>
 		<url-pattern>/bq/endpoint/be-a-coach</url-pattern>
 	</servlet-mapping>
-<<<<<<< HEAD
 
 	<servlet>
-		<servlet-name>CreateReadingList</servlet-name>
-=======
-	
+	    <servlet-name>CreatePost</servlet-name>
+	    <servlet-class>com.bestqualified.admin.CreatePost</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>CreatePost</servlet-name>
+	    <url-pattern>/bq/admin/create-post</url-pattern>
+	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>SaveReadingList</servlet-name>
->>>>>>> 89c8eb2f44bf92a9dfaa3abbcdc9fde8216965e4
+
 		<servlet-class>com.bestqualified.admin.CreateReadingList</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SaveReadingList</servlet-name>
 		<url-pattern>/bq/admin/save-reading-list</url-pattern>
+
 	</servlet-mapping>
-<<<<<<< HEAD
-=======
-	
+
 	<servlet>
 		<servlet-name>GetReadingList</servlet-name>
 		<servlet-class>com.bestqualified.servlets.GetReadingList</servlet-class>
@@ -519,7 +657,69 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>GetReadingList</servlet-name>
 		<url-pattern>/bq/coaching/tools/get-reading-list</url-pattern>
 	</servlet-mapping>
->>>>>>> 89c8eb2f44bf92a9dfaa3abbcdc9fde8216965e4
+	
+	<servlet>
+		<servlet-name>GetAllArticles</servlet-name>
+		<servlet-class>com.bestqualified.servlets.GetAllArticles</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllArticles</servlet-name>
+		<url-pattern>/bq/community/article</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GetArticle</servlet-name>
+		<servlet-class>com.bestqualified.servlets.GetArticle</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetArticle</servlet-name>
+		<url-pattern>/bq/community/article/single</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GetAllCommunities</servlet-name>
+		<servlet-class>com.bestqualified.servlets.GetAllCommunities</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllCommunities</servlet-name>
+		<url-pattern>/bq/community/comms</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>InitCommunityBean</servlet-name>
+		<servlet-class>com.bestqualified.servlets.InitCommunityBean</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitCommunityBean</servlet-name>
+		<url-pattern>/community</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AdminCreateCommunity</servlet-name>
+		<servlet-class>com.bestqualified.admin.AdminCreateCommunity</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminCreateCommunity</servlet-name>
+		<url-pattern>/bq/admin/create-community</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CommunityPageServlet</servlet-name>
+		<servlet-class>com.bestqualified.servlets.CommunityPageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommunityPageServlet</servlet-name>
+		<url-pattern>/bq/general-community</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>JoinCommunity</servlet-name>
+		<servlet-class>com.bestqualified.servlets.JoinCommunity</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JoinCommunity</servlet-name>
+		<url-pattern>/bq/close/join-community</url-pattern>
+	</servlet-mapping>
 
 	<!-- ***************************************************SERVLET*********************************************************** -->
 	<servlet>
@@ -533,15 +733,73 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<!-- ************************************************JSP*************************************************************** -->
 	
 	<servlet>
-		<servlet-name>CreateReadingList</servlet-name>
-		<jsp-file>/WEB-INF/bq/admin/reading-list.jsp</jsp-file>	
+		<servlet-name>RequestCoachPaymentForm</servlet-name>
+		<jsp-file>/WEB-INF/bq/coaching/coach-payment-form.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>RequestCoachPaymentForm</servlet-name>
+		<url-pattern>/bq/coaching/coach-payment-form</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>RequestCoachForm</servlet-name>
+		<jsp-file>/WEB-INF/bq/coaching/coach-request-form.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>RequestCoachForm</servlet-name>
+		<url-pattern>/bq/coaching/coach-request-form</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>FindCandidates</servlet-name>
+		<jsp-file>/WEB-INF/bq/close/find-candidates.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>FindCandidates</servlet-name>
+		<url-pattern>/bq/closed/find-candidate</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AdminPost</servlet-name>
+		<jsp-file>/WEB-INF/bq/admin/create-post.jsp</jsp-file>
 	</servlet>
 	
+	<servlet-mapping>
+		<servlet-name>AdminPost</servlet-name>
+		<url-pattern>/bq/admin/comm-postad</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CommArticles</servlet-name>
+		<jsp-file>/WEB-INF/bq/community/articles.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>CommArticles</servlet-name>
+		<url-pattern>/bq/comm-articles</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AllCommunities</servlet-name>
+		<jsp-file>/WEB-INF/bq/community/communities.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>AllCommunities</servlet-name>
+		<url-pattern>/bq/comm-all</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CreateReadingList</servlet-name>
+		<jsp-file>/WEB-INF/bq/admin/reading-list.jsp</jsp-file>
+	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>CreateReadingList</servlet-name>
 		<url-pattern>/bq/admin/create-reading-list</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>ChangePasswordPage</servlet-name>
 		<jsp-file>/WEB-INF/bq/open/change-password.jsp</jsp-file>
@@ -753,6 +1011,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/bq/close/professional-profile</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>NewPostPage</servlet-name>
+		<jsp-file>/WEB-INF/bq/community/new-post.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NewPostPage</servlet-name>
+		<url-pattern>/bq/close/community/new-post</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>SignUpPage</servlet-name>
 		<jsp-file>/WEB-INF/pages/sign-up.jsp</jsp-file>
 	</servlet>
@@ -865,7 +1131,26 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>community</servlet-name>
-		<url-pattern>/community</url-pattern>
+		<url-pattern>/bq/community</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>singlcomm</servlet-name>
+		<jsp-file>/WEB-INF/bq/community/single-community.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>singlcomm</servlet-name>
+		<url-pattern>/bq/single-comm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>admincommunity</servlet-name>
+		<jsp-file>/WEB-INF/bq/admin/create-community.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>admincommunity</servlet-name>
+		<url-pattern>/bq/admin/communityad</url-pattern>
 	</servlet-mapping>
 
 	<session-config>

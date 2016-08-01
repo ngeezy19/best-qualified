@@ -24,9 +24,9 @@
 	list-style: none;
 	display: inline;
 	padding: 4px;
-	padding-right: 1%;
-	padding-left: 1%;
-	border-right: 1px solid #dadada;
+	padding-right: 3%;
+	padding-left: 3%;
+	border-right: 1px solid #bababa;
 }
 
 .cert-category-div {

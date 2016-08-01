@@ -36,6 +36,15 @@
 				<a class="text-muted" href="<c:url value='/bq/admin/create-reading-list' />"><i class="fa fa-book fa-5x" aria-hidden="true"></i></a>
 				<h4><a class="text-muted" href="<c:url value='/bq/admin/create-reading-list' />">Reading List</a></h4>
 			</div>
+			<div class="col-sm-3">
+				<a class="text-muted" href="<c:url value='/bq/admin/communityad' />"><i class="fa fa-book fa-5x" aria-hidden="true"></i></a>
+				<h4><a class="text-muted" href="<c:url value='/bq/admin/communityad' />">Community</a></h4>
+			</div>
+			
+			<div class="col-sm-3">
+				<a class="text-muted" href="<c:url value='/bq/get-comm' />"><i class="fa fa-users fa-5x" aria-hidden="true"></i></a>
+				<h4><a class="text-muted" href="<c:url value='/bq/get-comm' />">Post</a></h4>
+			</div>
 		</div>
 		
 	</div>

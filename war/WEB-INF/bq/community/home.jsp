@@ -12,255 +12,130 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/styles/bootstrap.min.css">
 <link rel="stylesheet" href="/styles/main.css">
-<link rel="stylesheet" href="/styles/waitMe.css">
 <link rel="stylesheet" href="/styles/font-awesome.min.css">
-<link rel="stylesheet" href="/styles/comi.css">
+<link href="http://fonts.googleapis.com/css?family=Corben"
+	rel="stylesheet" type="text/css">
 
+<style type="text/css">
+h3 {
+	font-family: "Corben";
+}
+</style>
 
 </head>
 
-<body>
+
+<body style="background-color: #edeff5">
 	<%@ include file="/main-nav.html"%>
 	<br>
 	<br>
+	<br>
 	<div class="container-fluid">
-		<div class="row" style="margin-bottom: 2%;">
+		<div id="main">
+			<section id="main-section" style="width: 80%; margin: 0 auto;">
+				<h3 style="color: #792f47">Popular Communities</h3>
+				<div class="row">
+					<c:forEach var="item" items="${communityPageBean.communities}">
+						<div class="col-sm-3">
 
-			<div class="col-sm-12 no-padding-div"
-				style="color: white; background-image: url('/images/community-slide.jpg'); height: 300px; position: relative; width: 100%;">
-				<div
-					style="background-color: rgba(0, 0, 0, 0.0); width: 400px; height: 220px; padding: 1%; position: absolute; bottom: 20px; left: 150px; font-family: century gothic">
-					<h3 id="banner-quote">The single greatest "people skill" is a
-						highly developed & authentic interest in the other person</h3>
-					<br />
-					<h4 id="banner-author">- Bob Burg</h4>
+							<div id="hint" class="card">
+								<a href='<c:url value="/community?webkey=${item.webSafeKey}" />'>
+									<img style="width: 100%;" src="${item.image}">
+								</a>
+
+								<div class="card-container">
+									<h4 style="text-align: center; height: 15pt">
+										<a style="text-decoration: none;"
+											href='<c:url value="/community?webkey=${item.webSafeKey}" />'>
+
+											<c:out value="${item.name}" />
+
+										</a>
+									</h4>
+									<p style="font-family: calibri; font-size: 10pt">${item.shortDesc}</p>
+									<p style="color: #983b59">${fn:length(members)}
+										members</p>
+									<a style='text-decoration: none; color: #59983b; font-weight:bold; font-family: "Corben"'
+										href='<c:url value="/bq/join-community?webkey=${item.webSafeKey}" />'>JOIN</a>
+								</div>
+
+							</div>
+						</div>
+					</c:forEach>
 				</div>
-			</div>
+
+				<h3 style="color: #792f47">Trending Posts</h3>
+				<div class="row">
+
+					<div class="col-sm-12">
+						<c:forEach var="item" items="${communityPageBean.posts}">
+							<div class="media card-panel"
+								style="margin-bottom: 2%; width: 100%">
+								<a class="pull-left"
+									href='<c:url value="/community?id=${item.webkey}" />'><img
+									class="media-object img-rounded" src="${item.pictureUrl}"
+									width="130" height="130"></a>
+								<div class="media-body">
+									<a href='<c:url value="/community?id=${item.webkey}" />'><h3
+											class="media-heading" id="lol">${item.title}</h3></a>
+									<p
+										style="color: #983b59; font-family: calibri; letter-spacing: 3px">
+										<span style="margin-left: 5px;"><i class="fa fa-user"></i>
+											BEST-QUALIFIED</span> <span><i class="fa fa-clock-o"></i> <c:out
+												value='${item.postDate}' /></span> <span><i
+											class="fa fa-comments"></i><a> 0</a></span>
+									</p>
+									<p>
+										${item.snippet}<span><a
+											href='<c:url value="/community?id=${item.webkey}" />'><i
+												class="fa fa-angle-double-right" aria-hidden="true"></i></a></span>
+									</p>
+
+									<p id="socialo">
+										<span id="fb"> <a href=""><i
+												class="fa fa-facebook-square" aria-hidden="true"
+												style="color: #3b5998;"></i> Share</a></span> <span id="tw"><a
+											href=""><i class="fa fa-twitter-square"
+												aria-hidden="true" style="color: #00aced;"></i> Tweet</a></span> <span
+											id="go"><a href=""><i
+												class="fa fa-google-plus-square" aria-hidden="true"
+												style="color: #F43222;"></i> Share</a></span>
+
+									</p>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+
+
+			</section>
+
 		</div>
+
 	</div>
 
-	<div class="container">
-		<div class="row" style="">
-			<div class="col-md-9" id="blogodo">
 
-				<div class="media">
-					<a class="pull-left" href="#"><img
-						class="media-object img-rounded" src="images/am.png" width="320"
-						height="214"></a>
-					<div class="media-body">
-						<h3 class="media-heading" id="lol">COMMUNITY</h3>
-
-						<p style="text-align: justify;">The BQ community provides many
-							ways for you to connect with a world of Sales & Marketing
-							experts. Whether it is through membership, national events or the
-							BQ social media channels. The BQ brings Sales & Marketing
-							professionals together to build networks, relationships and solve
-							market place challenges.</p>
-					</div>
-				</div>
-				<br> <br>
-				<div>
-					<h3>Connect Through Membership List</h3>
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>AMA</th>
-								<th>NIMN</th>
-								<th>LIPSR</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><b>APCON</td>
-								</b>
-								<td><b>WISCAR</td>
-								</b>
-								<td><b>FSED</td>
-								</b>
-							</tr>
-							<tr>
-								<td><b>CIM</td>
-								</b>
-								<td><b>NIPR</td>
-								</b>
-								<td><b>CIPR</td>
-								</b>
-							</tr>
-							<tr>
-								<td><b>CMMP</td>
-								</b>
-								<td><b>CIPS</td>
-								</b>
-								<td><b>CAS</td>
-								</b>
-							</tr>
-							<tr>
-								<td><b>SMC</td>
-								</b>
-								<td><b>GAP/GAIQ</td>
-								</b>
-								<td><b>CMI</td>
-								</b>
-							</tr>
-							<tr>
-								<td><b>SCRUM</td>
-								</b>
-								<td><b>HUBSPOT</td>
-								</b>
-								<td><b>DMI</td>
-								</b>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<br>
-
-
-				<div style="background-image: url('img/comi/3.png');">
-					<h3>Top Contributors</h3>
-					<div class="row">
-
-						<div class="col-md-4">
-							<div class="media">
-								<a href="#"><img class="media-object img-circle pull-left"
-									src="images/46.jpg" width="130" height="130"></a>
-								<div class="media-body">
-									<br> <br>
-									<h5 class="media-heading  pull-left">Delight Chika</h5>
-									<p class="pull-left">Top Content Writer</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="media">
-								<a href="#"><img class="media-object img-circle pull-left"
-									src="images/73.jpg" width="130" height="130"></a>
-								<div class="media-body">
-									<br> <br>
-									<h5 class="media-heading  pull-left">Ugo Chukwudi</h5>
-									<p class="pull-left">Fastest Reply</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="media">
-								<a href="#"><img class="media-object img-circle pull-left"
-									src="images/3.jpg" width="130" height="130"></a>
-								<div class="media-body">
-									<br> <br>
-									<h5 class="media-heading  pull-left">Stephen Dappa</h5>
-									<p class=" pull-left">Number 1 Rookie</p>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-
-			</div>
-			<div class="col-md-3">
-				<div class="well soweto"
-					style="background: rgba(78, 189, 163, 0.13); padding: 20px;">
-					<h3 class="media-heading" id="lols">Which company has the best
-						work enviroment</h3>
-
-
-					<div class="checkbox">
-						<label><input type="checkbox" value="">First Bank
-							Nigeria</label>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Zenith</label>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Workforce</label>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Mtn Nigeria</label>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox" value="">Cheveron</label>
-					</div>
-
-					<button class="btn btn-info">Vote</button>
-				</div>
-
-				<div class="well">
-					<form role="form">
-						<div class="form-group">
-							<p>Member Log In |</p>
-							<input type="email" class="form-control" id="email"
-								placeholder="email">
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" id="pwd"
-								placeholder="password">
-						</div>
-
-						<button type="submit" class="btn btn-default">Submit</button>
-					</form>
-				</div>
-
-				<div class="well">
-					<a class="twitter-timeline" href="https://twitter.com/FRANKDUPR33"
-						data-widget-id="554987493125554176">Tweets by @BestQualified</a>
-					<script>
-						!function(d, s, id) {
-							var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/
-									.test(d.location) ? 'http' : 'https';
-							if (!d.getElementById(id)) {
-								js = d.createElement(s);
-								js.id = id;
-								js.src = p
-										+ "://platform.twitter.com/widgets.js";
-								fjs.parentNode.insertBefore(js, fjs);
-							}
-						}(document, "script", "twitter-wjs");
-					</script>
-
-				</div>
-
-
-			</div>
-		</div>
-	</div>
-
-	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/waitMe.js"></script>
 	<script src="/js/main.js"></script>
+
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script type="text/javascript">
-		var slideCounter = 1;
-		var quotes = [
-				"The richest people in the world look for and build networks, everyone else looks for work.",
-				"Networking is marketing, marketing yourself, marketing your uniqueness, marketing what you stand for.",
-				"Networking is an essential part of building wealth.",
-				"If you want to go fast, go alone. If you want to go far, go with others.",
-				'The single greatest "people skill" is a highly developed & authentic interest in the other person.' ];
-		var author = [ "- Robert. T. Kiyosaki", "- Christine Comaford-Lynch", "- Armstrong Williams",
-				"- African proverbs", "- Bob Burg" ];
-		$(document).ready(function() {
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "250px";
+			document.getElementById("main").style.marginLeft = "250px";
 
-			startSlider();
-		});
-		function startSlider() {
+		}
 
-			if (slideCounter > 4) {
-				slideCounter = 0;
-			}
-			window.setTimeout(function() {
-				$("#banner-quote").fadeOut("slow", "linear", function() {
-					$("#banner-quote").text(quotes[slideCounter]);
-					$("#banner-author").text(author[slideCounter]);
-					slideCounter++;
-					$("#banner-quote").fadeIn("slow", "linear", function() {
-						startSlider();
-					})
-				});
-			}, 5000);
+		/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+			document.getElementById("main").style.marginLeft = "0";
+
 		}
 	</script>
+
 </body>
 </html>

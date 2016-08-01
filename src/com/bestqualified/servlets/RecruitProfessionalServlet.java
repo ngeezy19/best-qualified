@@ -25,56 +25,54 @@ public class RecruitProfessionalServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 6795283372633023242L;
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		doPost(req, resp);
+	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String companyName = req.getParameter("company-name");
-		String webite =  req.getParameter("company-website");
-		String location = req.getParameter("company-location");
-		String description = req.getParameter("company-description");
-		
-		Object o = null;
 		HttpSession session = req.getSession();
+		Object o = null;
+		Object o1 = null;
 		synchronized (session) {
 			o = session.getAttribute("user");
+			o1 = session.getAttribute("recruiter");
 		}
-		if(o != null) {
+
+		if (o != null && o1 != null) {
 			User u = (User) o;
+			Recruiter r = (Recruiter) o1;
+
 			u.setUserType(User.UserType.RECRUITER.name());
-			Recruiter r = null;
 			u.setAuthenticated(true);
 			User u1 = GeneralController.findSocialUser(u.getEmail());
 			if (u1 != null) {
 				u = Util.mergeUsers(u, u1);
-				Entity e = GeneralController.findByKey(u1.getUserInfo());
-				r = EntityConverter.entityToRecruiter(e);
-				
+				Entity e = GeneralController.findByKey(u.getUserInfo());
+				Recruiter r1 = EntityConverter.entityToRecruiter(e);
+				if (r1 != null) {
+					r = Util.mergeRecruiters(r, r1);
+				}
+
 			}
-			
-			if(r == null) {
-				r = new Recruiter(u.getUserKey());
-			}
-			Company c = new Company();
-			c.setCompanyName(companyName);
-			c.setCompanyWebsite(webite);
-			c.setLocation(location);
-			c.setDescription(new Text(description));
-			r.setCompany(c.getId());
-			u.setUserInfo(r.getId());
-			Entity e = EntityConverter
-					.companyToEntity(c);
+
 			Entity e1 = EntityConverter.userToEntity(u);
 			Entity e2 = EntityConverter.recruiterToEntity(r);
-			GeneralController.createWithCrossGroup(e1, e, e2);
+			GeneralController.createWithCrossGroup(e1, e2);
 			synchronized (session) {
 				session.setAttribute("employerProfile", r);
 			}
-			
-			RequestDispatcher rd = req.getRequestDispatcher("/end-point/add-major-interest");
+
+			RequestDispatcher rd = req
+					.getRequestDispatcher("/end-point/add-major-interest");
 			rd.forward(req, resp);
-		}else {
+
+		} else {
 			resp.sendRedirect(resp.encodeRedirectURL("/sign-in"));
 		}
-	}
 
+	}
 }

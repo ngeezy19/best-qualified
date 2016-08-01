@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css"
 	href="/styles/jquery.webui-popover.min.css">
 <link rel="stylesheet" href="/styles/main.css">
-<title>Sales</title>
+<title>Public Relations</title>
 <style type="text/css">
 .grad1 {
 	height: 250px;
@@ -101,17 +101,14 @@
 				<div class="row" style="margin-bottom: 1%;">
 					<div class="col-sm-12 cert-view no-padding-div">
 						<div class="col-sm-12 cert-view-header no-padding-div">
-							<h3>NASP</h3>
+							<h3>NIPR</h3>
 						</div>
 						<div class="col-sm-12 no-padding-div cert-view-content">
-							<p style="margin-bottom: 0px">National Association of Sales
-								Professionals (NASP) Certified Professional Sales Person (CPSP)
-								a comprehensive 6 week, online course created from 20 years of
-								modeling, interviewing, and coaching the top 1% of sales
-								professionals in the world</p>
+							<p style="margin-bottom: 0px">The Nigerian Institute for Public Relations (NIPR) is the professional body of qualified Public Relations Practitioners in Nigeria.
+														The NIPR offers membership, trainings and qualifications. The qualifications consist of 2 levels</p>
 						</div>
 						<div class="col-sm-12 no-padding-div cert-view-content">
-							<h4>Certified Professional Sales Person (CPSP)</h4>
+							<h4>Professional Certificate in Public Relations</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">
 									<h5>
@@ -119,11 +116,35 @@
 
 									</h5>
 									<ul>
-										<li>Cultivate sales habits of top Fortune 500 executives</li>
-										<li>Learn the power of creating and utilizing "personal
-											identity" to amplify your multitude of strengths</li>
-										<li>Develop lasting behaviors that will make you a stand
-											out professional</li>
+										<li>Basic principles in PR</li>
+										<li>PR media and methods</li>
+										<li>PR for government, public and private sectors</li>
+									</ul>
+								</div>
+
+							</div>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Audience</strong>
+									</h5>
+									<ul>
+										<li>O'Level, diploma and degree holders</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-12 no-padding-div cert-view-content">
+							<h4>Professional Diploma in Public Relations</h4>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Learning Outcome</strong>
+
+									</h5>
+									<ul>
+										<li>PR policy,planning and strategy</li>
+										<li>Brand management</li>
+										<li>Stakeholder relations management</li>
 									</ul>
 								</div>
 
@@ -139,43 +160,115 @@
 								</div>
 							</div>
 							<div class="col-sm-12">
-								<p>Find more information on
-									http://certification.hubspot.com/inbound-sales-certification</p>
+								<p><a href="http://nipr-ng.org/">Learn more</a></p>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row" style="margin-bottom: 1%">
+				</div>
+				
 					<div class="col-sm-12 cert-view no-padding-div">
 						<div class="col-sm-12 cert-view-header no-padding-div">
-							<h3>Hubspot</h3>
+							<h3>CIPR</h3>
 						</div>
 						<div class="col-sm-12 no-padding-div cert-view-content">
-							<p style="margin-bottom: 0px">The Inbound Sales Certification
-								is a free qualification offered by Hubspot. It consists of a 5
-								self-paced classes. The certification is important for an
-								introduction to inbound sales. It includes modules which would
-								prepare sales (or non-sales) professionals to better identify,
-								connect, explore and advise the modern buyer. The inbound Sales
-								Certification Course can be taken by sales associates, sales
-								leaders, entrepreneurs and inbound marketers.</p>
+							<p style="margin-bottom: 0px">The Chartered Institute for Public Relations (CIPR) is the professional body of qualified Public Relations Practitioners in the UK.
+														The CIPR offers membership, trainings and qualifications</p>
 						</div>
 						<div class="col-sm-12 no-padding-div cert-view-content">
-							<h4>Inbound Sales Certification</h4>
+							<h4>Foundation Award in Public Relations</h4>
 							<div class="col-sm-12">
 								<div class="info-div grad1">
 									<h5>
-										<strong>Inbound Sales Certificate can be earned by</strong>
+										<strong>Learning Outcome</strong>
 
 									</h5>
 									<ul>
-										<li>Signing up for a complimentary account or Logging in</li>
-										<li>Finding inbound Sales certification library and study
-											guides</li>
-										<li>Taking the self-study classes</li>
-										<li>Passing the certification exam</li>
+										<li>Basic Knowledge of PR and skill sets required</li>
+										<li>Role and scope of PR</li>
+										<li>How to write for different channels</li>
 									</ul>
 								</div>
+
+							</div>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Audience</strong>
+									</h5>
+									<ul>
+										<li>School or college leavers</li>
+										<li>People changing career direction</li>
+										<li>Professionals working in a PR support role</li>
+									</ul>
+								</div>
+							</div>
+							</div>
+							<div class="col-sm-12 no-padding-div cert-view-content">
+							<h4>Advanced Certificate in Public Relations</h4>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Learning Outcome</strong>
+
+									</h5>
+									<ul>
+										<li>Gain practical skills to work effectively</li>
+										<li>Essential PR theories and planning theories</li>
+										<li>How to social media is used for PR</li>
+									</ul>
+								</div>
+
+							</div>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Audience</strong>
+									</h5>
+									<ul>
+										<li>Graduates or junior level PR professional</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-12 no-padding-div cert-view-content">
+							<h4>Diploma in Public Relations</h4>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Learning Outcome</strong>
+
+									</h5>
+									<ul>
+										<li>Advanced understanding of PR theories and concepts</li>
+										<li>Develop the knowledge to take a strategic approach to PR planning, measurement and evaluation</li>
+										
+									</ul>
+								</div>
+
+							</div>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									<h5>
+										<strong>Audience</strong>
+									</h5>
+									<ul>
+										<li>Experienced PR Professionals</li>
+									</ul>
+								</div>
+							</div>
+							<h4>Advanced Short Courses</h4>
+							<div class="col-sm-12">
+								<div class="info-div grad1">
+									
+									<ul>
+										<li>Internal Communication Certificate</li>
+										<li>Internal Communication Diploma</li>
+										<li>Crisis Communication Diploma</li>
+										<li>Public Affairs Diploma</li>
+									</ul>
+								</div>
+
+								
 
 							</div>
 							<div class="col-sm-12">
@@ -188,13 +281,15 @@
 									</ul>
 								</div>
 							</div>
+							
 							<div class="col-sm-12">
-								<p>Find more information on
-									http://certification.hubspot.com/inbound-sales-certification</p>
+								<p><a href="http://www.cipr.co.uk/content/qualifications/">Learn more</a></p>
+								
 							</div>
 						</div>
 					</div>
 				</div>
+				
 			</div>
 			<div class="col-sm-4">
 				<%@ include file="/WEB-INF/pages/certification-sidebar.html"%>

@@ -7,9 +7,22 @@ import java.util.List;
 import com.bestqualified.controllers.GeneralController;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.Link;
 import com.google.appengine.api.datastore.Text;
 
 public class Article implements Serializable {
+
+	public Key getCommunity() {
+		return community;
+	}
+
+
+
+	public void setCommunity(Key community) {
+		this.community = community;
+	}
+
+
 
 	/**
 	 * 
@@ -20,6 +33,7 @@ public class Article implements Serializable {
 	private String title;
 	private Date date;
 	private long views;
+	private long nComments;
 	private Text body;
 	private ArticleCategory category;
 	private List<String> tag;
@@ -27,14 +41,35 @@ public class Article implements Serializable {
 	private List<Key> comments;
 	private List<Key> subscribers;
 	private BlobKey imageKey;
+	private Link link;
+	private long likes;
+	private long shares;
+	private Key community;
 
 	@Override
 	public String toString() {
-		return "Article [title=" + title + ", date=" + date + ", views="
-				+ views + ", body=" + body + ", category=" + category
-				+ ", tag=" + tag + ", author=" + author + ", comments="
-				+ comments + ", subscribers=" + subscribers + "]";
+		return "Article [key=" + key + ", title=" + title + ", date=" + date
+				+ ", views=" + views + ", nComments=" + nComments + ", body="
+				+ body + ", category=" + category + ", tag=" + tag
+				+ ", author=" + author + ", comments=" + comments
+				+ ", subscribers=" + subscribers + ", imageKey=" + imageKey
+				+ ", link=" + link + ", likes=" + likes + ", shares=" + shares
+				+ "]";
 	}
+	
+	
+
+	public long getnComments() {
+		return nComments;
+	}
+
+
+
+	public void setnComments(long nComments) {
+		this.nComments = nComments;
+	}
+
+
 
 	public String getTitle() {
 		
@@ -129,5 +164,43 @@ public class Article implements Serializable {
 	public void setImageKey(BlobKey imageKey) {
 		this.imageKey = imageKey;
 	}
+
+
+
+	public Link getLink() {
+		return link;
+	}
+
+
+
+	public void setLink(Link link) {
+		this.link = link;
+	}
+
+
+
+	public long getLikes() {
+		return likes;
+	}
+
+
+
+	public void setLikes(long likes) {
+		this.likes = likes;
+	}
+
+
+
+	public long getShares() {
+		return shares;
+	}
+
+
+
+	public void setShares(long shares) {
+		this.shares = shares;
+	}
+	
+	
 
 }

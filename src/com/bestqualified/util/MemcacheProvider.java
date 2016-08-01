@@ -12,4 +12,15 @@ public class MemcacheProvider {
 			.getMemcacheService("recruiter");
 	
 	
+	
+	public static final MemcacheService PROFESSIONAL = MemcacheServiceFactory
+			.getMemcacheService("professional");
+	public static final MemcacheService USER = MemcacheServiceFactory
+			.getMemcacheService("user");
+	public static final MemcacheService COMMUNITIES = MemcacheServiceFactory
+			.getMemcacheService("community");
+	public static final MemcacheService ARTICLES = MemcacheServiceFactory
+			.getMemcacheService("articles");
+
+	
 }

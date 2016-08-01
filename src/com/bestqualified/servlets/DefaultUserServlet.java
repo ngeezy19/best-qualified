@@ -66,7 +66,7 @@ public class DefaultUserServlet extends HttpServlet {
 			synchronized (session) {
 				session.setAttribute("professionalProfile", cp);
 			}
-
+			Util.addToSearchIndex(u, cp);
 			RequestDispatcher rd = req
 					.getRequestDispatcher("/end-point/add-major-interest");
 			rd.forward(req, resp);

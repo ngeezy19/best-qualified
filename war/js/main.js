@@ -34,9 +34,44 @@ function addPopOver() {
 	});
 }
 
+
+
 $(document).ready(function() {
+	$('[data-toggle="tooltip"]').tooltip(); 
+	$(".filter-header")
+	.click(
+			function() {
+
+				var par = $(this).closest(
+						".filter-component");
+				par.find(".filter-values")
+						.slideToggle();
+				$(this)
+						.find(".filter-arrow")
+						.toggleClass(
+								"glyphicon glyphicon-chevron-down glyphicon glyphicon-chevron-up");
+			});
+	tinymce.init({
+		selector : '.tiny'
+	});
 	
+	$("#project-trig").click(function() {
+		$("#create-project-div").slideDown("slow");
+	});
 	
+	$("#discussion-trig").click(function() {
+		$(".discussion-div").slideDown("slow");
+	});
+	$("#close-discussion").click(function() {
+		$(".discussion-div").slideUp("slow");
+	});
+	
+	$("#article-trig").click(function() {
+		$(".article-div").slideDown("slow");
+	});
+	$("#close-article").click(function() {
+		$(".article-div").slideUp("slow");
+	});
 	
 	$("#imginfo").mouseenter(function() {
 		addPopOver();

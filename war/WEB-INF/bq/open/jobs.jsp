@@ -15,19 +15,7 @@
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/styles/animate.css">
 <style type="text/css">
-.filter-values {
-	display: none;
-}
 
-.filter-heading h4 {
-	margin-top: 0px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	color: white;
-	background-color: #4FC1E9;
-	text-align: center;
-	border-bottom: 1px #3BAFDA solid;
-}
 
 #job-alert-modal label {
 	color: darkgreen;
@@ -35,23 +23,7 @@
 	font-size: 10pt;
 }
 
-.filter-header {
-	padding: 2%;
-	background-color: #eaeaea;
-	cursor: pointer;
-	border-top: 1px gray solid;
-}
 
-.filter-header:hover {
-	background-color: #dedede;
-}
-
-.filter-values {
-	border-top: 1px gray solid;
-	padding: 2%;
-	max-height: 200px;
-	overflow: auto;
-}
 
 .list-bullet {
 	border: 1px red #8CC152;
@@ -163,6 +135,7 @@
 				</div>  -->
 			</div>
 		</div>
+		
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3 no-padding-div">
@@ -700,23 +673,13 @@
 						style="border: 2px purple solid; cursor: pointer;">
 						<img class="img img-responsive" src="/images/job-alert.jpg">
 					</div>
-					<div class="col-sm-12 no-padding-div"
-						style="border: 2px darkblue solid; margin-top: 3%;">
-						<div class="col-sm-12 no-padding"
-							style="background-color: darkblue">
-							<h4 style="color: white; text-align: center;">
-								Check the Quality of your <span
-									style="font-weight: bold; color: red; font-family: tahoma; font-size: 26pt">Resume</span>
-							</h4>
-						</div>
-						<div class="col-sm-12 no-padding-div"
-							style="background-image: url('/images/resume.png'); height: 280px; background-size: contain; position: relative;">
-							<div id="animation-div"
-								style="position: absolute; bottom: 0px; width: 100%; padding: 1%; text-align: center;">
-								<h4>Free Resume Evaluation</h4>
-								<h4>CLICK HERE</h4>
-							</div>
-						</div>
+					
+						<div class="col-sm-12 no-padding-div" style="margin-bottom: 2%;">
+						<a href="<c:url value='/bq/coaching/request-coach'/>"><img
+						class="img img-responsive"
+						style="border: 1px solid purple; padding: 2%;"
+						src="/images/coach.png"></a>
+				</div>
 					</div>
 				</div>
 			</div>
@@ -882,6 +845,7 @@
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.webui-popover.min.js"></script>
 	<script src="/js/waitMe.js"></script>
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script src="/js/main.js"></script>
 	<script src="/js/filter.js"></script>
 	<script type="text/javascript">
@@ -934,19 +898,7 @@
 								$("#myModal1").modal();
 							});
 							startSlider();
-							$(".filter-header")
-									.click(
-											function() {
-
-												var par = $(this).closest(
-														".filter-component");
-												par.find(".filter-values")
-														.slideToggle();
-												$(this)
-														.find(".filter-arrow")
-														.toggleClass(
-																"glyphicon glyphicon-chevron-down glyphicon glyphicon-chevron-up");
-											});
+							
 						});
 		function startSlider() {
 			

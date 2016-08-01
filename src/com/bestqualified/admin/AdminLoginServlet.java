@@ -19,7 +19,7 @@ public class AdminLoginServlet extends HttpServlet{
 	 */
 	private static final long serialVersionUID = -186851539590755821L;
 	
-	
+
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username = req.getParameter("username");

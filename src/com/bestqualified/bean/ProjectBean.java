@@ -1,30 +1,54 @@
 package com.bestqualified.bean;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
-
-import com.bestqualified.entities.Job;
 
 public class ProjectBean implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -9208965564921673356L;
+	private static final long serialVersionUID = -7574324814935282277L;
 	
-	private String safeKey;
-	private String name;
-	private String dateCreated;
-	private List<ProView> profiles;
-	private Job job;
-	private List<ProView> savedSearch;
-	private String description;
-	public String getSafeKey() {
-		return safeKey;
+	private String webKey,name,dateCreated,description, expiryDate,jobTitle,companyLogo;
+	private int newApplicants,totalApplicants,inviteSent;
+	private List<ProView> shortlistedCandidates;;
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((webKey == null) ? 0 : webKey.hashCode());
+		return result;
 	}
-	public void setSafeKey(String safeKey) {
-		this.safeKey = safeKey;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProjectBean other = (ProjectBean) obj;
+		if (webKey == null) {
+			if (other.webKey != null)
+				return false;
+		} else if (!webKey.equals(other.webKey))
+			return false;
+		return true;
+	}
+	public List<ProView> getShortlistedCandidates() {
+		return shortlistedCandidates;
+	}
+	public void setShortlistedCandidates(List<ProView> shortlistedCandidates) {
+		this.shortlistedCandidates = shortlistedCandidates;
+	}
+	public String getWebKey() {
+		return webKey;
+	}
+	public void setWebKey(String webKey) {
+		this.webKey = webKey;
 	}
 	public String getName() {
 		return name;
@@ -38,36 +62,59 @@ public class ProjectBean implements Serializable {
 	public void setDateCreated(String dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-	public List<ProView> getProfiles() {
-		return profiles;
-	}
-	public void setProfiles(List<ProView> profiles) {
-		this.profiles = profiles;
-	}
-	public Job getJob() {
-		return job;
-	}
-	public void setJob(Job job) {
-		this.job = job;
-	}
-	public List<ProView> getSavedSearch() {
-		return savedSearch;
-	}
-	public void setSavedSearch(List<ProView> savedSearch) {
-		this.savedSearch = savedSearch;
-	}
 	public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public int getNewApplicants() {
+		return newApplicants;
+	}
+	public void setNewApplicants(int newApplicants) {
+		this.newApplicants = newApplicants;
+	}
+	
+	public int getTotalApplicants() {
+		return totalApplicants;
+	}
+	public void setTotalApplicants(int totalApplicants) {
+		this.totalApplicants = totalApplicants;
+	}
+	public int getInviteSent() {
+		return inviteSent;
+	}
+	public void setInviteSent(int inviteSent) {
+		this.inviteSent = inviteSent;
+	}
+	public String getExpiryDate() {
+		return expiryDate;
+	}
+	public void setExpiryDate(String expiryDate) {
+		this.expiryDate = expiryDate;
+	}
+	public String getJobTitle() {
+		return jobTitle;
+	}
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
+	public String getCompanyLogo() {
+		return companyLogo;
+	}
+	public void setCompanyLogo(String companyLogo) {
+		this.companyLogo = companyLogo;
+	}
 	@Override
 	public String toString() {
-		return "ProjectBean [safeKey=" + safeKey + ", name=" + name
-				+ ", dateCreated=" + dateCreated + ", profiles=" + profiles
-				+ ", job=" + job + ", savedSearch=" + savedSearch
-				+ ", description=" + description + "]";
+		return "ProjectBean [webKey=" + webKey + ", name=" + name
+				+ ", dateCreated=" + dateCreated + ", description="
+				+ description + ", expiryDate=" + expiryDate + ", jobTitle="
+				+ jobTitle + ", companyLogo=" + companyLogo
+				+ ", newApplicants=" + newApplicants + ", totalApplicants="
+				+ totalApplicants + ", inviteSent=" + inviteSent + "]";
 	}
+	
+	
 
 }

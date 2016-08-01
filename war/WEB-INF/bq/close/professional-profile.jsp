@@ -165,19 +165,14 @@ h4 {
 						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
 							class="">Work Experience</h4>
 
-						<div class="col-sm-12 editable-div">
-							<div class="inline-output-1">
-								<c:choose>
-									<c:when test="${fn:length(uppb.workExperience) < 1} ">
-									Tell us about your work experience.
-								</c:when>
-									<c:otherwise>
-										<span class="text-primary">Add new</span>
-									</c:otherwise>
-								</c:choose>
-								<span class="glyphicon glyphicon-plus edit-tool"></span>
-							</div>
-							<div class="inline-input">
+						<div class="col-sm-12 no-padding-div">
+							<span class="text-primary add-new" style="cursor: pointer;">Add
+								new</span>
+						</div>
+
+						<div class="col-sm-12 no-padding-div">
+
+							<div class="form-div">
 								<form class="work-experience-form">
 									<div>
 										<label>Organization Name:</label><br /> <input
@@ -309,24 +304,18 @@ h4 {
 							style="width: 80%; margin: 0 auto">
 					</div>
 				</div>
+
 				<div class="col-sm-10 card-panel">
 					<div class="col-sm-12 no-padding-div">
 						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
 							class="">Education</h4>
+						<div class="col-sm-12 no-padding-div">
+							<span class="text-primary add-new" style="cursor: pointer;">Add
+								new</span>
+						</div>
+						<div class="col-sm-12 no-padding-div">
 
-						<div class="col-sm-12 editable-div">
-							<div class="inline-output-1">
-								<c:choose>
-									<c:when test="${fn:length(uppb.education) < 1} ">
-									Tell us about your education.
-								</c:when>
-									<c:otherwise>
-										<span class="text-primary">Add new</span>
-									</c:otherwise>
-								</c:choose>
-								<span class="glyphicon glyphicon-plus edit-tool"></span>
-							</div>
-							<div class="inline-input">
+							<div class="form-div" style="display: none;">
 								<form class="education-form">
 									<div>
 										<label>School Name:</label><br /> <input id="institution"
@@ -417,7 +406,8 @@ h4 {
 										<input type="button"
 											class="btn btn-xs btn-primary save-education"
 											value="Save Education"> <input
-											class="btn btn-xs btn-danger cancel-button" value="Cancel">
+											class="btn btn-xs btn-danger cancel-button" type="button"
+											value="Cancel">
 									</div>
 								</form>
 							</div>
@@ -479,16 +469,120 @@ h4 {
 						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
 							class="">Awards</h4>
 
-						<div class="col-sm-12 editable-div">
-							<div class="inline-output-1">
-								<span class="text-primary">Add new</span> <span
-									class="glyphicon glyphicon-plus edit-tool"></span>
-							</div>
+						<div class="col-sm-12 no-padding-div">
+							<span class="text-primary add-new" style="cursor: pointer;">Add
+								new</span>
+						</div>
 
-							<div class="inline-input">
+						<div class="col-sm-12 no-padding-div">
+
+
+							<div class="form-div">
 								<form class="award-form">
 									<div>
 										<label>Award Name:</label><br /> <input id="award"
+											name="award" style="width: 70%;">
+									</div>
+									<div>
+										<label>Additional Information:</label><br /> <input
+											placeholder="" name="extra" id="extra" style="width: 70%;">
+									</div>
+									<div>
+										<label>Time</label><br /> <select name="start-month"
+											id="start-month">
+											<option>January</option>
+											<option>February</option>
+											<option>March</option>
+											<option>April</option>
+											<option>May</option>
+											<option>June</option>
+											<option>July</option>
+											<option>August</option>
+											<option>September</option>
+											<option>October</option>
+											<option>November</option>
+											<option>December</option>
+										</select> <select name="start-year" id="start-year">
+											<option>2000</option>
+											<option>2001</option>
+											<option>2002</option>
+											<option>2003</option>
+											<option>2004</option>
+											<option>2005</option>
+											<option>2006</option>
+											<option>2007</option>
+											<option>2008</option>
+											<option>2009</option>
+											<option>2010</option>
+											<option>2011</option>
+											<option>2012</option>
+											<option>2013</option>
+											<option>2014</option>
+											<option>2015</option>
+											<option>2016</option>
+										</select>
+									</div>
+
+									<div style="margin-top: 2%; margin-bottom: 2%;">
+										<input type="button" class="btn btn-xs btn-primary save-award"
+											value="Save Award"> <input
+											class="btn btn-xs btn-danger cancel-button" value="Cancel">
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="col-sm-12 award-div">
+							<c:set var='awIndex' value='1' />
+							<c:forEach var="item" items="${uppb.awards}">
+								<div class="col-sm-12 module-div"
+									<c:if test="${edIndex < fn:length(uppb.awards)}">style="border-bottom: 1px #d1d1d1 solid"</c:if>>
+									<c:set var='awIndex' value='${awIndex+1}' />
+									<h4 class="name">
+										<c:out value='${item.name}' />
+									</h4>
+									<h5 class="extra" style="font-family: calibri">
+										<c:out value='${item.description}' />
+									</h5>
+									<h5 style="font-family: calibri">
+										<span class="start-month"> <c:out value='${item.month}' /></span>
+										<span class="start-year"> <c:out value='${item.year}' />
+										</span>
+									</h5>
+									<input type="hidden" id="item" value="award" /> <input
+										type="hidden" id="web-key" value="${item.safeKey}" />
+									<p>
+										<a class="delete-item" href="#">Delete</a>
+									</p>
+								</div>
+							</c:forEach>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-2">
+					<div class="card-panel">
+						<img alt="" src="/images/certificate-award.png"
+							class="img img-responsive" style="margin: 0 auto; width: 80%">
+					</div>
+				</div>
+				<div class="col-sm-10 card-panel">
+					<div class="col-sm-12 no-padding-div">
+						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
+							class="">Certifications</h4>
+
+						<div class="col-sm-12 no-padding-div">
+							<span class="text-primary add-new" style="cursor: pointer;">Add
+								new</span>
+						</div>
+
+						<div class="col-sm-12 no-padding-div">
+
+							<div class="form-div">
+								<form class="award-form">
+									<div>
+										<label>Certification Name:</label><br /> <input id="award"
 											name="award" style="width: 70%;">
 									</div>
 									<div>
@@ -614,15 +708,265 @@ h4 {
 					src="/images/ad1/negotiatn_ext.html"
 					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
 			</div>  -->
-			<div class="col-sm-12  no-padding-div">
-				<iframe class="dashboard-section" style="margin: 0"
-					src="/images/ad2/bootcamp_ext.html" width="336" height="280"
-					scrolling="no" frameBorder='0'></iframe>
-			</div>
-			<div class="col-sm-12  no-padding-div">
-				<iframe class="dashboard-section"
-					src="http://localhost:8888/images/ad3/tools_or_luck.html"
-					width="336" height="280" scrolling="no" frameBorder='0'></iframe>
+
+			<div class="col-sm-12 card-panel no-padding-div">
+
+				<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
+					class="">Other Information</h4>
+
+				<div class="col-sm-12 profile-field-div editable-div">
+					<label>Current State:</label>
+
+					<c:choose>
+						<c:when test='${empty uppb.currentState}'>
+							<div>
+								<span style="color: orange">Select the State you reside
+									in:</span>
+
+							</div>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out
+									value='${uppb.currentState}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input" style="display: none;"> <select
+						id="currentstate">
+							<option></option>
+							<option>Abia</option>
+							<option>Abuja</option>
+							<option>Adamawa</option>
+							<option>Anambra</option>
+							<option>Akwa Ibom</option>
+							<option>Bauchi</option>
+							<option>Bayelsa</option>
+							<option>Benue</option>
+							<option>Borno</option>
+							<option>Cross River</option>
+							<option>Delta</option>
+							<option>Ebonyi</option>
+							<option>Enugu</option>
+							<option>Edo</option>
+							<option>Ekiti</option>
+							<option>Gombe</option>
+							<option>Imo</option>
+							<option>Jigawa</option>
+							<option>Kaduna</option>
+							<option>Kano</option>
+							<option>Katsina</option>
+							<option>Kebbi</option>
+							<option>Kogi</option>
+							<option>Kwara</option>
+							<option>Lagos</option>
+							<option>Nasarawa</option>
+							<option>Niger</option>
+							<option>Ogun</option>
+							<option>Ondo</option>
+							<option>Osun</option>
+							<option>Oyo</option>
+							<option>Plateau</option>
+							<option>Rivers</option>
+							<option>Sokoto</option>
+							<option>Taraba</option>
+							<option>Yobe</option>
+							<option>Zamfara</option>
+
+					</select>
+
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+				</div>
+
+				<div class="col-sm-12 profile-field-div editable-div">
+					<label>Current Country:</label>
+					<c:choose>
+						<c:when test='${empty uppb.currentCountry}'>
+							<span class="inline-output" style="color: orange">Enter
+								the Country you currently reside in</span>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out
+									value='${uppb.currentCountry}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input"> <input id="phone"
+						value="${uppb.currentCountry}" class="gen-inline-input" />
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+				</div>
+
+				<div class="col-sm-12 profile-field-div editable-div">
+					<label>Nationality:</label>
+					<c:choose>
+						<c:when test='${empty uppb.nationality}'>
+							<span class="inline-output" style="color: orange">Enter
+								your Nationality</span>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out
+									value='${uppb.nationality}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input"> <input id="nationality"
+						value="${uppb.nationality}" class="gen-inline-input" />
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+				</div>
+
+				<div class="col-sm-12 profile-field-div editable-div">
+					<label>State of Origin:</label>
+
+					<c:choose>
+						<c:when test='${empty uppb.stateOfOrigin}'>
+							<div>
+								<span style="color: orange">Select your State of Origin:</span>
+
+							</div>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out
+									value='${uppb.stateOfOrigin}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input" style="display: none;"> <select
+						id="state">
+							<option></option>
+							<option>Abia</option>
+							<option>Abuja</option>
+							<option>Adamawa</option>
+							<option>Anambra</option>
+							<option>Akwa Ibom</option>
+							<option>Bauchi</option>
+							<option>Bayelsa</option>
+							<option>Benue</option>
+							<option>Borno</option>
+							<option>Cross River</option>
+							<option>Delta</option>
+							<option>Ebonyi</option>
+							<option>Enugu</option>
+							<option>Edo</option>
+							<option>Ekiti</option>
+							<option>Gombe</option>
+							<option>Imo</option>
+							<option>Jigawa</option>
+							<option>Kaduna</option>
+							<option>Kano</option>
+							<option>Katsina</option>
+							<option>Kebbi</option>
+							<option>Kogi</option>
+							<option>Kwara</option>
+							<option>Lagos</option>
+							<option>Nasarawa</option>
+							<option>Niger</option>
+							<option>Ogun</option>
+							<option>Ondo</option>
+							<option>Osun</option>
+							<option>Oyo</option>
+							<option>Plateau</option>
+							<option>Rivers</option>
+							<option>Sokoto</option>
+							<option>Taraba</option>
+							<option>Yobe</option>
+							<option>Zamfara</option>
+
+					</select>
+
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+				</div>
+
+				<div class="col-sm-12 editable-div">
+
+					<label>Gender:</label>
+					<c:choose>
+						<c:when test='${empty user.gender}'>
+							<div>
+								<span style="color: orange">Select Gender</span>
+
+							</div>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out value='${user.gender}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input" style="display: none;"> <select class="update"
+						id="gender">
+							<option value="female">Female</option>
+							<option value="male">Male</option>
+					</select>
+
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+
+				</div>
+
+
+
+				<div class="col-sm-12 editable-div">
+					<label>Years of Experience:</label>
+
+					<c:choose>
+						<c:when test='${empty uppb.yearOfExperience}'>
+							<div>
+								<span style="color: orange">Select Years of Experience</span>
+
+							</div>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out
+									value='${uppb.yearOfExperience}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input" style="display: none;"> <select
+						id="yearsofexp">
+							<option value="021">0 - 1 year</option>
+							<option value="022">0 - 2 years</option>
+							<option value="123">1 - 3 years</option>
+							<option value="225">2 - 5 years</option>
+							<option value="325">3 - 5 years</option>
+							<option value="5210">5 - 10 years</option>
+							<option value="10plus">more than 10 years</option>
+					</select>
+
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+
+				</div>
+
+				<div class="col-sm-12 profile-field-div editable-div">
+					<label>Career Level:</label>
+
+					<c:choose>
+						<c:when test='${empty uppb.careerLevel}'>
+							<div>
+								<span style="color: orange">Career Level</span>
+
+							</div>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out
+									value='${uppb.careerLevel}' /></span>
+						</c:otherwise>
+					</c:choose>
+<<<<<<< HEAD
+<<<<<<< HEAD
+					<span class="inline-input" style="display: none;"> <select
+=======
+					<span class="inline-input" style="display: none;"> <select class="update"
+>>>>>>> ca21de1e7f90c9fffd3e7d8c4ad0c6aafb136a68
+=======
+					<span class="inline-input" style="display: none;"> <select class="update"
+>>>>>>> ca21de1e7f90c9fffd3e7d8c4ad0c6aafb136a68
+						id="careerlevel">
+							<option value="underg">Student (Undergraduate/Graduate)</option>
+							<option value="entry">Entry Level</option>
+							<option value="nonmanager">Experienced (Non-Managerial)</option>
+							<option value="manager">Manager (Manager/Supervisor of
+								Staff)</option>
+							<option value="exec">Executive (SVP,VP,Department Head
+								etc)</option>
+							<option value="seniorexec">Senior Executive (President,
+								CFO. etc)</option>
+
+					</select>
+
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+
+				</div>
 			</div>
 		</div>
 
@@ -1053,6 +1397,27 @@ h4 {
 														});
 											});
 						});
+	</script>
+	<script type="text/javascript">
+		$(".add-new").click(function() {
+
+			var parent = $(this).closest(".card-panel");
+			parent.find(".form-div").slideDown();
+		});
+		$(".cancel-button").click(function() {
+			var parent = $(this).closest(".card-panel");
+			parent.find(".form-div").slideUp();
+		});
+
+		$(".update").change(function() {
+
+			var par = $(this).closest(".editable-div");
+			par.find(".inline-output").text($(this).val());
+			$(this).hide();
+			par.find(".inline-output").show();
+
+		});
+
 	</script>
 </body>
 </html>

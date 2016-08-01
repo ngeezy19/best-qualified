@@ -130,6 +130,13 @@ public class StringConstants {
 	public static final String JOB_CATEGORY_106 = "Supply Chain / Procurement";
 	public static final String JOB_CATEGORY_77 = "Telecommunications";
 	public static final String JOB_CATEGORY_104 = "Vocational Trade and Services";
+	public static final String EDUCATION_LEVEL_501 = "Higher National Diploma";
+	public static final String EDUCATION_LEVEL_502 = "Bachelor's Degree";
+	public static final String EDUCATION_LEVEL_503 = "Master's Degree";
+	public static final String EDUCATION_LEVEL_504 = "Post Graduate Diploma";
+	public static final String EDUCATION_LEVEL_505 = "Doctorate";
+	public static final String EDUCATION_LEVEL_506 = "Professional";
+	public static final String WEBPAY_REDIRECT = "http://localhost:8888/callback/interswitch";
 	
 	
 	

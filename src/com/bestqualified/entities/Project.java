@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.bestqualified.controllers.GeneralController;
+import com.google.appengine.api.datastore.EmbeddedEntity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.Text;
@@ -20,16 +21,95 @@ public class Project implements Serializable {
 	private String safeKey;
 	private String name;
 	private Date dateCreated;
-	private List<Key> profiles;
+	private List<Key> applicants;
 	private Key jobs;
 	private List<Key> savedSearch;
 	private Text description;
+	private List<Key> shortListedCandidates;
+	private List<EmbeddedEntity> searchConditions;
+	private Date interviewDate;
+	private List<Key> invitees;
+	private List<Key> logs;
+	private List<Key> newApplicants;
 	
-	
+
+	public List<Key> getNewApplicants() {
+		return newApplicants;
+	}
+
+
+	public void setNewApplicants(List<Key> newApplicants) {
+		this.newApplicants = newApplicants;
+	}
+
+
 	public Project() {
 		this.id = GeneralController.ds.allocateIds(Project.class.getSimpleName(), 1).getStart();
 		this.safeKey = KeyFactory.keyToString(id);
+		dateCreated = new Date();
 	}
+	
+	
+	public List<Key> getApplicants() {
+		return applicants;
+	}
+
+
+	public void setApplicants(List<Key> applicants) {
+		this.applicants = applicants;
+	}
+
+
+	public List<Key> getShortListedCandidates() {
+		return shortListedCandidates;
+	}
+
+
+	public void setShortListedCandidates(List<Key> shortListedCandidates) {
+		this.shortListedCandidates = shortListedCandidates;
+	}
+
+
+	public List<EmbeddedEntity> getSearchConditions() {
+		return searchConditions;
+	}
+
+
+	public void setSearchConditions(List<EmbeddedEntity> searchConditions) {
+		this.searchConditions = searchConditions;
+	}
+
+
+	public Date getInterviewDate() {
+		return interviewDate;
+	}
+
+
+	public void setInterviewDate(Date interviewDate) {
+		this.interviewDate = interviewDate;
+	}
+
+
+	public List<Key> getInvitees() {
+		return invitees;
+	}
+
+
+	public void setInvitees(List<Key> invitees) {
+		this.invitees = invitees;
+	}
+
+
+	public List<Key> getLogs() {
+		return logs;
+	}
+
+
+	public void setLogs(List<Key> logs) {
+		this.logs = logs;
+	}
+
+
 	public Text getDescription() {
 		return description;
 	}
@@ -63,10 +143,10 @@ public class Project implements Serializable {
 		this.dateCreated = dateCreated;
 	}
 	public List<Key> getProfiles() {
-		return profiles;
+		return applicants;
 	}
 	public void setProfiles(List<Key> profiles) {
-		this.profiles = profiles;
+		this.applicants = profiles;
 	}
 	
 	public Key getJobs() {
@@ -84,7 +164,7 @@ public class Project implements Serializable {
 	@Override
 	public String toString() {
 		return "Project [id=" + id + ", safeKey=" + safeKey + ", name=" + name
-				+ ", dateCreated=" + dateCreated + ", profiles=" + profiles
+				+ ", dateCreated=" + dateCreated + ", applicants=" + applicants
 				+ ", jobs=" + jobs + ", savedSearch=" + savedSearch
 				+ ", description=" + description + "]";
 	}
