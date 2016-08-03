@@ -28,16 +28,8 @@ public class ProfessionalProfileBean implements Serializable {
 	private List<Award> awards;
 	private List<Certification> certifications;
 
-//this is a comment hytytytyuyyytyfhhvvhvhjnvjbvhch
-	//something
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-	//ALSO not
->>>>>>> ca21de1e7f90c9fffd3e7d8c4ad0c6aafb136a68
-=======
-	//ALSO not
->>>>>>> ca21de1e7f90c9fffd3e7d8c4ad0c6aafb136a68
+
+
 	public String getWebKey() {
 		return webKey;
 	}

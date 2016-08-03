@@ -11,7 +11,17 @@ public class Article implements Serializable, Comparable<Article> {
 	 */
 	
 	private static final long serialVersionUID = -7886491805459375745L;
-	private String pictureUrl,title,author,snippet, webkey, authorImage;
+	private String pictureUrl,title,author,snippet, webkey, authorImage, remainingSnippet;
+	
+	
+	private String body;
+	private String postDate;
+	private String link;
+	private long likes;
+	private long shares;
+	private List<commentBean> comments;
+	private boolean liked;
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -35,15 +45,19 @@ public class Article implements Serializable, Comparable<Article> {
 			return false;
 		return true;
 	}
-	private String body;
-	private String postDate;
-	private String link;
-	private long likes;
-	private long shares;
-	private long nComments;
 	
-	
-	
+	public String getRemainingSnippet() {
+		return remainingSnippet;
+	}
+	public void setRemainingSnippet(String remainingSnippet) {
+		this.remainingSnippet = remainingSnippet;
+	}
+	public boolean isLiked() {
+		return liked;
+	}
+	public void setLiked(boolean liked) {
+		this.liked = liked;
+	}
 	public String getAuthorImage() {
 		return authorImage;
 	}
@@ -115,17 +129,18 @@ public class Article implements Serializable, Comparable<Article> {
 	public void setShares(long shares) {
 		this.shares = shares;
 	}
-	public long getnComments() {
-		return nComments;
+	
+	public List<commentBean> getComments() {
+		return comments;
 	}
-	public void setnComments(long nComments) {
-		this.nComments = nComments;
+	public void setComments(List<commentBean> comments) {
+		this.comments = comments;
 	}
 	@Override
 	public String toString() {
 		return "Article [pictureUrl=" + pictureUrl + ", title=" + title + ", author=" + author + ", snippet=" + snippet
 				+ ", webkey=" + webkey + ", body=" + body + ", postDate=" + postDate + ", link=" + link + ", likes="
-				+ likes + ", shares=" + shares + ", nComments=" + nComments + "]";
+				+ likes + ", shares=" + shares + ", nComments=" +  "]";
 	}
 	
 

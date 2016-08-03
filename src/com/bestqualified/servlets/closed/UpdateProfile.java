@@ -50,11 +50,30 @@ public class UpdateProfile extends HttpServlet {
 			if(param != null && Util.notNull(value)) {
 				if(param.equalsIgnoreCase("tagline")) {
 					u.setTagline(value);
-				} else if(param.equalsIgnoreCase("email")) {
-					u.setEmail(value);
-				} else if(param.equalsIgnoreCase("phone")) {
+				}  else if(param.equalsIgnoreCase("phone")) {
 					u.setPhone(value);
-				} else if(param.equalsIgnoreCase("last-name")) {
+				} else if(param.equalsIgnoreCase("current-state")) {
+					cp.setCurrentState(value);
+					ppb.setCurrentState(value);
+				}else if(param.equalsIgnoreCase("current-country")) {
+					cp.setCurrentCountry(value);
+					ppb.setCurrentCountry(value);
+				}else if(param.equalsIgnoreCase("nationality")) {
+					cp.setNationality(value);
+					ppb.setNationality(value);
+				}else if(param.equalsIgnoreCase("state-of-origin")) {
+					cp.setStateOfOrigin(value);
+					ppb.setStateOfOrigin(value);
+				}else if(param.equalsIgnoreCase("gender")) {
+					u.setGender(value);
+					ppb.setGender(value);
+				}else if(param.equalsIgnoreCase("experience")) {
+					cp.setYearsOfExperience(Util.getExperienceValue(value));
+					ppb.setYearOfExperience(Util.getExperienceValue(value));
+				}else if(param.equalsIgnoreCase("career-level")) {
+					cp.setCareerLevel(Util.getCareerLevelValue(value));
+					ppb.setCareerLevel(Util.getCareerLevelValue(value));
+				}else if(param.equalsIgnoreCase("last-name")) {
 					String fName = req.getParameter("first-name");
 					String lName = req.getParameter("last-name");
 					if(Util.notNull(fName)) {

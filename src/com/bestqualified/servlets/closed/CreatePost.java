@@ -117,7 +117,7 @@ public class CreatePost extends HttpServlet {
 				List<Article> aas = new ArrayList<>();
 				aas.add(art);
 				List<com.bestqualified.bean.Article> aaa = Util
-						.toArticleBeans(aas);
+						.toArticleBeans(aas, null);
 				as.addAll(0, aaa);
 				cb.setPost(as);
 				

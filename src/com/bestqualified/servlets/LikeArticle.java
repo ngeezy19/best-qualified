@@ -24,7 +24,7 @@ public class LikeArticle extends HttpServlet {
 	private static final long serialVersionUID = -2444017888860018125L;
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String webkey = req.getParameter("webkey");
 		HttpSession session = req.getSession();
@@ -52,7 +52,7 @@ public class LikeArticle extends HttpServlet {
 			com.bestqualified.entities.Article art = EntityConverter
 					.entityToArticle(GeneralController.findByKey(KeyFactory
 							.stringToKey(webkey)));
-			art.setLikes(art.getLikes()+1);
+			//art.setLikes(art.getLikes()+1);
 			GeneralController.create(EntityConverter.ArticleToEntity(art));
 		}
 	}

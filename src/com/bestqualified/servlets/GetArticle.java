@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bestqualified.controllers.GeneralController;
 import com.bestqualified.entities.Article;
@@ -33,7 +34,12 @@ public class GetArticle extends HttpServlet {
 			Article art  = EntityConverter.entityToArticle(GeneralController.findByKey(key));
 			List<Article> l = new ArrayList<>();
 			l.add(art);
-			List<com.bestqualified.bean.Article> list = Util.toArticleBeans(l);
+			Object o = null;
+			HttpSession session = req.getSession();
+			synchronized (session) {
+				o = session.getAttribute("user");
+			}
+			List<com.bestqualified.bean.Article> list = Util.toArticleBeans(l,o);
 			com.bestqualified.bean.Article a = list.get(0);
 			req.setAttribute("currentArticle", a);
 			

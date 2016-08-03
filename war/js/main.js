@@ -51,9 +51,7 @@ $(document).ready(function() {
 						.toggleClass(
 								"glyphicon glyphicon-chevron-down glyphicon glyphicon-chevron-up");
 			});
-	tinymce.init({
-		selector : '.tiny'
-	});
+	
 	
 	$("#project-trig").click(function() {
 		$("#create-project-div").slideDown("slow");

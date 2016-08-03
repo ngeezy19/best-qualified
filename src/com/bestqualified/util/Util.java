@@ -39,11 +39,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
 import com.bestqualified.bean.Article;
 import com.bestqualified.bean.AssessmentQuestionBean;
-import com.bestqualified.bean.CandidateSearchResult;
 import com.bestqualified.bean.CommunityBean;
 import com.bestqualified.bean.CorrectionBean;
 import com.bestqualified.bean.FacebookAccessTokenResponse;
@@ -59,11 +56,13 @@ import com.bestqualified.bean.RecruiterDashboardBean;
 import com.bestqualified.bean.SignUpBean;
 import com.bestqualified.bean.SocialUser;
 import com.bestqualified.bean.SocialUser.SocialNetwork;
+import com.bestqualified.bean.commentBean;
 import com.bestqualified.controllers.GeneralController;
 import com.bestqualified.entities.AssessmentQuestion;
 import com.bestqualified.entities.Award;
 import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.Certification;
+import com.bestqualified.entities.Comment;
 import com.bestqualified.entities.Community;
 import com.bestqualified.entities.Company;
 import com.bestqualified.entities.Education;
@@ -471,8 +470,8 @@ public class Util {
 	public static ProfessionalDashboard initProfessionalDashboardBean(User u,
 			CandidateProfile cp) {
 		ProfessionalDashboard pd = new ProfessionalDashboard();
-		pd.setArticles(Util.toArticleBeans(GeneralController
-				.getNArticlesByDate(3)));
+		pd.setArticles(Util.toArticleBeans(
+				GeneralController.getNArticlesByDate(3), null));
 		pd.setProfessionalLevel(u.getProfessionalLevel());
 		pd.setCurrentEmployer(cp.getCurrentEmployer());
 		pd.setiJobs(Util.getJobs(cp.getCareerLevel(), cp.getEducation()));
@@ -876,10 +875,9 @@ public class Util {
 		ppb.setTagline(u.getTagline());
 		ppb.setProfessionalLevel(u.getProfessionalLevel());
 		ppb.setProfilePicture(u.getPictureUrl());
-		if(u.getBirthDate()!=null)
-		{
-		ppb.setBirthdate(new SimpleDateFormat("MMMM-dd-yyyy").format(u
-				.getBirthDate()));
+		if (u.getBirthDate() != null) {
+			ppb.setBirthdate(new SimpleDateFormat("MMMM-dd-yyyy").format(u
+					.getBirthDate()));
 		}
 		ppb.setCurrentState(cp.getCurrentState());
 		ppb.setCurrentCountry(cp.getCurrentCountry());
@@ -1348,7 +1346,6 @@ public class Util {
 		return job;
 	}
 
-
 	public static User getUserFromCache(Key key) {
 		Object o = MemcacheProvider.USER.get(key);
 		User u = null;
@@ -1371,7 +1368,8 @@ public class Util {
 		} else {
 			cp = (CandidateProfile) o;
 		}
-		return cp;}
+		return cp;
+	}
 
 	public static List<Community> getCommunityFromCache(List<Key> keys) {
 
@@ -1379,18 +1377,18 @@ public class Util {
 
 		List<Community> obj = new ArrayList<>();
 		List<Key> ki = new ArrayList<>();
-		
+
 		for (Key k : keys) {
 			Object o = map.get(k);
-			if (o!=null){
+			if (o != null) {
 				obj.add((Community) o);
-			}else {
+			} else {
 				ki.add(k);
 			}
-			
+
 		}
-		
-		if(!ki.isEmpty()){
+
+		if (!ki.isEmpty()) {
 			Map<Key, Entity> entm = GeneralController.findByKeys(ki);
 			for (Key key : ki) {
 				Community c = EntityConverter.entityToCommunity(entm.get(key));
@@ -1401,28 +1399,30 @@ public class Util {
 
 		return obj;
 	}
-	
-	public static List<com.bestqualified.entities.Article> getPostsFromCache(List<Key> keys) {
+
+	public static List<com.bestqualified.entities.Article> getPostsFromCache(
+			List<Key> keys) {
 
 		Map<Key, Object> map = MemcacheProvider.ARTICLES.getAll(keys);
 
 		List<com.bestqualified.entities.Article> obj = new ArrayList<>();
 		List<Key> ki = new ArrayList<>();
-		
+
 		for (Key k : keys) {
 			Object o = map.get(k);
-			if (o!=null){
+			if (o != null) {
 				obj.add((com.bestqualified.entities.Article) o);
-			}else {
+			} else {
 				ki.add(k);
 			}
-			
+
 		}
-		
-		if(!ki.isEmpty()){
+
+		if (!ki.isEmpty()) {
 			Map<Key, Entity> entm = GeneralController.findByKeys(ki);
 			for (Key key : ki) {
-				com.bestqualified.entities.Article c = EntityConverter.entityToArticle(entm.get(key));
+				com.bestqualified.entities.Article c = EntityConverter
+						.entityToArticle(entm.get(key));
 				obj.add(c);
 				MemcacheProvider.ARTICLES.put(c.getKey(), c);
 			}
@@ -1997,30 +1997,67 @@ public class Util {
 	}
 
 	public static List<Article> toArticleBeans(
-			List<com.bestqualified.entities.Article> articles) {
+			List<com.bestqualified.entities.Article> articles, Object o1) {
+		User user = null;
+		if (o1 != null && o1 instanceof User) {
+			user = (User) o1;
+		}
 		List<Article> aas = new ArrayList<>();
 		for (com.bestqualified.entities.Article art : articles) {
 			Article a = new Article();
 			User u = EntityConverter.entityToUser(GeneralController
 					.findByKey(art.getAuthor()));
-			
+
 			a.setAuthor(u.getFirstName() + " " + u.getLastName());
 			a.setTitle(art.getTitle());
-			a.setSnippet(art.getBody().getValue().substring(0, 400) + "...");
+			if (art.getBody() != null
+					&& art.getBody().getValue().length() > 401) {
+				String str = art.getBody().getValue();
+				int end = str.indexOf(" ", 300);
+				a.setSnippet(str.substring(0, end));
+				a.setRemainingSnippet(str.substring(end));
+				
+			} else {
+				a.setSnippet(art.getBody().getValue());
+			}
+
 			a.setBody(art.getBody().getValue());
-			a.setLikes(art.getLikes());
-			a.setnComments(art.getnComments());
+			if (art.getLikers() != null) {
+				a.setLikes(art.getLikers().size());
+			}
+			List<Key> cKeys = art.getComments();
+			List<commentBean> commBeans = new ArrayList<>();
+
+			if (cKeys != null) {
+				Map<Key, Entity> map = GeneralController.findByKeys(cKeys);
+				commentBean cb = null;
+				for (Map.Entry<Key, Entity> entry : map.entrySet()) {
+					cb = Util.toCommentBean(entry.getValue());
+					commBeans.add(cb);
+				}
+			}
+
+			a.setComments(commBeans);
+
 			a.setShares(art.getShares());
-			if(art.getImageKey()!=null){
-			ImagesService imagesService = ImagesServiceFactory
-					.getImagesService();
-			ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(
-					art.getImageKey()).imageSize(500);
-			String servingUrl = imagesService.getServingUrl(options);
-			a.setPictureUrl(servingUrl);
+			if (art.getImageKey() != null) {
+				ImagesService imagesService = ImagesServiceFactory
+						.getImagesService();
+				ServingUrlOptions options = ServingUrlOptions.Builder
+						.withBlobKey(art.getImageKey()).imageSize(500);
+				String servingUrl = imagesService.getServingUrl(options);
+				a.setPictureUrl(servingUrl);
+
+			}
 			a.setPostDate(new SimpleDateFormat("dd MMMM yyyy").format(art
 					.getDate()));
 			a.setWebkey(KeyFactory.keyToString(art.getKey()));
+			if (user != null) {
+				List<Key> keys = art.getLikers();
+
+				if (keys != null && keys.contains(user.getUserKey())) {
+					a.setLiked(true);
+				}
 			}
 			aas.add(a);
 		}
@@ -2028,23 +2065,47 @@ public class Util {
 		return aas;
 	}
 
-	public static List<CommunityBean> toCommunityBeans(List<Community> community){
+	private static commentBean toCommentBean(Entity entity) {
+		Comment c = EntityConverter.entityToComment(entity);
+		Key author = c.getAuthor();
+		Entity e = GeneralController.findByKey(author);
+		if (e != null) {
+			User u = EntityConverter.entityToUser(e);
+			commentBean cb = new commentBean();
+			cb.setAuthorImg(u.getPictureUrl());
+			cb.setAuthorName(u.getFirstName() + " " + u.getLastName());
+			cb.setComment(c.getBody().getValue());
+			cb.setTime(new SimpleDateFormat("dd MMMM yyyy").format(c.getDate()));
+			return cb;
+		}
+
+		return null;
+	}
+
+	public static List<CommunityBean> toCommunityBeans(
+			List<Community> community, User u) {
 		List<CommunityBean> cobean = new ArrayList<>();
-		for(Community com : community) {
+		for (Community com : community) {
 			CommunityBean cb = new CommunityBean();
+			if (u != null && com.getMembers() != null
+					&& com.getMembers().contains(u.getUserKey())) {
+				cb.setMember(true);
+			}
 			cb.setName(com.getName());
 			cb.setShortDesc(com.getShortDesc().getValue());
 			cb.setLongDesc(com.getLongDesc().getValue());
-			cb.setCurrentDate(new SimpleDateFormat("dd MMMM yyyy").format(com.getDateCreated()));
-			cb.setMembers(com.getMembers()); 
-			//cb.setTopics(com.getTopics());
-			
+			cb.setCurrentDate(new SimpleDateFormat("dd MMMM yyyy").format(com
+					.getDateCreated()));
+			if (com.getMembers() != null) {
+				cb.setMembers(com.getMembers().size());
+			}
+
 			ImagesService imagesService = ImagesServiceFactory
 					.getImagesService();
-			ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(
-					com.getImage());
-			ServingUrlOptions options1 = ServingUrlOptions.Builder.withBlobKey(
-					com.getWallpaper());
+			ServingUrlOptions options = ServingUrlOptions.Builder
+					.withBlobKey(com.getImage());
+			ServingUrlOptions options1 = ServingUrlOptions.Builder
+					.withBlobKey(com.getWallpaper());
 			String servingUrl = imagesService.getServingUrl(options);
 			String servingUrlWall = imagesService.getServingUrl(options1);
 			cb.setWallpaper(servingUrlWall);
@@ -2052,9 +2113,10 @@ public class Util {
 			cb.setWebSafeKey(KeyFactory.keyToString(com.getId()));
 			cobean.add(cb);
 		}
-		
+
 		return cobean;
 	}
+
 	public static Recruiter mergeRecruiters(Recruiter r, Recruiter orr) {
 		if (r.getCompany() != null) {
 			orr.setCompany(r.getCompany());
@@ -2073,7 +2135,6 @@ public class Util {
 		}
 		return orr;
 	}
-
 
 	public static String getBookCategory(String nodeId) {
 		String s = null;
@@ -2117,23 +2178,22 @@ public class Util {
 
 	public static String getInterswitchHash(String txnRef) {
 		String str = INTERSWITCH_PRODUCT_ID + txnRef + INTERSWITCH_MAC;
-		return Util.toSHA512(str).toUpperCase();}
+		return Util.toSHA512(str).toUpperCase();
+	}
 
 	public static Map<String, String> getCommunityMap(List<Community> comm) {
 		// TODO Auto-generated method stub
-		
+
 		Map<String, String> map = new HashMap<>();
-		
-		
+
 		for (Community community : comm) {
-			
+
 			String key = KeyFactory.keyToString(community.getId());
 			String name = community.getName();
 			map.put(key, name);
-			
+
 		}
-		
-		
+
 		return map;
 
 	}

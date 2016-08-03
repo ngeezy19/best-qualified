@@ -72,10 +72,10 @@ h2 {
 
 
 			<div class="col-sm-3" style="padding-top: 1%;">
-				<img alt="" src="/images/manpraying.png"
+				<img alt="" src="/images/worried.png"
 					style="height: 250px; width: auto;">
 			</div>
-			<div class="col-sm-9 no-padding-div"
+			<div class="col-sm-9"
 				style="font-family: roboto; color: #111">
 				<hr style="border-top: 0.05em solid #899bc1" />
 				<h3 style="text-align: justify;">Why waste time trying to
@@ -99,7 +99,7 @@ h2 {
 	</div>
 	<div class="container-fluid"
 		style="background-color: #eee9df; padding: 2%;">
-		<div class="container">
+		<div class="container" style="width: 80%;">
 			<div class="row">
 				<h2 style="color: #983b59; text-align: center;">Some of our
 					service offerings include</h2>
@@ -112,8 +112,8 @@ h2 {
 						<div class="col-sm-12">
 							<img alt="" src="/images/coachig-icons-coaching.png" class="img img-responsive">
 						</div>
-						<div class="colsm-12">
-							<h3 style="text-align: center;">Coaching on Sales Process</h3>
+						<div class="col-sm-12">
+							<h4 style="text-align: center; font-weight: bold; margin-top:5px ">Coaching on Sales Process</h4>
 						</div>
 					
 				</div>
@@ -122,8 +122,8 @@ h2 {
 						<div class="col-sm-12">
 							<img alt="" src="/images/coachig-icons-Strategy.png" class="img img-responsive">
 						</div>
-						<div class="colsm-12">
-							<h3 style="text-align: center;">Sales Strategy</h3>
+						<div class="col-sm-12">
+							<h4 style="text-align: center;font-weight: bold; margin-top:5px">Sales Strategy</h4>
 						</div>
 					
 				</div>
@@ -132,8 +132,8 @@ h2 {
 						<div class="col-sm-12">
 							<img alt="" src="/images/coachig-icons-Behaviour.png" class="img img-responsive">
 						</div>
-						<div class="colsm-12">
-							<h3 style="text-align: center;">Sales Behaviour</h3>
+						<div class="col-sm-12">
+							<h4 style="text-align: center;font-weight: bold; margin-top:5px">Sales Behaviour</h4>
 						</div>
 					
 				</div>
@@ -142,8 +142,8 @@ h2 {
 						<div class="col-sm-12">
 							<img alt="" src="/images/coachig-icons-Support.png" class="img img-responsive">
 						</div>
-						<div class="colsm-12">
-							<h3 style="text-align: center;">Career Support</h3>
+						<div class="col-sm-12">
+							<h4 style="text-align: center;font-weight: bold; margin-top:5px">Career Support</h4>
 						</div>
 					
 				</div>
