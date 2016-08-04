@@ -32,11 +32,11 @@ h3 {
 	<div class="container-fluid">
 		<section style="width: 80%; margin: 0 auto;">
 
-			<h3 style="color: #792f47" >All Communities</h3>
+			<h3 style="color: #792f47">All Communities</h3>
 			<div class="row">
 
 
-				<c:forEach var="item" items="${cpBean.communities}">
+				<c:forEach var="item" items="${communityPageBean.communities}">
 					<div class="col-sm-3">
 
 						<div id="hint" class="card">
@@ -54,10 +54,18 @@ h3 {
 									</a>
 								</h4>
 								<p style="font-family: calibri; font-size: 10pt">${item.shortDesc}</p>
-								<p style="color: #983b59">${fn:length(members)} members</p>
-								<a
-									style='text-decoration: none; color: #59983b; font-weight: bold; font-family: "Corben"'
-									href='<c:url value="/bq/close/join-community?webkey=${item.webSafeKey}" />'>JOIN</a>
+								<p style="color: #983b59">${item.members} members</p>
+								<c:choose>
+									<c:when test="${item.member}">
+										<a
+											style='text-decoration: none; color: #59983b; font-weight: bold; font-family: "Corben"'>MEMBER</a>
+									</c:when>
+									<c:otherwise>
+										<a
+											style='text-decoration: none; color: #59983b; font-weight: bold; font-family: "Corben"'
+											href='<c:url value="/bq/close/join-community?webkey=${item.webSafeKey}" />'>JOIN</a>
+									</c:otherwise>
+								</c:choose>
 							</div>
 
 						</div>

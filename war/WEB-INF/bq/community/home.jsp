@@ -53,10 +53,19 @@ h3 {
 										</a>
 									</h4>
 									<p style="font-family: calibri; font-size: 10pt">${item.shortDesc}</p>
-									<p style="color: #983b59">${fn:length(members)}
-										members</p>
-									<a style='text-decoration: none; color: #59983b; font-weight:bold; font-family: "Corben"'
-										href='<c:url value="/bq/join-community?webkey=${item.webSafeKey}" />'>JOIN</a>
+									<p style="color: #983b59">${item.members} members</p>
+									<c:choose>
+										<c:when test="${item.member}">
+											<a
+												style='text-decoration: none; color: green; font-weight: bold; font-family: "Corben"'>MEMBER</a>
+										</c:when>
+										<c:otherwise>
+											<a
+												style='text-decoration: none; color: #59983b; font-weight: bold; font-family: "Corben"'
+												href='<c:url value="/bq/close/join-community?webkey=${item.webSafeKey}" />'>JOIN</a>
+										</c:otherwise>
+									</c:choose>
+
 								</div>
 
 							</div>
@@ -72,11 +81,12 @@ h3 {
 							<div class="media card-panel"
 								style="margin-bottom: 2%; width: 100%">
 								<a class="pull-left"
-									href='<c:url value="/community?id=${item.webkey}" />'><img
+									href='<c:url value="/bq/community/article/single?webkey=${item.webkey}" />'><img
 									class="media-object img-rounded" src="${item.pictureUrl}"
 									width="130" height="130"></a>
 								<div class="media-body">
-									<a href='<c:url value="/community?id=${item.webkey}" />'><h3
+									<a
+										href='<c:url value="/bq/community/article/single?webkey=${item.webkey}" />'><h3
 											class="media-heading" id="lol">${item.title}</h3></a>
 									<p
 										style="color: #983b59; font-family: calibri; letter-spacing: 3px">

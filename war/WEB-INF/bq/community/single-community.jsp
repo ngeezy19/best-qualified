@@ -89,35 +89,94 @@
 									style="width: 100%; border-radius: 0px">
 
 								<div class="card-container">
-									<p>${item.snippet}</p>
+									<p class="content" style="padding-top: 2%;">${item.snippet}
+										<c:if
+											test='${fn:length(item.snippet) < fn:length(item.body) }'>
+											<a class="read-more"
+												href="/bq/community/post/complete?webkey=${item.webkey}"><i
+												class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+										</c:if>
+									</p>
 									<hr style="margin-bottom: 0px" />
 									<div style="color: #59983b; font-size: 2rem">
-										<span class="pull-right"><span class="nComment">${fn:length(nComments)}</span></span><i
-											style="margin-right: 5px; cursor: pointer;"
-											class="fa fa-comment-o pull-right make-comment"
-											aria-hidden="true"></i> <i class="fa fa-thumbs-o-up"
-											style="margin-right: 5px; cursor: pointer;"
-											aria-hidden="true"></i> ${fn:length(likes)} <i
-											style="margin-right: 5px; cursor: pointer;"
+										<span class="nComment pull-right"><c:out
+												value='${fn:length(item.comments)}' /></span>
+
+										<c:choose>
+											<c:when test="${not empty user}">
+												<a href="#"><i style="margin-right: 5px;"
+													class="fa fa-comment-o pull-right make-comment"
+													aria-hidden="true"></i></a>
+											</c:when>
+											<c:otherwise>
+												<a
+													href="<c:url value='/bq/close/community?webkey=${communityBean.webSafeKey}' />"><i
+													style="margin-right: 5px; cursor: pointer;"
+													class="fa fa-comment-o pull-right" aria-hidden="true"></i></a>
+											</c:otherwise>
+										</c:choose>
+
+
+
+										<c:choose>
+											<c:when test="${item.liked}">
+												<i class="fa fa-thumbs-o-up"
+													style="margin-right: 5px; cursor: pointer;"
+													aria-hidden="true"></i>
+											</c:when>
+											<c:otherwise>
+												<a href="<c:url value='/bq/close/like' />"><i
+													class="fa fa-thumbs-o-up"
+													style="margin-right: 5px; cursor: pointer;"
+													aria-hidden="true"></i></a>
+											</c:otherwise>
+										</c:choose>
+
+
+
+										<c:out value='${item.likes}' />
+										<i style="margin-right: 5px; cursor: pointer;"
 											class="fa fa-share-alt" aria-hidden="true"></i>
-										${fn:length(shares)}
+										<c:out value='${item.shares}' />
 									</div>
 
 								</div>
-								<div class="card-container comment-div"
-									style="background-color: #f4ebee; padding-top: 4px; display: none">
+								<div class="comment-div"
+									style="background-color: #f4ebee; padding-top: 15px; display: none">
+									<div class="inner-comment-div"
+										style="max-height: 240px; overflow-x: hidden;">
+										<c:forEach var="comm" items="${item.comments}">
+											<div class="row" style="margin-bottom: 15px">
+												<div class="col-sm-12">
+													<div class="col-sm-2">
+														<img class="img img-circle" src="${comm.authorImg}"
+															style="width: 36px; height: 36px; margin: 0 auto">
+													</div>
+													<div class="col-sm-10">
+														<strong><c:out value='${comm.authorName}' />: </strong>
+														<c:out value="${comm.comment}" />
+													</div>
+												</div>
+											</div>
+										</c:forEach>
+									</div>
 
-									<div class="form-group">
-										<form class="comment-form">
-											<input type="hidden" value="${item.webkey}" name="webkey" />
-											<textarea name="comment" rows="2"
-												class="form-control comment-area"></textarea>
-										</form>
-									</div>
-									<div class="form-group">
-										<button class="btn btn-primary add-comment-btn">Add
-											Comment</button>
-									</div>
+									<form class="comment-form">
+										<div class="card-container">
+											<div class="form-group">
+
+												<input type="hidden" value="${item.webkey}" name="webkey" />
+												<textarea name="comment" rows="2"
+													class="form-control comment-area"></textarea>
+
+											</div>
+											<div class="form-group">
+
+												<button class="btn btn-success add-comment">Add
+													Comment</button>
+											</div>
+										</div>
+									</form>
 								</div>
 
 
@@ -137,35 +196,94 @@
 									style="width: 100%; border-radius: 0px">
 
 								<div class="card-container">
-									<p>${item.snippet}</p>
+									<p class="content" style="padding-top: 2%;">${item.snippet}
+										<c:if
+											test='${fn:length(item.snippet) < fn:length(item.body) }'>
+											<a class="read-more"
+												href="/bq/community/post/complete?webkey=${item.webkey}"><i
+												class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+										</c:if>
+									</p>
 									<hr style="margin-bottom: 0px" />
 									<div style="color: #59983b; font-size: 2rem">
-										<span class="pull-right"><span class="nComment">${fn:length(nComments)}</span></span><i
-											style="margin-right: 5px; cursor: pointer;"
-											class="fa fa-comment-o pull-right make-comment"
-											aria-hidden="true"></i> <i class="fa fa-thumbs-o-up"
-											style="margin-right: 5px; cursor: pointer;"
-											aria-hidden="true"></i> ${fn:length(likes)} <i
-											style="margin-right: 5px; cursor: pointer;"
+										<span class="nComment pull-right"><c:out
+												value='${fn:length(item.comments)}' /></span>
+
+										<c:choose>
+											<c:when test="${not empty user}">
+												<a href="#"><i style="margin-right: 5px;"
+													class="fa fa-comment-o pull-right make-comment"
+													aria-hidden="true"></i></a>
+											</c:when>
+											<c:otherwise>
+												<a
+													href="<c:url value='/bq/close/community?webkey=${communityBean.webSafeKey}' />"><i
+													style="margin-right: 5px; cursor: pointer;"
+													class="fa fa-comment-o pull-right" aria-hidden="true"></i></a>
+											</c:otherwise>
+										</c:choose>
+
+
+
+										<c:choose>
+											<c:when test="${item.liked}">
+												<i class="fa fa-thumbs-o-up"
+													style="margin-right: 5px; cursor: pointer;"
+													aria-hidden="true"></i>
+											</c:when>
+											<c:otherwise>
+												<a href="<c:url value='/bq/close/like' />"><i
+													class="fa fa-thumbs-o-up"
+													style="margin-right: 5px; cursor: pointer;"
+													aria-hidden="true"></i></a>
+											</c:otherwise>
+										</c:choose>
+
+
+
+										<c:out value='${item.likes}' />
+										<i style="margin-right: 5px; cursor: pointer;"
 											class="fa fa-share-alt" aria-hidden="true"></i>
-										${fn:length(shares)}
+										<c:out value='${item.shares}' />
 									</div>
 
 								</div>
-								<div class="card-container comment-div"
-									style="background-color: #f4ebee; padding-top: 4px; display: none">
+								<div class="comment-div"
+									style="background-color: #f4ebee; padding-top: 15px; display: none">
+									<div class="inner-comment-div"
+										style="max-height: 240px; overflow-x: hidden;">
+										<c:forEach var="comm" items="${item.comments}">
+											<div class="row" style="margin-bottom: 15px">
+												<div class="col-sm-12">
+													<div class="col-sm-2">
+														<img class="img img-circle" src="${comm.authorImg}"
+															style="width: 36px; height: 36px; margin: 0 auto">
+													</div>
+													<div class="col-sm-10">
+														<strong><c:out value='${comm.authorName}' />: </strong>
+														<c:out value="${comm.comment}" />
+													</div>
+												</div>
+											</div>
+										</c:forEach>
+									</div>
 
-									<div class="form-group">
-										<form class="comment-form">
-											<input type="hidden" value="${item.webkey}" name="webkey" />
-											<textarea name="comment" rows="2"
-												class="form-control comment-area"></textarea>
-										</form>
-									</div>
-									<div class="form-group">
-										<button class="btn btn-primary add-comment-btn">Add
-											Comment</button>
-									</div>
+									<form class="comment-form">
+										<div class="card-container">
+											<div class="form-group">
+
+												<input type="hidden" value="${item.webkey}" name="webkey" />
+												<textarea name="comment" rows="2"
+													class="form-control comment-area"></textarea>
+
+											</div>
+											<div class="form-group">
+
+												<button class="btn btn-success add-comment">Add
+													Comment</button>
+											</div>
+										</div>
+									</form>
 								</div>
 
 
@@ -196,37 +314,89 @@
 
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$(".make-comment").click(function() {
-				var par = $(this).closest(".card");
-				par.find(".comment-div").slideToggle();
-			});
+		$(document)
+				.ready(
+						function() {
+							$(".read-more").click(function(e) {
+								e.preventDefault();
+								var me = $(this)
+								var ref = me.prop("href");
+								var par = me.closest("p");
+								$.ajax({
+									url : ref,
+									dataType : "json",
+									success : function(data) {
 
-			$(".add-comment-btn").click(function() {
-				var x = $(this).closest(".comment-div");
-				var form = x.find(".comment-form");
-				var span = $(this).closest(".card").find(".nComment");
-				var cDiv = $(this).closest(".card").find(".comment-div");
-				var area = cDiv.find(".comment-area");
-				$.ajax({
-					url : "/bq/close/community/comment/add",
-					method : "POST",
-					data : form.serialize(),
-					dataType : "json",
-					success : function(data) {
-						span.text(data);
-						cDiv.slideUp();
-						area.text("");
-					},
-					error : function(xhr) {
-						if (xhr.status == "200") {
-							console.log(xhr.responseText);
+										me.css("display", "none");
+										par.append(data);
+									}
+								})
+							});
 
-						}
-					}
-				});
-			});
-		});
+							$(".make-comment").click(function(e) {
+								e.preventDefault();
+								var par = $(this).closest(".card");
+								par.find(".comment-div").slideToggle();
+							});
+
+							$(".add-comment")
+									.click(
+											function(e) {
+												e.preventDefault();
+												var x = $(this).closest(
+														".comment-div");
+												var form = x
+														.find(".comment-form");
+												var span = $(this).closest(
+														".card").find(
+														".nComment");
+												var cDiv = $(this).closest(
+														".card").find(
+														".comment-div");
+												var area = cDiv
+														.find(".comment-area");
+												var y = x
+														.find(".inner-comment-div");
+
+												$
+														.ajax({
+															url : "/bq/close/comment/add",
+															method : "POST",
+															data : form
+																	.serialize(),
+															dataType : "json",
+															success : function(
+																	data) {
+																span
+																		.text(data[0].totalComment);
+																area.val("");
+																var str = "<div class='row' style='margin-bottom:15px'><div class='col-sm-12'><div class='col-sm-2'><img class='img img-circle' src='"+data[0].totalComment
+					+"' style='width: 36px; height: 36px; margin: 5px'></div><div class='col-sm-10'><strong>"
+																		+ data[0].authorName
+																		+ ": </strong>"
+																		+ data[0].comment
+																		+ "</div></div></div>";
+
+																y.append(str);
+																y
+																		.animate({
+																			scrollTop : y[0].scrollHeight
+																		});
+
+															},
+
+															error : function(
+																	xhr) {
+																if (xhr.status == "200") {
+																	console
+																			.log(xhr.responseText);
+
+																}
+															}
+														});
+
+											});
+						});
 	</script>
 </body>
 </html>

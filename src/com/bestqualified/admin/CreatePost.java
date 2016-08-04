@@ -47,6 +47,7 @@ public class CreatePost extends HttpServlet {
 		BlobKey blobKey = null;
 		if (!(blobKeys == null) && !blobKeys.isEmpty()) {
 			blobKey = blobKeys.get(0);
+			
 		}
 
 		String body = req.getParameter("body");

@@ -30,13 +30,18 @@ public class InitIndex extends HttpServlet {
 		List<Job> jobs = GeneralController.getNJobs(10);
 		
 		IndexBean ib = new IndexBean();
-		ib.setArticles(Util.toArticleBeans(articles));
+		HttpSession session = req.getSession();
+		Object o = null;
+		synchronized (session) {
+			o = session.getAttribute("user");
+		}
+		ib.setArticles(Util.toArticleBeans(articles,o));
 		ib.setIjs(Util.toInterestedJobs(jobs));
 		
 		String date = new SimpleDateFormat("MMMM-dd-yyyy")
 		.format(new Date());
 		
-		HttpSession session = req.getSession();
+		
 		
 		synchronized (session) {
 			session.setAttribute("indexBean", ib);

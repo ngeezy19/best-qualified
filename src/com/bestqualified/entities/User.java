@@ -32,7 +32,7 @@ public class User implements Serializable {
 	private List<String> emails;
 	private List<Key> coachRequest;
 	private double rating;
-
+	private List<Key> communities;
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -72,6 +72,14 @@ public class User implements Serializable {
 	
 	
 	
+
+	public List<Key> getCommunities() {
+		return communities;
+	}
+
+	public void setCommunities(List<Key> communities) {
+		this.communities = communities;
+	}
 
 	public String getProfessionalLevel() {
 		return professionalLevel;

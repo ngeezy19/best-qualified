@@ -2,7 +2,6 @@ package com.bestqualified.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bestqualified.bean.CommunityBean;
+import com.bestqualified.bean.CommunityPageBean;
 import com.bestqualified.controllers.GeneralController;
 import com.bestqualified.entities.Community;
 import com.bestqualified.entities.User;
@@ -35,12 +36,16 @@ public class JoinCommunity extends HttpServlet {
 
 		User u = null;
 		Object o = null;
+		CommunityPageBean cb = null;
+		Object o2 = null;
 		synchronized (session) {
 			o = session.getAttribute("user");
+			o2 = session.getAttribute("communityPageBean");
 		}
 
-		if (o != null) {
+		if (o != null && o2 != null) {
 			u = (User) o;
+			cb = (CommunityPageBean) o2;
 		} else {
 			synchronized (session) {
 				session.setAttribute("joinError", "no community selected");
@@ -50,7 +55,7 @@ public class JoinCommunity extends HttpServlet {
 			}
 		}
 
-		Date date = new Date();
+	
 		List<Key> listOfMembers = null;
 
 		String webKey = req.getParameter("webkey");
@@ -69,28 +74,50 @@ public class JoinCommunity extends HttpServlet {
 		Object o1 = MemcacheProvider.COMMUNITIES.get(key);
 
 		Community c = null;
-		if (o1 == null) {
-			c = EntityConverter.entityToCommunity(GeneralController
-					.findByKey(key));
-			MemcacheProvider.COMMUNITIES.put(key, c);
-
-		} else {
+		if (o1 != null) {
+		
 			c = (Community) o1;
+			listOfMembers = c.getMembers();
+			if(listOfMembers == null) {
+				listOfMembers = new ArrayList<>();
+			}
+			if(!listOfMembers.contains(u.getUserKey())) {
+				listOfMembers.add(u.getUserKey());
+				c.setMembers(listOfMembers);
+			}
+			
+			
+			List<Key> comms = u.getCommunities();
+			if(comms == null) {
+				comms = new ArrayList<>();
+			}
+			
+			
+			if(!comms.contains(c.getId())) {
+				comms.add(c.getId());
+				u.setCommunities(comms);
+			}
+			
+			
+			List<CommunityBean> lcb = cb.getCommunities();
+			for(CommunityBean cmb:lcb) {
+				if(webKey.equals(cmb.getWebSafeKey())) {
+					cmb.setMembers(c.getMembers().size());
+					break;
+				}
+			}
+			
 		}
 		
-		listOfMembers = c.getMembers();
-		if(listOfMembers == null) {
-			listOfMembers = new ArrayList<>();
-		}
+		
 
-		listOfMembers.add(u.getUserKey());
-		c.setMembers(listOfMembers);
-
-		//GeneralController.createWithCrossGroup(EntityConverter
-			//	.communityToEntity(c));
+		GeneralController.createWithCrossGroup(EntityConverter
+			.communityToEntity(c), EntityConverter.userToEntity(u));
+		MemcacheProvider.COMMUNITIES.delete(c.getId());
 
 		synchronized (session) {
-			session.setAttribute("communityBean", "Member added");
+			session.setAttribute("user", u);
+			session.setAttribute("communityPageBean", cb);
 			resp.sendRedirect(resp.encodeRedirectURL("/community?webkey="+webKey));
 			return;
 		}
