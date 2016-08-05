@@ -1095,7 +1095,7 @@ body {
 
 .jobfix li {
 	width: 187px;
-	height: 90px;
+	height: 98px;
 	background: #fff;
 	padding: 10px 15px;
 	float: left;
@@ -1159,6 +1159,15 @@ body {
     width: 200px;
     height: 30px; 
 }
+
+.origin{
+	display: none;
+}
+
+.tort{
+	word-wrap: break-word;
+}
+
 /* Chrome, Safari, Opera */
 @
 -webkit-keyframes example { 0% {
