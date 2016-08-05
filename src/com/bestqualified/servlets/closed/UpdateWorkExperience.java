@@ -99,7 +99,8 @@ public class UpdateWorkExperience extends HttpServlet {
 		
 		String data = "<div class='col-sm-12'><h4 class='position' style='margin-top: 10px'>"
 				+position+"</h4><h5 class='company-name' style='font-family: calibri'>"+organization
-				+"</h5><h5 style='font-family: calibri'>From <span class='start-month'>";
+				+"</h5><h5 style='font-family: calibri'>From <span class='start-month'>"
+				+startMonth+" "+startYear;
 		
 		
 
