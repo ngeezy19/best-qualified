@@ -13,6 +13,7 @@ import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.User;
 import com.bestqualified.util.Util;
 import com.google.appengine.api.datastore.Text;
+import com.google.gson.Gson;
 
 public class UpdateProfile extends HttpServlet {
 
@@ -26,71 +27,88 @@ public class UpdateProfile extends HttpServlet {
 			throws ServletException, IOException {
 		String param = req.getParameter("param");
 		String value = req.getParameter("value");
-		HttpSession session = req.getSession();
-		Object o = null;
-		User u = null;
-		synchronized (session) {
-			o = session.getAttribute("user");
-		}
-		if(o!=null) {
-			u = (User) o;
-			CandidateProfile cp = null;
-			ProfessionalProfileBean ppb = null;
-			if(u.getUserType().equalsIgnoreCase(User.UserType.PROFESSIONAL.name())) {
-				synchronized (session) {
-					Object c = session.getAttribute("professionalProfile");
-					Object a = session.getAttribute("uppb");
-					if(c!=null && a!=null) {
-						cp = (CandidateProfile) c;
-						ppb = (ProfessionalProfileBean) a;
-					}
-				}
-				
+		
+		if(param.equals("work-experience")) {
+			req.getRequestDispatcher("/bq/close/save-work-experience").forward(req, resp);
+		}else {
+			HttpSession session = req.getSession();
+			Object o = null;
+			User u = null;
+			synchronized (session) {
+				o = session.getAttribute("user");
 			}
-			if(param != null && Util.notNull(value)) {
-				if(param.equalsIgnoreCase("tagline")) {
-					u.setTagline(value);
-				}  else if(param.equalsIgnoreCase("phone")) {
-					u.setPhone(value);
-				} else if(param.equalsIgnoreCase("current-state")) {
-					cp.setCurrentState(value);
-					ppb.setCurrentState(value);
-				}else if(param.equalsIgnoreCase("current-country")) {
-					cp.setCurrentCountry(value);
-					ppb.setCurrentCountry(value);
-				}else if(param.equalsIgnoreCase("nationality")) {
-					cp.setNationality(value);
-					ppb.setNationality(value);
-				}else if(param.equalsIgnoreCase("state-of-origin")) {
-					cp.setStateOfOrigin(value);
-					ppb.setStateOfOrigin(value);
-				}else if(param.equalsIgnoreCase("gender")) {
-					u.setGender(value);
-					ppb.setGender(value);
-				}else if(param.equalsIgnoreCase("experience")) {
-					cp.setYearsOfExperience(Util.getExperienceValue(value));
-					ppb.setYearOfExperience(Util.getExperienceValue(value));
-				}else if(param.equalsIgnoreCase("career-level")) {
-					cp.setCareerLevel(Util.getCareerLevelValue(value));
-					ppb.setCareerLevel(Util.getCareerLevelValue(value));
-				}else if(param.equalsIgnoreCase("last-name")) {
-					String fName = req.getParameter("first-name");
-					String lName = req.getParameter("last-name");
-					if(Util.notNull(fName)) {
-						u.setFirstName(fName);
+			if(o!=null) {
+				u = (User) o;
+				CandidateProfile cp = null;
+				ProfessionalProfileBean ppb = null;
+				if(u.getUserType().equalsIgnoreCase(User.UserType.PROFESSIONAL.name())) {
+					synchronized (session) {
+						Object c = session.getAttribute("professionalProfile");
+						Object a = session.getAttribute("uppb");
+						if(c!=null && a!=null) {
+							cp = (CandidateProfile) c;
+							ppb = (ProfessionalProfileBean) a;
+						}
 					}
 					
-					if(Util.notNull(lName)) {
-						u.setLastName(lName);
+				}
+				if(param != null && Util.notNull(value)) {
+					if(param.equalsIgnoreCase("tagline")) {
+						u.setTagline(value);
+					}  else if(param.equalsIgnoreCase("phone")) {
+						u.setPhone(value);
+					} else if(param.equalsIgnoreCase("current-state")) {
+						cp.setCurrentState(value);
+						ppb.setCurrentState(value);
+						resp.setContentType("application/json");
+						resp.getWriter().write(new Gson().toJson(ppb.getCurrentState()));
+					}else if(param.equalsIgnoreCase("current-country")) {
+						cp.setCurrentCountry(value);
+						ppb.setCurrentCountry(value);
+					}else if(param.equalsIgnoreCase("nationality")) {
+						cp.setNationality(value);
+						ppb.setNationality(value);
+					}else if(param.equalsIgnoreCase("state-of-origin")) {
+						cp.setStateOfOrigin(value);
+						ppb.setStateOfOrigin(value);
+						resp.setContentType("application/json");
+						resp.getWriter().write(new Gson().toJson(ppb.getStateOfOrigin()));
+					}else if(param.equalsIgnoreCase("gender")) {
+						u.setGender(value);
+						ppb.setGender(value);
+						resp.setContentType("application/json");
+						resp.getWriter().write(new Gson().toJson(ppb.getGender()));
+					}else if(param.equalsIgnoreCase("experience")) {
+						cp.setYearsOfExperience(Util.getExperienceValue(value));
+						ppb.setYearOfExperience(Util.getExperienceValue(value));
+						resp.setContentType("application/json");
+						resp.getWriter().write(new Gson().toJson(ppb.getYearOfExperience()));
+					}else if(param.equalsIgnoreCase("career-level")) {
+						cp.setCareerLevel(Util.getCareerLevelValue(value));
+						ppb.setCareerLevel(Util.getCareerLevelValue(value));
+						resp.setContentType("application/json");
+						resp.getWriter().write(new Gson().toJson(ppb.getCareerLevel()));
+					}else if(param.equalsIgnoreCase("last-name")) {
+						String fName = req.getParameter("first-name");
+						String lName = req.getParameter("last-name");
+						if(Util.notNull(fName)) {
+							u.setFirstName(fName);
+						}
+						
+						if(Util.notNull(lName)) {
+							u.setLastName(lName);
+						}
+					} else if(param.equalsIgnoreCase("current-employer") && cp != null) {
+						cp.setCurrentEmployer(value);
+					} else if(param.equalsIgnoreCase("profile-summary") && value != null) {
+						cp.setProfileDescription(new Text(value));
+						ppb.setProfileSummary(value);
 					}
-				} else if(param.equalsIgnoreCase("current-employer") && cp != null) {
-					cp.setCurrentEmployer(value);
-				} else if(param.equalsIgnoreCase("profile-summary") && value != null) {
-					cp.setProfileDescription(new Text(value));
-					ppb.setProfileSummary(value);
 				}
 			}
 		}
+		
+		
 	}
 
 }

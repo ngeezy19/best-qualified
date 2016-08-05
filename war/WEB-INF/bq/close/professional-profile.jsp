@@ -14,6 +14,14 @@
 	href="/styles/jquery.webui-popover.min.css">
 <link rel="stylesheet" href="/styles/main.css">
 <style type="text/css">
+.input {
+	display: none;
+}
+
+.form-div {
+	display: none;
+}
+
 .editable-div {
 	margin: 3px 0px;
 }
@@ -56,13 +64,13 @@ h4 {
 								style="width: 100%; margin: 2%; margin-top: 4%;">
 						</div>
 						<div class="col-sm-9" style="padding-top: 2%;">
-							<div class="col-sm-12 profile-field-div editable-div"
+							<div class="col-sm-12 editable-div"
 								style="font-size: 14pt; font-weight: bold;">
-								<span class="inline-output"><c:out
-										value="${user.firstName}" /> <c:out value="${user.lastName}" /></span>
-								<span class="inline-input"><input id="first-name"
-									value="${user.firstName}" style="width: 40%;" /> <input
-									id="last-name" value="${user.lastName}" style="width: 40%;" /></span><span
+								<input id="first-name" class="input" value="${user.firstName}"
+									style="width: 40%;" /> <input class="input" id="last-name"
+									value="${user.lastName}" style="width: 40%;" /> <span
+									class="output"><c:out value="${user.firstName}" /> <c:out
+										value="${user.lastName}" /></span> <span
 									class="glyphicon glyphicon-pencil edit-tool"></span>
 							</div>
 							<div class="col-sm-12 text-muted">
@@ -109,6 +117,376 @@ h4 {
 										</c:otherwise>
 									</c:choose>
 								</span> <span class="glyphicon glyphicon-pencil edit-tool"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+
+				<div class="col-sm-2 ">
+					<div class="card-panel">
+						<img alt="" src="/images/profile-summary.png"
+							class="img img-responsive" style="width: 80%; margin: 0 auto">
+					</div>
+				</div>
+				<div class="col-sm-10 card-panel">
+					<div class="col-sm-12 no-padding-div">
+						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666">
+							Profile Summary</h4>
+
+						<div class="col-sm-12 editable-div">
+							<input type="hidden" value="profile-summary" class="h-input" />
+							<textarea rows="10" style="width: 100%;" class="input input-area">${uppb.profileSummary}</textarea>
+							<button class="btn btn-primary btn-sm input s-textarea">Save</button>
+							<button class="btn btn-danger btn-sm input summary-close-button">Close</button>
+							<div class="output">
+								<c:choose>
+									<c:when test='${empty uppb.profileSummary}'>
+										<span style="color: orange">Write a summary for your
+											profile</span>
+									</c:when>
+									<c:otherwise>
+										${uppb.profileSummary}
+										
+									</c:otherwise>
+								</c:choose>
+								<span class="edit-tool"
+									style="border: none; font-weight: bold; color: blue">EDIT</span>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-sm-2">
+					<div class="card-panel">
+						<img alt="" src="/images/work-experience.png"
+							class="img img-responsive" style="width: 80%; margin: 0 auto">
+					</div>
+				</div>
+				<div class="col-sm-10 card-panel">
+					<div class="col-sm-12 no-padding-div">
+						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
+							class="">Work Experience</h4>
+
+						<div class="s-editable-div">
+							<span class="text-primary add-new" style="cursor: pointer;">Add
+								new</span>
+							<div class="form-div">
+								<br />
+								<form class="work-experience-form">
+									<div>
+										<label>Organization Name:</label><br /> <input
+											id="organization" name="organization" style="width: 70%;">
+									</div>
+									<div>
+										<label>Position Held:</label><br /> <input name="position"
+											id="position" style="width: 70%;">
+									</div>
+									<div>
+										<label>Time</label><br /> <select name="start-month"
+											id="start-month">
+											<%@ include file="/partial/months.html"%>
+										</select> <select name="start-year" id="start-year">
+											<%@ include file="/partial/years.html"%>
+										</select> <label>To</label> <select name="end-month" id="end-month">
+											<%@ include file="/partial/months.html"%>
+										</select> <select name="end-year" id="end-year">
+											<%@ include file="/partial/years.html"%>
+										</select>
+									</div>
+									<input name="param" value="work-experience" type="hidden">
+
+									<div style="margin-top: 2%; margin-bottom: 2%;">
+										<input type="button"
+											class="btn btn-xs btn-primary save-item"
+											value="Save work experience"> <input
+											class="btn btn-xs btn-danger cancel-button" value="Close">
+									</div>
+								</form>
+								<br />
+							</div>
+							<div class="s-output">
+								<c:set var='index' value='1' />
+								<c:forEach var="item" items="${uppb.workExperience}">
+									<div class="col-sm-12 module-div"
+										<c:if test="${index < fn:length(uppb.workExperience)}">style="border-bottom: 1px #d1d1d1 solid; margin-top: 5px"</c:if>>
+										<c:set var='index' value='${index+1}' />
+										<h4 class="position" style="margin-top: 10px">
+											<c:out value='${item.position}' />
+										</h4>
+										<h5 class="company-name" style="font-family: calibri">
+											<c:out value='${item.company}' />
+										</h5>
+										<h5 style="font-family: calibri">
+											From <span class="start-month"> <c:out
+													value='${item.startMonth}' /></span> <span class="start-year">
+												<c:out value='${item.startYear}' />
+											</span> to <span class="end-month"> <c:out
+													value='${item.endMonth}' /></span> <span class="end-year">
+												<c:out value='${item.endYear}' />
+											</span>
+										</h5>
+										<input type="hidden" id="item" value="work-experience" /> <input
+											type="hidden" id="web-key" value="${item.safeKey}" />
+										<p>
+											<a class="delete-item" href="<c:url value='#' />">Delete</a>
+										</p>
+									</div>
+								</c:forEach>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-2">
+					<div class="card-panel">
+						<img alt="" src="/images/education.png" class="img img-responsive"
+							style="width: 80%; margin: 0 auto">
+					</div>
+				</div>
+
+				<div class="col-sm-10 card-panel">
+					<div class="col-sm-12 no-padding-div">
+						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
+							class="">Education</h4>
+						<div class="s-editable-div">
+							<span class="text-primary add-new" style="cursor: pointer;">Add
+								new</span>
+							<div class="form-div">
+								<br />
+								<form class="education-form">
+									<div>
+										<label>School Name:</label><br /> <input id="institution"
+											name="institution" style="width: 70%;">
+									</div>
+									<div>
+										<label>Course:</label><br /> <input name="course" id="course"
+											style="width: 70%;">
+									</div>
+									<div>
+										<label>Certificate Earned:</label><br /> <input
+											placeholder="" name="certificate" id="certificate"
+											style="width: 70%;">
+									</div>
+									<div>
+										<label>Additional Information:</label><br /> <input
+											placeholder="" name="extra" id="extra" style="width: 70%;">
+									</div>
+									<div>
+										<label>Time</label><br /> <select name="start-month"
+											id="start-month">
+											<%@ include file="/partial/months.html"%>
+										</select> <select name="start-year" id="start-year">
+											<%@ include file="/partial/years.html"%>
+										</select> <label>To</label> <select name="end-month" id="end-month">
+											<%@ include file="/partial/months.html"%>
+										</select> <select name="end-year" id="end-year">
+											<%@ include file="/partial/years.html"%>
+										</select>
+									</div>
+
+									<div style="margin-top: 2%; margin-bottom: 2%;">
+										<input type="button"
+											class="btn btn-xs btn-primary save-education"
+											value="Save Education"> <input
+											class="btn btn-xs btn-danger cancel-button" type="button"
+											value="Cancel">
+									</div>
+								</form>
+							</div>
+							<div class="s-output">
+								<c:set var='edIndex' value='1' />
+								<c:forEach var="item" items="${uppb.education}">
+									<div class="col-sm-12 module-div"
+										<c:if test="${edIndex < fn:length(uppb.education)}">style="border-bottom: 1px #d1d1d1 solid"</c:if>>
+										<c:set var='edIndex' value='${edIndex+1}' />
+										<h4 class="instituition">
+											<c:out value='${item.institution}' />
+										</h4>
+										<h5 class="course" style="font-family: calibri">
+											<c:out value='${item.course}' />
+											<c:choose>
+												<c:when test="${empty item.course}">
+													<c:out value='${item.qualification}' />
+												</c:when>
+												<c:otherwise>
+													<c:if test='${not empty item.qualification  }'>
+												(
+									<c:out value='${item.qualification}' />
+									)
+											</c:if>
+												</c:otherwise>
+											</c:choose>
+										</h5>
+										<h5 style="font-family: calibri">
+											From <span class="start-month"> <c:out
+													value='${item.startMonth}' /></span> <span class="start-year">
+												<c:out value='${item.startYear}' />
+											</span> to <span class="end-month"> <c:out
+													value='${item.endMonth}' /></span> <span class="end-year">
+												<c:out value='${item.endYear}' />
+											</span>
+										</h5>
+										<input type="hidden" id="item" value="education" /> <input
+											type="hidden" id="web-key" value="${item.safeKey}" />
+										<p>
+											<a class="delete-item" href="#">Delete</a>
+										</p>
+									</div>
+								</c:forEach>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-2">
+					<div class="card-panel">
+						<img alt="" src="/images/certificate-award.png"
+							class="img img-responsive" style="margin: 0 auto; width: 80%">
+					</div>
+				</div>
+				<div class="col-sm-10 card-panel">
+					<div class="col-sm-12 no-padding-div">
+						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
+							class="">Awards</h4>
+
+						<div class="s-editable-div">
+							<span class="text-primary add-new" style="cursor: pointer;">Add
+								new</span>
+							<div class="form-div">
+								<br />
+								<form class="award-form">
+									<div>
+										<label>Award Name:</label><br /> <input id="award"
+											name="award" style="width: 70%;">
+									</div>
+									<div>
+										<label>Additional Information:</label><br /> <input
+											placeholder="" name="extra" id="extra" style="width: 70%;">
+									</div>
+									<div>
+										<label>Time</label><br /> <select name="start-month"
+											id="start-month">
+											<%@ include file="/partial/months.html"%>
+										</select> <select name="start-year" id="start-year">
+											<%@ include file="/partial/years.html"%>
+										</select>
+									</div>
+
+									<div style="margin-top: 2%; margin-bottom: 2%;">
+										<input type="button" class="btn btn-xs btn-primary save-award"
+											value="Save Award"> <input
+											class="btn btn-xs btn-danger cancel-button" value="Cancel">
+									</div>
+								</form>
+							</div>
+							<div class="s-output">
+								<c:set var='awIndex' value='1' />
+								<c:forEach var="item" items="${uppb.awards}">
+									<div class="col-sm-12 module-div"
+										<c:if test="${edIndex < fn:length(uppb.awards)}">style="border-bottom: 1px #d1d1d1 solid"</c:if>>
+										<c:set var='awIndex' value='${awIndex+1}' />
+										<h4 class="name">
+											<c:out value='${item.name}' />
+										</h4>
+										<h5 class="extra" style="font-family: calibri">
+											<c:out value='${item.description}' />
+										</h5>
+										<h5 style="font-family: calibri">
+											<span class="start-month"> <c:out
+													value='${item.month}' /></span> <span class="start-year">
+												<c:out value='${item.year}' />
+											</span>
+										</h5>
+										<input type="hidden" id="item" value="award" /> <input
+											type="hidden" id="web-key" value="${item.safeKey}" />
+										<p>
+											<a class="delete-item" href="#">Delete</a>
+										</p>
+									</div>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-2">
+					<div class="card-panel">
+						<img alt="" src="/images/certificate-award.png"
+							class="img img-responsive" style="margin: 0 auto; width: 80%">
+					</div>
+				</div>
+				<div class="col-sm-10 card-panel">
+					<div class="col-sm-12 no-padding-div">
+						<h4 style="margin-bottom: 4%; font-weight: bold; color: #666666"
+							class="">Certifications</h4>
+
+						<div class="s-editable-div">
+							<span class="text-primary add-new" style="cursor: pointer;">Add
+								new</span>
+							<div class="form-div">
+								<br/>
+								<form class="award-form">
+									<div>
+										<label>Certification Name:</label><br /> <input id="award"
+											name="award" style="width: 70%;">
+									</div>
+									<div>
+										<label>Additional Information:</label><br /> <input
+											placeholder="" name="extra" id="extra" style="width: 70%;">
+									</div>
+									<div>
+										<label>Time</label><br /> <select name="start-month"
+											id="start-month">
+											<%@ include file="/partial/months.html"%>
+										</select> <select name="start-year" id="start-year">
+											<%@ include file="/partial/years.html"%>
+										</select>
+									</div>
+
+									<div style="margin-top: 2%; margin-bottom: 2%;">
+										<input type="button" class="btn btn-xs btn-primary save-award"
+											value="Save Award"> <input
+											class="btn btn-xs btn-danger cancel-button" value="Cancel">
+									</div>
+								</form>
+							</div>
+							<div class="s-output">
+								<c:set var='awIndex' value='1' />
+								<c:forEach var="item" items="${uppb.awards}">
+									<div class="col-sm-12 module-div"
+										<c:if test="${edIndex < fn:length(uppb.awards)}">style="border-bottom: 1px #d1d1d1 solid"</c:if>>
+										<c:set var='awIndex' value='${awIndex+1}' />
+										<h4 class="name">
+											<c:out value='${item.name}' />
+										</h4>
+										<h5 class="extra" style="font-family: calibri">
+											<c:out value='${item.description}' />
+										</h5>
+										<h5 style="font-family: calibri">
+											<span class="start-month"> <c:out
+													value='${item.month}' /></span> <span class="start-year">
+												<c:out value='${item.year}' />
+											</span>
+										</h5>
+										<input type="hidden" id="item" value="award" /> <input
+											type="hidden" id="web-key" value="${item.safeKey}" />
+										<p>
+											<a class="delete-item" href="#">Delete</a>
+										</p>
+									</div>
+								</c:forEach>
 							</div>
 						</div>
 					</div>
@@ -165,7 +543,8 @@ h4 {
 				<div class="col-sm-12 editable-div">
 					<label>Current State:</label> <input value="current-state"
 						class="h-input" type="hidden" /> <select
-						value="${uppb.currentState}" class="input" ><%@ include file="/partial/states.html"%></select> <span
+						value="${uppb.currentState}" class="s-input input"><%@ include
+							file="/partial/states.html"%></select> <span
 						class="output"> <c:choose>
 							<c:when test='${empty uppb.currentState}'>
 								<span style="color: orange">Which state do you stay?</span>
@@ -210,8 +589,9 @@ h4 {
 				<div class="col-sm-12 editable-div">
 					<label>State of Origin:</label> <input value="state-of-origin"
 						class="h-input" type="hidden" /> <select
-						value="${uppb.stateOfOrigin}" class="input"><%@ include file="/partial/states.html"%></select>
-					<span class="output"> <c:choose>
+						value="${uppb.stateOfOrigin}" class="s-input input"><%@ include
+							file="/partial/states.html"%></select> <span
+						class="output"> <c:choose>
 							<c:when test='${empty uppb.stateOfOrigin}'>
 								<span style="color: orange">Select state of origin</span>
 							</c:when>
@@ -224,8 +604,11 @@ h4 {
 
 				<div class="col-sm-12 editable-div">
 					<label>Gender:</label> <input value="gender" class="h-input"
-						type="hidden" /> <input value="${uppb.gender}" class="input" />
-					<span class="output"> <c:choose>
+						type="hidden" /> <select value="${uppb.gender}"
+						class="s-input input">
+						<option>Female</option>
+						<option>Male</option>
+					</select> <span class="output"> <c:choose>
 							<c:when test='${empty uppb.gender}'>
 								<span style="color: orange">Select your gender</span>
 							</c:when>
@@ -238,9 +621,17 @@ h4 {
 
 				<div class="col-sm-12 editable-div">
 					<label>Years of Experience:</label> <input value="experience"
-						class="h-input" type="hidden" /> <input
-						value="${uppb.yearOfExperience}" class="input" /> <span
-						class="output"> <c:choose>
+						class="h-input" type="hidden" /> <select
+						value="${uppb.yearOfExperience}" class="s-input input">
+						<option value="401">0 - 1 year</option>
+						<option value="402">0 - 2 years</option>
+						<option value="403">1 - 3 years</option>
+						<option value="404">2 - 5 years</option>
+						<option value="405">3 - 5 years</option>
+						<option value="406">5 - 10 years</option>
+						<option value="407">7 - 10 years</option>
+						<option value="408">More than 10 years</option>
+					</select> <span class="output"> <c:choose>
 							<c:when test='${empty uppb.yearOfExperience}'>
 								<span style="color: orange">Select years of experience</span>
 							</c:when>
@@ -253,9 +644,18 @@ h4 {
 
 				<div class="col-sm-12 editable-div">
 					<label>Career Level:</label> <input value="career-level"
-						class="h-input" type="hidden" /> <input
-						value="${uppb.careerLevel}" class="input" /> <span class="output">
-						<c:choose>
+						class="h-input" type="hidden" /><select
+						value="${uppb.careerLevel}" class="s-input input">
+
+						<option value="101">Student (Undergraduate/Graduate)</option>
+						<option value="102">Entry Level</option>
+						<option value="103">Experienced (Non-Managerial)</option>
+						<option value="104">Manager (Manager/Supervisor of Staff)</option>
+						<option value="105">Executive (SVP,VP,Department Head
+							etc)</option>
+						<option value="106">Senoir Executive (President, CFO.
+							etc)</option>
+					</select> <span class="output"> <c:choose>
 							<c:when test='${empty uppb.careerLevel}'>
 								<span style="color: orange">Select years career level</span>
 							</c:when>
@@ -276,66 +676,273 @@ h4 {
 	<script src="/js/main.js"></script>
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$(".input").hide();
-		});
-		$(".editable-div").mouseenter(function() {
-			$(this).find(".edit-tool").show();
-		});
+		$(document)
+				.ready(
+						function() {
+							
+							$(".save-item").click(function() {
+								var me = $(this);
+								me.prop("value", "Saving...");
+								me.removeClass("btn-primary");
+								me.addClass("btn-warning");
+								var form = me.closest("form");
+								var output = me.closest(".s-editable-div").find(".s-output");
+								
+								$.ajax({
+									url : "/bq/close/update-profile",
+									method : "POST",
+									data : form.serialize(),
+									dataType : "json",
+									success : function(data) {
+										output.prepend(data);
+										me.prop("value", "Saved");
+									},
+									complete : function() {
+										me.prop("value", "Save");
+										me.removeClass("btn-warning");
+										me.addClass("btn-primary");
+										form[0].reset();
+									}
+									
+								});
+							});
+							
+							$(".cancel-button").click(function(){
+								var par = $(this).closest(".form-div");
+								par.slideUp();
+							});
+							
+							$(".add-new").click(function() {
+								var me = $(this);
+								var par = me.closest(".s-editable-div");
+								var fDiv = par.find(".form-div");
+								fDiv.slideDown();
+								
+							});
 
-		$(".editable-div").mouseleave(function() {
-			$(this).find(".edit-tool").hide();
-		});
+							$(".upload-link").click(function(e) {
+								e.preventDefault();
+								$.ajax({
+									url : "/bq/close/get-file-upload-url",
+									success : function(data) {
 
-		$(".edit-tool").click(function() {
-			var me = $(this);
-			var par = me.closest(".editable-div");
-			var inp = par.find(".input");
-			var out = par.find(".output");
-			$(".input").hide();
-			$(".output").show();
-			inp.show();
-			inp.focus();
-			out.hide();
-			me.hide();
-			par.off();
-		});
+										$("#cv-form").prop("action", data);
+										$("#upload-cv-div").slideToggle();
+									}
+								});
+							});
+							$(".upload-cv").click(function() {
+								$(this).prop('disabled', true);
+								$("#cv-form").submit();
+							});
+							$(".editable-div").mouseenter(function() {
+								$(this).find(".edit-tool").show();
+							});
 
-		$(".input").keyup(function(e) {
+							$(".editable-div").mouseleave(function() {
+								$(this).find(".edit-tool").hide();
+							});
 
-			var me = $(this);
-			var par = me.closest(".editable-div");
-			var hInp = par.find(".h-input");
-			var out = par.find(".output");
+							$(".edit-tool").click(function() {
+								var me = $(this);
+								var par = me.closest(".editable-div");
+								var inp = par.find(".input");
+								var out = par.find(".output");
+								$(".input").hide();
+								$(".output").show();
+								inp.show();
+								inp.focus();
+								out.hide();
+								me.hide();
+								par.off();
+							});
 
-			var x = hInp.val();
-			var y = me.val();
+							$(".s-textarea").click(function(e) {
 
-			if (e.keyCode == 13) {
-				$.ajax({
-					url : "/bq/close/update-profile",
-					method : "POST",
-					data : {
-						"param" : x,
-						"value" : y
-					},
-					success : function() {
-						out.html(y);
-					},
-					complete : function() {
-						out.show();
-						me.hide();
-						par.mouseenter(function() {
-							$(this).find(".edit-tool").show();
+								var me = $(this);
+								var par = me.closest(".editable-div");
+								var hInp = par.find(".h-input");
+								var out = par.find(".output");
+								var txt = par.find(".input-area");
+
+								var x = hInp.val();
+								var y = txt.val();
+
+								$.ajax({
+									url : "/bq/close/update-profile",
+									method : "POST",
+									data : {
+										"param" : x,
+										"value" : y
+									},
+									success : function(data) {
+
+										out.html(y);
+
+									},
+									complete : function() {
+										par.find(".input").hide();
+										out.show();
+										me.hide();
+										par.mouseenter(function() {
+											$(this).find(".edit-tool").show();
+										});
+
+										par.mouseleave(function() {
+											$(this).find(".edit-tool").hide();
+										});
+									}
+								});
+
+							});
+
+							$(".s-input").change(function(e) {
+
+								var me = $(this);
+								var par = me.closest(".editable-div");
+								var hInp = par.find(".h-input");
+								var out = par.find(".output");
+
+								var x = hInp.val();
+								var y = me.val();
+
+								$.ajax({
+									url : "/bq/close/update-profile",
+									method : "POST",
+									data : {
+										"param" : x,
+										"value" : y
+									},
+									success : function(data) {
+
+										out.html(data);
+
+									},
+									complete : function() {
+										out.show();
+										me.hide();
+										par.mouseenter(function() {
+											$(this).find(".edit-tool").show();
+										});
+
+										par.mouseleave(function() {
+											$(this).find(".edit-tool").hide();
+										});
+									}
+								});
+
+							});
+
+							$('input.input:text')
+									.keyup(
+											function(e) {
+
+												var me = $(this);
+												var par = me
+														.closest(".editable-div");
+												var hInp = par.find(".h-input");
+												var out = par.find(".output");
+
+												var x = hInp.val();
+												var y = me.val();
+
+												if (e.keyCode == 13) {
+													$
+															.ajax({
+																url : "/bq/close/update-profile",
+																method : "POST",
+																data : {
+																	"param" : x,
+																	"value" : y
+																},
+																success : function() {
+																	out.html(y);
+																},
+																complete : function() {
+																	out.show();
+																	me.hide();
+																	par
+																			.mouseenter(function() {
+																				$(
+																						this)
+																						.find(
+																								".edit-tool")
+																						.show();
+																			});
+
+																	par
+																			.mouseleave(function() {
+																				$(
+																						this)
+																						.find(
+																								".edit-tool")
+																						.hide();
+																			});
+																}
+															});
+												}
+											});
+							$("#cv-form")
+									.on(
+											'submit',
+											function(e) {
+												var cov = $(".upload-cv");
+												/*cov.waitMe({
+													effect : 'ios',
+													color : 'gray',
+													sizeW : '15',
+													sizeH : '15'
+												});*/
+												var x = $(this).attr('action');
+
+												$
+														.ajax({
+															url : x,
+															type : 'POST',
+															dataType : "json",
+															data : new FormData(
+																	this),
+															processData : false,
+															contentType : false,
+															success : function(
+																	data) {
+
+																$(".file-name")
+																		.html(
+																				"<a target='_blank' href='<c:url value='/bq/close/get-cv?safe-key="
+																						+ data.safeKey
+																						+ "' />'>"
+																						+ data.fileName
+																						+ "</a>");
+																$(
+																		".upload-link-1")
+																		.hide();
+																$(
+																		".upload-link-2")
+																		.show();
+																$("#old-key")
+																		.val(
+																				data.safeKey);
+																$(
+																		"#upload-cv-div")
+																		.slideToggle();
+															},
+															error : function(
+																	jqXHR,
+																	status,
+																	errorThrown) {
+																alert("error");
+															},
+															complete : function() {
+																cov
+																		.prop(
+																				'disabled',
+																				false);
+															}
+														});
+												e.preventDefault();
+											});
 						});
-
-						par.mouseleave(function() {
-							$(this).find(".edit-tool").hide();
-						});
-					}
-				});
-			}
-		});
 	</script>
 </body>
 </html>
