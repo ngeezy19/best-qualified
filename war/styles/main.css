@@ -1150,6 +1150,15 @@ body {
 	animation-duration: 5s;
 	animation-iteration-count: infinite;
 }
+
+.toola + .tooltip > .tooltip-inner {background-color: green;}
+.tooltip-inner {
+    max-width: 200px;
+    max-height: 50px;
+    /* If max-width does not work, try using width instead */
+    width: 200px;
+    height: 30px; 
+}
 /* Chrome, Safari, Opera */
 @
 -webkit-keyframes example { 0% {
