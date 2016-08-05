@@ -271,8 +271,8 @@
 					<c:forEach var="item" items="${indexBean.ijs}">
 						<li>
 							<h5>
-								<a href="/bq/open/job?job-key=${item.jobKey}"><c:out
-										value="${item.jobTitle}" /></a>
+							<a href="/bq/open/job?job-key=${item.jobKey}" data-toggle="tooltip"  data-placement="right" title="<c:out value="${item.jobTitle}" />" class="toola">
+							<c:out value="${item.jobTitle}" /></a>
 							</h5> <span style="font-family: calibri; color: #983b59"><c:out
 									value="${item.companyName}" /></span>
 							<p style="font-size: 10pt; color: #59983b; font-style: italic;">
@@ -325,8 +325,11 @@
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.webui-popover.min.js"></script>
-	<script type="text/javascript">
-		
+	<script type="text/javascript">	</script>
+	<script>
+		$(document).ready(function(){
+   		 $('[data-toggle="tooltip"]').tooltip(); 
+		});
 	</script>
 </body>
 </html>
