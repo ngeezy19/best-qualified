@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.bestqualified.bean.ProfessionalProfileBean;
 import com.bestqualified.entities.CandidateProfile;
 import com.bestqualified.entities.User;
+import com.bestqualified.entities.WorkExperience;
 import com.bestqualified.util.Util;
 import com.google.appengine.api.datastore.Text;
 import com.google.gson.Gson;
@@ -27,11 +28,18 @@ public class UpdateProfile extends HttpServlet {
 			throws ServletException, IOException {
 		String param = req.getParameter("param");
 		String value = req.getParameter("value");
-		
+		HttpSession session = req.getSession();
 		if(param.equals("work-experience")) {
 			req.getRequestDispatcher("/bq/close/save-work-experience").forward(req, resp);
+			Object o = null;
+			synchronized (session) {
+				o = session.getAttribute("workExperience");
+			}
+			resp.setContentType("application/json");
+			WorkExperience wk = (WorkExperience) o;
+			resp.getWriter().write("steve");
 		}else {
-			HttpSession session = req.getSession();
+			
 			Object o = null;
 			User u = null;
 			synchronized (session) {

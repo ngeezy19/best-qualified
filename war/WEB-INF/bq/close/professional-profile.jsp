@@ -66,11 +66,14 @@ h4 {
 						<div class="col-sm-9" style="padding-top: 2%;">
 							<div class="col-sm-12 editable-div"
 								style="font-size: 14pt; font-weight: bold;">
-								<input id="first-name" class="input" value="${user.firstName}"
-									style="width: 40%;" /> <input class="input" id="last-name"
-									value="${user.lastName}" style="width: 40%;" /> <span
-									class="output"><c:out value="${user.firstName}" /> <c:out
-										value="${user.lastName}" /></span> <span
+								<div class="input">
+									<input class="h-input" type="hidden" value="last-name"><input
+										id="first-name" value="${user.firstName}" style="width: 40%;" />
+									<input id="last-name" value="${user.lastName}"
+										style="width: 40%;" />
+								</div>
+								<span class="output"><c:out value="${user.firstName}" />
+									<c:out value="${user.lastName}" /></span> <span
 									class="glyphicon glyphicon-pencil edit-tool"></span>
 							</div>
 							<div class="col-sm-12 text-muted">
@@ -137,9 +140,9 @@ h4 {
 
 						<div class="col-sm-12 editable-div">
 							<input type="hidden" value="profile-summary" class="h-input" />
-							<textarea rows="10" style="width: 100%;" class="input input-area">${uppb.profileSummary}</textarea>
-							<button class="btn btn-primary btn-sm input s-textarea">Save</button>
-							<button class="btn btn-danger btn-sm input summary-close-button">Close</button>
+							<div class="input"><div contenteditable="true"  style="width: 100%; margin-bottom: 5px; padding: 5px; border: 1px solid #eaeaea;" class="input-area">${uppb.profileSummary}</div>
+							<button class="btn btn-primary btn-sm  s-textarea">Save</button>
+							</div>
 							<div class="output">
 								<c:choose>
 									<c:when test='${empty uppb.profileSummary}'>
@@ -198,12 +201,11 @@ h4 {
 											<%@ include file="/partial/years.html"%>
 										</select>
 									</div>
-									<input name="param" value="work-experience" type="hidden">
+									<input class="h-input" value="work-experience" type="hidden">
 
 									<div style="margin-top: 2%; margin-bottom: 2%;">
-										<input type="button"
-											class="btn btn-xs btn-primary save-item"
-											value="Save work experience"> <input
+										<input type="button" class="btn btn-xs btn-primary save-item"
+											value="Save"> <input
 											class="btn btn-xs btn-danger cancel-button" value="Close">
 									</div>
 								</form>
@@ -291,13 +293,12 @@ h4 {
 											<%@ include file="/partial/years.html"%>
 										</select>
 									</div>
-
+									<input class="h-input" value="education" type="hidden">
 									<div style="margin-top: 2%; margin-bottom: 2%;">
-										<input type="button"
-											class="btn btn-xs btn-primary save-education"
-											value="Save Education"> <input
+										<input type="button" class="btn btn-xs btn-primary save-item"
+											value="Save"> <input
 											class="btn btn-xs btn-danger cancel-button" type="button"
-											value="Cancel">
+											value="Close">
 									</div>
 								</form>
 							</div>
@@ -305,9 +306,9 @@ h4 {
 								<c:set var='edIndex' value='1' />
 								<c:forEach var="item" items="${uppb.education}">
 									<div class="col-sm-12 module-div"
-										<c:if test="${edIndex < fn:length(uppb.education)}">style="border-bottom: 1px #d1d1d1 solid"</c:if>>
+										<c:if test="${edIndex < fn:length(uppb.education)}">style="border-bottom: 1px #d1d1d1 solid;margin-top: 5px"</c:if>>
 										<c:set var='edIndex' value='${edIndex+1}' />
-										<h4 class="instituition">
+										<h4 class="instituition" style="margin-top: 10px">
 											<c:out value='${item.institution}' />
 										</h4>
 										<h5 class="course" style="font-family: calibri">
@@ -382,11 +383,11 @@ h4 {
 											<%@ include file="/partial/years.html"%>
 										</select>
 									</div>
-
+									<input class="h-input" value="award" type="hidden">
 									<div style="margin-top: 2%; margin-bottom: 2%;">
-										<input type="button" class="btn btn-xs btn-primary save-award"
-											value="Save Award"> <input
-											class="btn btn-xs btn-danger cancel-button" value="Cancel">
+										<input type="button" class="btn btn-xs btn-primary save-item"
+											value="Save"> <input
+											class="btn btn-xs btn-danger cancel-button" value="Close">
 									</div>
 								</form>
 							</div>
@@ -394,9 +395,9 @@ h4 {
 								<c:set var='awIndex' value='1' />
 								<c:forEach var="item" items="${uppb.awards}">
 									<div class="col-sm-12 module-div"
-										<c:if test="${edIndex < fn:length(uppb.awards)}">style="border-bottom: 1px #d1d1d1 solid"</c:if>>
+										<c:if test="${awIndex < fn:length(uppb.awards)}">style="border-bottom: 1px #d1d1d1 solid; margin-top:5px"</c:if>>
 										<c:set var='awIndex' value='${awIndex+1}' />
-										<h4 class="name">
+										<h4 class="name" style="margin-top: 10px">
 											<c:out value='${item.name}' />
 										</h4>
 										<h5 class="extra" style="font-family: calibri">
@@ -436,7 +437,7 @@ h4 {
 							<span class="text-primary add-new" style="cursor: pointer;">Add
 								new</span>
 							<div class="form-div">
-								<br/>
+								<br />
 								<form class="award-form">
 									<div>
 										<label>Certification Name:</label><br /> <input id="award"
@@ -454,11 +455,11 @@ h4 {
 											<%@ include file="/partial/years.html"%>
 										</select>
 									</div>
-
+									<input class="h-input" value="certification" type="hidden">
 									<div style="margin-top: 2%; margin-bottom: 2%;">
-										<input type="button" class="btn btn-xs btn-primary save-award"
-											value="Save Award"> <input
-											class="btn btn-xs btn-danger cancel-button" value="Cancel">
+										<input type="button" class="btn btn-xs btn-primary save-item"
+											value="Save"> <input
+											class="btn btn-xs btn-danger cancel-button" value="Close">
 									</div>
 								</form>
 							</div>
@@ -466,9 +467,9 @@ h4 {
 								<c:set var='awIndex' value='1' />
 								<c:forEach var="item" items="${uppb.awards}">
 									<div class="col-sm-12 module-div"
-										<c:if test="${edIndex < fn:length(uppb.awards)}">style="border-bottom: 1px #d1d1d1 solid"</c:if>>
+										<c:if test="${awIndex < fn:length(uppb.awards)}">style="border-bottom: 1px #d1d1d1 solid; margin-top:5px"</c:if>>
 										<c:set var='awIndex' value='${awIndex+1}' />
-										<h4 class="name">
+										<h4 class="name" style="margin-top: 10px">
 											<c:out value='${item.name}' />
 										</h4>
 										<h5 class="extra" style="font-family: calibri">
@@ -679,45 +680,87 @@ h4 {
 		$(document)
 				.ready(
 						function() {
-							
-							$(".save-item").click(function() {
-								var me = $(this);
-								me.prop("value", "Saving...");
-								me.removeClass("btn-primary");
-								me.addClass("btn-warning");
-								var form = me.closest("form");
-								var output = me.closest(".s-editable-div").find(".s-output");
-								
-								$.ajax({
-									url : "/bq/close/update-profile",
-									method : "POST",
-									data : form.serialize(),
-									dataType : "json",
-									success : function(data) {
-										output.prepend(data);
-										me.prop("value", "Saved");
-									},
-									complete : function() {
-										me.prop("value", "Save");
-										me.removeClass("btn-warning");
-										me.addClass("btn-primary");
-										form[0].reset();
-									}
-									
-								});
+
+							$("#first-name").keyup(function(event) {
+								if (event.keyCode == 13) {
+									$("#last-name").select();
+								}
 							});
-							
-							$(".cancel-button").click(function(){
+
+							$(".save-item")
+									.click(
+											function() {
+												var me = $(this);
+												me.prop("value", "Saving...");
+												me.removeClass("btn-primary");
+												me.addClass("btn-warning");
+												var form = me.closest("form");
+												var par = me
+														.closest(".s-editable-div");
+												var output = par
+														.find(".s-output");
+												var hInput = par
+														.find(".h-input");
+												var x = hInput.val();
+												alert(x);
+												var uri = "";
+												if (x == "education") {
+													uri = "/bq/close/add-education";
+												} else if (x == "award") {
+													uri = "/bq/close/add-award";
+												} else if (x == "certification") {
+													uri = "/bq/close/add-education";
+												} else if (x == "work experience") {
+													uri = "/bq/close/save-work-experience";
+												}
+												$
+														.ajax({
+															url : uri,
+															method : "POST",
+															data : form
+																	.serialize(),
+															dataType : "json",
+															success : function(
+																	data) {
+																window.location
+																		.assign("/bq/close/professional-profile");
+																console
+																		.log("here")
+																console
+																		.log(data);
+																output
+																		.prepend(data);
+																me
+																		.prop(
+																				"value",
+																				"Saved");
+															},
+															complete : function() {
+																me
+																		.prop(
+																				"value",
+																				"Save");
+																me
+																		.removeClass("btn-warning");
+																me
+																		.addClass("btn-primary");
+																form[0].reset();
+															}
+
+														});
+											});
+
+							$(".cancel-button").click(function() {
 								var par = $(this).closest(".form-div");
 								par.slideUp();
 							});
-							
+
 							$(".add-new").click(function() {
 								var me = $(this);
 								var par = me.closest(".s-editable-div");
 								var fDiv = par.find(".form-div");
 								fDiv.slideDown();
-								
+
 							});
 
 							$(".upload-link").click(function(e) {
@@ -751,7 +794,7 @@ h4 {
 								$(".input").hide();
 								$(".output").show();
 								inp.show();
-								inp.focus();
+								inp.select();
 								out.hide();
 								me.hide();
 								par.off();
@@ -762,11 +805,10 @@ h4 {
 								var me = $(this);
 								var par = me.closest(".editable-div");
 								var hInp = par.find(".h-input");
-								var out = par.find(".output");
 								var txt = par.find(".input-area");
 
 								var x = hInp.val();
-								var y = txt.val();
+								var y = txt.html();
 
 								$.ajax({
 									url : "/bq/close/update-profile",
@@ -776,13 +818,8 @@ h4 {
 										"value" : y
 									},
 									success : function(data) {
-
-										out.html(y);
-
 									},
 									complete : function() {
-										par.find(".input").hide();
-										out.show();
 										me.hide();
 										par.mouseenter(function() {
 											$(this).find(".edit-tool").show();
@@ -832,6 +869,60 @@ h4 {
 								});
 
 							});
+							
+							$('#last-name')
+							.keyup(
+									function(e) {
+
+										var me = $(this);
+										var par = me
+												.closest(".editable-div");
+										var hInp = par.find(".h-input");
+										var out = par.find(".output");
+										var p = me.closest(".input");
+										var x = hInp.val();
+										var y = me.val();
+										var z = $("#first-name").val();
+										
+
+										if (e.keyCode == 13) {
+											$
+													.ajax({
+														url : "/bq/close/update-profile",
+														method : "POST",
+														data : {
+															"param" : x,
+															"last-name" : y,
+															"first-name" : z,
+															"value" : "last-name"
+														},
+														success : function() {
+															out.html(z+" "+y);
+														},
+														complete : function() {
+															out.show();
+															p.hide();
+															par
+																	.mouseenter(function() {
+																		$(
+																				this)
+																				.find(
+																						".edit-tool")
+																				.show();
+																	});
+
+															par
+																	.mouseleave(function() {
+																		$(
+																				this)
+																				.find(
+																						".edit-tool")
+																				.hide();
+																	});
+														}
+													});
+										}
+									});
 
 							$('input.input:text')
 									.keyup(
@@ -845,6 +936,7 @@ h4 {
 
 												var x = hInp.val();
 												var y = me.val();
+												
 
 												if (e.keyCode == 13) {
 													$
