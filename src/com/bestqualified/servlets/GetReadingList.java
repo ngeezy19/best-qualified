@@ -36,9 +36,9 @@ import com.google.appengine.api.urlfetch.URLFetchServiceFactory;
 
 public class GetReadingList extends HttpServlet {
 
-	private static final String AWS_ACCESS_KEY_ID = "AKIAJWQ3Z2P6ALOAAHDQ";
-	private static final String AWS_SECRET_KEY = "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";
-	private static final String ENDPOINT = "webservices.amazon.com";
+	private static final String AWS_ACCESS_KEY_ID = "";
+	private static final String AWS_SECRET_KEY = "";
+	private static final String ENDPOINT = "";
 
 	private static final long serialVersionUID = -1477727040955965118L;
 
