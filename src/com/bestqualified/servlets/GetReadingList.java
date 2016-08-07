@@ -36,9 +36,9 @@ import com.google.appengine.api.urlfetch.URLFetchServiceFactory;
 
 public class GetReadingList extends HttpServlet {
 
-	private static final String AWS_ACCESS_KEY_ID = "";
-	private static final String AWS_SECRET_KEY = "";
-	private static final String ENDPOINT = "";
+	private static final String ak = "";
+	private static final String ask = "";
+	private static final String ep = "";
 
 	private static final long serialVersionUID = -1477727040955965118L;
 
@@ -81,8 +81,8 @@ public class GetReadingList extends HttpServlet {
 		SignedRequestsHelper helper;
 
 		try {
-			helper = SignedRequestsHelper.getInstance(ENDPOINT,
-					AWS_ACCESS_KEY_ID, AWS_SECRET_KEY);
+			helper = SignedRequestsHelper.getInstance(ep,
+					ak, ask);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return;
