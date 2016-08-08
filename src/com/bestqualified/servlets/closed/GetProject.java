@@ -7,9 +7,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.bestqualified.bean.ProjectBean;
 import com.bestqualified.controllers.GeneralController;
 import com.bestqualified.entities.Project;
 import com.bestqualified.util.EntityConverter;
+import com.bestqualified.util.Util;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -25,12 +28,14 @@ public class GetProject extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-			String webKey = req.getParameter("web-key");
+			String webKey = req.getParameter("id");
 			
 			Key key = KeyFactory.stringToKey(webKey);
 			Entity e = GeneralController.findByKey(key);
 			if(e!=null) {
 				Project p = EntityConverter.entityToProject(e);
+				ProjectBean pb = Util.toFullProjectBean(p);
+				req.setAttribute("projectBean", pb);
 				RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/bq/close/project.jsp");
 				rd.include(req,resp);
 			} else {

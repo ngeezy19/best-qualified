@@ -35,7 +35,7 @@ public class FileUploadUrl extends HttpServlet {
 		String upLoadUrl = null;
 		if (param == "new-project") {
 			upLoadUrl = bss.createUploadUrl(SAVE_PROJECT_URL, upo);
-		} else if (param.equalsIgnoreCase("new-post")) {
+		} else if (param !=null && param.equalsIgnoreCase("new-post")) {
 			upLoadUrl = bss.createUploadUrl(NEW_POST, upo);
 		} else {
 			upLoadUrl = bss.createUploadUrl(CALlBACK, upo);

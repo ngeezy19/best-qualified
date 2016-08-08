@@ -3,6 +3,9 @@ package com.bestqualified.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import com.bestqualified.entities.Job;
+import com.bestqualified.entities.SavedSearch;
+
 public class ProjectBean implements Serializable {
 
 	/**
@@ -12,7 +15,9 @@ public class ProjectBean implements Serializable {
 	
 	private String webKey,name,dateCreated,description, expiryDate,jobTitle,companyLogo;
 	private int newApplicants,totalApplicants,inviteSent;
-	private List<ProView> shortlistedCandidates;;
+	private List<ProView> shortlistedCandidates,invitees,applicants;
+	private Job job;
+	private List<SavedSearch> savedsearch;
 	
 	
 	@Override
@@ -37,6 +42,32 @@ public class ProjectBean implements Serializable {
 		} else if (!webKey.equals(other.webKey))
 			return false;
 		return true;
+	}
+	
+	
+	public List<ProView> getInvitees() {
+		return invitees;
+	}
+	public void setInvitees(List<ProView> invitees) {
+		this.invitees = invitees;
+	}
+	public List<ProView> getApplicants() {
+		return applicants;
+	}
+	public void setApplicants(List<ProView> applicants) {
+		this.applicants = applicants;
+	}
+	public Job getJob() {
+		return job;
+	}
+	public void setJob(Job job) {
+		this.job = job;
+	}
+	public List<SavedSearch> getSavedsearch() {
+		return savedsearch;
+	}
+	public void setSavedsearch(List<SavedSearch> savedsearch) {
+		this.savedsearch = savedsearch;
 	}
 	public List<ProView> getShortlistedCandidates() {
 		return shortlistedCandidates;
