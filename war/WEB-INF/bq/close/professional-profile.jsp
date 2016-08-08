@@ -702,7 +702,7 @@ h4 {
 												var hInput = par
 														.find(".h-input");
 												var x = hInput.val();
-												alert(x);
+	
 												var uri = "";
 												if (x == "education") {
 													uri = "/bq/close/add-education";
@@ -710,7 +710,7 @@ h4 {
 													uri = "/bq/close/add-award";
 												} else if (x == "certification") {
 													uri = "/bq/close/add-education";
-												} else if (x == "work experience") {
+												} else if (x == "work-experience") {
 													uri = "/bq/close/save-work-experience";
 												}
 												$

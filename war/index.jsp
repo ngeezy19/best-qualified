@@ -273,11 +273,20 @@
 							<h5>
 							<a href="/bq/open/job?job-key=${item.jobKey}" data-toggle="tooltip"  data-placement="right" title="<c:out value="${item.jobTitle}" />" class="toola">
 							<c:out value="${item.jobTitle}" /></a>
-							</h5> <span style="font-family: calibri; color: #983b59"><c:out
-									value="${item.companyName}" /></span>
-							<p style="font-size: 10pt; color: #59983b; font-style: italic;">
+							</h5> 
+							<div class="box">
+							<span style="font-family: calibri; color: #983b59" class="trunc"><c:out value="${item.companyName}" />
+							</span>
+							<span style="font-family: calibri; color: #983b59" class="origin">
+							<p class="tort">
+							<c:out value="${item.companyName}" />
+							</p>
+							</span>
+							<p style="font-size: 10pt; color: #59983b; font-style: italic;" class="timly">
 								<c:out value="${item.postedTime}" />
 							</p>
+							</div>			
+							
 						</li>
 					</c:forEach>
 					<li style="background: rgba(78, 189, 163, 0.4);">
@@ -331,5 +340,20 @@
    		 $('[data-toggle="tooltip"]').tooltip(); 
 		});
 	</script>
+	<script>
+	$(document).ready(function(){
+     $(".box").hover(function(){
+     	$(this).find(".trunc").css("display", "none");
+         $(this).find(".origin").css("display", "block");
+         $(this).find(".timly").css("display", "none");
+     },
+     	function(){
+         $(this).find(".origin").css("display", "none");
+         $(this).find(".trunc").css("display", "block");
+         $(this).find(".timly").css("display", "block");
+     	}
+     );
+});
+</script>
 </body>
 </html>

@@ -7,38 +7,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><c:out value='${user.firstName} ${user.lastName}' /></title>
+<title><c:out value="${professionalProfileBean.firstName}" /> <c:out
+		value="${professionalProfileBean.lastName}" /></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/styles/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
 	href="/styles/jquery.webui-popover.min.css">
 <link rel="stylesheet" href="/styles/main.css">
 <style type="text/css">
-.input {
-	display: none;
-}
-
-.form-div {
-	display: none;
-}
-
-.editable-div {
-	margin: 3px 0px;
-}
-
-.profile-sub-header {
-	font-family: arial;
-	font-weight: bold;
-	font-size: 16pt;
-	color: gray;
-	padding-bottom: 5px;
-	border-bottom: 1px #666 dotted;
-}
-
-.profile-field-div {
-	margin-top: 2px;
-	margin-bottom: 2px
-}
 
 h4 {
 	margin: 0px;
@@ -66,14 +42,17 @@ h4 {
 						<div class="col-sm-9" style="padding-top: 2%;">
 							<div class="col-sm-12"
 								style="font-size: 14pt; font-weight: bold;">
-								<span class="output"><c:out value="${professionalProfileBean.firstName}" />
-									<c:out value="${professionalProfileBean.lastName}" /></span>
+								<span class="output"><c:out
+										value="${professionalProfileBean.firstName}" /> <c:out
+										value="${professionalProfileBean.lastName}" /></span>
 							</div>
 							<div class="col-sm-12 text-muted">
-								<span class="inline-output"><c:out value='${professionalProfileBean.email}' /></span>
+								<span class="inline-output"><c:out
+										value='${professionalProfileBean.email}' /></span>
 							</div>
 							<div class="col-sm-12">
-								<span class="output"> <c:out value='${professionalProfileBean.tagline}' />
+								<span class="output"> <c:out
+										value='${professionalProfileBean.tagline}' />
 								</span>
 							</div>
 							<div class="col-sm-12">
@@ -83,7 +62,8 @@ h4 {
 							</div>
 
 							<div class="col-sm-12 ">
-								<span class="output"> <c:out value='${professionalProfileBean.phone}' />
+								<span class="output"> <c:out
+										value='${professionalProfileBean.phone}' />
 								</span>
 							</div>
 						</div>
@@ -123,7 +103,8 @@ h4 {
 							class="">Work Experience</h4>
 						<div class="s-output">
 							<c:set var='index' value='1' />
-							<c:forEach var="item" items="${professionalProfileBean.workExperience}">
+							<c:forEach var="item"
+								items="${professionalProfileBean.workExperience}">
 								<div class="col-sm-12 module-div"
 									<c:if test="${index < fn:length(professionalProfileBean.workExperience)}">style="border-bottom: 1px #d1d1d1 solid; margin-top: 5px"</c:if>>
 									<c:set var='index' value='${index+1}' />
@@ -144,7 +125,7 @@ h4 {
 									</h5>
 									<input type="hidden" id="item" value="work-experience" /> <input
 										type="hidden" id="web-key" value="${item.safeKey}" />
-									
+
 								</div>
 							</c:forEach>
 						</div>
@@ -169,7 +150,8 @@ h4 {
 
 							<div class="s-output">
 								<c:set var='edIndex' value='1' />
-								<c:forEach var="item" items="${professionalProfileBean.education}">
+								<c:forEach var="item"
+									items="${professionalProfileBean.education}">
 									<div class="col-sm-12 module-div"
 										<c:if test="${edIndex < fn:length(professionalProfileBean.education)}">style="border-bottom: 1px #d1d1d1 solid;margin-top: 5px"</c:if>>
 										<c:set var='edIndex' value='${edIndex+1}' />
@@ -202,7 +184,7 @@ h4 {
 										</h5>
 										<input type="hidden" id="item" value="education" /> <input
 											type="hidden" id="web-key" value="${item.safeKey}" />
-										
+
 									</div>
 								</c:forEach>
 							</div>
@@ -247,7 +229,7 @@ h4 {
 										</h5>
 										<input type="hidden" id="item" value="award" /> <input
 											type="hidden" id="web-key" value="${item.safeKey}" />
-										
+
 									</div>
 								</c:forEach>
 							</div>
@@ -288,7 +270,7 @@ h4 {
 										</h5>
 										<input type="hidden" id="item" value="award" /> <input
 											type="hidden" id="web-key" value="${item.safeKey}" />
-										
+
 									</div>
 								</c:forEach>
 							</div>
