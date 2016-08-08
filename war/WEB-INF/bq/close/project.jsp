@@ -31,20 +31,22 @@
 	<div class="container dashboard-body" style="margin-top: 6%;">
 		<div class="col-sm-7">
 			<div class="card-panel">
-				<h3 style="color: #3b5998"><c:out value='${projectBean.name}'/></h3>
-				<h5 style="color:#983b59; width: 50%;"><strong>Created: </strong><c:out value='${projectBean.dateCreated}'/></h5>
-				<h5 style="color:#59983b; width: 50%;"><strong>Expiry: </strong><c:out value='${projectBean.expiryDate}'/></h5>
-				<p><c:out value='${projectBean.description}'/></p>
+				<h3 style="color: #3b5998">
+					<c:out value='${projectBean.name}' />
+				</h3>
+				<p>
+					<c:out value='${projectBean.description}' />
+				</p>
 			</div>
 
+
+
 			<div class="card-panel">
-				<div id="create-job-div" class="section" >
+				<div id="create-job-div" class="section">
 					<input type="hidden" value="3" class="step">
 					<form action="<c:url value='/endpoint/init-recruiter-mj3' />">
 						<div class="row">
-							<div class="form-group col-sm-12">
-								
-							</div>
+							<div class="form-group col-sm-12"></div>
 						</div>
 						<div class="row">
 							<div class="form-group col-sm-12">
@@ -54,11 +56,12 @@
 						<div class="row">
 							<div class="form-group col-sm-6">
 								<input class="form-control" name="job-title"
-									placeholder="* Job Title" required="required" />
+									value="${projectBean.job.title}" placeholder="* Job Title"
+									required="required" />
 							</div>
 							<div class="form-group col-sm-6">
 								<select class="form-control" required="required"
-									name="job-location">
+									value="${projectBean.job.location}" name="job-location">
 									<option value="" disabled selected hidden>* Job
 										Location</option>
 									<option>Abia</option>
@@ -104,10 +107,12 @@
 						<div class="row">
 							<div class="form-group col-sm-6">
 								<input class="form-control" name="application-url"
+									value="${projectBean.job.applicationUrl}"
 									placeholder="* Application URL/ Email" required="required" />
 							</div>
 							<div class="form-group col-sm-6">
 								<input class="form-control datepicker"
+									value="${projectBean.job.applicationDeadline}"
 									name="application-deadline" required="required"
 									placeholder="* Application Deadline" />
 							</div>
@@ -115,6 +120,7 @@
 						<div class="row">
 							<div class="form-group col-sm-12">
 								<textarea rows="4" class="form-control" required="required"
+									value="${projectBean.job.jobRole}"
 									style="white-space: pre-wrap" name="job-role"
 									placeholder="* Job Role/Responsibilities"></textarea>
 							</div>
@@ -122,6 +128,7 @@
 						<div class="row">
 							<div class="form-group col-sm-12">
 								<textarea rows="4" class="form-control" required="required"
+									value="${projectBean.job.jobDesc}"
 									style="white-space: pre-wrap" name="job-description"
 									placeholder="* Job Description"></textarea>
 							</div>
@@ -129,7 +136,7 @@
 						<div class="row">
 							<div class="form-group col-sm-6">
 								<select class="form-control" name="career-level"
-									required="required">
+									value="${projectBean.job.careerLevel}" required="required">
 									<option value="" disabled selected hidden>* Career
 										Level</option>
 									<option value="101">Student (Undergraduate/Graduate)</option>
@@ -145,6 +152,7 @@
 							</div>
 							<div class="form-group col-sm-6">
 								<select required="required" class="form-control"
+									value="${projectBean.job.educationLevel}"
 									name="education-level">
 									<option value="" disabled selected hidden>* Education
 										Level</option>
@@ -159,7 +167,8 @@
 						</div>
 						<div class="row">
 							<div class="form-group col-sm-6">
-								<select class="form-control" required="required" name="job-type">
+								<select class="form-control" required="required" name="job-type"
+									value="${projectBean.job.jobType}">
 									<option value="" disabled selected hidden>* Job Type</option>
 									<option value="301">Freelance</option>
 									<option value="302">Full Time</option>
@@ -170,7 +179,8 @@
 								</select>
 							</div>
 							<div class="form-group col-sm-6">
-								<select class="form-control" name="salary">
+								<select class="form-control" name="salary"
+									value="${projectBean.job.salaryRange}">
 									<option value="" disabled selected hidden>Salary Range</option>
 									<option value="201">10,000 - 50,000</option>
 									<option value="202">50,000 - 100,000</option>
@@ -182,7 +192,8 @@
 						</div>
 						<div class="row">
 							<div class="form-group col-sm-6">
-								<select class="form-control" name="experience">
+								<select class="form-control" name="experience"
+									value="${projectBean.job.yearsOfExperience}">
 									<option value="" disabled selected hidden>Years of
 										Experience</option>
 									<option value="401">0 - 1 year</option>
@@ -206,12 +217,14 @@
 						</div>
 						<div class="row">
 							<div class="form-group col-sm-12">
-								<input class="form-control" name="skills" placeholder="Skills" />
+								<input class="form-control" name="skills" placeholder="Skills"
+									value="${projectBean.job.skills}" />
 							</div>
 						</div>
 						<div class="row">
 							<div class="form-group col-sm-12">
 								<textarea rows="4" class="form-control" name="extra-info"
+									value="${projectBean.job.additionalInfo}"
 									style="white-space: pre-wrap"
 									placeholder="Additional Information"></textarea>
 							</div>
@@ -230,7 +243,58 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-5"></div>
+		<div class="col-sm-5">
+			<div class="card-panel">
+				<div class="card-list">
+					<h4>
+						Date Created: <span class="pull-right"><c:out
+								value='${projeanBean.dateCreated}' /></span>
+					</h4>
+				</div>
+				<div class="card-list">
+					<h4>
+						Expiry Date: <span class="pull-right"><c:out
+								value='${projeanBean.dateCreated}' /></span>
+					</h4>
+				</div>
+				<hr />
+				<h3 style="text-align: center;">Candidate Information</h3>
+				<div class="card-list">
+					<h4>
+						Short Listed: <span class="pull-right"><c:out
+								value='${projeanBean.dateCreated}' /></span>
+					</h4>
+				</div>
+				<div class="card-list">
+					<h4>
+						Invited: <span class="pull-right"><c:out
+								value='${projeanBean.dateCreated}' /></span>
+					</h4>
+				</div>
+				<div class="card-list">
+					<h4>
+						New Applicants: <span class="pull-right"><c:out
+								value='${projeanBean.newApplicants}' /></span>
+					</h4>
+				</div>
+				<div class="card-list">
+					<h4>
+						All Applicants: <span class="pull-right"><c:out
+								value='${projeanBean.dateCreated}' /></span>
+					</h4>
+				</div>
+				<hr />
+				<div class="card-list">
+					<h4>
+						Saved Search: <span class="pull-right"><c:out
+								value='${projeanBean.dateCreated}' /></span>
+					</h4>
+				</div>
+			</div>
+			<div class="card-panel">
+				<h4 style="color: #3b5998">Company Information</h4>
+			</div>
+		</div>
 	</div>
 
 

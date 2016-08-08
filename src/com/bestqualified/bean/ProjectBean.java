@@ -14,9 +14,9 @@ public class ProjectBean implements Serializable {
 	private static final long serialVersionUID = -7574324814935282277L;
 	
 	private String webKey,name,dateCreated,description, expiryDate,jobTitle,companyLogo;
-	private int newApplicants,totalApplicants,inviteSent;
+	private int newApplicants,totalApplicants,inviteSent, shortListed, savedSeach;
 	private List<ProView> shortlistedCandidates,invitees,applicants;
-	private Job job;
+	private FullJobBean job;
 	private List<SavedSearch> savedsearch;
 	
 	
@@ -45,6 +45,18 @@ public class ProjectBean implements Serializable {
 	}
 	
 	
+	public int getSavedSeach() {
+		return savedSeach;
+	}
+	public void setSavedSeach(int savedSeach) {
+		this.savedSeach = savedSeach;
+	}
+	public int getShortListed() {
+		return shortListed;
+	}
+	public void setShortListed(int shortListed) {
+		this.shortListed = shortListed;
+	}
 	public List<ProView> getInvitees() {
 		return invitees;
 	}
@@ -57,10 +69,10 @@ public class ProjectBean implements Serializable {
 	public void setApplicants(List<ProView> applicants) {
 		this.applicants = applicants;
 	}
-	public Job getJob() {
+	public FullJobBean getJob() {
 		return job;
 	}
-	public void setJob(Job job) {
+	public void setJob(FullJobBean job) {
 		this.job = job;
 	}
 	public List<SavedSearch> getSavedsearch() {

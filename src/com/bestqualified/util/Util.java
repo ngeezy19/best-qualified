@@ -44,6 +44,7 @@ import com.bestqualified.bean.AssessmentQuestionBean;
 import com.bestqualified.bean.CommunityBean;
 import com.bestqualified.bean.CorrectionBean;
 import com.bestqualified.bean.FacebookAccessTokenResponse;
+import com.bestqualified.bean.FullJobBean;
 import com.bestqualified.bean.InterestedJob;
 import com.bestqualified.bean.LinkedInAccessTokenResponse;
 import com.bestqualified.bean.ManageProjectBean;
@@ -2207,14 +2208,27 @@ public class Util {
 			pb.setDescription(project.getDescription().getValue());
 		}
 		
-
+		if (project.getInvitees() != null) {
+			pb.setInviteSent(project.getInvitees().size());
+		}
+		if (project.getNewApplicants() != null) {
+			pb.setNewApplicants(project.getNewApplicants().size());
+		}
+		if (project.getApplicants() != null) {
+			pb.setTotalApplicants(project.getApplicants().size());
+		}
+		
+		if(project.getShortListedCandidates() != null) {
+			pb.setShortListed(project.getShortListedCandidates().size());
+		}
 		pb.setWebKey(project.getSafeKey());
 		if (project.getJobs() != null) {
 			Job j = EntityConverter.entityToJob(GeneralController
 					.findByKey(project.getJobs()));
-			pb.setJobTitle(j.getJobTitle());
+			FullJobBean fjb = toFullJobBean(j);
 			pb.setExpiryDate(new SimpleDateFormat("yyyy MMM dd").format(j
 					.getClosingDate()));
+			pb.setJob(fjb);
 			if (j.getCompany() != null) {
 				Company c = EntityConverter.entityToCompany(GeneralController
 						.findByKey(j.getCompany()));
@@ -2227,6 +2241,24 @@ public class Util {
 		}
 		return pb;
 	
+	}
+
+	public static FullJobBean toFullJobBean(Job j) {
+		FullJobBean fjb = new FullJobBean();
+		fjb.setAdditionalInfo(j.getCustomAttributes().getValue());
+		fjb.setApplicationDeadline(new SimpleDateFormat("dd-MMM-yyyy").format(j.getClosingDate()));
+		fjb.setApplyWithLinkedIn(j.isAllowLinkedInApplication());
+		fjb.setCareerLevel(Util.getCareerLevelValue(j.getCareerLevel()));
+		fjb.setEducationLevel(Util.getEducationLevelValue(j.getEducationLevel()));
+		fjb.setJobDesc(j.getDescription().getValue());
+		fjb.setJobRole(j.getJobRoles().getValue());
+		fjb.setJobType(j.getJobType());
+		fjb.setLocation(j.getLocation());
+		fjb.setSalaryRange(j.getSalaryRange());
+		fjb.setSkills("");
+		fjb.setTitle(j.getJobTitle());
+		fjb.setYearsOfExperience(Util.getExperienceValue(j.getExperience()));
+		return fjb;
 	}
 
 }
