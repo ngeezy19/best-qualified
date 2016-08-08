@@ -15,6 +15,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>GetProject</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.GetProject</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetProject</servlet-name>
+		<url-pattern>/bq/closed/recruiter/project</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>LikeArticle</servlet-name>
 		<servlet-class>com.bestqualified.servlets.LikeArticle</servlet-class>
 	</servlet>

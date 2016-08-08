@@ -20,6 +20,7 @@ import com.bestqualified.util.Util;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.Text;
+import com.google.gson.Gson;
 
 public class UpdateWorkExperience extends HttpServlet {
 
@@ -41,11 +42,11 @@ public class UpdateWorkExperience extends HttpServlet {
 		String jobResponsibility = req.getParameter("jobResponsibility");
 		String toDate = req.getParameter("todate");
 
-		if(!Util.notNull(organization)) {
+		if (!Util.notNull(organization)) {
 			resp.sendError(1000);
 			return;
 		}
-		if(!Util.notNull(position)) {
+		if (!Util.notNull(position)) {
 			resp.sendError(1001);
 			return;
 		}
@@ -74,9 +75,9 @@ public class UpdateWorkExperience extends HttpServlet {
 		}
 
 		if (cp != null && u != null && cp.getId().equals(u.getUserInfo())) {
-			
+
 			List<WorkExperience> wes = ppb.getWorkExperience();
-			if(wes == null) {
+			if (wes == null) {
 				wes = new ArrayList<>();
 			}
 			wes.add(0, we);
@@ -89,15 +90,28 @@ public class UpdateWorkExperience extends HttpServlet {
 			cp.setWorkExperience(keys);
 			synchronized (session) {
 				session.setAttribute("professionalProfile", cp);
-				session.setAttribute("uppb",ppb );
+				session.setAttribute("uppb", ppb);
 			}
 			GeneralController.createWithCrossGroup(
 					EntityConverter.candidateProfileToEntity(cp),
 					EntityConverter.workExperienceToEntity(we));
 			resp.getWriter().write(KeyFactory.keyToString(we.getId()));
 		}
-		
-		
+
+		String data = "<div class='col-sm-12'><h4 class='position' style='margin-top: 10px'>"
+				+ position
+				+ "</h4><h5 class='company-name' style='font-family: calibri'>"
+				+ organization
+				+ "</h5><h5 style='font-family: calibri'>From <span class='start-month'>"
+				+ startMonth
+				+ " "
+				+ startYear
+				+ "</span>To <span class='end-month'>"
+				+ endMonth
+				+ " "
+				+ endYear + "</span></h5><a>Delete</a></div>";
+		resp.setContentType("application/json");
+		resp.getWriter().write(new Gson().toJson(data));
 
 	}
 

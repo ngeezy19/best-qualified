@@ -28,294 +28,209 @@
 <body
 	style="background-image: url(/images/background.jpg); background-repeat: repeat;">
 	<%@ include file="/main-nav.html"%>
-	<div class="container dashboard-body" style="margin-top: 8%;">
-		<div class="col-sm-8">
-			<div class="col-sm-12" style="margin-bottom: 2%;">
-				<div class="col-sm-2">
-					<div class="dashboard-section">
-						<img alt="" src="/images/personal-profile.png"
-							style="width: 80%; margin: 0 auto" class="img img-responsive">
-					</div>
-				</div>
-				<div class="col-sm-10 dashboard-section">
-					<div class="col-sm-12 dashboard-project"
-						style="border-bottom: 1px solid #d1d1d1">
-						<h4 style="margin-bottom: 1%; font-weight: bold; color: #666666">
-							<span class="project-output"><c:out
-									value='${projectBean.name}' /></span><span class="project-input"><input class="form-control"
-								value="${projectBean.name}" /></span>
-						</h4>
-						<p class="text-muted"
-							style="font-family: calibri; font-size: 10pt">
-							<i><span class="project-output text-muted">created <c:out
-										value='${projectBean.dateCreated}' /></span></i>
-						</p>
-						<div>
-							<span class="project-output">${projectBean.description}</span>
-							<div class="project-input form-group">
-								<textarea class="form-control" rows="3" cols="">${projectBean.description}</textarea>
+	<div class="container dashboard-body" style="margin-top: 6%;">
+		<div class="col-sm-7">
+			<div class="card-panel">
+				<h3 style="color: #3b5998"><c:out value='${projectBean.name}'/></h3>
+				<h5 style="color:#983b59; width: 50%;"><strong>Created: </strong><c:out value='${projectBean.dateCreated}'/></h5>
+				<h5 style="color:#59983b; width: 50%;"><strong>Expiry: </strong><c:out value='${projectBean.expiryDate}'/></h5>
+				<p><c:out value='${projectBean.description}'/></p>
+			</div>
+
+			<div class="card-panel">
+				<div id="create-job-div" class="section" >
+					<input type="hidden" value="3" class="step">
+					<form action="<c:url value='/endpoint/init-recruiter-mj3' />">
+						<div class="row">
+							<div class="form-group col-sm-12">
+								
 							</div>
 						</div>
-						<p>
-							<span class="project-output"><a class="pull-right edit"
-								href="#">Edit</a></span> <span class="project-input save-project"><a
-								class="pull-right save" href="#">Save</a></span>
-						</p>
-					</div>
-					<div class="col-sm-12 dashboard-project "
-						style="border-bottom: 1px solid #d1d1d1; padding-top: 2%;">
-						<div class="col-sm-12 project-output no-padding-div">
-							<div class="col-sm-12 no-padding-div">
-								<h4 class="text-muted project-output"
-									style="font-size: 12pt; font-family: calibri;">Job Post</h4>
+						<div class="row">
+							<div class="form-group col-sm-12">
+								<div class="msg-div"></div>
 							</div>
-							<c:if test='${not empty projectBean.job.jobTitle}'>
-								<div class="col-sm-12 no-padding-div">
-									<label class="text-muted"><strong>Title: </strong></label>
-									<c:out value="${projectBean.job.jobTitle}" />
-								</div>
-							</c:if>
-							<c:if test='${not empty projectBean.job.closingDate}'>
-								<div class="col-sm-12 no-padding-div">
-									<label class="text-muted"><strong>Closing
-											Date: </strong></label>
-									<c:out value="${projectBean.job.closingDate}" />
-								</div>
-							</c:if>
-							<c:if test='${not empty projectBean.job.educationLevel}'>
-								<div class="col-sm-12 no-padding-div">
-									<label class="text-muted"><strong>Education
-											Level: </strong></label>
-									<c:out value="${projectBean.job.educationLevel}" />
-								</div>
-							</c:if>
-
-							<c:if test='${not empty projectBean.job.careerLevel}'>
-								<div class="col-sm-12 no-padding-div">
-									<label class="text-muted"><strong>Career
-											Level: </strong></label>
-									<c:out value="${projectBean.job.careerLevel}" />
-								</div>
-							</c:if>
-
-							<c:if test='${not empty projectBean.job.jobType}'>
-								<div class="col-sm-12 no-padding-div">
-									<label class="text-muted"><strong>Job Type: </strong></label>
-									<c:out value="${projectBean.job.jobType}" />
-								</div>
-							</c:if>
-
-							<c:if test='${not empty projectBean.job.applicationUrl}'>
-								<div class="col-sm-12 no-padding-div">
-									<label class="text-muted"><strong>Application
-											URL: </strong></label>
-									<c:out value="${projectBean.job.applicationUrl}" />
-								</div>
-							</c:if>
-
-							<c:if test='${not empty projectBean.job.jobCategory}'>
-								<div class="col-sm-12 no-padding-div">
-									<label class="text-muted"><strong>Area of
-											Specialization: </strong></label>
-									<c:out value="${projectBean.job.jobCategory}" />
-								</div>
-							</c:if>
-
-							<c:if test='${not empty projectBean.job.salaryRange}'>
-								<div class="col-sm-12 no-padding-div">
-									<label class="text-muted"><strong>Salary
-											Range: </strong></label>
-									<c:out value="${projectBean.job.salaryRange}" />
-								</div>
-							</c:if>
-
-							<c:if test='${projectBean.job.allowLinkedInApplication}'>
-								<div class="col-sm-12 no-padding-div">
-									<label class="text-muted"><strong>Allow
-											LinkedIn application :</strong></label>
-									<c:out value="${projectBean.job.allowLinkedInApplication}" />
-								</div>
-							</c:if>
-							<c:if test='${not empty projectBean.job.description.value}'>
-								<div class="col-sm-12 no-padding-div">
-									${projectBean.job.description.value}</div>
-							</c:if>
-							<p>
-								<span class="project-output"><a class="pull-right edit"
-									href="#">Edit</a></span> <span class="project-input save-project"><a
-									class="pull-right save" href="#">Save</a></span>
-							</p>
-
 						</div>
-						<div class="col-sm-12 dashboard-project project-input"
-							style=" padding-top: 2%;">
-
-							<div class="col-sm-12">
-								<p class="text-muted project-input"
-									style="font-size: 10pt; font-family: calibri;">
-									<i>All fields marked with an asterisk are compulsory</i>
-								</p>
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<input class="form-control" name="job-title"
+									placeholder="* Job Title" required="required" />
 							</div>
-							<div class="col-sm-6 form-group">
-								<label>Title<span class="project-input"> *</span></label> <input
-									name="job-title" class="form-control"
-									value="${projectBean.job.jobTitle}">
+							<div class="form-group col-sm-6">
+								<select class="form-control" required="required"
+									name="job-location">
+									<option value="" disabled selected hidden>* Job
+										Location</option>
+									<option>Abia</option>
+									<option>Abuja</option>
+									<option>Adamawa</option>
+									<option>Anambra</option>
+									<option>Akwa Ibom</option>
+									<option>Bauchi</option>
+									<option>Bayelsa</option>
+									<option>Benue</option>
+									<option>Borno</option>
+									<option>Cross River</option>
+									<option>Delta</option>
+									<option>Ebonyi</option>
+									<option>Enugu</option>
+									<option>Edo</option>
+									<option>Ekiti</option>
+									<option>Gombe</option>
+									<option>Imo</option>
+									<option>Jigawa</option>
+									<option>Kaduna</option>
+									<option>Kano</option>
+									<option>Katsina</option>
+									<option>Kebbi</option>
+									<option>Kogi</option>
+									<option>Kwara</option>
+									<option>Lagos</option>
+									<option>Nasarawa</option>
+									<option>Niger</option>
+									<option>Ogun</option>
+									<option>Ondo</option>
+									<option>Osun</option>
+									<option>Oyo</option>
+									<option>Plateau</option>
+									<option>Rivers</option>
+									<option>Sokoto</option>
+									<option>Taraba</option>
+									<option>Yobe</option>
+									<option>Zamfara</option>
+								</select>
 							</div>
-							<div class="col-sm-6  form-group">
-								<label>Application Closing Date <span
-									class="project-input"> *</span></label> <input name="closing-date"
-									class="form-control datepicker">
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<input class="form-control" name="application-url"
+									placeholder="* Application URL/ Email" required="required" />
 							</div>
-							<div class="col-sm-6 form-group">
-								<label>Education Level</label> <select class="form-control"
+							<div class="form-group col-sm-6">
+								<input class="form-control datepicker"
+									name="application-deadline" required="required"
+									placeholder="* Application Deadline" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-12">
+								<textarea rows="4" class="form-control" required="required"
+									style="white-space: pre-wrap" name="job-role"
+									placeholder="* Job Role/Responsibilities"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-12">
+								<textarea rows="4" class="form-control" required="required"
+									style="white-space: pre-wrap" name="job-description"
+									placeholder="* Job Description"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<select class="form-control" name="career-level"
+									required="required">
+									<option value="" disabled selected hidden>* Career
+										Level</option>
+									<option value="101">Student (Undergraduate/Graduate)</option>
+									<option value="102">Entry Level</option>
+									<option value="103">Experienced (Non-Managerial)</option>
+									<option value="104">Manager (Manager/Supervisor of
+										Staff)</option>
+									<option value="105">Executive (SVP,VP,Department Head
+										etc)</option>
+									<option value="106">Senoir Executive (President, CFO.
+										etc)</option>
+								</select>
+							</div>
+							<div class="form-group col-sm-6">
+								<select required="required" class="form-control"
 									name="education-level">
-									<option>${projectBean.job.educationLevel}</option>
-									<option>Higher National Diploma</option>
-									<option>Bachelor's Degree</option>
-									<option>Master's Degree</option>
-									<option>Post Graduate Diploma</option>
-									<option>Doctorate</option>
-									<option>professional</option>
+									<option value="" disabled selected hidden>* Education
+										Level</option>
+									<option value="501">Higher National Diploma</option>
+									<option value="502">Bachelor's Degree</option>
+									<option value="503">Master's Degree</option>
+									<option value="504">Post Graduate Diploma</option>
+									<option value="505">Doctorate</option>
+									<option value="506">Professional</option>
 								</select>
 							</div>
-							<div class="col-sm-6 form-group">
-								<label>Year of Experience</label> <select class="form-control"
-									name="job-experience">
-									<option>${projectBean.job.educationLevel}</option>
-									<option>0 - 1 year</option>
-									<option>0 - 2 years</option>
-									<option>1 - 3 years</option>
-									<option>2 - 5 years</option>
-									<option>3 - 5 years</option>
-									<option>5 - 10 years</option>
-									<option>more than 10 years</option>
-								</select>
-							</div>
-							<div class="col-sm-6 form-group">
-								<label>Career Level</label><select class="form-control"
-									name="career-level">
-									<option>${projectBean.job.careerLevel}</option>
-									<option>Student (Undergraduate/Graduate)</option>
-									<option>Entry Level</option>
-									<option>Experienced (Non-Managerial)</option>
-									<option>Manager (Manager/Supervisor of Staff)</option>
-									<option>Executive (SVP,VP,Department Head etc)</option>
-									<option>Senoir Executive (President, CFO. etc)</option>
-								</select>
-							</div>
-							<div class="col-sm-6 form-group">
-								<label>Job Type</label> <select class="form-control"
-									name="job-type">
-									<option>${projectBean.job.jobType}</option>
-									<option>Freelance</option>
-									<option>Full Time</option>
-									<option>Internship</option>
-									<option>Part Time</option>
-									<option>Permanent</option>
-									<option>Temporary</option>
-								</select>
-							</div>
-							<div class="col-sm-6 form-group">
-								<label>Application Email or URL *</label> <input
-									value="${projectBean.job.applicationUrl}"
-									name="application-url" class="form-control">
-							</div>
-							<div class="col-sm-6 form-group">
-								<label>Area of Specialization</label> <select
-									class="form-control" name="job-category" id="job-category">
-									<option>${projectBean.job.jobCategory}</option>
-									<option>Administration/ Office/ Operations</option>
-									<option>Advertising/ PR / Marketing</option>
-									<option>Agriculture / Agro Allied</option>
-									<option>Analyst/ Quality Control</option>
-									<option>Automotive/ Car Services</option>
-									<option>Aviation/ Airline</option>
-									<option>Banking</option>
-									<option>Construction / Mining</option>
-									<option>Consulting</option>
-									<option>Customer Service</option>
-									<option>Driving / Haulage</option>
-									<option>Engineering</option>
-									<option>Executive / Management</option>
-									<option>Finance / Accounting</option>
-									<option>Freelance / Data Entry</option>
-									<option>Government Agencies</option>
-									<option>Graduate /Freshers</option>
-									<option>Hospitality / Food Services</option>
-									<option>HSE/ Safety/ Risk Management</option>
-									<option>Human Resources / Recruitment</option>
-									<option>ICT/ Software</option>
-									<option>Internship/ Industrial Training</option>
-									<option>Law/ Legal</option>
-									<option>Manufacturing/ Production</option>
-									<option>Maritime Services / Shipping</option>
-									<option>Media / Art</option>
-									<option>Medical/ Health</option>
-									<option>Military / Para-Military</option>
-									<option>NGO / Community Services</option>
-									<option>Oil and Gas</option>
-									<option>Other</option>
-									<option>Procurement/ Purchasing</option>
-									<option>Programming / Web development</option>
-									<option>Project Management</option>
-									<option>Research/ Survey</option>
-									<option>Sales / Business Development</option>
-									<option>Secretarial / PA</option>
-									<option>Security / Intelligence</option>
-									<option>Surveying / Real Estate / Property</option>
-									<option>Teaching / Education Services</option>
-									<option>Technical/ Artisan</option>
-									<option>Telecom</option>
-									<option>Tourism / Travels</option>
-									<option>Transport / Logistics / Supply</option>
-
-								</select>
-							</div>
-							<div class="col-sm-6 form-group">
-								<label>Salary</label> <select class="form-control" name="salary">
-									<option>${projectBean.job.salaryRange}</option>
-									<option>10,000 - 50,000</option>
-									<option>50,000 - 100,000</option>
-									<option>100,000 - 300,000</option>
-									<option>300,000 - 500,000</option>
-									<option>Unspecified</option>
-								</select>
-							</div>
-							<div class="col-sm-6 form-group">
-								<div class="checkbox">
-									<label><input type="checkbox" name="allow-LinkedIn"
-										value="true"
-										<c:if test='${projectBean.job.allowLinkedInApplication}'> checked</c:if>>Allow
-										applicants with LinkedIn profile</label>
-								</div>
-							</div>
-							<div class="col-sm-12">
-								<div class="form-group">
-									<label>Extra Information (Job description, roles,
-										duties, etc)<span class="project-input"> *</span>
-									</label>
-									<textarea class="tiny" id="additional-properties"
-										name="extra-info">${projectBean.job.description.value}</textarea>
-								</div>
-							</div>
-							<p>
-							<span class="project-output"><a class="pull-right edit"
-								href="#">Edit</a></span> <span class="project-input save-project"><a
-								class="pull-right save" href="#">Save</a></span>
-						</p>
 						</div>
-					</div>
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<select class="form-control" required="required" name="job-type">
+									<option value="" disabled selected hidden>* Job Type</option>
+									<option value="301">Freelance</option>
+									<option value="302">Full Time</option>
+									<option value="303">Internship</option>
+									<option value="304">Part Time</option>
+									<option value="305">Permanent</option>
+									<option value="306">Temporary</option>
+								</select>
+							</div>
+							<div class="form-group col-sm-6">
+								<select class="form-control" name="salary">
+									<option value="" disabled selected hidden>Salary Range</option>
+									<option value="201">10,000 - 50,000</option>
+									<option value="202">50,000 - 100,000</option>
+									<option value="203">100,000 - 300,000</option>
+									<option value="204">300,000 - 500,000</option>
+									<option value="205">Unspecified</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<select class="form-control" name="experience">
+									<option value="" disabled selected hidden>Years of
+										Experience</option>
+									<option value="401">0 - 1 year</option>
+									<option value="402">0 - 2 years</option>
+									<option value="403">1 - 3 years</option>
+									<option value="404">2 - 5 years</option>
+									<option value="405">3 - 5 years</option>
+									<option value="406">5 - 10 years</option>
+									<option value="407">7 - 10 years</option>
+									<option value="408">More than 10 years</option>
+								</select>
+							</div>
+							<div class="form-group col-sm-6">
+								<div class="checkbox">
+									<label
+										style="font-style: italic; color: #777; font-family: calibri; font-size: 10pt"><input
+										type="checkbox" value="true" name="allow-linkedIn">Applicants
+										can apply with their LinkedIn profile?</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-12">
+								<input class="form-control" name="skills" placeholder="Skills" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-12">
+								<textarea rows="4" class="form-control" name="extra-info"
+									style="white-space: pre-wrap"
+									placeholder="Additional Information"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-12">
+								<input type="button" value="Continue"
+									class="btn btn-primary mj-butt"> <a
+									class="btn btn-warning"
+									href="<c:url value='/bq/endpoint/recruit-professional-user' />">I
+									will do this later</a>
+							</div>
+						</div>
+					</form>
+
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-4">
-			<div class="col-sm-12 dashboard-section no-padding-div"
-				style="margin-bottom: 2%;">
-				<iframe src="/images/ad1/negotiatn_ext.html" width="336"
-					height="280" scrolling="no" frameBorder='0'></iframe>
-			</div>
-		</div>
-
+		<div class="col-sm-5"></div>
 	</div>
 
 
@@ -325,27 +240,7 @@
 	<script src="/js/jquery-ui.min.js"></script>
 	<script src="/js/jquery.webui-popover.min.js"></script>
 	<script src="/js/waitMe.js"></script>
-	<!-- <script src="/js/autosize.js"></script>  -->
 	<script src="/js/main.js"></script>
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			tinymce.init({
-				selector : '.tiny'
-			});
-			$(".edit").click(function(e) {
-				e.preventDefault();
-				var par = $(this).closest(".dashboard-project");
-				par.find(".project-output").toggle();
-				par.find(".project-input").toggle();
-			});
 
-			$(".save-project").click(function(e) {
-				e.preventDefault();
-				var par = $(this).closest(".dashboard-project");
-				par.find(".project-output").toggle();
-				par.find(".project-input").toggle();
-			});
-		});
-	</script>
 </body>

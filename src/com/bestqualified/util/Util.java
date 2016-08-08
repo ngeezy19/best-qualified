@@ -1140,7 +1140,7 @@ public class Util {
 		}
 	}
 
-	private static ProjectBean toProjectBean(Project project) {
+	public static ProjectBean toProjectBean(Project project) {
 		ProjectBean pb = new ProjectBean();
 		pb.setName(project.getName());
 		pb.setDateCreated(new SimpleDateFormat("yyyy MMM dd").format(project
@@ -2196,6 +2196,37 @@ public class Util {
 
 		return map;
 
+	}
+
+	public static ProjectBean toFullProjectBean(Project project) {
+		ProjectBean pb = new ProjectBean();
+		pb.setName(project.getName());
+		pb.setDateCreated(new SimpleDateFormat("yyyy MMM dd").format(project
+				.getDateCreated()));
+		if (project.getDescription() != null) {
+			pb.setDescription(project.getDescription().getValue());
+		}
+		
+
+		pb.setWebKey(project.getSafeKey());
+		if (project.getJobs() != null) {
+			Job j = EntityConverter.entityToJob(GeneralController
+					.findByKey(project.getJobs()));
+			pb.setJobTitle(j.getJobTitle());
+			pb.setExpiryDate(new SimpleDateFormat("yyyy MMM dd").format(j
+					.getClosingDate()));
+			if (j.getCompany() != null) {
+				Company c = EntityConverter.entityToCompany(GeneralController
+						.findByKey(j.getCompany()));
+				if (c.getLogo() == null) {
+					pb.setCompanyLogo(StringConstants.DEFAULT_COMPANY_LOGO);
+				} else {
+					pb.setCompanyLogo(Util.getPictureUrl(c.getLogo()));
+				}
+			}
+		}
+		return pb;
+	
 	}
 
 }

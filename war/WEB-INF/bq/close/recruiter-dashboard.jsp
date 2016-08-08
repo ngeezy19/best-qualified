@@ -143,7 +143,7 @@
 								</div>
 								<div class="col-sm-8">
 									<h4>
-										<a href="#"><c:out value="${item.name}" /></a>
+										<a href="<c:url value='/bq/closed/recruiter/project?id=${item.webKey}' />"><c:out value="${item.name}" /></a>
 									</h4>
 									<div>
 										<span class="text-danger"><c:out
