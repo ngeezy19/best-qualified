@@ -35,7 +35,7 @@ public class GetProject extends HttpServlet {
 			if(e!=null) {
 				Project p = EntityConverter.entityToProject(e);
 				ProjectBean pb = Util.toFullProjectBean(p);
-				req.setAttribute("projectBean", pb);
+				req.getSession().setAttribute("projectBean", pb);
 				RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/bq/close/project.jsp");
 				rd.include(req,resp);
 			} else {

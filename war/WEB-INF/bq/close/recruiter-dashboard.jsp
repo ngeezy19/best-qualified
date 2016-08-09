@@ -84,9 +84,9 @@
 				<div class="row card-panel"
 					style="padding: 2px; color: white; background-color: gray">
 					<div class="col-sm-4">
-						<h4 style="cursor: pointer;" id="project-trig">
-							<i class="fa fa-plus-square-o" aria-hidden="true"
-								style="padding-right: 1%;"></i> New Project
+						<h4>
+							<a style="color: white;" href="<c:url value='/bq/closed/recruiter/project/new' />"><i class="fa fa-plus-square-o" aria-hidden="true"
+								style="padding-right: 1%;"></i> New Project</a>
 						</h4>
 					</div>
 					<div class="col-sm-4">
@@ -100,15 +100,6 @@
 							<i class="fa fa-comments-o" aria-hidden="true"
 								style="padding-right: 1%;"></i> Start a discussion
 						</h4>
-					</div>
-					<div class="col-sm-12">
-						<%@ include file="/partial/create-project.html"%>
-					</div>
-					<div class="col-sm-12">
-						<%@ include file="/partial/create-job.html"%>
-					</div>
-					<div class="col-sm-12">
-						<%@ include file="/partial/add-company.html"%>
 					</div>
 					<div class="col-sm-12 no-padding-div">
 						<%@ include file="/partial/new-article.html"%>

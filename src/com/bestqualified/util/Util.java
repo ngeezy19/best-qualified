@@ -2237,6 +2237,11 @@ public class Util {
 				} else {
 					pb.setCompanyLogo(Util.getPictureUrl(c.getLogo()));
 				}
+				
+				pb.setCompantDesc((c.getDescription()!=null)?c.getDescription().getValue():"");
+				pb.setCompanyName(c.getCompanyName());
+				pb.setCompanyWebsite(c.getCompanyWebsite());
+				
 			}
 		}
 		return pb;

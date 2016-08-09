@@ -248,13 +248,13 @@
 				<div class="card-list">
 					<h4>
 						Date Created: <span class="pull-right"><c:out
-								value='${projeanBean.dateCreated}' /></span>
+								value='${projectBean.dateCreated}' /></span>
 					</h4>
 				</div>
 				<div class="card-list">
 					<h4>
 						Expiry Date: <span class="pull-right"><c:out
-								value='${projeanBean.dateCreated}' /></span>
+								value='${projectBean.expiryDate}' /></span>
 					</h4>
 				</div>
 				<hr />
@@ -262,38 +262,44 @@
 				<div class="card-list">
 					<h4>
 						Short Listed: <span class="pull-right"><c:out
-								value='${projeanBean.dateCreated}' /></span>
+								value='${projectBean.shortListed}' /></span>
 					</h4>
 				</div>
 				<div class="card-list">
 					<h4>
 						Invited: <span class="pull-right"><c:out
-								value='${projeanBean.dateCreated}' /></span>
+								value='${projectBean.inviteSent}' /></span>
 					</h4>
 				</div>
 				<div class="card-list">
 					<h4>
 						New Applicants: <span class="pull-right"><c:out
-								value='${projeanBean.newApplicants}' /></span>
+								value='${projectBean.newApplicants}' /></span>
 					</h4>
 				</div>
 				<div class="card-list">
 					<h4>
 						All Applicants: <span class="pull-right"><c:out
-								value='${projeanBean.dateCreated}' /></span>
+								value='${projectBean.totalApplicants}' /></span>
 					</h4>
 				</div>
 				<hr />
 				<div class="card-list">
 					<h4>
 						Saved Search: <span class="pull-right"><c:out
-								value='${projeanBean.dateCreated}' /></span>
+								value='${projectBean.savedSeach}' /></span>
 					</h4>
 				</div>
 			</div>
-			<div class="card-panel">
-				<h4 style="color: #3b5998">Company Information</h4>
-			</div>
+			<c:if test="${not empty projectBean.companyName}">
+				<div class="card-panel">
+					<h4 style="color: #3b5998">Company Information</h4>
+					<p>${projectBean.companyName}</p>
+					<p>${projectBean.companyWebsite}</p>
+					<p>${projectBean.companyDesc}</p>
+				</div>
+			</c:if>
+
 		</div>
 	</div>
 

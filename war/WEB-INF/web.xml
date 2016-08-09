@@ -168,6 +168,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>AdminDashBoard</servlet-name>
 		<url-pattern>/bq/admin/dashboard</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CreateNewProjectForm</servlet-name>
+		<jsp-file>/WEB-INF/pages/create-new-project.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateNewProjectForm</servlet-name>
+		<url-pattern>/bq/closed/recruiter/project/new</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>AdminNewJob</servlet-name>
 		<servlet-class>com.bestqualified.admin.NewJob</servlet-class>
@@ -230,7 +240,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SaveProject</servlet-name>
-		<url-pattern>/bq/close/save-project</url-pattern>
+		<url-pattern>/bq/close/recruiter/project/save</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>SaveJob</servlet-name>
