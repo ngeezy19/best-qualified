@@ -36,7 +36,7 @@ import com.google.appengine.api.urlfetch.URLFetchServiceFactory;
 
 public class GetReadingList extends HttpServlet {
 
-	//change this
+	//change this again
 	private static final String ak = "";
 	private static final String ask = "";
 	private static final String ep = "";
