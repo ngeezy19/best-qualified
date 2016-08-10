@@ -2257,10 +2257,11 @@ public class Util {
 		fjb.setEducationLevel(Util.getEducationLevelValue(j.getEducationLevel()));
 		fjb.setJobDesc(j.getDescription().getValue());
 		fjb.setJobRole(j.getJobRoles().getValue());
-		fjb.setJobType(j.getJobType());
+		fjb.setJobType(getJobTypeValue(j.getJobType()));
 		fjb.setLocation(j.getLocation());
 		fjb.setSalaryRange(j.getSalaryRange());
 		fjb.setSkills("");
+		fjb.setApplicationUrl(j.getApplicationUrl());
 		fjb.setTitle(j.getJobTitle());
 		fjb.setYearsOfExperience(Util.getExperienceValue(j.getExperience()));
 		return fjb;

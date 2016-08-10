@@ -265,6 +265,9 @@ p {
 			</div>
 
 		</div>
+		<div class="col-sm-4">
+			<%@ include file="/WEB-INF/pages/certification-sidebar.html"%>
+		</div>
 
 	</div>
 

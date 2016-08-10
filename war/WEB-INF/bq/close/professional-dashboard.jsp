@@ -29,6 +29,9 @@
 <link rel="stylesheet" href="/styles/animate.css">
 
 <style type="text/css">
+h4 {
+	color: 	#983b59
+}
 .subnav li {
 	list-style: none;
 	display: inline;
@@ -139,7 +142,7 @@
 						<div class="col-sm-4">
 							<h5 class="text-info" style="font-size: 12pt">Profile Views
 								in Last 30 Days</h5>
-							<div style="">${professionalDashboard.companies}companies</div>
+							<div style="">${professionalDashboard.companies} companies</div>
 							,
 							<div style="">${professionalDashboard.professionals}
 								professionals</div>
@@ -148,16 +151,16 @@
 				</div>
 			</div>
 
-			<div class="row" style="margin-bottom: 2%;">
+			<div class="row" style="margin-bottom: 1%;">
 				<div class="col-sm-12 card-panel"
-					style="padding: 2px; color: white; background-color: gray">
+					style="padding: 2px; color: white; background-color: #a24e69">
 					<div class="col-sm-6">
-						<h4 style="cursor: pointer;" id="article-trig">
+						<h4 style="cursor: pointer;color: white" id="article-trig">
 							<i class="fa fa-newspaper-o" aria-hidden="true"
 								style="padding-right: 1%;"></i> Write an article</h4>
 					</div>
 					<div class="col-sm-6">
-						<h4 style="cursor: pointer;" id="discussion-trig">
+						<h4 style="cursor: pointer; color: white;" id="discussion-trig">
 							<i class="fa fa-comments-o" aria-hidden="true"
 								style="padding-right: 1%;"></i> Start a discussion
 						</h4>

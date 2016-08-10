@@ -42,9 +42,9 @@
 	<br />
 	<br />
 
-	<div style="width: 65%; float: left">
-		<div style="width: 80%; float: right;">
-			<div class="container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8">
 				<div class="row card-panel">
 
 					<div class="col-sm-12"">
@@ -58,34 +58,37 @@
 								<h4 style="margin-top: 2px">
 									<c:out value='${recruiterDashboard.name}' />
 								</h4>
-								<h5>
+								<h5 style="color: #983b59">
 									<c:out value='${recruiterDashboard.tagLine}' />
 								</h5>
-								<h5>
+								<h5 style="color: gray">
 									<c:out value='${recruiterDashboard.email}' />
 								</h5>
 
 							</div>
 						</div>
-						<div class="col-sm-4"
-							style="border: 1px #dadada dotted; color: white; background-color: darkgreen;">
-							<h5>
-								<c:out value='${fn:length(recruiterDashboard.projects)}' />
-								Project(s)
-							</h5>
-							<h5>
-								<c:out value='${fn:length(recruiterDashboard.savedSearch)}' />
-								Saved Search(es)
-							</h5>
+						<div class="col-sm-4">
+							<div class="card-panel" style="padding: 5px 10px;background-color: #ead7dd; z-index: 20">
+								<h5>
+									<c:out value='${fn:length(recruiterDashboard.projects)}' />
+									Project(s)
+								</h5>
+								<h5>
+									<c:out value='${fn:length(recruiterDashboard.savedSearch)}' />
+									Saved Search(es)
+								</h5>
+							</div>
 						</div>
 					</div>
 
 				</div>
 				<div class="row card-panel"
-					style="padding: 2px; color: white; background-color: gray">
+					style="padding: 2px; color: white; background-color: #a24e69">
 					<div class="col-sm-4">
 						<h4>
-							<a style="color: white;" href="<c:url value='/bq/closed/recruiter/project/new' />"><i class="fa fa-plus-square-o" aria-hidden="true"
+							<a style="color: white;"
+								href="<c:url value='/bq/closed/recruiter/project/new' />"><i
+								class="fa fa-plus-square-o" aria-hidden="true"
 								style="padding-right: 1%;"></i> New Project</a>
 						</h4>
 					</div>
@@ -117,8 +120,8 @@
 						</div>
 						<div class="col-sm-10">
 							<div class="col-sm-12 no-padding-div card-panel">
-								<div class="col-sm-4 alert alert-warning"
-									style="line-height: 1.8">
+								<div class="col-sm-4 card-panel" 
+									style="line-height: 1.8; background-color: #ead7dd">
 									<div>
 										<a href="#"><c:out value="${item.newApplicants}" /> new
 											applicants</a>
@@ -134,7 +137,9 @@
 								</div>
 								<div class="col-sm-8">
 									<h4>
-										<a href="<c:url value='/bq/closed/recruiter/project?id=${item.webKey}' />"><c:out value="${item.name}" /></a>
+										<a
+											href="<c:url value='/bq/closed/recruiter/project?id=${item.webKey}' />"><c:out
+												value="${item.name}" /></a>
 									</h4>
 									<div>
 										<span class="text-danger"><c:out
@@ -166,48 +171,45 @@
 					</div>
 				</c:forEach>
 			</div>
-		</div>
 
-	</div>
-	<div style="float: left; position: relative;">
-		<div style="position: fixed;">
-			<div style="width: 300px;" class="card-panel">
-				<div class="container-fluid">
-					<div class="row">
-						<h4>Suggested Candidates</h4>
-					</div>
-					<c:forEach var="item" items="${recruiterDashboard.prospects}">
-						<div class="row" style="margin-bottom: 2%;">
-							<div class="col-sm-3 no-padding-div">
+
+
+			<div class="col-sm-4 card-panel">
+
+				
+					<h4 style="color: #a24e69">Suggested Candidates</h4>
+				
+				<c:forEach var="item" items="${recruiterDashboard.prospects}">
+					<div class="row" style="margin-bottom: 4%;">
+						<div class="col-sm-3">
+							<a
+								href="<c:url value='/bq/closed/get-candidate-profile?web-key=${item.webkey}'/>"><img
+								class="img img-responsive img-circle" alt=""
+								<c:choose><c:when test='${empty item.pictureUrl }'> src="/images/unknown-user.jpg"</c:when><c:otherwise> src="${item.pictureUrl}"</c:otherwise></c:choose>></a>
+						</div>
+						<div class="col-sm-8">
+							<h5 style="margin-bottom: 2px">
 								<a
-									href="<c:url value='/bq/closed/get-candidate-profile?web-key=${item.webkey}'/>"><img
-									class="img img-responsive img-circle" alt=""
-									<c:choose><c:when test='${empty item.pictureUrl }'> src="/images/unknown-user.jpg"</c:when><c:otherwise> src="${item.pictureUrl}"</c:otherwise></c:choose>></a>
+									href="<c:url value='/bq/closed/get-candidate-profile?web-key=${item.webkey}'/>">
+									<c:out value='${item.firstName}' /> <c:out
+										value='${item.lastName}' />
+								</a>
+							</h5>
+							<div class="text-success" style="font-family: calibri">
+								<c:out value='${item.highestQualification}' />
 							</div>
-							<div class="col-sm-8">
-								<h5 style="margin-bottom: 2px">
-									<a
-										href="<c:url value='/bq/closed/get-candidate-profile?web-key=${item.webkey}'/>">
-										<c:out value='${item.firstName}' /> <c:out
-											value='${item.lastName}' />
-									</a>
-								</h5>
-								<div class="text-success" style="font-family: calibri">
-									<c:out value='${item.highestQualification}' />
-								</div>
-								<div class="text-info"
-									style="font-size: 10pt; font-stretch: narrower; font-style: italic;">
-									<c:out value='${item.yearsOfExperience}' />
-									years experience
-								</div>
+							<div class="text-info"
+								style="font-size: 10pt; font-stretch: narrower; font-style: italic;">
+								<c:out value='${item.yearsOfExperience}' />
+								years experience
 							</div>
 						</div>
-					</c:forEach>
-				</div>
+					</div>
+				</c:forEach>
+
 			</div>
 		</div>
 	</div>
-	<div style="clear: both;"></div>
 
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>

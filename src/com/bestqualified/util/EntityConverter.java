@@ -56,7 +56,7 @@ public class EntityConverter {
 		
 	}
 	
-	public static CoachRequest entityTpCoachRequest(Entity e) {
+	public static CoachRequest entityToCoachRequest(Entity e) {
 		CoachRequest cr = new CoachRequest();
 		cr.setUserKey((Key) e.getProperty("userKey"));
 		cr.setTxnRef((String) e.getProperty("txnRef"));
@@ -496,6 +496,7 @@ public class EntityConverter {
 				.getProperty(StringConstants.APPLICATION_URL));
 		j.setCompany((Key) e.getProperty(StringConstants.COMPANY));
 		j.setNewApplicants((List<Key>) e.getProperty("newApplicants"));
+		j.setSalaryRange((String) e.getProperty("salaryRange"));
 		return j;
 	}
 
