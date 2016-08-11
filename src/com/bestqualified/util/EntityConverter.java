@@ -56,7 +56,7 @@ public class EntityConverter {
 		
 	}
 	
-	public static CoachRequest entityTpCoachRequest(Entity e) {
+	public static CoachRequest entityToCoachRequest(Entity e) {
 		CoachRequest cr = new CoachRequest();
 		cr.setUserKey((Key) e.getProperty("userKey"));
 		cr.setTxnRef((String) e.getProperty("txnRef"));
@@ -211,24 +211,15 @@ public class EntityConverter {
 		a.setImageKey((BlobKey) e.getProperty("imageKey"));
 		a.setLink((Link) e.getProperty("link"));
 		a.setCategory(ArticleCategory.valueOf((String) e.getProperty("category")));
+		a.setLikers((List<Key>) e.getProperty("likers"));
 		Object o = e.getProperty("nComments");
-		Object l = e.getProperty("likes");
+	
 		Object s = e.getProperty("shares");
 		a.setCommunity((Key) e.getProperty("community"));
 
 		if(o != null) {
 
 			   a.setnComments((Long)e.getProperty("nComments"));
-			  }
-		
-		
-		if(l != null) {
-
-			   a.setLikes((Long)e.getProperty("likes"));
-			  }
-		if(s != null) {
-
-			   a.setLikes((Long)e.getProperty("shares"));
 			  }
 
 		return a;
@@ -248,7 +239,7 @@ public class EntityConverter {
 		e.setUnindexedProperty("imageKey", a.getImageKey());
 		e.setUnindexedProperty("link", a.getLink());
 		e.setIndexedProperty("nComment", a.getnComments());
-		e.setIndexedProperty("likes", a.getLikes());
+		e.setIndexedProperty("likers", a.getLikers());
 		e.setIndexedProperty("shares", a.getShares());
 		e.setIndexedProperty("community", a.getCommunity());
 		return e;
@@ -505,6 +496,7 @@ public class EntityConverter {
 				.getProperty(StringConstants.APPLICATION_URL));
 		j.setCompany((Key) e.getProperty(StringConstants.COMPANY));
 		j.setNewApplicants((List<Key>) e.getProperty("newApplicants"));
+		j.setSalaryRange((String) e.getProperty("salaryRange"));
 		return j;
 	}
 
@@ -650,6 +642,7 @@ public class EntityConverter {
 		e.setUnindexedProperty("tagline", user.getTagline());
 		e.setIndexedProperty("professionalLevel", user.getProfessionalLevel());
 		e.setIndexedProperty("rating", user.getRating());
+		e.setUnindexedProperty("communities", user.getCommunities());
 		return e;
 	}
 
@@ -657,6 +650,7 @@ public class EntityConverter {
 		User u = new User((String) (e.getProperty(StringConstants.FIRST_NAME)),
 				(String) e.getProperty(StringConstants.LAST_NAME));
 		u.setBirthDate((Date) e.getProperty("birthDate"));
+		u.setCommunities((List<Key>) e.getProperty("communities"));
 		u.setEmail((String) e.getProperty(StringConstants.EMAIL));
 		u.setEmails((List<String>) e.getProperty(StringConstants.EMAILS));
 		u.setFacebookID((String) e.getProperty(StringConstants.FACEBOOK_ID));

@@ -2,9 +2,7 @@ package com.bestqualified.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,12 +15,9 @@ import com.bestqualified.bean.CommunityPageBean;
 import com.bestqualified.controllers.GeneralController;
 import com.bestqualified.entities.Article;
 import com.bestqualified.entities.Community;
-import com.bestqualified.entities.ReadingList;
-import com.bestqualified.util.EntityConverter;
+import com.bestqualified.entities.User;
 import com.bestqualified.util.Util;
-import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
 
 public class CommunityPageServlet extends HttpServlet {
 
@@ -37,6 +32,15 @@ public class CommunityPageServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		HttpSession session = req.getSession();
+		Object o = null;
+		User u = null;
+		synchronized (session) {
+			o = session.getAttribute("user");
+		}
+		
+		if(o!= null) {
+			u = (User) o;
+		}
 
 
 		List<Key> cKey = GeneralController.getNCommunities(10);
@@ -44,7 +48,7 @@ public class CommunityPageServlet extends HttpServlet {
 		List<Community> communities = Util.getCommunityFromCache(cKey);
 
 		// Map<String, String> map = new HashMap<>();
-		List<CommunityBean> cmBean = Util.toCommunityBeans(communities);
+		List<CommunityBean> cmBean = Util.toCommunityBeans(communities, u);
 
 		List<Article> posts = new ArrayList<>();
 
@@ -55,7 +59,7 @@ public class CommunityPageServlet extends HttpServlet {
 		
 
 		cpb.setCommunities(cmBean);
-		cpb.setPosts(Util.toArticleBeans(posts));
+		cpb.setPosts(Util.toArticleBeans(posts,o));
 
 		synchronized (session) {
 			session.setAttribute("communityPageBean", cpb);

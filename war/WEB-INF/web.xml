@@ -6,6 +6,24 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 	
 	<servlet>
+		<servlet-name>GetCompletePost</servlet-name>
+		<servlet-class>com.bestqualified.servlets.GetCompletePost</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetCompletePost</servlet-name>
+		<url-pattern>/bq/community/post/complete</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GetProject</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.GetProject</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetProject</servlet-name>
+		<url-pattern>/bq/closed/recruiter/project</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>LikeArticle</servlet-name>
 		<servlet-class>com.bestqualified.servlets.LikeArticle</servlet-class>
 	</servlet>
@@ -37,7 +55,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AddComment</servlet-name>
-		<url-pattern>/bq/close/community/comment/add</url-pattern>
+		<url-pattern>/bq/close/comment/add</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -150,6 +168,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>AdminDashBoard</servlet-name>
 		<url-pattern>/bq/admin/dashboard</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CreateNewProjectForm</servlet-name>
+		<jsp-file>/WEB-INF/pages/create-new-project.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateNewProjectForm</servlet-name>
+		<url-pattern>/bq/closed/recruiter/project/new</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>AdminNewJob</servlet-name>
 		<servlet-class>com.bestqualified.admin.NewJob</servlet-class>
@@ -212,7 +240,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SaveProject</servlet-name>
-		<url-pattern>/bq/close/save-project</url-pattern>
+		<url-pattern>/bq/close/recruiter/project/save</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>SaveJob</servlet-name>
@@ -692,6 +720,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<servlet-mapping>
 		<servlet-name>InitCommunityBean</servlet-name>
 		<url-pattern>/community</url-pattern>
+		<url-pattern>/bq/close/community</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -1028,7 +1057,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>SignInPage</servlet-name>
-		<jsp-file>/WEB-INF/pages/Sign-in.jsp</jsp-file>
+		<jsp-file>/WEB-INF/pages/sign-in.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SignInPage</servlet-name>

@@ -39,7 +39,7 @@
 	%>
 
 	<%
-	ib.setArticles(Util.toArticleBeans(articles));
+	ib.setArticles(Util.toArticleBeans(articles,null));
 	ib.setIjs(Util.toInterestedJobs(jobs));
 		synchronized(session) {
 			session.setAttribute("indexBean", ib);
@@ -157,11 +157,11 @@
 			<div class="col-md-6">
 				<div class="media headlines">
 
-					<a class="pull-right" href="/community"><img
+					<a class="pull-right" href="/bq/general-community"><img
 						class="media-object img-rounded" src="/images/community.png"></a>
 					<div class="media-body">
 						<h4 class="media-heading">
-							<a href="/community"><strong>COMMUNITY</strong></a>
+							<a href="/bq/general-community"><strong>COMMUNITY</strong></a>
 						</h4>
 						<h5 class="jobsss">Get hired in industries of your choice</h5>
 						<p class="plat">Plug into new communities that can improve
@@ -271,13 +271,22 @@
 					<c:forEach var="item" items="${indexBean.ijs}">
 						<li>
 							<h5>
-								<a href="/bq/open/job?job-key=${item.jobKey}"><c:out
-										value="${item.jobTitle}" /></a>
-							</h5> <span style="font-family: calibri; color: #983b59"><c:out
-									value="${item.companyName}" /></span>
-							<p style="font-size: 10pt; color: #59983b; font-style: italic;">
+							<a href="/bq/open/job?job-key=${item.jobKey}" data-toggle="tooltip"  data-placement="right" title="<c:out value="${item.jobTitle}" />" class="toola">
+							<c:out value="${item.jobTitle}" /></a>
+							</h5> 
+							<div class="box">
+							<span style="font-family: calibri; color: #983b59" class="trunc"><c:out value="${item.companyName}" />
+							</span>
+							<span style="font-family: calibri; color: #983b59" class="origin">
+							<p class="tort">
+							<c:out value="${item.companyName}" />
+							</p>
+							</span>
+							<p style="font-size: 10pt; color: #59983b; font-style: italic;" class="timly">
 								<c:out value="${item.postedTime}" />
 							</p>
+							</div>			
+							
 						</li>
 					</c:forEach>
 					<li style="background: rgba(78, 189, 163, 0.4);">
@@ -312,11 +321,6 @@
 		</div>
 	</div>
 
-
-
-
-
-
 	<br>
 	<br>
 	<br>
@@ -325,8 +329,26 @@
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.webui-popover.min.js"></script>
-	<script type="text/javascript">
-		
+	<script type="text/javascript">	</script>
+	<script>
+		$(document).ready(function(){
+   		 $('[data-toggle="tooltip"]').tooltip(); 
+		});
 	</script>
+	<script>
+	$(document).ready(function(){
+     $(".box").hover(function(){
+     	$(this).find(".trunc").css("display", "none");
+         $(this).find(".origin").css("display", "block");
+         $(this).find(".timly").css("display", "none");
+     },
+     	function(){
+         $(this).find(".origin").css("display", "none");
+         $(this).find(".trunc").css("display", "block");
+         $(this).find(".timly").css("display", "block");
+     	}
+     );
+});
+</script>
 </body>
 </html>

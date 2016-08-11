@@ -2,6 +2,7 @@ package com.bestqualified.servlets;
 
 import java.io.IOException;
 import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import com.bestqualified.bean.CommunityBean;
 import com.bestqualified.bean.CommunityPageBean;
 import com.bestqualified.controllers.GeneralController;
 import com.bestqualified.entities.Community;
+import com.bestqualified.entities.User;
 import com.bestqualified.util.Util;
 import com.google.appengine.api.datastore.Key;
 
@@ -28,13 +30,21 @@ public class GetAllCommunities extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		HttpSession session = req.getSession();
+		Object o = null;
+		User u = null;
+		synchronized (session) {
+			o = session.getAttribute("user");
+		}
 
+		if(o!=null) {
+			u = (User) o;
+		}
 		
 		List<Key> cKey = GeneralController.getNCommunities(300);
 
 		List<Community> communities = Util.getCommunityFromCache(cKey);
 
-		List<CommunityBean> cmBean = Util.toCommunityBeans(communities);
+		List<CommunityBean> cmBean = Util.toCommunityBeans(communities, u);
 
 		CommunityPageBean ccpb = new CommunityPageBean();
 		
@@ -42,7 +52,7 @@ public class GetAllCommunities extends HttpServlet {
 		ccpb.setCommunities(cmBean);
 
 		synchronized (session) {
-			session.setAttribute("cpBean", ccpb);
+			session.setAttribute("communityPageBean", ccpb);
 		}
 		resp.sendRedirect(resp.encodeRedirectURL("/bq/comm-all"));
 	}

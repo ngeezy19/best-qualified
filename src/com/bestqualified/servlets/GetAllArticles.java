@@ -45,8 +45,11 @@ public class GetAllArticles extends HttpServlet {
 
 		CommunityPageBean artb = new CommunityPageBean();
 		
-
-		artb.setPosts(Util.toArticleBeans(posts));
+		Object o = null;
+		synchronized (session) {
+			o = session.getAttribute("user");
+		}
+		artb.setPosts(Util.toArticleBeans(posts,o));
 
 		synchronized (session) {
 			session.setAttribute("artPageBean", artb);

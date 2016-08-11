@@ -42,9 +42,10 @@ public class Article implements Serializable {
 	private List<Key> subscribers;
 	private BlobKey imageKey;
 	private Link link;
-	private long likes;
 	private long shares;
 	private Key community;
+	private List<Key> likers;
+
 
 	@Override
 	public String toString() {
@@ -53,23 +54,26 @@ public class Article implements Serializable {
 				+ body + ", category=" + category + ", tag=" + tag
 				+ ", author=" + author + ", comments=" + comments
 				+ ", subscribers=" + subscribers + ", imageKey=" + imageKey
-				+ ", link=" + link + ", likes=" + likes + ", shares=" + shares
-				+ "]";
+				+ ", link=" + link + ", shares=" + shares + ", community="
+				+ community + "]";
 	}
-	
-	
+
+
+	public List<Key> getLikers() {
+		return likers;
+	}
+
+	public void setLikers(List<Key> likers) {
+		this.likers = likers;
+	}
 
 	public long getnComments() {
 		return nComments;
 	}
 
-
-
 	public void setnComments(long nComments) {
 		this.nComments = nComments;
 	}
-
-
 
 	public String getTitle() {
 		
@@ -172,21 +176,8 @@ public class Article implements Serializable {
 	}
 
 
-
 	public void setLink(Link link) {
 		this.link = link;
-	}
-
-
-
-	public long getLikes() {
-		return likes;
-	}
-
-
-
-	public void setLikes(long likes) {
-		this.likes = likes;
 	}
 
 
@@ -195,12 +186,9 @@ public class Article implements Serializable {
 		return shares;
 	}
 
-
-
 	public void setShares(long shares) {
 		this.shares = shares;
 	}
-	
 	
 
 }

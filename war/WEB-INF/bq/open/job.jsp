@@ -113,7 +113,7 @@
 				style="margin-bottom: 2%; background-color: white; padding-top: 2%; border: 1px #cacaca solid">
 				<div class="col-sm-12 no-padding-div">
 					<div class="col-sm-12 no-padding-div"
-						style="background-color: rgba(255, 200, 45, 0.5)">
+						style="background-color: #e0c4cd">
 						<div class="col-sm-3">
 							<img alt="" src="${jobInformation.pictureUrl}"
 								class="img img-responsive">
@@ -190,8 +190,8 @@
 		</div>
 		<div class="col-sm-4">
 			<div class="col-sm-12 discussion-sidebar"
-				style="background-color: rgba(57, 255, 20, 0.6)">
-				<h4 style="border-bottom: 1px gray solid">Job Summary</h4>
+				style="background-color: #69a24e; color: white">
+				<h4 style="border-bottom: 1px white solid; padding-bottom: 4px">Job Summary</h4>
 				<c:if test='${not empty jobInformation.companyName}'>
 					<strong style="display: block;">Company</strong>
 					<p>
@@ -250,9 +250,9 @@
 			</div>
 			<c:if test="${not empty jobInformation.relatedJobs}">
 				<div class="col-sm-12 dashboard-section no-padding-div"
-					style="border: 2px orange solid; padding-top: 0px; padding-bottom: 0px">
+					style="border: 2px #627aac solid; padding-top: 0px; padding-bottom: 0px">
 					<div class="col-sm-12 no-padding-div"
-						style="background-color: orange; color: white; font-weight: bold; text-align: center;">
+						style="background-color:#627aac; color: white; font-weight: bold; text-align: center;">
 						<h4>Related Jobs</h4>
 					</div>
 					<c:forEach var="item" items="${jobInformation.relatedJobs}">

@@ -23,7 +23,8 @@ public class CommunityBean implements Serializable {
 	private Map<String, String> topics;
 	private String webSafeKey;
 	private List<Article> post;
-	private List<Key> members;
+	private long members;
+	private boolean member;
 	@Override
 	public String toString() {
 		return "CommunityBean [currentDate=" + currentDate + ", wallpaper="
@@ -32,6 +33,18 @@ public class CommunityBean implements Serializable {
 				+ ", topics=" + topics + ", webSafeKey=" + webSafeKey
 				+ ", post=" + post + ", members=" + members + "]";
 	}
+	
+	
+	public boolean isMember() {
+		return member;
+	}
+
+
+	public void setMember(boolean member) {
+		this.member = member;
+	}
+
+
 	public String getCurrentDate() {
 		return currentDate;
 	}
@@ -80,10 +93,10 @@ public class CommunityBean implements Serializable {
 	public void setWebSafeKey(String webSafeKey) {
 		this.webSafeKey = webSafeKey;
 	}
-	public List<Key> getMembers() {
+	public long getMembers() {
 		return members;
 	}
-	public void setMembers(List<Key> members) {
+	public void setMembers(long members) {
 		this.members = members;
 	}
 	public String getWallpaper() {

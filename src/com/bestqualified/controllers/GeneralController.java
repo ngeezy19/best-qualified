@@ -58,7 +58,7 @@ public class GeneralController {
 		}
 		return articles;
 	}
-	
+
 	public static List<Key> getNCommunities(int i) {
 		List<Key> communities = new ArrayList<>();
 		Query q = new Query(Community.class.getSimpleName());
@@ -66,19 +66,20 @@ public class GeneralController {
 		q.addSort("name", SortDirection.ASCENDING);
 		PreparedQuery pq = ds.prepare(q);
 		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(i));
-		for(Entity e : ents) {
+		for (Entity e : ents) {
 			communities.add(e.getKey());
 		}
 		return communities;
-		
+
 	}
-	
+
 	public static List<Key> getTrendingPosts(int i) {
 		List<Key> articles = new ArrayList<>();
 		Query q = new Query(Article.class.getSimpleName());
 		q.setKeysOnly();
-		q.setFilter(new FilterPredicate("category", FilterOperator.NOT_EQUAL, "POST"));
-		//q.addSort("nComments", SortDirection.DESCENDING);
+		q.setFilter(new FilterPredicate("category", FilterOperator.NOT_EQUAL,
+				"POST"));
+		// q.addSort("nComments", SortDirection.DESCENDING);
 		PreparedQuery pq = ds.prepare(q);
 		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(i));
 		for (Entity e : ents) {
@@ -124,6 +125,22 @@ public class GeneralController {
 		}
 		return articles;
 	}
+
+	/*public static List<Article> getNBQArticlesByDate(int no) {
+		List<Article> articles = new ArrayList<>();
+		Query q = new Query(Article.class.getSimpleName());
+		q.addSort("date", SortDirection.DESCENDING);
+		Filter f = new CompositeFilter(CompositeFilterOperator.OR,
+				Arrays.<Filter> asList(new FilterPredicate("category",
+						FilterOperator.EQUAL, ArticleCategory.ADVERTISING
+								.name(), new FilterPredicate("category", FilterOperator.EQUAL, ArticleCategory.CREATIVES.name()))));
+		PreparedQuery pq = ds.prepare(q);
+		List<Entity> ents = pq.asList(FetchOptions.Builder.withLimit(no));
+		for (Entity e : ents) {
+			articles.add(EntityConverter.entityToArticle(e));
+		}
+		return articles;
+	}*/
 
 	public static List<ReadingList> getNReadingListByDate(int no) {
 		List<ReadingList> readingList = new ArrayList<>();
@@ -219,9 +236,9 @@ public class GeneralController {
 		txn.commitAsync();
 
 	}
-	
+
 	public static void createWithCrossGroup(List<Entity> entities) {
-		
+
 		txn = ds.beginTransaction(TransactionOptions.Builder.withXG(true));
 		ds.put(entities);
 		txn.commitAsync();
@@ -362,8 +379,8 @@ public class GeneralController {
 
 	public static List<Article> getArticlesByCommunity(Key id, int i) {
 		Query q = new Query(Article.class.getSimpleName());
-		q.setFilter(new Query.FilterPredicate("community", FilterOperator.EQUAL,
-				id));
+		q.setFilter(new Query.FilterPredicate("community",
+				FilterOperator.EQUAL, id));
 		PreparedQuery pq = ds.prepare(q);
 		Iterator<Entity> its = pq.asIterator();
 		List<Article> ents = new ArrayList<>();

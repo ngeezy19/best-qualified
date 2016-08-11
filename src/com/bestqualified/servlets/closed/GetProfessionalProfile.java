@@ -1,3 +1,4 @@
+
 package com.bestqualified.servlets.closed;
 
 import java.io.IOException;
@@ -29,29 +30,12 @@ public class GetProfessionalProfile extends HttpServlet {
 
 		HttpSession session = req.getSession();
 		String webKey = req.getParameter("web-key");
-		ProfessionalProfileBean ppb = null;
-		synchronized (session) {
-			Object o = session.getAttribute("professionalProfileBean");
-			if (o != null) {
-				ppb = (ProfessionalProfileBean) o;
-			}
-		}
 
-		if (ppb == null) {
-			Key key = KeyFactory.stringToKey(webKey);
+		Key key = KeyFactory.stringToKey(webKey);
 
-			User u = Util.getUserFromCache(key);
-			CandidateProfile cp = Util.getProfessionalFromCache(u,
-					u.getUserInfo());
-			ppb = Util.createProfessionalProfileBean(u, cp);
-		} else if (ppb != null && ppb.getWebKey().equalsIgnoreCase(webKey)) {
-			Key key = KeyFactory.stringToKey(webKey);
-
-			User u = Util.getUserFromCache(key);
-			CandidateProfile cp = Util.getProfessionalFromCache(u,
-					u.getUserInfo());
-			ppb = Util.createProfessionalProfileBean(u, cp);
-		}
+		User u = Util.getUserFromCache(key);
+		CandidateProfile cp = Util.getProfessionalFromCache(u, u.getUserInfo());
+		ProfessionalProfileBean ppb = Util.createProfessionalProfileBean(u, cp);
 
 		synchronized (session) {
 			session.setAttribute("professionalProfileBean", ppb);
@@ -63,3 +47,4 @@ public class GetProfessionalProfile extends HttpServlet {
 	}
 
 }
+

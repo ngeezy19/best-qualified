@@ -136,7 +136,7 @@ public class CreateArticleServlet extends HttpServlet {
 					pd = (ProfessionalDashboard) o1;
 					List<Article> art1 = new ArrayList<>();
 					art1.add(article);
-					List<com.bestqualified.bean.Article> arts = Util.toArticleBeans(art1);
+					List<com.bestqualified.bean.Article> arts = Util.toArticleBeans(art1, null);
 					pd.getArticles().add(0, arts.get(0));
 					pd.setPersonalArticles(pd.getPersonalArticles()+1);
 				}

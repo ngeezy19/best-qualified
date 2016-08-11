@@ -433,8 +433,8 @@
 							</div>
 							<div class="col-sm-8 no-padding-div">
 								<h5 style="margin-bottom: 2px; font-size: 12pt">
-									<span id="candidate-name"><c:out
-											value='${item.firstName}' /> <c:out value='${item.lastName}' /></span>
+									<a href="<c:url value='/bq/closed/get-candidate-profile?web-key=${item.webkey}'/>" id="candidate-name"><c:out
+											value='${item.firstName}' /> <c:out value='${item.lastName}' /></a>
 									<i data-placement="bottom" data-toggle="tooltip"
 										title="Send Invite" style="color: #983b59; cursor: pointer;"
 										class="fa fa-envelope pull-right invite" aria-hidden="true"></i><i

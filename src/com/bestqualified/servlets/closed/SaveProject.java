@@ -231,7 +231,7 @@ public class SaveProject extends HttpServlet {
 			
 			GeneralController.createWithCrossGroup(ents);
 			ProjectBean pb = new ProjectBean();
-			pb.setDateCreated(new SimpleDateFormat("dd-MMM-YYYY").format(p.getDateCreated()));
+			pb.setDateCreated(p.getDateCreated());
 			pb.setDescription(p.getDescription().getValue());
 			
 			synchronized (session) {

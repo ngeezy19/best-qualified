@@ -1,6 +1,7 @@
 package com.bestqualified.servlets.closed;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.bestqualified.bean.Article;
 import com.bestqualified.bean.CommunityBean;
+import com.bestqualified.bean.commentBean;
 import com.bestqualified.controllers.GeneralController;
 import com.bestqualified.entities.Comment;
 import com.bestqualified.entities.User;
@@ -53,52 +55,67 @@ public class AddComment extends HttpServlet {
 			} else {
 				u = (User) o;
 				CommunityBean cb = (CommunityBean) o1;
+
+				Comment c = new Comment();
+				c.setBody(new Text(comment));
+				c.setDate(new Date());
+				c.setAuthor(u.getUserKey());
+				c.setParent(KeyFactory.stringToKey(webkey));
+
+				commentBean commBean = new commentBean();
+				commBean.setAuthorImg(u.getPictureUrl());
+				commBean.setAuthorName(u.getFirstName() + " " + u.getLastName());
+				commBean.setComment(comment);
+				commBean.setTime(new SimpleDateFormat("dd MMMM yyyy")
+						.format(new Date()));
+
 				List<Article> posts = cb.getPost();
 				Article ar = null;
+				int index = 0;
 				for (Article a : posts) {
 					if (webkey.equals(a.getWebkey())) {
 						ar = a;
 						break;
 					}
 				}
-				posts.remove(ar);
-
 				if (ar != null) {
-					Comment c = new Comment();
-					c.setBody(new Text(comment));
-					c.setDate(new Date());
-					c.setAuthor(u.getUserKey());
-					c.setParent(KeyFactory.stringToKey(ar.getWebkey()));
-
-					ar.setnComments(ar.getnComments() + 1);
+					posts.remove(ar);
+					List<commentBean> comments = ar.getComments();
+					if (comments == null) {
+						comments = new ArrayList<>();
+					}
+					comments.add(commBean);
 					posts.add(ar);
 					cb.setPost(posts);
 
-					com.bestqualified.entities.Article article = EntityConverter
-							.entityToArticle(GeneralController
-									.findByKey(KeyFactory.stringToKey(webkey)));
+					synchronized (session) {
+						session.setAttribute("communityBean", cb);
+					}
+				}
 
+				com.bestqualified.entities.Article article = EntityConverter
+						.entityToArticle(GeneralController.findByKey(KeyFactory
+								.stringToKey(webkey)));
+
+				if (article != null) {
 					List<Key> cks = article.getComments();
 					if (cks == null) {
 						cks = new ArrayList<>();
 					}
 					cks.add(c.getKey());
 					article.setComments(cks);
-					
-					synchronized (session) {
-						session.setAttribute("communityBean",cb);
-					}
-
+					commBean.setTotalComment(String.valueOf(cks.size()));
 					GeneralController.createWithCrossGroup(
 							EntityConverter.commentToEntity(c),
 							EntityConverter.ArticleToEntity(article));
-					
-					resp.setContentType("application/json");
-					Long l = ar.getnComments();
-					Gson gson = new Gson();
-					resp.getWriter().println(gson.toJson(l));
 				}
 
+				resp.setContentType("application/json");
+
+				Gson gson = new Gson();
+				List<commentBean> list = new ArrayList<>();
+				list.add(commBean);
+				resp.getWriter().println(gson.toJson(list));
 			}
 
 		}
