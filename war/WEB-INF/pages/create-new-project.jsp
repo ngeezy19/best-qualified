@@ -62,9 +62,9 @@ p {
 					</div>
 				</div>
 				<form method="post"
-				action="<%=blobstoreService.createUploadUrl(
+					action="<%=blobstoreService.createUploadUrl(
 					"/bq/close/recruiter/project/save", options)%>"
-				enctype="multipart/form-data">
+					enctype="multipart/form-data">
 					<div class="row">
 
 						<div class="form-group col-sm-12">
@@ -275,10 +275,15 @@ p {
 	<%@ include file="/WEB-INF/pages/footer.html"%>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/jquery-ui.min.js"></script>
 	<script src="/js/jquery.webui-popover.min.js"></script>
 	<script src="/js/waitMe.js"></script>
 	<script src="/js/main.js"></script>
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+	<script type="text/javascript">
+		$(".datepicker").datepicker({
+			changeMonth : true,
+			changeYear : true
+		});
+	</script>
 
 </body>

@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,7 @@
 }
 </style>
 </head>
-<body
+<body <jsp:useBean id="today" class="java.util.Date" />
 	style="background-image: url(/images/background.jpg); background-repeat: repeat;">
 	<%@ include file="/main-nav.html"%>
 	<div class="container dashboard-body" style="margin-top: 6%;">
@@ -36,7 +37,8 @@
 						<h4 style="color: #3b5998">
 							<strong><c:out value='${projectBean.name}' /> <small
 								class="pull-right" style="color: #983b59"><b>Created:</b>
-									<c:out value='${projectBean.dateCreated}' /></small></strong>
+									<fmt:formatDate type="date" dateStyle="long"
+										value="${projectBean.dateCreated}" /> </small></strong>
 						</h4>
 						<c:if test='${not empty projectBean.description}'>
 							<h5>
@@ -55,19 +57,31 @@
 					<div class="col-sm-12 no-padding-div"
 						style="background-color: #e0c4cd">
 						<div class="col-sm-3">
-							<img alt="" src="${jobInformation.pictureUrl}"
+							<img alt=""
+								<c:choose><c:when test='${not empty projectBean.companyLogo }'>src="${projectBean.companyLogo}"</c:when><c:otherwise>src='/images/company.png'</c:otherwise></c:choose>
 								class="img img-responsive">
 						</div>
 						<div class="col-sm-4">
 							<h4>
-								<a href="#"><c:out value="${jobInformation.jobTitle}" /></a>
+								<a href="#"><c:out value="${projectBean.job.title}" /></a>
 							</h4>
 							<h5 style="font-family: calibri">
-								<c:out value="${jobInformation.companyName}" />
+								<c:choose>
+									<c:when test='${not empty projectBean.companyName }'></c:when>
+									<c:otherwise>Confidential</c:otherwise>
+								</c:choose>
 							</h5>
 							<h5>
-								<i class="text-danger" style="font-family: calibri">Posted <c:out
-										value="${jobInformation.datePosted}" /></i>
+								<i class="text-danger" style="font-family: calibri"> <c:choose>
+										<c:when test="${today gt projectBean.expiryDate}">
+											<span style="color: red; font-weight: bold">Expired</span>
+										</c:when>
+										<c:otherwise>
+											<span style="color: green; font-weight: bold">Expires</span>
+										</c:otherwise>
+									</c:choose> <span style="color: white"><fmt:formatDate type="date"
+											dateStyle="long" value="${projectBean.expiryDate}" /></span>
+								</i>
 							</h5>
 							<p>
 								<button class="btn btn-success btn-lg">Update</button>
@@ -113,8 +127,12 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
-						<p>${jobInformation.jobDesc}</p>
-						<p>${jobInformation.extraInfo}</p>
+						<h4 style="color: #983b59">Job Description</h4>
+						<p>${projectBean.job.jobDesc}</p>
+						<h4 style="color: #983b59">Job Role</h4>
+						<p>${projectBean.job.jobRole}</p>
+						<h4 style="color: #983b59">Additional Information</h4>
+						<p>${projectBean.job.additionalInfo}</p>
 					</div>
 				</div>
 
@@ -128,58 +146,61 @@
 				style="background-color: #69a24e; color: white">
 				<h4 style="border-bottom: 1px #bcd5b0 solid; padding-bottom: 4px">Job
 					Summary</h4>
-				<c:if test='${not empty jobInformation.companyName}'>
-					<strong style="display: block;">Company</strong>
-					<p>
-						<c:out value='${jobInformation.companyName}' />
-					</p>
-				</c:if>
+				<strong style="display: block;">Company</strong>
+				<c:choose>
+					<c:when test='${not empty projectBean.companyName }'></c:when>
+					<c:otherwise>Confidential</c:otherwise>
+				</c:choose>
 
-				<c:if test='${not empty jobInformation.careerLevel}'>
+				<c:if test='${not empty projectBean.job.careerLevel}'>
 					<strong style="display: block;">Job Level</strong>
 					<p>
-						<c:out value='${jobInformation.careerLevel}' />
+						<c:out value='${projectBean.job.careerLevel}' />
 					</p>
 				</c:if>
 
-				<c:if test='${not empty jobInformation.location}'>
+				<c:if test='${not empty projectBean.job.location}'>
 					<strong style="display: block;">Location</strong>
 					<p>
-						<c:out value='${jobInformation.location}' />
+						<c:out value='${projectBean.job.location}' />
 					</p>
 				</c:if>
-				<c:if test='${not empty jobInformation.industry}'>
-					<strong style="display: block;">Industry</strong>
-					<p>
-						<c:out value='${jobInformation.industry}' />
-				</c:if>
 
-				<c:if test='${not empty jobInformation.jobType}'>
+
+				<c:if test='${not empty projectBean.job.jobType}'>
 					<strong style="display: block;">Job Type</strong>
 					<p>
-						<c:out value='${jobInformation.jobType}' />
+						<c:out value='${projectBean.job.jobType}' />
 					</p>
 				</c:if>
 
-				<c:if test='${not empty jobInformation.qualification}'>
+				<c:if test='${not empty projectBean.job.educationLevel}'>
 					<strong style="display: block;">Mininum Qualification</strong>
 					<p>
-						<c:out value='${jobInformation.qualification}' />
+						<c:out value='${projectBean.job.educationLevel}' />
 					</p>
 				</c:if>
 
-				<c:if test='${not empty jobInformation.experience}'>
+				<c:if test='${not empty projectBean.job.salaryRange}'>
+					<strong style="display: block;">Salary Range</strong>
+					<p>
+						<c:out value='${projectBean.job.salaryRange}' />
+					</p>
+				</c:if>
+
+				<c:if test='${not empty projectBean.job.yearsOfExperience}'>
 					<strong style="display: block;">Prefered Years of
 						Experience</strong>
 					<p>
-						<c:out value='${jobInformation.experience}' />
+						<c:out value='${projectBean.job.yearsOfExperience}' />
 					</p>
 				</c:if>
 
-				<c:if test='${not empty jobInformation.deadline}'>
+				<c:if test='${not empty projectBean.expiryDate}'>
 					<strong style="display: block;">Application Deadline</strong>
 					<p>
-						<c:out value='${jobInformation.deadline}' />
+						<fmt:formatDate type="date" dateStyle="long"
+							value="${projectBean.expiryDate}" />
 					</p>
 				</c:if>
 
@@ -207,3 +228,4 @@
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 
 </body>
+</html>

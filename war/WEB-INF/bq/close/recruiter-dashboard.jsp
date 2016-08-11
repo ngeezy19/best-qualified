@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page
 	import="com.google.appengine.api.blobstore.BlobstoreServiceFactory"%>
 <%@ page import="com.google.appengine.api.blobstore.BlobstoreService"%>
@@ -58,7 +59,7 @@
 								<h4 style="margin-top: 2px">
 									<c:out value='${recruiterDashboard.name}' />
 								</h4>
-								<h5 style="color: #983b59">
+								<h5 style="color: #983b59; font-weight: bold">
 									<c:out value='${recruiterDashboard.tagLine}' />
 								</h5>
 								<h5 style="color: gray">
@@ -115,7 +116,7 @@
 					<div class="row">
 						<div class="col-sm-2" style="padding-right: 0px">
 							<div class="card-panel">
-								<img alt="" src="${item.companyLogo}" class="img img-responsive">
+								<img alt="" <c:choose><c:when test='${not empty item.companyLogo}'>src="${item.companyLogo}"</c:when><c:otherwise>src="/images/company.png"</c:otherwise></c:choose>  class="img img-responsive">
 							</div>
 						</div>
 						<div class="col-sm-10">
@@ -147,11 +148,13 @@
 									</div>
 									<div>
 										<strong class="text-muted">Created:</strong>
-										<c:out value="${item.dateCreated}" />
+										<fmt:formatDate type="date" dateStyle="long"
+							value="${item.dateCreated}" />
 									</div>
 									<div class="">
 										<strong class="text-muted">Expires:</strong>
-										<c:out value="${item.expiryDate}" />
+										<fmt:formatDate type="date" dateStyle="long"
+							value="${item.expiryDate}" />
 									</div>
 								</div>
 								<div class="dropdown pull-right">

@@ -1,7 +1,9 @@
 package com.bestqualified.bean;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
+
 import com.bestqualified.entities.SavedSearch;
 
 public class ProjectBean implements Serializable {
@@ -11,13 +13,14 @@ public class ProjectBean implements Serializable {
 	 */
 	private static final long serialVersionUID = -7574324814935282277L;
 
-	private String webKey, name, dateCreated, description, expiryDate,
+	private String webKey, name, description, 
 			jobTitle, companyLogo, companyName, companyWebsite, compantDesc;
 	private int newApplicants, totalApplicants, inviteSent, shortListed,
 			savedSeach;
 	private List<ProView> shortlistedCandidates, invitees, applicants;
 	private FullJobBean job;
 	private List<SavedSearch> savedsearch;
+	private Date dateCreated, expiryDate;
 
 	@Override
 	public int hashCode() {
@@ -142,13 +145,9 @@ public class ProjectBean implements Serializable {
 		this.name = name;
 	}
 
-	public String getDateCreated() {
-		return dateCreated;
-	}
+	
 
-	public void setDateCreated(String dateCreated) {
-		this.dateCreated = dateCreated;
-	}
+	
 
 	public String getDescription() {
 		return description;
@@ -182,11 +181,21 @@ public class ProjectBean implements Serializable {
 		this.inviteSent = inviteSent;
 	}
 
-	public String getExpiryDate() {
+	
+
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	public Date getExpiryDate() {
 		return expiryDate;
 	}
 
-	public void setExpiryDate(String expiryDate) {
+	public void setExpiryDate(Date expiryDate) {
 		this.expiryDate = expiryDate;
 	}
 

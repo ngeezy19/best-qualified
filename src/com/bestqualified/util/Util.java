@@ -1144,8 +1144,8 @@ public class Util {
 	public static ProjectBean toProjectBean(Project project) {
 		ProjectBean pb = new ProjectBean();
 		pb.setName(project.getName());
-		pb.setDateCreated(new SimpleDateFormat("yyyy MMM dd").format(project
-				.getDateCreated()));
+		pb.setDateCreated(project
+				.getDateCreated());
 		if (project.getDescription() != null) {
 			pb.setDescription(project.getDescription().getValue());
 		}
@@ -1164,8 +1164,8 @@ public class Util {
 			Job j = EntityConverter.entityToJob(GeneralController
 					.findByKey(project.getJobs()));
 			pb.setJobTitle(j.getJobTitle());
-			pb.setExpiryDate(new SimpleDateFormat("yyyy MMM dd").format(j
-					.getClosingDate()));
+			pb.setExpiryDate(j
+					.getClosingDate());
 			if (j.getCompany() != null) {
 				Company c = EntityConverter.entityToCompany(GeneralController
 						.findByKey(j.getCompany()));
@@ -1296,8 +1296,8 @@ public class Util {
 		List<ProjectBean> pb1 = new ArrayList<>();
 		for (Project p : l1) {
 			ProjectBean pb = new ProjectBean();
-			pb.setDateCreated(new SimpleDateFormat("dd-MMM-yyyy").format(p
-					.getDateCreated()));
+			pb.setDateCreated(p
+					.getDateCreated());
 			pb.setDescription(p.getDescription().getValue());
 			pb.setName(p.getName());
 			if (p.getProfiles() == null) {
@@ -2202,8 +2202,8 @@ public class Util {
 	public static ProjectBean toFullProjectBean(Project project) {
 		ProjectBean pb = new ProjectBean();
 		pb.setName(project.getName());
-		pb.setDateCreated(new SimpleDateFormat("yyyy MMM dd").format(project
-				.getDateCreated()));
+		pb.setDateCreated(project
+				.getDateCreated());
 		if (project.getDescription() != null) {
 			pb.setDescription(project.getDescription().getValue());
 		}
@@ -2226,8 +2226,8 @@ public class Util {
 			Job j = EntityConverter.entityToJob(GeneralController
 					.findByKey(project.getJobs()));
 			FullJobBean fjb = toFullJobBean(j);
-			pb.setExpiryDate(new SimpleDateFormat("yyyy MMM dd").format(j
-					.getClosingDate()));
+			pb.setExpiryDate(j
+					.getClosingDate());
 			pb.setJob(fjb);
 			if (j.getCompany() != null) {
 				Company c = EntityConverter.entityToCompany(GeneralController
@@ -2259,11 +2259,12 @@ public class Util {
 		fjb.setJobRole(j.getJobRoles().getValue());
 		fjb.setJobType(getJobTypeValue(j.getJobType()));
 		fjb.setLocation(j.getLocation());
-		fjb.setSalaryRange(j.getSalaryRange());
+		fjb.setSalaryRange(getSalaryValue(j.getSalaryRange()));
 		fjb.setSkills("");
 		fjb.setApplicationUrl(j.getApplicationUrl());
 		fjb.setTitle(j.getJobTitle());
 		fjb.setYearsOfExperience(Util.getExperienceValue(j.getExperience()));
+		
 		return fjb;
 	}
 
