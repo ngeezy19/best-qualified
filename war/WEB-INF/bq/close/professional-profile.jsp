@@ -542,6 +542,7 @@ h4 {
 					class="">Other Information</h4>
 
 				<div class="col-sm-12 editable-div">
+<<<<<<< HEAD
 					<label>Current State:</label> <input value="current-state"
 						class="h-input" type="hidden" /> <select
 						value="${uppb.currentState}" class="s-input input"><%@ include
@@ -618,9 +619,186 @@ h4 {
 							</c:otherwise>
 						</c:choose>
 					</span> <span class="glyphicon glyphicon-pencil edit-tool"></span>
+=======
+					<label>Current State:</label>
+
+					<c:choose>
+						<c:when test='${empty uppb.currentState}'>
+							<div>
+								<span style="color: orange">Select the State you reside
+									in</span>
+
+							</div>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out
+									value='${uppb.currentState}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input" style="display: none;"> <select class="update">
+							<option>Abia</option>
+							<option>Abuja</option>
+							<option>Adamawa</option>
+							<option>Anambra</option>
+							<option>Akwa Ibom</option>
+							<option>Bauchi</option>
+							<option>Bayelsa</option>
+							<option>Benue</option>
+							<option>Borno</option>
+							<option>Cross River</option>
+							<option>Delta</option>
+							<option>Ebonyi</option>
+							<option>Enugu</option>
+							<option>Edo</option>
+							<option>Ekiti</option>
+							<option>Gombe</option>
+							<option>Imo</option>
+							<option>Jigawa</option>
+							<option>Kaduna</option>
+							<option>Kano</option>
+							<option>Katsina</option>
+							<option>Kebbi</option>
+							<option>Kogi</option>
+							<option>Kwara</option>
+							<option>Lagos</option>
+							<option>Nasarawa</option>
+							<option>Niger</option>
+							<option>Ogun</option>
+							<option>Ondo</option>
+							<option>Osun</option>
+							<option>Oyo</option>
+							<option>Plateau</option>
+							<option>Rivers</option>
+							<option>Sokoto</option>
+							<option>Taraba</option>
+							<option>Yobe</option>
+							<option>Zamfara</option>
+
+					</select>
+
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
 				</div>
 
 				<div class="col-sm-12 editable-div">
+					<label>Current Country:</label>
+					<c:choose>
+						<c:when test='${empty uppb.currentCountry}'>
+							<span class="inline-output" style="color: orange">Enter
+								the Country you currently reside in</span>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out
+									value='${uppb.currentCountry}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input"> <input id="phone"
+						value="${uppb.currentCountry}" class="gen-inline-input" />
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+				</div>
+
+				<div class="col-sm-12 editable-div">
+					<label>Nationality:</label>
+					<c:choose>
+						<c:when test='${empty uppb.nationality}'>
+							<span class="inline-output" style="color: orange">Enter
+								your Nationality</span>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out
+									value='${uppb.nationality}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input"> <input id="nationality"
+						value="${uppb.nationality}" class="gen-inline-input" />
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+				</div>
+
+				<div class="col-sm-12 editable-div">
+					<label>State of Origin:</label>
+
+					<c:choose>
+						<c:when test='${empty uppb.stateOfOrigin}'>
+							<div>
+								<span style="color: orange">Select your State of Origin:</span>
+
+							</div>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out
+									value='${uppb.stateOfOrigin}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input" style="display: none;"> <select class="update">
+							<option>Abia</option>
+							<option>Abuja</option>
+							<option>Adamawa</option>
+							<option>Anambra</option>
+							<option>Akwa Ibom</option>
+							<option>Bauchi</option>
+							<option>Bayelsa</option>
+							<option>Benue</option>
+							<option>Borno</option>
+							<option>Cross River</option>
+							<option>Delta</option>
+							<option>Ebonyi</option>
+							<option>Enugu</option>
+							<option>Edo</option>
+							<option>Ekiti</option>
+							<option>Gombe</option>
+							<option>Imo</option>
+							<option>Jigawa</option>
+							<option>Kaduna</option>
+							<option>Kano</option>
+							<option>Katsina</option>
+							<option>Kebbi</option>
+							<option>Kogi</option>
+							<option>Kwara</option>
+							<option>Lagos</option>
+							<option>Nasarawa</option>
+							<option>Niger</option>
+							<option>Ogun</option>
+							<option>Ondo</option>
+							<option>Osun</option>
+							<option>Oyo</option>
+							<option>Plateau</option>
+							<option>Rivers</option>
+							<option>Sokoto</option>
+							<option>Taraba</option>
+							<option>Yobe</option>
+							<option>Zamfara</option>
+
+					</select>
+
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+				</div>
+
+				<div class="col-sm-12 editable-div">
+
+					<label>Gender:</label>
+					<c:choose>
+						<c:when test='${empty user.gender}'>
+							<div>
+								<span style="color: orange">Select Gender</span>
+
+							</div>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out value='${user.gender}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input" style="display: none;"> <select class="update"
+						id="gender">
+							<option>Female</option>
+							<option>Male</option>
+					</select>
+
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+
+>>>>>>> c216c24643b0bfb6e4c951461bea419ed9b21159
+				</div>
+
+				<div class="col-sm-12 editable-div">
+<<<<<<< HEAD
 					<label>Years of Experience:</label> <input value="experience"
 						class="h-input" type="hidden" /> <select
 						value="${uppb.yearOfExperience}" class="s-input input">
@@ -665,6 +843,70 @@ h4 {
 							</c:otherwise>
 						</c:choose>
 					</span> <span class="glyphicon glyphicon-pencil edit-tool"></span>
+=======
+					<label>Years of Experience:</label>
+
+					<c:choose>
+						<c:when test='${empty uppb.yearOfExperience}'>
+							<div>
+								<span style="color: orange">Select Years of Experience</span>
+
+							</div>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out
+									value='${uppb.yearOfExperience}' /></span>
+						</c:otherwise>
+					</c:choose>
+					<span class="inline-input" style="display: none;"> <select class="update"
+						id="yearsofexp">
+							<option>0 - 1 year</option>
+							<option>0 - 2 years</option>
+							<option>1 - 3 years</option>
+							<option>2 - 5 years</option>
+							<option>3 - 5 years</option>
+							<option>5 - 10 years</option>
+							<option>more than 10 years</option>
+					</select>
+
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+
+				</div>
+
+				<div class="col-sm-12 editable-div">
+					<label>Career Level:</label>
+
+					<c:choose>
+						<c:when test='${empty uppb.careerLevel}'>
+							<div>
+								<span style="color: orange">Career Level:</span>
+
+							</div>
+						</c:when>
+						<c:otherwise>
+							<span class="inline-output"><c:out
+									value='${uppb.careerLevel}' /></span>
+						</c:otherwise>
+					</c:choose>
+
+					<span class="inline-input" style="display: none;"> <select class="update"
+
+						id="careerlevel">
+							<option>Student (Undergraduate/Graduate)</option>
+							<option>Entry Level</option>
+							<option>Experienced (Non-Managerial)</option>
+							<option>Manager (Manager/Supervisor of
+								Staff)</option>
+							<option>Executive (SVP,VP,Department Head
+								etc)</option>
+							<option>Senior Executive (President,
+								CFO. etc)</option>
+
+					</select>
+
+					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
+
+>>>>>>> c216c24643b0bfb6e4c951461bea419ed9b21159
 				</div>
 
 			</div>
@@ -1036,5 +1278,30 @@ h4 {
 											});
 						});
 	</script>
+<<<<<<< HEAD
+=======
+	<script type="text/javascript">
+		$(".add-new").click(function() {
+
+			var parent = $(this).closest(".card-panel");
+			parent.find(".form-div").slideDown();
+		});
+		$(".cancel-button").click(function() {
+			var parent = $(this).closest(".card-panel");
+			parent.find(".form-div").slideUp();
+		});
+
+		$(".update").change(function() {
+
+			var par = $(this).closest(".editable-div");
+			par.find(".inline-output").text($(this).val());
+			$(this).hide();
+			par.find(".inline-output").show();
+
+		});
+		
+		
+	</script>
+>>>>>>> c216c24643b0bfb6e4c951461bea419ed9b21159
 </body>
 </html>
