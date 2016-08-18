@@ -2243,14 +2243,10 @@ public class Util {
 				} else {
 					pb.setCompanyLogo(Util.getPictureUrl(c.getLogo()));
 				}
-<<<<<<< HEAD
+
 				
 				pb.setCompanyDesc((c.getDescription()!=null)?c.getDescription().getValue():"");
-=======
 
-				pb.setCompantDesc((c.getDescription() != null) ? c
-						.getDescription().getValue() : "");
->>>>>>> 2e3d6f25bb2ab4b4ee7e399b11fcc45f234f84fb
 				pb.setCompanyName(c.getCompanyName());
 				pb.setCompanyWebsite(c.getCompanyWebsite());
 
@@ -2262,13 +2258,8 @@ public class Util {
 
 	public static FullJobBean toFullJobBean(Job j) {
 		FullJobBean fjb = new FullJobBean();
-<<<<<<< HEAD
 		fjb.setApplicationDeadline(new SimpleDateFormat("MM/dd/YYYY").format(j.getClosingDate()));
-=======
-		fjb.setAdditionalInfo(j.getCustomAttributes().getValue());
-		fjb.setApplicationDeadline(new SimpleDateFormat("dd-MMM-yyyy").format(j
-				.getClosingDate()));
->>>>>>> 2e3d6f25bb2ab4b4ee7e399b11fcc45f234f84fb
+
 		fjb.setApplyWithLinkedIn(j.isAllowLinkedInApplication());
 		fjb.setCareerLevel(Util.getCareerLevelValue(j.getCareerLevel()));
 		fjb.setEducationLevel(Util.getEducationLevelValue(j.getEducationLevel()));
