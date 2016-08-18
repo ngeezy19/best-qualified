@@ -2244,8 +2244,9 @@ public class Util {
 					pb.setCompanyLogo(Util.getPictureUrl(c.getLogo()));
 				}
 
-				pb.setCompantDesc((c.getDescription() != null) ? c
-						.getDescription().getValue() : "");
+				
+				pb.setCompanyDesc((c.getDescription()!=null)?c.getDescription().getValue():"");
+
 				pb.setCompanyName(c.getCompanyName());
 				pb.setCompanyWebsite(c.getCompanyWebsite());
 
@@ -2257,9 +2258,8 @@ public class Util {
 
 	public static FullJobBean toFullJobBean(Job j) {
 		FullJobBean fjb = new FullJobBean();
-		fjb.setAdditionalInfo(j.getCustomAttributes().getValue());
-		fjb.setApplicationDeadline(new SimpleDateFormat("dd-MMM-yyyy").format(j
-				.getClosingDate()));
+		fjb.setApplicationDeadline(new SimpleDateFormat("MM/dd/YYYY").format(j.getClosingDate()));
+
 		fjb.setApplyWithLinkedIn(j.isAllowLinkedInApplication());
 		fjb.setCareerLevel(Util.getCareerLevelValue(j.getCareerLevel()));
 		fjb.setEducationLevel(Util.getEducationLevelValue(j.getEducationLevel()));
