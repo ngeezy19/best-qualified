@@ -283,6 +283,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>AddAward</servlet-name>
 		<url-pattern>/bq/close/add-award</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AddCertification</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.AddCertification</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddCertification</servlet-name>
+		<url-pattern>/bq/close/add-cert</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>FileUploadUrl</servlet-name>
 		<servlet-class>com.bestqualified.servlets.closed.FileUploadUrl</servlet-class>

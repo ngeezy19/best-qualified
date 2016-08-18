@@ -140,8 +140,11 @@ h4 {
 
 						<div class="col-sm-12 editable-div">
 							<input type="hidden" value="profile-summary" class="h-input" />
-							<div class="input"><div contenteditable="true"  style="width: 100%; margin-bottom: 5px; padding: 5px; border: 1px solid #eaeaea;" class="input-area">${uppb.profileSummary}</div>
-							<button class="btn btn-primary btn-sm  s-textarea">Save</button>
+							<div class="input">
+								<div contenteditable="true"
+									style="width: 100%; margin-bottom: 5px; padding: 5px; border: 1px solid #eaeaea;"
+									class="input-area">${uppb.profileSummary}</div>
+								<button class="btn btn-primary btn-sm  s-textarea">Save</button>
 							</div>
 							<div class="output">
 								<c:choose>
@@ -412,7 +415,7 @@ h4 {
 										<input type="hidden" id="item" value="award" /> <input
 											type="hidden" id="web-key" value="${item.safeKey}" />
 										<p>
-											<a class="delete-item" href="#">Delete</a>
+											<a class="delete-item" href='<c:url value="/bq/close/general-delete?id=${item.safeKey}&item=award" />'>Delete</a>
 										</p>
 									</div>
 								</c:forEach>
@@ -440,18 +443,15 @@ h4 {
 								<br />
 								<form class="award-form">
 									<div>
-										<label>Certification Name:</label><br /> <input id="award"
-											name="award" style="width: 70%;">
+										<label>Certification Name:</label><br /> <input
+											id="certification" name="certification" style="width: 70%;">
 									</div>
+
 									<div>
-										<label>Additional Information:</label><br /> <input
-											placeholder="" name="extra" id="extra" style="width: 70%;">
-									</div>
-									<div>
-										<label>Time</label><br /> <select name="start-month"
-											id="start-month">
+										<label>Time</label><br /> <select name="cert-month"
+											id="cert-month">
 											<%@ include file="/partial/months.html"%>
-										</select> <select name="start-year" id="start-year">
+										</select> <select name="cert-year" id="cert-year">
 											<%@ include file="/partial/years.html"%>
 										</select>
 									</div>
@@ -464,27 +464,26 @@ h4 {
 								</form>
 							</div>
 							<div class="s-output">
-								<c:set var='awIndex' value='1' />
-								<c:forEach var="item" items="${uppb.awards}">
+								<c:set var='certIndex' value='1' />
+								<c:forEach var="item" items="${uppb.certifications}">
 									<div class="col-sm-12 module-div"
-										<c:if test="${awIndex < fn:length(uppb.awards)}">style="border-bottom: 1px #d1d1d1 solid; margin-top:5px"</c:if>>
-										<c:set var='awIndex' value='${awIndex+1}' />
+										<c:if test="${certIndex < fn:length(uppb.certifications)}">style="border-bottom: 1px #d1d1d1 solid; margin-top:5px"</c:if>>
+										<c:set var='certIndex' value='${certIndex+1}' />
 										<h4 class="name" style="margin-top: 10px">
 											<c:out value='${item.name}' />
 										</h4>
-										<h5 class="extra" style="font-family: calibri">
-											<c:out value='${item.description}' />
-										</h5>
+
 										<h5 style="font-family: calibri">
 											<span class="start-month"> <c:out
 													value='${item.month}' /></span> <span class="start-year">
 												<c:out value='${item.year}' />
 											</span>
 										</h5>
-										<input type="hidden" id="item" value="award" /> <input
-											type="hidden" id="web-key" value="${item.safeKey}" />
+										<input type="hidden" id="item" value="certification" /> <input
+											type="hidden" id="ws-key" value="${item.webKey}" />
 										<p>
-											<a class="delete-item" href="#">Delete</a>
+											<a class="delete-item"
+												href='<c:url value="/bq/close/general-delete?id=${item.webKey}&item=certification" />'>Delete</a>
 										</p>
 									</div>
 								</c:forEach>
@@ -542,7 +541,7 @@ h4 {
 					class="">Other Information</h4>
 
 				<div class="col-sm-12 editable-div">
-<<<<<<< HEAD
+
 					<label>Current State:</label> <input value="current-state"
 						class="h-input" type="hidden" /> <select
 						value="${uppb.currentState}" class="s-input input"><%@ include
@@ -619,186 +618,11 @@ h4 {
 							</c:otherwise>
 						</c:choose>
 					</span> <span class="glyphicon glyphicon-pencil edit-tool"></span>
-=======
-					<label>Current State:</label>
 
-					<c:choose>
-						<c:when test='${empty uppb.currentState}'>
-							<div>
-								<span style="color: orange">Select the State you reside
-									in</span>
-
-							</div>
-						</c:when>
-						<c:otherwise>
-							<span class="inline-output"><c:out
-									value='${uppb.currentState}' /></span>
-						</c:otherwise>
-					</c:choose>
-					<span class="inline-input" style="display: none;"> <select class="update">
-							<option>Abia</option>
-							<option>Abuja</option>
-							<option>Adamawa</option>
-							<option>Anambra</option>
-							<option>Akwa Ibom</option>
-							<option>Bauchi</option>
-							<option>Bayelsa</option>
-							<option>Benue</option>
-							<option>Borno</option>
-							<option>Cross River</option>
-							<option>Delta</option>
-							<option>Ebonyi</option>
-							<option>Enugu</option>
-							<option>Edo</option>
-							<option>Ekiti</option>
-							<option>Gombe</option>
-							<option>Imo</option>
-							<option>Jigawa</option>
-							<option>Kaduna</option>
-							<option>Kano</option>
-							<option>Katsina</option>
-							<option>Kebbi</option>
-							<option>Kogi</option>
-							<option>Kwara</option>
-							<option>Lagos</option>
-							<option>Nasarawa</option>
-							<option>Niger</option>
-							<option>Ogun</option>
-							<option>Ondo</option>
-							<option>Osun</option>
-							<option>Oyo</option>
-							<option>Plateau</option>
-							<option>Rivers</option>
-							<option>Sokoto</option>
-							<option>Taraba</option>
-							<option>Yobe</option>
-							<option>Zamfara</option>
-
-					</select>
-
-					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
-				</div>
-
-				<div class="col-sm-12 editable-div">
-					<label>Current Country:</label>
-					<c:choose>
-						<c:when test='${empty uppb.currentCountry}'>
-							<span class="inline-output" style="color: orange">Enter
-								the Country you currently reside in</span>
-						</c:when>
-						<c:otherwise>
-							<span class="inline-output"><c:out
-									value='${uppb.currentCountry}' /></span>
-						</c:otherwise>
-					</c:choose>
-					<span class="inline-input"> <input id="phone"
-						value="${uppb.currentCountry}" class="gen-inline-input" />
-					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
-				</div>
-
-				<div class="col-sm-12 editable-div">
-					<label>Nationality:</label>
-					<c:choose>
-						<c:when test='${empty uppb.nationality}'>
-							<span class="inline-output" style="color: orange">Enter
-								your Nationality</span>
-						</c:when>
-						<c:otherwise>
-							<span class="inline-output"><c:out
-									value='${uppb.nationality}' /></span>
-						</c:otherwise>
-					</c:choose>
-					<span class="inline-input"> <input id="nationality"
-						value="${uppb.nationality}" class="gen-inline-input" />
-					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
-				</div>
-
-				<div class="col-sm-12 editable-div">
-					<label>State of Origin:</label>
-
-					<c:choose>
-						<c:when test='${empty uppb.stateOfOrigin}'>
-							<div>
-								<span style="color: orange">Select your State of Origin:</span>
-
-							</div>
-						</c:when>
-						<c:otherwise>
-							<span class="inline-output"><c:out
-									value='${uppb.stateOfOrigin}' /></span>
-						</c:otherwise>
-					</c:choose>
-					<span class="inline-input" style="display: none;"> <select class="update">
-							<option>Abia</option>
-							<option>Abuja</option>
-							<option>Adamawa</option>
-							<option>Anambra</option>
-							<option>Akwa Ibom</option>
-							<option>Bauchi</option>
-							<option>Bayelsa</option>
-							<option>Benue</option>
-							<option>Borno</option>
-							<option>Cross River</option>
-							<option>Delta</option>
-							<option>Ebonyi</option>
-							<option>Enugu</option>
-							<option>Edo</option>
-							<option>Ekiti</option>
-							<option>Gombe</option>
-							<option>Imo</option>
-							<option>Jigawa</option>
-							<option>Kaduna</option>
-							<option>Kano</option>
-							<option>Katsina</option>
-							<option>Kebbi</option>
-							<option>Kogi</option>
-							<option>Kwara</option>
-							<option>Lagos</option>
-							<option>Nasarawa</option>
-							<option>Niger</option>
-							<option>Ogun</option>
-							<option>Ondo</option>
-							<option>Osun</option>
-							<option>Oyo</option>
-							<option>Plateau</option>
-							<option>Rivers</option>
-							<option>Sokoto</option>
-							<option>Taraba</option>
-							<option>Yobe</option>
-							<option>Zamfara</option>
-
-					</select>
-
-					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
 				</div>
 
 				<div class="col-sm-12 editable-div">
 
-					<label>Gender:</label>
-					<c:choose>
-						<c:when test='${empty user.gender}'>
-							<div>
-								<span style="color: orange">Select Gender</span>
-
-							</div>
-						</c:when>
-						<c:otherwise>
-							<span class="inline-output"><c:out value='${user.gender}' /></span>
-						</c:otherwise>
-					</c:choose>
-					<span class="inline-input" style="display: none;"> <select class="update"
-						id="gender">
-							<option>Female</option>
-							<option>Male</option>
-					</select>
-
-					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
-
->>>>>>> c216c24643b0bfb6e4c951461bea419ed9b21159
-				</div>
-
-				<div class="col-sm-12 editable-div">
-<<<<<<< HEAD
 					<label>Years of Experience:</label> <input value="experience"
 						class="h-input" type="hidden" /> <select
 						value="${uppb.yearOfExperience}" class="s-input input">
@@ -843,70 +667,6 @@ h4 {
 							</c:otherwise>
 						</c:choose>
 					</span> <span class="glyphicon glyphicon-pencil edit-tool"></span>
-=======
-					<label>Years of Experience:</label>
-
-					<c:choose>
-						<c:when test='${empty uppb.yearOfExperience}'>
-							<div>
-								<span style="color: orange">Select Years of Experience</span>
-
-							</div>
-						</c:when>
-						<c:otherwise>
-							<span class="inline-output"><c:out
-									value='${uppb.yearOfExperience}' /></span>
-						</c:otherwise>
-					</c:choose>
-					<span class="inline-input" style="display: none;"> <select class="update"
-						id="yearsofexp">
-							<option>0 - 1 year</option>
-							<option>0 - 2 years</option>
-							<option>1 - 3 years</option>
-							<option>2 - 5 years</option>
-							<option>3 - 5 years</option>
-							<option>5 - 10 years</option>
-							<option>more than 10 years</option>
-					</select>
-
-					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
-
-				</div>
-
-				<div class="col-sm-12 editable-div">
-					<label>Career Level:</label>
-
-					<c:choose>
-						<c:when test='${empty uppb.careerLevel}'>
-							<div>
-								<span style="color: orange">Career Level:</span>
-
-							</div>
-						</c:when>
-						<c:otherwise>
-							<span class="inline-output"><c:out
-									value='${uppb.careerLevel}' /></span>
-						</c:otherwise>
-					</c:choose>
-
-					<span class="inline-input" style="display: none;"> <select class="update"
-
-						id="careerlevel">
-							<option>Student (Undergraduate/Graduate)</option>
-							<option>Entry Level</option>
-							<option>Experienced (Non-Managerial)</option>
-							<option>Manager (Manager/Supervisor of
-								Staff)</option>
-							<option>Executive (SVP,VP,Department Head
-								etc)</option>
-							<option>Senior Executive (President,
-								CFO. etc)</option>
-
-					</select>
-
-					</span><span class="glyphicon glyphicon-pencil edit-tool"></span>
-
->>>>>>> c216c24643b0bfb6e4c951461bea419ed9b21159
 				</div>
 
 			</div>
@@ -944,14 +704,14 @@ h4 {
 												var hInput = par
 														.find(".h-input");
 												var x = hInput.val();
-	
+
 												var uri = "";
 												if (x == "education") {
 													uri = "/bq/close/add-education";
 												} else if (x == "award") {
 													uri = "/bq/close/add-award";
 												} else if (x == "certification") {
-													uri = "/bq/close/add-education";
+													uri = "/bq/close/add-cert";
 												} else if (x == "work-experience") {
 													uri = "/bq/close/save-work-experience";
 												}
@@ -1111,60 +871,62 @@ h4 {
 								});
 
 							});
-							
+
 							$('#last-name')
-							.keyup(
-									function(e) {
+									.keyup(
+											function(e) {
 
-										var me = $(this);
-										var par = me
-												.closest(".editable-div");
-										var hInp = par.find(".h-input");
-										var out = par.find(".output");
-										var p = me.closest(".input");
-										var x = hInp.val();
-										var y = me.val();
-										var z = $("#first-name").val();
-										
+												var me = $(this);
+												var par = me
+														.closest(".editable-div");
+												var hInp = par.find(".h-input");
+												var out = par.find(".output");
+												var p = me.closest(".input");
+												var x = hInp.val();
+												var y = me.val();
+												var z = $("#first-name").val();
 
-										if (e.keyCode == 13) {
-											$
-													.ajax({
-														url : "/bq/close/update-profile",
-														method : "POST",
-														data : {
-															"param" : x,
-															"last-name" : y,
-															"first-name" : z,
-															"value" : "last-name"
-														},
-														success : function() {
-															out.html(z+" "+y);
-														},
-														complete : function() {
-															out.show();
-															p.hide();
-															par
-																	.mouseenter(function() {
-																		$(
-																				this)
-																				.find(
-																						".edit-tool")
-																				.show();
-																	});
+												if (e.keyCode == 13) {
+													$
+															.ajax({
+																url : "/bq/close/update-profile",
+																method : "POST",
+																data : {
+																	"param" : x,
+																	"last-name" : y,
+																	"first-name" : z,
+																	"value" : "last-name"
+																},
+																success : function() {
+																	out
+																			.html(z
+																					+ " "
+																					+ y);
+																},
+																complete : function() {
+																	out.show();
+																	p.hide();
+																	par
+																			.mouseenter(function() {
+																				$(
+																						this)
+																						.find(
+																								".edit-tool")
+																						.show();
+																			});
 
-															par
-																	.mouseleave(function() {
-																		$(
-																				this)
-																				.find(
-																						".edit-tool")
-																				.hide();
-																	});
-														}
-													});
-										}
-									});
+																	par
+																			.mouseleave(function() {
+																				$(
+																						this)
+																						.find(
+																								".edit-tool")
+																						.hide();
+																			});
+																}
+															});
+												}
+											});
 
 							$('input.input:text')
 									.keyup(
@@ -1178,7 +940,6 @@ h4 {
 
 												var x = hInp.val();
 												var y = me.val();
-												
 
 												if (e.keyCode == 13) {
 													$
@@ -1216,6 +977,20 @@ h4 {
 															});
 												}
 											});
+							$('.delete-item').click(
+									function(e) {
+										e.preventDefault();
+										var x = $(this).prop('href');
+										$.ajax({
+											url : x,
+											success : function() {
+												$(this).closest(".module-div")
+														.remove();
+											}
+
+										});
+									});
+
 							$("#cv-form")
 									.on(
 											'submit',
@@ -1278,8 +1053,7 @@ h4 {
 											});
 						});
 	</script>
-<<<<<<< HEAD
-=======
+
 	<script type="text/javascript">
 		$(".add-new").click(function() {
 
@@ -1299,9 +1073,7 @@ h4 {
 			par.find(".inline-output").show();
 
 		});
-		
-		
 	</script>
->>>>>>> c216c24643b0bfb6e4c951461bea419ed9b21159
+
 </body>
 </html>
