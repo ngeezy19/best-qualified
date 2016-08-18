@@ -897,8 +897,11 @@ public class Util {
 		List<Award> awards = new ArrayList<>();
 		if (cp.getAwards() != null) {
 			for (Key k : cp.getAwards()) {
-				awards.add(EntityConverter.entityToAward(GeneralController
-						.findByKey(k)));
+				Entity e = GeneralController.findByKey(k);
+				if (e != null) {
+					awards.add(EntityConverter.entityToAward(e));
+				}
+				
 			}
 		} else {
 			cp.setAwards(new ArrayList<Key>());
@@ -909,8 +912,12 @@ public class Util {
 		if (cp.getCertifications() != null) {
 
 			for (Key k : cp.getCertifications()) {
-				certifications.add(EntityConverter
-						.entityToCertification(GeneralController.findByKey(k)));
+				Entity e = GeneralController.findByKey(k);
+				if (e != null) {
+					certifications
+							.add(EntityConverter.entityToCertification(e));
+				}
+				
 			}
 		} else {
 			cp.setCertifications(new ArrayList<Key>());
@@ -921,8 +928,10 @@ public class Util {
 		List<Education> education = new ArrayList<>();
 		if (cp.getEducation() != null) {
 			for (Key k : cp.getEducation()) {
-				education.add(EntityConverter
-						.entityToEducation(GeneralController.findByKey(k)));
+				Entity e = GeneralController.findByKey(k);
+				if (e != null) {
+					education.add(EntityConverter.entityToEducation(e));
+				}
 			}
 		} else {
 			cp.setEducation(new ArrayList<Key>());
@@ -932,10 +941,12 @@ public class Util {
 		List<WorkExperience> workExperience = new ArrayList<>();
 		if (cp.getWorkExperience() != null) {
 			for (Key k : cp.getWorkExperience()) {
-				workExperience
-						.add(EntityConverter
-								.entityToWorkExperience(GeneralController
-										.findByKey(k)));
+				Entity e = GeneralController.findByKey(k);
+				if (e != null) {
+					workExperience.add(EntityConverter
+							.entityToWorkExperience(e));
+				}
+				
 			}
 		} else {
 			cp.setWorkExperience(new ArrayList<Key>());
@@ -1144,8 +1155,7 @@ public class Util {
 	public static ProjectBean toProjectBean(Project project) {
 		ProjectBean pb = new ProjectBean();
 		pb.setName(project.getName());
-		pb.setDateCreated(project
-				.getDateCreated());
+		pb.setDateCreated(project.getDateCreated());
 		if (project.getDescription() != null) {
 			pb.setDescription(project.getDescription().getValue());
 		}
@@ -1164,8 +1174,7 @@ public class Util {
 			Job j = EntityConverter.entityToJob(GeneralController
 					.findByKey(project.getJobs()));
 			pb.setJobTitle(j.getJobTitle());
-			pb.setExpiryDate(j
-					.getClosingDate());
+			pb.setExpiryDate(j.getClosingDate());
 			if (j.getCompany() != null) {
 				Company c = EntityConverter.entityToCompany(GeneralController
 						.findByKey(j.getCompany()));
@@ -1296,8 +1305,7 @@ public class Util {
 		List<ProjectBean> pb1 = new ArrayList<>();
 		for (Project p : l1) {
 			ProjectBean pb = new ProjectBean();
-			pb.setDateCreated(p
-					.getDateCreated());
+			pb.setDateCreated(p.getDateCreated());
 			pb.setDescription(p.getDescription().getValue());
 			pb.setName(p.getName());
 			if (p.getProfiles() == null) {
@@ -2017,7 +2025,7 @@ public class Util {
 				int end = str.indexOf(" ", 300);
 				a.setSnippet(str.substring(0, end));
 				a.setRemainingSnippet(str.substring(end));
-				
+
 			} else {
 				a.setSnippet(art.getBody().getValue());
 			}
@@ -2202,12 +2210,11 @@ public class Util {
 	public static ProjectBean toFullProjectBean(Project project) {
 		ProjectBean pb = new ProjectBean();
 		pb.setName(project.getName());
-		pb.setDateCreated(project
-				.getDateCreated());
+		pb.setDateCreated(project.getDateCreated());
 		if (project.getDescription() != null) {
 			pb.setDescription(project.getDescription().getValue());
 		}
-		
+
 		if (project.getInvitees() != null) {
 			pb.setInviteSent(project.getInvitees().size());
 		}
@@ -2217,8 +2224,8 @@ public class Util {
 		if (project.getApplicants() != null) {
 			pb.setTotalApplicants(project.getApplicants().size());
 		}
-		
-		if(project.getShortListedCandidates() != null) {
+
+		if (project.getShortListedCandidates() != null) {
 			pb.setShortListed(project.getShortListedCandidates().size());
 		}
 		pb.setWebKey(project.getSafeKey());
@@ -2226,8 +2233,7 @@ public class Util {
 			Job j = EntityConverter.entityToJob(GeneralController
 					.findByKey(project.getJobs()));
 			FullJobBean fjb = toFullJobBean(j);
-			pb.setExpiryDate(j
-					.getClosingDate());
+			pb.setExpiryDate(j.getClosingDate());
 			pb.setJob(fjb);
 			if (j.getCompany() != null) {
 				Company c = EntityConverter.entityToCompany(GeneralController
@@ -2237,20 +2243,32 @@ public class Util {
 				} else {
 					pb.setCompanyLogo(Util.getPictureUrl(c.getLogo()));
 				}
+<<<<<<< HEAD
 				
 				pb.setCompanyDesc((c.getDescription()!=null)?c.getDescription().getValue():"");
+=======
+
+				pb.setCompantDesc((c.getDescription() != null) ? c
+						.getDescription().getValue() : "");
+>>>>>>> 2e3d6f25bb2ab4b4ee7e399b11fcc45f234f84fb
 				pb.setCompanyName(c.getCompanyName());
 				pb.setCompanyWebsite(c.getCompanyWebsite());
-				
+
 			}
 		}
 		return pb;
-	
+
 	}
 
 	public static FullJobBean toFullJobBean(Job j) {
 		FullJobBean fjb = new FullJobBean();
+<<<<<<< HEAD
 		fjb.setApplicationDeadline(new SimpleDateFormat("MM/dd/YYYY").format(j.getClosingDate()));
+=======
+		fjb.setAdditionalInfo(j.getCustomAttributes().getValue());
+		fjb.setApplicationDeadline(new SimpleDateFormat("dd-MMM-yyyy").format(j
+				.getClosingDate()));
+>>>>>>> 2e3d6f25bb2ab4b4ee7e399b11fcc45f234f84fb
 		fjb.setApplyWithLinkedIn(j.isAllowLinkedInApplication());
 		fjb.setCareerLevel(Util.getCareerLevelValue(j.getCareerLevel()));
 		fjb.setEducationLevel(Util.getEducationLevelValue(j.getEducationLevel()));
@@ -2263,7 +2281,7 @@ public class Util {
 		fjb.setApplicationUrl(j.getApplicationUrl());
 		fjb.setTitle(j.getJobTitle());
 		fjb.setYearsOfExperience(Util.getExperienceValue(j.getExperience()));
-		
+
 		return fjb;
 	}
 
