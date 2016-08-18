@@ -41,10 +41,10 @@
 										value="${projectBean.dateCreated}" /> </small></strong>
 						</h4>
 						<c:if test='${not empty projectBean.description}'>
-							<h5>
-								Description <span class="glyphicon glyphicon-triangle-bottom"></span>
+							<h5 style="color: #987a3b">
+								Description
 							</h5>
-							<p style="display: none;">
+							<p style="font-family: calibri">
 								<c:out value='${projectBean.description}' />
 							</p>
 						</c:if>
@@ -67,7 +67,9 @@
 							</h4>
 							<h5 style="font-family: calibri">
 								<c:choose>
-									<c:when test='${not empty projectBean.companyName }'></c:when>
+									<c:when test='${not empty projectBean.companyName }'>
+										<c:out value="${projectBean.companyName}" />
+									</c:when>
 									<c:otherwise>Confidential</c:otherwise>
 								</c:choose>
 							</h5>
@@ -84,7 +86,8 @@
 								</i>
 							</h5>
 							<p>
-								<button class="btn btn-success btn-lg">Update</button>
+								<a href="<c:url value='/bq/close/recruiter/project/edit' />"
+									class="btn btn-success btn-lg">Update</a>
 							</p>
 						</div>
 						<div class="col-sm-5">
@@ -127,12 +130,11 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
-						<h4 style="color: #983b59">Job Description</h4>
+						<h4 style="color: #983b59; font-weight: bold;">Job Description</h4>
 						<p>${projectBean.job.jobDesc}</p>
-						<h4 style="color: #983b59">Job Role</h4>
+						<h4 style="color: #983b59; font-weight: bold;">Job Role</h4>
 						<p>${projectBean.job.jobRole}</p>
-						<h4 style="color: #983b59">Additional Information</h4>
-						<p>${projectBean.job.additionalInfo}</p>
+						
 					</div>
 				</div>
 
@@ -148,8 +150,10 @@
 					Summary</h4>
 				<strong style="display: block;">Company</strong>
 				<c:choose>
-					<c:when test='${not empty projectBean.companyName }'></c:when>
-					<c:otherwise>Confidential</c:otherwise>
+					<c:when test='${not empty projectBean.companyName }'>
+						<p><c:out value="${projectBean.companyName}" /></p>
+					</c:when>
+					<c:otherwise><p>Confidential</p></c:otherwise>
 				</c:choose>
 
 				<c:if test='${not empty projectBean.job.careerLevel}'>
@@ -207,8 +211,8 @@
 			</div>
 
 			<c:if test="${not empty projectBean.companyName}">
-				<div class="card-panel">
-					<h4 style="color: #3b5998">Company Information</h4>
+				<div class="card-panel" style="background-color: #758ab6;color: white">
+					<h4 style="">Company Information</h4>
 					<p>${projectBean.companyName}</p>
 					<p>${projectBean.companyWebsite}</p>
 					<p>${projectBean.companyDesc}</p>
