@@ -769,6 +769,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/bq/open/handler/newsletter-subscribe</url-pattern>
 	</servlet-mapping>
 	<!-- ************************************************JSP*************************************************************** -->
+	<servlet>
+		<servlet-name>EditProjectForm</servlet-name>
+		<jsp-file>/WEB-INF/bq/close/edit-project.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditProjectForm</servlet-name>
+		<url-pattern>/bq/close/recruiter/project/edit</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>RequestCoachPaymentForm</servlet-name>

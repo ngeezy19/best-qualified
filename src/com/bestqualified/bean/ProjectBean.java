@@ -14,7 +14,7 @@ public class ProjectBean implements Serializable {
 	private static final long serialVersionUID = -7574324814935282277L;
 
 	private String webKey, name, description, 
-			jobTitle, companyLogo, companyName, companyWebsite, compantDesc;
+			jobTitle, companyLogo, companyName, companyWebsite, companyDesc;
 	private int newApplicants, totalApplicants, inviteSent, shortListed,
 			savedSeach;
 	private List<ProView> shortlistedCandidates, invitees, applicants;
@@ -65,12 +65,12 @@ public class ProjectBean implements Serializable {
 		this.companyWebsite = companyWebsite;
 	}
 
-	public String getCompantDesc() {
-		return compantDesc;
+	public String getCompanyDesc() {
+		return companyDesc;
 	}
 
-	public void setCompantDesc(String compantDesc) {
-		this.compantDesc = compantDesc;
+	public void setCompanyDesc(String companyDesc) {
+		this.companyDesc = companyDesc;
 	}
 
 	public int getSavedSeach() {

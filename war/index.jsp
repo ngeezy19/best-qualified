@@ -188,10 +188,10 @@
 				<h4>FROM OUR COMMUNITY</h4>
 				<c:forEach var="item" items="${indexBean.articles}">
 					<div class="media">
-						<a class="pull-left"
+						<c:if test="${not empty item.pictureUrl }"><a class="pull-left"
 							href='<c:url value="bq/network/get-post?id=${item.webkey}" />'><img
 							class="media-object img-rounded" src="${item.pictureUrl}"
-							width="130" height="130"></a>
+							width="130" height="130"></a></c:if>
 						<div class="media-body">
 							<a href='<c:url value="bq/network/get-post?id=${item.webkey}" />'><h3
 									class="media-heading" id="lol">${item.title}</h3></a>
