@@ -3,6 +3,7 @@ package com.bestqualified.controllers;
 //third commit
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -388,6 +389,15 @@ public class GeneralController {
 			ents.add(EntityConverter.entityToArticle(its.next()));
 		}
 		return ents;
+	}
+
+	public static void delete(List<Key> allkeys) {
+		// TODO Auto-generated method stub
+		Key[] arrayK = new Key[allkeys.size()];
+		for (int i = 0; i < allkeys.size(); i++) {
+			arrayK[i] = allkeys.get(i);
+		}
+		ds.delete(arrayK);
 	}
 
 }

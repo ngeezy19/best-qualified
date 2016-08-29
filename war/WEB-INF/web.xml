@@ -33,6 +33,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>SendEmails</servlet-name>
+		<servlet-class>com.bestqualified.servlets.closed.SendEmails</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SendEmails</servlet-name>
+		<url-pattern>/bq/send-bulk-email</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>LikeArticle</servlet-name>
 		<servlet-class>com.bestqualified.servlets.LikeArticle</servlet-class>
 	</servlet>
